@@ -1,0 +1,26 @@
+{
+  "feature_names": [
+    "proximidad_objetivo",
+    "estabilidad_altura",
+    "estabilidad_actitud",
+    "estabilidad_angular",
+    "estabilidad_vertical",
+    "esfuerzo_motores",
+    "balance_motores",
+    "progreso"
+  ],
+  "weights": [
+    0.3601580924057469,
+    0.28699462130940245,
+    0.2838942099612659,
+    -0.009865280723567248,
+    0.00933742614902721,
+    -0.6621034630305107,
+    -0.028762270838013457,
+    0.5176210371389698
+  ],
+  "margen": 0.45183801947621416,
+  "iteracion_elegida": 15,
+  "iteraciones_totales": 15,
+  "escala_mu_aplicada": true
+}
