@@ -1,24 +1,4 @@
-"""
-Entorno de vuelo nominal (sin falla) para Apprenticeship Learning.
 
-Misma arquitectura que el compensador final (fault_env_residual_irl.py):
-Mamba (o LSTM) da la RPM base, PPO aprende un delta residual acotado sobre
-esa base. La diferencia con fault_env_residual_irl.py es que aquí NUNCA hay
-falla — es el escenario nominal, porque no existe ninguna demostración del
-PID con falla contra la cual comparar.
-
-Se cambió deliberadamente de "RPM completa desde cero" (versión anterior) a
-"Mamba + delta" para que la política candidata usada en la búsqueda de w
-tenga la MISMA arquitectura que la política que finalmente usará esos pesos
-— evita que el candidato tenga que reaprender a volar por completo en cada
-iteración (Mamba ya vuela bien via BC), y evita que w se valide en una
-arquitectura distinta a la que realmente lo va a usar.
-
-Es el "generador" del algoritmo de proyección (entrenar_irl_apprenticeship.py):
-en cada iteración se entrena una política PPO nueva sobre este entorno bajo la
-recompensa candidata R(s,a) = w . phi(s,a) (ver set_reward_weights), y se miden
-sus expectativas de características reales haciendo rollout de esa política.
-"""
 import sys
 from pathlib import Path
 import numpy as np
@@ -80,7 +60,7 @@ class NominalFlightEnv(gym.Env):
         )
 
     def set_reward_weights(self, w):
-        """Pesos w (8,) usados para R(s,a) = w . phi(s,a) en step()."""
+        """Pesos w (7,) usados para R(s,a) = w . phi(s,a) en step()."""
         self.w = np.asarray(w, dtype=np.float64)
 
     def reset(self, seed=None, options=None):
@@ -109,17 +89,18 @@ class NominalFlightEnv(gym.Env):
         self.action_rpm = np.ones((1, 4)) * HOVER_RPM
         self.model_pred = np.zeros(4, dtype=np.float32)
 
-        ta = self.waypoints[0]
-        self.dist_prev_z = distancia_z(obs_raw[0][0:3], ta, self.escalas)
+        self.dist_prev_z    = distancia_z(obs_raw[0][0:3], self.punto_B, self.escalas)
+        self.rpm_anterior   = np.ones(4, dtype=np.float64) * HOVER_RPM
+        self.vel_z_anterior = float(obs_raw[0][12])
 
-        return self._build_obs(obs_raw, ta), {}
+        return self._build_obs(obs_raw, self.waypoints[0]), {}
 
     def step(self, ppo_delta_norm):
         obs_raw, _, term, trunc, _ = self._env.step(self.action_rpm)
         pos     = obs_raw[0][0:3].copy()
         rpy     = obs_raw[0][7:10]
         ang_vel = obs_raw[0][13:16]
-        vel_z   = obs_raw[0][12]
+        vel     = obs_raw[0][10:13]
         self.paso += 1
 
         ta = self.waypoints[min(self.wp_idx, len(self.waypoints) - 1)]
@@ -140,9 +121,12 @@ class NominalFlightEnv(gym.Env):
         self.action_rpm = rpm.reshape(1, 4)
 
         vec, self.dist_prev_z = phi(
-            pos, rpy, ang_vel, vel_z, ta, rpm, self.dist_prev_z, self.escalas
+            pos, rpy, ang_vel, vel, ta, self.punto_B, rpm,
+            self.rpm_anterior, self.vel_z_anterior, self.dist_prev_z, self.escalas,
         )
         reward = float(np.dot(self.w, vec))
+        self.rpm_anterior   = rpm.astype(np.float64)
+        self.vel_z_anterior = float(vel[2])
 
         done = False
         if es_caida(obs_raw, pos, self.paso):

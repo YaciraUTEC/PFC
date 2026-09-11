@@ -164,8 +164,9 @@ class FaultResidualEnvIRL(gym.Env):
         self.obs_raw    = obs_raw
         self._delta_acum = []   # |delta_norm| por step post-falla, para info["delta_medio"]
 
-        ta = self.waypoints[0]
-        self.dist_prev_z = distancia_z(obs_raw[0][0:3], ta, self.escalas)
+        self.dist_prev_z    = distancia_z(obs_raw[0][0:3], self.punto_B, self.escalas)
+        self.rpm_anterior   = np.ones(4, dtype=np.float64) * HOVER_RPM
+        self.vel_z_anterior = float(obs_raw[0][12])
 
         return self._build_obs(obs_raw), {}
 
@@ -173,6 +174,7 @@ class FaultResidualEnvIRL(gym.Env):
         # 1. Avanzar simulacion con la accion del paso anterior
         obs_raw, _, term, trunc, _ = self._env.step(self.action_rpm)
         pos = obs_raw[0][0:3].copy()
+        vel = obs_raw[0][10:13]
         self.paso += 1
 
         # 2. Actualizar ventana temporal con la nueva observacion
@@ -217,11 +219,10 @@ class FaultResidualEnvIRL(gym.Env):
         if self.paso >= self.t_falla:
             rpy = obs_raw[0][7:10]
             ang_vel = obs_raw[0][13:16]
-            vel_z = float(obs_raw[0][12])
 
             vec, self.dist_prev_z = phi(
-                pos, rpy, ang_vel, vel_z, ta, action_final,
-                self.dist_prev_z, self.escalas,
+                pos, rpy, ang_vel, vel, ta, self.punto_B, action_final,
+                self.rpm_anterior, self.vel_z_anterior, self.dist_prev_z, self.escalas,
             )
             reward = float(np.dot(self.w, vec))
 
@@ -239,6 +240,9 @@ class FaultResidualEnvIRL(gym.Env):
                 elif es_aterrizaje(obs_raw, pos, self.paso):
                     done    = True
                     outcome = "aterrizo"
+
+        self.rpm_anterior   = action_final.astype(np.float64)
+        self.vel_z_anterior = float(vel[2])
 
         # Timeout: termina el episodio, sin penalización manual añadida.
         if (self.paso >= self.max_pasos or term or trunc) and not done:

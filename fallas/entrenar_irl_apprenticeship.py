@@ -58,6 +58,28 @@ def proyectar(mu_bar_prev, mu_i, mu_experto):
     return mu_bar_prev + coef * a
 
 
+def restringir_w(w_busqueda, w_anterior):
+    """
+    Proyecta w_busqueda al ortante no-negativo (recorte a 0 de componentes
+    negativas). Cada feature de phi() ya está orientada como "mayor = más
+    parecido al experto", así que un peso negativo invertiría esa dirección
+    (fue justo lo que causó que el compensador se volviera errático con
+    esfuerzo_motores en la versión anterior de 8 features).
+
+    Si el recorte colapsa el vector casi a cero -- las 7 componentes querían
+    ser negativas a la vez, algo posible sobre todo en las primeras
+    iteraciones cuando la política candidata es casi aleatoria -- se descarta
+    esta actualización y se mantiene w_anterior, para no entrenar a PPO con
+    una recompensa idénticamente nula.
+    """
+    w_no_neg = np.clip(w_busqueda, 0, None)
+    norma = np.linalg.norm(w_no_neg)
+    if norma < 1e-6:
+        print("  [aviso] recorte a w>=0 colapso el vector a ~0 - se mantiene el w anterior")
+        return w_anterior.copy()
+    return w_no_neg / norma
+
+
 def entrenar_politica(w, timesteps, n_envs, seed, iteracion):
     def make_env():
         env = NominalFlightEnv(gui=False)
@@ -101,7 +123,7 @@ def main():
     mu_experto = np.load(MU_EXPERTO_PATH)
     mu_escala  = np.load(ESCALA_PATH)
     print("mu_experto:", dict(zip(FEATURE_NAMES, mu_experto.round(4))))
-    print("mu_escala (para que las 8 features pesen comparable en el margen):",
+    print("mu_escala (para que las 7 features pesen comparable en el margen):",
           dict(zip(FEATURE_NAMES, mu_escala.round(4))))
 
     
@@ -115,9 +137,9 @@ def main():
     print("mu^(0):", dict(zip(FEATURE_NAMES, mu_0.round(4))))
 
     
+    w_uniforme = np.ones(N_FEATURES, dtype=np.float64) / np.sqrt(N_FEATURES)
     w_busqueda = mu_experto_r - mu_0_r
-    w_busqueda = w_busqueda / (np.linalg.norm(w_busqueda) + 1e-12)
-    w_reward   = w_busqueda.copy()
+    w_reward   = restringir_w(w_busqueda, w_uniforme)
     mu_bar_r   = mu_0_r.copy()
 
     convergencia = []
@@ -132,8 +154,7 @@ def main():
         mu_bar_r = proyectar(mu_bar_r, mu_i_r, mu_experto_r)
         t_i = float(np.linalg.norm(mu_experto_r - mu_bar_r))
         w_busqueda = mu_experto_r - mu_bar_r
-        w_busqueda = w_busqueda / (np.linalg.norm(w_busqueda) + 1e-12)
-        w_reward   = w_busqueda.copy()
+        w_reward   = restringir_w(w_busqueda, w_reward)
 
         print(f"mu^({i}) (crudo):", dict(zip(FEATURE_NAMES, mu_i.round(4))))
         print(f"margen t^({i}) (espacio rescalado) = {t_i:.4f}")

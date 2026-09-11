@@ -11,7 +11,7 @@ Uso (venv_mamba):
     cd /mnt/d/TesisI/gym-pybullet-drones
     /mnt/d/venv_mamba/bin/python3 fallas/calcular_mu_experto.py
 
-Salida: results/mu_experto.npy (vector de 8 features, promedio sobre episodios
+Salida: results/mu_experto.npy (vector de 7 features, promedio sobre episodios
 del retorno descontado de phi bajo la política del PID).
 """
 import sys
@@ -24,7 +24,7 @@ sys.path.insert(0, str(_ROOT / "comparacion"))
 
 from comparar_base import cargar_stats, STATS_PATH  # noqa: E402
 from irl_features import (  # noqa: E402
-    phi, distancia_z, cargar_escalas, N_FEATURES, FEATURE_NAMES,
+    phi, distancia_z, cargar_escalas, N_FEATURES, FEATURE_NAMES, HOVER_RPM,
 )
 
 CSV_PATH    = _ROOT / "results" / "datos_CF2X_800ep.csv"
@@ -39,7 +39,7 @@ GAMMA       = 0.99  # igual que gamma en entrenar_rl.py (PPO)
 # cada una ya esté escalada por su propia std a nivel de un solo paso
 # (irl_features.cargar_escalas). Sin esto, el margen y la proyección quedan
 # dominados por las features de mayor magnitud acumulada, casi ignorando
-# balance_motores/progreso. EPS_ESCALA evita dividir por un valor casi cero
+# oscilacion/progreso. EPS_ESCALA evita dividir por un valor casi cero
 # si alguna componente de mu_experto queda muy chica.
 EPS_ESCALA = 0.01
 
@@ -59,19 +59,22 @@ def main():
         pos     = ep_df[["pos_x", "pos_y", "pos_z"]].values
         rpy     = ep_df[["roll", "pitch", "yaw"]].values
         ang_vel = ep_df[["ang_x", "ang_y", "ang_z"]].values
-        vel_z   = ep_df["vel_z"].values
+        vel     = ep_df[["vel_x", "vel_y", "vel_z"]].values
         err     = ep_df[["err_x", "err_y", "err_z"]].values
         rpm     = ep_df[["motor_0", "motor_1", "motor_2", "motor_3"]].values
-        wp_actual = pos + err  # wp_actual = pos + (wp_actual - pos)
+        wp_actual   = pos + err  # wp_actual = pos + (wp_actual - pos), waypoint local por fila
+        punto_final = wp_actual[-1]  # último target del episodio = destino real (B_suelo)
 
-        # progreso = 0 en el primer paso del episodio
-        dist_prev_z = distancia_z(pos[0], wp_actual[0], escalas)
+        # progreso = 0 en el primer paso del episodio (respecto al destino final)
+        dist_prev_z = distancia_z(pos[0], punto_final, escalas)
 
         acumulado = np.zeros(N_FEATURES, dtype=np.float64)
         for t in range(len(ep_df)):
+            rpm_anterior   = rpm[t - 1] if t > 0 else np.full(4, HOVER_RPM, dtype=np.float64)
+            vel_z_anterior = vel[t - 1, 2] if t > 0 else vel[t, 2]
             vec, dist_prev_z = phi(
-                pos[t], rpy[t], ang_vel[t], vel_z[t],
-                wp_actual[t], rpm[t], dist_prev_z, escalas,
+                pos[t], rpy[t], ang_vel[t], vel[t], wp_actual[t], punto_final, rpm[t],
+                rpm_anterior, vel_z_anterior, dist_prev_z, escalas,
             )
             acumulado += (GAMMA ** t) * vec
         retornos.append(acumulado)
@@ -87,7 +90,7 @@ def main():
         print(f"  {name:24s} {val:+9.4f}   escala={esc:.4f}")
     print(f"\nGuardado en {OUT_PATH}")
     print(f"Escala guardada en {ESCALA_PATH} (usada por entrenar_irl_apprenticeship.py "
-          f"para que las 8 features pesen comparablemente en el margen)")
+          f"para que las 7 features pesen comparablemente en el margen)")
 
 
 if __name__ == "__main__":
