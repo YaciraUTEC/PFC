@@ -1,0 +1,219 @@
+\customchapter{INTRODUCCIÓN} 
+
+\introsection{Presentación del tema de investigación}
+
+\noindent El desarrollo de sistemas de control tolerante a fallas (FTC,
+\textit{Fault-Tolerant Control}) para vehículos aéreos no tripulados (UAV) de tipo cuadricóptero ha adquirido gran relevancia en los ultimos años. En este contexto, garantizar una operación segura en entornos dinámicos representa un desafío. Por esta razón, es fundamental implementar estrategias de control capaces de detectar y compensar fallas, asegurando un funcionamiento estable y continuo del vehículo aun ante condiciones adversas. \cite{freddi2019,ozcan2024}.
+
+
+\noindent Los UAV cuadricóptero se utilizan en aplicaciones de inspección, vigilancia, entrega, búsqueda y rescate, donde la pérdida de estabilidad ante una falla compromete tanto la misión como la seguridad del entorno en el que operan. Las consecuencias de una pérdida de control en sistemas multirotor que operan cerca de personas son reales: en diciembre de 2024, una pérdida de control simultánea en una formación de 500 drones durante un espectáculo en Orlando, Florida, provocó colisiones en el aire y la caída de varias unidades sobre el público, resultando en lesiones graves a un menor de edad, según el reporte preliminar de la Junta Nacional de Seguridad en el Transporte de Estados 
+Unidos (NTSB) \cite{ntsb2024}. Si bien este incidente se originó por errores de configuración de la formación, evidencia la magnitud del riesgo que representa la pérdida de control en sistemas multirotor operando en proximidad a personas. La literatura especializada señala que, en escenarios operativos, las fallas de actuadores, sensores y estructura son frecuentes y pueden conducir a consecuencias igualmente desastrosas si no son detectadas y compensadas a tiempo \cite{quadcopter2024, fdd2021survey}. A diferencia de las aeronaves de ala fija, los cuadricópteros generan sustentación exclusivamente mediante la rotación de sus motores, lo que los hace 
+vulnerables ante fallas de actuador: la pérdida de efectividad en un solo motor puede provocar una pérdida de control en cuestión de segundos \cite{amoozgar2013}.
+
+\noindent Las fallas que afectan a estos sistemas se clasifican en 
+tres categorías principales. Las fallas en actuadores corresponden 
+a la pérdida de efectividad en uno o más motores, ya sea por 
+desgaste mecánico, daño en hélices o sobrecalentamiento, y pueden 
+representar pérdidas de empuje de hasta el 36\% en un motor 
+individual sin llegar a una falla total \cite{kim2025, 
+amoozgar2013}; en casos más severos, la pérdida completa de uno o 
+varios rotores compromete directamente el estado del 
+sistema, dado que un cuadricóptero tiene menos entradas de control
+\cite{wang2022, du2023}. Las fallas en sensores incluyen lecturas 
+erróneas o degradadas del giroscopio, el acelerómetro o el sistema 
+de posicionamiento, las cuales pueden originarse por interferencia 
+electromagnética, vibración mecánica excesiva o, en escenarios más 
+críticos, por ataques ciberfísicos que falsifican deliberadamente 
+las señales recibidas por la unidad de control 
+\cite{patan2022, bekhiti2025}. A diferencia de las fallas de 
+actuador, cuyo efecto es frecuentemente visible en la dinámica del 
+vuelo, las fallas de sensor pueden pasar desapercibidas durante 
+varios pasos de control, ya que el sistema continúa operando con 
+información incorrecta hasta que la divergencia entre el estado 
+estimado y el estado real se vuelve significativa. Finalmente, las 
+perturbaciones externas de origen aerodinámico —como ráfagas de 
+viento, efecto suelo o variaciones súbitas de carga— modifican la 
+dinámica del sistema de forma impredecible y no pueden ser 
+anticipadas mediante un modelo nominal, lo que exige mecanismos de 
+estimación capaces de distinguir entre una perturbación externa 
+transitoria y una falla persistente del propio sistema 
+\cite{hsu2024}. Cada una de estas categorías afecta de manera 
+distinta la dinámica del sistema y puede presentarse de forma 
+aislada o combinada durante una misma trayectoria —por ejemplo, una 
+ráfaga de viento puede coincidir con la pérdida parcial de un motor 
+o con una lectura degradada del acelerómetro—, lo que exige un 
+enfoque integrado capaz de atender los tres escenarios de forma 
+simultánea.
+
+
+\noindent Frente a esta problemática, los enfoques actuales abordan 
+la detección y compensación de fallas mediante metodologías 
+distintas, cuya complejidad radica en que cada una resuelve 
+parcialmente el problema bajo supuestos particulares. Un primer 
+grupo de trabajos emplea métodos basados en modelos matemáticos y 
+observadores de estado, que generan señales residuales para 
+detectar desviaciones respecto al comportamiento nominal del 
+sistema \cite{freddi2019, patan2022, du2023}. Si bien estos métodos 
+ofrecen eficiencia computacional, su efectividad depende 
+directamente de la exactitud del modelo dinámico empleado, lo que 
+limita su desempeño ante dinámicas no lineales o fallas simultáneas 
+en múltiples componentes.
+
+
+\noindent Como alternativa a los métodos basados en modelos, las 
+técnicas de aprendizaje profundo permiten identificar patrones 
+anómalos directamente a partir de señales de vuelo, sin requerir un 
+modelo matemático explícito del sistema. Arquitecturas que combinan 
+\textit{autoencoders} LSTM para reducción de dimensionalidad con 
+clasificadores BiLSTM para análisis bidireccional de secuencias 
+temporales han logrado predecir fallas hasta 30 segundos antes de 
+que ocurra un evento crítico, con una precisión cercana al 80\% 
+sobre datos de vuelo reales \cite{ozcan2024}. Desde una perspectiva 
+semi-supervisada, modelos que combinan LSTM con \textit{One-Class 
+SVM} (OCSVM) permiten detectar desviaciones anómalas en señales 
+multivariadas de sensores sin necesidad de ejemplos etiquetados de 
+falla durante el entrenamiento, lo cual resulta especialmente útil 
+en escenarios donde los datos de falla son escasos \cite{li2021}. 
+No obstante, ambos enfoques comparten una limitación estructural: 
+se concentran en la tarea de detección sin incorporar un esquema de 
+compensación activo que permita al UAV mantener la estabilidad una 
+vez identificada la anomalía, y requieren grandes volúmenes de 
+datos etiquetados o el ajuste cuidadoso de umbrales de decisión 
+para evitar falsos positivos en condiciones operativas reales.
+
+\noindent Por su parte, las políticas de control aprendidas mediante 
+aprendizaje por refuerzo (RL), que han demostrado la 
+capacidad de adaptarse a condiciones dinámicas no vistas durante el 
+entrenamiento sin requerir un modelo explícito del sistema 
+\cite{liu2024, sohege2021, kim2025}. Estos enfoques constituyen, en 
+general, los de mejor desempeño reportado en la literatura; no 
+obstante, la mayoría presenta brechas de transferencia 
+simulación-realidad, y los que alcanzan los mejores resultados de 
+adaptación se concentran en un único tipo de falla, sin incorporar 
+un módulo explícito de detección y diagnóstico.
+%
+
+
+\noindent Esta brecha constituye una oportunidad de investigación 
+concreta. Se ha probado el uso de arquitecturas con memoria 
+temporal para abordar la detección y compensación de fallas en 
+UAVs, principalmente mediante LSTM \cite{ozcan2024, li2021} y 
+módulos basados en \textit{Transformer} \cite{kim2025, giral2024}; 
+sin embargo, ambas presentan limitaciones para su despliegue en 
+plataformas embebidas de bajo costo: las LSTM procesan la secuencia 
+de forma estrictamente secuencial, lo que limita su 
+paralelización, mientras que los Transformer requieren almacenar y 
+atender sobre el historial completo de la secuencia, con un costo 
+computacional y de memoria que crece cuadráticamente con la 
+longitud de dicho historial. Por otro lado, la arquitectura Mamba, 
+basada en modelos de espacio de estados selectivos, mantiene un 
+estado oculto de tamaño constante durante la inferencia y procesa 
+la secuencia mediante un mecanismo de \textit{scan} selectivo 
+paralelizable, lo que reduce significativamente el costo 
+computacional sin sacrificar la capacidad de modelar dependencias 
+temporales largas. Podría ser especialmente relevante emplear Mamba 
+en este contexto porque su perfil computacional resulta adecuado 
+para la detección de fallas progresivas en UAVs, donde la anomalía 
+se manifiesta gradualmente a lo largo de decenas de pasos 
+temporales y donde las restricciones de hardware embebido limitan 
+el tamaño de los modelos viables —condición bajo la cual ni las 
+LSTM ni los Transformer han sido evaluados en la literatura 
+revisada para esta tarea específica. Ante la necesidad identificada, 
+se propone un sistema integrado de detección y compensación de 
+fallas en UAV cuadricóptero mediante la combinación de estimación 
+de estados y aprendizaje temporal ligero basado en Mamba, validado 
+en el simulador gym-pybullet-drones con escenarios de falla en 
+actuadores, sensores y perturbaciones externas, atendiendo así la 
+brecha de integración y viabilidad computacional identificada en el 
+estado del arte.
+
+
+
+
+\introsection{Formulación del problema}
+
+%Propuesta 1
+De qué manera la integración de estimación de estados 
+y aprendizaje temporal ligero basado en modelos de espacio de 
+estados selectivos permite detectar y compensar fallas en sensores, 
+actuadores y perturbaciones dinámicas en UAV cuadricópteros en 
+tiempo real con viabilidad computacional para plataformas embebidas
+
+
+%propuesta 2
+¿Cómo un método inteligente y ligero de aprendizaje temporal permite detectar y compensar fallas de UAV cuadricópteros con viabilidad computacional?
+
+
+\introsection{Objetivos de investigación}
+Desarrollar un sistema integrado de 
+detección y compensación de fallas en UAV cuadricóptero mediante 
+estimación de estados y aprendizaje temporal ligero, validado en entorno simulado con escenarios de falla en 
+actuadores, sensores y perturbaciones externas. \\
+
+Los objetivos específicos son:
+\begin{enumerate}
+    \item  Diseñar un estimador de estados que detecte 
+inconsistencias en las mediciones de sensores del UAV, evaluando 
+su desempeño ante ruido y perturbaciones externas en el simulador 
+gym-pybullet-drones.
+    \item Desarrollar un modelo de detección de fallas basado en la arquitectura Mamba que capture patrones secuenciales y permita la identificación anticipada de anomalías en los tres escenarios definidos, comparando su desempeño frente a LSTM.
+
+    \item  Implementar un esquema de compensación que mantenga la estabilidad del UAV ante fallas en actuadores y perturbaciones dinámicas, validando su desempeño en diferentes escenarios de operación simulados.
+\end{enumerate}
+
+
+\introsection{Justificación}
+\noindent La presente investigación se justifica desde una 
+perspectiva tecnológica y metodológica. Como se evidenció en la 
+descripción de la situación problemática, los trabajos que alcanzan 
+los mejores resultados de detección y compensación de fallas en UAV 
+cuadricópteros emplean arquitecturas de aprendizaje profundo —LSTM y 
+\textit{Transformer}— cuyo costo computacional dificulta su 
+despliegue en plataformas embebidas de bajo costo, mientras que los 
+trabajos validados en hardware embebido real se limitan a un único 
+tipo de falla. Al integrar estimación de estados con una 
+arquitectura de espacio de estados selectivo, este trabajo aporta un 
+método de aprendizaje temporal cuyo costo computacional no crece con 
+la longitud del historial procesado, lo que representa una 
+alternativa metodológica frente a las arquitecturas predominantes en 
+la literatura revisada. Asimismo, la validación conjunta de fallas 
+en actuadores, sensores y perturbaciones externas dentro de un mismo 
+marco aporta valor teórico al evidenciar si un enfoque integrado 
+puede mantener un desempeño comparable al de los métodos 
+especializados que abordan cada tipo de falla por separado.
+
+\noindent En el plano práctico, los resultados de esta investigación 
+podrían beneficiar a futuros trabajos de control tolerante a fallas 
+en UAVs orientados a plataformas de bajo costo, al proporcionar una 
+arquitectura cuyo perfil computacional la hace candidata para 
+implementaciones embebidas, así como un conjunto de datos simulados 
+con escenarios de falla en actuadores, sensores y perturbaciones 
+aerodinámicas, generado en gym-pybullet-drones, que puede ser 
+reutilizado en investigaciones posteriores sobre detección y 
+compensación de fallas en cuadricópteros. De manera más amplia, dado 
+que los UAV cuadricóptero se emplean en aplicaciones de inspección, 
+vigilancia y entrega que operan en proximidad a personas e 
+infraestructura, contar con métodos de detección y compensación de 
+fallas computacionalmente viables contribuye a reducir el riesgo de 
+incidentes asociados a la pérdida de control en este tipo de 
+sistemas.
+
+
+\introsection{Alcance y limitaciones / restricciones} %[opcional]
+
+El \textbf{alcance}  comprende el desarrollo 
+y validación de un sistema integrado de detección y compensación 
+de fallas en un UAV cuadricóptero simulado mediante 
+gym-pybullet-drones \cite{panerati2021}, utilizando el modelo 
+Crazyflie CF2X como plataforma de referencia, con tres escenarios 
+de falla: pérdida de efectividad en actuadores (motores), 
+corrupción de señales de sensores (giroscopio) y perturbaciones 
+externas de viento lateral. La validación se realiza 
+exclusivamente en entorno simulado, reconociendo la brecha 
+simulación-realidad (\textit{sim-to-real gap}) como trabajo 
+futuro \cite{kim2025}, \cite{hsu2024}; la física de PyBullet 
+constituye una aproximación de la dinámica real y no modela 
+efectos aerodinámicos complejos como turbulencias ni interacciones 
+entre rotores \cite{panerati2021}; y la evaluación de viabilidad 
+en hardware embebido se limita al análisis del costo computacional 
+del modelo entrenado, sin despliegue físico.

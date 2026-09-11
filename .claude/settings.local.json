@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(wsl python3 -c \"from mamba_ssm import Mamba; print\\('OK'\\)\" 2>&1)"
+    ]
+  }
+}

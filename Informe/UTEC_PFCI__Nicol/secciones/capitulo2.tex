@@ -1,0 +1,218 @@
+\chapter{MARCO TEÓRICO}
+
+El presente capítulo expone los fundamentos conceptuales y técnicos que sustentan la propuesta de esta investigación. Se describe, en primer lugar, la arquitectura y el modelo dinámico del UAV tipo cuadricóptero, estableciendo las variables de estado y las ecuaciones de movimiento que rigen su comportamiento en vuelo. A continuación, se clasifican las fallas que pueden afectar a estos sistemas —actuadores, sensores y perturbaciones externas— y se analizan sus efectos sobre la estabilidad y el seguimiento de trayectoria. Se presentan luego las dos arquitecturas de aprendizaje profundo para el modelado secuencial empleadas en el controlador nominal: la red LSTM, utilizada como línea base de comparación, y el modelo de espacio de estados selectivo Mamba SSM, que constituye la propuesta principal por su menor costo computacional y su mecanismo de selección adaptativo. Sobre esta base, se explica cómo estas redes aprenden la relación entre el estado del sistema y las acciones de control mediante aprendizaje por imitación del controlador PID, reemplazándolo sin necesitar acceso al modelo dinámico explícito. A continuación, se describe la arquitectura de control tolerante a fallas de dos niveles propuesta, en la que el controlador nominal aprendido actúa en condiciones normales y el compensador basado en el algoritmo PPO (\textit{Proximal Policy Optimization}) interviene ante la presencia de fallas en los actuadores. Finalmente, se presenta el entorno de simulación gym-pybullet-drones utilizado para la validación experimental.
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{Vehículos Aéreos No Tripulados tipo Cuadricóptero}
+
+Los vehículos aéreos no tripulados (UAV) de tipo cuadricóptero son plataformas aéreas propulsadas por cuatro rotores dispuestos simétricamente alrededor de un eje central. Su amplia adopción en aplicaciones de inspección, vigilancia, entrega y búsqueda y rescate se debe a su capacidad de vuelo estacionario, despegue y aterrizaje vertical, y maniobrabilidad en espacios reducidos \cite{fdd2021survey}. Sin embargo, al depender exclusivamente de la rotación de sus cuatro motores para generar sustentación y control, cualquier degradación en uno de sus actuadores puede comprometer la estabilidad del sistema en cuestión de segundos \cite{quadcopter2024, amoozgar2013}.
+
+\subsection{Arquitectura y Principio de Funcionamiento}
+
+Un cuadricóptero cuenta con cuatro motores ubicados en los extremos de una estructura en cruz o en X. Dos motores giran en sentido horario y los otros dos en sentido antihorario, de modo que el par reactivo generado por cada par opuesto se cancela en vuelo estacionario. La combinación de velocidades angulares de los cuatro rotores permite controlar cuatro grados de libertad de forma simultánea: el empuje vertical (\textit{thrust}), el alabeo (\textit{roll}), el cabeceo (\textit{pitch}) y la guiñada (\textit{yaw}). El empuje total se incrementa aumentando la velocidad de todos los motores de manera uniforme, mientras que las diferencias de velocidad entre pares opuestos generan los momentos de alabeo y cabeceo; la guiñada se controla variando la diferencia entre los motores de rotación horaria y antihoraria.
+
+\subsection{Modelo Dinámico}
+
+La dinámica de un cuadricóptero se describe mediante ecuaciones de movimiento en seis grados de libertad, divididas en traslación y rotación respecto a un marco de referencia inercial. La posición del vehículo se representa mediante las coordenadas $(x, y, z)$ y su orientación mediante los ángulos de Euler: alabeo $\phi$, cabeceo $\theta$ y guiñada $\psi$. Bajo la suposición de cuerpo rígido y masa $m$ constante, las ecuaciones de traslación son:
+
+\begin{equation}
+m\ddot{x} = (\cos\phi \sin\theta \cos\psi + \sin\phi \sin\psi)\, U_1
+\end{equation}
+\begin{equation}
+m\ddot{y} = (\cos\phi \sin\theta \sin\psi - \sin\phi \cos\psi)\, U_1
+\end{equation}
+\begin{equation}
+m\ddot{z} = -mg + \cos\phi \cos\theta\, U_1
+\end{equation}
+
+\noindent donde $U_1 = \sum_{i=1}^{4} k_T \omega_i^2$ es el empuje total, $k_T$ es la constante de empuje de cada rotor, $\omega_i$ es la velocidad angular del motor $i$ y $g$ es la aceleración gravitacional. Las ecuaciones rotacionales, expresadas en función de los momentos de inercia $I_{xx}$, $I_{yy}$, $I_{zz}$ y los torques de control $U_2$, $U_3$, $U_4$, son:
+
+\begin{equation}
+I_{xx}\ddot{\phi} = \dot{\theta}\dot{\psi}(I_{yy} - I_{zz}) + U_2
+\end{equation}
+\begin{equation}
+I_{yy}\ddot{\theta} = \dot{\phi}\dot{\psi}(I_{zz} - I_{xx}) + U_3
+\end{equation}
+\begin{equation}
+I_{zz}\ddot{\psi} = \dot{\phi}\dot{\theta}(I_{xx} - I_{yy}) + U_4
+\end{equation}
+
+\noindent Esta representación evidencia el carácter altamente no lineal y acoplado de la dinámica del cuadricóptero, lo que dificulta el diseño de controladores que mantengan su desempeño ante perturbaciones o fallas \cite{du2023, wang2022}.
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{Fallas en Sistemas UAV Cuadricóptero}
+
+Se denomina falla a cualquier desviación anormal en el comportamiento de un componente del sistema que reduzca su capacidad para ejecutar la misión asignada. La literatura especializada clasifica las fallas en los UAV cuadricóptero en tres categorías principales según el subsistema afectado \cite{fdd2021survey, quadcopter2024}.
+
+\subsection{Clasificación de Fallas}
+
+Las \textbf{fallas en actuadores} corresponden a la pérdida parcial o total de efectividad en uno o más motores, originadas por desgaste mecánico, daño en las hélices, sobrecalentamiento o falla electrónica del controlador de velocidad. Matemáticamente, una falla de efectividad parcial en el motor $i$ se modela mediante un factor $\eta_i \in [0, 1]$, donde $\eta_i = 1$ indica operación nominal y $\eta_i = 0$ representa pérdida total \cite{amoozgar2013, du2023}. Dado que el cuadricóptero tiene redundancia limitada, la degradación de un solo rotor afecta directamente los momentos de control disponibles y puede provocar pérdida de estabilidad si no se detecta y compensa a tiempo \cite{kim2025}.
+
+Las \textbf{fallas en sensores} incluyen lecturas erróneas, sesgadas o ruidosas provenientes del giroscopio, el acelerómetro, el barómetro o el sistema de posicionamiento, originadas por interferencia electromagnética, vibración mecánica o ataques ciberfísicos \cite{patan2022, bekhiti2025}. A diferencia de las fallas de actuador, cuyo efecto es frecuentemente observable en la dinámica del vuelo, las fallas de sensor pueden pasar desapercibidas durante varios ciclos de control, ya que el sistema continúa operando con información incorrecta hasta que la divergencia entre el estado estimado y el real se vuelve significativa.
+
+Las \textbf{perturbaciones externas} de origen aerodinámico —ráfagas de viento, efecto suelo, variaciones súbitas de carga— modifican la dinámica del sistema de forma impredecible. Aunque no constituyen fallas internas, su efecto sobre la estabilidad del vuelo es comparable al de una falla en actuadores, razón por la cual los sistemas de control tolerante a fallas modernos las integran dentro de su modelo de diagnóstico y compensación \cite{hsu2024, chen2023}.
+
+\subsection{Efectos Combinados sobre la Dinámica del Vuelo}
+
+La presencia simultánea de múltiples tipos de falla plantea un desafío particular para los sistemas de detección y compensación. Una ráfaga de viento puede coincidir con la pérdida parcial de un motor o con una lectura degradada del acelerómetro, generando señales residuales ambiguas que dificultan el diagnóstico. Este escenario exige estrategias capaces de desacoplar los efectos de cada tipo de falla y actuar sobre ellos de manera coordinada, condición que la mayoría de los enfoques especializados en un único tipo de falla no logra satisfacer \cite{fdd2021survey, quadcopter2024}.
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{Arquitecturas de Aprendizaje Profundo para Control Secuencial}
+
+Las señales de estado del UAV —posición, velocidad, orientación, velocidad angular— forman secuencias temporales cuya estructura causal es fundamental para reproducir el comportamiento de un controlador experto. El aprendizaje profundo permite identificar estas dependencias temporales directamente a partir de datos históricos de vuelo, sin depender de un modelo dinámico explícito \cite{ozcan2024, chen2023}. En esta investigación se evalúan dos arquitecturas especializadas en el modelado de secuencias: la red LSTM, como línea base de comparación, y el modelo Mamba SSM, como propuesta principal.
+
+\subsection{Redes de Memoria de Largo y Corto Plazo (LSTM)}
+
+Las redes de memoria de largo y corto plazo (LSTM, \textit{Long Short-Term Memory}) son una variante de las redes neuronales recurrentes diseñada para capturar dependencias temporales a largo plazo, superando el problema del desvanecimiento del gradiente que afecta a las RNN convencionales \cite{ozcan2024, li2021}. La unidad LSTM incorpora tres compuertas —de olvido, de entrada y de salida— y un estado de celda $\mathbf{c}_t$ que actúa como memoria a largo plazo. Las ecuaciones de actualización en el paso temporal $t$ son:
+
+\begin{equation}
+\mathbf{f}_t = \sigma(\mathbf{W}_f [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_f)
+\end{equation}
+\noindent\textbf{Compuerta de olvido} (\textit{forget gate}): determina qué fracción de la memoria a largo plazo $\mathbf{c}_{t-1}$ se conserva. Un valor cercano a 0 descarta la información pasada; un valor cercano a 1 la retiene completamente.
+
+\begin{equation}
+\mathbf{i}_t = \sigma(\mathbf{W}_i [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_i)
+\end{equation}
+\noindent\textbf{Compuerta de entrada} (\textit{input gate}): controla cuánta información nueva procedente de la entrada actual $\mathbf{x}_t$ y del estado anterior $\mathbf{h}_{t-1}$ se escribe en la memoria.
+
+\begin{equation}
+\tilde{\mathbf{c}}_t = \tanh(\mathbf{W}_c [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_c)
+\end{equation}
+\noindent\textbf{Candidato al estado de celda}: genera los nuevos valores candidatos que podrían añadirse a la memoria. La función $\tanh$ acota los valores entre $-1$ y $1$, estabilizando el entrenamiento.
+
+\begin{equation}
+\mathbf{c}_t = \mathbf{f}_t \odot \mathbf{c}_{t-1} + \mathbf{i}_t \odot \tilde{\mathbf{c}}_t
+\end{equation}
+\noindent\textbf{Actualización del estado de celda} (\textit{cell state}): combina la memoria pasada filtrada por la compuerta de olvido con la nueva información filtrada por la compuerta de entrada. Es el núcleo de la capacidad de la LSTM para retener dependencias a largo plazo.
+
+\begin{equation}
+\mathbf{o}_t = \sigma(\mathbf{W}_o [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_o)
+\end{equation}
+\noindent\textbf{Compuerta de salida} (\textit{output gate}): decide qué parte del estado de celda $\mathbf{c}_t$ se expone como salida hacia la capa siguiente o hacia el siguiente paso temporal.
+
+\begin{equation}
+\mathbf{h}_t = \mathbf{o}_t \odot \tanh(\mathbf{c}_t)
+\end{equation}
+\noindent\textbf{Estado oculto} (\textit{hidden state}): es la salida visible de la celda LSTM en el paso $t$. Actúa simultáneamente como salida hacia capas superiores y como entrada al siguiente paso temporal, codificando la memoria a corto plazo del modelo.
+
+\noindent donde $\mathbf{x}_t$ es la entrada en el paso $t$, $\mathbf{h}_{t-1}$ es el estado oculto anterior, $\sigma$ es la función sigmoide y $\odot$ denota el producto elemento a elemento. La naturaleza secuencial del procesamiento LSTM limita la paralelización durante el entrenamiento y agrega latencia en inferencia sobre ventanas largas. En esta investigación, la LSTM actúa como \textbf{línea base de comparación} con dos capas de 128 unidades ocultas, una ventana temporal de 50 pasos y 216\,388 parámetros entrenables.
+
+\subsection{Modelos de Espacio de Estados Selectivos: Mamba SSM}
+
+Mamba es una arquitectura de modelado secuencial basada en modelos de espacio de estados (SSM, \textit{State Space Model}) con un mecanismo de selección que adapta sus parámetros en función de la entrada, a diferencia de los SSM clásicos cuyos parámetros son fijos para toda la secuencia. El SSM continuo subyacente describe la evolución del sistema mediante:
+
+\begin{equation}
+\mathbf{h}'(t) = \mathbf{A}\mathbf{h}(t) + \mathbf{B}\mathbf{x}(t), \qquad \mathbf{y}(t) = \mathbf{C}\mathbf{h}(t)
+\end{equation}
+
+\noindent donde $\mathbf{h}(t) \in \mathbb{R}^N$ es el estado oculto continuo, $\mathbf{x}(t)$ es la entrada y $\mathbf{A}$, $\mathbf{B}$, $\mathbf{C}$ son matrices de parámetros. Para su aplicación en secuencias discretas, el sistema se discretiza mediante el método de retención de orden cero (ZOH) con escala temporal $\Delta$:
+
+\begin{equation}
+\overline{\mathbf{A}} = e^{\Delta \mathbf{A}}, \qquad \overline{\mathbf{B}} = (\Delta\mathbf{A})^{-1}(e^{\Delta\mathbf{A}} - \mathbf{I})\,\Delta\mathbf{B}
+\end{equation}
+
+\noindent resultando en la recurrencia discreta:
+
+\begin{equation}
+\mathbf{h}_t = \overline{\mathbf{A}}\,\mathbf{h}_{t-1} + \overline{\mathbf{B}}\,\mathbf{x}_t, \qquad \mathbf{y}_t = \mathbf{C}\,\mathbf{h}_t
+\end{equation}
+
+La innovación central de Mamba consiste en hacer que $\mathbf{B}$, $\mathbf{C}$ y $\Delta$ sean funciones de la entrada $\mathbf{x}_t$, permitiendo que el modelo seleccione qué información propagar o descartar en cada paso. Esta selectividad se implementa mediante un \textit{scan} paralelo que habilita la paralelización durante el entrenamiento y, en inferencia, opera con un estado oculto de tamaño constante independiente de la longitud de la secuencia, lo que reduce significativamente el costo computacional frente a los Transformers \cite{gu2023mamba}. En esta investigación, Mamba constituye el \textbf{controlador nominal propuesto} con dos capas ($d_{\text{model}}=128$, $d_{\text{state}}=16$, $d_{\text{conv}}=4$, $\text{expand}=2$) y 244\,420 parámetros entrenables. Aunque la configuración seleccionada resulta en un conteo de parámetros comparable al de la LSTM de referencia (216\,388), la ventaja de Mamba reside en su menor costo computacional durante la inferencia, dado que mantiene un estado oculto de tamaño fijo independientemente de la longitud de la secuencia procesada.
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{Aprendizaje por Imitación para Políticas de Control}
+
+El aprendizaje por imitación (\textit{imitation learning}) es un paradigma en el que un agente adquiere una política de control a partir de demostraciones proporcionadas por un experto, sin necesidad de especificar explícitamente una función de recompensa ni de disponer del modelo dinámico del sistema \cite{zhang2023, kumar2021}. En el contexto del control de UAV, el experto es típicamente un controlador clásico —como un PID— cuyo comportamiento se registra en forma de trayectorias estado-acción. El objetivo es que el modelo aprendido replique esas acciones ante observaciones similares, actuando como un controlador de vuelo completo. Existen varias familias de métodos dentro de este paradigma, que difieren en qué información del experto requieren, si necesitan interacción con el entorno durante el entrenamiento, y cómo abordan el problema de la deriva por covariables.
+
+\subsection{Clonación de Comportamiento}
+
+La clonación de comportamiento (\textit{behavioral cloning}, BC) es la variante más directa: formula el problema como regresión supervisada sobre un dataset fijo de demostraciones del experto. Dado un conjunto $\mathcal{D} = \{(\mathbf{s}_t, \mathbf{a}_t)\}_{t=1}^{T}$, donde $\mathbf{s}_t$ es el vector de estado en el instante $t$ y $\mathbf{a}_t$ es la acción producida por el experto, el modelo $f_\theta$ se entrena minimizando el error cuadrático medio:
+
+\begin{equation}
+\mathcal{L}(\theta) = \frac{1}{T} \sum_{t=1}^{T} \left\| f_\theta(\mathbf{s}_{t-W:t}) - \mathbf{a}_t \right\|^2
+\end{equation}
+
+\noindent donde $\mathbf{s}_{t-W:t}$ denota una ventana de $W$ pasos de historia —necesaria cuando el modelo es recurrente— y $\theta$ son los parámetros aprendibles. La ventaja principal es su simplicidad: no requiere al experto disponible durante el entrenamiento ni interacción con el entorno. Su limitación central es la \textbf{deriva por covariables} (\textit{covariate shift}): en lazo cerrado, el agente genera distribuciones de estado distintas a las del experto, y los pequeños errores de predicción se acumulan progresivamente \cite{kumar2021}.
+
+\subsection{DAgger}
+
+DAgger (\textit{Dataset Aggregation}) \cite{zhang2023} mitiga el covariate shift mediante un proceso iterativo: (i) desplegar la política aprendida en el entorno, (ii) consultar al experto para que etiquete los estados efectivamente visitados por el agente, (iii) agregar esos nuevos pares al dataset y (iv) reentrenar. De este modo el modelo aprende a actuar correctamente en los estados que él mismo genera, no solo en los que el experto habría visitado. La desventaja es que requiere que el experto esté disponible en tiempo de ejecución para responder consultas interactivas, lo que puede ser costoso o inviable cuando el experto es un sistema físico o un operador humano.
+
+\subsection{Aprendizaje por Refuerzo Inverso}
+
+El aprendizaje por refuerzo inverso (\textit{inverse reinforcement learning}, IRL) adopta un enfoque distinto: en lugar de imitar directamente las acciones, infiere la función de recompensa $R(\mathbf{s}, \mathbf{a})$ que explica el comportamiento observado del experto, y luego resuelve el MDP inducido por esa recompensa \cite{kumar2021}. Al capturar la \textit{intención} del experto en lugar de sus acciones puntuales, IRL generaliza mejor a situaciones no vistas. Sin embargo, el problema de recuperar $R$ a partir de demostraciones es mal definido —múltiples funciones de recompensa pueden explicar el mismo comportamiento— y computacionalmente costoso. Variantes como MaxEnt IRL y Bayesian IRL ofrecen distintos compromisos entre expresividad y tractabilidad.
+
+\subsection{GAIL}
+
+GAIL (\textit{Generative Adversarial Imitation Learning}) combina el aprendizaje por imitación con redes generativas adversariales: un discriminador aprende a distinguir las trayectorias generadas por el agente de las del experto, mientras que el agente (generador) optimiza su política para engañar al discriminador \cite{kumar2021}. Una ventaja clave es que GAIL solo requiere trayectorias de estados del experto, sin necesidad de conocer las acciones exactas. La limitación principal es la inestabilidad inherente al entrenamiento adversarial. Variantes como AIRL y f-GAIL mejoran la estabilidad y la interpretabilidad de la recompensa recuperada.
+
+\subsection{Aprendizaje por Imitación Híbrido: BC + RL}
+
+Una arquitectura de dos niveles combina BC como inicializador de la política nominal con aprendizaje por refuerzo (RL) para manejar condiciones fuera de la distribución de entrenamiento. BC proporciona una política base estable sin necesidad de exploración aleatoria en el entorno; el agente RL, entrenado posteriormente con la política BC congelada, aprende a generar correcciones residuales en los escenarios donde BC falla o es insuficiente \cite{kumar2021, zhang2023}. Esta combinación hereda las ventajas de ambos paradigmas: la eficiencia de datos de BC y la capacidad de adaptación en lazo cerrado del RL.
+
+\subsection{Comparativa de Métodos}
+
+La Tabla~\ref{tab:il_comparativa} resume las características principales de los métodos descritos.
+
+\begin{table}[h]
+\centering
+\caption{Comparativa de métodos de aprendizaje por imitación.}
+\label{tab:il_comparativa}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Método} & \textbf{Acciones del experto} & \textbf{Interacción con entorno} & \textbf{Deriva por covariables} \\
+\hline
+BC        & Sí          & No          & Alta  \\
+DAgger    & Sí (en línea) & Sí        & Baja  \\
+IRL       & No          & Sí          & Baja  \\
+GAIL      & No          & Sí          & Baja  \\
+BC $+$ RL & Sí (BC inicial) & Sí (RL) & Baja  \\
+\hline
+\end{tabular}
+\end{table}
+
+En esta investigación se adopta la arquitectura híbrida BC\,$+$\,RL: un controlador nominal aprendido por clonación de comportamiento —LSTM o Mamba SSM imitando al PID de referencia— al que se superpone un compensador PPO entrenado por refuerzo para corregir las desviaciones producidas por fallas de actuador. BC es adecuado para la tarea nominal porque el experto (PID) es determinista y genera demostraciones de alta calidad; el RL residual resuelve el caso fuera de distribución sin necesidad de rediseñar el controlador base.
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{Arquitectura de Control Tolerante a Fallas}
+
+El Control Tolerante a Fallas (FTC, \textit{Fault-Tolerant Control}) comprende el conjunto de estrategias capaces de mantener un desempeño aceptable del sistema ante la presencia de fallas en sus componentes. En los UAV cuadricóptero, el objetivo del FTC es preservar la estabilidad del vuelo y la capacidad de seguimiento de trayectoria frente a fallas en actuadores, sensores o perturbaciones externas \cite{fdd2021survey}. Los sistemas de \textbf{FTC pasivo} incorporan robustez mediante el diseño previo del controlador sin requerir detección ni reconfiguración en línea, mientras que los sistemas de \textbf{FTC activo} emplean un módulo de detección y diagnóstico de fallas (FDD) para estimar la naturaleza de la falla y reconfigurar el controlador en tiempo real \cite{freddi2019, du2023, ahmadi2023}.
+
+\subsection{Arquitectura FTC de Dos Niveles con Aprendizaje}
+
+Una arquitectura FTC activa de dos niveles combina un controlador nominal aprendido con un compensador adaptativo \cite{freddi2019, du2023}. El \textbf{primer nivel} es un controlador aprendido por imitación que replica el comportamiento de un experto bajo condiciones nominales, operando sobre el vector de estado del UAV sin requerir el modelo dinámico explícito. El \textbf{segundo nivel} es un compensador —típicamente basado en aprendizaje por refuerzo— que genera señales de corrección cuando la efectividad de uno o más actuadores se degrada. La señal de control total se formula como la superposición de ambas contribuciones:
+
+\begin{equation}
+\mathbf{u}_t = f_{\text{nom}}(\mathbf{s}_{t-W:t}) + g_{\text{comp}}(\mathbf{s}_t,\, \hat{\boldsymbol{\eta}})
+\end{equation}
+
+\noindent donde $f_{\text{nom}}$ es la acción del controlador nominal, $g_{\text{comp}}$ es la señal de compensación condicionada al estado actual y al vector de efectividad estimado $\hat{\boldsymbol{\eta}} \in [0,1]^m$ de los $m$ actuadores, y $\mathbf{u}_t$ es la acción final enviada al sistema. Esta separación de responsabilidades permite entrenar ambos componentes de forma independiente y sustituir cualquiera de ellos sin rediseñar el otro.
+
+\subsection{Compensador por Aprendizaje por Refuerzo: PPO}
+
+La Optimización de Políticas Proximales (PPO, \textit{Proximal Policy Optimization}) es un algoritmo de gradiente de políticas que estabiliza el entrenamiento del agente restringiendo el tamaño de cada actualización de política mediante una función objetivo recortada (\textit{clipped surrogate objective}) \cite{fei2020, liu2024}. El agente PPO aprende una política $\pi_\theta(\mathbf{a}|\mathbf{s})$ que maximiza el retorno esperado acumulado:
+
+\begin{equation}
+J(\theta) = \mathbb{E}_{\pi_\theta}\!\left[\sum_{t=0}^{T} \gamma^t r_t\right]
+\end{equation}
+
+\noindent donde $r_t$ es una señal de recompensa que cuantifica el desempeño del agente en cada paso. La función objetivo de PPO introduce el cociente de probabilidades $r_t(\theta) = \pi_\theta(\mathbf{a}_t|\mathbf{s}_t) / \pi_{\theta_{\text{old}}}(\mathbf{a}_t|\mathbf{s}_t)$ y lo recorta para evitar actualizaciones desestabilizadoras:
+
+\begin{equation}
+\mathcal{L}^{\text{CLIP}}(\theta) = \mathbb{E}_t\!\left[\min\!\left(r_t(\theta)\,\hat{A}_t,\; \text{clip}(r_t(\theta),\, 1-\epsilon,\, 1+\epsilon)\,\hat{A}_t\right)\right]
+\end{equation}
+
+\noindent donde $\hat{A}_t$ es la estimación de ventaja y $\epsilon$ es el parámetro de recorte que controla cuánto puede alejarse la nueva política de la anterior. PPO es especialmente adecuado como compensador residual en sistemas FTC porque permite entrenar al agente sobre escenarios de falla sin desestabilizar la política nominal preexistente \cite{liu2024}.
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{Entorno de Simulación: gym-pybullet-drones}
+
+\textit{gym-pybullet-drones} es una plataforma de simulación de código abierto basada en el motor físico PyBullet que implementa la dinámica de múltiples modelos de UAV cuadricóptero con una interfaz compatible con el estándar OpenAI Gymnasium \cite{zhang2023, hsu2024}. El entorno incluye modelos de drones como el Crazyflie 2.x en configuración X (CF2X) y permite simular el vuelo con un lazo de control a 48\,Hz sobre una física interna a 240\,Hz. Esta separación de frecuencias garantiza una resolución temporal suficiente para capturar efectos transitorios durante el vuelo.
+
+La plataforma ofrece tres capacidades principales relevantes para el desarrollo de controladores aprendidos. Primero, permite ejecutar controladores clásicos como PID y registrar los pares estado-acción generados, lo que facilita la construcción de datasets de imitación. Segundo, soporta el despliegue de políticas aprendidas en lazo cerrado, reemplazando al controlador clásico y midiendo métricas de seguimiento de trayectoria. Tercero, permite inyectar fallas de actuador modificando la efectividad de cada motor en tiempo de simulación, lo que posibilita evaluar la robustez de los controladores ante degradaciones parciales o totales de los motores \cite{hsu2024}.

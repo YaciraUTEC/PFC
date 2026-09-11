@@ -1,0 +1,298 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\sffamily\small,
+  arr/.style={-{Stealth[length=4pt,width=4pt]}, cyanDark, line width=0.9pt},
+  bigarr/.style={-{Stealth[length=6pt,width=5pt]}, cyanDark, line width=1.8pt},
+  darr/.style={dashed,-{Stealth[length=3.5pt,width=3.5pt]}, cyanDark, line width=0.7pt},
+]
+
+% ================================================================
+%  COLORES
+% ================================================================
+\definecolor{cyanDark}{HTML}{0891b2}
+\definecolor{cyanLight}{HTML}{e0f7fa}
+\definecolor{cyanBorder}{HTML}{67e8f9}
+\definecolor{cyanPale}{HTML}{cffafe}
+\definecolor{textDark}{HTML}{164e63}
+\definecolor{textGray}{HTML}{374151}
+\definecolor{textMeta}{HTML}{0e7490}
+\definecolor{textLight}{HTML}{9ca3af}
+\definecolor{faultRed}{HTML}{e11d48}
+
+% ================================================================
+%  FASE I — GENERACIÓN DE DATOS   (x: 0–5.4, y: 0–12)
+% ================================================================
+\draw[rounded corners=6pt, fill=cyanLight, draw=cyanDark, line width=1pt]
+  (0,0) rectangle (5.4,12);
+\fill[cyanDark, rounded corners=6pt]  (0,11.15) rectangle (5.4,12);
+\fill[cyanDark]                        (0,11.15) rectangle (5.4,11.55);
+\node[text=white, font=\sffamily\small\bfseries] at (2.7,11.6)
+  {GENERACIÓN DE DATOS};
+
+%--- Card 1: Entorno de simulación ---
+\draw[rounded corners=4pt, fill=white, draw=cyanBorder, line width=0.8pt]
+  (0.2,9.5) rectangle (5.2,11.0);
+\draw[cyanDark, line width=1.2pt] (0.9,10.25) circle (0.22);
+\draw[cyanDark, line width=0.9pt] (0.68,10.25) -- (1.12,10.25);
+\draw[cyanDark, line width=0.9pt] (0.9,10.03)  -- (0.9,10.47);
+\foreach \dx/\dy in {-0.25/-0.25, 0.25/-0.25, -0.25/0.25, 0.25/0.25}{
+  \fill[cyanPale] (0.9+\dx,10.25+\dy) circle (0.09);
+  \draw[cyanDark,line width=0.7pt] (0.9+\dx,10.25+\dy) circle (0.09);}
+\node[anchor=west, text=textDark, font=\sffamily\small\bfseries]
+  at (1.35,10.82) {Entorno de Simulación};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (1.35,10.48) {gym-pybullet-drones};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (1.35,10.14) {Dron CF2X};
+
+\draw[arr] (2.7,9.5) -- (2.7,9.1);
+
+%--- Card 2: Controlador Experto PID ---
+\draw[rounded corners=4pt, fill=white, draw=cyanBorder, line width=0.8pt]
+  (0.2,7.5) rectangle (5.2,9.1);
+\draw[rounded corners=2pt, fill=cyanPale, draw=cyanDark, line width=0.8pt]
+  (0.45,7.80) rectangle (1.25,8.70);
+\draw[cyanDark, line width=0.65pt] (0.55,8.45) -- (1.15,8.45);
+\draw[cyanDark, line width=0.65pt] (0.55,8.20) -- (1.05,8.20);
+\draw[cyanDark, line width=0.65pt] (0.55,7.95) -- (1.15,7.95);
+\node[anchor=west, text=textDark, font=\sffamily\small\bfseries]
+  at (1.35,8.88) {Controlador Experto};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (1.35,8.54) {PID de referencia};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (1.35,8.22) {800 episodios};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (1.35,7.90) {Trayectorias A $\rightarrow$ B};
+
+\draw[arr] (2.7,7.5) -- (2.7,7.1);
+
+%--- Card 3: Dataset ---
+\draw[rounded corners=4pt, fill=white, draw=cyanBorder, line width=0.8pt]
+  (0.2,5.5) rectangle (5.2,7.1);
+\draw[rounded corners=2pt, fill=cyanPale, draw=cyanDark, line width=0.8pt]
+  (0.45,5.78) rectangle (1.25,6.68);
+\draw[cyanDark, line width=0.6pt] (0.45,6.40) -- (1.25,6.40);
+\draw[cyanDark, line width=0.6pt] (0.45,6.10) -- (1.25,6.10);
+\draw[cyanDark, line width=0.6pt] (0.82,5.78) -- (0.82,6.68);
+\node[anchor=west, text=textDark, font=\sffamily\small\bfseries]
+  at (1.35,6.88) {Dataset de Imitación};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (1.35,6.55) {18 señales (pos, vel, RPY, $\omega$, err)};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (1.35,6.22) {Pares (estado, acción)};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (1.35,5.90) {Train / Val};
+
+\draw[arr] (2.7,5.5) -- (2.7,5.1);
+
+%--- Card 4: Normalización ---
+\draw[rounded corners=4pt, fill=white, draw=cyanBorder, line width=0.8pt]
+  (0.2,3.5) rectangle (5.2,5.1);
+% icono sigma (estadísticas)
+\draw[rounded corners=2pt, fill=cyanPale, draw=cyanDark, line width=0.8pt]
+  (0.42,3.78) rectangle (1.22,4.68);
+\node[text=cyanDark, font=\sffamily\normalsize\bfseries] at (0.82,4.23)
+  {$\sigma$};
+\node[anchor=west, text=textDark, font=\sffamily\small\bfseries]
+  at (1.35,4.88) {generate\_states.py};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (1.35,4.55) {Media/std por feature};
+\node[anchor=west, text=textGray, font=\sffamily\scriptsize]
+  at (1.35,4.22) {$\rightarrow$ stats\_normalizacion.json};
+
+% ── Flecha principal I → II (datos de entrenamiento hacia BC) ──
+\draw[bigarr] (5.45,10.1) -- (6.15,10.1);
+
+% ── Flechas de estadísticas (dashed) hacia Etapa 1 y Etapa 2 ──
+% Tramo sin punta: normalización → bifurcación vertical
+\draw[dashed, cyanDark, line width=0.7pt]
+  (5.2,4.3) -- (5.75,4.3) -- (5.75,9.6);
+% Rama hacia Etapa 1 (BC cards)
+\draw[darr] (5.75,9.6) -- (6.2,9.6);
+% Rama hacia Etapa 2 (PPO cards)
+\draw[darr] (5.75,7.72) -- (6.2,7.72);
+% Punto de bifurcación
+\fill[cyanDark] (5.75,7.72) circle (0.07);
+% Etiqueta en el segmento vertical
+\node[rotate=90, anchor=south, text=textMeta, font=\sffamily\tiny]
+  at (5.62,6.5) {stats\_norm.json};
+
+
+% ================================================================
+%  FASE II — ENTRENAMIENTO   (x: 6.2–11.6, y: 0–12)
+% ================================================================
+\draw[rounded corners=6pt, fill=cyanLight, draw=cyanDark, line width=1pt]
+  (6.2,0) rectangle (11.6,12);
+\fill[cyanDark, rounded corners=6pt]  (6.2,11.15) rectangle (11.6,12);
+\fill[cyanDark]                        (6.2,11.15) rectangle (11.6,11.55);
+\node[text=white, font=\sffamily\small\bfseries] at (8.9,11.6)
+  {ENTRENAMIENTO};
+
+% ── Etapa 1: Imitación (BC) ──
+\node[text=textMeta, font=\sffamily\footnotesize\bfseries\itshape]
+  at (8.9,10.95) {Etapa 1 · Imitación (BC)};
+
+%--- Sub-card: LSTM ---
+\draw[rounded corners=4pt, fill=white, draw=cyanBorder, line width=0.8pt]
+  (6.35,9.55) rectangle (8.75,10.82);
+\fill[cyanPale]   (6.78,10.30) circle (0.11);
+\draw[cyanDark,line width=0.7pt] (6.78,10.30) circle (0.11);
+\fill[cyanPale]   (6.78,9.90) circle (0.11);
+\draw[cyanDark,line width=0.7pt] (6.78,9.90) circle (0.11);
+\fill[cyanPale]   (7.22,10.10) circle (0.11);
+\draw[cyanDark,line width=0.7pt] (7.22,10.10) circle (0.11);
+\draw[cyanDark,line width=0.6pt] (6.89,10.30) -- (7.11,10.10);
+\draw[cyanDark,line width=0.6pt] (6.89,9.90)  -- (7.11,10.10);
+\node[anchor=west, text=textDark, font=\sffamily\footnotesize\bfseries]
+  at (7.38,10.62) {LSTM};
+\node[anchor=west, text=textGray, font=\sffamily\scriptsize]
+  at (7.38,10.32) {Datos PID · W=50};
+\node[anchor=west, text=textGray, font=\sffamily\scriptsize]
+  at (7.38,10.04) {MSE · Adam};
+\node[anchor=west, text=textGray, font=\sffamily\scriptsize]
+  at (7.38,9.76) {Train/Val};
+
+%--- Sub-card: Mamba SSM ---
+\draw[rounded corners=4pt, fill=white, draw=cyanBorder, line width=0.8pt]
+  (9.05,9.55) rectangle (11.45,10.82);
+\draw[cyanDark, line width=1.2pt]
+  (9.28,10.10) .. controls (9.46,9.70) .. (9.64,10.10)
+  .. controls (9.82,10.50) .. (10.00,10.10);
+\node[anchor=west, text=textDark, font=\sffamily\footnotesize\bfseries]
+  at (10.15,10.62) {Mamba SSM};
+\node[anchor=west, text=textGray, font=\sffamily\scriptsize]
+  at (10.15,10.32) {Datos PID · W=50};
+\node[anchor=west, text=textGray, font=\sffamily\scriptsize]
+  at (10.15,10.04) {d\_model=128 · MSE};
+\node[anchor=west, text=textGray, font=\sffamily\scriptsize]
+  at (10.15,9.76) {Adam · Train/Val};
+
+% Flechas BC → PPO (cada modelo a su tarjeta)
+\draw[arr] (7.55,9.55) -- (7.55,9.1);
+\draw[arr] (10.25,9.55) -- (10.25,9.1);
+
+% ── Etapa 2: Compensador FTC (PPO) ──
+\node[text=textMeta, font=\sffamily\footnotesize\bfseries\itshape]
+  at (8.9,8.90) {Etapa 2 · Compensador FTC (PPO)};
+
+%--- Sub-card: PPO + LSTM ---
+\draw[rounded corners=4pt, fill=white, draw=cyanBorder, line width=0.8pt]
+  (6.35,6.8) rectangle (8.75,8.70);
+\draw[cyanDark, line width=1.0pt, -{Stealth[length=3pt,width=3pt]}]
+  (6.98,7.90) arc(0:300:0.30);
+\node[anchor=west, text=textDark, font=\sffamily\footnotesize\bfseries]
+  at (7.38,8.48) {PPO + LSTM};
+\node[anchor=west, text=textGray, font=\sffamily\scriptsize]
+  at (7.38,8.18) {LSTM congelado};
+\node[anchor=west, text=textGray, font=\sffamily\scriptsize]
+  at (7.38,7.88) {Obs: 24 dim (18+4+2)};
+\node[anchor=west, text=textGray, font=\sffamily\scriptsize]
+  at (7.38,7.58) {Curriculum: 2\%$\to$40\%};
+\node[anchor=west, text=textGray, font=\sffamily\scriptsize]
+  at (7.38,7.28) {$\Delta_{\max}$=1500 RPM};
+
+%--- Sub-card: PPO + Mamba ---
+\draw[rounded corners=4pt, fill=white, draw=cyanBorder, line width=0.8pt]
+  (9.05,6.8) rectangle (11.45,8.70);
+\draw[cyanDark, line width=1.0pt, -{Stealth[length=3pt,width=3pt]}]
+  (9.68,7.90) arc(0:300:0.30);
+\node[anchor=west, text=textDark, font=\sffamily\footnotesize\bfseries]
+  at (10.08,8.48) {PPO + Mamba};
+\node[anchor=west, text=textGray, font=\sffamily\scriptsize]
+  at (10.08,8.18) {Mamba congelado};
+\node[anchor=west, text=textGray, font=\sffamily\scriptsize]
+  at (10.08,7.88) {Obs: 24 dim (18+4+2)};
+\node[anchor=west, text=textGray, font=\sffamily\scriptsize]
+  at (10.08,7.58) {Curriculum: 2\%$\to$40\%};
+\node[anchor=west, text=textGray, font=\sffamily\scriptsize]
+  at (10.08,7.28) {$\Delta_{\max}$=1500 RPM};
+
+% ── Flechas II → III ──
+\draw[bigarr] (11.65,10.1) -- (12.35,10.1);   % BC → Exp 1
+\draw[bigarr] (11.65,7.72) -- (12.35,7.72);   % PPO → Exp 2
+
+
+% ================================================================
+%  FASE III — EVALUACIÓN   (x: 12.4–17.8, y: 0–12)
+% ================================================================
+\draw[rounded corners=6pt, fill=cyanLight, draw=cyanDark, line width=1pt]
+  (12.4,0) rectangle (17.8,12);
+\fill[cyanDark, rounded corners=6pt]  (12.4,11.15) rectangle (17.8,12);
+\fill[cyanDark]                        (12.4,11.15) rectangle (17.8,11.55);
+\node[text=white, font=\sffamily\small\bfseries] at (15.1,11.6)
+  {EVALUACIÓN};
+
+%--- Card Experimento 1 ---
+\draw[rounded corners=4pt, fill=white, draw=cyanBorder, line width=0.8pt]
+  (12.6,9.3) rectangle (17.6,11.0);
+\draw[cyanDark, line width=1.2pt]
+  (12.90,10.15) .. controls (13.15,10.65) .. (13.40,10.35)
+  .. controls (13.65,10.05) .. (13.85,10.50);
+\fill[cyanDark] (12.90,10.15) circle (0.07);
+\fill[cyanDark] (13.85,10.50) circle (0.07);
+\node[anchor=west, text=textMeta, font=\sffamily\footnotesize\itshape]
+  at (14.10,10.82) {Experimento 1};
+\node[anchor=west, text=textDark, font=\sffamily\small\bfseries]
+  at (14.10,10.48) {Controlador Nominal};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (14.10,10.14) {LSTM $\cdot$ Mamba $\cdot$ PID};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (14.10,9.80) {Sin falla};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (14.10,9.46) {5 trayectorias fijas};
+
+\draw[arr] (15.1,9.3) -- (15.1,8.88);
+
+%--- Card Experimento 2 ---
+\draw[rounded corners=4pt, fill=white, draw=cyanBorder, line width=0.8pt]
+  (12.6,7.1) rectangle (17.6,8.88);
+\draw[rounded corners=2pt, fill=cyanPale, draw=cyanDark, line width=0.8pt]
+  (12.85,7.40) rectangle (13.65,8.28);
+\draw[faultRed, line width=1.2pt] (12.93,7.48) -- (13.57,8.20);
+\draw[faultRed, line width=1.2pt] (13.57,7.48) -- (12.93,8.20);
+\node[anchor=west, text=textMeta, font=\sffamily\footnotesize\itshape]
+  at (14.10,8.70) {Experimento 2};
+\node[anchor=west, text=textDark, font=\sffamily\small\bfseries]
+  at (14.10,8.36) {Sistema Completo FTC};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (14.10,8.02) {LSTM+PPO $\cdot$ Mamba+PPO};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (14.10,7.68) {Motor 0: \{5,10,15,20\}\%};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (14.10,7.34) {100 episodios aleatorios};
+
+\draw[arr] (15.1,7.1) -- (15.1,6.7);
+
+%--- Card Métricas ---
+\draw[rounded corners=4pt, fill=white, draw=cyanBorder, line width=0.8pt]
+  (12.6,5.5) rectangle (17.6,6.7);
+\fill[cyanBorder] (12.85,5.73) rectangle (13.12,6.38);
+\fill[cyanBorder] (13.18,5.73) rectangle (13.45,6.55);
+\fill[cyanBorder] (13.51,5.73) rectangle (13.78,6.46);
+\draw[cyanDark, line width=0.8pt] (12.82,5.71) -- (13.82,5.71);
+\node[anchor=west, text=textDark, font=\sffamily\small\bfseries]
+  at (14.10,6.52) {Métricas};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (14.10,6.20) {Recup. $\cdot$ Crash $\cdot$ \% misión};
+\node[anchor=west, text=textGray, font=\sffamily\footnotesize]
+  at (14.10,5.88) {Error posición final};
+
+% Nota al pie
+\node[text=textLight, font=\sffamily\tiny\itshape] at (8.9,-0.4)
+  {Elaboración propia.};
+
+\end{tikzpicture}
+\caption{Pipeline metodológico de la investigación. \textbf{Fase~I}: generación
+del dataset mediante el controlador PID experto (800 episodios, 18 señales),
+seguida de normalización con \texttt{generate\_states.py}
+(\texttt{stats\_normalizacion.json}). \textbf{Fase~II}: Etapa~1, entrenamiento
+por clonación de comportamiento (BC) de los controladores LSTM y Mamba SSM;
+Etapa~2, entrenamiento de los compensadores PPO sobre cada controlador
+congelado (observación de 24 dim., curriculum de falla 2\%--40\%,
+$\Delta_{\max}$=1500~RPM). Las flechas punteadas indican que las estadísticas
+de normalización (\texttt{stats\_norm.json}) se reutilizan en ambas etapas.
+\textbf{Fase~III}: evaluación en condiciones nominales
+(Experimento~1, 5~trayectorias fijas) y con falla de actuador
+(Experimento~2, motor~0 al \{5,10,15,20\}\%, 100~episodios).}
+\label{fig:pipeline}
+\end{figure}

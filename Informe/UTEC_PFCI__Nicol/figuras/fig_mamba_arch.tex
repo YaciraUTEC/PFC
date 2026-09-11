@@ -1,0 +1,92 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  font      = \small,
+  >=Stealth,
+  node distance = 0.4cm,
+  %% estilos
+  blk/.style  = {rectangle, draw, rounded corners=3pt,
+                 minimum width=2.0cm, minimum height=0.85cm,
+                 text width=1.9cm, align=center, fill=white},
+  mamba/.style = {rectangle, draw, rounded corners=3pt,
+                  minimum width=2.4cm, minimum height=3.6cm,
+                  text width=2.2cm, align=center, fill=gray!8},
+  sub/.style  = {rectangle, draw, rounded corners=2pt,
+                 minimum width=1.8cm, minimum height=0.55cm,
+                 text width=1.7cm, align=center, fill=white,
+                 font=\scriptsize},
+  io/.style   = {rectangle, draw, rounded corners=3pt,
+                 minimum width=1.8cm, minimum height=0.85cm,
+                 text width=1.7cm, align=center, fill=gray!15},
+  arr/.style  = {->, thick},
+  dasharr/.style = {->, dashed, gray, thin}
+]
+
+%% ── Entrada ──────────────────────────────────────────────────
+\node[io] (inp) {Entrada\\[2pt]
+  \scriptsize$\mathbf{s}_{t-W:t}\!\in\!\mathbb{R}^{50\times18}$};
+
+%% ── Proyección lineal ────────────────────────────────────────
+\node[blk, right=0.7cm of inp] (proj)
+  {Proy.\ lineal\\[2pt]\scriptsize$18\!\to\!128$};
+
+\draw[arr] (inp) -- (proj);
+
+%% ── Capa Mamba 1 ─────────────────────────────────────────────
+\node[mamba, right=0.7cm of proj, yshift=0pt] (m1) {};
+\node[above=0.05cm of m1.north, font=\footnotesize\bfseries] {Capa Mamba 1};
+
+%  sub-bloques dentro de m1
+\node[sub, anchor=north] at ([yshift=-0.65cm]m1.north) (ssm1)
+  {SSM selectivo\\$\mathbf{B},\mathbf{C},\Delta\!=\!f(\mathbf{x}_t)$};
+\node[sub, below=0.25cm of ssm1] (ln1) {LayerNorm};
+\node[font=\scriptsize, below=0.15cm of ln1, text=gray]
+  {$+$ residual};
+
+% parámetros al margen (anotación)
+\node[font=\scriptsize, text=gray, right=0.15cm of m1.east, yshift=10pt,
+      align=left] (ann1) {$d_{\text{model}}=128$\\$d_{\text{state}}=16$\\
+      $d_{\text{conv}}=4$\\$\text{expand}=2$};
+
+\draw[arr] (proj) -- (m1.west |- proj);
+
+%% ── Capa Mamba 2 ─────────────────────────────────────────────
+\node[mamba, right=2.2cm of m1] (m2) {};
+\node[above=0.05cm of m2.north, font=\footnotesize\bfseries] {Capa Mamba 2};
+
+\node[sub, anchor=north] at ([yshift=-0.65cm]m2.north) (ssm2)
+  {SSM selectivo\\$\mathbf{B},\mathbf{C},\Delta\!=\!f(\mathbf{x}_t)$};
+\node[sub, below=0.25cm of ssm2] (ln2) {LayerNorm};
+\node[font=\scriptsize, below=0.15cm of ln2, text=gray]
+  {$+$ residual};
+
+\node[font=\scriptsize, text=gray, right=0.15cm of m2.east, yshift=10pt,
+      align=left] (ann2) {$d_{\text{model}}=128$\\$d_{\text{state}}=16$\\
+      $d_{\text{conv}}=4$\\$\text{expand}=2$};
+
+\draw[arr] (m1.east |- proj) -- (m2.west |- proj);
+
+%% ── Capas FC ─────────────────────────────────────────────────
+\node[blk, right=2.2cm of m2] (fc)
+  {FC $+$ ReLU\\[2pt]\scriptsize$128\!\to\!64\!\to\!4$\\Dropout $0.1$};
+
+\draw[arr] (m2.east |- proj) -- (fc);
+
+%% ── Salida ───────────────────────────────────────────────────
+\node[io, right=0.7cm of fc] (out)
+  {Salida\\[2pt]\scriptsize$\boldsymbol{\omega}\!\in\!\mathbb{R}^4$\\RPM motores};
+
+\draw[arr] (fc) -- (out);
+
+%% ── Nota de parámetros ───────────────────────────────────────
+\node[draw, rounded corners=3pt, fill=gray!10,
+      below=1.1cm of m1.south, xshift=1.5cm,
+      minimum width=6cm, minimum height=0.7cm,
+      font=\scriptsize, align=center] (note)
+  {\textbf{Total:} 244\,420 parámetros entrenables
+   \quad(LSTM de referencia: 216\,388 parámetros)};
+
+\end{tikzpicture}
+\caption{Arquitectura del controlador nominal MambaDrone propuesto. La secuencia de estados $\mathbf{s}_{t-W:t}$ es proyectada a un espacio de dimensión $d_{\text{model}}=128$ y procesada por dos capas Mamba con mecanismo de selección adaptativo ($\mathbf{B}$, $\mathbf{C}$, $\Delta$ como funciones de la entrada) y conexión residual con normalización de capa. La última posición temporal se extrae y pasa por capas completamente conectadas para generar las cuatro velocidades angulares de referencia.}
+\label{fig:mamba_arch}
+\end{figure}

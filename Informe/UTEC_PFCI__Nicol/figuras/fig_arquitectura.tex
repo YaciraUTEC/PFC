@@ -1,0 +1,97 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  node distance = 0.5cm,
+  font = \small,
+  >=Stealth
+]
+
+\tikzset{
+  block/.style  = {rectangle, draw, rounded corners=3pt, fill=#1,
+                   minimum width=2.8cm, minimum height=1.0cm,
+                   text width=2.6cm, align=center},
+  sumnode/.style = {circle, draw, fill=white, minimum size=0.65cm,
+                    inner sep=0pt, font=\normalsize},
+  clipb/.style  = {rectangle, draw, fill=gray!12, rounded corners=3pt,
+                   minimum width=1.8cm, minimum height=0.8cm,
+                   text width=1.6cm, align=center, font=\footnotesize},
+  signal/.style = {font=\footnotesize},
+  arr/.style    = {->, thick},
+  fdbk/.style   = {->, thick, draw=gray!70, dashed}
+}
+
+%% ─── INPUT LABELS ───────────────────────────────────────────
+\node[signal] (sin_mamba) at (-4.2,  1.5) {$\mathbf{s}_{t-W:t}\;\in\mathbb{R}^{18\times W}$};
+\node[signal] (sin_ppo)   at (-4.2, -1.5) {$\mathbf{s}_t\;\in\mathbb{R}^{18}$};
+\node[signal] (sin_eta)   at (-4.2, -2.5) {$\hat{\boldsymbol{\eta}}\;\in\mathbb{R}^{4}$};
+
+%% ─── CONTROLLER BLOCKS ──────────────────────────────────────
+\node[block=blue!12] (mamba) at (0, 1.5)
+    {Mamba SSM\\{\scriptsize controlador nominal\\2L · $d_{\rm model}$=128}};
+
+\node[block=orange!15] (ppo) at (0, -2.0)
+    {PPO\\{\scriptsize compensador\\de fallas}};
+
+%% ─── SUM NODE ───────────────────────────────────────────────
+\node[sumnode] (suma) at (3.8, 0) {$+$};
+
+%% ─── CLIP BOX ───────────────────────────────────────────────
+\node[clipb] (clip) at (6.0, 0)
+    {clip\\$[\omega_{\min},\omega_{\max}]$};
+
+%% ─── MOTORS / FAULT ─────────────────────────────────────────
+\node[block=red!8] (motors) at (8.5, 0)
+    {Motores\\{\scriptsize $\omega_i^{\rm eff}=\eta_i\cdot u_{t,i}$}};
+
+%% ─── UAV ────────────────────────────────────────────────────
+\node[block=blue!18] (uav) at (11.5, 0)
+    {UAV\\{\scriptsize CF2X\\gym-pybullet}};
+
+%% ─── OUTPUT / LABEL NODES ───────────────────────────────────
+\node[signal] at (2.15, 2.05)  {$\mathbf{u}_t^{\rm nom}\!\in\!\mathbb{R}^4$};
+\node[signal] at (2.15, -1.55) {$\Delta\mathbf{u}_t\!\in\!\mathbb{R}^4$};
+\node[signal] at (4.85, 0.28)  {$\mathbf{u}_t$};
+
+%% ─── ARROWS: inputs → blocks ────────────────────────────────
+\draw[arr] (sin_mamba.east) -- (mamba.west);
+\draw[arr] (sin_ppo.east)   -- (ppo.west);
+\draw[arr] (sin_eta.east)   -- ++(0.5,0) |- (ppo.west);
+
+%% ─── ARROWS: blocks → sum ───────────────────────────────────
+\draw[arr] (mamba.east) -- ++(0.6,0) |- (suma.north);
+\draw[arr] (ppo.east)   -- ++(0.6,0) |- (suma.south);
+
+%% ─── ARROWS: sum → clip → motors → UAV ─────────────────────
+\draw[arr] (suma)   -- (clip);
+\draw[arr] (clip)   -- (motors);
+\draw[arr] (motors) -- (uav);
+
+%% ─── FEEDBACK: UAV → inputs ─────────────────────────────────
+%% Bring s_t out from UAV bottom, route below everything, back to inputs
+\draw[fdbk]
+    (uav.south) -- ++(0,-1.2)
+    -- ++(-15.7,0)
+    -- ++(0, 1.0)
+    -- (sin_mamba.west);
+
+\draw[fdbk]
+    (uav.south) ++(0,-1.2) -- ++(-15.7,0) -- ++(0,0.8)
+    -- (sin_ppo.west);
+
+%% ─── FAULT ANNOTATION ───────────────────────────────────────
+\node[signal, text=red!70, above=0.15cm of motors]
+    {\scriptsize falla $\eta_i\!\in\![0,1]$};
+
+%% ─── BRACE / BOX around the two-level system ────────────────
+\begin{scope}[on background layer]
+  \node[draw=blue!30, dashed, rounded corners=6pt,
+        fill=blue!3, inner sep=8pt,
+        fit=(mamba)(ppo)(suma)(clip)] (box) {};
+\end{scope}
+\node[above=2pt of box, font=\scriptsize\itshape, text=blue!60]
+    {Sistema FTC propuesto};
+
+\end{tikzpicture}
+\caption{Arquitectura de control tolerante a fallas de dos niveles propuesta en esta investigación. El controlador Mamba SSM genera la acción nominal $\mathbf{u}_t^{\rm nom}$ mediante aprendizaje por imitación del PID; el compensador PPO genera la corrección $\Delta\mathbf{u}_t$ condicionada al estado del sistema y al vector de efectividad estimado $\hat{\boldsymbol{\eta}}$. La señal resultante $\mathbf{u}_t$ se recorta al rango físico de los motores antes de ejecutarse. La trayectoria retroalimentada $\mathbf{s}_t$ proviene del estado del UAV en cada paso de control.}
+\label{fig:arquitectura}
+\end{figure}

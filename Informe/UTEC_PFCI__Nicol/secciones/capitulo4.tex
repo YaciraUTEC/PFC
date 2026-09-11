@@ -1,0 +1,289 @@
+\chapter{EXPERIMENTOS Y RESULTADOS}
+
+% Comando para valores pendientes de ejecución experimental
+\newcommand{\nd}{\textit{---}}
+
+El presente capítulo reporta los resultados obtenidos a través de dos experimentos principales. El \textbf{Experimento 1} evalúa y compara el desempeño de los tres controladores nominales —PID de referencia, LSTM y Mamba SSM— sobre un conjunto de trayectorias definidas sin inyección de fallas, con el objetivo de determinar en qué medida los modelos aprendidos por imitación replican el comportamiento del controlador experto. El \textbf{Experimento 2} evalúa y compara la tolerancia a fallas de las dos arquitecturas de dos niveles propuestas —LSTM con compensador PPO y Mamba SSM con compensador PPO— sobre diez trayectorias de ejemplo con fallas de actuador inyectadas, cuantificando la mejora en robustez que aporta el compensador. Previamente a los experimentos, se presentan la configuración del entorno y los resultados del proceso de entrenamiento.
+
+
+\section{Configuración Experimental}
+
+Todos los experimentos se ejecutan en el entorno de simulación gym-pybullet-drones sobre el modelo de dron CF2X (Crazyflie 2.x, masa 0.027\,kg), con una frecuencia de control de 48\,Hz y una resolución física interna de 240\,Hz. La Tabla~\ref{tab:config_sw} detalla las versiones de software empleadas.
+
+\begin{table}[h]
+\centering
+\caption{Configuración de software del entorno experimental.}
+\label{tab:config_sw}
+\begin{tabular}{ll}
+\hline
+\textbf{Componente} & \textbf{Versión} \\
+\hline
+Python          & 3.10 \\
+PyTorch         & 2.x \\
+mamba-ssm       & 2.x \\
+gym-pybullet-drones & rev.\ DSL-UTIAS \\
+stable-baselines3   & 2.x \\
+PyBullet        & 3.x \\
+NumPy           & 1.x \\
+\hline
+\end{tabular}
+\end{table}
+
+Para garantizar la reproducibilidad, se fijan semillas aleatorias en NumPy (\texttt{seed=42}) y PyTorch (\texttt{manual\_seed=42}) tanto durante la generación del dataset como durante el entrenamiento. Los pesos del mejor modelo de cada arquitectura —determinado por el mínimo error de validación— son los empleados en todos los experimentos de evaluación.
+
+
+\section{Entrenamiento por Imitación}
+
+\subsection{Curvas de Aprendizaje}
+
+Ambos modelos se entrenan durante 150 épocas sobre el dataset de 800 episodios (640 entrenamiento / 160 validación) generado con DSLPIDControl. La Figura~\ref{fig:curvas_entrenamiento} muestra la evolución del error cuadrático medio (MSE) de entrenamiento y validación a lo largo de las épocas para LSTM y Mamba SSM.
+
+\begin{figure}[htbp]
+\centering
+\fbox{\parbox{0.80\textwidth}{\centering\vspace{1.8cm}
+\textit{Figura pendiente: curvas de pérdida MSE vs.\ épocas.}\\[4pt]
+{\footnotesize Líneas: LSTM-train (azul sólido), LSTM-val (azul punteado),\\
+Mamba-train (naranja sólido), Mamba-val (naranja punteado).\\
+Generar con \texttt{matplotlib} desde los logs de entrenamiento.\\
+Guardar en \texttt{images/curvas\_entrenamiento.pdf}.}
+\vspace{1.8cm}}}
+\caption{Evolución del MSE de entrenamiento y validación para LSTM y Mamba SSM durante 150 épocas de entrenamiento por imitación del controlador PID de referencia.}
+\label{fig:curvas_entrenamiento}
+\end{figure}
+
+\subsection{Comparación de Resultados de Entrenamiento}
+
+La Tabla~\ref{tab:train_results} resume los resultados del proceso de entrenamiento para ambas arquitecturas. Los valores del modelo LSTM corresponden al experimento ejecutado; los del modelo Mamba SSM se reportarán tras la ejecución del entrenamiento correspondiente.
+
+\begin{table}[htbp]
+\centering
+\caption{Resultados del entrenamiento por imitación: LSTM vs.\ Mamba SSM.}
+\label{tab:train_results}
+\begin{tabular}{lcc}
+\hline
+\textbf{Métrica} & \textbf{LSTM} & \textbf{Mamba SSM} \\
+\hline
+Parámetros entrenables       & 216\,388         & $\approx$99\,000 \\
+Reducción de parámetros (\%) & ---              & 54.3\% \\
+\textit{Val loss} (época 1)  & 0.0701           & \nd \\
+\textit{Val loss} (época 60) & 0.0083           & \nd \\
+\textit{Val loss} (época 100)& 0.0074           & \nd \\
+\textit{Val loss} (época 150)& 0.0066           & \nd \\
+\textbf{Mejor \textit{val loss}} & \textbf{0.006155} & \nd \\
+Época del mejor modelo       & 150              & \nd \\
+\hline
+\end{tabular}
+\end{table}
+
+Para el modelo LSTM, la curva de validación desciende de 0.0701 en la época 1 a 0.0083 en la época 60 y continúa mejorando gradualmente hasta 0.006155 al finalizar el entrenamiento. El error de validación es sistemáticamente menor que el de entrenamiento porque el \textit{dropout} opera únicamente durante la fase de entrenamiento, lo que confirma que el modelo no presenta sobreajuste. La reducción de 2.3× en el \textit{val loss} al pasar de 60 a 150 épocas con regularización por decaimiento de pesos indica que el modelo original entrenado con menos épocas estaba subentrenado.
+
+
+\section{Experimento 1: Comparación de Controladores sin Fallas}
+
+\subsection{Descripción}
+
+El primer experimento evalúa los tres controladores nominales en condiciones de operación ideal, sin inyección de fallas ($\boldsymbol{\eta} = \mathbf{1}$). Los controladores evaluados son el PID de referencia (DSLPIDControl), el modelo LSTM y el modelo Mamba SSM. Cada controlador recorre las cinco trayectorias definidas en la Tabla~\ref{tab:trayectorias} del Capítulo~III, que cubren desplazamientos diagonales, rectos y en distintas orientaciones dentro del espacio de vuelo de $[-2.0,\,2.0]$\,m. El objetivo es determinar qué tan fielmente los controladores aprendidos por imitación replican el perfil de vuelo del PID en condiciones nominales.
+
+\subsection{Resultados de Seguimiento de Trayectoria}
+
+La Tabla~\ref{tab:exp1_resultados} reporta la tasa de éxito y el error de posición final $e_f$ para cada controlador en cada trayectoria.
+
+\begin{table}[htbp]
+\centering
+\caption{Experimento 1 — Tasa de éxito y error de posición final por trayectoria (sin fallas).}
+\label{tab:exp1_resultados}
+\begin{tabular}{lccccccc}
+\hline
+ & \multicolumn{2}{c}{\textbf{PID}} & \multicolumn{2}{c}{\textbf{LSTM}} & \multicolumn{2}{c}{\textbf{Mamba SSM}} \\
+\textbf{Trayectoria} & Éxito & $e_f$ (m) & Éxito & $e_f$ (m) & Éxito & $e_f$ (m) \\
+\hline
+T1 — Diagonal larga  & \checkmark & \nd & \nd & \nd & \nd & \nd \\
+T2 — Recto norte     & \checkmark & \nd & \nd & \nd & \nd & \nd \\
+T3 — Recto este      & \checkmark & \nd & \nd & \nd & \nd & \nd \\
+T4 — Diagonal inv.   & \checkmark & \nd & \nd & \nd & \nd & \nd \\
+T5 — Diagonal sur    & \checkmark & \nd & \nd & \nd & \nd & \nd \\
+\hline
+\textbf{Tasa de éxito $\tau$}      & \textbf{100\%} & --- & \nd & --- & \nd & --- \\
+\textbf{Error promedio $\bar{e}_f$} & --- & \nd & --- & \nd & --- & \nd \\
+\textbf{Desv.\ estándar $\sigma_{e_f}$} & --- & \nd & --- & \nd & --- & \nd \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Comparación de Trayectorias}
+
+La Figura~\ref{fig:exp1_trayectorias} muestra las trayectorias 3D registradas en PyBullet para los tres controladores sobre las cinco rutas de evaluación.
+
+\begin{figure}[htbp]
+\centering
+\fbox{\parbox{0.80\textwidth}{\centering\vspace{1.8cm}
+\textit{Figura pendiente: trayectorias 3D — Experimento 1.}\\[4pt]
+{\footnotesize PID (rojo), LSTM (azul), Mamba SSM (verde).\\
+Generar con \texttt{comparar\_trayectorias.py} en modo nominal ($\boldsymbol{\eta}=\mathbf{1}$).\\
+Guardar en \texttt{images/exp1\_trayectorias.pdf}.}
+\vspace{1.8cm}}}
+\caption{Trayectorias 3D de los controladores PID (rojo), LSTM (azul) y Mamba SSM (verde) en condiciones nominales sobre las cinco trayectorias de evaluación. La proximidad de las curvas azul y verde a la curva roja indica la fidelidad de imitación del PID.}
+\label{fig:exp1_trayectorias}
+\end{figure}
+
+En condiciones nominales, el controlador LSTM muestra un vuelo más enérgico que versiones anteriores del modelo (con \textit{val loss} $\approx0.015$) una vez alcanzado el error de validación de 0.006155, produciendo trayectorias más cercanas al perfil del PID de referencia. La fase de crucero —waypoints intermedios con variación sinusoidal en altitud— se ejecuta con mayor fidelidad que la fase de aterrizaje. El descenso final a $z=0.1$\,m representa la maniobra de mayor dificultad para los modelos aprendidos: el PID reduce el empuje de forma precisa y coordinada, mientras que los modelos aprendidos presentan un error residual que obliga a usar un umbral de aceptación de 0.25\,m (frente a 0.10\,m del PID).
+
+\subsection{Latencia de Inferencia}
+
+La Tabla~\ref{tab:latencia} compara la latencia de inferencia por paso de control de cada controlador. El umbral de tiempo real a 48\,Hz es de 20.8\,ms.
+
+\begin{table}[h]
+\centering
+\caption{Latencia de inferencia por paso de control (umbral tiempo real = 20.8\,ms a 48\,Hz).}
+\label{tab:latencia}
+\begin{tabular}{lccc}
+\hline
+\textbf{Controlador} & \textbf{Parámetros} & \textbf{$t_{\rm inf}$ promedio (ms)} & \textbf{Tiempo real} \\
+\hline
+PID (referencia) & ---        & \nd & \checkmark \\
+LSTM             & 216\,388   & \nd & \nd \\
+Mamba SSM        & $\approx$99\,000 & \nd & \nd \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\section{Experimento 2: Comparación con Tolerancia a Fallas}
+
+\subsection{Descripción}
+
+El segundo experimento evalúa las dos arquitecturas FTC de dos niveles propuestas —LSTM con compensador PPO (LSTM+PPO) y Mamba SSM con compensador PPO (Mamba+PPO)— en condiciones de operación con fallas de actuador. Para este experimento se utilizan diez trayectorias de ejemplo, generadas con puntos de origen y destino sorteados aleatoriamente dentro del espacio de vuelo. En cada trayectoria se inyecta un escenario de falla al inicio del episodio, manteniéndolo constante durante todo el vuelo. El objetivo es cuantificar la mejora en robustez que aporta el compensador PPO y comparar el desempeño de ambas arquitecturas bajo condiciones degradadas.
+
+\subsection{Trayectorias y Escenarios de Falla}
+
+Las diez trayectorias de evaluación se generan con puntos de origen A y destino B sorteados con semilla fija para garantizar la reproducibilidad. La Tabla~\ref{tab:exp2_trayectorias} define las coordenadas de cada trayectoria y el escenario de falla asignado.
+
+\begin{table}[htbp]
+\centering
+\caption{Experimento 2 — Trayectorias de ejemplo y escenarios de falla asignados.}
+\label{tab:exp2_trayectorias}
+\begin{tabular}{ccccc}
+\hline
+\textbf{\#} & \textbf{A $(x,y)$} & \textbf{B $(x,y)$} & \textbf{Motor(es) afectado(s)} & \textbf{$\eta_i$} \\
+\hline
+E01  & \nd & \nd & Motor 1 & 0.70 \\
+E02  & \nd & \nd & Motor 2 & 0.40 \\
+E03  & \nd & \nd & Motor 3 & 0.55 \\
+E04  & \nd & \nd & Motor 4 & 0.65 \\
+E05  & \nd & \nd & Motores 1, 3 & 0.50, 0.60 \\
+E06  & \nd & \nd & Motor 1 & 0.35 \\
+E07  & \nd & \nd & Motor 2 & 0.70 \\
+E08  & \nd & \nd & Motores 2, 4 & 0.45, 0.55 \\
+E09  & \nd & \nd & Motor 3 & 0.30 \\
+E10  & \nd & \nd & Motor 4 & 0.80 \\
+\hline
+\multicolumn{5}{l}{\footnotesize Las coordenadas se fijan con \texttt{np.random.seed(99)} antes de sortear.}
+\end{tabular}
+\end{table}
+
+Los escenarios cubren fallas leves ($\eta_i \geq 0.65$), fallas severas ($\eta_i \leq 0.45$) y fallas simultáneas en dos motores, de modo que el conjunto de evaluación representa una variedad amplia de condiciones de degradación.
+
+\subsection{Resultados con Compensador PPO}
+
+La Tabla~\ref{tab:exp2_resultados} reporta la tasa de éxito y el error de posición final para cada trayectoria bajo las dos configuraciones evaluadas.
+
+\begin{table}[htbp]
+\centering
+\caption{Experimento 2 — Tasa de éxito y error de posición final con compensador PPO bajo fallas.}
+\label{tab:exp2_resultados}
+\begin{tabular}{lccccc}
+\hline
+ & & \multicolumn{2}{c}{\textbf{LSTM + PPO}} & \multicolumn{2}{c}{\textbf{Mamba SSM + PPO}} \\
+\textbf{\#} & \textbf{Falla} & Éxito & $e_f$ (m) & Éxito & $e_f$ (m) \\
+\hline
+E01 & Motor 1, $\eta$=0.70 & \nd & \nd & \nd & \nd \\
+E02 & Motor 2, $\eta$=0.40 & \nd & \nd & \nd & \nd \\
+E03 & Motor 3, $\eta$=0.55 & \nd & \nd & \nd & \nd \\
+E04 & Motor 4, $\eta$=0.65 & \nd & \nd & \nd & \nd \\
+E05 & M1+M3, $\eta$=0.50/0.60 & \nd & \nd & \nd & \nd \\
+E06 & Motor 1, $\eta$=0.35 & \nd & \nd & \nd & \nd \\
+E07 & Motor 2, $\eta$=0.70 & \nd & \nd & \nd & \nd \\
+E08 & M2+M4, $\eta$=0.45/0.55 & \nd & \nd & \nd & \nd \\
+E09 & Motor 3, $\eta$=0.30 & \nd & \nd & \nd & \nd \\
+E10 & Motor 4, $\eta$=0.80 & \nd & \nd & \nd & \nd \\
+\hline
+\textbf{Tasa de éxito $\tau$}       & & \nd & --- & \nd & --- \\
+\textbf{Error promedio $\bar{e}_f$} & & --- & \nd & --- & \nd \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Comparación de Trayectorias bajo Falla}
+
+La Figura~\ref{fig:exp2_trayectorias} presenta las trayectorias 3D de los episodios E02 y E05, que representan los escenarios de mayor severidad evaluados (falla severa en un motor y falla simultánea en dos motores).
+
+\begin{figure}[htbp]
+\centering
+\fbox{\parbox{0.80\textwidth}{\centering\vspace{1.8cm}
+\textit{Figura pendiente: trayectorias 3D bajo falla — Episodios E02 y E05.}\\[4pt]
+{\footnotesize Dos subplots: E02 ($\eta_2=0.40$) y E05 ($\eta_1=0.50, \eta_3=0.60$).\\
+LSTM+PPO (azul), Mamba+PPO (verde), trayectoria PID nominal (rojo punteado).\\
+Generar con \texttt{comparar\_trayectorias.py} en modo falla.\\
+Guardar en \texttt{images/exp2\_traj\_E02\_E05.pdf}.}
+\vspace{1.8cm}}}
+\caption{Trayectorias 3D bajo escenarios de falla severa: E02 (motor 2 al 40\% de efectividad, izquierda) y E05 (motores 1 y 3 al 50\% y 60\% respectivamente, derecha). Se comparan LSTM+PPO (azul) y Mamba SSM+PPO (verde) frente a la trayectoria nominal del PID (rojo, referencia).}
+\label{fig:exp2_trayectorias}
+\end{figure}
+
+La Figura~\ref{fig:exp2_barras} compara la tasa de éxito de ambas arquitecturas en los diez episodios de ejemplo mediante una gráfica de barras que facilita la identificación de los escenarios más desafiantes.
+
+\begin{figure}[htbp]
+\centering
+\fbox{\parbox{0.80\textwidth}{\centering\vspace{1.8cm}
+\textit{Figura pendiente: gráfica de barras — tasa de éxito Experimento 2.}\\[4pt]
+{\footnotesize Barras agrupadas por episodio: LSTM+PPO (azul), Mamba+PPO (naranja).\\
+Eje x: E01–E10; eje y: éxito (1) / fallo (0) o $e_f$.\\
+Guardar en \texttt{images/exp2\_barras.pdf}.}
+\vspace{1.8cm}}}
+\caption{Tasa de éxito de LSTM+PPO y Mamba SSM+PPO en los diez episodios de evaluación con fallas. Los episodios se ordenan por severidad creciente de la falla.}
+\label{fig:exp2_barras}
+\end{figure}
+
+
+\section{Análisis Comparativo Global}
+
+La Tabla~\ref{tab:resumen_global} consolida los resultados de ambos experimentos, permitiendo una comparación directa de las cinco configuraciones de controlador en sus respectivos escenarios de evaluación.
+
+\begin{table}[htbp]
+\centering
+\caption{Resumen comparativo de todos los controladores. $\tau_N$: tasa de éxito nominal (Exp.\ 1); $\bar{e}_{f,N}$: error promedio nominal; $\tau_F$: tasa de éxito bajo fallas (Exp.\ 2); $\bar{e}_{f,F}$: error promedio bajo fallas.}
+\label{tab:resumen_global}
+\begin{tabular}{lccccc}
+\hline
+\textbf{Controlador} & \textbf{$|\theta|$} & \textbf{$t_{\rm inf}$ (ms)} & \textbf{$\tau_N$ (\%)} & \textbf{$\bar{e}_{f,N}$ (m)} & \textbf{$\tau_F$ (\%)} \\
+\hline
+PID (referencia)   & ---          & \nd & 100.0 & \nd & \nd \\
+LSTM               & 216\,388     & \nd & \nd   & \nd & ---  \\
+Mamba SSM          & $\approx$99\,000 & \nd & \nd & \nd & ---  \\
+LSTM + PPO         & 216\,388$^*$ & \nd & ---   & --- & \nd  \\
+Mamba SSM + PPO    & 99\,000$^*$  & \nd & ---   & --- & \nd  \\
+\hline
+\multicolumn{6}{l}{\footnotesize $^*$ No incluye parámetros del agente PPO (compartido entre ambas configuraciones).}
+\end{tabular}
+\end{table}
+
+
+\section{Discusión}
+
+\subsection{LSTM vs.\ Mamba SSM en Condiciones Nominales}
+
+La comparación del Experimento 1 permite evaluar si la reducción del 54.3\% en el número de parámetros de Mamba SSM conlleva una pérdida apreciable en el desempeño de seguimiento de trayectoria. Arquitecturalmente, esta compacidad se explica por la ausencia de las cuatro matrices de compuerta de la LSTM ($\mathbf{W}_f$, $\mathbf{W}_i$, $\mathbf{W}_c$, $\mathbf{W}_o$) y su reemplazo por el mecanismo de selección de Mamba —matrices $\mathbf{B}$, $\mathbf{C}$ y $\Delta$ dependientes de la entrada— que logra una representación más eficiente de las dependencias temporales. Un \textit{val loss} comparable entre ambos modelos, con menor número de parámetros en Mamba, favorecería su adopción como controlador nominal en plataformas con restricciones de memoria y cómputo.
+
+\subsection{Efectividad del Compensador PPO}
+
+Los resultados del Experimento 2 cuantifican la contribución del segundo nivel de la arquitectura FTC propuesta. Se espera que el compensador PPO sea más efectivo en los episodios con mayor severidad de falla (E02: $\eta=0.40$; E09: $\eta=0.30$; E05 y E08: fallas simultáneas), donde la desviación de trayectoria generada por la degradación del actuador supera la capacidad del controlador nominal para mantener la estabilidad. En episodios con fallas leves (E01: $\eta=0.70$; E10: $\eta=0.80$), el controlador nominal puede absorber parcialmente el efecto de la falla, y la contribución del compensador PPO es más modesta.
+
+La comparación entre LSTM+PPO y Mamba+PPO bajo los mismos escenarios de falla permite determinar si la mayor eficiencia paramétrica de Mamba se mantiene en condiciones degradadas o si la mayor capacidad representacional de la LSTM ofrece una ventaja cuando el sistema opera fuera de su distribución de entrenamiento nominal.
+
+\subsection{Dificultad del Aterrizaje}
+
+En ambos experimentos, la fase de aterrizaje —descenso coordinado a $z=0.1$\,m— concentra el mayor error de posición del episodio. El PID realiza esta maniobra mediante una reducción precisa y coordinada del empuje de los cuatro motores que lo lleva a posicionarse a menos de 10\,cm del suelo de forma consistente. Los controladores aprendidos reproducen el comportamiento promedio del dataset pero con un error residual que impide alcanzar el umbral de 0.10\,m, razón por la que el umbral de aceptación del waypoint de aterrizaje se amplía a 0.25\,m en la evaluación. Bajo condiciones de falla, este margen puede resultar insuficiente para episodios con degradación severa de motores sin la corrección del compensador PPO.
+
+\subsection{Limitaciones}
+
+Los resultados de esta investigación están sujetos a tres limitaciones principales. Primero, todos los experimentos se realizan en simulación; las diferencias entre la dinámica simulada y la real (ruido de sensor, variaciones de masa, deformación de hélices) pueden afectar el desempeño en hardware físico. Segundo, el compensador PPO recibe el vector de efectividad real $\boldsymbol{\eta}$ sin error de estimación; en un sistema real se requeriría un módulo FDD para estimar $\hat{\boldsymbol{\eta}}$ a partir de las mediciones de vuelo. Tercero, el espacio de vuelo evaluado ($[-2.0,\,2.0]$\,m) y los patrones de trayectoria del dataset limitan la generalización del controlador a rutas fuera de esta distribución. Estas limitaciones constituyen líneas de trabajo futuro orientadas al despliegue en plataforma real.

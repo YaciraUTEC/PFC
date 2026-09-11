@@ -1,0 +1,225 @@
+\chapter{MARCO METODOLÓGICO}
+
+La presente investigación propone un pipeline metodológico para comparar dos arquitecturas de modelado secuencial —LSTM y Mamba SSM— como controladores de vuelo aprendidos por imitación, y evaluar su desempeño en conjunto con un compensador basado en PPO ante fallas de actuador en un UAV cuadricóptero. El enfoque parte de la necesidad de reemplazar controladores clásicos como el PID por políticas aprendidas capaces de operar sin acceso al modelo dinámico del vehículo, y de dotarlas de tolerancia a fallas mediante un segundo nivel de compensación por aprendizaje por refuerzo. Para ello se requiere un entorno de simulación que permita generar datos de entrenamiento controlados, desplegar las políticas aprendidas en lazo cerrado e inyectar fallas de actuador de forma reproducible; condiciones que satisface el simulador \textit{gym-pybullet-drones} sobre el modelo CF2X, sin necesidad de hardware físico.
+
+El capítulo presenta de forma detallada todas las etapas necesarias para reproducir el flujo metodológico completo, con el objetivo de garantizar la claridad y replicabilidad del proceso, de modo que las diferencias de desempeño observadas sean atribuibles exclusivamente a la arquitectura del controlador y no a variaciones en el procedimiento experimental.
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{Descripción General de la Propuesta}
+
+La investigación es de tipo cuantitativa y experimental. El enfoque es cuantitativo porque el desempeño del sistema se evalúa mediante métricas numéricas objetivas —error de posición, tasa de éxito, número de parámetros y latencia de inferencia— que permiten la comparación rigurosa entre arquitecturas. El carácter experimental radica en la manipulación deliberada de la variable independiente (arquitectura del controlador) bajo condiciones controladas de simulación para medir su efecto sobre las variables dependientes. El diseño es comparativo mediante simulación computacional: se comparan dos arquitecturas de modelado secuencial entrenadas de forma idéntica como controladores de vuelo aprendidos por imitación del PID, evaluando su desempeño en conjunto con el compensador PPO ante escenarios de falla \cite{zhang2023, hsu2024}.
+
+La \textbf{variable independiente} es la arquitectura del controlador aprendido por imitación, que toma dos valores: red LSTM de dos capas con 128 unidades ocultas, y modelo Mamba SSM con dos capas de $d_{\text{model}}=128$. Ambas arquitecturas se entrenan con el mismo dataset, los mismos hiperparámetros y la misma ventana temporal de 50 pasos, de modo que la única diferencia entre las condiciones experimentales sea el paradigma de modelado secuencial.
+
+Las \textbf{variables dependientes} cuantifican el desempeño del sistema: el \textit{error de posición final} (distancia euclidiana al punto destino al finalizar el episodio), la \textit{tasa de éxito} (proporción de trayectorias completadas dentro del umbral de aceptación), el \textit{número de parámetros entrenables} (costo computacional del modelo), la \textit{latencia de inferencia} (tiempo de cómputo por paso de control) y el \textit{error de validación} MSE (fidelidad de la imitación del PID sobre datos no vistos).
+
+Las \textbf{variables de control} se mantienen constantes en todos los experimentos: el entorno de simulación (gym-pybullet-drones, versión fija, dron CF2X), el dataset de entrenamiento (800 episodios generados con DSLPIDControl), los hiperparámetros del optimizador, las cinco trayectorias de evaluación con coordenadas fijas y el rango del factor de efectividad $\eta_i$ en los escenarios de falla.
+
+El sistema propuesto adopta una arquitectura FTC de dos niveles, conforme a la formulación presentada en el Capítulo~II. El \textbf{primer nivel} es el controlador nominal aprendido por imitación: un modelo Mamba SSM entrenado de forma supervisada para replicar el comportamiento del controlador PID de referencia, reemplazándolo en la cadena de control del UAV. El \textbf{segundo nivel} es el compensador de fallas basado en PPO: un agente de aprendizaje por refuerzo entrenado en escenarios con fallas de actuador inyectadas, que genera señales de corrección sobre la salida del controlador nominal cuando la efectividad de uno o más motores se degrada. En cada paso de control $t$, la acción final enviada a los motores es:
+
+\begin{equation}
+\mathbf{u}_t = \text{clip}\!\left(\mathbf{u}_t^{\text{nom}} + \Delta\mathbf{u}_t,\; \omega_{\min},\; \omega_{\max}\right)
+\end{equation}
+
+\noindent donde $\mathbf{u}_t^{\text{nom}} \in \mathbb{R}^4$ es la acción del controlador Mamba sobre la ventana deslizante de $W=50$ estados, $\Delta\mathbf{u}_t \in \mathbb{R}^4$ es la corrección del agente PPO condicionada al estado actual y al vector de efectividad estimado $\hat{\boldsymbol{\eta}}$, y $\omega_{\min} = 9\,440$ RPM, $\omega_{\max} = 21\,700$ RPM son los límites físicos del motor CF2X. La arquitectura LSTM se entrena y evalúa de forma paralela con la misma estructura de dos niveles, sirviendo como línea base comparativa.
+
+\input{figuras/fig_arquitectura}
+
+
+%% ═══════════════════════════════════════════════════════════════════════════
+\section{Pipeline Metodológico Propuesto}
+
+El flujo metodológico completo se organiza en tres fases secuenciales e interdependientes, cuya estructura se ilustra en la Figura~\ref{fig:pipeline}. La \textbf{Fase I} corresponde a la generación del dataset de imitación mediante el controlador PID de referencia. La \textbf{Fase II} abarca el entrenamiento de los controladores LSTM y Mamba SSM por clonación de comportamiento, seguido del entrenamiento independiente del compensador PPO con el controlador nominal congelado. La \textbf{Fase III} corresponde a la evaluación en lazo cerrado sobre trayectorias reproducibles en escenarios nominales y de falla, midiendo las métricas de desempeño definidas para la comparación entre arquitecturas.
+
+\input{figuras/fig_pipeline}
+
+\subsection{Generación del Dataset de Imitación}
+\label{sec:datos}
+
+El dataset de entrenamiento se genera ejecutando el controlador PID de referencia (DSLPIDControl, implementación DSL-UTIAS) en el entorno gym-pybullet-drones sobre 800 episodios de vuelo aleatorio. En cada episodio, el dron parte de un punto A sorteado aleatoriamente dentro del espacio de vuelo de $[-2.0,\, 2.0]$ m en los ejes $x$ e $y$, con una distancia mínima de 0.8 m respecto al punto destino B. El dron recorre una secuencia de 8 waypoints secuenciales: el punto A elevado a una altitud de crucero de $z = 1.2$ m, cinco puntos intermedios interpolados con variación sinusoidal en $z$, el punto B a altitud de crucero y, finalmente, el punto B al nivel de suelo ($z = 0.1$ m). La duración máxima de cada episodio es de 20 s a 48 Hz de control, lo que produce hasta 960 pasos por episodio.
+
+En cada paso de control, el PID genera las RPM de los cuatro motores a partir del estado actual del dron. El vector de estado registrado comprende 18 señales: la posición absoluta $(x,y,z)$, la velocidad lineal $(v_x,v_y,v_z)$, la orientación en ángulos de Euler $(\phi,\theta,\psi)$, la velocidad angular $(\omega_x,\omega_y,\omega_z)$, la posición del destino final $(x_B,y_B,z_B)$ —constante durante todo el episodio— y el error vectorial al waypoint activo $(e_x,e_y,e_z)$. La salida registrada son las RPM de los cuatro motores $\mathbf{a}_t = [\omega_1,\omega_2,\omega_3,\omega_4]^\top$, recortadas al rango $[9\,440,\, 21\,700]$ RPM.
+
+Tras la generación de los 800 episodios, se calculan la media $\mu_j$ y la desviación estándar $\sigma_j$ de cada una de las 18 señales de entrada y de las 4 señales de salida sobre el dataset completo, utilizando el script \texttt{generate\_states.py}. Durante el entrenamiento y la inferencia, todas las señales se normalizan con $\tilde{x}_j = (x_j - \mu_j)/\sigma_j$. El dataset resultante se divide en entrenamiento (80\%) y validación (20\%), con la partición realizada a nivel de episodio para evitar filtración de información temporal. La Tabla~\ref{tab:dataset} resume las características principales del dataset.
+
+\begin{table}[h]
+\centering
+\caption{Características del dataset de imitación generado.}
+\label{tab:dataset}
+\begin{tabular}{lc}
+\hline
+\textbf{Parámetro} & \textbf{Valor} \\
+\hline
+Número de episodios totales & 800 \\
+Episodios de entrenamiento & 640 \\
+Episodios de validación & 160 \\
+Frecuencia de control & 48 Hz \\
+Duración máxima por episodio & 20 s (960 pasos) \\
+Dimensión del vector de estado & 18 \\
+Dimensión del vector de acción & 4 (RPM motores) \\
+Rango de RPM & [9\,440,\; 21\,700] RPM \\
+Espacio de vuelo $(x, y)$ & $[-2.0,\; 2.0]$ m \\
+Altitud de crucero & 1.2 m \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Entrenamiento de los Controladores por Imitación}
+\label{sec:entrenamiento_imitacion}
+
+Ambos controladores —LSTM y Mamba SSM— se entrenan mediante aprendizaje supervisado, minimizando el error cuadrático medio (MSE) entre las RPM predichas por el modelo y las RPM generadas por el PID, conforme a la función de pérdida descrita en el Capítulo~II. El entrenamiento se realiza sobre el mismo dataset, con los mismos hiperparámetros y bajo las mismas condiciones para ambas arquitecturas, de manera que las diferencias de desempeño observadas sean atribuibles únicamente a la arquitectura y no a ventajas en el proceso de optimización.
+
+Para la preparación de las secuencias de entrenamiento, cada episodio se recorre de forma deslizante con una ventana de $W=50$ pasos. Los primeros 49 pasos de cada episodio carecen de historia suficiente; en ese período, la ventana se rellena con vectores de ceros, replicando exactamente la inicialización empleada durante la inferencia en el simulador de lazo cerrado. Este criterio de inicialización es crítico para mantener la consistencia entre el régimen de entrenamiento y el de inferencia.
+
+La arquitectura LSTM consta de dos capas recurrentes con 128 unidades ocultas, tasa de abandono (\textit{dropout}) de 0.1 entre capas, y una cabeza de salida formada por una capa lineal (128→64), activación ReLU, \textit{dropout} de 0.1 y una capa lineal final (64→4), totalizando 216\,388 parámetros entrenables. La arquitectura Mamba comprende una proyección de entrada lineal (18→128), dos bloques Mamba con los parámetros especificados en el Capítulo~II y la misma cabeza de salida que la LSTM, totalizando 244\,420 parámetros entrenables. La Figura~\ref{fig:mamba_arch} ilustra en detalle la estructura interna de esta arquitectura.
+
+\input{figuras/fig_mamba_arch}
+
+Los hiperparámetros de entrenamiento se detallan en la Tabla~\ref{tab:hiperparams_train} y son comunes a ambas arquitecturas.
+
+\begin{table}[h]
+\centering
+\caption{Hiperparámetros de entrenamiento de los controladores por imitación.}
+\label{tab:hiperparams_train}
+\begin{tabular}{lc}
+\hline
+\textbf{Hiperparámetro} & \textbf{Valor} \\
+\hline
+Épocas & 150 \\
+Tasa de aprendizaje inicial & $1 \times 10^{-3}$ \\
+Decaimiento de pesos (\textit{weight decay}) & $1 \times 10^{-5}$ \\
+Optimizador & Adam \\
+Planificador & ReduceLROnPlateau \\
+\quad Paciencia & 10 épocas \\
+\quad Factor de reducción & 0.5 \\
+Tamaño de lote & 128 \\
+Función de pérdida & MSE \\
+Recorte de gradiente & 1.0 \\
+Ventana temporal $W$ & 50 pasos \\
+\hline
+\end{tabular}
+\end{table}
+
+El modelo con el menor error de validación observado durante las 150 épocas es el que se guarda y emplea en la evaluación final. El planificador ReduceLROnPlateau reduce la tasa de aprendizaje a la mitad cuando el error de validación no mejora durante 10 épocas consecutivas, lo que permite un ajuste fino progresivo sin divergencia.
+
+
+\subsection{Entrenamiento del Compensador PPO}
+\label{sec:ppo_train}
+
+El compensador de fallas basado en PPO se entrena de forma independiente al controlador por imitación, en un segundo proceso de optimización que utiliza el simulador gym-pybullet-drones con inyección de fallas de actuador. Durante el entrenamiento del compensador, el controlador Mamba previamente entrenado se mantiene con parámetros congelados y actúa como generador de la acción nominal; el agente PPO aprende únicamente la política de compensación $g_{\text{PPO}}(\mathbf{s}_t, \hat{\boldsymbol{\eta}})$.
+
+\subsubsection{Diseño del Entorno de Entrenamiento PPO}
+
+El espacio de estados del agente PPO es $\mathcal{S} \subseteq \mathbb{R}^{22}$, formado por la concatenación del vector de observación normalizado del UAV ($\mathbf{s}_t \in \mathbb{R}^{18}$) y el vector de efectividad estimada de los cuatro motores ($\hat{\boldsymbol{\eta}} \in \mathbb{R}^4$). El espacio de acciones es $\mathcal{A} \subseteq \mathbb{R}^4$, donde cada componente representa la corrección de RPM para el motor correspondiente, acotada al intervalo $[-\Delta_{\max},\, \Delta_{\max}]$ RPM.
+
+Al inicio de cada episodio de entrenamiento, se sortea un vector de efectividad $\boldsymbol{\eta} = [\eta_1,\eta_2,\eta_3,\eta_4]^\top$ con cada componente $\eta_i \sim \mathcal{U}(0.3,\; 1.0)$, donde $\eta_i = 1.0$ representa operación nominal y $\eta_i < 1.0$ representa degradación parcial del motor $i$. El factor se aplica directamente sobre la RPM comandada al motor: $\omega_i^{\text{eff}} = \eta_i \cdot u_{t,i}$. Los valores de $\hat{\boldsymbol{\eta}}$ entregados al agente se corresponden con el $\boldsymbol{\eta}$ real del episodio, asumiendo un módulo de FDD ideal; la robustez ante errores de estimación se evalúa por separado en la fase de prueba.
+
+\subsubsection{Función de Recompensa}
+
+La función de recompensa en cada paso temporal penaliza tres comportamientos indeseables: el error de posición respecto al waypoint activo, la inclinación excesiva del vehículo y las correcciones abruptas de RPM. Su formulación es:
+
+\begin{equation}
+r_t = -w_1 \left\| \mathbf{p}_t - \mathbf{p}_t^* \right\|_2 - w_2 \left( |\phi_t| + |\theta_t| \right) - w_3 \left\| \Delta\mathbf{u}_t \right\|_2 + r_{\text{llegada}}
+\end{equation}
+
+\noindent donde $\mathbf{p}_t$ es la posición actual del dron, $\mathbf{p}_t^*$ es la posición del waypoint activo, $\phi_t$ y $\theta_t$ son los ángulos de alabeo y cabeceo, $\Delta\mathbf{u}_t$ es la corrección generada por el agente, y $r_{\text{llegada}}$ es una recompensa de bonus positiva otorgada al alcanzar cada waypoint dentro del radio de aceptación. Los pesos $w_1$, $w_2$ y $w_3$ se ajustan durante la fase de sintonización del entrenamiento. La penalización sobre $\|\Delta\mathbf{u}_t\|_2$ desincentiva correcciones innecesariamente grandes, promoviendo que el agente intervenga solo cuando la falla realmente lo requiere.
+
+\subsubsection{Hiperparámetros del Agente PPO}
+
+Los hiperparámetros del agente PPO se detallan en la Tabla~\ref{tab:ppo_params}.
+
+\begin{table}[h]
+\centering
+\caption{Hiperparámetros del agente compensador PPO.}
+\label{tab:ppo_params}
+\begin{tabular}{lc}
+\hline
+\textbf{Hiperparámetro} & \textbf{Valor} \\
+\hline
+Tasa de aprendizaje & $3 \times 10^{-4}$ \\
+Factor de descuento $\gamma$ & 0.99 \\
+Parámetro GAE $\lambda$ & 0.95 \\
+Épsilon de recorte $\epsilon$ & 0.2 \\
+Épocas de actualización & 10 \\
+Tamaño del buffer de experiencia & 2\,048 pasos \\
+Tamaño del mini-lote & 64 \\
+Coeficiente de entropía & 0.01 \\
+Coeficiente de función de valor & 0.5 \\
+Recorte de gradiente & 0.5 \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Protocolo de Evaluación}
+\label{sec:evaluacion}
+
+La evaluación de los controladores se realiza en lazo cerrado dentro del entorno gym-pybullet-drones, desplazando al PID de referencia y reemplazándolo por los modelos entrenados. Para garantizar la comparabilidad, todos los controladores se evalúan sobre el mismo conjunto de cinco trayectorias reproducibles con coordenadas fijas, definidas en la Tabla~\ref{tab:trayectorias}. En cada evaluación, la secuencia de waypoints se calcula una única vez con la función determinista \texttt{generar\_waypoints(A, B)} y se entrega de forma idéntica a todos los controladores, de modo que las diferencias en las trayectorias registradas reflejan exclusivamente las diferencias entre controladores.
+
+\begin{table}[h]
+\centering
+\caption{Trayectorias de evaluación reproducibles.}
+\label{tab:trayectorias}
+\begin{tabular}{clcc}
+\hline
+\textbf{\#} & \textbf{Tipo} & \textbf{Punto A $(x,y)$} & \textbf{Punto B $(x,y)$} \\
+\hline
+1 & Diagonal larga & $(-1.5,\; -1.5)$ & $(1.5,\; 1.5)$ \\
+2 & Recto norte & $(0.0,\; -1.5)$ & $(0.0,\; 1.5)$ \\
+3 & Recto este & $(-1.5,\; 0.0)$ & $(1.5,\; 0.0)$ \\
+4 & Diagonal inversa & $(1.0,\; -1.0)$ & $(-1.0,\; 1.0)$ \\
+5 & Diagonal sur & $(-1.0,\; 1.0)$ & $(1.0,\; -1.0)$ \\
+\hline
+\end{tabular}
+\end{table}
+
+La evaluación se realiza en dos escenarios. El \textbf{escenario nominal} corresponde a operación sin fallas ($\boldsymbol{\eta} = \mathbf{1}$) y permite comparar el desempeño de LSTM y Mamba como reemplazos del PID en condiciones ideales. El \textbf{escenario de falla} inyecta degradaciones de actuador con $\eta_i \sim \mathcal{U}(0.3,\; 0.8)$ en uno o dos motores simultáneamente y evalúa el desempeño de la arquitectura de dos niveles (controlador por imitación + compensador PPO) frente al controlador por imitación sin compensación.
+
+Un episodio se considera exitoso si el dron alcanza los 8 waypoints secuenciales —incluido el aterrizaje en $z=0.1$ m— dentro del radio de aceptación $\delta = 0.25$ m antes de que expire el tiempo máximo de 20 s. Las posiciones del dron en cada paso de control se almacenan en archivos JSON para la posterior generación de figuras de trayectoria 3D comparativas.
+
+
+\subsection{Métricas de Desempeño}
+
+El desempeño del sistema se cuantifica mediante las siguientes métricas, calculadas para cada controlador en cada escenario de evaluación.
+
+La \textbf{tasa de éxito} $\tau$ es la proporción de trayectorias en las que el dron completa todos los waypoints, expresada como porcentaje:
+\begin{equation}
+\tau = \frac{N_{\text{éxito}}}{N_{\text{total}}} \times 100\%
+\end{equation}
+
+El \textbf{error de posición final} $e_f$ es la distancia euclidiana tridimensional entre la posición final del dron y el punto destino B al finalizar el episodio:
+\begin{equation}
+e_f = \left\| \mathbf{p}_T - \mathbf{p}_B \right\|_2 \quad [\text{m}]
+\end{equation}
+
+\noindent Se reportan la media $\bar{e}_f$ y la desviación estándar $\sigma_{e_f}$ sobre las cinco trayectorias de evaluación.
+
+El \textbf{error de validación} (val loss) es el MSE del modelo sobre el conjunto de validación al finalizar el entrenamiento por imitación:
+\begin{equation}
+\mathcal{L}_{\text{val}} = \frac{1}{N_{\text{val}}} \sum_{t=1}^{N_{\text{val}}} \left\| f_\theta(\mathbf{s}_{t-W:t}) - \mathbf{a}_t \right\|^2
+\end{equation}
+
+El \textbf{número de parámetros entrenables} $|\theta|$ cuantifica el costo computacional de cada arquitectura y su viabilidad para despliegue en plataformas embebidas.
+
+La \textbf{latencia de inferencia} $t_{\text{inf}}$ es el tiempo de cómputo promedio de un paso de control (en milisegundos), medido en la plataforma de evaluación. Para que el controlador sea viable en tiempo real a 48 Hz, se requiere $t_{\text{inf}} < 20.8$ ms.
+
+La Tabla~\ref{tab:metricas} resume las métricas evaluadas y los controladores a los que aplican.
+
+\begin{table}[h]
+\centering
+\caption{Métricas de desempeño y controladores a los que aplican.}
+\label{tab:metricas}
+\begin{tabular}{lccccc}
+\hline
+\textbf{Métrica} & \textbf{PID} & \textbf{LSTM} & \textbf{Mamba} & \textbf{LSTM+PPO} & \textbf{Mamba+PPO} \\
+\hline
+Tasa de éxito $\tau$ (\%) & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+Error final $\bar{e}_f$ (m) & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+Val loss $\mathcal{L}_{\text{val}}$ & — & \checkmark & \checkmark & — & — \\
+Parámetros $|\theta|$ & — & \checkmark & \checkmark & \checkmark & \checkmark \\
+Latencia $t_{\text{inf}}$ (ms) & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+\hline
+\end{tabular}
+\end{table}
