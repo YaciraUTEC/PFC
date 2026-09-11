@@ -14,6 +14,7 @@ Uso (venv_mamba):
 Salida: results/mu_experto.npy (vector de 7 features, promedio sobre episodios
 del retorno descontado de phi bajo la política del PID).
 """
+import json
 import sys
 from pathlib import Path
 import numpy as np
@@ -22,7 +23,18 @@ import pandas as pd
 _ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(_ROOT / "comparacion"))
 
-from comparar_base import cargar_stats, STATS_PATH  # noqa: E402
+# cargar_stats/STATS_PATH se duplican aqui en vez de importarse de comparar_base
+# porque ese modulo carga mamba_ssm al importarse, y este script no necesita
+# Mamba para nada -- solo procesa el CSV con pandas/numpy.
+STATS_PATH = _ROOT / "results" / "stats_normalizacion.json"
+
+
+def cargar_stats(path):
+    with open(path) as f:
+        data = json.load(f)
+    return {k: (v[0], v[1]) for k, v in data.items()}
+
+
 from irl_features import (  # noqa: E402
     phi, distancia_z, cargar_escalas, N_FEATURES, FEATURE_NAMES, HOVER_RPM,
 )
