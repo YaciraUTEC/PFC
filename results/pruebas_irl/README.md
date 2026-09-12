@@ -37,8 +37,37 @@ arreglo invalida las tres pruebas de esta carpeta (la escala de `μ_experto`
 cambió por completo), así que la prueba 04 (pendiente) es la primera corrida
 con la normalización aplicada.
 
+## Prueba 04 — normalización por horizonte efectivo
+
+Config: igual que la prueba 03 (15 iter, 500 pasos/iter, currículo de severidad
++ currículo de distancia), más la normalización de φ por `horizonte_efectivo`
+(ver commit `25c8adc7`) tanto en `μ_experto` como en `μᵢ`.
+
+- Pesos finales: `[0, 0, 0.26, 0.34, 0, 0, 0.90]`
+- Margen: 21.97 (mejora real y consistente desde 24.56 en la iteración 1 —
+  a diferencia de las pruebas 01/02, aquí sí converge, aunque lejos de `eps`)
+- Duración media de episodio: 119–224 pasos (sigue sin acercarse a los ~338 del PID)
+
+**Mejoró respecto a la prueba 03**: ya no colapsa a una sola feature — se
+recuperan `estabilidad_angular_rp` y `velocidad` junto con `progreso`.
+
+**Sigue igual que las pruebas 01-03**: `proximidad_objetivo`, `estabilidad_altura`
+y `oscilacion` quedan en exactamente 0.0 en las 15 iteraciones, sin excepción.
+
+**Hipótesis revisada**: la normalización por horizonte quita el sesgo de
+"episodio corto = se ve mejor", pero no quita un sesgo distinto introducido
+por el currículo de distancia (prueba 03): si las candidatas vuelan, en
+promedio, distancias A→B más cortas que las del dataset fijo del PID
+(sobre todo en iteraciones tempranas), su `proximidad_objetivo` promedio por
+paso se ve mejor simplemente porque la tarea es más fácil, no porque naveguen
+mejor. Tampoco se está registrando el desenlace (`outcome`: caída/aterrizaje/
+llegó/timeout) de los episodios de evaluación — sin ese dato no se puede
+distinguir "se cayó pronto" de "llegó rápido a una meta cercana".
+
 ## Pendiente
 
-- [ ] Prueba 04: primera corrida con `horizonte_efectivo` aplicado — confirmar
-      si `proximidad_objetivo`/`estabilidad_altura`/`oscilacion` dejan de
-      quedarse en 0, y si el margen converge por debajo de `eps`.
+- [ ] Registrar `outcome` por episodio en `rollout_mu()` (igual que ya existe
+      en `fault_env_residual_irl.py`) para confirmar con datos si las
+      candidatas se están cayendo, antes de ajustar más a ciegas.
+- [ ] Evaluar si el currículo de distancia está introduciendo un sesgo de
+      dificultad de tarea distinto al de duración de episodio ya corregido.
