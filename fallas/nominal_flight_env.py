@@ -57,6 +57,7 @@ from irl_features import phi, distancia_z, cargar_escalas, N_FEATURES  # noqa: E
 
 XY_LIM   = 2.0   # rango de vuelo igual al del dataset de Mamba / fault_env_residual.py
 MIN_DIST = 0.8
+MAX_DIST_AB = 2 * XY_LIM * (2 ** 0.5)  # diagonal de la caja de vuelo (~5.66 m)
 DELTA_MAX = 1500  # mismo rango que el compensador final (fault_env_residual_irl.py)
 
 MAMBA_MODEL_PATH = str(_ROOT / "results" / "modelo_mamba.pth")
@@ -78,6 +79,7 @@ class NominalFlightEnv(gym.Env):
         self.t_falla_min   = T_FALLA_MIN if t_falla_min is None else t_falla_min
         self.t_falla_max   = T_FALLA_MAX if t_falla_max is None else t_falla_max
         self.max_fault_pct = MAX_FAULT_PCT  # ver set_max_fault() -- currículo externo lo ajusta
+        self.max_dist_ab   = MAX_DIST_AB    # ver set_max_distance() -- currículo externo lo ajusta
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         if modelo == "lstm":
@@ -111,6 +113,10 @@ class NominalFlightEnv(gym.Env):
         """Techo superior de severidad para el currículo (ver entrenar_irl_apprenticeship.py)."""
         self.max_fault_pct = float(np.clip(pct, MIN_FAULT_PCT, MAX_FAULT_PCT))
 
+    def set_max_distance(self, dist):
+        """Techo superior de distancia A->B para el currículo (ver entrenar_irl_apprenticeship.py)."""
+        self.max_dist_ab = float(np.clip(dist, MIN_DIST, MAX_DIST_AB))
+
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
 
@@ -123,10 +129,19 @@ class NominalFlightEnv(gym.Env):
         t_falla_seg    = np.random.uniform(self.t_falla_min, self.t_falla_max)
         self.t_falla   = int(t_falla_seg * CTRL_FREQ)
 
+        # Trayectoria A->B: la distancia se sortea dentro de [MIN_DIST, self.max_dist_ab]
+        # (techo controlado por el currículo externo), no en toda la caja de
+        # una vez -- empezar con rutas cortas reduce el riesgo de que la
+        # candidata se caiga antes de completar el episodio, lo que sesgaría
+        # la comparación contra mu_experto (episodios más cortos acumulan
+        # menos costo en las features "siempre negativas", pareciendo
+        # mejores sin serlo).
         while True:
             a_xy = np.random.uniform(-XY_LIM, XY_LIM, size=2)
-            b_xy = np.random.uniform(-XY_LIM, XY_LIM, size=2)
-            if np.linalg.norm(a_xy - b_xy) >= MIN_DIST:
+            dist_deseada = np.random.uniform(MIN_DIST, self.max_dist_ab)
+            angulo = np.random.uniform(0, 2 * np.pi)
+            b_xy = a_xy + dist_deseada * np.array([np.cos(angulo), np.sin(angulo)])
+            if np.all(np.abs(b_xy) <= XY_LIM):
                 break
         self.punto_A   = np.array([a_xy[0], a_xy[1], Z_SUELO])
         self.punto_B   = np.array([b_xy[0], b_xy[1], Z_SUELO])

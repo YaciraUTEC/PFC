@@ -15,7 +15,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from irl_features import FEATURE_NAMES, N_FEATURES  # noqa: E402
 from nominal_flight_env import (  # noqa: E402
-    NominalFlightEnv, MIN_FAULT_PCT, MAX_FAULT_PCT,
+    NominalFlightEnv, MIN_FAULT_PCT, MAX_FAULT_PCT, MIN_DIST, MAX_DIST_AB,
 )
 
 GAMMA = 0.99  # igual que gamma en entrenar_rl.py (PPO)
@@ -32,6 +32,21 @@ def techo_falla(iteracion, total_iteraciones):
     progreso = iteracion / total_iteraciones
     return MIN_FAULT_PCT + progreso * (MAX_FAULT_PCT - MIN_FAULT_PCT)
 
+
+def distancia_max(iteracion, total_iteraciones):
+    """
+    Currículo de la distancia A->B, mismo mecanismo que techo_falla().
+    Empezar con rutas cortas reduce el riesgo de que la política candidata
+    se caiga antes de completar el episodio -- episodios más cortos acumulan
+    menos costo en las features "siempre negativas" de phi (proximidad_objetivo,
+    estabilidad_altura, oscilacion), haciendo que la candidata parezca mejor
+    que el experto en esas dimensiones sin serlo realmente (ver
+    irl_convergencia.csv de corridas anteriores, donde esas 3 quedaron en 0.0
+    de forma consistente en las 30 iteraciones).
+    """
+    progreso = iteracion / total_iteraciones
+    return MIN_DIST + progreso * (MAX_DIST_AB - MIN_DIST)
+
 MU_EXPERTO_PATH = _ROOT / "results" / "mu_experto.npy"
 ESCALA_PATH     = _ROOT / "results" / "mu_escala.npy"
 WEIGHTS_PATH    = _ROOT / "results" / "irl_weights.json"
@@ -40,8 +55,10 @@ SEARCH_LOG_DIR  = _ROOT / "results" / "irl_search_logs"
 
 
 def rollout_mu(env, model, n_episodios, gamma):
-    
-    retornos = []
+    """Devuelve (mu, duracion_media_pasos). duracion_media_pasos se usa para
+    diagnosticar el sesgo de episodios cortos (ver distancia_max())."""
+    retornos   = []
+    duraciones = []
     for _ in range(n_episodios):
         obs, _ = env.reset()
         done = False
@@ -58,7 +75,8 @@ def rollout_mu(env, model, n_episodios, gamma):
             if trunc:
                 break
         retornos.append(acumulado)
-    return np.mean(retornos, axis=0)
+        duraciones.append(t)
+    return np.mean(retornos, axis=0), float(np.mean(duraciones))
 
 
 def proyectar(mu_bar_prev, mu_i, mu_experto):
@@ -94,11 +112,12 @@ def restringir_w(w_busqueda, w_anterior):
     return w_no_neg / norma
 
 
-def entrenar_politica(w, timesteps, n_envs, seed, iteracion, max_fault_pct):
+def entrenar_politica(w, timesteps, n_envs, seed, iteracion, max_fault_pct, max_dist_ab):
     def make_env():
         env = NominalFlightEnv(gui=False)
         env.set_reward_weights(w)
         env.set_max_fault(max_fault_pct)
+        env.set_max_distance(max_dist_ab)
         return env
 
     train_env = make_vec_env(make_env, n_envs=n_envs)
@@ -116,9 +135,9 @@ def entrenar_politica(w, timesteps, n_envs, seed, iteracion, max_fault_pct):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--iteraciones", type=int, default=30)
+    parser.add_argument("--iteraciones", type=int, default=15)
     parser.add_argument("--eps", type=float, default=0.05)
-    parser.add_argument("--timesteps-por-iter", type=int, default=1000)
+    parser.add_argument("--timesteps-por-iter", type=int, default=500)
     parser.add_argument("--n-envs", type=int, default=4)
     parser.add_argument("--eval-episodios", type=int, default=10)
     parser.add_argument("--smoke-test", action="store_true",
@@ -146,13 +165,16 @@ def main():
 
     eval_env = NominalFlightEnv(gui=False)
 
-    techo_0 = techo_falla(0, args.iteraciones)  # = MIN_FAULT_PCT
+    techo_0    = techo_falla(0, args.iteraciones)      # = MIN_FAULT_PCT
+    distancia_0 = distancia_max(0, args.iteraciones)   # = MIN_DIST
     eval_env.set_max_fault(techo_0)
+    eval_env.set_max_distance(distancia_0)
     print(f"\nCalculando mu^(0) (política baseline: Mamba sin corrección, "
-          f"techo_falla={techo_0*100:.1f}%)...")
-    mu_0 = rollout_mu(eval_env, None, args.eval_episodios, GAMMA)
+          f"techo_falla={techo_0*100:.1f}%, distancia_max={distancia_0:.2f}m)...")
+    mu_0, duracion_0 = rollout_mu(eval_env, None, args.eval_episodios, GAMMA)
     mu_0_r = mu_0 / mu_escala
-    print("mu^(0):", dict(zip(FEATURE_NAMES, mu_0.round(4))))
+    print(f"mu^(0):", dict(zip(FEATURE_NAMES, mu_0.round(4))),
+          f"| duración media = {duracion_0:.1f} pasos")
 
     
     w_uniforme = np.ones(N_FEATURES, dtype=np.float64) / np.sqrt(N_FEATURES)
@@ -162,25 +184,29 @@ def main():
 
     convergencia = []
     for i in range(1, args.iteraciones + 1):
-        techo = techo_falla(i, args.iteraciones)
+        techo     = techo_falla(i, args.iteraciones)
+        distancia = distancia_max(i, args.iteraciones)
         w_reward_usado = w_reward.copy()
         print(f"\n{'='*60}\nIteración {i}/{args.iteraciones}  techo_falla={techo*100:.1f}%  "
-              f"w_reward_usado={w_reward_usado.round(3)}")
+              f"distancia_max={distancia:.2f}m  w_reward_usado={w_reward_usado.round(3)}")
         model = entrenar_politica(w_reward_usado, args.timesteps_por_iter, args.n_envs,
-                                  seed=i, iteracion=i, max_fault_pct=techo)
+                                  seed=i, iteracion=i, max_fault_pct=techo,
+                                  max_dist_ab=distancia)
 
-        eval_env.set_max_fault(techo)  # evaluar con el mismo techo con que se entrenó
-        mu_i   = rollout_mu(eval_env, model, args.eval_episodios, GAMMA)
+        eval_env.set_max_fault(techo)         # evaluar con el mismo techo con que se entrenó
+        eval_env.set_max_distance(distancia)  # y la misma distancia máxima
+        mu_i, duracion_i = rollout_mu(eval_env, model, args.eval_episodios, GAMMA)
         mu_i_r = mu_i / mu_escala
         mu_bar_r = proyectar(mu_bar_r, mu_i_r, mu_experto_r)
         t_i = float(np.linalg.norm(mu_experto_r - mu_bar_r))
         w_busqueda = mu_experto_r - mu_bar_r
         w_reward   = restringir_w(w_busqueda, w_reward)
 
-        print(f"mu^({i}) (crudo):", dict(zip(FEATURE_NAMES, mu_i.round(4))))
+        print(f"mu^({i}) (crudo):", dict(zip(FEATURE_NAMES, mu_i.round(4))),
+              f"| duración media = {duracion_i:.1f} pasos")
         print(f"margen t^({i}) (espacio rescalado) = {t_i:.4f}")
         convergencia.append({
-            "iteracion": i, "margen": t_i,
+            "iteracion": i, "margen": t_i, "duracion_media_pasos": duracion_i,
             "w_reward_usado": w_reward_usado.tolist(),
             "w_reward_siguiente_propuesto": w_reward.tolist(),
         })
@@ -208,7 +234,8 @@ def main():
 
     with open(CONVERGENCIA_PATH, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=[
-            "iteracion", "margen", "w_reward_usado", "w_reward_siguiente_propuesto",
+            "iteracion", "margen", "duracion_media_pasos",
+            "w_reward_usado", "w_reward_siguiente_propuesto",
         ])
         writer.writeheader()
         writer.writerows(convergencia)
