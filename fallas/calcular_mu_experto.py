@@ -23,9 +23,6 @@ import pandas as pd
 _ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(_ROOT / "comparacion"))
 
-# cargar_stats/STATS_PATH se duplican aqui en vez de importarse de comparar_base
-# porque ese modulo carga mamba_ssm al importarse, y este script no necesita
-# Mamba para nada -- solo procesa el CSV con pandas/numpy.
 STATS_PATH = _ROOT / "results" / "stats_normalizacion.json"
 
 
@@ -49,10 +46,19 @@ GAMMA       = 0.99  # igual que gamma en entrenar_rl.py (PPO)
 # cancelan y quedan chicas, mientras que features siempre negativas (ej.
 # estabilidad_altura) se acumulan sin cancelación y quedan grandes — aunque
 # cada una ya esté escalada por su propia std a nivel de un solo paso
-# (irl_features.cargar_escalas). Sin esto, el margen y la proyección quedan
-# dominados por las features de mayor magnitud acumulada, casi ignorando
-# oscilacion/progreso. EPS_ESCALA evita dividir por un valor casi cero
-# si alguna componente de mu_experto queda muy chica.
+# (irl_features.cargar_escalas).
+#
+# mu_escala = desviación estándar de esa feature ENTRE LOS 800 EPISODIOS (no
+# el propio valor de mu_experto). Dividir por la propia magnitud de mu_experto
+# (versión anterior) colapsaba mu_experto_r a exactamente ±1 en todas las
+# componentes siempre -- borraba toda la información de qué tan fuerte o débil
+# es cada feature en el comportamiento del experto, tratando una señal grande
+# y consistente igual que una chica y ruidosa. Escalar por la variabilidad
+# entre episodios preserva esa diferencia: una feature con promedio grande y
+# poca variación entre episodios (señal fuerte y confiable del PID) queda con
+# |mu_r| grande; una con promedio chico o muy variable entre episodios queda
+# con |mu_r| chico. EPS_ESCALA evita dividir por casi cero si alguna
+# componente varía muy poco entre episodios.
 EPS_ESCALA = 0.01
 
 
@@ -91,10 +97,11 @@ def main():
             acumulado += (GAMMA ** t) * vec
         retornos.append(acumulado)
 
+    retornos   = np.array(retornos)  # (n_episodios, N_FEATURES)
     mu_experto = np.mean(retornos, axis=0)
     np.save(OUT_PATH, mu_experto)
 
-    mu_escala = np.maximum(np.abs(mu_experto), EPS_ESCALA)
+    mu_escala = np.maximum(np.std(retornos, axis=0), EPS_ESCALA)
     np.save(ESCALA_PATH, mu_escala)
 
     print("\nmu_experto (expectativas de características del PID):")
