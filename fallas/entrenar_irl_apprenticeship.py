@@ -13,7 +13,7 @@ _ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(_ROOT / "comparacion"))
 sys.path.insert(0, str(Path(__file__).parent))
 
-from irl_features import FEATURE_NAMES, N_FEATURES  # noqa: E402
+from irl_features import FEATURE_NAMES, N_FEATURES, horizonte_efectivo  # noqa: E402
 from nominal_flight_env import (  # noqa: E402
     NominalFlightEnv, MIN_FAULT_PCT, MAX_FAULT_PCT, MIN_DIST, MAX_DIST_AB,
 )
@@ -55,8 +55,13 @@ SEARCH_LOG_DIR  = _ROOT / "results" / "irl_search_logs"
 
 
 def rollout_mu(env, model, n_episodios, gamma):
-    """Devuelve (mu, duracion_media_pasos). duracion_media_pasos se usa para
-    diagnosticar el sesgo de episodios cortos (ver distancia_max())."""
+    """Devuelve (mu, duracion_media_pasos). Cada episodio se normaliza por su
+    horizonte descontado efectivo (ver irl_features.horizonte_efectivo) antes
+    de promediar entre episodios, para que uno que termina antes (por una
+    caída, o por una ruta corta del currículo de distancia) no parezca
+    "mejor que el experto" solo por haber acumulado menos costo total.
+    duracion_media_pasos se guarda además para diagnóstico (ver
+    distancia_max())."""
     retornos   = []
     duraciones = []
     for _ in range(n_episodios):
@@ -74,7 +79,7 @@ def rollout_mu(env, model, n_episodios, gamma):
             t += 1
             if trunc:
                 break
-        retornos.append(acumulado)
+        retornos.append(acumulado / horizonte_efectivo(t, gamma))
         duraciones.append(t)
     return np.mean(retornos, axis=0), float(np.mean(duraciones))
 

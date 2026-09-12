@@ -34,6 +34,7 @@ def cargar_stats(path):
 
 from irl_features import (  # noqa: E402
     phi, distancia_z, cargar_escalas, N_FEATURES, FEATURE_NAMES, HOVER_RPM,
+    horizonte_efectivo,
 )
 
 CSV_PATH    = _ROOT / "results" / "datos_CF2X_800ep.csv"
@@ -95,6 +96,12 @@ def main():
                 rpm_anterior, vel_z_anterior, dist_prev_z, escalas,
             )
             acumulado += (GAMMA ** t) * vec
+        # Normaliza por el horizonte descontado efectivo del episodio, para
+        # que episodios de distinta duración (o cortados antes por una caída,
+        # en las políticas candidatas que se comparan contra este mu_experto)
+        # sean comparables en "costo promedio por paso", no en costo total
+        # acumulado -- ver irl_features.horizonte_efectivo().
+        acumulado = acumulado / horizonte_efectivo(len(ep_df), GAMMA)
         retornos.append(acumulado)
 
     retornos   = np.array(retornos)  # (n_episodios, N_FEATURES)

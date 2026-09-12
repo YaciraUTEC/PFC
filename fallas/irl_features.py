@@ -103,3 +103,25 @@ def phi(pos, rpy, ang_vel, vel, wp_actual, punto_final, rpm, rpm_anterior,
     ], dtype=np.float64)
 
     return vec, dist_actual_z
+
+
+def horizonte_efectivo(T, gamma):
+    """
+    Suma de los descuentos gamma^t efectivamente usados al acumular phi sobre
+    un episodio de T pasos: sum_{t=0}^{T-1} gamma^t = (1 - gamma^T) / (1 - gamma).
+
+    Dividir la suma acumulada de phi entre esto (en vez de dejarla cruda)
+    convierte "costo total acumulado en el episodio" en "costo promedio por
+    paso, ponderado por el mismo descuento". Sin esto, un episodio corto (por
+    ejemplo porque la política se cayó pronto) acumula menos costo total que
+    uno largo aunque vuele peor paso a paso, haciendo que mu_bar parezca
+    "mejor que el experto" en las features siempre-negativas solo por haber
+    durado menos -- fue la causa del estancamiento visto en irl_convergencia.csv
+    de varias corridas (proximidad_objetivo/estabilidad_altura/oscilacion, y
+    después casi todas las features, quedando en w=0 de forma consistente).
+
+    Cuando gamma=1 (sin descuento) esto se reduce al promedio simple: T.
+    """
+    if gamma >= 1.0:
+        return float(T)
+    return (1.0 - gamma ** T) / (1.0 - gamma)
