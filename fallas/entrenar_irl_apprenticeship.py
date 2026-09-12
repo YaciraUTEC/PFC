@@ -14,9 +14,23 @@ sys.path.insert(0, str(_ROOT / "comparacion"))
 sys.path.insert(0, str(Path(__file__).parent))
 
 from irl_features import FEATURE_NAMES, N_FEATURES  # noqa: E402
-from nominal_flight_env import NominalFlightEnv  # noqa: E402
+from nominal_flight_env import (  # noqa: E402
+    NominalFlightEnv, MIN_FAULT_PCT, MAX_FAULT_PCT,
+)
 
 GAMMA = 0.99  # igual que gamma en entrenar_rl.py (PPO)
+
+
+def techo_falla(iteracion, total_iteraciones):
+    """
+    Currículo del techo de severidad entre iteraciones (no dentro de una
+    iteración, a diferencia de entrenar_rl.py, porque aquí cada iteración es
+    un entrenamiento corto e independiente, no un único entrenamiento largo).
+    iteracion=0 -> MIN_FAULT_PCT (usado para mu^(0), la política sin corrección).
+    iteracion=total_iteraciones -> MAX_FAULT_PCT.
+    """
+    progreso = iteracion / total_iteraciones
+    return MIN_FAULT_PCT + progreso * (MAX_FAULT_PCT - MIN_FAULT_PCT)
 
 MU_EXPERTO_PATH = _ROOT / "results" / "mu_experto.npy"
 ESCALA_PATH     = _ROOT / "results" / "mu_escala.npy"
@@ -80,10 +94,11 @@ def restringir_w(w_busqueda, w_anterior):
     return w_no_neg / norma
 
 
-def entrenar_politica(w, timesteps, n_envs, seed, iteracion):
+def entrenar_politica(w, timesteps, n_envs, seed, iteracion, max_fault_pct):
     def make_env():
         env = NominalFlightEnv(gui=False)
         env.set_reward_weights(w)
+        env.set_max_fault(max_fault_pct)
         return env
 
     train_env = make_vec_env(make_env, n_envs=n_envs)
@@ -131,7 +146,10 @@ def main():
 
     eval_env = NominalFlightEnv(gui=False)
 
-    print("\nCalculando mu^(0) (política baseline: Mamba sin corrección)...")
+    techo_0 = techo_falla(0, args.iteraciones)  # = MIN_FAULT_PCT
+    eval_env.set_max_fault(techo_0)
+    print(f"\nCalculando mu^(0) (política baseline: Mamba sin corrección, "
+          f"techo_falla={techo_0*100:.1f}%)...")
     mu_0 = rollout_mu(eval_env, None, args.eval_episodios, GAMMA)
     mu_0_r = mu_0 / mu_escala
     print("mu^(0):", dict(zip(FEATURE_NAMES, mu_0.round(4))))
@@ -144,11 +162,14 @@ def main():
 
     convergencia = []
     for i in range(1, args.iteraciones + 1):
+        techo = techo_falla(i, args.iteraciones)
         w_reward_usado = w_reward.copy()
-        print(f"\n{'='*60}\nIteración {i}/{args.iteraciones}  w_reward_usado={w_reward_usado.round(3)}")
+        print(f"\n{'='*60}\nIteración {i}/{args.iteraciones}  techo_falla={techo*100:.1f}%  "
+              f"w_reward_usado={w_reward_usado.round(3)}")
         model = entrenar_politica(w_reward_usado, args.timesteps_por_iter, args.n_envs,
-                                  seed=i, iteracion=i)
+                                  seed=i, iteracion=i, max_fault_pct=techo)
 
+        eval_env.set_max_fault(techo)  # evaluar con el mismo techo con que se entrenó
         mu_i   = rollout_mu(eval_env, model, args.eval_episodios, GAMMA)
         mu_i_r = mu_i / mu_escala
         mu_bar_r = proyectar(mu_bar_r, mu_i_r, mu_experto_r)

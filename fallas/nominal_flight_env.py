@@ -75,8 +75,9 @@ class NominalFlightEnv(gym.Env):
         self.stats     = cargar_stats(STATS_PATH)
         self.escalas   = cargar_escalas(self.stats)
         self.w         = np.zeros(N_FEATURES, dtype=np.float64)
-        self.t_falla_min = T_FALLA_MIN if t_falla_min is None else t_falla_min
-        self.t_falla_max = T_FALLA_MAX if t_falla_max is None else t_falla_max
+        self.t_falla_min   = T_FALLA_MIN if t_falla_min is None else t_falla_min
+        self.t_falla_max   = T_FALLA_MAX if t_falla_max is None else t_falla_max
+        self.max_fault_pct = MAX_FAULT_PCT  # ver set_max_fault() -- currículo externo lo ajusta
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         if modelo == "lstm":
@@ -106,13 +107,18 @@ class NominalFlightEnv(gym.Env):
         """Pesos w (7,) usados para R(s,a) = w . phi(s,a) en step()."""
         self.w = np.asarray(w, dtype=np.float64)
 
+    def set_max_fault(self, pct):
+        """Techo superior de severidad para el currículo (ver entrenar_irl_apprenticeship.py)."""
+        self.max_fault_pct = float(np.clip(pct, MIN_FAULT_PCT, MAX_FAULT_PCT))
+
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
 
         # Aleatorizar severidad e instante de la falla en cada episodio
         # (igual que fault_env_residual_irl.py) -- la política candidata debe
-        # volar bien tanto antes como después de que aparezca.
-        fault_pct      = np.random.uniform(MIN_FAULT_PCT, MAX_FAULT_PCT)
+        # volar bien tanto antes como después de que aparezca. El techo
+        # superior (self.max_fault_pct) lo controla el currículo externo.
+        fault_pct      = np.random.uniform(MIN_FAULT_PCT, self.max_fault_pct)
         self.severidad = 1.0 - fault_pct
         t_falla_seg    = np.random.uniform(self.t_falla_min, self.t_falla_max)
         self.t_falla   = int(t_falla_seg * CTRL_FREQ)
