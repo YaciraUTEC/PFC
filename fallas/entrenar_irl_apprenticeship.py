@@ -73,19 +73,7 @@ def proyectar(mu_bar_prev, mu_i, mu_experto):
 
 
 def restringir_w(w_busqueda, w_anterior):
-    """
-    Proyecta w_busqueda al ortante no-negativo (recorte a 0 de componentes
-    negativas). Cada feature de phi() ya está orientada como "mayor = más
-    parecido al experto", así que un peso negativo invertiría esa dirección
-    (fue justo lo que causó que el compensador se volviera errático con
-    esfuerzo_motores en la versión anterior de 8 features).
-
-    Si el recorte colapsa el vector casi a cero -- las 7 componentes querían
-    ser negativas a la vez, algo posible sobre todo en las primeras
-    iteraciones cuando la política candidata es casi aleatoria -- se descarta
-    esta actualización y se mantiene w_anterior, para no entrenar a PPO con
-    una recompensa idénticamente nula.
-    """
+   
     w_no_neg = np.clip(w_busqueda, 0, None)
     norma = np.linalg.norm(w_no_neg)
     if norma < 1e-6:
@@ -118,7 +106,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--iteraciones", type=int, default=15)
     parser.add_argument("--eps", type=float, default=0.05)
-    parser.add_argument("--timesteps-por-iter", type=int, default=100_000)
+    parser.add_argument("--timesteps-por-iter", type=int, default=500)
     parser.add_argument("--n-envs", type=int, default=4)
     parser.add_argument("--eval-episodios", type=int, default=10)
     parser.add_argument("--smoke-test", action="store_true",
