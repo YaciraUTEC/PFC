@@ -73,7 +73,19 @@ def proyectar(mu_bar_prev, mu_i, mu_experto):
 
 
 def restringir_w(w_busqueda, w_anterior):
-   
+    """
+    Proyecta w_busqueda al ortante no-negativo (recorte a 0 de componentes
+    negativas). Cada feature de phi() ya esta orientada como "mayor = mas
+    parecido al experto", asi que un peso negativo invertiria esa direccion
+    (fue justo lo que causo que el compensador se volviera erratico con
+    esfuerzo_motores en la version anterior de 8 features).
+
+    Si el recorte colapsa el vector casi a cero -- las 7 componentes querian
+    ser negativas a la vez, algo posible sobre todo en las primeras
+    iteraciones cuando la politica candidata es casi aleatoria -- se descarta
+    esta actualizacion y se mantiene w_anterior, para no entrenar a PPO con
+    una recompensa identicamente nula.
+    """
     w_no_neg = np.clip(w_busqueda, 0, None)
     norma = np.linalg.norm(w_no_neg)
     if norma < 1e-6:
