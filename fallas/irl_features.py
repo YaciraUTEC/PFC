@@ -73,10 +73,29 @@ LIMITE_FEATURE = -3.0  # piso para las 6 features de "distancia/magnitud" (todas
                         # importar el signo de w, así que ya no hace falta
                         # prohibir w<0 para tener esa garantía de seguridad.
                         # 3.0 = 3 desviaciones estándar de la escala normal de
-                        # vuelo (escalas ya normaliza cada feature a ~O(1));
-                        # si en la búsqueda las features saturan demasiado
-                        # seguido (poca diferenciación entre candidatas malas),
-                        # subir este valor.
+                        # vuelo (escalas ya normaliza cada feature a ~O(1)).
+                        # Aplica a estabilidad_angular_rp, velocidad, oscilacion
+                        # y aceleracion_vertical -- son cantidades de "estado
+                        # estacionario" (su valor típico no cambia mucho a lo
+                        # largo del vuelo), así que 3 sigma ya cubre bien su
+                        # rango normal.
+
+LIMITE_FEATURE_RUTA = -12.0  # piso específico para proximidad_objetivo y
+                        # estabilidad_altura. A diferencia de las anteriores,
+                        # estas dos SÍ varían mucho a lo largo de una ruta
+                        # completa A->B (empiezan lejos del destino, terminan
+                        # cerca) -- con LIMITE_FEATURE=-3.0 el propio PID ya
+                        # saturaba ese piso en gran parte de su vuelo
+                        # (mu_experto pasó de -10.51/-3.63 crudo a -2.89/-2.46
+                        # acotado, ver commit de este cambio), lo que en la
+                        # prueba_08 dejó al experto y a las candidatas
+                        # "empatados" en el piso -- indistinguibles aunque
+                        # volaran distinto, y las 3 features seguían en w=0
+                        # pese a haber quitado el clip de no-negatividad.
+                        # -12.0 deja el promedio real del PID (~-10.5) sin
+                        # saturar, preservando la señal de la ruta completa,
+                        # mientras sigue acotando el peor caso (sigue siendo
+                        # un límite finito, sin importar el signo de w).
 
 
 def cargar_escalas(stats):
@@ -132,8 +151,8 @@ def phi(pos, rpy, ang_vel, vel, wp_actual, punto_final, rpm, rpm_anterior,
     rpm_delta_n = (np.asarray(rpm) - np.asarray(rpm_anterior)) / escalas["motor"]
     accel_vertical = (float(vel[2]) - float(vel_z_anterior)) / DT
 
-    proximidad_objetivo    = max(-dist_actual_z, LIMITE_FEATURE)
-    estabilidad_altura     = max(-abs((float(wp_actual[2]) - float(pos[2])) / np.mean(escalas["err"])), LIMITE_FEATURE)
+    proximidad_objetivo    = max(-dist_actual_z, LIMITE_FEATURE_RUTA)
+    estabilidad_altura     = max(-abs((float(wp_actual[2]) - float(pos[2])) / np.mean(escalas["err"])), LIMITE_FEATURE_RUTA)
     estabilidad_angular_rp = max(-float(np.linalg.norm(ang_rp_n)), LIMITE_FEATURE)
     velocidad              = max(-float(np.linalg.norm(vel_n)), LIMITE_FEATURE)
     oscilacion              = max(-float(np.mean(np.abs(rpm_delta_n))), LIMITE_FEATURE)

@@ -141,7 +141,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--iteraciones", type=int, default=15)
     parser.add_argument("--eps", type=float, default=0.05)
-    parser.add_argument("--timesteps-por-iter", type=int, default=500)
+    parser.add_argument("--timesteps-por-iter", type=int, default=1_000_000)
     parser.add_argument("--n-envs", type=int, default=4)
     parser.add_argument("--eval-episodios", type=int, default=10)
     parser.add_argument("--smoke-test", action="store_true",
