@@ -64,10 +64,41 @@ mejor. Tampoco se está registrando el desenlace (`outcome`: caída/aterrizaje/
 llegó/timeout) de los episodios de evaluación — sin ese dato no se puede
 distinguir "se cayó pronto" de "llegó rápido a una meta cercana".
 
+## Prueba 05 — registro de outcome, causa raíz confirmada
+
+Config: igual que la prueba 04 (currículo de severidad + distancia,
+normalización por horizonte), más el registro de `outcome` (`cayo`/`aterrizo`/
+`llego`/`tiempo`) por episodio de evaluación en `rollout_mu()`.
+
+- Pesos finales: `[0, 0, 0.69, 0, 0, 0, 0.72]`
+- Margen: 23.87 (empieza en 26.41, converge de forma consistente — mejor
+  tendencia que pruebas anteriores)
+- **Outcomes por iteración** (de 10 episodios de evaluación c/u): entre 2 y 10
+  terminan en `cayo` en TODAS las 15 iteraciones — dos iteraciones (2 y 11)
+  tuvieron 10/10 caídas. `aterrizo` casi nunca ocurre (solo 3 veces en total).
+
+**Esto confirma directamente la causa raíz**: no es (solo) el currículo de
+distancia dándoles rutas más fáciles — las candidatas se están cayendo, mucho,
+en toda la corrida. Nada en la recompensa penalizaba la caída en sí misma, así
+que el algoritmo de proyección nunca tuvo forma de aprender que caerse es malo.
+
+**Arreglo aplicado después de esta prueba** (commit `c20a1efb`): nueva feature
+`penalizacion_caida` (8va feature) — vale 0 en cada paso normal y -1.0 en el
+paso donde ocurre `es_caida()`. Como el PID nunca se cae en los 800 episodios,
+`mu_experto` en esta componente es exactamente 0 — cualquier candidata que se
+caiga mucho mostrará `mu_i` negativo ahí, y el mecanismo de búsqueda ya
+existente (`w ≥ 0`) le asignará peso positivo automáticamente, sin necesidad
+de fijar el peso a mano. Esto invalida esta prueba y las anteriores (el
+vector φ pasó de 7 a 8 componentes) — la prueba 06 (pendiente) es la primera
+con este arreglo.
+
 ## Pendiente
 
-- [ ] Registrar `outcome` por episodio en `rollout_mu()` (igual que ya existe
-      en `fault_env_residual_irl.py`) para confirmar con datos si las
-      candidatas se están cayendo, antes de ajustar más a ciegas.
-- [ ] Evaluar si el currículo de distancia está introduciendo un sesgo de
-      dificultad de tarea distinto al de duración de episodio ya corregido.
+- [x] Registrar `outcome` por episodio en `rollout_mu()` — hecho, es lo que
+      reveló las caídas en la prueba 05.
+- [ ] Prueba 06: primera corrida con `penalizacion_caida` — confirmar si baja
+      la tasa de caídas y si `proximidad_objetivo`/`estabilidad_altura`/
+      `oscilacion` finalmente logran peso positivo.
+- [ ] Si después de la prueba 06 las caídas bajan pero la tarea sigue viéndose
+      "más fácil" que la del PID por el currículo de distancia, retomar esa
+      hipótesis como secundaria (ya no es la explicación principal).
