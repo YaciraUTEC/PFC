@@ -55,16 +55,7 @@ SEARCH_LOG_DIR  = _ROOT / "results" / "irl_search_logs"
 
 
 def rollout_mu(env, model, n_episodios, gamma):
-    """Devuelve (mu, duracion_media_pasos, conteo_outcomes). Cada episodio se
-    normaliza por su horizonte descontado efectivo (ver
-    irl_features.horizonte_efectivo) antes de promediar entre episodios, para
-    que uno que termina antes (por una caída, o por una ruta corta del
-    currículo de distancia) no parezca "mejor que el experto" solo por haber
-    acumulado menos costo total. duracion_media_pasos y conteo_outcomes se
-    guardan para diagnóstico (ver distancia_max()): conteo_outcomes es un
-    dict {"cayo": n, "aterrizo": n, "llego": n, "tiempo": n} -- permite
-    distinguir si las candidatas terminan pronto porque se caen o porque
-    completan rutas cortas sin problema."""
+   
     retornos   = []
     duraciones = []
     outcomes   = {"cayo": 0, "aterrizo": 0, "llego": 0, "tiempo": 0}
@@ -103,24 +94,26 @@ def proyectar(mu_bar_prev, mu_i, mu_experto):
 
 def restringir_w(w_busqueda, w_anterior):
     """
-    Proyecta w_busqueda al ortante no-negativo (recorte a 0 de componentes
-    negativas). Cada feature de phi() ya esta orientada como "mayor = mas
-    parecido al experto", asi que un peso negativo invertiria esa direccion
-    (fue justo lo que causo que el compensador se volviera erratico con
-    esfuerzo_motores en la version anterior de 8 features).
-
-    Si el recorte colapsa el vector casi a cero -- las 7 componentes querian
-    ser negativas a la vez, algo posible sobre todo en las primeras
-    iteraciones cuando la politica candidata es casi aleatoria -- se descarta
-    esta actualizacion y se mantiene w_anterior, para no entrenar a PPO con
-    una recompensa identicamente nula.
+    Normaliza w_busqueda a norma unitaria (||w||_2 <= 1) -- la única
+    restricción del algoritmo de Abbeel & Ng (2004), ver Eq. 12 del paper
+    (icml04-apprentice.pdf). No se recorta el signo: entre los commits
+    e9dca8ec y este, se forzaba w>=0 como parche para el bug de
+    "esfuerzo_motores" (un peso negativo en una feature sin techo daba
+    recompensa sin límite por empeorarla). Ahora que las features de
+    irl_features.phi() están acotadas (ver irl_features.LIMITE_FEATURE),
+    ese riesgo ya no existe, así que se puede volver a la restricción
+    original del paper -- necesario porque varias features tienen
+    mu_experto != 0 (ej. velocidad promedio del PID = -1.6, no 0), y con
+    w>=0 la búsqueda solo podía empujar esas features HACIA 0, nunca hacia
+    el valor real del experto cuando la candidata ya estaba "mejor que 0"
+    en esa dimensión (ver proximidad_objetivo/estabilidad_altura/oscilacion
+    atascadas en w=0 en las 7 pruebas de results/pruebas_irl/).
     """
-    w_no_neg = np.clip(w_busqueda, 0, None)
-    norma = np.linalg.norm(w_no_neg)
+    norma = np.linalg.norm(w_busqueda)
     if norma < 1e-6:
-        print("  [aviso] recorte a w>=0 colapso el vector a ~0 - se mantiene el w anterior")
+        print("  [aviso] w_busqueda colapsó a ~0 - se mantiene el w anterior")
         return w_anterior.copy()
-    return w_no_neg / norma
+    return w_busqueda / norma
 
 
 def entrenar_politica(w, timesteps, n_envs, seed, iteracion, max_fault_pct, max_dist_ab):

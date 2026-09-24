@@ -53,6 +53,31 @@ CAIDA_PENALTY = -20.0  # magnitud fija del "golpe" al caer (ver phi()) -- subido
                         # (ver prueba_06 en results/pruebas_irl/, penalizacion_caida
                         # obtuvo solo 0.05 de peso pese a ~65-70% de caidas)
 
+LIMITE_FEATURE = -3.0  # piso para las 6 features de "distancia/magnitud" (todas
+                        # menos progreso y penalizacion_caida, que ya estan
+                        # acotadas por construccion: progreso via np.clip(-1,1),
+                        # penalizacion_caida porque solo toma dos valores fijos).
+                        # Sin este piso, esas 6 son costos sin techo (ej.
+                        # velocidad = -||v||, crece sin límite si el dron se
+                        # descontrola) -- eso fue justo lo que causó el bug de
+                        # "esfuerzo_motores" en la versión anterior de 8 features:
+                        # un peso w<0 en una feature sin techo le da a PPO una
+                        # recompensa sin límite por empeorarla. El algoritmo de
+                        # Abbeel & Ng (arXiv/ICML04) no exige w>=0, solo
+                        # ||w||_2<=1 (ver restringir_w en
+                        # entrenar_irl_apprenticeship.py) -- permitir w<0 es
+                        # necesario para poder igualar features cuyo mu_experto
+                        # no es 0 (ej. velocidad promedio del PID = -1.6, no 0,
+                        # porque el PID sí se mueve para llegar de A a B). Con
+                        # este piso, el peor caso por paso queda acotado sin
+                        # importar el signo de w, así que ya no hace falta
+                        # prohibir w<0 para tener esa garantía de seguridad.
+                        # 3.0 = 3 desviaciones estándar de la escala normal de
+                        # vuelo (escalas ya normaliza cada feature a ~O(1));
+                        # si en la búsqueda las features saturan demasiado
+                        # seguido (poca diferenciación entre candidatas malas),
+                        # subir este valor.
+
 
 def cargar_escalas(stats):
     """stats: dict como el que devuelve comparar_base.cargar_stats (col -> (mean, std))."""
@@ -107,12 +132,12 @@ def phi(pos, rpy, ang_vel, vel, wp_actual, punto_final, rpm, rpm_anterior,
     rpm_delta_n = (np.asarray(rpm) - np.asarray(rpm_anterior)) / escalas["motor"]
     accel_vertical = (float(vel[2]) - float(vel_z_anterior)) / DT
 
-    proximidad_objetivo    = -dist_actual_z
-    estabilidad_altura     = -abs((float(wp_actual[2]) - float(pos[2])) / np.mean(escalas["err"]))
-    estabilidad_angular_rp = -float(np.linalg.norm(ang_rp_n))
-    velocidad              = -float(np.linalg.norm(vel_n))
-    oscilacion              = -float(np.mean(np.abs(rpm_delta_n)))
-    aceleracion_vertical   = -abs(accel_vertical / G)
+    proximidad_objetivo    = max(-dist_actual_z, LIMITE_FEATURE)
+    estabilidad_altura     = max(-abs((float(wp_actual[2]) - float(pos[2])) / np.mean(escalas["err"])), LIMITE_FEATURE)
+    estabilidad_angular_rp = max(-float(np.linalg.norm(ang_rp_n)), LIMITE_FEATURE)
+    velocidad              = max(-float(np.linalg.norm(vel_n)), LIMITE_FEATURE)
+    oscilacion              = max(-float(np.mean(np.abs(rpm_delta_n))), LIMITE_FEATURE)
+    aceleracion_vertical   = max(-abs(accel_vertical / G), LIMITE_FEATURE)
     progreso                = float(np.clip(dist_prev_z - dist_actual_z, -1.0, 1.0))
     penalizacion_caida      = CAIDA_PENALTY if es_caida_ahora else 0.0
 
