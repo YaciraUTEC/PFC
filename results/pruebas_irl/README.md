@@ -96,9 +96,34 @@ con este arreglo.
 
 - [x] Registrar `outcome` por episodio en `rollout_mu()` — hecho, es lo que
       reveló las caídas en la prueba 05.
-- [ ] Prueba 06: primera corrida con `penalizacion_caida` — confirmar si baja
-      la tasa de caídas y si `proximidad_objetivo`/`estabilidad_altura`/
-      `oscilacion` finalmente logran peso positivo.
-- [ ] Si después de la prueba 06 las caídas bajan pero la tarea sigue viéndose
-      "más fácil" que la del PID por el currículo de distancia, retomar esa
-      hipótesis como secundaria (ya no es la explicación principal).
+
+## Prueba 06 — primera corrida con `penalizacion_caida` (CAIDA_PENALTY=-1.0)
+
+Config: igual que prueba 05, más la nueva 8va feature `penalizacion_caida`.
+
+- Pesos finales: `[0, 0, 0.026, 0.408, 0, 0.011, 0.911, 0.053]`
+- Margen: 22.26 (mejora leve desde 23.87 de la prueba 05)
+- Caídas promedio por iteración: ~6.7 de 10 (67%) — **prácticamente igual**
+  que la prueba 05 (~64%), no mejoró.
+
+**El mecanismo funcionó** (peso de `penalizacion_caida` salió positivo, 0.053,
+no quedó en 0 como las otras 3 problemáticas) — pero **demasiado chico** para
+cambiar el comportamiento real de PPO. Causa: `penalizacion_caida` solo se
+activa una vez por episodio (con descuento), mientras que features como
+`progreso` se acumulan en cada paso — incluso con ~65-70% de caídas, el
+déficit acumulado de una feature "de un solo evento" queda muy por debajo del
+de una feature "de cada paso" en términos puramente numéricos.
+
+**Arreglo aplicado** (commit `10d51318`): subir `CAIDA_PENALTY` de -1.0 a
+-20.0 — mismo mecanismo, pero con suficiente magnitud para competir con las
+demás features en la comparación. No requiere recalcular `mu_experto`/
+`mu_escala` (el PID nunca activa esta feature, así que su valor sigue siendo
+exactamente 0 sin importar la magnitud).
+
+## Pendiente
+
+- [ ] Prueba 07: primera corrida con `CAIDA_PENALTY=-20.0` — confirmar si
+      ahora sí baja la tasa de caídas.
+- [ ] Si -20 tampoco alcanza, considerar subir más, o reconsiderar el diseño
+      (por ejemplo, aplicar el golpe en más de un paso alrededor de la caída,
+      no solo en el instante exacto, para que el descuento no lo atenúe tanto).
