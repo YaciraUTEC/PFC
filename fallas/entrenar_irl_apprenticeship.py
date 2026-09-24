@@ -55,20 +55,25 @@ SEARCH_LOG_DIR  = _ROOT / "results" / "irl_search_logs"
 
 
 def rollout_mu(env, model, n_episodios, gamma):
-    """Devuelve (mu, duracion_media_pasos). Cada episodio se normaliza por su
-    horizonte descontado efectivo (ver irl_features.horizonte_efectivo) antes
-    de promediar entre episodios, para que uno que termina antes (por una
-    caída, o por una ruta corta del currículo de distancia) no parezca
-    "mejor que el experto" solo por haber acumulado menos costo total.
-    duracion_media_pasos se guarda además para diagnóstico (ver
-    distancia_max())."""
+    """Devuelve (mu, duracion_media_pasos, conteo_outcomes). Cada episodio se
+    normaliza por su horizonte descontado efectivo (ver
+    irl_features.horizonte_efectivo) antes de promediar entre episodios, para
+    que uno que termina antes (por una caída, o por una ruta corta del
+    currículo de distancia) no parezca "mejor que el experto" solo por haber
+    acumulado menos costo total. duracion_media_pasos y conteo_outcomes se
+    guardan para diagnóstico (ver distancia_max()): conteo_outcomes es un
+    dict {"cayo": n, "aterrizo": n, "llego": n, "tiempo": n} -- permite
+    distinguir si las candidatas terminan pronto porque se caen o porque
+    completan rutas cortas sin problema."""
     retornos   = []
     duraciones = []
+    outcomes   = {"cayo": 0, "aterrizo": 0, "llego": 0, "tiempo": 0}
     for _ in range(n_episodios):
         obs, _ = env.reset()
         done = False
         acumulado = np.zeros(N_FEATURES, dtype=np.float64)
         t = 0
+        info = {}
         while not done:
             if model is None:
                 accion = np.zeros(4, dtype=np.float32)
@@ -81,7 +86,8 @@ def rollout_mu(env, model, n_episodios, gamma):
                 break
         retornos.append(acumulado / horizonte_efectivo(t, gamma))
         duraciones.append(t)
-    return np.mean(retornos, axis=0), float(np.mean(duraciones))
+        outcomes[info.get("outcome", "tiempo")] += 1
+    return np.mean(retornos, axis=0), float(np.mean(duraciones)), outcomes
 
 
 def proyectar(mu_bar_prev, mu_i, mu_experto):
@@ -176,10 +182,10 @@ def main():
     eval_env.set_max_distance(distancia_0)
     print(f"\nCalculando mu^(0) (política baseline: Mamba sin corrección, "
           f"techo_falla={techo_0*100:.1f}%, distancia_max={distancia_0:.2f}m)...")
-    mu_0, duracion_0 = rollout_mu(eval_env, None, args.eval_episodios, GAMMA)
+    mu_0, duracion_0, outcomes_0 = rollout_mu(eval_env, None, args.eval_episodios, GAMMA)
     mu_0_r = mu_0 / mu_escala
     print(f"mu^(0):", dict(zip(FEATURE_NAMES, mu_0.round(4))),
-          f"| duración media = {duracion_0:.1f} pasos")
+          f"| duración media = {duracion_0:.1f} pasos | outcomes = {outcomes_0}")
 
     
     w_uniforme = np.ones(N_FEATURES, dtype=np.float64) / np.sqrt(N_FEATURES)
@@ -200,7 +206,7 @@ def main():
 
         eval_env.set_max_fault(techo)         # evaluar con el mismo techo con que se entrenó
         eval_env.set_max_distance(distancia)  # y la misma distancia máxima
-        mu_i, duracion_i = rollout_mu(eval_env, model, args.eval_episodios, GAMMA)
+        mu_i, duracion_i, outcomes_i = rollout_mu(eval_env, model, args.eval_episodios, GAMMA)
         mu_i_r = mu_i / mu_escala
         mu_bar_r = proyectar(mu_bar_r, mu_i_r, mu_experto_r)
         t_i = float(np.linalg.norm(mu_experto_r - mu_bar_r))
@@ -208,10 +214,12 @@ def main():
         w_reward   = restringir_w(w_busqueda, w_reward)
 
         print(f"mu^({i}) (crudo):", dict(zip(FEATURE_NAMES, mu_i.round(4))),
-              f"| duración media = {duracion_i:.1f} pasos")
+              f"| duración media = {duracion_i:.1f} pasos | outcomes = {outcomes_i}")
         print(f"margen t^({i}) (espacio rescalado) = {t_i:.4f}")
         convergencia.append({
             "iteracion": i, "margen": t_i, "duracion_media_pasos": duracion_i,
+            "cayo": outcomes_i["cayo"], "aterrizo": outcomes_i["aterrizo"],
+            "llego": outcomes_i["llego"], "tiempo": outcomes_i["tiempo"],
             "w_reward_usado": w_reward_usado.tolist(),
             "w_reward_siguiente_propuesto": w_reward.tolist(),
         })
@@ -240,6 +248,7 @@ def main():
     with open(CONVERGENCIA_PATH, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=[
             "iteracion", "margen", "duracion_media_pasos",
+            "cayo", "aterrizo", "llego", "tiempo",
             "w_reward_usado", "w_reward_siguiente_propuesto",
         ])
         writer.writeheader()

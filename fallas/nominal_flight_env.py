@@ -211,22 +211,25 @@ class NominalFlightEnv(gym.Env):
         self.vel_z_anterior = float(vel[2])
         self.falla_activa   = falla_activa
 
-        done = False
+        done    = False
+        outcome = None
         if es_caida(obs_raw, pos, self.paso):
-            done = True
+            done, outcome = True, "cayo"
         elif es_aterrizaje(obs_raw, pos, self.paso):
-            done = True
+            done, outcome = True, "aterrizo"
         elif np.linalg.norm(ta - pos) < UMBRAL_WAYPOINT:
             self.wp_idx += 1
             if self.wp_idx >= len(self.waypoints):
-                done = True
-        if self.paso >= self.max_pasos or term or trunc:
-            done = True
+                done, outcome = True, "llego"
+        if (self.paso >= self.max_pasos or term or trunc) and not done:
+            done, outcome = True, "tiempo"
 
         # Recalcular ta por si wp_idx acaba de avanzar
         ta_obs = self.waypoints[min(self.wp_idx, len(self.waypoints) - 1)]
 
         info = {"phi": vec}
+        if done:
+            info["outcome"] = outcome
         return self._build_obs(obs_raw, ta_obs), reward, done, False, info
 
     def close(self):
