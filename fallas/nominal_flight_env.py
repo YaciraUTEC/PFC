@@ -175,6 +175,7 @@ class NominalFlightEnv(gym.Env):
         ang_vel = obs_raw[0][13:16]
         vel     = obs_raw[0][10:13]
         self.paso += 1
+        es_caida_ahora = es_caida(obs_raw, pos, self.paso)
 
         ta = self.waypoints[min(self.wp_idx, len(self.waypoints) - 1)]
         self.ventana.append(normalizar_estado(obs_raw, ta, self.stats))
@@ -205,6 +206,7 @@ class NominalFlightEnv(gym.Env):
         vec, self.dist_prev_z = phi(
             pos, rpy, ang_vel, vel, ta, self.punto_B, rpm_final,
             self.rpm_anterior, self.vel_z_anterior, self.dist_prev_z, self.escalas,
+            es_caida_ahora=es_caida_ahora,
         )
         reward = float(np.dot(self.w, vec))
         self.rpm_anterior   = rpm_final.astype(np.float64)
@@ -213,7 +215,7 @@ class NominalFlightEnv(gym.Env):
 
         done    = False
         outcome = None
-        if es_caida(obs_raw, pos, self.paso):
+        if es_caida_ahora:
             done, outcome = True, "cayo"
         elif es_aterrizaje(obs_raw, pos, self.paso):
             done, outcome = True, "aterrizo"

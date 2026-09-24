@@ -219,10 +219,12 @@ class FaultResidualEnvIRL(gym.Env):
         if self.paso >= self.t_falla:
             rpy = obs_raw[0][7:10]
             ang_vel = obs_raw[0][13:16]
+            es_caida_ahora = es_caida(obs_raw, pos, self.paso)
 
             vec, self.dist_prev_z = phi(
                 pos, rpy, ang_vel, vel, ta, self.punto_B, action_final,
                 self.rpm_anterior, self.vel_z_anterior, self.dist_prev_z, self.escalas,
+                es_caida_ahora=es_caida_ahora,
             )
             reward = float(np.dot(self.w, vec))
 
@@ -234,7 +236,7 @@ class FaultResidualEnvIRL(gym.Env):
                     outcome = "llego"
 
             if not done:
-                if es_caida(obs_raw, pos, self.paso):
+                if es_caida_ahora:
                     done    = True
                     outcome = "cayo"
                 elif es_aterrizaje(obs_raw, pos, self.paso):

@@ -41,8 +41,11 @@ FEATURE_NAMES = [
     "oscilacion",
     "aceleracion_vertical",
     "progreso",
+    "penalizacion_caida",
 ]
 N_FEATURES = len(FEATURE_NAMES)
+
+CAIDA_PENALTY = -1.0  # magnitud fija del "golpe" al caer (ver phi())
 
 
 def cargar_escalas(stats):
@@ -63,9 +66,9 @@ def distancia_z(pos, punto_final, escalas):
 
 
 def phi(pos, rpy, ang_vel, vel, wp_actual, punto_final, rpm, rpm_anterior,
-        vel_z_anterior, dist_prev_z, escalas):
+        vel_z_anterior, dist_prev_z, escalas, es_caida_ahora=False):
     """
-    Calcula φ(s,a) (7,) y la distancia actual al destino final (para pasarla
+    Calcula φ(s,a) (8,) y la distancia actual al destino final (para pasarla
     como dist_prev_z en el siguiente paso). Entradas físicas crudas (no
     normalizadas por z-score de estado, salvo la escala interna de φ).
 
@@ -79,6 +82,15 @@ def phi(pos, rpy, ang_vel, vel, wp_actual, punto_final, rpm, rpm_anterior,
     dist_prev_z  : float — distancia_z() a punto_final del paso anterior (usar
                    distancia_z(pos_inicial, punto_final, escalas) en el primer paso)
     escalas      : dict de cargar_escalas()
+    es_caida_ahora : bool — True si este paso es el que dispara es_caida() en el
+                   entorno que llama a phi(). El PID (experto) nunca se cae, así
+                   que mu_experto en esta componente es ~0 siempre; una política
+                   candidata que se cae mucho queda con mu_i bien negativo ahí,
+                   lo que hace que la búsqueda le asigne peso positivo de forma
+                   automática -- sin esto, nada en la recompensa notaba que
+                   caerse es catastrófico (ver resultados de "prueba_05" en
+                   results/pruebas_irl/, donde 40-100% de los episodios de
+                   evaluación terminaban en caída en cada iteración).
 
     Devuelve (phi_vec, dist_actual_z).
     """
@@ -96,10 +108,12 @@ def phi(pos, rpy, ang_vel, vel, wp_actual, punto_final, rpm, rpm_anterior,
     oscilacion              = -float(np.mean(np.abs(rpm_delta_n)))
     aceleracion_vertical   = -abs(accel_vertical / G)
     progreso                = float(np.clip(dist_prev_z - dist_actual_z, -1.0, 1.0))
+    penalizacion_caida      = CAIDA_PENALTY if es_caida_ahora else 0.0
 
     vec = np.array([
         proximidad_objetivo, estabilidad_altura, estabilidad_angular_rp,
         velocidad, oscilacion, aceleracion_vertical, progreso,
+        penalizacion_caida,
     ], dtype=np.float64)
 
     return vec, dist_actual_z

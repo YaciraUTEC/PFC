@@ -32,6 +32,19 @@ def cargar_stats(path):
     return {k: (v[0], v[1]) for k, v in data.items()}
 
 
+ANGULO_CRASH = np.radians(35)  # igual que comparar_base.ANGULO_CRASH
+
+
+def es_caida_simple(rpy, vel, pos, paso):
+    """Misma lógica que comparar_base.es_caida(), duplicada aquí (no se
+    importa comparar_base para no arrastrar la dependencia de mamba_ssm)."""
+    if pos[2] >= 0.05 or paso <= 10:
+        return False
+    actitud_critica = abs(rpy[0]) > ANGULO_CRASH or abs(rpy[1]) > ANGULO_CRASH
+    cayendo = vel[2] < -0.5
+    return actitud_critica or cayendo
+
+
 from irl_features import (  # noqa: E402
     phi, distancia_z, cargar_escalas, N_FEATURES, FEATURE_NAMES, HOVER_RPM,
     horizonte_efectivo,
@@ -91,9 +104,11 @@ def main():
         for t in range(len(ep_df)):
             rpm_anterior   = rpm[t - 1] if t > 0 else np.full(4, HOVER_RPM, dtype=np.float64)
             vel_z_anterior = vel[t - 1, 2] if t > 0 else vel[t, 2]
+            es_caida_ahora = es_caida_simple(rpy[t], vel[t], pos[t], t)
             vec, dist_prev_z = phi(
                 pos[t], rpy[t], ang_vel[t], vel[t], wp_actual[t], punto_final, rpm[t],
                 rpm_anterior, vel_z_anterior, dist_prev_z, escalas,
+                es_caida_ahora=es_caida_ahora,
             )
             acumulado += (GAMMA ** t) * vec
         # Normaliza por el horizonte descontado efectivo del episodio, para
