@@ -45,7 +45,13 @@ FEATURE_NAMES = [
 ]
 N_FEATURES = len(FEATURE_NAMES)
 
-CAIDA_PENALTY = -1.0  # magnitud fija del "golpe" al caer (ver phi())
+CAIDA_PENALTY = -20.0  # magnitud fija del "golpe" al caer (ver phi()) -- subido
+                        # de -1.0: al ocurrir una sola vez por episodio (con
+                        # descuento), -1.0 quedaba invisible frente a features
+                        # como progreso que se acumulan en cada paso; con -20
+                        # el deficit resultante es comparable en magnitud
+                        # (ver prueba_06 en results/pruebas_irl/, penalizacion_caida
+                        # obtuvo solo 0.05 de peso pese a ~65-70% de caidas)
 
 
 def cargar_escalas(stats):
