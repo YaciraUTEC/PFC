@@ -140,6 +140,24 @@ def entrenar_politica(w, timesteps, n_envs, seed, iteracion, max_fault_pct, max_
     return model
 
 
+class _Tee:
+    """Escribe simultáneamente a varios streams (ej. consola + archivo) --
+    para que la corrida quede archivada con su log completo sin tener que
+    acordarse de anteponer `tee` al correr el script manualmente."""
+
+    def __init__(self, *streams):
+        self.streams = streams
+
+    def write(self, data):
+        for s in self.streams:
+            s.write(data)
+            s.flush()
+
+    def flush(self):
+        for s in self.streams:
+            s.flush()
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--iteraciones", type=int, default=15)
@@ -156,6 +174,16 @@ def main():
         args.timesteps_por_iter = 4_000
         args.eval_episodios = 2
         args.n_envs = 2
+
+    # Carpeta de archivado de esta corrida, creada desde ya (no solo al final)
+    # para poder ir escribiendo el log de consola ahí mismo mientras corre --
+    # así, aunque la corrida se interrumpa a medias, el log ya está guardado.
+    marca = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    carpeta_corrida = PRUEBAS_DIR / f"corrida_{marca}"
+    carpeta_corrida.mkdir(parents=True, exist_ok=True)
+    log_file = open(carpeta_corrida / "log_consola.txt", "w", encoding="utf-8")
+    sys.stdout = _Tee(sys.__stdout__, log_file)
+    print(f"(Esta corrida se está archivando en {carpeta_corrida})")
 
     if not MU_EXPERTO_PATH.exists() or not ESCALA_PATH.exists():
         raise FileNotFoundError(
@@ -251,19 +279,16 @@ def main():
         writer.writerows(convergencia)
     print(f"Convergencia guardada en {CONVERGENCIA_PATH}")
 
-    # Archiva esta corrida en una carpeta propia con marca de tiempo -- sin
-    # esto, WEIGHTS_PATH/CONVERGENCIA_PATH se sobrescriben en la siguiente
-    # corrida y no queda registro de la anterior (así se perdieron los
-    # archivos crudos de las pruebas 07 y 08, que solo quedaron documentadas
-    # en el chat de esta sesión, no en disco).
-    marca = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    carpeta_corrida = PRUEBAS_DIR / f"corrida_{marca}"
-    carpeta_corrida.mkdir(parents=True, exist_ok=True)
+    # carpeta_corrida ya se creó al inicio de main() (junto con el log de
+    # consola) -- aquí solo se copian los resultados finales, para que todo
+    # (log + pesos + convergencia) quede junto en la misma carpeta.
     shutil.copy(WEIGHTS_PATH, carpeta_corrida / "irl_weights.json")
     shutil.copy(CONVERGENCIA_PATH, carpeta_corrida / "irl_convergencia.csv")
     print(f"Corrida archivada en {carpeta_corrida}")
 
     eval_env.close()
+    log_file.close()
+    sys.stdout = sys.__stdout__
 
 
 if __name__ == "__main__":
