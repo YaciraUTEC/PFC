@@ -1,7 +1,9 @@
 
 import argparse
 import csv
+import datetime
 import json
+import shutil
 import sys
 from pathlib import Path
 
@@ -52,6 +54,7 @@ ESCALA_PATH     = _ROOT / "results" / "mu_escala.npy"
 WEIGHTS_PATH    = _ROOT / "results" / "irl_weights.json"
 CONVERGENCIA_PATH = _ROOT / "results" / "irl_convergencia.csv"
 SEARCH_LOG_DIR  = _ROOT / "results" / "irl_search_logs"
+PRUEBAS_DIR     = _ROOT / "results" / "pruebas_irl"
 
 
 def rollout_mu(env, model, n_episodios, gamma):
@@ -247,6 +250,18 @@ def main():
         writer.writeheader()
         writer.writerows(convergencia)
     print(f"Convergencia guardada en {CONVERGENCIA_PATH}")
+
+    # Archiva esta corrida en una carpeta propia con marca de tiempo -- sin
+    # esto, WEIGHTS_PATH/CONVERGENCIA_PATH se sobrescriben en la siguiente
+    # corrida y no queda registro de la anterior (así se perdieron los
+    # archivos crudos de las pruebas 07 y 08, que solo quedaron documentadas
+    # en el chat de esta sesión, no en disco).
+    marca = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    carpeta_corrida = PRUEBAS_DIR / f"corrida_{marca}"
+    carpeta_corrida.mkdir(parents=True, exist_ok=True)
+    shutil.copy(WEIGHTS_PATH, carpeta_corrida / "irl_weights.json")
+    shutil.copy(CONVERGENCIA_PATH, carpeta_corrida / "irl_convergencia.csv")
+    print(f"Corrida archivada en {carpeta_corrida}")
 
     eval_env.close()
 

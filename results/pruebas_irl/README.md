@@ -15,6 +15,9 @@ Orden de features en todos los vectores `w`:
 | **01** — currículo de severidad | 15 iter, 500 pasos/iter, con inyección de falla en vivo + currículo de severidad (2%→80%). Sin currículo de distancia, sin normalización por horizonte. | `[0, 0, 0.57, 0.75, 0, 0, 0.35]` | 18.07 (estancado desde iter 1: 18.14→18.07) | No registrada (aún no existía la columna) | `proximidad_objetivo`, `estabilidad_altura` y `oscilacion` quedaron en 0.0 en **las 15 iteraciones sin excepción**. `velocidad` domina. Margen prácticamente plano — la búsqueda no converge, se estanca desde la primera iteración. |
 | **02** — 30 iteraciones, 1000 pasos | Igual que 01 pero con el doble de presupuesto (30 iter, 1000 pasos/iter), para descartar que fuera un problema de entrenamiento insuficiente. | `[0, 0, 0.96, 0.08, 0.25, 0, 0]` | 17.99 | No registrada | Más presupuesto **no** resolvió el estancamiento (18.07→17.99, cambio marginal). Además `progreso` —que sí se mantenía positivo en la prueba 01— también cayó a 0. Confirma que el problema no es de presupuesto de entrenamiento, es estructural. |
 | **03** — currículo de distancia A→B | 15 iter, 500 pasos/iter, se agrega currículo de distancia A→B (empieza en 0.8m, sube a ~5.66m) + registro de duración de episodio. Sin normalización por horizonte todavía. | `[0, 0, 0, 0, 0, 0, 1.0]` | 15.96 (primera mejora real: 16.44→15.96) | 113–222 pasos (vs. ~338 del PID) — **nunca se acerca** a la duración del experto, ni siquiera en la iteración con distancia máxima habilitada. | El margen sí se mueve por primera vez, pero el resultado colapsa aún más: **todas** las features menos `progreso` quedan en 0. La columna de duración confirma la hipótesis: los episodios candidatos son sistemáticamente más cortos que los del PID, lo que hace que las features "siempre negativas" (que se acumulan sin cancelarse) parezcan mejores que el experto solo por acumular menos pasos — no por volar mejor. |
+| **07** — `CAIDA_PENALTY=-20.0` | Igual que prueba 06, subiendo `CAIDA_PENALTY` de -1.0 a -20.0 (commit `10d51318`). | `[0, 0, 0.20, 0.44, 0, 0, 0.84, 0.27]` | 20.66 (mejora desde 22.26 de prueba 06) | 113–227 pasos | El peso de `penalizacion_caida` subió 5x (0.053→0.268) y el margen mejoró, pero la tasa de caídas siguió en ~67%, igual que la prueba 06 — sugiere que el cuello de botella real es el presupuesto de entrenamiento de PPO (`--timesteps-por-iter=500`, ~2048 pasos reales), no la recompensa. |
+| **08** — features acotadas, sin clip de signo (piso -3.0/-12.0) | Rama `bounded-features-no-sign-clip`. Se quitó el clip `w>=0` de `restringir_w()` (solo queda `‖w‖₂≤1`, fiel a Abbeel&Ng Eq.12) y se acotaron las 6 features sin techo con `LIMITE_FEATURE=-3.0` / `LIMITE_FEATURE_RUTA=-12.0`, para que un `w<0` no genere recompensa sin límite. 500 pasos/iter. | `[0, 0, 0.045, 0.167, 0, 0, 0.687, 0.706]` | 22.13 (peor que prueba 07) | 121–237 pasos | `proximidad_objetivo`, `estabilidad_altura`, `oscilacion` siguieron en exactamente 0.0 en las 15 iteraciones, pese a quitar el clip. Hipótesis en su momento: el propio PID ya saturaba el piso -3.0/-12.0 (confirmado después con histograma), dejándolo indistinguible de las candidatas en esas dimensiones. |
+| **09** — piso calibrado con histograma real (-8.0/-30.0) | Igual que prueba 08, pero con los pisos recalibrados a partir del histograma de valores crudos del PID sobre sus 270,664 pasos reales (`fallas/histograma_limites_features.py`) — `LIMITE_FEATURE=-8.0`, `LIMITE_FEATURE_RUTA=-30.0`, calibrados para que el 0% de los pasos reales del PID queden saturados. 500 pasos/iter (nota: se buscaba probar con 1,000,000, pero por las marcas de tiempo de los checkpoints esta corrida en particular usó 500). | `[0, 0, 0.025, 0.163, 0, 0, 0.645, 0.746]` | 23.59 | 136–225 pasos | Las mismas 3 features siguieron en exactamente 0.0, **incluso sin ninguna saturación real del PID** — esto refuta la hipótesis de la saturación como causa (única). La causa real de por qué esas 3 dimensiones quedan en 0 sigue sin confirmarse; hace falta el log crudo de `mu^(i)` por iteración para diagnosticarla con certeza (pendiente). |
 
 ## Diagnóstico y arreglo aplicado después de la prueba 03
 
@@ -122,8 +125,25 @@ exactamente 0 sin importar la magnitud).
 
 ## Pendiente
 
-- [ ] Prueba 07: primera corrida con `CAIDA_PENALTY=-20.0` — confirmar si
-      ahora sí baja la tasa de caídas.
-- [ ] Si -20 tampoco alcanza, considerar subir más, o reconsiderar el diseño
-      (por ejemplo, aplicar el golpe en más de un paso alrededor de la caída,
-      no solo en el instante exacto, para que el descuento no lo atenúe tanto).
+- [x] Prueba 07: primera corrida con `CAIDA_PENALTY=-20.0` — el peso subió,
+      pero la tasa de caídas no bajó (~67%, igual que antes). Apunta a
+      presupuesto de entrenamiento insuficiente, no a la recompensa.
+- [x] Prueba 08: quitar el clip `w>=0` de `restringir_w()` (rama
+      `bounded-features-no-sign-clip`), acotando antes las features para que
+      sea seguro. No destrabó `proximidad_objetivo`/`estabilidad_altura`/
+      `oscilacion`.
+- [x] Prueba 09: recalibrar los pisos con el histograma real del PID
+      (`fallas/histograma_limites_features.py`), eliminando toda saturación
+      del propio experto. Tampoco destrabó las 3 features — descarta la
+      saturación como causa única.
+- [ ] **Diagnóstico pendiente**: por qué `proximidad_objetivo`,
+      `estabilidad_altura` y `oscilacion` siguen en w=0 en TODAS las pruebas
+      (01 a 09), incluso sin clip de signo y sin saturación. Se necesita el
+      log de consola con `mu^(i) (crudo)` de cada iteración de una corrida
+      reciente para comparar directamente contra `mu_experto` y ver en qué
+      punto se congela el gap en esas 3 dimensiones.
+- [ ] Confirmar si el presupuesto de entrenamiento (`--timesteps-por-iter`)
+      es el cuello de botella real de la tasa de caídas (~65-70% estancada
+      desde prueba 05) — pendiente correr con el valor ya subido a
+      1,000,000 en el código (las pruebas 08/09 se corrieron con 500 por
+      error/rapidez de prueba).
