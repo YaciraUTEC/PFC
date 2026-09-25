@@ -36,6 +36,10 @@ def distancia_max(iteracion, total_iteraciones):
 
 MU_EXPERTO_PATH = _ROOT / "results" / "mu_experto.npy"
 ESCALA_PATH     = _ROOT / "results" / "mu_escala.npy"
+MU_EXPERTO_MAMBA_PATH = _ROOT / "results" / "mu_experto_mamba.npy"
+ESCALA_MAMBA_PATH     = _ROOT / "results" / "mu_escala_mamba.npy"
+MU_EXPERTO_PID_100_PATH = _ROOT / "results" / "mu_experto_pid_100ep.npy"
+ESCALA_PID_100_PATH     = _ROOT / "results" / "mu_escala_pid_100ep.npy"
 WEIGHTS_PATH    = _ROOT / "results" / "irl_weights.json"
 CONVERGENCIA_PATH = _ROOT / "results" / "irl_convergencia.csv"
 SEARCH_LOG_DIR  = _ROOT / "results" / "irl_search_logs"
@@ -131,6 +135,8 @@ def main():
     parser.add_argument("--timesteps-por-iter", type=int, default=1000)
     parser.add_argument("--n-envs", type=int, default=4)
     parser.add_argument("--eval-episodios", type=int, default=10)
+    parser.add_argument("--experto", type=str, default="pid", choices=["pid", "mamba", "pid-100"],
+                        help="Experto para IRL: 'pid' (800 ep), 'pid-100' (100 ep), o 'mamba' (100 ep)")
     parser.add_argument("--smoke-test", action="store_true",
                         help="corrida corta para validar que el pipeline no rompe")
     args = parser.parse_args()
@@ -148,12 +154,26 @@ def main():
     sys.stdout = _Tee(sys.__stdout__, log_file)
     print(f"(Esta corrida se está archivando en {carpeta_corrida})")
 
-    if not MU_EXPERTO_PATH.exists() or not ESCALA_PATH.exists():
+    if args.experto == "mamba":
+        mu_path = MU_EXPERTO_MAMBA_PATH
+        escala_path = ESCALA_MAMBA_PATH
+        experto_nombre = "Mamba (100 ep)"
+    elif args.experto == "pid-100":
+        mu_path = MU_EXPERTO_PID_100_PATH
+        escala_path = ESCALA_PID_100_PATH
+        experto_nombre = "PID (100 ep)"
+    else:  # "pid"
+        mu_path = MU_EXPERTO_PATH
+        escala_path = ESCALA_PATH
+        experto_nombre = "PID (800 ep)"
+
+    if not mu_path.exists() or not escala_path.exists():
         raise FileNotFoundError(
-            f"Falta {MU_EXPERTO_PATH} o {ESCALA_PATH}. Corre primero calcular_mu_experto.py"
+            f"Falta {mu_path} o {escala_path}. Corre primero calcular_mu_experto*.py"
         )
-    mu_experto = np.load(MU_EXPERTO_PATH)
-    mu_escala  = np.load(ESCALA_PATH)
+    mu_experto = np.load(mu_path)
+    mu_escala  = np.load(escala_path)
+    print(f"Experto: {experto_nombre}")
     print("mu_experto:", dict(zip(FEATURE_NAMES, mu_experto.round(4))))
     print("mu_escala (para que las 7 features pesen comparable en el margen):",
           dict(zip(FEATURE_NAMES, mu_escala.round(4))))
