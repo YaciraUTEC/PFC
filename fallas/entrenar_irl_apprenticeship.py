@@ -24,28 +24,13 @@ GAMMA = 0.99  # igual que gamma en entrenar_rl.py (PPO)
 
 
 def techo_falla(iteracion, total_iteraciones):
-    """
-    Currículo del techo de severidad entre iteraciones (no dentro de una
-    iteración, a diferencia de entrenar_rl.py, porque aquí cada iteración es
-    un entrenamiento corto e independiente, no un único entrenamiento largo).
-    iteracion=0 -> MIN_FAULT_PCT (usado para mu^(0), la política sin corrección).
-    iteracion=total_iteraciones -> MAX_FAULT_PCT.
-    """
+    
     progreso = iteracion / total_iteraciones
     return MIN_FAULT_PCT + progreso * (MAX_FAULT_PCT - MIN_FAULT_PCT)
 
 
 def distancia_max(iteracion, total_iteraciones):
-    """
-    Currículo de la distancia A->B, mismo mecanismo que techo_falla().
-    Empezar con rutas cortas reduce el riesgo de que la política candidata
-    se caiga antes de completar el episodio -- episodios más cortos acumulan
-    menos costo en las features "siempre negativas" de phi (proximidad_objetivo,
-    estabilidad_altura, oscilacion), haciendo que la candidata parezca mejor
-    que el experto en esas dimensiones sin serlo realmente (ver
-    irl_convergencia.csv de corridas anteriores, donde esas 3 quedaron en 0.0
-    de forma consistente en las 30 iteraciones).
-    """
+  
     progreso = iteracion / total_iteraciones
     return MIN_DIST + progreso * (MAX_DIST_AB - MIN_DIST)
 
@@ -96,22 +81,7 @@ def proyectar(mu_bar_prev, mu_i, mu_experto):
 
 
 def restringir_w(w_busqueda, w_anterior):
-    """
-    Normaliza w_busqueda a norma unitaria (||w||_2 <= 1) -- la única
-    restricción del algoritmo de Abbeel & Ng (2004), ver Eq. 12 del paper
-    (icml04-apprentice.pdf). No se recorta el signo: entre los commits
-    e9dca8ec y este, se forzaba w>=0 como parche para el bug de
-    "esfuerzo_motores" (un peso negativo en una feature sin techo daba
-    recompensa sin límite por empeorarla). Ahora que las features de
-    irl_features.phi() están acotadas (ver irl_features.LIMITE_FEATURE),
-    ese riesgo ya no existe, así que se puede volver a la restricción
-    original del paper -- necesario porque varias features tienen
-    mu_experto != 0 (ej. velocidad promedio del PID = -1.6, no 0), y con
-    w>=0 la búsqueda solo podía empujar esas features HACIA 0, nunca hacia
-    el valor real del experto cuando la candidata ya estaba "mejor que 0"
-    en esa dimensión (ver proximidad_objetivo/estabilidad_altura/oscilacion
-    atascadas en w=0 en las 7 pruebas de results/pruebas_irl/).
-    """
+
     norma = np.linalg.norm(w_busqueda)
     if norma < 1e-6:
         print("  [aviso] w_busqueda colapsó a ~0 - se mantiene el w anterior")
@@ -141,10 +111,6 @@ def entrenar_politica(w, timesteps, n_envs, seed, iteracion, max_fault_pct, max_
 
 
 class _Tee:
-    """Escribe simultáneamente a varios streams (ej. consola + archivo) --
-    para que la corrida quede archivada con su log completo sin tener que
-    acordarse de anteponer `tee` al correr el script manualmente."""
-
     def __init__(self, *streams):
         self.streams = streams
 
@@ -162,7 +128,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--iteraciones", type=int, default=15)
     parser.add_argument("--eps", type=float, default=0.05)
-    parser.add_argument("--timesteps-por-iter", type=int, default=1_000_000)
+    parser.add_argument("--timesteps-por-iter", type=int, default=500)
     parser.add_argument("--n-envs", type=int, default=4)
     parser.add_argument("--eval-episodios", type=int, default=10)
     parser.add_argument("--smoke-test", action="store_true",
@@ -175,9 +141,6 @@ def main():
         args.eval_episodios = 2
         args.n_envs = 2
 
-    # Carpeta de archivado de esta corrida, creada desde ya (no solo al final)
-    # para poder ir escribiendo el log de consola ahí mismo mientras corre --
-    # así, aunque la corrida se interrumpa a medias, el log ya está guardado.
     marca = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     carpeta_corrida = PRUEBAS_DIR / f"corrida_{marca}"
     carpeta_corrida.mkdir(parents=True, exist_ok=True)
@@ -279,9 +242,7 @@ def main():
         writer.writerows(convergencia)
     print(f"Convergencia guardada en {CONVERGENCIA_PATH}")
 
-    # carpeta_corrida ya se creó al inicio de main() (junto con el log de
-    # consola) -- aquí solo se copian los resultados finales, para que todo
-    # (log + pesos + convergencia) quede junto en la misma carpeta.
+
     shutil.copy(WEIGHTS_PATH, carpeta_corrida / "irl_weights.json")
     shutil.copy(CONVERGENCIA_PATH, carpeta_corrida / "irl_convergencia.csv")
     print(f"Corrida archivada en {carpeta_corrida}")
