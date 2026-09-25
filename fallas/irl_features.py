@@ -53,49 +53,53 @@ CAIDA_PENALTY = -20.0  # magnitud fija del "golpe" al caer (ver phi()) -- subido
                         # (ver prueba_06 en results/pruebas_irl/, penalizacion_caida
                         # obtuvo solo 0.05 de peso pese a ~65-70% de caidas)
 
-LIMITE_FEATURE = -3.0  # piso para las 6 features de "distancia/magnitud" (todas
-                        # menos progreso y penalizacion_caida, que ya estan
-                        # acotadas por construccion: progreso via np.clip(-1,1),
-                        # penalizacion_caida porque solo toma dos valores fijos).
-                        # Sin este piso, esas 6 son costos sin techo (ej.
-                        # velocidad = -||v||, crece sin límite si el dron se
-                        # descontrola) -- eso fue justo lo que causó el bug de
-                        # "esfuerzo_motores" en la versión anterior de 8 features:
-                        # un peso w<0 en una feature sin techo le da a PPO una
-                        # recompensa sin límite por empeorarla. El algoritmo de
-                        # Abbeel & Ng (arXiv/ICML04) no exige w>=0, solo
-                        # ||w||_2<=1 (ver restringir_w en
+LIMITE_FEATURE = -8.0  # piso para las 4 features de "estado estacionario"
+                        # (estabilidad_angular_rp, velocidad, oscilacion,
+                        # aceleracion_vertical). Sin este piso son costos sin
+                        # techo (ej. velocidad = -||v||, crece sin límite si el
+                        # dron se descontrola) -- eso fue justo lo que causó el
+                        # bug de "esfuerzo_motores" en la versión anterior de 8
+                        # features: un peso w<0 en una feature sin techo le da
+                        # a PPO una recompensa sin límite por empeorarla. El
+                        # algoritmo de Abbeel & Ng (arXiv/ICML04) no exige
+                        # w>=0, solo ||w||_2<=1 (ver restringir_w en
                         # entrenar_irl_apprenticeship.py) -- permitir w<0 es
                         # necesario para poder igualar features cuyo mu_experto
                         # no es 0 (ej. velocidad promedio del PID = -1.6, no 0,
-                        # porque el PID sí se mueve para llegar de A a B). Con
-                        # este piso, el peor caso por paso queda acotado sin
-                        # importar el signo de w, así que ya no hace falta
-                        # prohibir w<0 para tener esa garantía de seguridad.
-                        # 3.0 = 3 desviaciones estándar de la escala normal de
-                        # vuelo (escalas ya normaliza cada feature a ~O(1)).
-                        # Aplica a estabilidad_angular_rp, velocidad, oscilacion
-                        # y aceleracion_vertical -- son cantidades de "estado
-                        # estacionario" (su valor típico no cambia mucho a lo
-                        # largo del vuelo), así que 3 sigma ya cubre bien su
-                        # rango normal.
+                        # porque el PID sí se mueve para llegar de A a B).
+                        #
+                        # Valor calibrado con datos reales, no con una
+                        # convención arbitraria: se calculó el histograma de
+                        # cada feature cruda sobre los 270,664 pasos de los
+                        # 800 episodios del PID (scratchpad/histograma_thresholds.py).
+                        # El peor caso real fue estabilidad_angular_rp en
+                        # -7.05 -- con el valor anterior (-3.0), el propio PID
+                        # ya superaba el piso en 4.2% de sus pasos (6.4% en
+                        # velocidad), aplastando esos pasos al mismo valor y
+                        # perdiendo la señal de diferenciación ahí. -8.0 deja
+                        # el 100% de los pasos reales del PID sin saturar en
+                        # las 4 features, con margen, y sigue siendo un límite
+                        # finito (la garantía de seguridad no depende de qué
+                        # tan ajustado esté, solo de que exista).
 
-LIMITE_FEATURE_RUTA = -12.0  # piso específico para proximidad_objetivo y
+LIMITE_FEATURE_RUTA = -30.0  # piso específico para proximidad_objetivo y
                         # estabilidad_altura. A diferencia de las anteriores,
                         # estas dos SÍ varían mucho a lo largo de una ruta
                         # completa A->B (empiezan lejos del destino, terminan
-                        # cerca) -- con LIMITE_FEATURE=-3.0 el propio PID ya
-                        # saturaba ese piso en gran parte de su vuelo
-                        # (mu_experto pasó de -10.51/-3.63 crudo a -2.89/-2.46
-                        # acotado, ver commit de este cambio), lo que en la
-                        # prueba_08 dejó al experto y a las candidatas
-                        # "empatados" en el piso -- indistinguibles aunque
-                        # volaran distinto, y las 3 features seguían en w=0
-                        # pese a haber quitado el clip de no-negatividad.
-                        # -12.0 deja el promedio real del PID (~-10.5) sin
-                        # saturar, preservando la señal de la ruta completa,
-                        # mientras sigue acotando el peor caso (sigue siendo
-                        # un límite finito, sin importar el signo de w).
+                        # cerca), así que necesitan un rango mucho más amplio
+                        # que las de estado estacionario.
+                        #
+                        # Mismo histograma que LIMITE_FEATURE: el peor caso
+                        # real fue proximidad_objetivo en -26.42 (18.3% de los
+                        # pasos del PID superaban el valor anterior de -12.0 --
+                        # ver commit previo de este archivo, que ya había
+                        # identificado y corregido el mismo problema una vez,
+                        # con un valor que resultó ser insuficiente).
+                        # estabilidad_altura nunca se acerca a este piso (min
+                        # real -5.18), así que comparte el mismo valor sin
+                        # perder nada -- no hace falta un tercer piso.
+                        # -30.0 deja el 100% de los pasos reales del PID sin
+                        # saturar en ambas features, con margen.
 
 
 def cargar_escalas(stats):
