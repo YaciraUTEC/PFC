@@ -1,0 +1,26 @@
+{
+  "feature_names": [
+    "proximidad_objetivo",
+    "estabilidad_altura",
+    "estabilidad_angular_rp",
+    "velocidad",
+    "oscilacion",
+    "aceleracion_vertical",
+    "progreso",
+    "penalizacion_caida"
+  ],
+  "weights": [
+    -0.06277451827205861,
+    -0.7732700824546198,
+    0.13854100816783216,
+    0.06519671527071771,
+    -0.4556239284066001,
+    0.18574284475345088,
+    0.16518763706987838,
+    0.32448111324942935
+  ],
+  "margen": 21.428977773463156,
+  "iteracion_elegida": 15,
+  "iteraciones_totales": 15,
+  "escala_mu_aplicada": true
+}
