@@ -24,7 +24,7 @@ from fault_env_residual import FaultResidualEnv, DURACION_SEG as _DURACION_SEG
 
 T_FALLA_TRAIN  = 3.0   # igual que T_FALLA_SEG en comparar_base.py (solo --reward manual)
 MIN_FAULT_PCT  = 0.02
-MAX_FAULT_PCT  = 0.80
+MAX_FAULT_PCT  = 0.40  # consistente con nominal_flight_env.py (IRL)
 CURRICULUM_FRAC = 0.75
 
 
@@ -248,7 +248,8 @@ def train(timesteps: int, modelo: str, reward: str, t_falla_min: float, t_falla_
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--timesteps", type=int, default=1_000_000)  # igual que _5
-    parser.add_argument("--modelo", type=str, default="mamba", choices=["mamba", "lstm"])
+    parser.add_argument("--modelo", type=str, default="mamba", choices=["mamba", "lstm", "pid"],
+                        help="Base controller: 'mamba' (default), 'lstm', 'pid' (solo con --reward irl)")
     parser.add_argument("--reward", type=str, default="manual",
                         choices=["manual", "irl", "manual2", "hibrido"],
                         help="manual: fault_env_residual.py (sin cambios). "

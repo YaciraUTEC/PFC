@@ -9,7 +9,7 @@ Uso (WSL):
 Salida: results/falla_tesis.json
 """
 import argparse
-import sys, json
+import sys, json, time
 import numpy as np
 import torch
 from pathlib import Path
@@ -38,7 +38,7 @@ from comparar_base import (
 LSTM_MODEL_PATH  = str(_ROOT / "results" / "modelo_lstm.pth")
 MAMBA_MODEL_PATH = str(_ROOT / "results" / "modelo_mamba.pth")
 PPO_PATH_MANUAL  = str(_ROOT / "results" / "ppo_mamba_5" / "best_model.zip")
-PPO_PATH_IRL     = str(_ROOT / "results" / "ppo_mamba_irl_10" / "best_model.zip")
+PPO_PATH_IRL     = str(_ROOT / "results" / "ppo_compensador_mamba_irl_10.zip")  # Modelo entrenado con pesos de IRL
 OUTPUT_FILE      = str(_ROOT / "results" / "falla_tesis.json")
 DETECCION_MODEL_PATH = str(_ROOT / "results" / "modelo_deteccion_mamba.pth")
 STATS_DETECCION_PATH = str(_ROOT / "results" / "stats_deteccion.json")
@@ -48,7 +48,7 @@ SEVERIDADES = {
     "10pct": 0.90,
     "15pct": 0.85,
 }
-DELTA_MAX = 1500
+DELTA_MAX = 3000  # Aumentado para dar más autoridad al PPO residual
 Z_SUELO   = 0.1
 
 TIPOS = [
@@ -60,14 +60,20 @@ TIPOS = [
 ]
 
 
-def nueva_env(punto_A):
+def nueva_env(punto_A, gui=False):
     return CtrlAviary(
         drone_model=DroneModel.CF2X, num_drones=1,
         initial_xyzs=np.array(punto_A).reshape(1, 3),
         initial_rpys=np.zeros((1, 3)),
         physics=Physics.PYB, pyb_freq=SIM_FREQ, ctrl_freq=CTRL_FREQ,
-        gui=False, obstacles=False, user_debug_gui=False,
+        gui=gui, obstacles=False, user_debug_gui=False,
     )
+
+
+def _tiempo_real(env):
+    """Con --gui, espera un paso de control para que el vuelo se vea a velocidad real."""
+    if env.GUI:
+        time.sleep(env.CTRL_TIMESTEP)
 
 
 def resultado(pos_hist, llego, aterrizo, cayo, t_caida):
@@ -90,6 +96,7 @@ def volar_pid(env, waypoints, punto_B, severidad):
 
     for paso in range(int(DURACION_FALLA_SEG * CTRL_FREQ)):
         obs, _, term, trunc, _ = env.step(action)
+        _tiempo_real(env)
         pos = obs[0][0:3].copy()
         pos_hist.append(pos.tolist())
         ta = waypoints[min(wp_idx, len(waypoints) - 1)]
@@ -120,6 +127,7 @@ def volar_modelo(env, waypoints, punto_B, model, stats, device, severidad):
 
     for paso in range(int(DURACION_FALLA_SEG * CTRL_FREQ)):
         obs, _, term, trunc, _ = env.step(action)
+        _tiempo_real(env)
         pos = obs[0][0:3].copy()
         pos_hist.append(pos.tolist())
         ta = waypoints[min(wp_idx, len(waypoints) - 1)]
@@ -173,6 +181,7 @@ def volar_ppo(env, waypoints, punto_B, mamba_model, ppo, stats, device, severida
 
     for paso in range(int(DURACION_FALLA_SEG * CTRL_FREQ)):
         obs, _, term, trunc, _ = env.step(action)
+        _tiempo_real(env)
         pos = obs[0][0:3].copy()
         pos_hist.append(pos.tolist())
         ta = waypoints[min(wp_idx, len(waypoints) - 1)]
@@ -228,17 +237,37 @@ def main():
                              "falla_activa/fault_pct como verdad simulada. "
                              "detected: los recibe del modelo de detección Mamba entrenado.")
     parser.add_argument("--ppo", type=str, default="manual",
-                        choices=["manual", "irl"],
+                        choices=["manual", "irl", "irl-tesis", "manual2-tesis", "hibrido-tesis"],
                         help="manual (default, comportamiento sin cambios): ppo_mamba_5 "
                              "(recompensa manual). irl: ppo_mamba_irl_10 (recompensa "
-                             "aprendida vía Apprenticeship Learning).")
+                             "aprendida vía Apprenticeship Learning). <tipo>-tesis: modelo "
+                             "entrenado sobre estas 5 trayectorias con --reward <tipo> "
+                             "(entrenar_rl.py --rutas tesis).")
+    parser.add_argument("--perdida", type=int, default=None,
+                        help="evalúa solo esta pérdida del motor, en %% (ej: 10). "
+                             "Con --ppo irl-tesis carga el modelo entrenado con esa misma "
+                             "falla fija (entrenar_rl.py --rutas tesis --falla-fija 0.10). "
+                             "Default: 5, 10 y 15%%.")
+    parser.add_argument("--gui", action="store_true",
+                        help="abre la ventana de PyBullet y vuela a velocidad real "
+                             "para ver cada vuelo (más lento que sin --gui)")
     args = parser.parse_args()
 
-    ppo_path = PPO_PATH_IRL if args.ppo == "irl" else PPO_PATH_MANUAL
+    if args.ppo in ("manual", "irl"):
+        ppo_path = {"manual": PPO_PATH_MANUAL, "irl": PPO_PATH_IRL}[args.ppo]
+    else:
+        # <tipo>-tesis → ppo_compensador_mamba_<tipo>_tesis[_f<perdida>]_10.zip
+        tipo  = args.ppo.split("-")[0]
+        falla = f"_f{args.perdida}" if args.perdida is not None else ""
+        ppo_path = str(_ROOT / "results" / f"ppo_compensador_mamba_{tipo}_tesis{falla}_10.zip")
+    severidades = SEVERIDADES
+    if args.perdida is not None:
+        severidades = {f"{args.perdida}pct": round(1.0 - args.perdida / 100, 4)}
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"\nEvaluación con falla — 5 trayectorias × 3 severidades "
+    print(f"\nEvaluación con falla — 5 trayectorias × {len(severidades)} severidad(es) "
           f"| ppo={args.ppo} | fault_info={args.fault_info} | device={device}")
+    print(f"Modelo PPO: {ppo_path}")
     print("=" * 65)
 
     stats = cargar_stats(STATS_PATH)
@@ -256,7 +285,7 @@ def main():
     ppo = PPO.load(ppo_path)
 
     detector, stats_deteccion = None, None
-    sufijo = "" if args.ppo == "manual" else "_irl"
+    sufijo = "" if args.ppo == "manual" else "_" + args.ppo.replace("-", "_")
     if args.fault_info == "detected":
         from entrenar_deteccion import MambaDetector
         with open(STATS_DETECCION_PATH) as f:
@@ -265,6 +294,8 @@ def main():
         detector.load_state_dict(torch.load(DETECCION_MODEL_PATH, map_location=device))
         detector.to(device); detector.eval()
         sufijo += "_detected"
+    if args.perdida is not None:
+        sufijo += f"_p{args.perdida}"
     output_file = str(_ROOT / "results" / f"falla_tesis{sufijo}.json") if sufijo else OUTPUT_FILE
 
     resultados = []
@@ -284,24 +315,28 @@ def main():
             "escenarios": [],
         }
 
-        for nombre, sev in SEVERIDADES.items():
+        for nombre, sev in severidades.items():
             pct = round((1 - sev) * 100)
             print(f"\n  [{pct}% pérdida]")
 
-            env = nueva_env(punto_A)
+            env = nueva_env(punto_A, gui=args.gui)
 
+            if args.gui: print("    ▶ volando PID...")
             res_pid   = volar_pid(env, waypoints, punto_B, sev)
             print(f"    PID      : {res_pid['resultado']:8s}  err={res_pid['error_final']:.3f}m")
 
             env.INIT_XYZS = punto_A.reshape(1, 3)
+            if args.gui: print("    ▶ volando LSTM...")
             res_lstm  = volar_modelo(env, waypoints, punto_B, lstm_model,  stats, device, sev)
             print(f"    LSTM     : {res_lstm['resultado']:8s}  err={res_lstm['error_final']:.3f}m")
 
             env.INIT_XYZS = punto_A.reshape(1, 3)
+            if args.gui: print("    ▶ volando Mamba...")
             res_mamba = volar_modelo(env, waypoints, punto_B, mamba_model, stats, device, sev)
             print(f"    Mamba    : {res_mamba['resultado']:8s}  err={res_mamba['error_final']:.3f}m")
 
             env.INIT_XYZS = punto_A.reshape(1, 3)
+            if args.gui: print("    ▶ volando Mamba+PPO...")
             res_ppo   = volar_ppo(env, waypoints, punto_B, mamba_model, ppo, stats, device, sev,
                                   detector=detector, stats_deteccion=stats_deteccion)
             print(f"    Mamba+PPO: {res_ppo['resultado']:8s}  err={res_ppo['error_final']:.3f}m")

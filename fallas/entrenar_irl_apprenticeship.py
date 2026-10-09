@@ -36,13 +36,13 @@ def distancia_max(iteracion, total_iteraciones):
 
 MU_EXPERTO_PATH = _ROOT / "results" / "mu_experto.npy"
 ESCALA_PATH     = _ROOT / "results" / "mu_escala.npy"
-MU_EXPERTO_MAMBA_PATH = _ROOT / "results" / "mu_experto_mamba.npy"
-ESCALA_MAMBA_PATH     = _ROOT / "results" / "mu_escala_mamba.npy"
+MU_EXPERTO_MAMBA_PATH = _ROOT / "results" / "mu_experto_mamba_csv.npy"  # 800 episodios
+ESCALA_MAMBA_PATH     = _ROOT / "results" / "mu_escala_mamba_csv.npy"  # 800 episodios
 MU_EXPERTO_PID_100_PATH = _ROOT / "results" / "mu_experto_pid_100ep.npy"
 ESCALA_PID_100_PATH     = _ROOT / "results" / "mu_escala_pid_100ep.npy"
-WEIGHTS_PATH    = _ROOT / "results" / "irl_weights.json"
-CONVERGENCIA_PATH = _ROOT / "results" / "irl_convergencia.csv"
-SEARCH_LOG_DIR  = _ROOT / "results" / "irl_search_logs"
+WEIGHTS_PATH    = _ROOT / "results" / "irl_weights_2.json"
+CONVERGENCIA_PATH = _ROOT / "results" / "irl_convergencia_2.csv"
+SEARCH_LOG_DIR  = _ROOT / "results" / "irl_search_logs_2"
 PRUEBAS_DIR     = _ROOT / "results" / "pruebas_irl"
 
 
@@ -157,7 +157,7 @@ def main():
     if args.experto == "mamba":
         mu_path = MU_EXPERTO_MAMBA_PATH
         escala_path = ESCALA_MAMBA_PATH
-        experto_nombre = "Mamba (100 ep)"
+        experto_nombre = "Mamba (800 ep CSV)"
     elif args.experto == "pid-100":
         mu_path = MU_EXPERTO_PID_100_PATH
         escala_path = ESCALA_PID_100_PATH

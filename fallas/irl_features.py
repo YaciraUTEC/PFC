@@ -1,37 +1,10 @@
-"""
-Vector de características φ(s,a) para Apprenticeship Learning (Abbeel & Ng, 2004).
-
-Se usa tanto para calcular las expectativas de características del experto PID
-(calcular_mu_experto.py, offline sobre el CSV de 800 episodios) como para evaluar
-la recompensa aprendida en línea (nominal_flight_env.py, fault_env_residual_irl.py).
-Cada componente se escala por la desviación estándar del dataset
-(results/stats_normalizacion.json) para que las features queden en una escala
-comparable (~O(1)) y el algoritmo de proyección tenga una geometría bien
-condicionada.
-
-Diseño alineado con "Learning-Based Passive Fault-Tolerant Control of a Quadrotor
-with Rotor Failure" (arXiv:2503.02649): oscilación (Δrpm entre pasos, no desviación
-del hover), velocidad 3D completa, aceleración vertical, y velocidad angular
-restringida a roll/pitch (yaw se excluye — bajo falla severa, hasta 80% de pérdida
-en este proyecto, el yaw puede volverse incontrolable, y el PID experto —que solo
-vuela sin falla— nunca visita ese régimen, así que no hay señal útil del experto
-para calibrar un peso ahí). `estabilidad_altura` y `progreso` se mantienen aunque
-el paper no las tenga: la tarea del paper es solo estabilizarse en un punto fijo;
-la de este proyecto es completar una ruta con aterrizaje al final, que el paper no
-necesita resolver. `esfuerzo_motores`/`balance_motores`/`estabilidad_actitud`
-(versión anterior de 8 features) se eliminaron: la primera se redefine como
-oscilación, actitud se descarta por la misma razón que yaw, y balance de motores
-no tenía respaldo ni en el paper ni en la tarea.
-"""
 
 import numpy as np
 
 HOVER_RPM = 14300  # igual que comparar_base.HOVER_RPM
 CTRL_FREQ = 48      # igual que comparar_base.CTRL_FREQ
 DT = 1.0 / CTRL_FREQ
-G = 9.81  # m/s^2 — escala física para aceleración vertical (no hay un stat "accel"
-          # en stats_normalizacion.json, así que se usa una constante física en vez
-          # de una desviación estándar del dataset)
+G = 9.81  
 
 FEATURE_NAMES = [
     "proximidad_objetivo",
@@ -42,68 +15,18 @@ FEATURE_NAMES = [
     "aceleracion_vertical",
     "progreso",
     "penalizacion_caida",
+    "recuperacion_altura",
+    "accion_residual_magnitud",
+    "eficiencia_accion",
 ]
 N_FEATURES = len(FEATURE_NAMES)
 
-CAIDA_PENALTY = -20.0  # magnitud fija del "golpe" al caer (ver phi()) -- subido
-                        # de -1.0: al ocurrir una sola vez por episodio (con
-                        # descuento), -1.0 quedaba invisible frente a features
-                        # como progreso que se acumulan en cada paso; con -20
-                        # el deficit resultante es comparable en magnitud
-                        # (ver prueba_06 en results/pruebas_irl/, penalizacion_caida
-                        # obtuvo solo 0.05 de peso pese a ~65-70% de caidas)
-
-LIMITE_FEATURE = -8.0  # piso para las 4 features de "estado estacionario"
-                        # (estabilidad_angular_rp, velocidad, oscilacion,
-                        # aceleracion_vertical). Sin este piso son costos sin
-                        # techo (ej. velocidad = -||v||, crece sin límite si el
-                        # dron se descontrola) -- eso fue justo lo que causó el
-                        # bug de "esfuerzo_motores" en la versión anterior de 8
-                        # features: un peso w<0 en una feature sin techo le da
-                        # a PPO una recompensa sin límite por empeorarla. El
-                        # algoritmo de Abbeel & Ng (arXiv/ICML04) no exige
-                        # w>=0, solo ||w||_2<=1 (ver restringir_w en
-                        # entrenar_irl_apprenticeship.py) -- permitir w<0 es
-                        # necesario para poder igualar features cuyo mu_experto
-                        # no es 0 (ej. velocidad promedio del PID = -1.6, no 0,
-                        # porque el PID sí se mueve para llegar de A a B).
-                        #
-                        # Valor calibrado con datos reales, no con una
-                        # convención arbitraria: se calculó el histograma de
-                        # cada feature cruda sobre los 270,664 pasos de los
-                        # 800 episodios del PID (scratchpad/histograma_thresholds.py).
-                        # El peor caso real fue estabilidad_angular_rp en
-                        # -7.05 -- con el valor anterior (-3.0), el propio PID
-                        # ya superaba el piso en 4.2% de sus pasos (6.4% en
-                        # velocidad), aplastando esos pasos al mismo valor y
-                        # perdiendo la señal de diferenciación ahí. -8.0 deja
-                        # el 100% de los pasos reales del PID sin saturar en
-                        # las 4 features, con margen, y sigue siendo un límite
-                        # finito (la garantía de seguridad no depende de qué
-                        # tan ajustado esté, solo de que exista).
-
-LIMITE_FEATURE_RUTA = -30.0  # piso específico para proximidad_objetivo y
-                        # estabilidad_altura. A diferencia de las anteriores,
-                        # estas dos SÍ varían mucho a lo largo de una ruta
-                        # completa A->B (empiezan lejos del destino, terminan
-                        # cerca), así que necesitan un rango mucho más amplio
-                        # que las de estado estacionario.
-                        #
-                        # Mismo histograma que LIMITE_FEATURE: el peor caso
-                        # real fue proximidad_objetivo en -26.42 (18.3% de los
-                        # pasos del PID superaban el valor anterior de -12.0 --
-                        # ver commit previo de este archivo, que ya había
-                        # identificado y corregido el mismo problema una vez,
-                        # con un valor que resultó ser insuficiente).
-                        # estabilidad_altura nunca se acerca a este piso (min
-                        # real -5.18), así que comparte el mismo valor sin
-                        # perder nada -- no hace falta un tercer piso.
-                        # -30.0 deja el 100% de los pasos reales del PID sin
-                        # saturar en ambas features, con margen.
+CAIDA_PENALTY = -10.0  # Comparable a proximidad_objetivo, suficiente penalización  
+LIMITE_FEATURE = -8.0  
+LIMITE_FEATURE_RUTA = -30.0  
 
 
 def cargar_escalas(stats):
-    """stats: dict como el que devuelve comparar_base.cargar_stats (col -> (mean, std))."""
     return {
         "err":    np.array([stats["err_x"][1], stats["err_y"][1], stats["err_z"][1]]),
         "ang_rp": np.array([stats["ang_x"][1], stats["ang_y"][1]]),
@@ -114,82 +37,70 @@ def cargar_escalas(stats):
 
 
 def distancia_z(pos, punto_final, escalas):
-    """Distancia al punto (final o local), con cada eje escalado por su desviación estándar."""
     err_z = (np.asarray(punto_final) - np.asarray(pos)) / escalas["err"]
     return float(np.linalg.norm(err_z))
 
 
 def phi(pos, rpy, ang_vel, vel, wp_actual, punto_final, rpm, rpm_anterior,
-        vel_z_anterior, dist_prev_z, escalas, es_caida_ahora=False):
-    """
-    Calcula φ(s,a) (8,) y la distancia actual al destino final (para pasarla
-    como dist_prev_z en el siguiente paso). Entradas físicas crudas (no
-    normalizadas por z-score de estado, salvo la escala interna de φ).
+        vel_z_anterior, dist_prev_z, escalas, es_caida_ahora=False, delta_residual=None):
 
-    pos, rpy, ang_vel, vel : arrays (3,)
-    wp_actual    : array (3,) — waypoint local activo (perfil crucero/aterrizaje,
-                   usado solo por estabilidad_altura)
-    punto_final  : array (3,) — destino real del episodio (punto_B, fijo durante
-                   todo el episodio; usado por proximidad_objetivo y progreso)
-    rpm, rpm_anterior : arrays (4,) — RPM comandada este paso y el paso anterior
-    vel_z_anterior     : float — vel[2] del paso anterior
-    dist_prev_z  : float — distancia_z() a punto_final del paso anterior (usar
-                   distancia_z(pos_inicial, punto_final, escalas) en el primer paso)
-    escalas      : dict de cargar_escalas()
-    es_caida_ahora : bool — True si este paso es el que dispara es_caida() en el
-                   entorno que llama a phi(). El PID (experto) nunca se cae, así
-                   que mu_experto en esta componente es ~0 siempre; una política
-                   candidata que se cae mucho queda con mu_i bien negativo ahí,
-                   lo que hace que la búsqueda le asigne peso positivo de forma
-                   automática -- sin esto, nada en la recompensa notaba que
-                   caerse es catastrófico (ver resultados de "prueba_05" en
-                   results/pruebas_irl/, donde 40-100% de los episodios de
-                   evaluación terminaban en caída en cada iteración).
-
-    Devuelve (phi_vec, dist_actual_z).
-    """
     dist_actual_z = distancia_z(pos, punto_final, escalas)
 
     ang_rp_n   = np.asarray(ang_vel[:2]) / escalas["ang_rp"]
     vel_n      = np.asarray(vel) / escalas["vel"]
     rpm_delta_n = (np.asarray(rpm) - np.asarray(rpm_anterior)) / escalas["motor"]
-    accel_vertical = (float(vel[2]) - float(vel_z_anterior)) / DT
+    accel_vertical_n = ((float(vel[2]) - float(vel_z_anterior)) / DT) / escalas["vel"][2]
 
+    # Todas las características normalizadas por sus escalas
     proximidad_objetivo    = max(-dist_actual_z, LIMITE_FEATURE_RUTA)
     estabilidad_altura     = max(-abs((float(wp_actual[2]) - float(pos[2])) / np.mean(escalas["err"])), LIMITE_FEATURE_RUTA)
     estabilidad_angular_rp = max(-float(np.linalg.norm(ang_rp_n)), LIMITE_FEATURE)
     velocidad              = max(-float(np.linalg.norm(vel_n)), LIMITE_FEATURE)
     oscilacion              = max(-float(np.mean(np.abs(rpm_delta_n))), LIMITE_FEATURE)
-    aceleracion_vertical   = max(-abs(accel_vertical / G), LIMITE_FEATURE)
-    progreso                = float(np.clip(dist_prev_z - dist_actual_z, -1.0, 1.0))
-    penalizacion_caida      = CAIDA_PENALTY if es_caida_ahora else 0.0
+    aceleracion_vertical   = max(-abs(accel_vertical_n), LIMITE_FEATURE)
+    # Progreso: cambio en distancia normalizada (sin clip artificial)
+    progreso                = float(dist_prev_z - dist_actual_z)
+    # Penalización por caída: normalizada por escala típica de características
+    penalizacion_caida      = (CAIDA_PENALTY / np.mean(list(escalas.values())[0])) if es_caida_ahora else 0.0
+
+    # NUEVAS CARACTERÍSTICAS DE RECUPERACIÓN
+    # Recuperación de altura: positivo si está subiendo cuando está bajo
+    altura_relativa_norm = float(pos[2]) / np.mean(escalas["err"])
+    if altura_relativa_norm < 0.5:  # bajo
+        recuperacion_altura = float(vel[2]) / escalas["vel"][2]
+    else:
+        recuperacion_altura = 0.0  # no aplica si está en altura normal
+    recuperacion_altura = max(recuperacion_altura, LIMITE_FEATURE)
+
+    # Magnitud de acción residual: cuánto esfuerzo está haciendo PPO
+    if delta_residual is not None:
+        delta_array = np.asarray(delta_residual, dtype=np.float64)
+        delta_mag = float(np.linalg.norm(delta_array) / np.mean(escalas["motor"]))
+    else:
+        delta_mag = 0.0
+    accion_residual_magnitud = max(-delta_mag, LIMITE_FEATURE)  # negativo = penalizar grandes acciones
+
+    # Eficiencia de acción: delta * progreso / max_delta
+    # Positivo si genera progreso; negativo si genera regresión
+    if delta_residual is not None and progreso != 0.0:
+        delta_array = np.asarray(delta_residual, dtype=np.float64)
+        delta_mag = float(np.linalg.norm(delta_array) / np.mean(escalas["motor"]))
+        eficiencia_accion = float(delta_mag * np.sign(progreso))
+    else:
+        eficiencia_accion = 0.0
+    eficiencia_accion = max(eficiencia_accion, LIMITE_FEATURE)
 
     vec = np.array([
         proximidad_objetivo, estabilidad_altura, estabilidad_angular_rp,
         velocidad, oscilacion, aceleracion_vertical, progreso,
-        penalizacion_caida,
+        penalizacion_caida, recuperacion_altura, accion_residual_magnitud,
+        eficiencia_accion,
     ], dtype=np.float64)
 
     return vec, dist_actual_z
 
 
 def horizonte_efectivo(T, gamma):
-    """
-    Suma de los descuentos gamma^t efectivamente usados al acumular phi sobre
-    un episodio de T pasos: sum_{t=0}^{T-1} gamma^t = (1 - gamma^T) / (1 - gamma).
-
-    Dividir la suma acumulada de phi entre esto (en vez de dejarla cruda)
-    convierte "costo total acumulado en el episodio" en "costo promedio por
-    paso, ponderado por el mismo descuento". Sin esto, un episodio corto (por
-    ejemplo porque la política se cayó pronto) acumula menos costo total que
-    uno largo aunque vuele peor paso a paso, haciendo que mu_bar parezca
-    "mejor que el experto" en las features siempre-negativas solo por haber
-    durado menos -- fue la causa del estancamiento visto en irl_convergencia.csv
-    de varias corridas (proximidad_objetivo/estabilidad_altura/oscilacion, y
-    después casi todas las features, quedando en w=0 de forma consistente).
-
-    Cuando gamma=1 (sin descuento) esto se reduce al promedio simple: T.
-    """
     if gamma >= 1.0:
         return float(T)
     return (1.0 - gamma ** T) / (1.0 - gamma)

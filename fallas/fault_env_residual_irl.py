@@ -20,21 +20,29 @@ from comparar_base import (  # noqa: E402
     MIN_RPM, MAX_RPM,
     MOTOR_FALLA, T_FALLA_MIN, T_FALLA_MAX, DURACION_FALLA_SEG,
     es_caida, es_aterrizaje, TRAYECTORIAS,
-    MambaDrone, LSTMDrone,
 )
+from gym_pybullet_drones.control.DSLPIDControl import DSLPIDControl  # noqa: E402
+from gym_pybullet_drones.utils.enums import DroneModel  # noqa: E402
 from irl_features import phi, distancia_z, cargar_escalas  # noqa: E402
+
+# Nombres de trayectorias para logging
+TIPOS_TRAYECTORIA = [
+    "Diagonal larga",
+    "Recto norte",
+    "Recto este",
+    "Diagonal inversa",
+    "Diagonal sur",
+]
 
 XY_LIM   = 2.0   # rango de vuelo igual al del dataset de Mamba
 MIN_DIST = 0.8   # distancia mínima horizontal A→B
 
-MAMBA_MODEL_PATH   = str(_ROOT / "results" / "modelo_mamba.pth")
-LSTM_MODEL_PATH    = str(_ROOT / "results" / "modelo_lstm.pth")
 # Permite override via variable de entorno IRL_WEIGHTS_PATH (set por entrenar_rl.py)
 import os as _os
 IRL_WEIGHTS_PATH   = _os.environ.get("IRL_WEIGHTS_PATH", str(_ROOT / "results" / "irl_weights.json"))
 DETECCION_MODEL_PATH = str(_ROOT / "results" / "modelo_deteccion_mamba.pth")
 STATS_DETECCION_PATH = str(_ROOT / "results" / "stats_deteccion.json")
-DELTA_MAX    = 1500
+DELTA_MAX    = 3000
 DURACION_SEG = DURACION_FALLA_SEG
 
 # ── Recompensa "manual2" (y parte de tarea de "hibrido") ────────────────────
@@ -138,15 +146,7 @@ class FaultResidualEnvIRL(gym.Env):
             ], dtype=np.float64)
             self.mu_experto = np.load(MU_EXPERTO_HIBRIDO)
 
-        if modelo == "lstm":
-            self.base_model = LSTMDrone()
-            model_path = LSTM_MODEL_PATH
-        else:
-            self.base_model = MambaDrone()
-            model_path = MAMBA_MODEL_PATH
-        self.base_model.load_state_dict(torch.load(model_path, map_location=self.device))
-        self.base_model.to(self.device)
-        self.base_model.eval()
+        self.pid_controller = DSLPIDControl(drone_model=DroneModel.CF2X)
 
         self.detector = None
         if self.fault_info_mode == "detected":
@@ -196,11 +196,15 @@ class FaultResidualEnvIRL(gym.Env):
 
         if self.rutas == "tesis":
             # Una de las 5 trayectorias fijas de la evaluación, al azar
-            tray = TRAYECTORIAS[np.random.randint(len(TRAYECTORIAS))]
+            self.tray_idx = np.random.randint(len(TRAYECTORIAS))
+            tray = TRAYECTORIAS[self.tray_idx]
             self.punto_A = np.array(tray["A"], dtype=np.float64)
             self.punto_B = np.array(tray["B"], dtype=np.float64)
+            self.tray_nombre = TIPOS_TRAYECTORIA[self.tray_idx]
         else:
             # Trayectoria aleatoria dentro del volumen de Mamba ([-2,2]m, dist>=0.8m)
+            self.tray_idx = -1
+            self.tray_nombre = "Aleatoria"
             while True:
                 a_xy = np.random.uniform(-XY_LIM, XY_LIM, size=2)
                 b_xy = np.random.uniform(-XY_LIM, XY_LIM, size=2)
@@ -216,18 +220,10 @@ class FaultResidualEnvIRL(gym.Env):
             self._env.INIT_XYZS = self.punto_A.reshape(1, 3)
 
         obs_raw, _ = self._env.reset()
-        self.ventana    = deque(
-            [np.zeros(len(INPUT_COLS), dtype=np.float32)] * 50, maxlen=50
-        )
-        if self.detector is not None:
-            self.ventana_deteccion = deque(
-                [np.zeros(len(INPUT_COLS), dtype=np.float32)] * 50, maxlen=50
-            )
         self.action_rpm = np.ones((1, 4)) * HOVER_RPM
         self.paso       = 0
         self.wp_idx     = 0
         self.prev_dist_wp = 0.0   # se fija en el primer paso post-falla (manual2/hibrido)
-        self.model_pred = np.zeros(4, dtype=np.float32)
         self.obs_raw    = obs_raw
         self._delta_acum = []   # |delta_norm| por step post-falla, para info["delta_medio"]
 
@@ -244,25 +240,17 @@ class FaultResidualEnvIRL(gym.Env):
         vel = obs_raw[0][10:13]
         self.paso += 1
 
-        # 2. Actualizar ventana temporal con la nueva observacion
+        # 2. Waypoint actual
         ta = self.waypoints[min(self.wp_idx, len(self.waypoints) - 1)]
-        self.ventana.append(normalizar_estado(obs_raw, ta, self.stats))
-        if self.detector is not None:
-            crudo = _estado_crudo(obs_raw, ta)
-            normalizado = np.array([
-                (crudo[i] - self.stats_deteccion[c][0]) / self.stats_deteccion[c][1]
-                for i, c in enumerate(INPUT_COLS)
-            ], dtype=np.float32)
-            self.ventana_deteccion.append(normalizado)
 
-        # 3. Mamba genera accion base
-        x = torch.tensor(
-            np.array(self.ventana), dtype=torch.float32
-        ).unsqueeze(0).to(self.device)
-        with torch.no_grad():
-            pred = self.base_model(x).cpu().numpy()[0]
-        self.model_pred = pred
-        base_rpm = np.clip(desnormalizar_accion(pred, self.stats), MIN_RPM, MAX_RPM)
+        # 3. PID genera accion base
+        base_rpm, _, _ = self.pid_controller.computeControlFromState(
+            control_timestep=1.0/CTRL_FREQ,
+            state=obs_raw[0],
+            target_pos=ta,
+            target_rpy=np.zeros(3),
+        )
+        base_rpm = np.clip(base_rpm, MIN_RPM, MAX_RPM)
 
         # 4. PPO solo actua despues de la falla
         if self.paso >= self.t_falla:
@@ -283,17 +271,19 @@ class FaultResidualEnvIRL(gym.Env):
         outcome = None
         post_falla     = self.paso >= self.t_falla
         manual         = self.modo_reward in ("manual2", "hibrido")
-        es_caida_ahora = es_caida(obs_raw, pos, self.paso)
+        es_caida_ahora = es_caida(obs_raw, pos, self.paso, self.wp_idx, len(self.waypoints))
         dist           = float(np.linalg.norm(ta - pos))
 
         if post_falla:
             rpy = obs_raw[0][7:10]
             ang_vel = obs_raw[0][13:16]
+            # delta se calculó arriba en línea 244 si post_falla
+            delta_residual = (ppo_delta_norm * DELTA_MAX) if self.paso >= self.t_falla else None
 
             vec, self.dist_prev_z = phi(
                 pos, rpy, ang_vel, vel, ta, self.punto_B, action_final,
                 self.rpm_anterior, self.vel_z_anterior, self.dist_prev_z, self.escalas,
-                es_caida_ahora=es_caida_ahora,
+                es_caida_ahora=es_caida_ahora, delta_residual=delta_residual,
             )
             if self.modo_reward == "irl":
                 reward = float(np.dot(self.w, vec))
@@ -383,17 +373,10 @@ class FaultResidualEnvIRL(gym.Env):
         ta          = self.waypoints[min(self.wp_idx, len(self.waypoints) - 1)]
         estado_norm = normalizar_estado(obs_raw, ta, self.stats)
 
-        if self.detector is not None:
-            x = torch.tensor(
-                np.array(self.ventana_deteccion), dtype=torch.float32
-            ).unsqueeze(0).to(self.device)
-            with torch.no_grad():
-                logit_activa, pred_pct = self.detector(x)
-            falla_activa = float(torch.sigmoid(logit_activa).item() > 0.5)
-            fault_pct    = float(np.clip(pred_pct.item(), 0.0, 1.0)) if falla_activa else 0.0
-        else:
-            fault_pct    = 1.0 - self.severidad
-            falla_activa = float(self.paso >= self.t_falla)
+        # Fault info: oracle (conocemos si hay falla)
+        fault_pct    = 1.0 - self.severidad
+        falla_activa = float(self.paso >= self.t_falla)
 
         fault_info = np.array([falla_activa, fault_pct], dtype=np.float32)
-        return np.concatenate([estado_norm, self.model_pred, fault_info]).astype(np.float32)
+        model_pred = np.zeros(4, dtype=np.float32)  # Con PID, sin predicción neuronal
+        return np.concatenate([estado_norm, model_pred, fault_info]).astype(np.float32)

@@ -1,39 +1,4 @@
-"""
-Entorno de vuelo para la búsqueda de pesos de Apprenticeship Learning.
 
-Misma arquitectura que el compensador final (fault_env_residual_irl.py):
-Mamba (o LSTM) da la RPM base, PPO aprende un delta residual acotado sobre
-esa base.
-
-Cada episodio empieza en vuelo nominal y, en un instante aleatorio
-(T_FALLA_MIN..T_FALLA_MAX), se inyecta una falla de severidad aleatoria en
-MOTOR_FALLA -- igual que fault_env_residual_irl.py -- pero a diferencia de
-ese entorno, aquí la recompensa w . phi(s,a) se calcula en TODOS los pasos,
-antes y después de la falla, no solo post-falla. Esto es necesario para que
-mu_i (la expectativa de características de la política candidata, acumulada
-sobre el episodio completo) sea comparable con mu_experto (calculado sobre
-vuelos nominales completos del PID) -- la política candidata tiene que
-intentar parecerse al comportamiento nominal del experto incluso cuando
-aparece una falla a mitad del episodio, y de esa tensión sale información
-sobre qué features priorizar (misma lógica que arXiv:2503.02649, que inyecta
-la falla en el paso 250 de 500 sin cambiar el objetivo antes/después).
-
-mu_experto en sí sigue calculándose solo de vuelos SIN falla del PID
-(calcular_mu_experto.py) -- el PID no es un controlador consciente de fallas,
-así que su comportamiento bajo falla no es un buen objetivo a imitar. Lo que
-cambia aquí es únicamente el entorno de la política candidata, no el target.
-
-Se usa la arquitectura "Mamba + delta" (en vez de "RPM completa desde cero")
-para que la política candidata tenga la MISMA arquitectura que la política
-que finalmente usará estos pesos (fault_env_residual_irl.py) -- evita que el
-candidato tenga que reaprender a volar en cada iteración, y evita que w se
-valide en una arquitectura distinta a la que realmente lo va a usar.
-
-Es el "generador" del algoritmo de proyección (entrenar_irl_apprenticeship.py):
-en cada iteración se entrena una política PPO nueva sobre este entorno bajo la
-recompensa candidata R(s,a) = w . phi(s,a) (ver set_reward_weights), y se miden
-sus expectativas de características reales haciendo rollout de esa política.
-"""
 import sys
 from pathlib import Path
 import numpy as np
@@ -51,25 +16,24 @@ from comparar_base import (  # noqa: E402
     CTRL_FREQ, HOVER_RPM, MIN_RPM, MAX_RPM, INPUT_COLS,
     MOTOR_FALLA, T_FALLA_MIN, T_FALLA_MAX,
     es_caida, es_aterrizaje,
-    MambaDrone, LSTMDrone,
 )
+from gym_pybullet_drones.control.DSLPIDControl import DSLPIDControl  # noqa: E402
+from gym_pybullet_drones.utils.enums import DroneModel  # noqa: E402
 from irl_features import phi, distancia_z, cargar_escalas, N_FEATURES  # noqa: E402
 
 XY_LIM   = 2.0   # rango de vuelo igual al del dataset de Mamba / fault_env_residual.py
 MIN_DIST = 0.8
 MAX_DIST_AB = 2 * XY_LIM * (2 ** 0.5)  # diagonal de la caja de vuelo (~5.66 m)
-DELTA_MAX = 1500  # mismo rango que el compensador final (fault_env_residual_irl.py)
+DELTA_MAX = 3000  # aumentado para dar más autoridad al delta residual de PPO
 
-MAMBA_MODEL_PATH = str(_ROOT / "results" / "modelo_mamba.pth")
-LSTM_MODEL_PATH  = str(_ROOT / "results" / "modelo_lstm.pth")
 
 MIN_FAULT_PCT = 0.02  # igual que entrenar_rl.py
-MAX_FAULT_PCT = 0.80  # igual que entrenar_rl.py / fault_env_residual_irl.py
+MAX_FAULT_PCT = 0.40  # severidad máxima: 40% de pérdida
 
 
 class NominalFlightEnv(gym.Env):
 
-    def __init__(self, gui=False, modelo="mamba", t_falla_min=None, t_falla_max=None):
+    def __init__(self, gui=False, t_falla_min=None, t_falla_max=None):
         super().__init__()
         self.gui       = gui
         self.max_pasos = int(DURACION_SEG * CTRL_FREQ)
@@ -81,22 +45,10 @@ class NominalFlightEnv(gym.Env):
         self.max_fault_pct = MAX_FAULT_PCT  # ver set_max_fault() -- currículo externo lo ajusta
         self.max_dist_ab   = MAX_DIST_AB    # ver set_max_distance() -- currículo externo lo ajusta
 
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        if modelo == "lstm":
-            self.base_model = LSTMDrone()
-            model_path = LSTM_MODEL_PATH
-        else:
-            self.base_model = MambaDrone()
-            model_path = MAMBA_MODEL_PATH
-        self.base_model.load_state_dict(torch.load(model_path, map_location=self.device))
-        self.base_model.to(self.device)
-        self.base_model.eval()
+        self.pid_controller = DSLPIDControl(drone_model=DroneModel.CF2X)
 
         self._env = None
-        # Observacion: 18 estado + 4 pred cruda de Mamba + 2 "fault info"
-        # (falla_activa, fault_pct -- oraculo, igual convencion que
-        # fault_env_residual_irl.py, para que la politica entrenada aqui vea
-        # el mismo formato de entrada que la que finalmente usa esos pesos)
+        
         self.observation_space = gym.spaces.Box(
             low=-np.inf, high=np.inf, shape=(24,), dtype=np.float32
         )
@@ -120,22 +72,11 @@ class NominalFlightEnv(gym.Env):
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
 
-        # Aleatorizar severidad e instante de la falla en cada episodio
-        # (igual que fault_env_residual_irl.py) -- la política candidata debe
-        # volar bien tanto antes como después de que aparezca. El techo
-        # superior (self.max_fault_pct) lo controla el currículo externo.
         fault_pct      = np.random.uniform(MIN_FAULT_PCT, self.max_fault_pct)
         self.severidad = 1.0 - fault_pct
         t_falla_seg    = np.random.uniform(self.t_falla_min, self.t_falla_max)
         self.t_falla   = int(t_falla_seg * CTRL_FREQ)
 
-        # Trayectoria A->B: la distancia se sortea dentro de [MIN_DIST, self.max_dist_ab]
-        # (techo controlado por el currículo externo), no en toda la caja de
-        # una vez -- empezar con rutas cortas reduce el riesgo de que la
-        # candidata se caiga antes de completar el episodio, lo que sesgaría
-        # la comparación contra mu_experto (episodios más cortos acumulan
-        # menos costo en las features "siempre negativas", pareciendo
-        # mejores sin serlo).
         while True:
             a_xy = np.random.uniform(-XY_LIM, XY_LIM, size=2)
             dist_deseada = np.random.uniform(MIN_DIST, self.max_dist_ab)
@@ -153,13 +94,9 @@ class NominalFlightEnv(gym.Env):
             self._env.INIT_XYZS = self.punto_A.reshape(1, 3)
         obs_raw, _ = self._env.reset()
 
-        self.ventana = deque(
-            [np.zeros(len(INPUT_COLS), dtype=np.float32)] * 50, maxlen=50
-        )
         self.wp_idx     = 0
         self.paso       = 0
         self.action_rpm = np.ones((1, 4)) * HOVER_RPM
-        self.model_pred = np.zeros(4, dtype=np.float32)
 
         self.dist_prev_z    = distancia_z(obs_raw[0][0:3], self.punto_B, self.escalas)
         self.rpm_anterior   = np.ones(4, dtype=np.float64) * HOVER_RPM
@@ -175,19 +112,18 @@ class NominalFlightEnv(gym.Env):
         ang_vel = obs_raw[0][13:16]
         vel     = obs_raw[0][10:13]
         self.paso += 1
-        es_caida_ahora = es_caida(obs_raw, pos, self.paso)
+        es_caida_ahora = es_caida(obs_raw, pos, self.paso, self.wp_idx, len(self.waypoints))
 
         ta = self.waypoints[min(self.wp_idx, len(self.waypoints) - 1)]
-        self.ventana.append(normalizar_estado(obs_raw, ta, self.stats))
 
-        # Mamba genera la RPM base
-        x = torch.tensor(
-            np.array(self.ventana), dtype=torch.float32
-        ).unsqueeze(0).to(self.device)
-        with torch.no_grad():
-            pred = self.base_model(x).cpu().numpy()[0]
-        self.model_pred = pred
-        base_rpm = np.clip(desnormalizar_accion(pred, self.stats), MIN_RPM, MAX_RPM)
+        # PID genera la RPM base
+        base_rpm, _, _ = self.pid_controller.computeControlFromState(
+            control_timestep=1.0/CTRL_FREQ,
+            state=obs_raw[0],
+            target_pos=ta,
+            target_rpy=np.zeros(3),
+        )
+        base_rpm = np.clip(base_rpm, MIN_RPM, MAX_RPM)
 
         # PPO aprende el delta residual sobre esa base
         delta        = np.asarray(ppo_delta_norm, dtype=np.float64) * DELTA_MAX
@@ -206,7 +142,7 @@ class NominalFlightEnv(gym.Env):
         vec, self.dist_prev_z = phi(
             pos, rpy, ang_vel, vel, ta, self.punto_B, rpm_final,
             self.rpm_anterior, self.vel_z_anterior, self.dist_prev_z, self.escalas,
-            es_caida_ahora=es_caida_ahora,
+            es_caida_ahora=es_caida_ahora, delta_residual=delta,
         )
         reward = float(np.dot(self.w, vec))
         self.rpm_anterior   = rpm_final.astype(np.float64)
@@ -245,4 +181,6 @@ class NominalFlightEnv(gym.Env):
         # ve si hay falla activa y su porcentaje real (no la infiere aqui).
         fault_pct  = 1.0 - self.severidad if self.falla_activa else 0.0
         fault_info = np.array([float(self.falla_activa), fault_pct], dtype=np.float32)
-        return np.concatenate([estado_norm, self.model_pred, fault_info]).astype(np.float32)
+        # Con PID, no hay predicción neuronal - usamos ceros para que el shape sea consistente
+        model_pred = np.zeros(4, dtype=np.float32)
+        return np.concatenate([estado_norm, model_pred, fault_info]).astype(np.float32)

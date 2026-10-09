@@ -1,19 +1,4 @@
-"""
-Calcula las expectativas de características del experto (PID) para
-Apprenticeship Learning / Feature Expectation Matching (Abbeel & Ng, 2004),
-sobre los 800 episodios de results/datos_CF2X_800ep.csv.
 
-No simula nada: reconstruye phi(s,a) directamente de las columnas ya
-registradas durante la generación de datos (pos, rpy, ang_vel, vel_z,
-err -> waypoint actual, motor_0..3).
-
-Uso (venv_mamba):
-    cd /mnt/d/TesisI/gym-pybullet-drones
-    /mnt/d/venv_mamba/bin/python3 fallas/calcular_mu_experto.py
-
-Salida: results/mu_experto.npy (vector de 7 features, promedio sobre episodios
-del retorno descontado de phi bajo la política del PID).
-"""
 import json
 import sys
 from pathlib import Path
@@ -33,15 +18,40 @@ def cargar_stats(path):
 
 
 ANGULO_CRASH = np.radians(35)  # igual que comparar_base.ANGULO_CRASH
+Z_CRUCERO = 1.2  # altura de crucero nominal
 
 
-def es_caida_simple(rpy, vel, pos, paso):
-    """Misma lógica que comparar_base.es_caida(), duplicada aquí (no se
-    importa comparar_base para no arrastrar la dependencia de mamba_ssm)."""
+def detectar_fase_csv(pos, punto_final):
+    """Detecta fase basado en altura y proximidad al destino"""
+    altura = pos[2]
+    distancia_xy = np.linalg.norm(pos[:2] - punto_final[:2])
+
+    if altura < 0.5:
+        return 0  # despegue
+    elif altura < Z_CRUCERO * 0.5 or (altura < 1.0 and distancia_xy < 0.5):
+        return 2  # aterrizaje
+    else:
+        return 1  # crucero
+
+
+def es_caida_phase_aware(rpy, vel, pos, paso, fase):
+    """Detección de crash con thresholds por fase"""
     if pos[2] >= 0.05 or paso <= 10:
         return False
-    actitud_critica = abs(rpy[0]) > ANGULO_CRASH or abs(rpy[1]) > ANGULO_CRASH
-    cayendo = vel[2] < -0.5
+
+    # Thresholds por fase
+    if fase == 0:  # DESPEGUE
+        angulo_max = np.radians(25)
+        vel_max = -0.3
+    elif fase == 2:  # ATERRIZAJE
+        angulo_max = np.radians(20)
+        vel_max = -0.4
+    else:  # CRUCERO
+        angulo_max = ANGULO_CRASH  # 35°
+        vel_max = -0.5
+
+    actitud_critica = abs(rpy[0]) > angulo_max or abs(rpy[1]) > angulo_max
+    cayendo = vel[2] < vel_max
     return actitud_critica or cayendo
 
 
@@ -54,25 +64,6 @@ CSV_PATH    = _ROOT / "results" / "datos_CF2X_800ep.csv"
 OUT_PATH    = _ROOT / "results" / "mu_experto.npy"
 ESCALA_PATH = _ROOT / "results" / "mu_escala.npy"
 GAMMA       = 0.99  # igual que gamma en entrenar_rl.py (PPO)
-
-# Escala a nivel de mu (no de phi): al acumular phi con descuento sobre un
-# episodio completo, features que oscilan alrededor de 0 (ej. progreso) se
-# cancelan y quedan chicas, mientras que features siempre negativas (ej.
-# estabilidad_altura) se acumulan sin cancelación y quedan grandes — aunque
-# cada una ya esté escalada por su propia std a nivel de un solo paso
-# (irl_features.cargar_escalas).
-#
-# mu_escala = desviación estándar de esa feature ENTRE LOS 800 EPISODIOS (no
-# el propio valor de mu_experto). Dividir por la propia magnitud de mu_experto
-# (versión anterior) colapsaba mu_experto_r a exactamente ±1 en todas las
-# componentes siempre -- borraba toda la información de qué tan fuerte o débil
-# es cada feature en el comportamiento del experto, tratando una señal grande
-# y consistente igual que una chica y ruidosa. Escalar por la variabilidad
-# entre episodios preserva esa diferencia: una feature con promedio grande y
-# poca variación entre episodios (señal fuerte y confiable del PID) queda con
-# |mu_r| grande; una con promedio chico o muy variable entre episodios queda
-# con |mu_r| chico. EPS_ESCALA evita dividir por casi cero si alguna
-# componente varía muy poco entre episodios.
 EPS_ESCALA = 0.01
 
 
@@ -104,18 +95,14 @@ def main():
         for t in range(len(ep_df)):
             rpm_anterior   = rpm[t - 1] if t > 0 else np.full(4, HOVER_RPM, dtype=np.float64)
             vel_z_anterior = vel[t - 1, 2] if t > 0 else vel[t, 2]
-            es_caida_ahora = es_caida_simple(rpy[t], vel[t], pos[t], t)
+            fase = detectar_fase_csv(pos[t], punto_final)
+            es_caida_ahora = es_caida_phase_aware(rpy[t], vel[t], pos[t], t, fase)
             vec, dist_prev_z = phi(
                 pos[t], rpy[t], ang_vel[t], vel[t], wp_actual[t], punto_final, rpm[t],
                 rpm_anterior, vel_z_anterior, dist_prev_z, escalas,
                 es_caida_ahora=es_caida_ahora,
             )
             acumulado += (GAMMA ** t) * vec
-        # Normaliza por el horizonte descontado efectivo del episodio, para
-        # que episodios de distinta duración (o cortados antes por una caída,
-        # en las políticas candidatas que se comparan contra este mu_experto)
-        # sean comparables en "costo promedio por paso", no en costo total
-        # acumulado -- ver irl_features.horizonte_efectivo().
         acumulado = acumulado / horizonte_efectivo(len(ep_df), GAMMA)
         retornos.append(acumulado)
 

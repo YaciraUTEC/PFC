@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import pybullet as p
 from collections import deque
-from mamba_ssm import Mamba
+# from mamba_ssm import Mamba  # Comentado: no se usa en IRL workflow
 from gym_pybullet_drones.utils.enums import DroneModel, Physics
 from gym_pybullet_drones.envs.CtrlAviary import CtrlAviary
 from gym_pybullet_drones.control.DSLPIDControl import DSLPIDControl
@@ -15,7 +15,7 @@ _RESULTS        = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".
 STATS_PATH      = _os.path.join(_RESULTS, "stats_normalizacion.json")
 WINDOW_SIZE          = 50
 DURACION_SEG         = 20
-DURACION_FALLA_SEG   = 15
+DURACION_FALLA_SEG   = 20  # Igual a DURACION_SEG para consistencia IRL ↔ RL
 SIM_FREQ             = 240
 CTRL_FREQ            = 48
 Z_CRUCERO            = 1.2
@@ -29,40 +29,77 @@ COLOR_PID            = (1.0, 0.3, 0.2)
 COLOR_LSTM           = (0.2, 0.4, 1.0)
 COLOR_MAMBA          = (0.2, 0.8, 0.3)
 
-# ── Constantes de falla ───────────────────────────────────────
 MOTOR_FALLA   = 0
 T_FALLA_SEG   = 3.0
-T_FALLA_MIN   = 1.0   # rango de aleatorización del instante de falla (entrenamiento RL)
-T_FALLA_MAX   = 6.0   # deja >=9s de los 15s de DURACION_FALLA_SEG para observar recuperación
+T_FALLA_MIN   = 3.0   # Falla FIJA a los 3 segundos
+T_FALLA_MAX   = 3.0   # Falla FIJA a los 3 segundos
 ANGULO_CRASH  = np.radians(35)
 ESCENARIOS    = [0.90, 0.85, 0.80, 0.75, 0.70]   # pérdida 10%, 15%, 20%, 25%, 30%
 
-# ── Umbrales de aterrizaje controlado ────────────────────────
 ANGULO_LAND   = np.radians(20)   # más estricto que crash (35°)
 VEL_VERT_LAND = 0.4              # m/s descenso máximo aceptable
 ANG_VEL_LAND  = 1.5              # rad/s suma velocidades angulares
 
 
-def es_caida(obs, pos, paso):
+def _fase_de_waypoint(wp_idx, n_waypoints):
+    """0=despegue, 1=crucero, 2=aterrizaje — igual que calcular_mu_experto_mamba_fases.py"""
+    if wp_idx == 0:
+        return 0  # despegue
+    if wp_idx >= n_waypoints - 1:
+        return 2  # aterrizaje
+    return 1      # crucero
+
+
+def es_caida(obs, pos, paso, wp_idx=None, n_waypoints=None):
+    """Detecta crash con thresholds dinámicos por fase de vuelo."""
     if pos[2] >= 0.05 or paso <= 10:
         return False
     rpy = obs[0][7:10]
     vel = obs[0][10:13]
-    actitud_critica = abs(rpy[0]) > ANGULO_CRASH or abs(rpy[1]) > ANGULO_CRASH
-    cayendo         = vel[2] < -0.5
+
+    # Determinar fase
+    if wp_idx is not None and n_waypoints is not None:
+        fase = _fase_de_waypoint(wp_idx, n_waypoints)
+    else:
+        fase = 1  # por defecto: crucero (thresholds nominales)
+
+    # Thresholds por fase
+    if fase == 0:  # DESPEGUE
+        angulo_max = np.radians(25)
+        vel_max = -0.3
+    elif fase == 2:  # ATERRIZAJE
+        angulo_max = np.radians(20)
+        vel_max = -0.4
+    else:  # CRUCERO
+        angulo_max = ANGULO_CRASH  # 35°
+        vel_max = -0.5
+
+    actitud_critica = abs(rpy[0]) > angulo_max or abs(rpy[1]) > angulo_max
+    cayendo         = vel[2] < vel_max
     return actitud_critica or cayendo
 
 
-def es_aterrizaje(obs, pos, paso):
-    """Toca suelo de forma controlada: actitud ≤20°, vz > -0.4 m/s, ω baja."""
+def es_aterrizaje(obs, pos, paso, wp_idx=None, n_waypoints=None):
+    """Toca suelo de forma controlada con thresholds por fase."""
     if pos[2] >= 0.05 or paso <= 10:
         return False
     rpy     = obs[0][7:10]
-    vel     = obs[0][10:13]   # velocidad lineal [vx, vy, vz]
-    ang_vel = obs[0][13:16]   # velocidad angular [wx, wy, wz]
-    inclinacion_ok  = abs(rpy[0]) < ANGULO_LAND and abs(rpy[1]) < ANGULO_LAND
-    vel_vertical_ok = vel[2] > -VEL_VERT_LAND
-    ang_vel_ok      = float(np.sum(np.abs(ang_vel))) < ANG_VEL_LAND
+    vel     = obs[0][10:13]
+    ang_vel = obs[0][13:16]
+
+    # En aterrizaje: más estricto
+    if wp_idx is not None and n_waypoints is not None and _fase_de_waypoint(wp_idx, n_waypoints) == 2:
+        angulo_max = np.radians(15)  # Aún más estricto en aterrizaje
+        vel_max = -0.35
+        ang_vel_max = 1.0
+    else:
+        angulo_max = ANGULO_LAND
+        vel_max = -VEL_VERT_LAND
+        ang_vel_max = ANG_VEL_LAND
+
+    inclinacion_ok  = abs(rpy[0]) < angulo_max and abs(rpy[1]) < angulo_max
+    vel_vertical_ok = vel[2] > vel_max
+    ang_vel_ok      = float(np.sum(np.abs(ang_vel))) < ang_vel_max
     return inclinacion_ok and vel_vertical_ok and ang_vel_ok
 
 
