@@ -17,7 +17,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from irl_features import FEATURE_NAMES, N_FEATURES, horizonte_efectivo  # noqa: E402
 from nominal_flight_env import (  # noqa: E402
-    NominalFlightEnv, MIN_FAULT_PCT, MAX_FAULT_PCT, MIN_DIST, MAX_DIST_AB,
+    NominalFlightEnv, MIN_FAULT_PCT, MAX_FAULT_PCT,
 )
 
 GAMMA = 0.99  # igual que gamma en entrenar_rl.py (PPO)
@@ -29,19 +29,18 @@ def techo_falla(iteracion, total_iteraciones):
     return MIN_FAULT_PCT + progreso * (MAX_FAULT_PCT - MIN_FAULT_PCT)
 
 
-def distancia_max(iteracion, total_iteraciones):
-  
-    progreso = iteracion / total_iteraciones
-    return MIN_DIST + progreso * (MAX_DIST_AB - MIN_DIST)
-
 MU_EXPERTO_PATH = _ROOT / "results" / "mu_experto.npy"
 ESCALA_PATH     = _ROOT / "results" / "mu_escala.npy"
 MU_EXPERTO_MAMBA_PATH = _ROOT / "results" / "mu_experto_mamba_csv.npy"  # 800 episodios
 ESCALA_MAMBA_PATH     = _ROOT / "results" / "mu_escala_mamba_csv.npy"  # 800 episodios
 MU_EXPERTO_PID_100_PATH = _ROOT / "results" / "mu_experto_pid_100ep.npy"
 ESCALA_PID_100_PATH     = _ROOT / "results" / "mu_escala_pid_100ep.npy"
+MU_EXPERTO_1600_PATH = _ROOT / "results" / "mu_experto_1600_limpio.npy"  # PID nominal + falla leve, sin caídas
+ESCALA_1600_PATH     = _ROOT / "results" / "mu_escala_1600_limpio.npy"
 WEIGHTS_PATH    = _ROOT / "results" / "irl_weights_2.json"
 CONVERGENCIA_PATH = _ROOT / "results" / "irl_convergencia_2.csv"
+WEIGHTS_1600_PATH    = _ROOT / "results" / "irl_weights_1600.json"
+CONVERGENCIA_1600_PATH = _ROOT / "results" / "irl_convergencia_1600.csv"
 SEARCH_LOG_DIR  = _ROOT / "results" / "irl_search_logs_2"
 PRUEBAS_DIR     = _ROOT / "results" / "pruebas_irl"
 
@@ -93,12 +92,11 @@ def restringir_w(w_busqueda, w_anterior):
     return w_busqueda / norma
 
 
-def entrenar_politica(w, timesteps, n_envs, seed, iteracion, max_fault_pct, max_dist_ab):
+def entrenar_politica(w, timesteps, n_envs, seed, iteracion, max_fault_pct):
     def make_env():
         env = NominalFlightEnv(gui=False)
         env.set_reward_weights(w)
         env.set_max_fault(max_fault_pct)
-        env.set_max_distance(max_dist_ab)
         return env
 
     train_env = make_vec_env(make_env, n_envs=n_envs)
@@ -106,6 +104,7 @@ def entrenar_politica(w, timesteps, n_envs, seed, iteracion, max_fault_pct, max_
         "MlpPolicy", train_env,
         learning_rate=3e-4, n_steps=512, batch_size=128, n_epochs=10,
         gamma=GAMMA, gae_lambda=0.95, ent_coef=0.01, clip_range=0.2,
+        policy_kwargs=dict(log_std_init=-3),
         seed=seed, verbose=0,
         tensorboard_log=str(SEARCH_LOG_DIR),
     )
@@ -132,11 +131,13 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--iteraciones", type=int, default=15)
     parser.add_argument("--eps", type=float, default=0.05)
-    parser.add_argument("--timesteps-por-iter", type=int, default=1000)
+    parser.add_argument("--timesteps-por-iter", type=int, default=100_000)
     parser.add_argument("--n-envs", type=int, default=4)
     parser.add_argument("--eval-episodios", type=int, default=10)
-    parser.add_argument("--experto", type=str, default="pid", choices=["pid", "mamba", "pid-100"],
-                        help="Experto para IRL: 'pid' (800 ep), 'pid-100' (100 ep), o 'mamba' (100 ep)")
+    parser.add_argument("--experto", type=str, default="pid",
+                        choices=["pid", "mamba", "pid-100", "pid-1600"],
+                        help="Experto para IRL: 'pid' (800 ep), 'pid-100' (100 ep), "
+                             "'mamba' (100 ep) o 'pid-1600' (1600 ep, con falla leve)")
     parser.add_argument("--smoke-test", action="store_true",
                         help="corrida corta para validar que el pipeline no rompe")
     args = parser.parse_args()
@@ -162,10 +163,17 @@ def main():
         mu_path = MU_EXPERTO_PID_100_PATH
         escala_path = ESCALA_PID_100_PATH
         experto_nombre = "PID (100 ep)"
+    elif args.experto == "pid-1600":
+        mu_path = MU_EXPERTO_1600_PATH
+        escala_path = ESCALA_1600_PATH
+        experto_nombre = "PID (1600 ep, con falla leve)"
     else:  # "pid"
         mu_path = MU_EXPERTO_PATH
         escala_path = ESCALA_PATH
         experto_nombre = "PID (800 ep)"
+
+    weights_path = WEIGHTS_1600_PATH if args.experto == "pid-1600" else WEIGHTS_PATH
+    convergencia_path = CONVERGENCIA_1600_PATH if args.experto == "pid-1600" else CONVERGENCIA_PATH
 
     if not mu_path.exists() or not escala_path.exists():
         raise FileNotFoundError(
@@ -178,17 +186,15 @@ def main():
     print("mu_escala (para que las 7 features pesen comparable en el margen):",
           dict(zip(FEATURE_NAMES, mu_escala.round(4))))
 
-    
+
     mu_experto_r = mu_experto / mu_escala
 
     eval_env = NominalFlightEnv(gui=False)
 
-    techo_0    = techo_falla(0, args.iteraciones)      # = MIN_FAULT_PCT
-    distancia_0 = distancia_max(0, args.iteraciones)   # = MIN_DIST
+    techo_0 = techo_falla(0, args.iteraciones)      # = MIN_FAULT_PCT
     eval_env.set_max_fault(techo_0)
-    eval_env.set_max_distance(distancia_0)
     print(f"\nCalculando mu^(0) (política baseline: Mamba sin corrección, "
-          f"techo_falla={techo_0*100:.1f}%, distancia_max={distancia_0:.2f}m)...")
+          f"techo_falla={techo_0*100:.1f}%)...")
     mu_0, duracion_0, outcomes_0 = rollout_mu(eval_env, None, args.eval_episodios, GAMMA)
     mu_0_r = mu_0 / mu_escala
     print(f"mu^(0):", dict(zip(FEATURE_NAMES, mu_0.round(4))),
@@ -202,17 +208,14 @@ def main():
 
     convergencia = []
     for i in range(1, args.iteraciones + 1):
-        techo     = techo_falla(i, args.iteraciones)
-        distancia = distancia_max(i, args.iteraciones)
+        techo = techo_falla(i, args.iteraciones)
         w_reward_usado = w_reward.copy()
         print(f"\n{'='*60}\nIteración {i}/{args.iteraciones}  techo_falla={techo*100:.1f}%  "
-              f"distancia_max={distancia:.2f}m  w_reward_usado={w_reward_usado.round(3)}")
+              f"w_reward_usado={w_reward_usado.round(3)}")
         model = entrenar_politica(w_reward_usado, args.timesteps_por_iter, args.n_envs,
-                                  seed=i, iteracion=i, max_fault_pct=techo,
-                                  max_dist_ab=distancia)
+                                  seed=i, iteracion=i, max_fault_pct=techo)
 
         eval_env.set_max_fault(techo)         # evaluar con el mismo techo con que se entrenó
-        eval_env.set_max_distance(distancia)  # y la misma distancia máxima
         mu_i, duracion_i, outcomes_i = rollout_mu(eval_env, model, args.eval_episodios, GAMMA)
         mu_i_r = mu_i / mu_escala
         mu_bar_r = proyectar(mu_bar_r, mu_i_r, mu_experto_r)
@@ -241,7 +244,7 @@ def main():
     print(f"\nMejor iteración: {mejor['iteracion']} (margen={mejor['margen']:.4f}) "
           f"— se guarda su w_reward_usado, no un w extrapolado sin entrenar.")
 
-    with open(WEIGHTS_PATH, "w") as f:
+    with open(weights_path, "w") as f:
         json.dump({
             "feature_names": FEATURE_NAMES,
             "weights": mejor["w_reward_usado"],
@@ -250,9 +253,9 @@ def main():
             "iteraciones_totales": len(convergencia),
             "escala_mu_aplicada": True,
         }, f, indent=2)
-    print(f"Pesos guardados en {WEIGHTS_PATH}")
+    print(f"Pesos guardados en {weights_path}")
 
-    with open(CONVERGENCIA_PATH, "w", newline="") as f:
+    with open(convergencia_path, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=[
             "iteracion", "margen", "duracion_media_pasos",
             "cayo", "aterrizo", "llego", "tiempo",
@@ -260,11 +263,11 @@ def main():
         ])
         writer.writeheader()
         writer.writerows(convergencia)
-    print(f"Convergencia guardada en {CONVERGENCIA_PATH}")
+    print(f"Convergencia guardada en {convergencia_path}")
 
 
-    shutil.copy(WEIGHTS_PATH, carpeta_corrida / "irl_weights.json")
-    shutil.copy(CONVERGENCIA_PATH, carpeta_corrida / "irl_convergencia.csv")
+    shutil.copy(weights_path, carpeta_corrida / "irl_weights.json")
+    shutil.copy(convergencia_path, carpeta_corrida / "irl_convergencia.csv")
     print(f"Corrida archivada en {carpeta_corrida}")
 
     eval_env.close()

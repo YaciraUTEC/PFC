@@ -1,4 +1,5 @@
 
+import argparse
 import json
 import sys
 from pathlib import Path
@@ -61,22 +62,31 @@ from irl_features import (  # noqa: E402
 )
 
 CSV_PATH    = _ROOT / "results" / "datos_CF2X_800ep.csv"
-OUT_PATH    = _ROOT / "results" / "mu_experto.npy"
-ESCALA_PATH = _ROOT / "results" / "mu_escala.npy"
 GAMMA       = 0.99  # igual que gamma en entrenar_rl.py (PPO)
 EPS_ESCALA = 0.01
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--csv", type=str, default=str(CSV_PATH))
+    parser.add_argument("--sufijo", type=str, default="",
+                        help="Sufijo para mu_experto{sufijo}.npy y mu_escala{sufijo}.npy")
+    args = parser.parse_args()
+    out_mu     = _ROOT / "results" / f"mu_experto{args.sufijo}.npy"
+    out_escala = _ROOT / "results" / f"mu_escala{args.sufijo}.npy"
+    out_paso   = _ROOT / "results" / f"mu_paso{args.sufijo}.npy"
+
     stats   = cargar_stats(STATS_PATH)
     escalas = cargar_escalas(stats)
 
-    print(f"Cargando {CSV_PATH}...")
-    df = pd.read_csv(CSV_PATH)
+    print(f"Cargando {args.csv}...")
+    df = pd.read_csv(args.csv)
     episodios = df["episodio"].unique()
     print(f"  {len(df):,} filas | {len(episodios)} episodios")
 
     retornos = []
+    suma_pasos = np.zeros(N_FEATURES, dtype=np.float64)
+    n_pasos    = 0
     for ep in episodios:
         ep_df = df[df["episodio"] == ep].reset_index(drop=True)
         pos     = ep_df[["pos_x", "pos_y", "pos_z"]].values
@@ -85,8 +95,8 @@ def main():
         vel     = ep_df[["vel_x", "vel_y", "vel_z"]].values
         err     = ep_df[["err_x", "err_y", "err_z"]].values
         rpm     = ep_df[["motor_0", "motor_1", "motor_2", "motor_3"]].values
-        wp_actual   = pos + err  # wp_actual = pos + (wp_actual - pos), waypoint local por fila
-        punto_final = wp_actual[-1]  # último target del episodio = destino real (B_suelo)
+        wp_actual   = ep_df[["target_x", "target_y", "target_z"]].values  # waypoint real de cada paso
+        punto_final = (pos + err)[-1]  # destino real del episodio (B_suelo)
 
         # progreso = 0 en el primer paso del episodio (respecto al destino final)
         dist_prev_z = distancia_z(pos[0], punto_final, escalas)
@@ -103,21 +113,27 @@ def main():
                 es_caida_ahora=es_caida_ahora,
             )
             acumulado += (GAMMA ** t) * vec
+            suma_pasos += vec
+            n_pasos    += 1
         acumulado = acumulado / horizonte_efectivo(len(ep_df), GAMMA)
         retornos.append(acumulado)
 
     retornos   = np.array(retornos)  # (n_episodios, N_FEATURES)
     mu_experto = np.mean(retornos, axis=0)
-    np.save(OUT_PATH, mu_experto)
+    np.save(out_mu, mu_experto)
+
+    mu_paso = suma_pasos / n_pasos
+    np.save(out_paso, mu_paso)
 
     mu_escala = np.maximum(np.std(retornos, axis=0), EPS_ESCALA)
-    np.save(ESCALA_PATH, mu_escala)
+    np.save(out_escala, mu_escala)
 
     print("\nmu_experto (expectativas de características del PID):")
     for name, val, esc in zip(FEATURE_NAMES, mu_experto, mu_escala):
         print(f"  {name:24s} {val:+9.4f}   escala={esc:.4f}")
-    print(f"\nGuardado en {OUT_PATH}")
-    print(f"Escala guardada en {ESCALA_PATH} (usada por entrenar_irl_apprenticeship.py "
+    print(f"\nPromedio por paso guardado en {out_paso}")
+    print(f"Guardado en {out_mu}")
+    print(f"Escala guardada en {out_escala} (usada por entrenar_irl_apprenticeship.py "
           f"para que las 7 features pesen comparablemente en el margen)")
 
 

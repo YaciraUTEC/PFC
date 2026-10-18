@@ -27,8 +27,9 @@ MAX_DIST_AB = 2 * XY_LIM * (2 ** 0.5)  # diagonal de la caja de vuelo (~5.66 m)
 DELTA_MAX = 3000  # aumentado para dar más autoridad al delta residual de PPO
 
 
-MIN_FAULT_PCT = 0.02  # igual que entrenar_rl.py
-MAX_FAULT_PCT = 0.40  # severidad máxima: 40% de pérdida
+NIVELES_FALLA_PCT = [0.02, 0.04, 0.06, 0.08, 0.10]  # mismos niveles que datos_pid_falla_leve.csv
+MIN_FAULT_PCT = NIVELES_FALLA_PCT[0]
+MAX_FAULT_PCT = NIVELES_FALLA_PCT[-1]
 
 
 class NominalFlightEnv(gym.Env):
@@ -43,7 +44,6 @@ class NominalFlightEnv(gym.Env):
         self.t_falla_min   = T_FALLA_MIN if t_falla_min is None else t_falla_min
         self.t_falla_max   = T_FALLA_MAX if t_falla_max is None else t_falla_max
         self.max_fault_pct = MAX_FAULT_PCT  # ver set_max_fault() -- currículo externo lo ajusta
-        self.max_dist_ab   = MAX_DIST_AB    # ver set_max_distance() -- currículo externo lo ajusta
 
         self.pid_controller = DSLPIDControl(drone_model=DroneModel.CF2X)
 
@@ -65,21 +65,18 @@ class NominalFlightEnv(gym.Env):
         """Techo superior de severidad para el currículo (ver entrenar_irl_apprenticeship.py)."""
         self.max_fault_pct = float(np.clip(pct, MIN_FAULT_PCT, MAX_FAULT_PCT))
 
-    def set_max_distance(self, dist):
-        """Techo superior de distancia A->B para el currículo (ver entrenar_irl_apprenticeship.py)."""
-        self.max_dist_ab = float(np.clip(dist, MIN_DIST, MAX_DIST_AB))
-
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
 
-        fault_pct      = np.random.uniform(MIN_FAULT_PCT, self.max_fault_pct)
+        niveles_disponibles = [n for n in NIVELES_FALLA_PCT if n <= self.max_fault_pct + 1e-9]
+        fault_pct      = float(np.random.choice(niveles_disponibles))
         self.severidad = 1.0 - fault_pct
         t_falla_seg    = np.random.uniform(self.t_falla_min, self.t_falla_max)
         self.t_falla   = int(t_falla_seg * CTRL_FREQ)
 
         while True:
             a_xy = np.random.uniform(-XY_LIM, XY_LIM, size=2)
-            dist_deseada = np.random.uniform(MIN_DIST, self.max_dist_ab)
+            dist_deseada = np.random.uniform(MIN_DIST, MAX_DIST_AB)
             angulo = np.random.uniform(0, 2 * np.pi)
             b_xy = a_xy + dist_deseada * np.array([np.cos(angulo), np.sin(angulo)])
             if np.all(np.abs(b_xy) <= XY_LIM):
