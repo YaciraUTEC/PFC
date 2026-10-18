@@ -50,13 +50,13 @@ DURACION_SEG = DURACION_FALLA_SEG
 R_VIVO            = 0.05    # por paso post-falla: seguir en el aire vale más que caer
 K_TILT            = 2.0     # × (|roll|+|pitch|) × dt
 K_OMEGA           = 0.5     # × |ω| × dt
-K_ALT             = 3.0     # × |z − z_waypoint| × dt
 Z_MIN_CRUCERO     = 0.3     # m — por debajo, en crucero, "arrastrarse" anula R_VIVO
 R_SUELO           = -0.05
 K_PROG            = 8.0     # × metros avanzados hacia el waypoint
 PROG_CLIP         = 0.10    # m por paso
 K_DELTA           = 0.01    # × ||delta_norm||² — correcciones suaves
 R_WAYPOINT        = 10.0
+NIVELES_FALLA_PCT = [0.02, 0.04, 0.06, 0.08, 0.10]  # mismos niveles que el IRL y datos_pid_falla_leve.csv
 R_LLEGO           = 100.0
 R_ATERRIZO_EN_B   = 40.0    # solo si aterriza a < DIST_ATERRIZO_B (horizontal) del destino
 R_ATERRIZO_LEJOS  = -60.0   # aterrizar lejos del destino ya no es una salida "segura"
@@ -67,8 +67,8 @@ R_CAIDA           = -120.0
 # ── Parte IRL de "hibrido" ──────────────────────────────────────────────────
 # Solo features de estilo de vuelo. Las de tarea (destino, velocidad, progreso,
 # caída) las cubre la parte manual, y en irl_weights_2.json tenían signo invertido.
-FEATURES_TAREA       = {"proximidad_objetivo", "velocidad", "progreso", "penalizacion_caida"}
-MU_EXPERTO_HIBRIDO   = str(_ROOT / "results" / "mu_experto_mamba.npy")
+FEATURES_TAREA       = {"proximidad_objetivo", "progreso", "penalizacion_caida"}
+MU_EXPERTO_HIBRIDO   = str(_ROOT / "results" / "mu_experto_1600_limpio.npy")
 ALPHA_HIBRIDO        = 0.05
 
 
@@ -172,7 +172,7 @@ class FaultResidualEnvIRL(gym.Env):
         )
 
     def set_max_fault(self, pct):
-        self.max_fault_pct = float(np.clip(pct, 0.02, 0.80))
+        self.max_fault_pct = float(np.clip(pct, NIVELES_FALLA_PCT[0], NIVELES_FALLA_PCT[-1]))
 
     # ── gym API ──────────────────────────────────────────────────────────────
 
@@ -183,7 +183,8 @@ class FaultResidualEnvIRL(gym.Env):
         if self.falla_fija is not None:
             fault_pct  = self.falla_fija
         else:
-            fault_pct  = np.random.uniform(0.02, self.max_fault_pct)
+            niveles = [n for n in NIVELES_FALLA_PCT if n <= self.max_fault_pct + 1e-9]
+            fault_pct  = float(np.random.choice(niveles))
         self.severidad = 1.0 - fault_pct
 
         # Falla en instante fijo (3 segundos) o aleatorio según t_falla_min/max
@@ -352,7 +353,6 @@ class FaultResidualEnvIRL(gym.Env):
         r  = R_VIVO
         r -= K_TILT  * (abs(rpy[0]) + abs(rpy[1])) * dt
         r -= K_OMEGA * float(np.linalg.norm(ang_vel)) * dt
-        r -= K_ALT   * abs(pos[2] - ta[2]) * dt
         en_fase_aterrizaje = ta[2] < Z_CRUCERO * 0.5
         if not en_fase_aterrizaje and pos[2] < Z_MIN_CRUCERO:
             r += R_SUELO

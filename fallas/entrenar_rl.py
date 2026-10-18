@@ -24,7 +24,7 @@ from fault_env_residual import FaultResidualEnv, DURACION_SEG as _DURACION_SEG
 
 T_FALLA_TRAIN  = 3.0   # igual que T_FALLA_SEG en comparar_base.py (solo --reward manual)
 MIN_FAULT_PCT  = 0.02
-MAX_FAULT_PCT  = 0.40  # consistente con nominal_flight_env.py (IRL)
+MAX_FAULT_PCT  = 0.10  # consistente con nominal_flight_env.py (IRL)
 CURRICULUM_FRAC = 0.75
 
 
@@ -139,7 +139,10 @@ REWARDS_ENV_IRL = ("irl", "manual2", "hibrido")   # usan fault_env_residual_irl.
 
 
 def _env_irl(modelo, reward, t_falla_min, t_falla_max, rutas, falla_fija, alpha):
-    from fault_env_residual_irl import FaultResidualEnvIRL
+    if modelo == "mamba":
+        from fault_env_residual_irl_mamba import FaultResidualEnvIRL
+    else:
+        from fault_env_residual_irl import FaultResidualEnvIRL
     return FaultResidualEnvIRL(
         gui=False, modelo=modelo,
         t_falla_min=t_falla_min, t_falla_max=t_falla_max,
@@ -193,7 +196,7 @@ def train(timesteps: int, modelo: str, reward: str, t_falla_min: float, t_falla_
                                     rutas, falla_fija, alpha))
     else:
         eval_env = Monitor(FaultResidualEnv(gui=False, t_falla_override=T_FALLA_TRAIN, modelo=modelo))
-    eval_env.unwrapped.set_max_fault(0.20)
+    eval_env.unwrapped.set_max_fault(MAX_FAULT_PCT)
 
     model = PPO(
         "MlpPolicy",
@@ -207,6 +210,7 @@ def train(timesteps: int, modelo: str, reward: str, t_falla_min: float, t_falla_
         ent_coef=0.05,
         clip_range=0.2,
         target_kl=0.02,
+        policy_kwargs=dict(log_std_init=-3),
         tensorboard_log=log_dir,
         verbose=0,
     )
@@ -249,7 +253,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--timesteps", type=int, default=1_000_000)  # igual que _5
     parser.add_argument("--modelo", type=str, default="mamba", choices=["mamba", "lstm", "pid"],
-                        help="Base controller: 'mamba' (default), 'lstm', 'pid' (solo con --reward irl)")
+                        help="Base controller: 'mamba' (default, solo con --reward manual), 'lstm', 'pid' (con --reward irl/hibrido)")
     parser.add_argument("--reward", type=str, default="manual",
                         choices=["manual", "irl", "manual2", "hibrido"],
                         help="manual: fault_env_residual.py (sin cambios). "
@@ -273,7 +277,7 @@ def main():
     parser.add_argument("--falla-fija", type=float, default=None,
                         help="solo con --reward irl/manual2/hibrido. Pérdida fija del motor en todos los "
                              "episodios, como fracción (ej: 0.10 = 10%%). Sin currículo de "
-                             "severidad. Default: aleatoria 2%%→80%% con currículo.")
+                             "severidad. Default: aleatoria 2%%→10%% con currículo.")
     args = parser.parse_args()
 
     # Pasar el archivo de pesos al entorno si se usa IRL
