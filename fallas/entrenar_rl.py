@@ -161,16 +161,16 @@ def make_env(modelo="mamba", reward="manual", t_falla_min=None, t_falla_max=None
 
 
 def train(timesteps: int, modelo: str, reward: str, t_falla_min: float, t_falla_max: float,
-          rutas: str = "aleatorias", falla_fija: float = None, alpha: float = 0.05):
+          rutas: str = "aleatorias", falla_fija: float = None, alpha: float = 0.05, version: int = 10):
     sufijo      = modelo if reward == "manual" else f"{modelo}_{reward}"
     if reward in REWARDS_ENV_IRL and rutas == "tesis":
         sufijo += "_tesis"   # no sobrescribe el modelo entrenado con rutas aleatorias
     if reward in REWARDS_ENV_IRL and falla_fija is not None:
         sufijo += f"_f{round(falla_fija * 100)}"   # ej. _f10 para 10% fijo
-    best_dir    = str(_ROOT / "results" / f"ppo_{sufijo}_10")
-    model_path  = str(_ROOT / "results" / f"ppo_compensador_{sufijo}_10")
-    log_dir     = str(_ROOT / "results" / f"ppo_logs_{sufijo}_10")
-    ckpt_prefix = f"ppo_{sufijo}_10_ckpt"
+    best_dir    = str(_ROOT / "results" / f"ppo_{sufijo}_{version}")
+    model_path  = str(_ROOT / "results" / f"ppo_compensador_{sufijo}_{version}")
+    log_dir     = str(_ROOT / "results" / f"ppo_logs_{sufijo}_{version}")
+    ckpt_prefix = f"ppo_{sufijo}_{version}_ckpt"
 
     txt_falla = (f"falla fija {falla_fija * 100:.0f}%" if falla_fija is not None
                  else f"progresión falla 2%→{MAX_FAULT_PCT * 100:.0f}%")
@@ -230,7 +230,7 @@ def train(timesteps: int, modelo: str, reward: str, t_falla_min: float, t_falla_
         deterministic=True,
         verbose=1,
     )
-    csv_exitosos  = str(_ROOT / "results" / f"recuperaciones_{sufijo}_10.csv")
+    csv_exitosos  = str(_ROOT / "results" / f"recuperaciones_{sufijo}_{version}.csv")
     metricas_cb   = MetricasCallback(log_freq=200, csv_path=csv_exitosos, total_timesteps=timesteps,
                                      falla_fija=falla_fija)
     callbacks     = [checkpoint_cb, eval_cb, metricas_cb]
@@ -274,6 +274,8 @@ def main():
                         help="solo con --reward irl/manual2/hibrido. aleatorias: A,B al azar en cada episodio. "
                              "tesis: las 5 TRAYECTORIAS que evalúa falla_tesis.py "
                              "(guarda como ppo_compensador_<modelo>_irl_tesis_10.zip)")
+    parser.add_argument("--version", type=int, default=10,
+                        help="Número de versión en el nombre del modelo (ej: 11 -> ppo_compensador_..._11.zip)")
     parser.add_argument("--falla-fija", type=float, default=None,
                         help="solo con --reward irl/manual2/hibrido. Pérdida fija del motor en todos los "
                              "episodios, como fracción (ej: 0.10 = 10%%). Sin currículo de "
@@ -290,7 +292,7 @@ def main():
         os.environ["IRL_WEIGHTS_PATH"] = pesos_path
 
     train(args.timesteps, args.modelo, args.reward, args.t_falla_min, args.t_falla_max,
-          rutas=args.rutas, falla_fija=args.falla_fija, alpha=args.alpha)
+          rutas=args.rutas, falla_fija=args.falla_fija, alpha=args.alpha, version=args.version)
 
 
 if __name__ == "__main__":
