@@ -1,11 +1,4 @@
-"""
-Entrenamiento PPO para compensación residual de falla de motor.
 
-Uso:
-    python fallas/entrenar_rl.py                          # Mamba+PPO
-    python fallas/entrenar_rl.py --modelo lstm            # LSTM+PPO
-    python fallas/entrenar_rl.py --timesteps 500000
-"""
 
 import argparse
 import csv
@@ -22,36 +15,37 @@ from stable_baselines3.common.monitor import Monitor
 
 from fault_env_residual import FaultResidualEnv, DURACION_SEG as _DURACION_SEG
 
-T_FALLA_TRAIN  = 3.0   # igual que T_FALLA_SEG en comparar_base.py (solo --reward manual)
+T_FALLA_TRAIN  = 3.0   
 MIN_FAULT_PCT  = 0.02
-MAX_FAULT_PCT  = 0.10  # consistente con nominal_flight_env.py (IRL)
-CURRICULUM_FRAC = 0.75
+MAX_FAULT_PCT  = 0.10
+NIVELES_2A10   = [0.02, 0.04, 0.06, 0.08, 0.10]
+NIVELES_2A20   = [0.02, 0.05, 0.10, 0.15, 0.20]  # mismos niveles que el IRL con --niveles-falla 2a20  
+CURRICULUM_FRAC = 0.4
 
 
 class ProgresionFallaCallback(BaseCallback):
-    """Sube el techo de falla linealmente de MIN_FAULT_PCT a MAX_FAULT_PCT."""
 
-    def __init__(self, total_timesteps):
+    def __init__(self, total_timesteps, max_pct=MAX_FAULT_PCT):
         super().__init__()
         self.total_timesteps = total_timesteps
+        self.max_pct         = max_pct
 
     def _on_step(self) -> bool:
         denominador = self.total_timesteps * CURRICULUM_FRAC
         progress    = min(self.num_timesteps / denominador, 1.0)
-        current_max = MIN_FAULT_PCT + progress * (MAX_FAULT_PCT - MIN_FAULT_PCT)
+        current_max = MIN_FAULT_PCT + progress * (self.max_pct - MIN_FAULT_PCT)
         self.training_env.env_method("set_max_fault", current_max)
         return True
 
 
 class MetricasCallback(BaseCallback):
-    """
-    Imprime cada `log_freq` episodios un resumen de si PPO está aprendiendo.
-    Guarda en CSV las trayectorias donde PPO llegó exitosamente.
-    """
+  
 
-    def __init__(self, log_freq=200, csv_path=None, total_timesteps=1_000_000, falla_fija=None):
+    def __init__(self, log_freq=200, csv_path=None, total_timesteps=1_000_000, falla_fija=None,
+                 max_pct=MAX_FAULT_PCT):
         super().__init__()
         self.falla_fija      = falla_fija
+        self.max_pct         = max_pct
         self.log_freq        = log_freq
         self.csv_path        = csv_path
         self.total_timesteps = total_timesteps
@@ -81,8 +75,6 @@ class MetricasCallback(BaseCallback):
             self._misiones.append(info["mision_pct"])
             self._deltas.append(info["delta_medio"])
             self._ep_count += 1
-
-            # Guardar episodios exitosos en CSV
             if self._csv_writer and info["outcome"] in ("llego", "aterrizo"):
                 A = info.get("punto_A", [0, 0, 0])
                 B = info.get("punto_B", [0, 0, 0])
@@ -108,7 +100,7 @@ class MetricasCallback(BaseCallback):
                 else:
                     denominador = self.total_timesteps * CURRICULUM_FRAC
                     progress    = min(self.num_timesteps / denominador, 1.0)
-                    falla_max   = MIN_FAULT_PCT + progress * (MAX_FAULT_PCT - MIN_FAULT_PCT)
+                    falla_max   = MIN_FAULT_PCT + progress * (self.max_pct - MIN_FAULT_PCT)
                     txt_falla   = f"falla_max={falla_max*100:.0f}%"
 
                 print(
@@ -135,45 +127,59 @@ MODEL_PATH  = str(_ROOT / "results" / "ppo_compensador")
 LOG_DIR     = str(_ROOT / "results" / "ppo_logs")
 
 
-REWARDS_ENV_IRL = ("irl", "manual2", "hibrido")   # usan fault_env_residual_irl.py
+REWARDS_ENV_IRL = ("irl", "manual2", "hibrido") 
 
 
-def _env_irl(modelo, reward, t_falla_min, t_falla_max, rutas, falla_fija, alpha):
+def _env_irl(modelo, reward, t_falla_min, t_falla_max, rutas, falla_fija, alpha,
+             controlador="pid", fault_aware=False, niveles_falla_pct=None):
     if modelo == "mamba":
         from fault_env_residual_irl_mamba import FaultResidualEnvIRL
+        extra = {} if niveles_falla_pct is None else {"niveles_falla_pct": niveles_falla_pct}
     else:
         from fault_env_residual_irl import FaultResidualEnvIRL
+        extra = {"controlador": controlador, "fault_aware": fault_aware}
     return FaultResidualEnvIRL(
         gui=False, modelo=modelo,
         t_falla_min=t_falla_min, t_falla_max=t_falla_max,
         rutas=rutas, falla_fija=falla_fija,
         modo_reward=reward, alpha=alpha,
+        **extra,
     )
 
 
 def make_env(modelo="mamba", reward="manual", t_falla_min=None, t_falla_max=None,
-             rutas="aleatorias", falla_fija=None, alpha=0.05):
+             rutas="aleatorias", falla_fija=None, alpha=0.05,
+             controlador="pid", fault_aware=False, niveles_falla_pct=None):
     def _init():
         if reward in REWARDS_ENV_IRL:
-            return _env_irl(modelo, reward, t_falla_min, t_falla_max, rutas, falla_fija, alpha)
+            return _env_irl(modelo, reward, t_falla_min, t_falla_max, rutas, falla_fija, alpha,
+                            controlador=controlador, fault_aware=fault_aware,
+                            niveles_falla_pct=niveles_falla_pct)
         return FaultResidualEnv(gui=False, t_falla_override=T_FALLA_TRAIN, modelo=modelo)
     return _init
 
 
 def train(timesteps: int, modelo: str, reward: str, t_falla_min: float, t_falla_max: float,
-          rutas: str = "aleatorias", falla_fija: float = None, alpha: float = 0.05, version: int = 10):
+          rutas: str = "aleatorias", falla_fija: float = None, alpha: float = 0.05, version: int = 10,
+          controlador: str = "pid", fault_aware: bool = False, niveles_falla_pct=None):
+    niveles   = list(NIVELES_2A10) if niveles_falla_pct is None else list(niveles_falla_pct)
+    max_pct   = niveles[-1]
     sufijo      = modelo if reward == "manual" else f"{modelo}_{reward}"
     if reward in REWARDS_ENV_IRL and rutas == "tesis":
-        sufijo += "_tesis"   # no sobrescribe el modelo entrenado con rutas aleatorias
+        sufijo += "_tesis"
     if reward in REWARDS_ENV_IRL and falla_fija is not None:
         sufijo += f"_f{round(falla_fija * 100)}"   # ej. _f10 para 10% fijo
+    if reward in REWARDS_ENV_IRL and controlador == "robust":
+        sufijo += "_robust"
+    if reward in REWARDS_ENV_IRL and max_pct > 0.10:
+        sufijo += "_2a20"
     best_dir    = str(_ROOT / "results" / f"ppo_{sufijo}_{version}")
     model_path  = str(_ROOT / "results" / f"ppo_compensador_{sufijo}_{version}")
     log_dir     = str(_ROOT / "results" / f"ppo_logs_{sufijo}_{version}")
     ckpt_prefix = f"ppo_{sufijo}_{version}_ckpt"
 
     txt_falla = (f"falla fija {falla_fija * 100:.0f}%" if falla_fija is not None
-                 else f"progresión falla 2%→{MAX_FAULT_PCT * 100:.0f}%")
+                 else f"progresión falla 2%→{max_pct * 100:.0f}%")
     print(
         f"Entrenando PPO+{modelo.upper()} (reward={reward}) — {timesteps} pasos "
         f"| {txt_falla} | rutas={rutas}" + (f" | alpha={alpha}" if reward == "hibrido" else "")
@@ -188,15 +194,19 @@ def train(timesteps: int, modelo: str, reward: str, t_falla_min: float, t_falla_
     train_env = make_vec_env(
         make_env(modelo=modelo, reward=reward,
                 t_falla_min=t_falla_min, t_falla_max=t_falla_max, rutas=rutas,
-                falla_fija=falla_fija, alpha=alpha),
+                falla_fija=falla_fija, alpha=alpha,
+                controlador=controlador, fault_aware=fault_aware,
+                niveles_falla_pct=niveles),
         n_envs=N_ENVS,
     )
     if reward in REWARDS_ENV_IRL:
         eval_env = Monitor(_env_irl(modelo, reward, t_falla_min, t_falla_max,
-                                    rutas, falla_fija, alpha))
+                                    rutas, falla_fija, alpha,
+                                    controlador=controlador, fault_aware=fault_aware,
+                                    niveles_falla_pct=niveles))
     else:
         eval_env = Monitor(FaultResidualEnv(gui=False, t_falla_override=T_FALLA_TRAIN, modelo=modelo))
-    eval_env.unwrapped.set_max_fault(MAX_FAULT_PCT)
+    eval_env.unwrapped.set_max_fault(max_pct)
 
     model = PPO(
         "MlpPolicy",
@@ -226,16 +236,16 @@ def train(timesteps: int, modelo: str, reward: str, t_falla_min: float, t_falla_
         best_model_save_path=best_dir,
         log_path=log_dir,
         eval_freq=25_000,
-        n_eval_episodes=20,
+        n_eval_episodes=100,
         deterministic=True,
         verbose=1,
     )
     csv_exitosos  = str(_ROOT / "results" / f"recuperaciones_{sufijo}_{version}.csv")
     metricas_cb   = MetricasCallback(log_freq=200, csv_path=csv_exitosos, total_timesteps=timesteps,
-                                     falla_fija=falla_fija)
+                                     falla_fija=falla_fija, max_pct=max_pct)
     callbacks     = [checkpoint_cb, eval_cb, metricas_cb]
-    if falla_fija is None:   # con falla fija no hay currículo de severidad
-        callbacks.append(ProgresionFallaCallback(total_timesteps=timesteps))
+    if falla_fija is None:  
+        callbacks.append(ProgresionFallaCallback(total_timesteps=timesteps, max_pct=max_pct))
 
     model.learn(
         total_timesteps=timesteps,
@@ -280,7 +290,20 @@ def main():
                         help="solo con --reward irl/manual2/hibrido. Pérdida fija del motor en todos los "
                              "episodios, como fracción (ej: 0.10 = 10%%). Sin currículo de "
                              "severidad. Default: aleatoria 2%%→10%% con currículo.")
+    parser.add_argument("--controlador", type=str, default="pid", choices=["pid", "robust"],
+                        help="Solo con --modelo pid: controlador base 'pid' (DSLPIDControl) o "
+                             "'robust' (RobustDSLPIDControl)")
+    parser.add_argument("--fault-aware", action="store_true",
+                        help="Solo con --controlador robust: el controlador base recibe los factores "
+                             "de motor reales (información privilegiada)")
+    parser.add_argument("--niveles-falla", type=str, default="2a10", choices=["2a10", "2a20"],
+                        help="Rango de falla del currículo: 2a10 (2-10%%) o 2a20 (2-20%%)")
     args = parser.parse_args()
+    niveles_falla = NIVELES_2A20 if args.niveles_falla == "2a20" else NIVELES_2A10
+    if args.controlador == "robust" and args.modelo != "pid":
+        parser.error("--controlador robust solo funciona con --modelo pid")
+    if args.fault_aware and args.controlador != "robust":
+        parser.error("--fault-aware requiere --controlador robust")
 
     # Pasar el archivo de pesos al entorno si se usa IRL
     if args.reward in REWARDS_ENV_IRL:
@@ -292,7 +315,9 @@ def main():
         os.environ["IRL_WEIGHTS_PATH"] = pesos_path
 
     train(args.timesteps, args.modelo, args.reward, args.t_falla_min, args.t_falla_max,
-          rutas=args.rutas, falla_fija=args.falla_fija, alpha=args.alpha, version=args.version)
+          rutas=args.rutas, falla_fija=args.falla_fija, alpha=args.alpha, version=args.version,
+          controlador=args.controlador, fault_aware=args.fault_aware,
+          niveles_falla_pct=niveles_falla)
 
 
 if __name__ == "__main__":

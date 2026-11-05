@@ -16,18 +16,39 @@ import numpy as np
 from stable_baselines3 import PPO
 
 _ROOT = Path(__file__).parent.parent
-os.environ["IRL_WEIGHTS_PATH"] = str(_ROOT / "results" / "irl_weights_1600.json")
+os.environ["IRL_WEIGHTS_PATH"] = str(_ROOT / "results" / "irl_weights_1600_robust_union.json")
 sys.path.insert(0, str(_ROOT / "comparacion"))
 sys.path.insert(0, str(Path(__file__).parent))
 
-from fault_env_residual_irl_mamba import FaultResidualEnvIRL, DIST_ATERRIZO_B  # noqa: E402
+from fault_env_residual_irl_mamba import FaultResidualEnvIRL as FaultResidualEnvIRLMamba, DIST_ATERRIZO_B  # noqa: E402
+from fault_env_residual_irl import FaultResidualEnvIRL as FaultResidualEnvIRLPid  # noqa: E402
 from comparar_base import redibujar  # noqa: E402
 
 MODELOS = {
     "hibrido": str(_ROOT / "results" / "ppo_compensador_mamba_hibrido_10"),
-    "irl": str(_ROOT / "results" / "ppo_compensador_mamba_irl_10"),
+    "irl": str(_ROOT / "results" / "ppo_compensador_mamba_irl_11"),
+    "irl_2a20": str(_ROOT / "results" / "ppo_compensador_mamba_irl_2a20_12"),
+    "irl_mejor": str(_ROOT / "results" / "ppo_compensador_mamba_irl_10"),
+    "irl_robust": str(_ROOT / "results" / "ppo_compensador_mamba_irl_13"),
+    "irl_pid": str(_ROOT / "results" / "ppo_compensador_pid_irl_1"),
+    "irl_pid_best": str(_ROOT / "results" / "ppo_pid_irl_1" / "best_model"),
+    "irl_mamba_pidw": str(_ROOT / "results" / "ppo_compensador_mamba_irl_14"),
+    "irl_mamba_pidw_best": str(_ROOT / "results" / "ppo_mamba_irl_14" / "best_model"),
+    "irl_mamba_fix2": str(_ROOT / "results" / "ppo_compensador_mamba_irl_15"),
+    "irl_mamba_fix2_best": str(_ROOT / "results" / "ppo_mamba_irl_15" / "best_model"),
+    "irl_mamba_2a20_16": str(_ROOT / "results" / "ppo_compensador_mamba_irl_2a20_16"),
+    "irl_mamba_2a20_16_best": str(_ROOT / "results" / "ppo_mamba_irl_2a20_16" / "best_model"),
+    "irl_mamba_2a20_17": str(_ROOT / "results" / "ppo_compensador_mamba_irl_2a20_17"),
+    "irl_mamba_2a20_17_best": str(_ROOT / "results" / "ppo_mamba_irl_2a20_17" / "best_model"),
+    "irl_mamba_2a20_18": str(_ROOT / "results" / "ppo_compensador_mamba_irl_2a20_18"),
+    "irl_mamba_2a20_18_best": str(_ROOT / "results" / "ppo_mamba_irl_2a20_18" / "best_model"),
+    "irl_mamba_2a20_19": str(_ROOT / "results" / "ppo_compensador_mamba_irl_2a20_19"),
+    "irl_mamba_2a20_19_best": str(_ROOT / "results" / "ppo_mamba_irl_2a20_19" / "best_model"),
+    "irl_pid_2": str(_ROOT / "results" / "ppo_compensador_pid_irl_2"),
+    "irl_pid_2_best": str(_ROOT / "results" / "ppo_pid_irl_2" / "best_model"),
 }
 NIVELES = [0.02, 0.04, 0.06, 0.08, 0.10]
+NIVELES_2A20 = [0.02, 0.05, 0.10, 0.15, 0.20]
 
 
 def correr_episodio(env, model, semilla):
@@ -63,12 +84,35 @@ def main():
     parser.add_argument("--gui", action="store_true", help="Muestra el vuelo en PyBullet, a velocidad real")
     parser.add_argument("--nivel", type=float, default=None,
                         help="Solo este nivel de falla en %% (ej: 6). Por defecto, todos")
+    parser.add_argument("--base", type=str, default="mamba", choices=["mamba", "pid"],
+                        help="mamba: compara contra Mamba sin compensar. "
+                             "pid: compara contra PID normal sin compensar (usa un compensador "
+                             "entrenado con --modelo pid, ej. irl_pid)")
     args = parser.parse_args()
 
     model = PPO.load(MODELOS[args.compensador])
-    env = FaultResidualEnvIRL(gui=args.gui, modelo="mamba", t_falla_min=3.0, t_falla_max=3.0,
-                              modo_reward=args.compensador, alpha=0.05)
-    niveles = [args.nivel / 100] if args.nivel is not None else NIVELES
+    modo_reward = "irl" if args.compensador.startswith("irl") else "hibrido"
+    niveles_default = NIVELES_2A20 if args.compensador in (
+        "irl_2a20", "irl_mamba_2a20_16", "irl_mamba_2a20_16_best",
+        "irl_mamba_2a20_17", "irl_mamba_2a20_17_best",
+        "irl_mamba_2a20_18", "irl_mamba_2a20_18_best",
+        "irl_mamba_2a20_19", "irl_mamba_2a20_19_best",
+    ) else NIVELES
+    # niveles_falla_pct tiene que coincidir con el maximo usado al entrenar el
+    # compensador: desde el ajuste de escalado por severidad, step() usa
+    # self.niveles[-1] para normalizar cuanto puede empujar el residual.
+    if args.base == "mamba":
+        env = FaultResidualEnvIRLMamba(gui=args.gui, modelo="mamba", t_falla_min=3.0, t_falla_max=3.0,
+                                       modo_reward=modo_reward, alpha=0.05,
+                                       niveles_falla_pct=niveles_default)
+        nombre_base = "Mamba sin compensar"
+    else:
+        env = FaultResidualEnvIRLPid(gui=args.gui, modelo="pid", t_falla_min=3.0, t_falla_max=3.0,
+                                     modo_reward=modo_reward, alpha=0.05,
+                                     controlador="pid", fault_aware=False,
+                                     niveles_falla_pct=niveles_default)
+        nombre_base = "PID normal sin compensar"
+    niveles = [args.nivel / 100] if args.nivel is not None else niveles_default
 
     print(f"Evaluación: {args.episodios} episodios por nivel | falla a 3.0 s")
     print("=" * 92)
@@ -77,7 +121,7 @@ def main():
 
     for nivel in niveles:
         env.falla_fija = nivel
-        controladores = [("Mamba sin compensar", None, (1.0, 0.0, 0.0)),
+        controladores = [(nombre_base, None, (1.0, 0.0, 0.0)),
                          (f"Compensador {args.compensador}", model, (0.0, 0.0, 1.0))]
         outcomes = {nombre: Counter() for nombre, _, _ in controladores}
         pasos = {nombre: [] for nombre, _, _ in controladores}

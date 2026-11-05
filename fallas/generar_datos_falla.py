@@ -30,7 +30,7 @@ import pandas as pd
 _ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(_ROOT / "comparacion"))
 
-from gym_pybullet_drones.control.DSLPIDControl import DSLPIDControl  # noqa: E402
+from gym_pybullet_drones.control.RobustDSLPIDControl import RobustDSLPIDControl  # noqa: E402
 from gym_pybullet_drones.utils.enums import DroneModel  # noqa: E402
 from comparar_base import (  # noqa: E402
     nueva_env, generar_waypoints,
@@ -74,7 +74,7 @@ def main():
         t_falla_paso = int(t_falla_seg * CTRL_FREQ)
 
         env  = nueva_env(punto_A, gui=False)
-        ctrl = DSLPIDControl(drone_model=DroneModel.CF2X)
+        ctrl = RobustDSLPIDControl(drone_model=DroneModel.CF2X)
         obs, _ = env.reset()
         action = np.zeros((1, 4))
         wp_idx = 0

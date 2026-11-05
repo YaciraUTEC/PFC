@@ -63,7 +63,7 @@ def phi(pos, rpy, ang_vel, vel, wp_actual, punto_final, rpm, rpm_anterior,
     # Penalización por caída: normalizada por escala típica de características
     penalizacion_caida      = (CAIDA_PENALTY / np.mean(list(escalas.values())[0])) if es_caida_ahora else 0.0
 
-    # NUEVAS CARACTERÍSTICAS DE RECUPERACIÓN
+   
     # Recuperación de altura: positivo si está subiendo cuando está bajo
     altura_relativa_norm = float(pos[2]) / np.mean(escalas["err"])
     if altura_relativa_norm < 0.5:  # bajo

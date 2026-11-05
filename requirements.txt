@@ -1,0 +1,29 @@
+# Núcleo numérico y ML (versiones verificadas con pip freeze)
+numpy==2.2.6
+scipy==1.15.3
+pandas==2.3.0
+torch==2.8.0
+torchvision==0.23.0
+
+# Entornos de RL y simulación
+gymnasium>=0.29
+stable-baselines3>=2.3
+pybullet>=3.2.5
+
+# Utilidades usadas por gym_pybullet_drones
+transforms3d>=0.4
+cycler==0.12.1
+matplotlib==3.10.6
+pillow==12.3.0
+setuptools==80.9.0
+
+# Control (solo lo usa gym_pybullet_drones/control/MRAC.py)
+control>=0.9
+
+# Mamba (comparacion/comparar_base.py y fallas/entrenar_deteccion.py)
+# Requiere GPU NVIDIA + CUDA; se instala aparte, por ejemplo:
+#   pip install mamba-ssm --no-build-isolation
+mamba-ssm>=2.2
+
+# Opcional: firmware de Crazyflie (gym_pybullet_drones/envs/CFAviary.py)
+# pycffirmware

@@ -18,8 +18,8 @@ from comparar_base import (  # noqa: E402
     STATS_PATH, Z_SUELO, Z_CRUCERO,
     CTRL_FREQ, HOVER_RPM, UMBRAL_WAYPOINT, INPUT_COLS,
     MIN_RPM, MAX_RPM,
-    MOTOR_FALLA, T_FALLA_MIN, T_FALLA_MAX, DURACION_FALLA_SEG,
-    es_caida, es_aterrizaje, TRAYECTORIAS,
+    MOTOR_FALLA, DURACION_FALLA_SEG,
+    es_caida, es_aterrizaje, TRAYECTORIAS, _fase_de_waypoint,
     MambaDrone, WINDOW_SIZE,
 )
 from irl_features import phi, distancia_z, cargar_escalas  # noqa: E402
@@ -57,6 +57,7 @@ PROG_CLIP         = 0.10    # m por paso
 K_DELTA           = 0.01    # × ||delta_norm||² — correcciones suaves
 R_WAYPOINT        = 10.0
 NIVELES_FALLA_PCT = [0.02, 0.04, 0.06, 0.08, 0.10]  # mismos niveles que el IRL y datos_pid_falla_leve.csv
+NIVELES_FALLA_2A20 = [0.02, 0.05, 0.10, 0.15, 0.20]  # mismos niveles que datos_robust_pid_falla_2a20.csv
 R_LLEGO           = 100.0
 R_ATERRIZO_EN_B   = 40.0    # solo si aterriza a < DIST_ATERRIZO_B (horizontal) del destino
 R_ATERRIZO_LEJOS  = -60.0   # aterrizar lejos del destino ya no es una salida "segura"
@@ -109,8 +110,13 @@ class FaultResidualEnvIRL(gym.Env):
 
     def __init__(self, gui=False, modelo="mamba", t_falla_min=None, t_falla_max=None,
                 fault_info_mode="oracle", rutas="aleatorias", falla_fija=None,
-                modo_reward="irl", alpha=ALPHA_HIBRIDO):
+                modo_reward="irl", alpha=ALPHA_HIBRIDO, niveles_falla_pct=None):
         super().__init__()
+        # t_falla_min/t_falla_max quedan aceptados por compatibilidad con los
+        # llamadores existentes pero ya NO se usan: la falla se activa por
+        # progreso de ruta (mitad del tramo de crucero), igual que
+        # generar_datos_pid_falla_leve.py -- ver wp_medio_crucero en reset().
+        self.niveles = list(NIVELES_FALLA_PCT if niveles_falla_pct is None else niveles_falla_pct)
         self.gui       = gui
         # modo_reward:
         #   "irl"     : R = w · φ                                  (original)
@@ -130,8 +136,6 @@ class FaultResidualEnvIRL(gym.Env):
             raise ValueError(f"rutas debe ser 'aleatorias' o 'tesis', no {rutas!r}")
         self.rutas     = rutas
         self.max_pasos = int(DURACION_SEG * CTRL_FREQ)
-        self.t_falla_min = T_FALLA_MIN if t_falla_min is None else t_falla_min
-        self.t_falla_max = T_FALLA_MAX if t_falla_max is None else t_falla_max
         self.fault_info_mode = fault_info_mode  # "oracle" | "detected"
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -164,7 +168,7 @@ class FaultResidualEnvIRL(gym.Env):
 
         self._env          = None
         self.severidad     = 1.0 - 0.02
-        self.max_fault_pct = 0.02
+        self.max_fault_pct = self.niveles[0]
         self.model_pred    = np.zeros(4, dtype=np.float32)
 
         self.observation_space = gym.spaces.Box(
@@ -175,7 +179,7 @@ class FaultResidualEnvIRL(gym.Env):
         )
 
     def set_max_fault(self, pct):
-        self.max_fault_pct = float(np.clip(pct, NIVELES_FALLA_PCT[0], NIVELES_FALLA_PCT[-1]))
+        self.max_fault_pct = float(np.clip(pct, self.niveles[0], self.niveles[-1]))
 
     # ── gym API ──────────────────────────────────────────────────────────────
 
@@ -186,17 +190,9 @@ class FaultResidualEnvIRL(gym.Env):
         if self.falla_fija is not None:
             fault_pct  = self.falla_fija
         else:
-            niveles = [n for n in NIVELES_FALLA_PCT if n <= self.max_fault_pct + 1e-9]
+            niveles = [n for n in self.niveles if n <= self.max_fault_pct + 1e-9]
             fault_pct  = float(np.random.choice(niveles))
         self.severidad = 1.0 - fault_pct
-
-        # Falla en instante fijo (3 segundos) o aleatorio según t_falla_min/max
-        # Si son iguales, usa ese valor fijo
-        if self.t_falla_min == self.t_falla_max:
-            t_falla_seg = self.t_falla_min
-        else:
-            t_falla_seg = np.random.uniform(self.t_falla_min, self.t_falla_max)
-        self.t_falla = int(t_falla_seg * CTRL_FREQ)
 
         if self.rutas == "tesis":
             # Una de las 5 trayectorias fijas de la evaluación, al azar
@@ -217,6 +213,7 @@ class FaultResidualEnvIRL(gym.Env):
             self.punto_A  = np.array([a_xy[0], a_xy[1], Z_SUELO])
             self.punto_B  = np.array([b_xy[0], b_xy[1], Z_SUELO])
         self.waypoints = generar_waypoints(self.punto_A, self.punto_B)
+        self.wp_medio_crucero = max(1, (len(self.waypoints) - 2) // 2)
 
         if self._env is None:
             self._env = nueva_env(self.punto_A, gui=self.gui)
@@ -230,6 +227,8 @@ class FaultResidualEnvIRL(gym.Env):
         self.prev_dist_wp = 0.0   # se fija en el primer paso post-falla (manual2/hibrido)
         self.obs_raw    = obs_raw
         self._delta_acum = []   # |delta_norm| por step post-falla, para info["delta_medio"]
+        self.falla_activada = False  # sticky: una vez True, se queda asi
+        self.paso_falla     = None
 
         self.dist_prev_z    = distancia_z(obs_raw[0][0:3], self.punto_B, self.escalas)
         self.rpm_anterior   = np.ones(4, dtype=np.float64) * HOVER_RPM
@@ -239,30 +238,46 @@ class FaultResidualEnvIRL(gym.Env):
             [np.zeros(len(INPUT_COLS), dtype=np.float32)] * WINDOW_SIZE, maxlen=WINDOW_SIZE
         )
         self.model_pred = np.zeros(4, dtype=np.float32)
+        self._preparar_mamba()
 
-        return self._build_obs(obs_raw), {}
+        return self._build_obs(self.obs_raw), {}
 
-    def step(self, ppo_delta_norm):
-        # 1. Avanzar simulacion con la accion del paso anterior
-        obs_raw, _, term, trunc, _ = self._env.step(self.action_rpm)
-        pos = obs_raw[0][0:3].copy()
-        vel = obs_raw[0][10:13]
-        self.paso += 1
-
-        # 2. Waypoint actual
+    def _preparar_mamba(self):
+        """Calcula la prediccion de Mamba (y el base_rpm derivado) a partir de
+        self.obs_raw, en sincronia con el estado que se devuelve en la observacion.
+        Se llama en reset() y al final de step(), nunca con un estado desactualizado."""
         ta = self.waypoints[min(self.wp_idx, len(self.waypoints) - 1)]
-
-        # 3. Mamba genera accion base
-        self.ventana.append(normalizar_estado(obs_raw, ta, self.stats))
+        estado_norm = normalizar_estado(self.obs_raw, ta, self.stats)
+        self.ventana.append(estado_norm)
         x = torch.tensor(np.array(self.ventana), dtype=torch.float32).unsqueeze(0).to(self.device)
         with torch.no_grad():
             pred = self.base_model(x).cpu().numpy()[0]
-        self.model_pred = pred
-        base_rpm = np.clip(desnormalizar_accion(pred, self.stats), MIN_RPM, MAX_RPM)
+        self.model_pred = pred.astype(np.float32)
+        self.base_rpm = np.clip(desnormalizar_accion(pred, self.stats), MIN_RPM, MAX_RPM)
 
-        # 4. PPO solo actua despues de la falla
-        if self.paso >= self.t_falla:
-            delta        = ppo_delta_norm * DELTA_MAX
+    def step(self, ppo_delta_norm):
+        self.paso += 1
+
+        # 1. Waypoint actual (segun el estado conocido hasta este punto)
+        ta = self.waypoints[min(self.wp_idx, len(self.waypoints) - 1)]
+        if (not self.falla_activada
+                and _fase_de_waypoint(self.wp_idx, len(self.waypoints)) == 1
+                and self.wp_idx >= self.wp_medio_crucero):
+            self.falla_activada = True
+            self.paso_falla     = self.paso
+
+        # 2. Mamba ya se calculo al final del paso anterior (o en reset),
+        #    en sincronia con self.obs_raw y con la observacion que vio el PPO
+        base_rpm = self.base_rpm.copy()
+
+        # 3. PPO solo actua despues de la falla, con el rango disponible escalado
+        #    por severidad: a falla leve, el residual maximo posible es chico
+        #    (evita sobre-correccion cuando no hace falta), no depende de que
+        #    la politica "aprenda" a ser conservadora.
+        if self.falla_activada:
+            fault_pct    = 1.0 - self.severidad
+            escala_falla = float(np.clip(fault_pct / self.niveles[-1], 0.0, 1.0))
+            delta        = ppo_delta_norm * DELTA_MAX * escala_falla
             cmd_rpm      = np.clip(base_rpm + delta, MIN_RPM, MAX_RPM)
             action_final = cmd_rpm.copy()
             action_final[MOTOR_FALLA] *= self.severidad        # falla sobre cmd ya corregido
@@ -270,14 +285,18 @@ class FaultResidualEnvIRL(gym.Env):
         else:
             action_final = base_rpm                            # sin falla, sin PPO
 
+        # 4. Aplicar la accion AHORA y obtener el estado resultante (en sincronia con action_final)
         self.action_rpm = action_final.reshape(1, 4)
+        obs_raw, _, term, trunc, _ = self._env.step(self.action_rpm)
+        pos = obs_raw[0][0:3].copy()
+        vel = obs_raw[0][10:13]
         self.obs_raw    = obs_raw
 
         # 5. Recompensa (solo activa post-falla; ver modo_reward en __init__)
         reward  = 0.0
         done    = False
         outcome = None
-        post_falla     = self.paso >= self.t_falla
+        post_falla     = self.falla_activada
         manual         = self.modo_reward in ("manual2", "hibrido")
         es_caida_ahora = es_caida(obs_raw, pos, self.paso, self.wp_idx, len(self.waypoints))
         dist           = float(np.linalg.norm(ta - pos))
@@ -286,8 +305,8 @@ class FaultResidualEnvIRL(gym.Env):
         if post_falla:
             rpy = obs_raw[0][7:10]
             ang_vel = obs_raw[0][13:16]
-            # delta se calculó arriba en línea 244 si post_falla
-            delta_residual = (ppo_delta_norm * DELTA_MAX) if self.paso >= self.t_falla else None
+            # delta se calculó arriba si post_falla
+            delta_residual = (ppo_delta_norm * DELTA_MAX) if self.falla_activada else None
 
             vec, self.dist_prev_z = phi(
                 pos, rpy, ang_vel, vel, ta, self.punto_B, action_final,
@@ -297,7 +316,7 @@ class FaultResidualEnvIRL(gym.Env):
             if self.modo_reward == "irl":
                 reward = float(np.dot(self.w, vec))
             else:
-                if self.paso == self.t_falla:
+                if self.paso == self.paso_falla:
                     self.prev_dist_wp = dist
                 reward = self._recompensa_manual2(pos, rpy, ang_vel, ta, dist, ppo_delta_norm)
                 if self.modo_reward == "hibrido":
@@ -349,11 +368,15 @@ class FaultResidualEnvIRL(gym.Env):
             info["mision_pct"] = mision_pct
             info["delta_medio"] = float(np.mean(self._delta_acum)) if self._delta_acum else 0.0
             info["severidad"]  = self.severidad
-            info["t_falla_seg"] = self.t_falla / CTRL_FREQ
+            info["t_falla_seg"] = self.paso_falla / CTRL_FREQ if self.paso_falla is not None else None
             info["punto_A"]    = self.punto_A.tolist()
             info["punto_B"]    = self.punto_B.tolist()
 
-        return self._build_obs(obs_raw), reward, done, False, info
+        # Preparar la prediccion de Mamba para el estado nuevo (self.obs_raw),
+        # en sincronia con la observacion que se devuelve a continuacion
+        self._preparar_mamba()
+
+        return self._build_obs(self.obs_raw), reward, done, False, info
 
     def _recompensa_manual2(self, pos, rpy, ang_vel, ta, dist, ppo_delta_norm):
         """Parte continua (por paso) de la recompensa manual2. Los eventos
@@ -384,7 +407,7 @@ class FaultResidualEnvIRL(gym.Env):
 
         # Fault info: oracle (conocemos si hay falla)
         fault_pct    = 1.0 - self.severidad
-        falla_activa = float(self.paso >= self.t_falla)
+        falla_activa = float(self.falla_activada)
 
         fault_info = np.array([falla_activa, fault_pct], dtype=np.float32)
         return np.concatenate([estado_norm, self.model_pred, fault_info]).astype(np.float32)

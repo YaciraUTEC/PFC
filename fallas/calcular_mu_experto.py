@@ -1,6 +1,7 @@
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 import numpy as np
@@ -9,7 +10,7 @@ import pandas as pd
 _ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(_ROOT / "comparacion"))
 
-STATS_PATH = _ROOT / "results" / "stats_normalizacion.json"
+STATS_PATH = Path(os.environ.get("STATS_PATH", str(_ROOT / "results" / "stats_normalizacion.json")))
 
 
 def cargar_stats(path):

@@ -17,16 +17,16 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from irl_features import FEATURE_NAMES, N_FEATURES, horizonte_efectivo  # noqa: E402
 from nominal_flight_env import (  # noqa: E402
-    NominalFlightEnv, MIN_FAULT_PCT, MAX_FAULT_PCT,
+    NominalFlightEnv, NIVELES_FALLA_PCT, NIVELES_FALLA_2A20,
 )
 
 GAMMA = 0.99  # igual que gamma en entrenar_rl.py (PPO)
 
 
-def techo_falla(iteracion, total_iteraciones):
-    
+def techo_falla(iteracion, total_iteraciones, niveles):
+
     progreso = iteracion / total_iteraciones
-    return MIN_FAULT_PCT + progreso * (MAX_FAULT_PCT - MIN_FAULT_PCT)
+    return niveles[0] + progreso * (niveles[-1] - niveles[0])
 
 
 MU_EXPERTO_PATH = _ROOT / "results" / "mu_experto.npy"
@@ -45,12 +45,18 @@ SEARCH_LOG_DIR  = _ROOT / "results" / "irl_search_logs_2"
 PRUEBAS_DIR     = _ROOT / "results" / "pruebas_irl"
 
 
-def rollout_mu(env, model, n_episodios, gamma):
+def rollout_mu(env, model, n_episodios, gamma, max_intentos_mult=20):
    
-    retornos   = []
+    n_nominal = n_episodios // 2
+    n_falla   = n_episodios - n_nominal
+    retornos_nominal, retornos_falla = [], []
     duraciones = []
     outcomes   = {"cayo": 0, "aterrizo": 0, "llego": 0, "tiempo": 0}
-    for _ in range(n_episodios):
+    descartados = 0
+    intentos = 0
+    max_intentos = n_episodios * max_intentos_mult
+    while (len(retornos_nominal) < n_nominal or len(retornos_falla) < n_falla) and intentos < max_intentos:
+        intentos += 1
         obs, _ = env.reset()
         done = False
         acumulado = np.zeros(N_FEATURES, dtype=np.float64)
@@ -66,10 +72,43 @@ def rollout_mu(env, model, n_episodios, gamma):
             t += 1
             if trunc:
                 break
-        retornos.append(acumulado / horizonte_efectivo(t, gamma))
+
+        es_nominal = info.get("fault_pct", 0.0) == 0.0
+        episodio_valido = True if es_nominal else info.get("falla_activada", True)
+        if not episodio_valido:
+            descartados += 1
+            continue
+
+        destino = retornos_nominal if es_nominal else retornos_falla
+        cupo    = n_nominal if es_nominal else n_falla
+        if len(destino) >= cupo:
+            continue  # ya se llenó ese grupo, sigue intentando para el otro
+
+        destino.append(acumulado / horizonte_efectivo(t, gamma))
         duraciones.append(t)
         outcomes[info.get("outcome", "tiempo")] += 1
-    return np.mean(retornos, axis=0), float(np.mean(duraciones)), outcomes
+
+    if descartados:
+        print(f"    ({descartados} episodios descartados por terminar sin exposicion a la falla)")
+
+    if not retornos_nominal or not retornos_falla:
+        raise RuntimeError(
+            f"rollout_mu(): no se pudo reunir suficientes episodios validos tras "
+            f"{intentos} intentos (limite {max_intentos}). "
+            f"Nominales reunidos: {len(retornos_nominal)}/{n_nominal} | "
+            f"Con falla reunidos: {len(retornos_falla)}/{n_falla} | "
+            f"Descartados por no exponerse a la falla: {descartados}. "
+            f"Probablemente la politica actual casi nunca llega a mitad de crucero "
+            f"(se cae muy temprano) -- revisa el entrenamiento antes de seguir."
+        )
+    if len(retornos_nominal) < n_nominal or len(retornos_falla) < n_falla:
+        print(f"    [aviso] cuota incompleta: nominales {len(retornos_nominal)}/{n_nominal}, "
+              f"con falla {len(retornos_falla)}/{n_falla} (se agoto max_intentos={max_intentos})")
+
+    mu_nominal = np.mean(retornos_nominal, axis=0)
+    mu_falla   = np.mean(retornos_falla, axis=0)
+    mu_candidato = 0.5 * mu_nominal + 0.5 * mu_falla
+    return mu_candidato, float(np.mean(duraciones)), outcomes
 
 
 def proyectar(mu_bar_prev, mu_i, mu_experto):
@@ -92,9 +131,9 @@ def restringir_w(w_busqueda, w_anterior):
     return w_busqueda / norma
 
 
-def entrenar_politica(w, timesteps, n_envs, seed, iteracion, max_fault_pct):
+def entrenar_politica(w, timesteps, n_envs, seed, iteracion, max_fault_pct, env_kwargs):
     def make_env():
-        env = NominalFlightEnv(gui=False)
+        env = NominalFlightEnv(gui=False, **env_kwargs)
         env.set_reward_weights(w)
         env.set_max_fault(max_fault_pct)
         return env
@@ -140,7 +179,21 @@ def main():
                              "'mamba' (100 ep) o 'pid-1600' (1600 ep, con falla leve)")
     parser.add_argument("--smoke-test", action="store_true",
                         help="corrida corta para validar que el pipeline no rompe")
+    parser.add_argument("--mu-sufijo", type=str, default="_1600_corr",
+                        help="Con --experto pid-1600: usa mu_experto{sufijo}.npy y mu_escala{sufijo}.npy")
+    parser.add_argument("--etiqueta", type=str, default="",
+                        help="Con --experto pid-1600: sufijo de los archivos de salida "
+                             "(irl_weights_1600{etiqueta}.json, irl_convergencia_1600{etiqueta}.csv)")
+    parser.add_argument("--controlador", type=str, default="pid", choices=["pid", "robust"],
+                        help="Controlador base del entorno: 'pid' (DSLPIDControl) o 'robust' (RobustDSLPIDControl)")
+    parser.add_argument("--fault-aware", action="store_true",
+                        help="Con --controlador robust: el controlador base recibe los factores de motor reales")
+    parser.add_argument("--niveles-falla", type=str, default="2a10", choices=["2a10", "2a20"],
+                        help="Rango de falla del entorno: 2a10 (2-10%%) o 2a20 (2-20%%)")
     args = parser.parse_args()
+    niveles = NIVELES_FALLA_2A20 if args.niveles_falla == "2a20" else NIVELES_FALLA_PCT
+    env_kwargs = dict(controlador=args.controlador, fault_aware=args.fault_aware,
+                      niveles_falla_pct=niveles)
 
     if args.smoke_test:
         args.iteraciones = 2
@@ -164,16 +217,20 @@ def main():
         escala_path = ESCALA_PID_100_PATH
         experto_nombre = "PID (100 ep)"
     elif args.experto == "pid-1600":
-        mu_path = MU_EXPERTO_1600_PATH
-        escala_path = ESCALA_1600_PATH
+        mu_path = _ROOT / "results" / f"mu_experto{args.mu_sufijo}.npy"
+        escala_path = _ROOT / "results" / f"mu_escala{args.mu_sufijo}.npy"
         experto_nombre = "PID (1600 ep, con falla leve)"
     else:  # "pid"
         mu_path = MU_EXPERTO_PATH
         escala_path = ESCALA_PATH
         experto_nombre = "PID (800 ep)"
 
-    weights_path = WEIGHTS_1600_PATH if args.experto == "pid-1600" else WEIGHTS_PATH
-    convergencia_path = CONVERGENCIA_1600_PATH if args.experto == "pid-1600" else CONVERGENCIA_PATH
+    if args.experto == "pid-1600":
+        weights_path = _ROOT / "results" / f"irl_weights_1600{args.etiqueta}.json"
+        convergencia_path = _ROOT / "results" / f"irl_convergencia_1600{args.etiqueta}.csv"
+    else:
+        weights_path = WEIGHTS_PATH
+        convergencia_path = CONVERGENCIA_PATH
 
     if not mu_path.exists() or not escala_path.exists():
         raise FileNotFoundError(
@@ -189,11 +246,11 @@ def main():
 
     mu_experto_r = mu_experto / mu_escala
 
-    eval_env = NominalFlightEnv(gui=False)
+    eval_env = NominalFlightEnv(gui=False, **env_kwargs)
 
-    techo_0 = techo_falla(0, args.iteraciones)      # = MIN_FAULT_PCT
+    techo_0 = techo_falla(0, args.iteraciones, niveles)      # = niveles[0]
     eval_env.set_max_fault(techo_0)
-    print(f"\nCalculando mu^(0) (política baseline: Mamba sin corrección, "
+    print(f"\nCalculando mu^(0) (baseline: controlador {args.controlador} sin corrección PPO, "
           f"techo_falla={techo_0*100:.1f}%)...")
     mu_0, duracion_0, outcomes_0 = rollout_mu(eval_env, None, args.eval_episodios, GAMMA)
     mu_0_r = mu_0 / mu_escala
@@ -208,12 +265,12 @@ def main():
 
     convergencia = []
     for i in range(1, args.iteraciones + 1):
-        techo = techo_falla(i, args.iteraciones)
+        techo = techo_falla(i, args.iteraciones, niveles)
         w_reward_usado = w_reward.copy()
         print(f"\n{'='*60}\nIteración {i}/{args.iteraciones}  techo_falla={techo*100:.1f}%  "
               f"w_reward_usado={w_reward_usado.round(3)}")
         model = entrenar_politica(w_reward_usado, args.timesteps_por_iter, args.n_envs,
-                                  seed=i, iteracion=i, max_fault_pct=techo)
+                                  seed=i, iteracion=i, max_fault_pct=techo, env_kwargs=env_kwargs)
 
         eval_env.set_max_fault(techo)         # evaluar con el mismo techo con que se entrenó
         mu_i, duracion_i, outcomes_i = rollout_mu(eval_env, model, args.eval_episodios, GAMMA)

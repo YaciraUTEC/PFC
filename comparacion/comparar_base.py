@@ -5,14 +5,14 @@ import torch
 import torch.nn as nn
 import pybullet as p
 from collections import deque
-# from mamba_ssm import Mamba  # Comentado: no se usa en IRL workflow
+from mamba_ssm import Mamba
 from gym_pybullet_drones.utils.enums import DroneModel, Physics
 from gym_pybullet_drones.envs.CtrlAviary import CtrlAviary
 from gym_pybullet_drones.control.DSLPIDControl import DSLPIDControl
 
 import os as _os
 _RESULTS        = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "results")
-STATS_PATH      = _os.path.join(_RESULTS, "stats_normalizacion.json")
+STATS_PATH      = _os.environ.get("STATS_PATH", _os.path.join(_RESULTS, "stats_normalizacion.json"))
 WINDOW_SIZE          = 50
 DURACION_SEG         = 20
 DURACION_FALLA_SEG   = 20  # Igual a DURACION_SEG para consistencia IRL ↔ RL

@@ -39,11 +39,7 @@ def main():
         t = 0
         info = {}
 
-        # Rollout con modelo=None equivale a Mamba base (sin PPO delta)
-        # pero NominalFlightEnv siempre usa Mamba, así que simplemente
-        # dejamos que corra sin entrenar PPO (como evaluación de expert)
         while not done and t < 10000:
-            # Acción nula para que NominalFlightEnv use solo Mamba
             accion = np.zeros(4, dtype=np.float32)
             obs, _, done, trunc, info = env.step(accion)
             acumulado += (GAMMA ** t) * info["phi"]
