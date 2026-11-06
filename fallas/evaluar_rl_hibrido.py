@@ -46,6 +46,7 @@ MODELOS = {
     "irl_mamba_2a20_19_best": str(_ROOT / "results" / "ppo_mamba_irl_2a20_19" / "best_model"),
     "irl_pid_2": str(_ROOT / "results" / "ppo_compensador_pid_irl_2"),
     "irl_pid_2_best": str(_ROOT / "results" / "ppo_pid_irl_2" / "best_model"),
+    "irl_pid_2a20_14": str(_ROOT / "results" / "ppo_compensador_pid_irl_2a20_14"),
 }
 NIVELES = [0.02, 0.04, 0.06, 0.08, 0.10]
 NIVELES_2A20 = [0.02, 0.05, 0.10, 0.15, 0.20]
@@ -97,6 +98,7 @@ def main():
         "irl_mamba_2a20_17", "irl_mamba_2a20_17_best",
         "irl_mamba_2a20_18", "irl_mamba_2a20_18_best",
         "irl_mamba_2a20_19", "irl_mamba_2a20_19_best",
+        "irl_pid_2a20_14",
     ) else NIVELES
     # niveles_falla_pct tiene que coincidir con el maximo usado al entrenar el
     # compensador: desde el ajuste de escalado por severidad, step() usa
