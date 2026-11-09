@@ -172,7 +172,11 @@ def main():
     parser.add_argument("--eps", type=float, default=0.05)
     parser.add_argument("--timesteps-por-iter", type=int, default=100_000)
     parser.add_argument("--n-envs", type=int, default=4)
-    parser.add_argument("--eval-episodios", type=int, default=10)
+    parser.add_argument("--eval-episodios", type=int, default=150,
+                        help="Episodios para estimar mu^(k) en cada iteracion. Debe ser lo "
+                             "bastante grande para que la muestra sea estable frente a la "
+                             "variabilidad de rutas A-B (10 es demasiado poco: produce mu^(k) "
+                             "ruidosos que el proyector de Abbeel&Ng confunde con senal real)")
     parser.add_argument("--experto", type=str, default="pid",
                         choices=["pid", "mamba", "pid-100", "pid-1600"],
                         help="Experto para IRL: 'pid' (800 ep), 'pid-100' (100 ep), "

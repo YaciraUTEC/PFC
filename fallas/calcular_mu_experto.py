@@ -65,6 +65,13 @@ from irl_features import (  # noqa: E402
 CSV_PATH    = _ROOT / "results" / "datos_CF2X_800ep.csv"
 GAMMA       = 0.99  # igual que gamma en entrenar_rl.py (PPO)
 EPS_ESCALA = 0.01
+# Piso relativo: evita que una característica con varianza entre-episodios
+# anormalmente baja (p.ej. oscilacion, con CoV~3% vs 10-36% del resto) se
+# vuelva la dominante del margen por amplificar diferencias crudas triviales
+# (ruido) al dividir por una escala casi nula. 0.08 cae en el hueco entre el
+# 3% de oscilacion y el ~10% de la siguiente característica más ajustada,
+# así que solo corrige ese caso y no mueve la escala de las demás.
+PISO_RELATIVO = 0.08
 
 
 def main():
@@ -127,6 +134,7 @@ def main():
     np.save(out_paso, mu_paso)
 
     mu_escala = np.maximum(np.std(retornos, axis=0), EPS_ESCALA)
+    mu_escala = np.maximum(mu_escala, PISO_RELATIVO * np.abs(mu_experto))
     np.save(out_escala, mu_escala)
 
     print("\nmu_experto (expectativas de características del PID):")

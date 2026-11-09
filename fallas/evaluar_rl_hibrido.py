@@ -1,10 +1,4 @@
-"""
-Evalúa el compensador híbrido (Mamba + PPO) frente a Mamba sin compensar,
-con fallas fijas de 2, 4, 6, 8 y 10 % a los 3 s.
 
-Uso (desde /mnt/d/TesisI):
-    PYTHONPATH=/mnt/d/TesisI:/mnt/d/TesisI/fallas /mnt/d/venv_mamba/bin/python3 fallas/evaluar_rl_hibrido.py --episodios 20
-"""
 import argparse
 import os
 import sys
@@ -47,6 +41,8 @@ MODELOS = {
     "irl_pid_2": str(_ROOT / "results" / "ppo_compensador_pid_irl_2"),
     "irl_pid_2_best": str(_ROOT / "results" / "ppo_pid_irl_2" / "best_model"),
     "irl_pid_2a20_14": str(_ROOT / "results" / "ppo_compensador_pid_irl_2a20_14"),
+    "irl_pid_2a20_15": str(_ROOT / "results" / "ppo_compensador_pid_irl_2a20_15"),
+    "irl_pid_2a20_16": str(_ROOT / "results" / "ppo_compensador_pid_irl_2a20_16"),
 }
 NIVELES = [0.02, 0.04, 0.06, 0.08, 0.10]
 NIVELES_2A20 = [0.02, 0.05, 0.10, 0.15, 0.20]
@@ -85,10 +81,12 @@ def main():
     parser.add_argument("--gui", action="store_true", help="Muestra el vuelo en PyBullet, a velocidad real")
     parser.add_argument("--nivel", type=float, default=None,
                         help="Solo este nivel de falla en %% (ej: 6). Por defecto, todos")
-    parser.add_argument("--base", type=str, default="mamba", choices=["mamba", "pid"],
+    parser.add_argument("--base", type=str, default="mamba", choices=["mamba", "pid", "robust"],
                         help="mamba: compara contra Mamba sin compensar. "
                              "pid: compara contra PID normal sin compensar (usa un compensador "
-                             "entrenado con --modelo pid, ej. irl_pid)")
+                             "entrenado con --modelo pid, ej. irl_pid). "
+                             "robust: compara contra PID robusto sin compensar (controlador='robust', "
+                             "fault_aware=False)")
     args = parser.parse_args()
 
     model = PPO.load(MODELOS[args.compensador])
@@ -98,7 +96,7 @@ def main():
         "irl_mamba_2a20_17", "irl_mamba_2a20_17_best",
         "irl_mamba_2a20_18", "irl_mamba_2a20_18_best",
         "irl_mamba_2a20_19", "irl_mamba_2a20_19_best",
-        "irl_pid_2a20_14",
+        "irl_pid_2a20_14", "irl_pid_2a20_15", "irl_pid_2a20_16",
     ) else NIVELES
     # niveles_falla_pct tiene que coincidir con el maximo usado al entrenar el
     # compensador: desde el ajuste de escalado por severidad, step() usa
@@ -108,12 +106,18 @@ def main():
                                        modo_reward=modo_reward, alpha=0.05,
                                        niveles_falla_pct=niveles_default)
         nombre_base = "Mamba sin compensar"
-    else:
+    elif args.base == "pid":
         env = FaultResidualEnvIRLPid(gui=args.gui, modelo="pid", t_falla_min=3.0, t_falla_max=3.0,
                                      modo_reward=modo_reward, alpha=0.05,
                                      controlador="pid", fault_aware=False,
                                      niveles_falla_pct=niveles_default)
         nombre_base = "PID normal sin compensar"
+    else:
+        env = FaultResidualEnvIRLPid(gui=args.gui, modelo="pid", t_falla_min=3.0, t_falla_max=3.0,
+                                     modo_reward=modo_reward, alpha=0.05,
+                                     controlador="robust", fault_aware=False,
+                                     niveles_falla_pct=niveles_default)
+        nombre_base = "PID robusto sin compensar"
     niveles = [args.nivel / 100] if args.nivel is not None else niveles_default
 
     print(f"Evaluación: {args.episodios} episodios por nivel | falla a 3.0 s")

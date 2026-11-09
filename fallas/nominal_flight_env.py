@@ -24,7 +24,6 @@ from irl_features import phi, distancia_z, cargar_escalas, N_FEATURES  # noqa: E
 
 XY_LIM   = 2.0   # rango de vuelo igual al del dataset de Mamba / fault_env_residual.py
 MIN_DIST = 0.8
-MAX_DIST_AB = 2 * XY_LIM * (2 ** 0.5)  # diagonal de la caja de vuelo (~5.66 m)
 DELTA_MAX = 3000  # aumentado para dar más autoridad al delta residual de PPO
 
 
@@ -95,12 +94,13 @@ class NominalFlightEnv(gym.Env):
             fault_pct = float(np.random.choice(niveles_disponibles))
         self.severidad = 1.0 - fault_pct
 
+        # A y B independientes, uniformes en la caja de vuelo -- igual que
+        # generar_datos_pid_falla_leve*.py y fault_env_residual*.py, para que
+        # la distribucion de rutas coincida con la del CSV del experto.
         while True:
             a_xy = np.random.uniform(-XY_LIM, XY_LIM, size=2)
-            dist_deseada = np.random.uniform(MIN_DIST, MAX_DIST_AB)
-            angulo = np.random.uniform(0, 2 * np.pi)
-            b_xy = a_xy + dist_deseada * np.array([np.cos(angulo), np.sin(angulo)])
-            if np.all(np.abs(b_xy) <= XY_LIM):
+            b_xy = np.random.uniform(-XY_LIM, XY_LIM, size=2)
+            if np.linalg.norm(a_xy - b_xy) >= MIN_DIST:
                 break
         self.punto_A   = np.array([a_xy[0], a_xy[1], Z_SUELO])
         self.punto_B   = np.array([b_xy[0], b_xy[1], Z_SUELO])
