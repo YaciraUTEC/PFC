@@ -1,0 +1,32 @@
+{
+  "feature_names": [
+    "proximidad_objetivo",
+    "estabilidad_altura",
+    "estabilidad_angular_rp",
+    "velocidad",
+    "oscilacion",
+    "aceleracion_vertical",
+    "progreso",
+    "penalizacion_caida",
+    "recuperacion_altura",
+    "accion_residual_magnitud",
+    "eficiencia_accion"
+  ],
+  "weights": [
+    -0.03727598572237191,
+    0.030516828668540233,
+    0.005917624317140263,
+    -0.04342108751256173,
+    -0.951575488111419,
+    0.0732018007822855,
+    0.03648286785255773,
+    -0.05898493486706182,
+    -0.013688191016022613,
+    0.24188646231976071,
+    -0.14627970573861002
+  ],
+  "margen": 8.163424089181898,
+  "iteracion_elegida": 15,
+  "iteraciones_totales": 15,
+  "escala_mu_aplicada": true
+}
