@@ -17,7 +17,7 @@ from comparar_base import (
     MOTOR_FALLA,
     es_caida, es_aterrizaje, _fase_de_waypoint,
 )
-from gym_pybullet_drones.control.DSLPIDControl import DSLPIDControl  # noqa: E402
+from gym_pybullet_drones.control.LegacyDSLPIDControl import DSLPIDControl  # noqa: E402
 from gym_pybullet_drones.control.RobustDSLPIDControl import RobustDSLPIDControl  # noqa: E402
 from gym_pybullet_drones.utils.enums import DroneModel  # noqa: E402
 from irl_features import phi, distancia_z, cargar_escalas, N_FEATURES  # noqa: E402
@@ -87,19 +87,19 @@ class NominalFlightEnv(gym.Env):
         # Igual que el experto (CSV combinado falla+nominal): la mitad de los
         # episodios son sin falla (0%), para que el alumno tambien demuestre
         # como vuela limpio, no solo como recupera fallas.
-        if np.random.random() < PROB_NOMINAL:
+        if self.np_random.random() < PROB_NOMINAL:
             fault_pct = 0.0
         else:
             niveles_disponibles = [n for n in self.niveles if n <= self.max_fault_pct + 1e-9]
-            fault_pct = float(np.random.choice(niveles_disponibles))
+            fault_pct = float(self.np_random.choice(niveles_disponibles))
         self.severidad = 1.0 - fault_pct
 
         # A y B independientes, uniformes en la caja de vuelo -- igual que
         # generar_datos_pid_falla_leve*.py y fault_env_residual*.py, para que
         # la distribucion de rutas coincida con la del CSV del experto.
         while True:
-            a_xy = np.random.uniform(-XY_LIM, XY_LIM, size=2)
-            b_xy = np.random.uniform(-XY_LIM, XY_LIM, size=2)
+            a_xy = self.np_random.uniform(-XY_LIM, XY_LIM, size=2)
+            b_xy = self.np_random.uniform(-XY_LIM, XY_LIM, size=2)
             if np.linalg.norm(a_xy - b_xy) >= MIN_DIST:
                 break
         self.punto_A   = np.array([a_xy[0], a_xy[1], Z_SUELO])
@@ -131,7 +131,7 @@ class NominalFlightEnv(gym.Env):
 
         ta = self.waypoints[min(self.wp_idx, len(self.waypoints) - 1)]
 
-        if (not self.falla_activada
+        if (self.severidad < 1.0 and not self.falla_activada
                 and _fase_de_waypoint(self.wp_idx, len(self.waypoints)) == 1
                 and self.wp_idx >= self.wp_medio_crucero):
             self.falla_activada = True
@@ -152,7 +152,7 @@ class NominalFlightEnv(gym.Env):
         base_rpm = np.clip(base_rpm, MIN_RPM, MAX_RPM)
 
         # PPO aprende el delta residual sobre esa base
-        delta        = np.asarray(ppo_delta_norm, dtype=np.float64) * DELTA_MAX
+        delta        = np.asarray(ppo_delta_norm, dtype=np.float64) * DELTA_MAX if falla_activa else np.zeros(4)
         rpm_comandado = np.clip(base_rpm + delta, MIN_RPM, MAX_RPM)
 
         # Falla activa desde que falla_activada queda en True (ver arriba)

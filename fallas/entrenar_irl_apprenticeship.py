@@ -74,7 +74,7 @@ def rollout_mu(env, model, n_episodios, gamma, max_intentos_mult=20):
                 break
 
         es_nominal = info.get("fault_pct", 0.0) == 0.0
-        episodio_valido = True if es_nominal else info.get("falla_activada", True)
+        episodio_valido = True  # Keep pre-fault failures in the planned-fault group; no survivorship filtering.
         if not episodio_valido:
             descartados += 1
             continue
@@ -123,18 +123,26 @@ def proyectar(mu_bar_prev, mu_i, mu_experto):
 
 
 def restringir_w(w_busqueda, w_anterior):
+    # Expert residuals are zero by definition, so those coordinates cannot
+    # identify a policy-independent flight objective.
+    mask = np.ones_like(w_busqueda, dtype=np.float64)
+    if mask.size == 11:
+        mask[9:] = 0.0
+    w = np.maximum(np.asarray(w_busqueda, dtype=np.float64), 0.0) * mask
+    norm = np.linalg.norm(w)
+    if norm < 1e-8:
+        w = np.maximum(np.asarray(w_anterior, dtype=np.float64), 0.0) * mask
+        norm = np.linalg.norm(w)
+        if norm < 1e-8:
+            w = mask
+            norm = np.linalg.norm(w)
+    return w / norm
 
-    norma = np.linalg.norm(w_busqueda)
-    if norma < 1e-6:
-        print("  [aviso] w_busqueda colapsó a ~0 - se mantiene el w anterior")
-        return w_anterior.copy()
-    return w_busqueda / norma
 
-
-def entrenar_politica(w, timesteps, n_envs, seed, iteracion, max_fault_pct, env_kwargs):
+def entrenar_politica(w, timesteps, n_envs, seed, iteracion, max_fault_pct, env_kwargs, feature_scale=None):
     def make_env():
         env = NominalFlightEnv(gui=False, **env_kwargs)
-        env.set_reward_weights(w)
+        env.set_reward_weights(w if feature_scale is None else w / feature_scale)
         env.set_max_fault(max_fault_pct)
         return env
 
@@ -248,16 +256,17 @@ def main():
           dict(zip(FEATURE_NAMES, mu_escala.round(4))))
 
 
-    mu_experto_r = mu_experto / mu_escala
+    learned_mask = np.r_[np.ones(9), np.zeros(2)]
+    mu_experto_r = mu_experto / mu_escala * learned_mask
 
     eval_env = NominalFlightEnv(gui=False, **env_kwargs)
 
-    techo_0 = techo_falla(0, args.iteraciones, niveles)      # = niveles[0]
+    techo_0 = niveles[-1]  # Fixed evaluation distribution throughout projection.
     eval_env.set_max_fault(techo_0)
     print(f"\nCalculando mu^(0) (baseline: controlador {args.controlador} sin corrección PPO, "
           f"techo_falla={techo_0*100:.1f}%)...")
     mu_0, duracion_0, outcomes_0 = rollout_mu(eval_env, None, args.eval_episodios, GAMMA)
-    mu_0_r = mu_0 / mu_escala
+    mu_0_r = mu_0 / mu_escala * learned_mask
     print(f"mu^(0):", dict(zip(FEATURE_NAMES, mu_0.round(4))),
           f"| duración media = {duracion_0:.1f} pasos | outcomes = {outcomes_0}")
 
@@ -269,16 +278,16 @@ def main():
 
     convergencia = []
     for i in range(1, args.iteraciones + 1):
-        techo = techo_falla(i, args.iteraciones, niveles)
+        techo = niveles[-1]
         w_reward_usado = w_reward.copy()
         print(f"\n{'='*60}\nIteración {i}/{args.iteraciones}  techo_falla={techo*100:.1f}%  "
               f"w_reward_usado={w_reward_usado.round(3)}")
         model = entrenar_politica(w_reward_usado, args.timesteps_por_iter, args.n_envs,
-                                  seed=i, iteracion=i, max_fault_pct=techo, env_kwargs=env_kwargs)
+                                  seed=i, iteracion=i, max_fault_pct=techo, env_kwargs=env_kwargs, feature_scale=mu_escala)
 
         eval_env.set_max_fault(techo)         # evaluar con el mismo techo con que se entrenó
         mu_i, duracion_i, outcomes_i = rollout_mu(eval_env, model, args.eval_episodios, GAMMA)
-        mu_i_r = mu_i / mu_escala
+        mu_i_r = mu_i / mu_escala * learned_mask
         mu_bar_r = proyectar(mu_bar_r, mu_i_r, mu_experto_r)
         t_i = float(np.linalg.norm(mu_experto_r - mu_bar_r))
         w_busqueda = mu_experto_r - mu_bar_r
@@ -313,6 +322,11 @@ def main():
             "iteracion_elegida": mejor["iteracion"],
             "iteraciones_totales": len(convergencia),
             "escala_mu_aplicada": True,
+            "feature_scale": mu_escala.tolist(),
+            "weights_space": "scaled_features",
+            "base_controller": args.controlador,
+            "residual_delta_max": 3000,
+            "residual_scaling": "fixed_post_fault",
         }, f, indent=2)
     print(f"Pesos guardados en {weights_path}")
 

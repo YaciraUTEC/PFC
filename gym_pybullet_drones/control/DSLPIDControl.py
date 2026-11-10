@@ -1,287 +1,241 @@
-import math
+"""Fault-aware evolution of DSLPIDControl in SI units.
+The original implementation is retained in LegacyDSLPIDControl for reproduction.
+A bounded allocation follows the unsaturated force/torque demand. No motor limit
+is increased: commands remain in [0,21700] RPM in the Crazyflie simulation.
+"""
 import numpy as np
 import pybullet as p
-from scipy.spatial.transform import Rotation
-
-from gym_pybullet_drones.control.BaseControl import BaseControl
+from scipy.optimize import lsq_linear
+from .LegacyDSLPIDControl import DSLPIDControl as OriginalDSLPIDControl
 from gym_pybullet_drones.utils.enums import DroneModel
 
-class DSLPIDControl(BaseControl):
-    """PID control class for Crazyflies.
 
-    Based on work conducted at UTIAS' DSL. Contributors: SiQi Zhou, James Xu, 
-    Tracy Du, Mario Vukosavljev, Calvin Ngan, and Jingyuan Hou.
+def _vee(matrix):
+    return np.array([matrix[2,1],matrix[0,2],matrix[1,0]])
 
-    """
 
-    ################################################################################
-
-    def __init__(self,
-                 drone_model: DroneModel,
-                 g: float=9.8
-                 ):
-        """Common control classes __init__ method.
-
-        Parameters
-        ----------
-        drone_model : DroneModel
-            The type of drone to control (detailed in an .urdf file in folder `assets`).
-        g : float, optional
-            The gravitational acceleration in m/s^2.
-
-        """
-        super().__init__(drone_model=drone_model, g=g)
-        if self.DRONE_MODEL != DroneModel.CF2X and self.DRONE_MODEL != DroneModel.CF2P:
-            print("[ERROR] in DSLPIDControl.__init__(), DSLPIDControl requires DroneModel.CF2X or DroneModel.CF2P")
-            exit()
-        self.P_COEFF_FOR = np.array([.4, .4, 1.25])
-        self.I_COEFF_FOR = np.array([.05, .05, .05])
-        self.D_COEFF_FOR = np.array([.2, .2, .5])
-        self.P_COEFF_TOR = np.array([70000., 70000., 60000.])
-        self.I_COEFF_TOR = np.array([.0, .0, 500.])
-        self.D_COEFF_TOR = np.array([20000., 20000., 12000.])
-        self.PWM2RPM_SCALE = 0.2685
-        self.PWM2RPM_CONST = 4070.3
-        self.MIN_PWM = 20000
-        self.MAX_PWM = 65535
-        if self.DRONE_MODEL == DroneModel.CF2X:
-            self.MIXER_MATRIX = np.array([ 
-                                    [-.5, -.5, -1],
-                                    [-.5,  .5,  1],
-                                    [.5, .5, -1],
-                                    [.5, -.5,  1]
-                                    ])
-        elif self.DRONE_MODEL == DroneModel.CF2P:
-            self.MIXER_MATRIX = np.array([
-                                    [0, -1,  -1],
-                                    [+1, 0, 1],
-                                    [0,  1,  -1],
-                                    [-1, 0, 1]
-                                    ])
+class DSLPIDControl(OriginalDSLPIDControl):
+    def __init__(self,drone_model,g=9.8,*,fault_aware=True,max_rpm=21700.,
+                 min_rpm=0.,tilt_limit_deg=25.,allocation_weights=(4.,8.,8.,.25),
+                 allocation_regularization=1e-6,antiwindup_gain=2.,
+                 attitude_frequency=(25.,25.,12.),attitude_damping=1.):
+        self._modern_ready=False
+        super().__init__(drone_model,g)
+        self._modern_fault_aware=bool(fault_aware)
+        self.ARM=self._getURDFParameter('arm')
+        self.MASS=self.GRAVITY/float(g)
+        self.J=np.diag([self._getURDFParameter(k) for k in ['ixx','iyy','izz']])
+        self._command_min=float(min_rpm);self._command_max=float(max_rpm)
+        if not 0<=self._command_min<self._command_max:raise ValueError('Invalid RPM bounds')
+        self._tilt_limit=np.deg2rad(tilt_limit_deg)
+        self._weights=np.asarray(allocation_weights,float)
+        if self._weights.shape!=(4,) or np.any(self._weights<=0):raise ValueError('Invalid allocation weights')
+        if not np.isfinite(self._weights).all():raise ValueError('Invalid allocation weights')
+        self._allocation_regularization=float(allocation_regularization)
+        if not np.isfinite(self._allocation_regularization) or self._allocation_regularization<0:raise ValueError('Invalid regularization')
+        self._aw_gain=float(antiwindup_gain)
+        if not np.isfinite(self._aw_gain) or self._aw_gain<0:raise ValueError('Invalid antiwindup gain')
+        if not 0<tilt_limit_deg<90:raise ValueError('Tilt limit must lie between0 and90 degrees')
+        frequency=np.asarray(attitude_frequency,float)
+        if frequency.shape!=(3,) or not np.isfinite(frequency).all() or np.any(frequency<=0):raise ValueError('Invalid attitude frequencies')
+        if not np.isfinite(attitude_damping) or attitude_damping<=0:raise ValueError('Invalid damping')
+        self.KR=np.diag(self.J)*frequency**2
+        self.KW=np.diag(self.J)*2*float(attitude_damping)*frequency
+        self.KI_R=np.diag(self.J)*np.array([1.,1.,.5])
+        self.HOVER_RPM=np.sqrt(self.GRAVITY/(4*self.KF))
+        a=self.ARM/np.sqrt(2)
+        if drone_model==DroneModel.CF2X:
+            roll=np.array([-1,-1,1,1])*a;pitch=np.array([-1,1,1,-1])*a
+        else:
+            roll=np.array([0,1,0,-1])*self.ARM;pitch=np.array([-1,0,1,0])*self.ARM
+        self._force_geometry=np.vstack([np.ones(4),roll,pitch,
+                     np.array([-1,1,-1,1])*self.KM/self.KF])
+        self.wrench_scale=np.array([self.GRAVITY,self.GRAVITY*self.ARM/np.sqrt(2),
+                    self.GRAVITY*self.ARM/np.sqrt(2),self.GRAVITY*self.KM/self.KF])
+        self._modern_ready=True
         self.reset()
 
-    ################################################################################
+    # Keep the public PID coefficient interface meaningful in SI units.
+    @property
+    def KR(self):return self.P_COEFF_TOR
+    @KR.setter
+    def KR(self,value):self.P_COEFF_TOR=np.asarray(value,float).copy()
+    @property
+    def KW(self):return self.D_COEFF_TOR
+    @KW.setter
+    def KW(self,value):self.D_COEFF_TOR=np.asarray(value,float).copy()
+    @property
+    def KI_R(self):return self.I_COEFF_TOR
+    @KI_R.setter
+    def KI_R(self,value):self.I_COEFF_TOR=np.asarray(value,float).copy()
+
+    def setPIDCoefficients(self,p_coeff_pos=None,i_coeff_pos=None,d_coeff_pos=None,
+                           p_coeff_att=None,i_coeff_att=None,d_coeff_att=None):
+        """Retune position in N and attitude in N m (not legacy PWM gains).
+
+        Attitude P/D/I multiply rotation error, body-rate error and its integral.
+        Constructor attitude_frequency/damping is the simpler tuning interface.
+        """
+        values=[p_coeff_pos,i_coeff_pos,d_coeff_pos,p_coeff_att,i_coeff_att,d_coeff_att]
+        clean=[]
+        for value in values:
+            if value is None:clean.append(None);continue
+            value=np.asarray(value,float)
+            if value.shape!=(3,) or not np.isfinite(value).all() or np.any(value<0):
+                raise ValueError('PID gains must be three non-negative finite SI values')
+            clean.append(value.copy())
+        super().setPIDCoefficients(*clean)
 
     def reset(self):
-        """Resets the control classes.
-
-        The previous step's and integral errors for both position and attitude are set to zero.
-
-        """
         super().reset()
-        #### Store the last roll, pitch, and yaw ###################
-        self.last_rpy = np.zeros(3)
-        #### Initialized PID control variables #####################
-        self.last_pos_e = np.zeros(3)
-        self.integral_pos_e = np.zeros(3)
-        self.last_rpy_e = np.zeros(3)
-        self.integral_rpy_e = np.zeros(3)
+        self.motor_rpm_factors=np.ones(4)
+        self.last_diagnostics={}
+        self._previous_q=np.ones(4)
+        self._prepared=None
+        self._residual_wrench=np.zeros(4)
 
-    ################################################################################
-    
-    def computeControl(self,
-                       control_timestep,
-                       cur_pos,
-                       cur_quat,
-                       cur_vel,
-                       cur_ang_vel,
-                       target_pos,
-                       target_rpy=np.zeros(3),
-                       target_vel=np.zeros(3),
-                       target_rpy_rates=np.zeros(3)
-                       ):
-        """Computes the PID control action (as RPMs) for a single drone.
+    def set_motor_effectiveness(self,rpm_factors):
+        """Set estimated RPM factors eta; allocation uses eta squared.
 
-        This methods sequentially calls `_dslPIDPositionControl()` and `_dslPIDAttitudeControl()`.
-        Parameter `cur_ang_vel` is unused.
-
-        Parameters
-        ----------
-        control_timestep : float
-            The time step at which control is computed.
-        cur_pos : ndarray
-            (3,1)-shaped array of floats containing the current position.
-        cur_quat : ndarray
-            (4,1)-shaped array of floats containing the current orientation as a quaternion.
-        cur_vel : ndarray
-            (3,1)-shaped array of floats containing the current velocity.
-        cur_ang_vel : ndarray
-            (3,1)-shaped array of floats containing the current angular velocity.
-        target_pos : ndarray
-            (3,1)-shaped array of floats containing the desired position.
-        target_rpy : ndarray, optional
-            (3,1)-shaped array of floats containing the desired orientation as roll, pitch, yaw.
-        target_vel : ndarray, optional
-            (3,1)-shaped array of floats containing the desired velocity.
-        target_rpy_rates : ndarray, optional
-            (3,1)-shaped array of floats containing the desired roll, pitch, and yaw rates.
-
-        Returns
-        -------
-        ndarray
-            (4,1)-shaped array of integers containing the RPMs to apply to each of the 4 motors.
-        ndarray
-            (3,1)-shaped array of floats containing the current XYZ position error.
-        float
-            The current yaw error.
-
+        For10% RPM loss use[0.9,1,1,1]. The physical plant must still apply
+        eta to the commanded RPM once. This method does not estimate eta.
         """
-        self.control_counter += 1
-        thrust, computed_target_rpy, pos_e = self._dslPIDPositionControl(control_timestep,
-                                                                         cur_pos,
-                                                                         cur_quat,
-                                                                         cur_vel,
-                                                                         target_pos,
-                                                                         target_rpy,
-                                                                         target_vel
-                                                                         )
-        rpm = self._dslPIDAttitudeControl(control_timestep,
-                                          thrust,
-                                          cur_quat,
-                                          computed_target_rpy,
-                                          target_rpy_rates
-                                          )
-        cur_rpy = p.getEulerFromQuaternion(cur_quat)
-        return rpm, pos_e, computed_target_rpy[2] - cur_rpy[2]
-    
-    ################################################################################
+        factors=np.asarray(rpm_factors,float)
+        if factors.shape!=(4,) or not np.isfinite(factors).all() or np.any((factors<0)|(factors>1)):
+            raise ValueError('Motor effectiveness must be four RPM factors in [0,1]')
+        self.motor_rpm_factors=factors.copy()
 
-    def _dslPIDPositionControl(self,
-                               control_timestep,
-                               cur_pos,
-                               cur_quat,
-                               cur_vel,
-                               target_pos,
-                               target_rpy,
-                               target_vel
-                               ):
-        """DSL's CF2.x PID position control.
+    def set_residual_wrench(self,delta):
+        delta=np.asarray(delta,float)
+        if delta.shape!=(4,) or not np.isfinite(delta).all():raise ValueError('Invalid residual wrench')
+        self._residual_wrench=delta.copy()
 
-        Parameters
-        ----------
-        control_timestep : float
-            The time step at which control is computed.
-        cur_pos : ndarray
-            (3,1)-shaped array of floats containing the current position.
-        cur_quat : ndarray
-            (4,1)-shaped array of floats containing the current orientation as a quaternion.
-        cur_vel : ndarray
-            (3,1)-shaped array of floats containing the current velocity.
-        target_pos : ndarray
-            (3,1)-shaped array of floats containing the desired position.
-        target_rpy : ndarray
-            (3,1)-shaped array of floats containing the desired orientation as roll, pitch, yaw.
-        target_vel : ndarray
-            (3,1)-shaped array of floats containing the desired velocity.
+    def _allocation_matrix(self):
+        factors=self.motor_rpm_factors if self._modern_fault_aware else np.ones(4)
+        return self._force_geometry*(self.KF*self.HOVER_RPM**2*factors**2)[None,:]
 
-        Returns
-        -------
-        float
-            The target thrust along the drone z-axis.
-        ndarray
-            (3,1)-shaped array of floats containing the target roll, pitch, and yaw.
-        float
-            The current position error.
+    def allocate_wrench(self,desired_wrench,*,commit=True):
+        desired=np.asarray(desired_wrench,float)
+        if desired.shape!=(4,) or not np.isfinite(desired).all():raise ValueError('Invalid wrench')
+        A=self._allocation_matrix()
+        active=self.motor_rpm_factors>1e-8 if self._modern_fault_aware else np.ones(4,bool)
+        weighted=self._weights/self.wrench_scale
+        matrix=weighted[:,None]*A[:,active];target=weighted*desired
+        lo=(self._command_min/self.HOVER_RPM)**2;hi=(self._command_max/self.HOVER_RPM)**2
+        q=np.zeros(4);solver_ok=True
+        if np.any(active):
+            lam=self._allocation_regularization
+            if lam:
+                matrix=np.vstack([matrix,np.sqrt(lam)*np.eye(int(active.sum()))])
+                target=np.r_[target,np.sqrt(lam)*self._previous_q[active]]
+            # Interior feasible requests have a unique exact solution. Avoid
+            # solving a constrained problem unnecessarily in every control tick.
+            candidate=np.linalg.lstsq(matrix,target,rcond=None)[0]
+            if np.all(candidate>=lo) and np.all(candidate<=hi):solution=candidate
+            else:
+                fit=lsq_linear(matrix,target,bounds=(np.full(active.sum(),lo),np.full(active.sum(),hi)),
+                               method='bvls',tol=1e-9,max_iter=40)
+                solution=fit.x;solver_ok=bool(fit.success and np.isfinite(solution).all())
+            if not solver_ok:solution=np.clip(self._previous_q[active],lo,hi)
+            q[active]=np.clip(solution,lo,hi)
+        achieved=A@q
+        normalized_error=(achieved-desired)/self.wrench_scale
+        diagnostics=dict(desired_wrench=desired.copy(),estimated_wrench=achieved.copy(),
+            allocation_error=normalized_error,allocation_error_norm=float(np.linalg.norm(normalized_error)),
+            motor_rpm_factors=self.motor_rpm_factors.copy(),solver_ok=solver_ok,
+            saturated_low=(q<=lo+1e-7),saturated_high=(q>=hi-1e-7),
+            unavailable_motors=~active)
+        if commit:self._previous_q=q.copy()
+        return self.HOVER_RPM*np.sqrt(q),diagnostics
 
-        """
-        cur_rotation = np.array(p.getMatrixFromQuaternion(cur_quat)).reshape(3, 3)
-        pos_e = target_pos - cur_pos
-        vel_e = target_vel - cur_vel
-        self.integral_pos_e = self.integral_pos_e + pos_e*control_timestep
-        self.integral_pos_e = np.clip(self.integral_pos_e, -2., 2.)
-        self.integral_pos_e[2] = np.clip(self.integral_pos_e[2], -0.15, .15)
-        #### PID target thrust #####################################
-        target_thrust = np.multiply(self.P_COEFF_FOR, pos_e) \
-                        + np.multiply(self.I_COEFF_FOR, self.integral_pos_e) \
-                        + np.multiply(self.D_COEFF_FOR, vel_e) + np.array([0, 0, self.GRAVITY])
-        scalar_thrust = max(0., np.dot(target_thrust, cur_rotation[:,2]))
-        thrust = (math.sqrt(scalar_thrust / (4*self.KF)) - self.PWM2RPM_CONST) / self.PWM2RPM_SCALE
-        target_z_ax = target_thrust / np.linalg.norm(target_thrust)
-        target_x_c = np.array([math.cos(target_rpy[2]), math.sin(target_rpy[2]), 0])
-        target_y_ax = np.cross(target_z_ax, target_x_c) / np.linalg.norm(np.cross(target_z_ax, target_x_c))
-        target_x_ax = np.cross(target_y_ax, target_z_ax)
-        target_rotation = (np.vstack([target_x_ax, target_y_ax, target_z_ax])).transpose()
-        #### Target rotation #######################################
-        target_euler = (Rotation.from_matrix(target_rotation)).as_euler('XYZ', degrees=False)
-        if np.any(np.abs(target_euler) > math.pi):
-            print("\n[ERROR] ctrl it", self.control_counter, "in Control._dslPIDPositionControl(), values outside range [-pi,pi]")
-        return thrust, target_euler, pos_e
-    
-    ################################################################################
+    def prepare_control(self,control_timestep,cur_pos,cur_quat,cur_vel,cur_ang_vel,
+                        target_pos,target_rpy=np.zeros(3),target_vel=np.zeros(3),
+                        target_rpy_rates=np.zeros(3)):
+        dt=float(control_timestep)
+        if not np.isfinite(dt) or dt<=0:raise ValueError('control_timestep must be positive')
+        pos=np.asarray(cur_pos,float);vel=np.asarray(cur_vel,float)
+        R=np.asarray(p.getMatrixFromQuaternion(cur_quat)).reshape(3,3)
+        omega=R.T@np.asarray(cur_ang_vel,float)
+        ep=np.asarray(target_pos)-pos;ev=np.asarray(target_vel)-vel
+        self.integral_pos_e=np.clip(self.integral_pos_e+ep*dt,-2.,2.)
+        self.integral_pos_e[2]=np.clip(self.integral_pos_e[2],-.15,.15)
+        raw_force=self.P_COEFF_FOR*ep+self.D_COEFF_FOR*ev+self.I_COEFF_FOR*self.integral_pos_e
+        raw_force=raw_force+np.array([0.,0.,self.GRAVITY])
+        factors=self.motor_rpm_factors if self._modern_fault_aware else np.ones(4)
+        balanced_max=4*self.KF*(self._command_max*factors.min())**2
+        total_max=self.KF*self._command_max**2*np.sum(factors**2)
+        emergency=bool(balanced_max<self.GRAVITY*1.02)
+        force=raw_force.copy()
+        force[2]=max(force[2],.15*self.GRAVITY)
+        tilt=self._tilt_limit
+        if not emergency:
+            available=max(self.GRAVITY,balanced_max*.95)
+            tilt=min(tilt,np.arccos(np.clip(self.GRAVITY/available,0,1)))
+        else:available=total_max*.9
+        xy=np.linalg.norm(force[:2]);maxxy=max(0.,force[2]*np.tan(tilt))
+        if xy>maxxy:force[:2]*=maxxy/xy
+        norm=np.linalg.norm(force)
+        if norm>available and norm>0:force*=available/norm
+        zdesired=force/max(np.linalg.norm(force),1e-9)
+        yaw=float(np.asarray(target_rpy)[2]);heading=np.array([np.cos(yaw),np.sin(yaw),0.])
+        yd=np.cross(zdesired,heading);yd/=max(np.linalg.norm(yd),1e-9)
+        Rd=np.column_stack([np.cross(yd,zdesired),yd,zdesired])
+        error=.5*_vee(Rd.T@R-R.T@Rd)
+        if emergency:
+            # Best-effort reduced-attitude request, not a validated spinning
+            # equilibrium / emergency landing controller.
+            error=R.T@np.cross(zdesired,R[:,2]);error[2]=0.
+        self.integral_rpy_e=np.clip(self.integral_rpy_e+error*dt,-.5,.5)
+        if np.any(factors<.999):self.integral_rpy_e[2]=0.
+        rates=np.asarray(target_rpy_rates,float)
+        if rates.shape!=(3,) or not np.isfinite(rates).all():raise ValueError('Invalid target Euler rates')
+        desired_omega=np.zeros(3)
+        if np.any(rates):
+            from scipy.spatial.transform import Rotation
+            roll,pitch,_=Rotation.from_matrix(Rd).as_euler('xyz')
+            rd,pd,ydot=rates
+            omega_desired_body=np.array([rd-ydot*np.sin(pitch),
+                pd*np.cos(roll)+ydot*np.sin(roll)*np.cos(pitch),
+                -pd*np.sin(roll)+ydot*np.cos(roll)*np.cos(pitch)])
+            desired_omega=Rd@omega_desired_body
+        rate_error=omega-R.T@desired_omega
+        torque=-self.KR*error-self.KW*rate_error-self.KI_R*self.integral_rpy_e+np.cross(omega,self.J@omega)
+        if emergency:torque[2]=0.
+        desired=np.r_[max(0.,float(force@R[:,2])),torque]
+        self._prepared=dict(dt=dt,R=R,raw_force=raw_force,force=force,position_error=ep,
+            rotation_error=error,omega=omega,base_wrench=desired.copy(),emergency=emergency,
+            balanced_max=balanced_max,yaw_error=float(yaw-p.getEulerFromQuaternion(cur_quat)[2]))
+        self.control_counter+=1
+        return desired.copy()
 
-    def _dslPIDAttitudeControl(self,
-                               control_timestep,
-                               thrust,
-                               cur_quat,
-                               target_euler,
-                               target_rpy_rates
-                               ):
-        """DSL's CF2.x PID attitude control.
+    def apply_prepared(self,residual_wrench=None):
+        if self._prepared is None:raise RuntimeError('Call prepare_control once before applying action')
+        data=self._prepared
+        delta=self._residual_wrench if residual_wrench is None else np.asarray(residual_wrench,float)
+        if delta.shape!=(4,) or not np.isfinite(delta).all():raise ValueError('Residual wrench must contain four finite SI values')
+        rpm,allocation=self.allocate_wrench(data['base_wrench']+delta)
+        dt=data['dt'];achieved=allocation['estimated_wrench']
+        # Back-calculation in force units, including the reference governor.
+        force_error=data['R'][:,2]*achieved[0]-data['raw_force']
+        self.integral_pos_e+=self._aw_gain*dt*force_error/np.maximum(self.I_COEFF_FOR,.01)
+        self.integral_pos_e=np.clip(self.integral_pos_e,-2.,2.)
+        self.integral_pos_e[2]=np.clip(self.integral_pos_e[2],-.15,.15)
+        tau_error=achieved[1:]-(data['base_wrench'][1:]+delta[1:])
+        self.integral_rpy_e-=self._aw_gain*dt*tau_error/np.maximum(self.KI_R,1e-6)
+        self.integral_rpy_e=np.clip(self.integral_rpy_e,-.5,.5)
+        if np.any(self.motor_rpm_factors<.999):self.integral_rpy_e[2]=0.
+        self.last_diagnostics=dict(allocation,base_wrench=data['base_wrench'],residual_wrench=delta.copy(),
+            requested_force_world=data['raw_force'],governed_force_world=data['force'],
+            position_error=data['position_error'],body_angular_velocity=data['omega'],
+            rotation_error=data['rotation_error'],emergency_required=data['emergency'],
+            balanced_max_force=data['balanced_max'],commanded_rpm=rpm.copy(),
+            rpm_at_limit=bool(allocation['saturated_high'].any()))
+        self._prepared=None
+        return rpm,data['position_error'].copy(),data['yaw_error']
 
-        Parameters
-        ----------
-        control_timestep : float
-            The time step at which control is computed.
-        thrust : float
-            The target thrust along the drone z-axis.
-        cur_quat : ndarray
-            (4,1)-shaped array of floats containing the current orientation as a quaternion.
-        target_euler : ndarray
-            (3,1)-shaped array of floats containing the computed target Euler angles.
-        target_rpy_rates : ndarray
-            (3,1)-shaped array of floats containing the desired roll, pitch, and yaw rates.
-
-        Returns
-        -------
-        ndarray
-            (4,1)-shaped array of integers containing the RPMs to apply to each of the 4 motors.
-
-        """
-        cur_rotation = np.array(p.getMatrixFromQuaternion(cur_quat)).reshape(3, 3)
-        cur_rpy = np.array(p.getEulerFromQuaternion(cur_quat))
-        target_quat = (Rotation.from_euler('XYZ', target_euler, degrees=False)).as_quat()
-        w,x,y,z = target_quat
-        target_rotation = (Rotation.from_quat([w, x, y, z])).as_matrix()
-        rot_matrix_e = np.dot((target_rotation.transpose()),cur_rotation) - np.dot(cur_rotation.transpose(),target_rotation)
-        rot_e = np.array([rot_matrix_e[2, 1], rot_matrix_e[0, 2], rot_matrix_e[1, 0]]) 
-        rpy_rates_e = target_rpy_rates - (cur_rpy - self.last_rpy)/control_timestep
-        self.last_rpy = cur_rpy
-        self.integral_rpy_e = self.integral_rpy_e - rot_e*control_timestep
-        self.integral_rpy_e = np.clip(self.integral_rpy_e, -1500., 1500.)
-        self.integral_rpy_e[0:2] = np.clip(self.integral_rpy_e[0:2], -1., 1.)
-        #### PID target torques ####################################
-        target_torques = - np.multiply(self.P_COEFF_TOR, rot_e) \
-                         + np.multiply(self.D_COEFF_TOR, rpy_rates_e) \
-                         + np.multiply(self.I_COEFF_TOR, self.integral_rpy_e)
-        target_torques = np.clip(target_torques, -3200, 3200)
-        pwm = thrust + np.dot(self.MIXER_MATRIX, target_torques)
-        pwm = np.clip(pwm, self.MIN_PWM, self.MAX_PWM)
-        return self.PWM2RPM_SCALE * pwm + self.PWM2RPM_CONST
-    
-    ################################################################################
-
-    def _one23DInterface(self,
-                         thrust
-                         ):
-        """Utility function interfacing 1, 2, or 3D thrust input use cases.
-
-        Parameters
-        ----------
-        thrust : ndarray
-            Array of floats of length 1, 2, or 4 containing a desired thrust input.
-
-        Returns
-        -------
-        ndarray
-            (4,1)-shaped array of integers containing the PWM (not RPMs) to apply to each of the 4 motors.
-
-        """
-        DIM = len(np.array(thrust))
-        pwm = np.clip((np.sqrt(np.array(thrust)/(self.KF*(4//DIM)))-self.PWM2RPM_CONST)/self.PWM2RPM_SCALE, self.MIN_PWM, self.MAX_PWM)
-        if DIM in [1, 4]:
-            return np.repeat(pwm, 4//DIM)
-        elif DIM==2:
-            return np.hstack([pwm, np.flip(pwm)])
-        else:
-            print("[ERROR] in DSLPIDControl._one23DInterface()")
-            exit()
+    def computeControl(self,control_timestep,cur_pos,cur_quat,cur_vel,cur_ang_vel,
+                       target_pos,target_rpy=np.zeros(3),target_vel=np.zeros(3),
+                       target_rpy_rates=np.zeros(3)):
+        self.prepare_control(control_timestep,cur_pos,cur_quat,cur_vel,cur_ang_vel,
+                             target_pos,target_rpy,target_vel,target_rpy_rates)
+        return self.apply_prepared()

@@ -1,0 +1,25 @@
+$taskRoot = 'E:\UTEC\Tesis\TesisNicol'
+$env:TEMP = Join-Path $taskRoot '_tmp'
+$env:TMP = $env:TEMP
+$env:PYTHONUTF8 = '1'
+$env:PYTHONDONTWRITEBYTECODE = '1'
+$env:PIP_CACHE_DIR = Join-Path $taskRoot '_conda\pip_cache'
+$env:CONDA_PKGS_DIRS = Join-Path $taskRoot '_conda\pkgs'
+$env:CONDA_ENVS_PATH = Join-Path $taskRoot '_conda\envs'
+$env:CONDA_REGISTER_ENVS = 'false'
+$env:TORCH_HOME = Join-Path $taskRoot '_cache\torch'
+$env:XDG_CACHE_HOME = Join-Path $taskRoot '_cache'
+$env:MPLCONFIGDIR = Join-Path $taskRoot '_cache\matplotlib'
+$env:HF_HOME = Join-Path $taskRoot '_cache\huggingface'
+$env:OMP_NUM_THREADS = '1'
+$env:MKL_NUM_THREADS = '1'
+$env:PATH = (Join-Path $taskRoot 'conda_env') + ';' + (Join-Path $taskRoot 'conda_env\Library\bin') + ';' + (Join-Path $taskRoot 'conda_env\Scripts') + ';' + $env:PATH
+Set-Location -LiteralPath (Join-Path $taskRoot 'PFC')
+
+$env:TRITON_HOME = Join-Path $taskRoot '_cache\triton'
+$env:TRITON_CACHE_DIR = Join-Path $taskRoot '_cache\triton\cache'
+$env:TORCHINDUCTOR_CACHE_DIR = Join-Path $taskRoot '_cache\torchinductor'
+$env:TORCH_EXTENSIONS_DIR = Join-Path $taskRoot '_cache\torch_extensions'
+$env:CUDA_CACHE_PATH = Join-Path $taskRoot '_cache\cuda'
+$env:TORCHINDUCTOR_COMPILE_THREADS = '1'
+$env:MAX_JOBS = '4'

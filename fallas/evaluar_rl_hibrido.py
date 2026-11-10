@@ -10,7 +10,7 @@ import numpy as np
 from stable_baselines3 import PPO
 
 _ROOT = Path(__file__).parent.parent
-os.environ["IRL_WEIGHTS_PATH"] = str(_ROOT / "results" / "irl_weights_1600_robust_union.json")
+# IRL_WEIGHTS_PATH is set from --pesos in main(), before constructing an environment.
 sys.path.insert(0, str(_ROOT / "comparacion"))
 sys.path.insert(0, str(Path(__file__).parent))
 
@@ -50,7 +50,7 @@ NIVELES_2A20 = [0.02, 0.05, 0.10, 0.15, 0.20]
 
 def correr_episodio(env, model, semilla):
     np.random.seed(semilla)
-    obs, _ = env.reset()
+    obs, _ = env.reset(seed=semilla)
     done = False
     pasos = 0
     info = {}
@@ -70,6 +70,8 @@ def correr_episodio(env, model, semilla):
         dist_B = np.linalg.norm(env.punto_B[:2] - env.obs_raw[0][0:2])
         if dist_B >= DIST_ATERRIZO_B:
             outcome = "aterrizo_lejos"
+    if info.get("t_falla_seg") is None:
+        outcome = "sin_exposicion_" + outcome
     return outcome, pasos, posiciones
 
 
@@ -87,9 +89,18 @@ def main():
                              "entrenado con --modelo pid, ej. irl_pid). "
                              "robust: compara contra PID robusto sin compensar (controlador='robust', "
                              "fault_aware=False)")
+    parser.add_argument("--pesos", required=True, help="Exact reward JSON used for this checkpoint")
+    parser.add_argument("--modelo-path", default=None, help="Optional exact PPO checkpoint path")
     args = parser.parse_args()
+    weights_path = Path(args.pesos).resolve()
+    if not weights_path.is_file():
+        parser.error(f"No existe el archivo de recompensa: {weights_path}")
+    for module in (sys.modules[FaultResidualEnvIRLMamba.__module__],
+                   sys.modules[FaultResidualEnvIRLPid.__module__]):
+        module.IRL_WEIGHTS_PATH = str(weights_path)
 
-    model = PPO.load(MODELOS[args.compensador])
+
+    model = PPO.load(args.modelo_path or MODELOS[args.compensador])
     modo_reward = "irl" if args.compensador.startswith("irl") else "hibrido"
     niveles_default = NIVELES_2A20 if args.compensador in (
         "irl_2a20", "irl_mamba_2a20_16", "irl_mamba_2a20_16_best",
@@ -120,9 +131,9 @@ def main():
         nombre_base = "PID robusto sin compensar"
     niveles = [args.nivel / 100] if args.nivel is not None else niveles_default
 
-    print(f"Evaluación: {args.episodios} episodios por nivel | falla a 3.0 s")
+    print(f"Evaluación: {args.episodios} intentos por nivel | falla a mitad del crucero; sin exposición se cuenta por separado")
     print("=" * 92)
-    print(f"{'falla':>6}  {'controlador':<22} {'llego':>6} {'aterr.B':>8} {'aterr.lej':>10} {'cayo':>6} {'tiempo':>7} {'recup.%':>8} {'pasos':>7}")
+    print(f"{'falla':>6}  {'controlador':<22} {'llego':>6} {'aterr.B':>8} {'aterr.lej':>10} {'cayo':>6} {'tiempo':>7} {'sin.exp':>8} {'recup.%':>8} {'pasos':>7}")
     print("-" * 92)
 
     for nivel in niveles:
@@ -141,10 +152,11 @@ def main():
         for nombre, _, _ in controladores:
             oc = outcomes[nombre]
             n = args.episodios
+            sin_exposicion = sum(v for k, v in oc.items() if k.startswith("sin_exposicion_"))
             recup = 100 * (oc["llego"] + oc["aterrizo"]) / n
             print(f"{nivel*100:5.0f}%  {nombre:<22} {oc['llego']:>6} {oc['aterrizo']:>8} "
                   f"{oc['aterrizo_lejos']:>10} {oc['cayo']:>6} {oc['tiempo']:>7} "
-                  f"{recup:>7.1f}% {np.mean(pasos[nombre]):>7.0f}")
+                  f"{sin_exposicion:>8} {recup:>7.1f}% {np.mean(pasos[nombre]):>7.0f}")
 
     env.close()
 

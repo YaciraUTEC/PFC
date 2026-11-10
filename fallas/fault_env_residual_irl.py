@@ -73,9 +73,8 @@ ALPHA_HIBRIDO        = 0.05
 
 
 def _cargar_pesos_irl(path):
-    with open(path) as f:
-        data = json.load(f)
-    return np.array(data["weights"], dtype=np.float64), data["feature_names"]
+    from reward_contract import load_linear_weights
+    return load_linear_weights(path)
 
 
 def _estado_crudo(obs_raw, wp_actual):
@@ -192,12 +191,12 @@ class FaultResidualEnvIRL(gym.Env):
             fault_pct  = self.falla_fija
         else:
             niveles = [n for n in self.niveles if n <= self.max_fault_pct + 1e-9]
-            fault_pct  = float(np.random.choice(niveles))
+            fault_pct  = float(self.np_random.choice(niveles))
         self.severidad = 1.0 - fault_pct
 
         if self.rutas == "tesis":
             # Una de las 5 trayectorias fijas de la evaluación, al azar
-            self.tray_idx = np.random.randint(len(TRAYECTORIAS))
+            self.tray_idx = self.np_random.integers(len(TRAYECTORIAS))
             tray = TRAYECTORIAS[self.tray_idx]
             self.punto_A = np.array(tray["A"], dtype=np.float64)
             self.punto_B = np.array(tray["B"], dtype=np.float64)
@@ -207,8 +206,8 @@ class FaultResidualEnvIRL(gym.Env):
             self.tray_idx = -1
             self.tray_nombre = "Aleatoria"
             while True:
-                a_xy = np.random.uniform(-XY_LIM, XY_LIM, size=2)
-                b_xy = np.random.uniform(-XY_LIM, XY_LIM, size=2)
+                a_xy = self.np_random.uniform(-XY_LIM, XY_LIM, size=2)
+                b_xy = self.np_random.uniform(-XY_LIM, XY_LIM, size=2)
                 if np.linalg.norm(a_xy - b_xy) >= MIN_DIST:
                     break
             self.punto_A  = np.array([a_xy[0], a_xy[1], Z_SUELO])
@@ -242,7 +241,7 @@ class FaultResidualEnvIRL(gym.Env):
 
         # 1. Waypoint actual (segun el estado conocido hasta este punto)
         ta = self.waypoints[min(self.wp_idx, len(self.waypoints) - 1)]
-        if (not self.falla_activada
+        if (self.severidad < 1.0 and not self.falla_activada
                 and _fase_de_waypoint(self.wp_idx, len(self.waypoints)) == 1
                 and self.wp_idx >= self.wp_medio_crucero):
             self.falla_activada = True
@@ -266,7 +265,7 @@ class FaultResidualEnvIRL(gym.Env):
         #    por severidad (ver mismo cambio en fault_env_residual_irl_mamba.py).
         if self.falla_activada:
             fault_pct    = 1.0 - self.severidad
-            escala_falla = float(np.clip(fault_pct / self.niveles[-1], 0.0, 1.0))
+            escala_falla = 1.0  # Fixed action units shared with IRL search.
             delta        = ppo_delta_norm * DELTA_MAX * escala_falla
             cmd_rpm      = np.clip(base_rpm + delta, MIN_RPM, MAX_RPM)
             action_final = cmd_rpm.copy()
@@ -291,26 +290,26 @@ class FaultResidualEnvIRL(gym.Env):
         es_caida_ahora = es_caida(obs_raw, pos, self.paso, self.wp_idx, len(self.waypoints))
         dist           = float(np.linalg.norm(ta - pos))
 
-        if post_falla:
-            rpy = obs_raw[0][7:10]
-            ang_vel = obs_raw[0][13:16]
-            # delta se calculó arriba si post_falla
-            delta_residual = (ppo_delta_norm * DELTA_MAX) if self.falla_activada else None
+        rpy = obs_raw[0][7:10]
+        ang_vel = obs_raw[0][13:16]
+        # delta se calculó arriba si post_falla
+        delta_residual = (np.asarray(ppo_delta_norm) * DELTA_MAX) if self.falla_activada else np.zeros(4)
 
-            vec, self.dist_prev_z = phi(
-                pos, rpy, ang_vel, vel, ta, self.punto_B, action_final,
-                self.rpm_anterior, self.vel_z_anterior, self.dist_prev_z, self.escalas,
-                es_caida_ahora=es_caida_ahora, delta_residual=delta_residual,
-            )
-            if self.modo_reward == "irl":
-                reward = float(np.dot(self.w, vec))
-            else:
-                if self.paso == self.paso_falla:
-                    self.prev_dist_wp = dist
-                reward = self._recompensa_manual2(pos, rpy, ang_vel, ta, dist, ppo_delta_norm)
-                if self.modo_reward == "hibrido":
-                    # ≈ 0 volando como el experto, negativo si vuela peor
-                    reward += self.alpha * float(np.dot(self.w_estilo, vec - self.mu_experto))
+        vec, self.dist_prev_z = phi(
+            pos, rpy, ang_vel, vel, ta, self.punto_B, action_final,
+            self.rpm_anterior, self.vel_z_anterior, self.dist_prev_z, self.escalas,
+            es_caida_ahora=es_caida_ahora, delta_residual=delta_residual,
+        )
+        if self.modo_reward == "irl":
+            reward = float(np.dot(self.w, vec))
+        elif post_falla:
+            if self.paso == self.paso_falla:
+                self.prev_dist_wp = dist
+            reward = self._recompensa_manual2(pos, rpy, ang_vel, ta, dist, ppo_delta_norm)
+            if self.modo_reward == "hibrido":
+                # ≈ 0 volando como el experto, negativo si vuela peor
+                reward += self.alpha * float(np.dot(self.w_estilo, vec - self.mu_experto))
+
 
         # Los waypoints avanzan durante TODO el vuelo (también antes de la falla),
         # igual que en falla_tesis.py: a los 3 s el dron ya va a mitad de ruta.
@@ -357,6 +356,8 @@ class FaultResidualEnvIRL(gym.Env):
             info["delta_medio"] = float(np.mean(self._delta_acum)) if self._delta_acum else 0.0
             info["severidad"]  = self.severidad
             info["t_falla_seg"] = self.paso_falla / CTRL_FREQ if self.paso_falla is not None else None
+            info["falla_activada"] = self.falla_activada
+            info["pasos_post_falla"] = self.paso - self.paso_falla + 1 if self.paso_falla is not None else 0
             info["punto_A"]    = self.punto_A.tolist()
             info["punto_B"]    = self.punto_B.tolist()
 

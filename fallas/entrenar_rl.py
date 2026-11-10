@@ -137,7 +137,7 @@ def _env_irl(modelo, reward, t_falla_min, t_falla_max, rutas, falla_fija, alpha,
         extra = {} if niveles_falla_pct is None else {"niveles_falla_pct": niveles_falla_pct}
     else:
         from fault_env_residual_irl import FaultResidualEnvIRL
-        extra = {"controlador": controlador, "fault_aware": fault_aware}
+        extra = {"controlador": controlador, "fault_aware": fault_aware, "niveles_falla_pct": niveles_falla_pct}
     return FaultResidualEnvIRL(
         gui=False, modelo=modelo,
         t_falla_min=t_falla_min, t_falla_max=t_falla_max,

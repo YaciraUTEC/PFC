@@ -2,7 +2,7 @@ import numpy as np
 import pybullet as p
 from scipy.optimize import lsq_linear
 from scipy.spatial.transform import Rotation
-from gym_pybullet_drones.control.DSLPIDControl import DSLPIDControl
+from gym_pybullet_drones.control.LegacyDSLPIDControl import DSLPIDControl
 from gym_pybullet_drones.utils.enums import DroneModel
 class RobustDSLPIDControl(DSLPIDControl):
   

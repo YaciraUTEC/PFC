@@ -66,7 +66,7 @@ def phi(pos, rpy, ang_vel, vel, wp_actual, punto_final, rpm, rpm_anterior,
    
     # Recuperación de altura: positivo si está subiendo cuando está bajo
     altura_relativa_norm = float(pos[2]) / np.mean(escalas["err"])
-    if altura_relativa_norm < 0.5:  # bajo
+    if float(wp_actual[2]) > 0.5 and float(pos[2]) < float(wp_actual[2]) - 0.15:
         recuperacion_altura = float(vel[2]) / escalas["vel"][2]
     else:
         recuperacion_altura = 0.0  # no aplica si está en altura normal

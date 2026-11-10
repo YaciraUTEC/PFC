@@ -1,0 +1,7 @@
+Mamba-1/2/3: https://github.com/state-spaces/mamba (Apache-2.0); source clone at ../../vendor/mamba.
+Mamba-3 SISO reference: tests/ops/triton/test_mamba3_siso.py. Portable model preserves projection, dt/A parameterization, B/C RMSNorm+bias, rotary complex state and trapezoidal discretization. MIMO is not used.
+Mamba-2: modules/mamba2_simple.py non-fused path and modules/ssd_minimal.py.
+Mamba-1: modules/mamba_simple.py and selective_scan_ref.
+GTrXL: https://github.com/opendilab/DI-engine/blob/main/ding/torch_utils/network/gtrxl.py (Apache-2.0), downloaded 2026-11-10. Only nn_module helper imports replaced by equivalent local torch helpers.
+LTC: ncps.torch.LTC from author package https://github.com/mlech26l/ncps, ode_unfolds=3 explicitly recorded.
+All six policies consume the same finite observation window. This is a bounded-context architecture comparison, not a benchmark of unlimited recurrent memory or optimized CUDA kernels.

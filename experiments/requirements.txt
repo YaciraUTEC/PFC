@@ -1,0 +1,21 @@
+# Dependencias verificadas para experiments/ y experiments/round3/.
+# Entorno probado: Python 3.11.18, Windows, PyTorch 2.8.0+cu128.
+# La distribución CUDA de torch se selecciona al preparar el entorno Conda.
+numpy==2.2.6
+scipy==1.15.3
+pandas==2.3.0
+torch==2.8.0
+gymnasium==1.2.0
+stable-baselines3==2.7.0
+pybullet==3.2.7
+matplotlib==3.11.2
+pillow==13.0.0
+transforms3d==0.4.2
+einops==0.8.2
+ncps==1.0.1
+pytest==9.2.0
+setuptools==80.10.2
+
+# Opcional, solo para compilar LTC en GPU bajo Windows:
+# triton-windows==3.4.0.post21
+# También requiere un compilador C++ compatible; ver compile_support.py.

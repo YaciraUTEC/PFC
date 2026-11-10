@@ -5,7 +5,10 @@ import torch
 import torch.nn as nn
 import pybullet as p
 from collections import deque
-from mamba_ssm import Mamba
+try:
+    from mamba_ssm import Mamba
+except ImportError:
+    Mamba = None
 from gym_pybullet_drones.utils.enums import DroneModel, Physics
 from gym_pybullet_drones.envs.CtrlAviary import CtrlAviary
 from gym_pybullet_drones.control.DSLPIDControl import DSLPIDControl
@@ -156,6 +159,8 @@ class LSTMDrone(nn.Module):
 class MambaDrone(nn.Module):
     def __init__(self, input_size=18, d_model=128, n_layers=2, output_size=4):
         super().__init__()
+        if Mamba is None:
+            raise ImportError("Use experiments for portable reference Mamba models")
         self.input_proj   = nn.Linear(input_size, d_model)
         self.mamba_layers = nn.ModuleList([
             Mamba(d_model=d_model, d_state=16, d_conv=4, expand=2)
