@@ -18,7 +18,8 @@ class DSLPIDControl(OriginalDSLPIDControl):
     def __init__(self,drone_model,g=9.8,*,fault_aware=True,max_rpm=21700.,
                  min_rpm=0.,tilt_limit_deg=25.,allocation_weights=(4.,8.,8.,.25),
                  allocation_regularization=1e-6,antiwindup_gain=2.,
-                 attitude_frequency=(25.,25.,12.),attitude_damping=1.):
+                 attitude_frequency=(25.,25.,12.),attitude_damping=1.,
+                 thrust_reserve_fraction=.05,emergency_thrust_ratio=1.02):
         self._modern_ready=False
         super().__init__(drone_model,g)
         self._modern_fault_aware=bool(fault_aware)
@@ -33,6 +34,10 @@ class DSLPIDControl(OriginalDSLPIDControl):
         if not np.isfinite(self._weights).all():raise ValueError('Invalid allocation weights')
         self._allocation_regularization=float(allocation_regularization)
         if not np.isfinite(self._allocation_regularization) or self._allocation_regularization<0:raise ValueError('Invalid regularization')
+        self._thrust_reserve=float(thrust_reserve_fraction)
+        self._emergency_ratio=float(emergency_thrust_ratio)
+        if not np.isfinite(self._thrust_reserve) or not 0<=self._thrust_reserve<.5:raise ValueError('Invalid thrust reserve')
+        if not np.isfinite(self._emergency_ratio) or not 1<=self._emergency_ratio<=1.2:raise ValueError('Invalid emergency ratio')
         self._aw_gain=float(antiwindup_gain)
         if not np.isfinite(self._aw_gain) or self._aw_gain<0:raise ValueError('Invalid antiwindup gain')
         if not 0<tilt_limit_deg<90:raise ValueError('Tilt limit must lie between0 and90 degrees')
@@ -164,12 +169,12 @@ class DSLPIDControl(OriginalDSLPIDControl):
         factors=self.motor_rpm_factors if self._modern_fault_aware else np.ones(4)
         balanced_max=4*self.KF*(self._command_max*factors.min())**2
         total_max=self.KF*self._command_max**2*np.sum(factors**2)
-        emergency=bool(balanced_max<self.GRAVITY*1.02)
+        emergency=bool(balanced_max<self.GRAVITY*self._emergency_ratio)
         force=raw_force.copy()
         force[2]=max(force[2],.15*self.GRAVITY)
         tilt=self._tilt_limit
         if not emergency:
-            available=max(self.GRAVITY,balanced_max*.95)
+            available=max(self.GRAVITY,balanced_max*(1-self._thrust_reserve))
             tilt=min(tilt,np.arccos(np.clip(self.GRAVITY/available,0,1)))
         else:available=total_max*.9
         xy=np.linalg.norm(force[:2]);maxxy=max(0.,force[2]*np.tan(tilt))

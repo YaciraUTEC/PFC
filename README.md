@@ -60,3 +60,6 @@ El éxito actual significa completar la lista de waypoints con tolerancia de
 la condición estimada introduce sesgo y demora. La detección está asistida por
 el simulador. El modo severo del controlador no constituye una implementación
 validada del equilibrio giratorio de Mueller–D'Andrea.
+## Nueva ronda: aterrizaje controlado y seis arquitecturas
+
+La ronda reproducible se documenta en [experiments/round4/README.txt](experiments/round4/README.txt). Exige contacto suave y un segundo de estabilidad en destino; incluye estimación de efectividad desde movimiento/comandos, memoria persistente y afinado protegido de la imitación. Los resultados anteriores se conservan.

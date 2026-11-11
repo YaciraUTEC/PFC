@@ -1,0 +1,21 @@
+RONDA 4: ATERRIZAJE, ESTIMACION E INTERVENCION
+Inicio: 2026-11-10. Todos los archivos y ejecuciones: E:\UTEC\Tesis\TesisNicol.
+Conservar round3 y dslpid_comparison_v2 sin modificar.
+1. Criterio versionado: contacto real, primer contacto suave, proximidad al destino,
+   postura y velocidades limitadas, 1 s continuo estable; no basta waypoint.
+2. Reestimar efectividad con observaciones de movimiento y comandos. Nunca usar
+   motor averiado, severidad verdadera ni instante de falla en el estimador.
+3. Separar metric-only (plan anterior) del supervisor de descenso común necesario
+   porque el waypoint anterior estaba a 10 cm del suelo.
+4. Memoria recurrente explicita, secuencias contiguas, burn-in y reinicios de episodio.
+   Igual información física para seis arquitecturas; parámetros y coste se reportan.
+5. Dos configuraciones por arquitectura, presupuesto común, validación reservada.
+   Cinco semillas finales nuevas; prueba emparejada abierta tras congelar modelos.
+6. Clonación + IRL sin protección YA ensayado en round3. No repetir como idea nueva.
+   Nuevo: crítico separado/caliente, BC y KL durante PPO, protección del modo base,
+   intervención aprendida con etiquetas contrafactuales y coste de esfuerzo/variación.
+7. Prueba principal RPM loss 0,2,5,10,15,20,25,28,29%; estrés 30,35,50%.
+   Límite estático 29.7186% para hover nivelado sin giro, no garantía de aterrizaje.
+8. Mostrar todas las arquitecturas; diferenciar controles históricos y mejorados,
+   clonación y afinado, efectividad exacta/estimada, incertidumbre y limitaciones.
+No alterar el conjunto de prueba para decidir hiperparámetros.
