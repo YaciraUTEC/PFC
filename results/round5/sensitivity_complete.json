@@ -1,0 +1,294 @@
+{
+  "seconds": 924.5819807052612,
+  "jobs": [
+    {
+      "id": "production_baseline_original",
+      "seconds": 37.214805364608765,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 70
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 50
+        }
+      ]
+    },
+    {
+      "id": "production_baseline_observer_only",
+      "seconds": 37.95663523674011,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 68
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 50
+        }
+      ]
+    },
+    {
+      "id": "production_baseline_selected",
+      "seconds": 67.44095301628113,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 55
+        }
+      ]
+    },
+    {
+      "id": "family_residual_lstm",
+      "seconds": 111.65964818000793,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 56
+        }
+      ]
+    },
+    {
+      "id": "family_residual_mamba",
+      "seconds": 121.01290440559387,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 59
+        }
+      ]
+    },
+    {
+      "id": "family_residual_mamba2",
+      "seconds": 139.61054110527039,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 56
+        }
+      ]
+    },
+    {
+      "id": "family_residual_mamba3",
+      "seconds": 79.21671867370605,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 53
+        }
+      ]
+    },
+    {
+      "id": "family_residual_ltc",
+      "seconds": 88.86675572395325,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 56
+        }
+      ]
+    },
+    {
+      "id": "family_observer_lstm",
+      "seconds": 74.74851322174072,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 60
+        }
+      ]
+    },
+    {
+      "id": "family_residual_gtrxl",
+      "seconds": 193.76509428024292,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 54
+        }
+      ]
+    },
+    {
+      "id": "family_observer_mamba",
+      "seconds": 121.78464603424072,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 61
+        }
+      ]
+    },
+    {
+      "id": "family_observer_mamba2",
+      "seconds": 142.99106860160828,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 64
+        }
+      ]
+    },
+    {
+      "id": "family_observer_mamba3",
+      "seconds": 95.19626426696777,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 57
+        }
+      ]
+    },
+    {
+      "id": "family_observer_ltc",
+      "seconds": 89.88236856460571,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 65
+        }
+      ]
+    },
+    {
+      "id": "family_observer_gtrxl",
+      "seconds": 195.8858358860016,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 60
+        }
+      ]
+    },
+    {
+      "id": "family_reward_csil",
+      "seconds": 76.70797562599182,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 56
+        }
+      ]
+    },
+    {
+      "id": "family_reward_meirl",
+      "seconds": 79.14452648162842,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 56
+        }
+      ]
+    },
+    {
+      "id": "family_reward_rime",
+      "seconds": 69.46268701553345,
+      "result": [
+        {
+          "mode": "noise2",
+          "cases": 96,
+          "success": 48
+        },
+        {
+          "mode": "clock4",
+          "cases": 96,
+          "success": 56
+        }
+      ]
+    }
+  ],
+  "passed_integrity": true
+}

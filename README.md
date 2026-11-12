@@ -1,82 +1,73 @@
 # PFC
 
-Control de un cuadricóptero Crazyflie ante pérdida de efectividad en motores.
-Esta versión incluye las correcciones de IRL, un DSLPIDControl actualizado y
-experimentos de compensación residual con evaluación por rutas reservadas.
+Control de un cuadricóptero Crazyflie ante pérdida de efectividad en un motor.
 
-## Controlador
+La **ronda 5 terminó** el 12 de noviembre de 2026, con 75 modelos entrenados,
+129 bloques de evaluación y auditoría final aprobada.
+Los [resultados completos](results/round5/README.md) incluyen informe, tablas,
+siete gráficas, tiempos, configuración recomendada y comprobantes de integridad.
 
-- `gym_pybullet_drones/control/DSLPIDControl.py`: fuerza y pares en unidades SI,
-  asignación acotada según efectividad de motores, realimentación angular y
-  corrección de las integrales frente a saturación.
-- `LegacyDSLPIDControl.py`: implementación original para reproducir los ensayos
-  históricos. `RobustDSLPIDControl.py` conserva su comportamiento anterior.
-- La efectividad suministrada es un factor de **RPM**. El empuje depende de su
-  cuadrado. El controlador recibe esa estimación; no implementa un detector.
+## Conclusión de la campaña
 
-## Experimentos
+La recomendación registrada conserva el DSLPID de referencia de la ronda 4,
+sin compensación neuronal. El estimador adaptativo y el perfil completo mejoraron
+el éxito con el ruido habitual, pero no superaron la regla de robustez al
+duplicarlo. Ninguna familia neuronal demostró una mejora estadística consistente
+frente al controlador completo.
 
-- [`experiments/round3/README.txt`](experiments/round3/README.txt): comparación de
-  recompensas basadas en CSIL, ME-IRL y RIME, más clonación y recompensa manual,
-  usando un compensador LSTM común y cinco semillas de entrenamiento.
-- [`experiments/README.txt`](experiments/README.txt): comparación histórica de
-  LSTM, Mamba-1/2/3 SISO, GTrXL y LTC con el DSLPID original.
-- [`experiments/SOURCES.txt`](experiments/SOURCES.txt): fuentes y alcance de las
-  implementaciones de referencia. Se conservan sus licencias.
+La [decisión](results/round5/decision.json) y la
+[configuración recomendada](results/round5/recommended_controller.json) fijan el
+resultado concreto. La configuración elegida no se deduce del nombre de la clase.
 
-Son adaptaciones al proyecto; los detalles de cada algoritmo y sus diferencias
-respecto de los trabajos originales figuran en los documentos de experimentos.
+El éxito exige completar la ruta, contacto suave cerca del destino y un segundo
+de estabilidad. Los porcentajes expresan pérdida de RPM de un motor; el empuje
+depende de su cuadrado. Las conclusiones corresponden al simulador, sensores y
+distribución de fallas evaluados.
 
-## Entorno y reproducción local
+## Controladores
 
-En el PC de trabajo, código, entorno Conda, temporales y resultados están bajo
-`E:\UTEC\Tesis\TesisNicol`. El entorno usado es `conda_env`, dentro de esa carpeta.
-`experiments/requirements.txt` registra las dependencias verificadas de los
-experimentos portables; no requiere instalar `mamba-ssm` para esas referencias.
-Las dependencias del código histórico permanecen en `requirements.txt`.
+- [DSLPIDControl](gym_pybullet_drones/control/DSLPIDControl.py): fuerza y momentos
+  en unidades SI, asignación acotada según efectividad, realimentación angular y
+  corrección de integrales frente a saturación.
+- [Estimador y supervisor de descenso](experiments/DSLPID_ACTUALIZADO.txt):
+  componentes y configuración ensayada. Su disponibilidad no implica adopción.
+- [NMPCINDIControl](gym_pybullet_drones/control/NMPCINDIControl.py): controlador
+  independiente con dinámica no lineal, retardo de motores, optimización acotada
+  e INDI. Comparte las interfaces computeControl y computeControlFromState.
+  Su [dependencia opcional](gym_pybullet_drones/control/requirements-nmpc.txt)
+  es CasADi/IPOPT. Tiene 68 pruebas ligeras aprobadas; no participó en la ronda 5
+  ni cuenta todavía con validación de desempeño en vuelo en este proyecto.
+- LegacyDSLPIDControl conserva la implementación histórica.
 
-Desde la raíz del repositorio en PowerShell, con el entorno ya preparado:
+La efectividad se suministra como factor de RPM. La detección de falla es externa
+a las clases de control y puede provenir de un estimador.
 
-```powershell
-. .\experiments\local_env.ps1
-python -m experiments.round3.common
-python -m pytest experiments/tests -q --junitxml=E:\UTEC\Tesis\TesisNicol\revision\pruebas_round3.xml
-python -m experiments.round3.run --phase train --seeds 11 22 33 44 55
-python -m experiments.round3.freeze_checkpoints
-python -m experiments.round3.run --phase test
-python -m experiments.round3.analyze
-```
+## Arquitecturas, entrenamiento y reproducción
 
-La primera orden de Python genera las demostraciones locales necesarias también
-para las pruebas de recompensas. En el entorno existente se aprobaron 53 pruebas.
-Los checkpoints, datos generados y cachés no se versionan; permanecen en `runs/`.
-No se incluyen en esta actualización los nuevos pesos de entrenamiento.
+El [protocolo de la ronda 5](experiments/round5/README.txt) documenta LSTM, Mamba,
+Mamba-2, Mamba-3 SISO, GTrXL y LTC con memoria persistente, decisión de intervención,
+imitación seguida de PPO protegido, ajuste por arquitectura y cinco semillas.
+Incluye compensación directa, corrección de efectividad y las adaptaciones
+de recompensas CSIL, ME-IRL y RIME.
 
-## Interpretación de resultados
+Las [configuraciones registradas](experiments/round5/configs) y las pruebas de
+experiments/tests acompañan al código. Los pesos, datasets y trazas generadas
+permanecen en runs/, excluido de Git. El paquete results/round5 conserva los
+resultados agregados y la auditoría de la ejecución final.
 
-El éxito actual significa completar la lista de waypoints con tolerancia de
-0,25 m. **No certifica aterrizaje estable ni control perfecto.** La condición
-«efectividad exacta» proporciona la información verdadera de la falla sin demora;
-la condición estimada introduce sesgo y demora. La detección está asistida por
-el simulador. El modo severo del controlador no constituye una implementación
-validada del equilibrio giratorio de Mueller–D'Andrea.
-## Nueva ronda: aterrizaje controlado y seis arquitecturas
+En el PC de trabajo, código, entorno Conda, cachés, temporales y resultados
+permanecen bajo E:\UTEC\Tesis\TesisNicol. Las dependencias de experimentos están
+en [experiments/requirements.txt](experiments/requirements.txt); las del código
+histórico se mantienen en requirements.txt.
 
-La ronda reproducible se documenta en [experiments/round4/README.txt](experiments/round4/README.txt). Exige contacto suave y un segundo de estabilidad en destino; incluye estimación de efectividad desde movimiento/comandos, memoria persistente y afinado protegido de la imitación. Los resultados anteriores se conservan.
+## Histórico y fuentes
 
-## Actualización del controlador y estimador de la ronda 5
+- [Ronda 4](experiments/round4/README.txt): aterrizaje estable y comparación de
+  seis arquitecturas.
+- [Ronda 3](experiments/round3/README.txt): primeras comparaciones de recompensas.
+- [Experimentos iniciales](experiments/README.txt).
+- [Fuentes y alcance de las implementaciones](experiments/SOURCES.txt).
 
-La configuración ensayada, sus componentes y la integración están en
-[experiments/DSLPID_ACTUALIZADO.txt](experiments/DSLPID_ACTUALIZADO.txt).
-Incluye estimación adaptativa de efectividad, frenado angular de emergencia y
-supervisión del descenso. Los resultados finales de esta ronda siguen pendientes.
-
-## Entrenamiento y comparación completa de la ronda 5
-
-La reproducción y los parámetros se documentan en
-[experiments/round5/README.txt](experiments/round5/README.txt).
-Incluye las seis arquitecturas con memoria persistente, decisión explícita de
-intervención, imitación seguida de PPO protegido y ajuste de parámetros por
-arquitectura. También contiene las variantes con recompensa CSIL/ME-IRL/RIME,
-los estimadores neuronales, los protocolos reservados y las pruebas de regresión.
-Los checkpoints y resultados se generan en runs/ y permanecen fuera de Git.
+Los comprobantes archivados contienen las rutas del PC original y sus huellas.
+Para otra ejecución se generan sus propios datos y comprobantes siguiendo el
+protocolo; el registro final original se conserva como evidencia del estudio.

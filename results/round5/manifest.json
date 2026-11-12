@@ -1,0 +1,262 @@
+{
+  "campaign": "intervention_round5",
+  "completed": true,
+  "source_commit": "e4b7412d7a4beccbc51fd98da10f9a71182d9c9a",
+  "publication_parent_commit": "7031933e2717e3063928d6988a13f447f060c3ba",
+  "scientific_campaign_completed_utc": "2026-11-12T22:04:30.682650+00:00",
+  "final_audit_completed_utc": "2026-11-12T22:11:22.175518+00:00",
+  "recommendation": "baseline_original",
+  "original_run_directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5",
+  "report_source_files": [
+    {
+      "path": "experiments/round5/report.py",
+      "sha256": "5195c695fcec28b874834db240f6ed9060269fd880f0d39aa359add1e6631246"
+    },
+    {
+      "path": "experiments/round5/plots.py",
+      "sha256": "a9f82de5f68a01c4fc8c6a4355f39e411bb28d9277a0332f97ebbe5c74342ff9"
+    }
+  ],
+  "excluded": [
+    "training datasets",
+    "trained model weights",
+    "full per-flight simulator traces"
+  ],
+  "nmpc_indi_in_campaign": false,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "origin": "publication_metadata"
+    },
+    {
+      "path": "ALL_COMPLETE.json",
+      "bytes": 292,
+      "sha256": "87cbc0616900250d5e0fa77f8a3f972f3b8384b8c49bd6c74e429382aeda60a8",
+      "origin": "original_run"
+    },
+    {
+      "path": "INFORME_FINAL_RONDA5.txt",
+      "bytes": 37609,
+      "sha256": "8f2eee3f67f0ec1d1dc46284a4cc40ad5f9cdd4ffff0a422fdf8d12fc907c12c",
+      "origin": "original_run"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4286,
+      "sha256": "69a0246f0f650c207750f1295b440c2866347ece7e1ec22bb974dbfcc274ded1",
+      "origin": "publication_metadata"
+    },
+    {
+      "path": "ablaciones_y_limites.png",
+      "bytes": 147977,
+      "sha256": "15915612311ba462619addd2a47519e330504721d49f18ce2c8fb4dacdb10f46",
+      "origin": "original_run"
+    },
+    {
+      "path": "analysis_complete.json",
+      "bytes": 147,
+      "sha256": "2a8f0f1fe9897e1fe933bc4cfddfd094ff89203969e2bacae302b98f192f4808",
+      "origin": "original_run"
+    },
+    {
+      "path": "confirmacion_independiente.png",
+      "bytes": 110931,
+      "sha256": "5f5ec36a9826ad98a68c04e00de275a4a82f2f539cd5bd8b396db7bf77665f8d",
+      "origin": "original_run"
+    },
+    {
+      "path": "confirmation_complete.json",
+      "bytes": 411,
+      "sha256": "dff5a9057704105cdcfebc533e5c1633deab6644221696067294fb90c502463a",
+      "origin": "original_run"
+    },
+    {
+      "path": "confirmation_manifest.json",
+      "bytes": 1199,
+      "sha256": "216fa39057c6cbfb155decb45e87a891227762d95a4e5b5d5b66e7dada5a36e1",
+      "origin": "original_run"
+    },
+    {
+      "path": "confirmation_summary.csv",
+      "bytes": 3244,
+      "sha256": "f5102c351101835dbc976aa6852d2f9bf922cd941f5ac11ddcd1d3d15d0b47de",
+      "origin": "publication_metadata"
+    },
+    {
+      "path": "curvas_estimadores.png",
+      "bytes": 130763,
+      "sha256": "5152a20eb4436fdac6b41faceaec646940b2658015d306b566d797796910a778",
+      "origin": "original_run"
+    },
+    {
+      "path": "curvas_recompensas.png",
+      "bytes": 130707,
+      "sha256": "bab7e76c8fab5a7f28aa4c4da110021ab86fdafd7f54c5dc8619f25cf8d79483",
+      "origin": "original_run"
+    },
+    {
+      "path": "curvas_residuales.png",
+      "bytes": 132425,
+      "sha256": "07e05f3ad0ce46791927a36ae64c6b310d3b19c2c46ca469ab8e76e45005ce4f",
+      "origin": "original_run"
+    },
+    {
+      "path": "data_audit.json",
+      "bytes": 354,
+      "sha256": "1982401db63dfc48bf9b9d5f6cad78b0d4dd9b9239762ce36d737d3f2db7ea7c",
+      "origin": "original_run"
+    },
+    {
+      "path": "data_source_integrity.json",
+      "bytes": 180,
+      "sha256": "cc71ee39fa3be6c6dcc0c8d1e64a44fa72d969da875fccd8b12c91c87df31a90",
+      "origin": "original_run"
+    },
+    {
+      "path": "decision.json",
+      "bytes": 4191,
+      "sha256": "280c892c5dc4d56cf15d8c807c6e3876779c5935ae2ce117c3f3b05938d6fa80",
+      "origin": "original_run"
+    },
+    {
+      "path": "efectividad_exacta_y_estimada.png",
+      "bytes": 109872,
+      "sha256": "8e4163b5d8d3c41cc00ade4069489f14eb0468ef4c834f5c28467c07e37d75cf",
+      "origin": "original_run"
+    },
+    {
+      "path": "failure_analysis.json",
+      "bytes": 524449,
+      "sha256": "77de6725d72136c165dbe9c18f4050841a4e6c6a189ff617c273b027b08581a1",
+      "origin": "original_run"
+    },
+    {
+      "path": "final_audit.json",
+      "bytes": 9790246,
+      "sha256": "f733b42eb0d61e4ea04fec218bd597deaa637c3d36caa071e27e3645c30662b0",
+      "origin": "original_run"
+    },
+    {
+      "path": "frozen_before_test.json",
+      "bytes": 78990,
+      "sha256": "1e03935fcd9f1edec0d0d54438639dd4c61f426f9c952b4f80bb09b3e27ad104",
+      "origin": "original_run"
+    },
+    {
+      "path": "inference_audit_complete.json",
+      "bytes": 29648,
+      "sha256": "3a4f91dcad6bfeaa4026f5482bb495abb785bbbe9e3fe24e1dc611caa4fcb5ca",
+      "origin": "original_run"
+    },
+    {
+      "path": "intervalos_familias.png",
+      "bytes": 85297,
+      "sha256": "7476181fcc45bb5c6ae26c7c7fa9d051da161f8b40766aa6b679b4fd0b9acffd",
+      "origin": "original_run"
+    },
+    {
+      "path": "latency_complete.json",
+      "bytes": 10422,
+      "sha256": "70cb4b4f3c4ae1f922b95974a08ca5e0dbbb081382dcd5e4763884c23bce2071",
+      "origin": "original_run"
+    },
+    {
+      "path": "oracle_proposal_audit_complete.json",
+      "bytes": 5829,
+      "sha256": "c49f65ef90c3ac3251f09aec941ec338fca950bb688a7b10cfea1081843f6d48",
+      "origin": "original_run"
+    },
+    {
+      "path": "paired_physics_audit.json",
+      "bytes": 18801,
+      "sha256": "d093a5770d0c8c72995b5812f38e473f5d8130b49f5dec28a6a34f471fb4d4ec",
+      "origin": "original_run"
+    },
+    {
+      "path": "physical_limits.json",
+      "bytes": 2018,
+      "sha256": "141a64cd7ee665d153970043979f5103dae5c1c5a3bed537c685791d6e84398c",
+      "origin": "original_run"
+    },
+    {
+      "path": "physics_precision_summary.json",
+      "bytes": 755,
+      "sha256": "40ed9801c3da1ca771dd21dc69b3fb2b1848cbf53c7d3b588f13af1c59c78c34",
+      "origin": "original_run"
+    },
+    {
+      "path": "pilot_reproduction_audit.json",
+      "bytes": 304,
+      "sha256": "bf0ee00301d156a33f02c8ddfe9e7a922d697f82ac3290fb31a641ca5306939e",
+      "origin": "original_run"
+    },
+    {
+      "path": "recommended_controller.json",
+      "bytes": 664,
+      "sha256": "4c4b07ea4648aabc2bf77d20bba40d855b06c96fe4a831cd9600c0b8c327db2b",
+      "origin": "original_run"
+    },
+    {
+      "path": "recommended_replay.json",
+      "bytes": 29350,
+      "sha256": "27737e594364e93903e5c586ba33382ec95e34256e68ca6cf45709d448dff5de",
+      "origin": "original_run"
+    },
+    {
+      "path": "report_complete.json",
+      "bytes": 1847,
+      "sha256": "da550400b6ff294ac2f59c80574f7964e3712273cfaf802c640760446d391746",
+      "origin": "original_run"
+    },
+    {
+      "path": "runtime_selection_complete.json",
+      "bytes": 159528,
+      "sha256": "8373802ba1557defdbfdbcc027638d02cd28aa237a8105881f01fcbe0da99c32",
+      "origin": "original_run"
+    },
+    {
+      "path": "sensitivity_complete.json",
+      "bytes": 5848,
+      "sha256": "99d27fb1e53574c27ee78536fdb2c2d11289dbec14d84b1df73cdbebd6486d48",
+      "origin": "original_run"
+    },
+    {
+      "path": "sensitivity_manifest.json",
+      "bytes": 7124,
+      "sha256": "39f37c064ae33b405439762cb520a5533ccbdd2d9398c93ba82fadc87e217414",
+      "origin": "original_run"
+    },
+    {
+      "path": "stage_timings.json",
+      "bytes": 1215,
+      "sha256": "9f3ae396e64d21c9977b05726f61edef0c83088232970981687d7e7f6207f0fb",
+      "origin": "original_run"
+    },
+    {
+      "path": "success_rates.csv",
+      "bytes": 321835,
+      "sha256": "e2b94cbc7edea4044a9394b0562c163a91b5a04d1d0ac412468d0a25620a7072",
+      "origin": "original_run"
+    },
+    {
+      "path": "tests_final.xml",
+      "bytes": 26138,
+      "sha256": "868cd425490bde1fdea61388172b31f42785660e17898996af9ff2cb09aff6df",
+      "origin": "original_run"
+    },
+    {
+      "path": "tests_final_receipt.json",
+      "bytes": 195,
+      "sha256": "9260528e764492778282ae84043100c3d31715587871399d03aab9f6d6d549a2",
+      "origin": "original_run"
+    },
+    {
+      "path": "training_timings.csv",
+      "bytes": 8625,
+      "sha256": "d6523a630f879a8b9aae825a8ef6c713bacde73cdb4b79ee40f1b79f5612efe5",
+      "origin": "original_run"
+    }
+  ]
+}

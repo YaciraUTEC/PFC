@@ -1,0 +1,4912 @@
+{
+  "seconds": 6798.385308504105,
+  "groups": [
+    {
+      "group": {
+        "id": "residual_lstm",
+        "kind": "residual",
+        "name": "lstm",
+        "entries": [
+          {
+            "seed": 101,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_101",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_101\\best.pt"
+          },
+          {
+            "seed": 102,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_102",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_102\\best.pt"
+          },
+          {
+            "seed": 103,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_103",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_103\\best.pt"
+          },
+          {
+            "seed": 104,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_104",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_104\\best.pt"
+          },
+          {
+            "seed": 105,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_105",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_105\\best.pt"
+          }
+        ],
+        "intervention": "residual"
+      },
+      "options": [
+        {
+          "strategy": {
+            "id": "learned",
+            "threshold": 0.0,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.008333333333333333,
+          "success": 0.95,
+          "effort": 2.562023430288188e-07,
+          "mean_steps": 576.5583333333333,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.3391348710463907e-07,
+              "mean_steps": 577.5
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 8.323870179228321e-08,
+              "mean_steps": 576.8229166666666
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.560061695536103e-07,
+              "mean_steps": 576.8229166666666
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 3.028518330770565e-07,
+              "mean_steps": 576.78125
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 4.050015236165051e-07,
+              "mean_steps": 574.8645833333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "strict",
+            "threshold": 1.5,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.008333333333333333,
+          "success": 0.95,
+          "effort": 2.1778053365449265e-07,
+          "mean_steps": 577.2895833333333,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.0047425489997245e-07,
+              "mean_steps": 577.4375
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 7.118794401078725e-08,
+              "mean_steps": 576.8125
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.167237276561709e-07,
+              "mean_steps": 577.4270833333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.74675021930115e-07,
+              "mean_steps": 577.2291666666666
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 3.258417197754179e-07,
+              "mean_steps": 577.5416666666666
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "conservative",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "judge_only",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false,
+            "shadow": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "off",
+            "threshold": 0.0,
+            "judge": false,
+            "off": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        }
+      ],
+      "chosen_strategy": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "pre_screen_choice": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "full_screen_losses": 0,
+      "rule": "Highest severe gain with zero paired exact/mild validation losses; prefer abstention on tie; any full32route risk regression forces abstention."
+    },
+    {
+      "group": {
+        "id": "residual_mamba",
+        "kind": "residual",
+        "name": "mamba",
+        "entries": [
+          {
+            "seed": 101,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_101",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_101\\best.pt"
+          },
+          {
+            "seed": 102,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_102",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_102\\best.pt"
+          },
+          {
+            "seed": 103,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_103",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_103\\best.pt"
+          },
+          {
+            "seed": 104,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_104",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_104\\best.pt"
+          },
+          {
+            "seed": 105,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_105",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_105\\best.pt"
+          }
+        ],
+        "intervention": "residual"
+      },
+      "options": [
+        {
+          "strategy": {
+            "id": "learned",
+            "threshold": 0.0,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.016666666666666666,
+          "success": 0.9416666666666667,
+          "effort": 1.4440807295172964e-07,
+          "mean_steps": 577.2125,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.2182160439361445e-07,
+              "mean_steps": 577.5208333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.1171643638837403e-07,
+              "mean_steps": 575.7395833333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.080568625360747e-07,
+              "mean_steps": 577.6458333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.9260712907263314e-07,
+              "mean_steps": 577.5416666666666
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.8783833236795194e-07,
+              "mean_steps": 577.6145833333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "strict",
+            "threshold": 1.5,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.03333333333333333,
+          "success": 0.925,
+          "effort": 1.2664638202912363e-07,
+          "mean_steps": 577.2958333333333,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.0653354042143519e-07,
+              "mean_steps": 577.7604166666666
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.0733182065020144e-07,
+              "mean_steps": 575.6458333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.0498390553170047e-07,
+              "mean_steps": 577.78125
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.7943618297094658e-07,
+              "mean_steps": 577.6041666666666
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.349464605713345e-07,
+              "mean_steps": 577.6875
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "conservative",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "judge_only",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false,
+            "shadow": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 4.762541511343598e-12,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.2970791808087925e-11,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.264433306676897e-12,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 8.577482441953173e-12,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "off",
+            "threshold": 0.0,
+            "judge": false,
+            "off": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        }
+      ],
+      "chosen_strategy": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "pre_screen_choice": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "full_screen_losses": 0,
+      "rule": "Highest severe gain with zero paired exact/mild validation losses; prefer abstention on tie; any full32route risk regression forces abstention."
+    },
+    {
+      "group": {
+        "id": "residual_mamba2",
+        "kind": "residual",
+        "name": "mamba2",
+        "entries": [
+          {
+            "seed": 101,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_101",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_101\\best.pt"
+          },
+          {
+            "seed": 102,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_102",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_102\\best.pt"
+          },
+          {
+            "seed": 103,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_103",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_103\\best.pt"
+          },
+          {
+            "seed": 104,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_104",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_104\\best.pt"
+          },
+          {
+            "seed": 105,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_105",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_105\\best.pt"
+          }
+        ],
+        "intervention": "residual"
+      },
+      "options": [
+        {
+          "strategy": {
+            "id": "learned",
+            "threshold": 0.0,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.016666666666666666,
+          "success": 0.9416666666666667,
+          "effort": 1.7417462741821194e-07,
+          "mean_steps": 575.58125,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 4.1502224503842915e-07,
+              "mean_steps": 565.3020833333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 6.598867729976785e-08,
+              "mean_steps": 580.2083333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 2.0387900276883058e-07,
+              "mean_steps": 578.0416666666666
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 8.866188876194687e-08,
+              "mean_steps": 577.375
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 9.732132322208527e-08,
+              "mean_steps": 576.9791666666666
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "strict",
+            "threshold": 1.5,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.025,
+          "success": 0.9333333333333333,
+          "effort": 1.4391018219920645e-07,
+          "mean_steps": 576.325,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 2.728426194911507e-07,
+              "mean_steps": 567.9270833333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 6.36380418016107e-08,
+              "mean_steps": 580.90625
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.977664887333043e-07,
+              "mean_steps": 577.8854166666666
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.0260931799649286e-07,
+              "mean_steps": 577.53125
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 8.269444297347371e-08,
+              "mean_steps": 577.375
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "conservative",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "judge_only",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false,
+            "shadow": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 1.1760644015456563e-11,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.3532978871563899e-11,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.8116461259618614e-11,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 4.4254777997796846e-12,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.2728302146320612e-11,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "off",
+            "threshold": 0.0,
+            "judge": false,
+            "off": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        }
+      ],
+      "chosen_strategy": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "pre_screen_choice": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "full_screen_losses": 0,
+      "rule": "Highest severe gain with zero paired exact/mild validation losses; prefer abstention on tie; any full32route risk regression forces abstention."
+    },
+    {
+      "group": {
+        "id": "residual_mamba3",
+        "kind": "residual",
+        "name": "mamba3",
+        "entries": [
+          {
+            "seed": 101,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_101",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_101\\best.pt"
+          },
+          {
+            "seed": 102,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_102",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_102\\best.pt"
+          },
+          {
+            "seed": 103,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_103",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_103\\best.pt"
+          },
+          {
+            "seed": 104,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_104",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_104\\best.pt"
+          },
+          {
+            "seed": 105,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_105",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_105\\best.pt"
+          }
+        ],
+        "intervention": "residual"
+      },
+      "options": [
+        {
+          "strategy": {
+            "id": "learned",
+            "threshold": 0.0,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.008333333333333333,
+          "success": 0.95,
+          "effort": 8.900685198449639e-08,
+          "mean_steps": 578.0125,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 5.858916286498051e-08,
+              "mean_steps": 577.8020833333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.21511722235068e-08,
+              "mean_steps": 580.0104166666666
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.7338402280074608e-07,
+              "mean_steps": 577.8854166666666
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.1057241712147428e-07,
+              "mean_steps": 577.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 9.033748491177434e-08,
+              "mean_steps": 576.59375
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "strict",
+            "threshold": 1.5,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.016666666666666666,
+          "success": 0.9416666666666667,
+          "effort": 7.759369555115245e-08,
+          "mean_steps": 577.4895833333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 8.714884617510198e-08,
+              "mean_steps": 577.8854166666666
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 9.447524367779499e-09,
+              "mean_steps": 579.1041666666666
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 8.512109857895185e-08,
+              "mean_steps": 577.8854166666666
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.1550798768458521e-07,
+              "mean_steps": 577.1979166666666
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 9.074302094934365e-08,
+              "mean_steps": 575.375
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "conservative",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "judge_only",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false,
+            "shadow": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 2.3248275909485836e-13,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.1624137954742918e-12,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "off",
+            "threshold": 0.0,
+            "judge": false,
+            "off": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        }
+      ],
+      "chosen_strategy": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "pre_screen_choice": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "full_screen_losses": 0,
+      "rule": "Highest severe gain with zero paired exact/mild validation losses; prefer abstention on tie; any full32route risk regression forces abstention."
+    },
+    {
+      "group": {
+        "id": "residual_gtrxl",
+        "kind": "residual",
+        "name": "gtrxl",
+        "entries": [
+          {
+            "seed": 101,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_101",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_101\\best.pt"
+          },
+          {
+            "seed": 102,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_102",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_102\\best.pt"
+          },
+          {
+            "seed": 103,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_103",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_103\\best.pt"
+          },
+          {
+            "seed": 104,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_104",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_104\\best.pt"
+          },
+          {
+            "seed": 105,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_105",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_105\\best.pt"
+          }
+        ],
+        "intervention": "residual"
+      },
+      "options": [
+        {
+          "strategy": {
+            "id": "learned",
+            "threshold": 0.0,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.025,
+          "success": 0.9333333333333333,
+          "effort": 2.1080979283614877e-07,
+          "mean_steps": 577.0770833333333,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.1143450314976563e-07,
+              "mean_steps": 575.1666666666666
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 9.709807894987237e-08,
+              "mean_steps": 577.8854166666666
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.6861282194488713e-07,
+              "mean_steps": 577.8854166666666
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 3.671302568901267e-07,
+              "mean_steps": 576.9583333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 2.0977330324609208e-07,
+              "mean_steps": 577.4895833333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "strict",
+            "threshold": 1.5,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.025,
+          "success": 0.9333333333333333,
+          "effort": 2.0986664159407802e-07,
+          "mean_steps": 577.075,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.1206674194142553e-07,
+              "mean_steps": 575.15625
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 9.735523622947423e-08,
+              "mean_steps": 577.8854166666666
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.5785641698453446e-07,
+              "mean_steps": 577.8854166666666
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 3.7651060174833676e-07,
+              "mean_steps": 576.9375
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 2.055442110666193e-07,
+              "mean_steps": 577.5104166666666
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "conservative",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "judge_only",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false,
+            "shadow": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "off",
+            "threshold": 0.0,
+            "judge": false,
+            "off": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        }
+      ],
+      "chosen_strategy": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "pre_screen_choice": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "full_screen_losses": 0,
+      "rule": "Highest severe gain with zero paired exact/mild validation losses; prefer abstention on tie; any full32route risk regression forces abstention."
+    },
+    {
+      "group": {
+        "id": "residual_ltc",
+        "kind": "residual",
+        "name": "ltc",
+        "entries": [
+          {
+            "seed": 101,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_101",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_101\\best.pt"
+          },
+          {
+            "seed": 102,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_102",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_102\\best.pt"
+          },
+          {
+            "seed": 103,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_103",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_103\\best.pt"
+          },
+          {
+            "seed": 104,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_104",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_104\\best.pt"
+          },
+          {
+            "seed": 105,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_105",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_105\\best.pt"
+          }
+        ],
+        "intervention": "residual"
+      },
+      "options": [
+        {
+          "strategy": {
+            "id": "learned",
+            "threshold": 0.0,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.008333333333333333,
+          "success": 0.95,
+          "effort": 1.4965868218008525e-07,
+          "mean_steps": 576.7895833333333,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.99658042834767e-07,
+              "mean_steps": 575.84375
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.0771822613904023e-07,
+              "mean_steps": 577.6041666666666
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.0359445657634727e-07,
+              "mean_steps": 577.375
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.715836628648575e-07,
+              "mean_steps": 576.8854166666666
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.6573902248541417e-07,
+              "mean_steps": 576.2395833333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "strict",
+            "threshold": 1.5,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.016666666666666666,
+          "success": 0.9416666666666667,
+          "effort": 1.1666226065125148e-07,
+          "mean_steps": 577.1375,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.5144343502172505e-07,
+              "mean_steps": 577.59375
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 6.767042858888494e-08,
+              "mean_steps": 577.5
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 8.133185151201133e-08,
+              "mean_steps": 576.9270833333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.510245958941037e-07,
+              "mean_steps": 575.8854166666666
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.3184099223953233e-07,
+              "mean_steps": 577.78125
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "conservative",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "judge_only",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false,
+            "shadow": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 1.9471258363613435e-12,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 7.904436194493129e-12,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.8311929873135876e-12,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "off",
+            "threshold": 0.0,
+            "judge": false,
+            "off": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        }
+      ],
+      "chosen_strategy": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "pre_screen_choice": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "full_screen_losses": 0,
+      "rule": "Highest severe gain with zero paired exact/mild validation losses; prefer abstention on tie; any full32route risk regression forces abstention."
+    },
+    {
+      "group": {
+        "id": "observer_lstm",
+        "kind": "observer",
+        "name": "lstm",
+        "entries": [
+          {
+            "seed": 101,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_101",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_101\\bc.pt"
+          },
+          {
+            "seed": 102,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_102",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_102\\bc.pt"
+          },
+          {
+            "seed": 103,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_103",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_103\\bc.pt"
+          },
+          {
+            "seed": 104,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_104",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_104\\bc.pt"
+          },
+          {
+            "seed": 105,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_105",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_105\\bc.pt"
+          }
+        ],
+        "intervention": "effectiveness"
+      },
+      "options": [
+        {
+          "strategy": {
+            "id": "learned",
+            "threshold": 0.0,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 8.311706846573544e-07,
+          "mean_steps": 574.66875,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.2647668315511995e-06,
+              "mean_steps": 574.6145833333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.0697986030865344e-06,
+              "mean_steps": 574.5520833333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 6.469079671522819e-07,
+              "mean_steps": 574.90625
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 4.0837147404718894e-07,
+              "mean_steps": 574.7291666666666
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 7.660085474495672e-07,
+              "mean_steps": 574.5416666666666
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "strict",
+            "threshold": 1.5,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 7.38174026066481e-07,
+          "mean_steps": 574.7375,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 9.375031131903957e-07,
+              "mean_steps": 574.5833333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 9.676099431109944e-07,
+              "mean_steps": 575.03125
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 6.151945379769974e-07,
+              "mean_steps": 574.875
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 3.907060493202415e-07,
+              "mean_steps": 574.8229166666666
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 7.798564867337757e-07,
+              "mean_steps": 574.375
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "conservative",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "judge_only",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false,
+            "shadow": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 1.144176627709748e-13,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 5.72088313854874e-13,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "off",
+            "threshold": 0.0,
+            "judge": false,
+            "off": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        }
+      ],
+      "chosen_strategy": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "pre_screen_choice": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "full_screen_losses": 0,
+      "rule": "Highest severe gain with zero paired exact/mild validation losses; prefer abstention on tie; any full32route risk regression forces abstention."
+    },
+    {
+      "group": {
+        "id": "observer_mamba",
+        "kind": "observer",
+        "name": "mamba",
+        "entries": [
+          {
+            "seed": 101,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_101",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_101\\bc.pt"
+          },
+          {
+            "seed": 102,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_102",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_102\\bc.pt"
+          },
+          {
+            "seed": 103,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_103",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_103\\bc.pt"
+          },
+          {
+            "seed": 104,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_104",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_104\\bc.pt"
+          },
+          {
+            "seed": 105,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_105",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_105\\bc.pt"
+          }
+        ],
+        "intervention": "effectiveness"
+      },
+      "options": [
+        {
+          "strategy": {
+            "id": "learned",
+            "threshold": 0.0,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 1.2996040642917e-06,
+          "mean_steps": 574.6770833333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.6193638069326547e-06,
+              "mean_steps": 573.59375
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.0103272032875162e-06,
+              "mean_steps": 574.6354166666666
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.3706516883349792e-06,
+              "mean_steps": 576.0416666666666
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.6764105414843266e-06,
+              "mean_steps": 574.4583333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 8.212670814190226e-07,
+              "mean_steps": 574.65625
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "strict",
+            "threshold": 1.5,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.008333333333333333,
+          "success": 0.95,
+          "effort": 1.1829691232051608e-06,
+          "mean_steps": 573.3208333333333,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.451426369351858e-06,
+              "mean_steps": 573.46875
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.0066403818401767e-06,
+              "mean_steps": 574.5104166666666
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 9.704212637496665e-07,
+              "mean_steps": 574.1770833333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.7104752549413911e-06,
+              "mean_steps": 569.78125
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 7.758823461427118e-07,
+              "mean_steps": 574.6666666666666
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "conservative",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "judge_only",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false,
+            "shadow": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 3.920334906276814e-13,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.960167453138407e-12,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "off",
+            "threshold": 0.0,
+            "judge": false,
+            "off": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        }
+      ],
+      "chosen_strategy": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "pre_screen_choice": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "full_screen_losses": 0,
+      "rule": "Highest severe gain with zero paired exact/mild validation losses; prefer abstention on tie; any full32route risk regression forces abstention."
+    },
+    {
+      "group": {
+        "id": "observer_mamba2",
+        "kind": "observer",
+        "name": "mamba2",
+        "entries": [
+          {
+            "seed": 101,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_101",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_101\\bc.pt"
+          },
+          {
+            "seed": 102,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_102",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_102\\bc.pt"
+          },
+          {
+            "seed": 103,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_103",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_103\\bc.pt"
+          },
+          {
+            "seed": 104,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_104",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_104\\bc.pt"
+          },
+          {
+            "seed": 105,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_105",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_105\\bc.pt"
+          }
+        ],
+        "intervention": "effectiveness"
+      },
+      "options": [
+        {
+          "strategy": {
+            "id": "learned",
+            "threshold": 0.0,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 9.873973192360736e-07,
+          "mean_steps": 573.975,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.8200085307070607e-06,
+              "mean_steps": 573.5625
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 3.0191922921200224e-07,
+              "mean_steps": 574.8229166666666
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 4.226362613216575e-07,
+              "mean_steps": 574.5833333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.1454549286302368e-06,
+              "mean_steps": 573.1041666666666
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.24696764630941e-06,
+              "mean_steps": 573.8020833333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "strict",
+            "threshold": 1.5,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 9.606773142273505e-07,
+          "mean_steps": 573.94375,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.7175972796573368e-06,
+              "mean_steps": 573.4375
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.827250808734789e-07,
+              "mean_steps": 574.71875
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 3.654630527723985e-07,
+              "mean_steps": 574.09375
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.2353206598164745e-06,
+              "mean_steps": 572.96875
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.202280498017064e-06,
+              "mean_steps": 574.5
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "conservative",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "judge_only",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false,
+            "shadow": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 1.38784694975587e-14,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 6.93923474877935e-14,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "off",
+            "threshold": 0.0,
+            "judge": false,
+            "off": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        }
+      ],
+      "chosen_strategy": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "pre_screen_choice": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "full_screen_losses": 0,
+      "rule": "Highest severe gain with zero paired exact/mild validation losses; prefer abstention on tie; any full32route risk regression forces abstention."
+    },
+    {
+      "group": {
+        "id": "observer_mamba3",
+        "kind": "observer",
+        "name": "mamba3",
+        "entries": [
+          {
+            "seed": 101,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_101",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_101\\bc.pt"
+          },
+          {
+            "seed": 102,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_102",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_102\\bc.pt"
+          },
+          {
+            "seed": 103,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_103",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_103\\bc.pt"
+          },
+          {
+            "seed": 104,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_104",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_104\\bc.pt"
+          },
+          {
+            "seed": 105,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_105",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_105\\bc.pt"
+          }
+        ],
+        "intervention": "effectiveness"
+      },
+      "options": [
+        {
+          "strategy": {
+            "id": "learned",
+            "threshold": 0.0,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 6.943100945353991e-07,
+          "mean_steps": 574.0520833333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 4.955666925392217e-07,
+              "mean_steps": 573.6666666666666
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.586798747684045e-08,
+              "mean_steps": 574.9895833333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.000538411394442e-06,
+              "mean_steps": 574.09375
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.5394515470926757e-06,
+              "mean_steps": 572.9583333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 4.2012583417381536e-07,
+              "mean_steps": 574.5520833333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "strict",
+            "threshold": 1.5,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 4.13807304124028e-07,
+          "mean_steps": 574.6020833333333,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 7.08437737655656e-08,
+              "mean_steps": 573.8229166666666
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 4.421383042488964e-09,
+              "mean_steps": 575.6041666666666
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 5.254462465382212e-07,
+              "mean_steps": 574.625
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.2756296939325167e-06,
+              "mean_steps": 573.4166666666666
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.9269542334134718e-07,
+              "mean_steps": 575.5416666666666
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "conservative",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "judge_only",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false,
+            "shadow": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 3.1215790889277994e-12,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.4049792007095523e-11,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.5581034375434722e-12,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "off",
+            "threshold": 0.0,
+            "judge": false,
+            "off": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        }
+      ],
+      "chosen_strategy": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "pre_screen_choice": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "full_screen_losses": 0,
+      "rule": "Highest severe gain with zero paired exact/mild validation losses; prefer abstention on tie; any full32route risk regression forces abstention."
+    },
+    {
+      "group": {
+        "id": "observer_gtrxl",
+        "kind": "observer",
+        "name": "gtrxl",
+        "entries": [
+          {
+            "seed": 101,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_101",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_101\\bc.pt"
+          },
+          {
+            "seed": 102,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_102",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_102\\bc.pt"
+          },
+          {
+            "seed": 103,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_103",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_103\\bc.pt"
+          },
+          {
+            "seed": 104,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_104",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_104\\bc.pt"
+          },
+          {
+            "seed": 105,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_105",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_105\\bc.pt"
+          }
+        ],
+        "intervention": "effectiveness"
+      },
+      "options": [
+        {
+          "strategy": {
+            "id": "learned",
+            "threshold": 0.0,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 1.0332951724683603e-06,
+          "mean_steps": 573.3895833333333,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.8539347026732085e-06,
+              "mean_steps": 573.65625
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 3.666008297904725e-07,
+              "mean_steps": 573.71875
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 3.266403352232669e-07,
+              "mean_steps": 573.7083333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 9.229739505435596e-07,
+              "mean_steps": 573.3958333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.6963260441112933e-06,
+              "mean_steps": 572.46875
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "strict",
+            "threshold": 1.5,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 9.313607725862624e-07,
+          "mean_steps": 573.3916666666667,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.7487578044720082e-06,
+              "mean_steps": 573.5833333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 3.7700067597709265e-07,
+              "mean_steps": 573.6875
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.837714260528324e-07,
+              "mean_steps": 573.71875
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 7.868857134563672e-07,
+              "mean_steps": 573.3333333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.4603882429730119e-06,
+              "mean_steps": 572.6354166666666
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "conservative",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "judge_only",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false,
+            "shadow": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "off",
+            "threshold": 0.0,
+            "judge": false,
+            "off": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        }
+      ],
+      "chosen_strategy": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "pre_screen_choice": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "full_screen_losses": 0,
+      "rule": "Highest severe gain with zero paired exact/mild validation losses; prefer abstention on tie; any full32route risk regression forces abstention."
+    },
+    {
+      "group": {
+        "id": "observer_ltc",
+        "kind": "observer",
+        "name": "ltc",
+        "entries": [
+          {
+            "seed": 101,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_101",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_101\\bc.pt"
+          },
+          {
+            "seed": 102,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_102",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_102\\bc.pt"
+          },
+          {
+            "seed": 103,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_103",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_103\\bc.pt"
+          },
+          {
+            "seed": 104,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_104",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_104\\bc.pt"
+          },
+          {
+            "seed": 105,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_105",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_105\\bc.pt"
+          }
+        ],
+        "intervention": "effectiveness"
+      },
+      "options": [
+        {
+          "strategy": {
+            "id": "learned",
+            "threshold": 0.0,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 1.1335045297532108e-06,
+          "mean_steps": 574.5145833333333,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.6443612635421058e-06,
+              "mean_steps": 573.3229166666666
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.8032018005012543e-06,
+              "mean_steps": 574.96875
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 5.18344463116225e-07,
+              "mean_steps": 574.8854166666666
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 7.903518316435926e-07,
+              "mean_steps": 576.03125
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 9.112632899628759e-07,
+              "mean_steps": 573.3645833333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "strict",
+            "threshold": 1.5,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.008333333333333333,
+          "success": 0.95,
+          "effort": 1.0431146617748077e-06,
+          "mean_steps": 575.0333333333333,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.6116446467605555e-06,
+              "mean_steps": 577.7291666666666
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.553008747005338e-06,
+              "mean_steps": 574.6145833333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 4.666065192858007e-07,
+              "mean_steps": 574.75
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 7.528624423175821e-07,
+              "mean_steps": 574.6666666666666
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 8.314509535047617e-07,
+              "mean_steps": 573.40625
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "conservative",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "judge_only",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false,
+            "shadow": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 6.63493563785602e-13,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.652998163739758e-12,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 6.644696551882519e-13,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "off",
+            "threshold": 0.0,
+            "judge": false,
+            "off": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        }
+      ],
+      "chosen_strategy": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "pre_screen_choice": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "full_screen_losses": 0,
+      "rule": "Highest severe gain with zero paired exact/mild validation losses; prefer abstention on tie; any full32route risk regression forces abstention."
+    },
+    {
+      "group": {
+        "id": "reward_csil",
+        "kind": "reward",
+        "name": "csil",
+        "entries": [
+          {
+            "seed": 101,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_101",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_101\\best.pt"
+          },
+          {
+            "seed": 102,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_102",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_102\\best.pt"
+          },
+          {
+            "seed": 103,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_103",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_103\\best.pt"
+          },
+          {
+            "seed": 104,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_104",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_104\\best.pt"
+          },
+          {
+            "seed": 105,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_105",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_105\\best.pt"
+          }
+        ],
+        "intervention": "residual"
+      },
+      "options": [
+        {
+          "strategy": {
+            "id": "learned",
+            "threshold": 0.0,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 2.3015514769417576e-07,
+          "mean_steps": 576.7416666666667,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.3391348710463907e-07,
+              "mean_steps": 577.5
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.3338232662562268e-07,
+              "mean_steps": 575.34375
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.560061695536103e-07,
+              "mean_steps": 576.8229166666666
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 3.028518330770565e-07,
+              "mean_steps": 576.78125
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.246219221099503e-07,
+              "mean_steps": 577.2604166666666
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "strict",
+            "threshold": 1.5,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.008333333333333333,
+          "success": 0.95,
+          "effort": 2.164111602912108e-07,
+          "mean_steps": 577.0020833333333,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.0047425489997245e-07,
+              "mean_steps": 577.4375
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 1.280840753619832e-07,
+              "mean_steps": 575.375
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.167237276561709e-07,
+              "mean_steps": 577.4270833333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.74675021930115e-07,
+              "mean_steps": 577.2291666666666
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 2.620987216078125e-07,
+              "mean_steps": 577.5416666666666
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "conservative",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "judge_only",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false,
+            "shadow": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "off",
+            "threshold": 0.0,
+            "judge": false,
+            "off": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        }
+      ],
+      "chosen_strategy": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "pre_screen_choice": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "full_screen_losses": 0,
+      "rule": "Highest severe gain with zero paired exact/mild validation losses; prefer abstention on tie; any full32route risk regression forces abstention."
+    },
+    {
+      "group": {
+        "id": "reward_meirl",
+        "kind": "reward",
+        "name": "meirl",
+        "entries": [
+          {
+            "seed": 101,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_101",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_101\\best.pt"
+          },
+          {
+            "seed": 102,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_102",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_102\\best.pt"
+          },
+          {
+            "seed": 103,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_103",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_103\\best.pt"
+          },
+          {
+            "seed": 104,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_104",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_104\\best.pt"
+          },
+          {
+            "seed": 105,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_105",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_105\\best.pt"
+          }
+        ],
+        "intervention": "residual"
+      },
+      "options": [
+        {
+          "strategy": {
+            "id": "learned",
+            "threshold": 0.0,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.008333333333333333,
+          "success": 0.95,
+          "effort": 2.574987451771357e-07,
+          "mean_steps": 576.6895833333333,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.3391348710463907e-07,
+              "mean_steps": 577.5
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 8.972071253386742e-08,
+              "mean_steps": 577.4791666666666
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.560061695536103e-07,
+              "mean_steps": 576.8229166666666
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 3.028518330770565e-07,
+              "mean_steps": 576.78125
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 4.050015236165051e-07,
+              "mean_steps": 574.8645833333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "strict",
+            "threshold": 1.5,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.008333333333333333,
+          "success": 0.95,
+          "effort": 2.208270971549141e-07,
+          "mean_steps": 577.43125,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.0047425489997245e-07,
+              "mean_steps": 577.4375
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 8.642076151289429e-08,
+              "mean_steps": 577.5208333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.167237276561709e-07,
+              "mean_steps": 577.4270833333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.74675021930115e-07,
+              "mean_steps": 577.2291666666666
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 3.258417197754179e-07,
+              "mean_steps": 577.5416666666666
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "conservative",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "judge_only",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false,
+            "shadow": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "off",
+            "threshold": 0.0,
+            "judge": false,
+            "off": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        }
+      ],
+      "chosen_strategy": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "pre_screen_choice": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "full_screen_losses": 0,
+      "rule": "Highest severe gain with zero paired exact/mild validation losses; prefer abstention on tie; any full32route risk regression forces abstention."
+    },
+    {
+      "group": {
+        "id": "reward_rime",
+        "kind": "reward",
+        "name": "rime",
+        "entries": [
+          {
+            "seed": 101,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_101",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_101\\best.pt"
+          },
+          {
+            "seed": 102,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_102",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_102\\best.pt"
+          },
+          {
+            "seed": 103,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_103",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_103\\best.pt"
+          },
+          {
+            "seed": 104,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_104",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_104\\best.pt"
+          },
+          {
+            "seed": 105,
+            "directory": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_105",
+            "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_105\\best.pt"
+          }
+        ],
+        "intervention": "residual"
+      },
+      "options": [
+        {
+          "strategy": {
+            "id": "learned",
+            "threshold": 0.0,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.008333333333333333,
+          "success": 0.95,
+          "effort": 2.5226278557519975e-07,
+          "mean_steps": 577.1916666666667,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.3391348710463907e-07,
+              "mean_steps": 577.5
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.9606163657166495e-07,
+              "mean_steps": 577.6041666666666
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.560061695536103e-07,
+              "mean_steps": 576.8229166666666
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 3.028518330770565e-07,
+              "mean_steps": 576.78125
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.7248080156902806e-07,
+              "mean_steps": 577.25
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "strict",
+            "threshold": 1.5,
+            "judge": false,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": -0.008333333333333333,
+          "success": 0.95,
+          "effort": 2.2328910770941037e-07,
+          "mean_steps": 577.3,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.0047425489997245e-07,
+              "mean_steps": 577.4375
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": -0.041666666666666664,
+              "success": 0.9166666666666666,
+              "effort": 1.8748017433598047e-07,
+              "mean_steps": 577.6041666666666
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.167237276561709e-07,
+              "mean_steps": 577.4270833333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.74675021930115e-07,
+              "mean_steps": 577.2291666666666
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 2.370923597248131e-07,
+              "mean_steps": 576.8020833333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "conservative",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "judge_only",
+            "threshold": 0.0,
+            "judge": true,
+            "off": false,
+            "shadow": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        },
+        {
+          "strategy": {
+            "id": "off",
+            "threshold": 0.0,
+            "judge": false,
+            "off": true
+          },
+          "risk_losses": 0,
+          "primary_gain": 0.0,
+          "success": 0.9583333333333334,
+          "effort": 0.0,
+          "mean_steps": 575.7708333333334,
+          "by_seed": [
+            {
+              "seed": 101,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 102,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 103,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 104,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            },
+            {
+              "seed": 105,
+              "risk_losses": 0,
+              "primary_gain": 0.0,
+              "success": 0.9583333333333334,
+              "effort": 0.0,
+              "mean_steps": 575.7708333333334
+            }
+          ]
+        }
+      ],
+      "chosen_strategy": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "pre_screen_choice": {
+        "id": "off",
+        "threshold": 0.0,
+        "judge": false,
+        "off": true
+      },
+      "full_screen_losses": 0,
+      "rule": "Highest severe gain with zero paired exact/mild validation losses; prefer abstention on tie; any full32route risk regression forces abstention."
+    }
+  ],
+  "production_candidates": [],
+  "final_test_unopened": true
+}

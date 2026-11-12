@@ -1,0 +1,44 @@
+[
+  {
+    "contact_hz": 960,
+    "iterations": 200,
+    "condition": "exact",
+    "success": 36,
+    "cases": 36
+  },
+  {
+    "contact_hz": 960,
+    "iterations": 200,
+    "condition": "estimated",
+    "success": 36,
+    "cases": 36
+  },
+  {
+    "contact_hz": 1920,
+    "iterations": 200,
+    "condition": "exact",
+    "success": 36,
+    "cases": 36
+  },
+  {
+    "contact_hz": 1920,
+    "iterations": 200,
+    "condition": "estimated",
+    "success": 36,
+    "cases": 36
+  },
+  {
+    "contact_hz": 960,
+    "iterations": 400,
+    "condition": "exact",
+    "success": 36,
+    "cases": 36
+  },
+  {
+    "contact_hz": 960,
+    "iterations": 400,
+    "condition": "estimated",
+    "success": 36,
+    "cases": 36
+  }
+]

@@ -44,6 +44,36 @@ def main():
         p=c['primary'];add(f"{label}: ganancia {100*p['mean']:+.2f}pp; intervalo [{100*p['lower']:+.2f},{100*p['upper']:+.2f}]pp; adopción={c['adoption_pass']}.")
         for name,risk in c['risk'].items():add(f"  {name}: {risk['losses']} daños/{risk['baseline_successes']} éxitos de referencia; límite superior {percent(risk['upper'])}.")
         add('  Sensibilidad: '+json.dumps(c['sensitivity_gain'])+f"; cumple={c['sensitivity_pass']}; latencia cumple={c['latency_pass']}.")
+    add()
+    add('RESULTADO DE ROBUSTEZ QUE DETERMINA LA RECOMENDACIÓN')
+    add('Perfil | prueba | éxito en 0% | éxito en 25% | éxito en 29.5% | éxito en 29.6%')
+    sensitivity_rows={}
+    for spec in manifest['specifications']:
+        for mode in ['noise2','clock4']:
+            rr=read(f"sensitivity/production_{spec['id']}_{mode}.json");sensitivity_rows[(spec['id'],mode)]=rr
+            counts=[]
+            for level in [0.,.25,.295,.296]:
+                subset=[r for r in rr if r['level']==level];counts.append(f"{sum(r['stable_landing'] for r in subset)}/{len(subset)}")
+            add(spec['id']+' | '+mode+' | '+' | '.join(counts))
+    add('noise2 duplica el ruido de velocidad y giro;clock4 introduce la falla a los4s. Son24rutas nuevas por nivel, compartidas entre controladores. Estas rutas son distintas de las1000de confirmación: comparar perfiles dentro de cada prueba;no interpretar los porcentajes de ambos conjuntos como un antes/después sobre los mismos vuelos.')
+    key=('baseline_selected','noise2')
+    if key in sensitivity_rows:
+        severe=[r for r in sensitivity_rows[key] if r['level'] in [.295,.296]]
+        expired=sum(r['outcome']=='timeout' for r in severe);pause=[r.get('descent_paused_seconds',0.) for r in severe]
+        spin=[float(np.linalg.norm(r['terminal_angular_velocity'])) for r in severe]
+        add(f"Perfil completo con ruido doble cerca del límite: {expired}/{len(severe)} agotaron el plazo de30s;descenso pausado en promedio{np.mean(pause):.2f}s (rango{min(pause):.2f}–{max(pause):.2f}s);velocidad angular terminal media{np.mean(spin):.2f}rad/s. La supervisión evita continuar el descenso mientras el vehículo sigue sin estar listo,pero en estos casos no consigue completar la tarea. No es un fallo de latencia ni una intervención neuronal: estas pruebas usan solo PID.")
+    for label,c in decision['comparisons'].items():
+        if c['statistical_pass'] and not c['sensitivity_pass']:
+            add(label+': superó el criterio estadístico de ganancia y las mezclas protegidas;no supera la regla adicional de no perder éxito neto en sensibilidad,fijada antes de ver la prueba.')
+    original=sensitivity_rows.get(('baseline_original','noise2'));observer=sensitivity_rows.get(('baseline_observer_only','noise2'))
+    if original is not None and observer is not None:
+        differences=[]
+        for level in [.295,.296]:
+            a=[r for r in original if r['level']==level];b=[r for r in observer if r['level']==level]
+            differences.append(f"{100*level:g}%: {sum(r['stable_landing'] for r in b)-sum(r['stable_landing'] for r in a):+d} aterrizajes de {len(a)}")
+        add('Estimador solo frente a referencia con ruido doble: '+', '.join(differences)+'. Esta muestra pequeña no prueba inferioridad estadística universal;la decisión aplica la regla de incorporación acordada sin cambiarla después de ver el resultado.')
+    add('La recomendación general de esta evaluación es '+decision['recommended']+'. La ganancia nominal y el cumplimiento de robustez se informan por separado.')
+    add()
     add('Reutilización exacta de simulaciones: se reproduce la red paso a paso sobre observaciones de la trayectoria base, con memoria persistente y CPUfloat64. Solo si ejecuta la acción canónica nula en todos los pasos se reutiliza ese vuelo del PID. Cualquier acción distinta obliga a simular de nuevo el caso completo con la red. No se acorta el horizonte ni se omiten casos. Equivalencia, casos mixtos, contexto de efectividad, integridad y concurrencia se verifican con las seis arquitecturas. No se atribuye una mejora neuronal a esos vuelos sin intervención.')
     add('La cota de daño se refiere a la mezcla predeclarada de severidades, condicionada a que la referencia aterrice bien. No certifica cada severidad o región de estados por separado. 100% observado significa todos los vuelos de esta muestra; no perfección fuera de ella.')
     add()

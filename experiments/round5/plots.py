@@ -44,10 +44,37 @@ def main():
         point=100*row['mean'];ax.errorbar(point,index,xerr=[[point-100*row['lower']],[100*row['upper']-point]],fmt='o',color='tab:blue',capsize=3)
     ax.set_yticks(range(len(family)),[r['group'] for r in family]);ax.axvline(0,color='black',lw=1);ax.grid(axis='x',alpha=.2)
     ax.set(xlabel='Ganancia frente a DSLPID actualizado (puntos porcentuales)',title='28–29.5% estimada | intervalos simultáneos de las 15 familias');finish(fig,'intervalos_familias.png')
-    decision=json.loads((OUT/'decision.json').read_text());manifest=json.loads((OUT/'confirmation_manifest.json').read_text());fig,ax=plt.subplots(figsize=(10,4.7));labels=[];success=[]
-    for spec in manifest['specifications']:
-        rr=json.loads((OUT/'confirmation'/f"{spec['id']}.json").read_text());labels.append(spec['id']);success.append(100*np.mean([r['stable_landing'] for r in rr if r['role']=='primary']))
-    bars=ax.bar(labels,success,color=['tab:green' if l==decision['recommended'] else 'tab:blue' for l in labels]);ax.bar_label(bars,fmt='%.2f%%');ax.set(ylim=(0,110),ylabel='Aterrizajes estables (%)',title='Confirmación independiente: 1000 rutas × 3 fallas severas por controlador');ax.tick_params(axis='x',labelrotation=12);finish(fig,'confirmacion_independiente.png')
+    decision=json.loads((OUT/'decision.json').read_text());manifest=json.loads((OUT/'confirmation_manifest.json').read_text())
+    specs=manifest['specifications'];ids=[s['id'] for s in specs]
+    friendly={'baseline_original':'DSLPID\nreferencia','baseline_observer_only':'Solo estimador\nadaptativo','baseline_selected':'Perfil\ncompleto'}
+    labels=[friendly.get(k,k.replace('_','\n')) for k in ids]
+    colors=['tab:green' if k==decision['recommended'] else 'tab:blue' for k in ids]
+    fig,axes=plt.subplots(1,2,figsize=(13,5.5),sharey=True)
+    success=[]
+    for spec in specs:
+        rr=json.loads((OUT/'confirmation'/f"{spec['id']}.json").read_text())
+        success.append(100*np.mean([r['stable_landing'] for r in rr if r['role']=='primary']))
+    bars=axes[0].bar(np.arange(len(labels)),success,color=colors)
+    axes[0].bar_label(bars,fmt='%.2f%%',padding=3)
+    axes[0].set_xticks(np.arange(len(labels)),labels)
+    axes[0].set_title('Ruido nominal: 1000 rutas × 28%, 29%, 29.5%',fontsize=10)
+    axes[0].set_ylabel('Aterrizajes controlados y estables (%)')
+    x=np.arange(len(labels));width=.34
+    for offset,level,color in [(-.5,.295,'tab:orange'),(.5,.296,'tab:purple')]:
+        bar_values=[]
+        for spec in specs:
+            rr=json.loads((OUT/'sensitivity'/f"production_{spec['id']}_noise2.json").read_text())
+            selected=[r for r in rr if r['level']==level]
+            bar_values.append(100*np.mean([r['stable_landing'] for r in selected]))
+        bars=axes[1].bar(x+offset*width,bar_values,width,label=f'{100*level:g}% de falla',color=color)
+        axes[1].bar_label(bars,fmt='%.2f%%',padding=3,fontsize=9)
+    axes[1].set_xticks(x,labels)
+    axes[1].set_title('Ruido doble: 24 rutas por nivel y controlador',fontsize=10)
+    axes[1].legend(fontsize=9,loc='upper right')
+    for ax in axes:ax.set_ylim(0,110);ax.grid(axis='y',alpha=.15);ax.set_axisbelow(True)
+    fig.suptitle('Mejora nominal y comprobación de robustez',fontsize=13)
+    fig.text(.5,.015,'Verde: controlador recomendado por la regla fijada. Paneles con rutas distintas: comparar controladores dentro de cada panel.',ha='center',fontsize=9)
+    fig.tight_layout(rect=(0,.06,1,.95));fig.savefig(OUT/'confirmacion_independiente.png',dpi=180,bbox_inches='tight');plt.close(fig)
     labels=['original','selected','balanced_governor','ready_only','observer_only','yaw_only','reserve_only','without_observer','without_ready','without_yaw','without_reserve']
     grid=np.array([values(rows,'baseline',name,'baseline','estimated',[.25,.28,.29,.295,.296,.30,.35,.50]) for name in labels]);fig,ax=plt.subplots(figsize=(10,7));image=ax.imshow(grid,vmin=0,vmax=100,cmap='viridis',aspect='auto')
     ax.set_xticks(range(8),['25','28','29','29.5','29.6','30','35','50']);ax.set_yticks(range(len(labels)),labels);ax.set(xlabel='Pérdida de RPM (%)',title='Ablaciones estructuradas | 60 rutas por celda, efectividad estimada')

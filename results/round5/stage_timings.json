@@ -1,0 +1,27 @@
+{
+  "stages": {
+    "collect_initial": 1602.0053098201752,
+    "bc_pilots": 361.0581862926483,
+    "collect_dagger": 4061.4983360767365,
+    "hpo": 5837.539803743362,
+    "runtime_selection": 6798.385308504105,
+    "actual_proposal_oracle": 876.9620678424835,
+    "inference_audit": 511.2473044395447,
+    "final_evaluation": 28339.22304582596,
+    "confirmation": 1552.0451900959015,
+    "sensitivity": 924.5819807052612,
+    "recommended_replay": 7.473720073699951,
+    "latency": 12.621682167053223,
+    "judge_fit": 22.172343254089355,
+    "core_engineering_valid_version": 1090.960943698883,
+    "continuous_governor_validation": 172.96903467178345,
+    "estimator_only_validation": 14.390249013900757,
+    "paired_physics_restoration": 48.284637212753296,
+    "final_unit_suite": 140.98500275611877,
+    "calendar_elapsed_initial_data_to_reporting": 84877.240670681,
+    "full_training_wall_union": 32901.93533825874,
+    "training_process_seconds_sum": 65409.33098769188
+  },
+  "model_count": 75,
+  "interpretation": "Model times include simulation;validation separated where available.Wall union accounts for overlap of the two workers.Process-time sum is not calendar duration."
+}

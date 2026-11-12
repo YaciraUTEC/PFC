@@ -1,0 +1,132 @@
+{
+  "accepted_structured_reference": "baseline_original",
+  "recommended": "baseline_original",
+  "recommended_specification": {
+    "id": "baseline_original",
+    "path": null,
+    "config": {
+      "estimator": "original",
+      "readiness": false,
+      "emergency": "legacy",
+      "reserve": 0.005
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "baseline"
+  },
+  "comparisons": {
+    "baseline_observer_only/baseline_original": {
+      "primary": {
+        "mean": 0.08633333333333332,
+        "lower": 0.06766666666666665,
+        "upper": 0.10533333333333333,
+        "routes": 1000,
+        "replicates": 100000,
+        "alpha": 0.001388888888888889
+      },
+      "risk": {
+        "mild": {
+          "cases": 1000,
+          "baseline_successes": 1000,
+          "losses": 0,
+          "upper": 0.00655765532629607
+        },
+        "exact": {
+          "cases": 1000,
+          "baseline_successes": 1000,
+          "losses": 0,
+          "upper": 0.00655765532629607
+        }
+      },
+      "statistical_pass": true,
+      "success": 0.9323333333333333,
+      "reference_success": 0.846,
+      "candidate": "baseline_observer_only",
+      "reference": "baseline_original",
+      "sensitivity_gain": {
+        "noise2": -0.020833333333333332,
+        "clock4": 0.0
+      },
+      "sensitivity_pass": false,
+      "latency_pass": true,
+      "adoption_pass": false
+    },
+    "baseline_selected/baseline_original": {
+      "primary": {
+        "mean": 0.10133333333333333,
+        "lower": 0.082,
+        "upper": 0.121,
+        "routes": 1000,
+        "replicates": 100000,
+        "alpha": 0.001388888888888889
+      },
+      "risk": {
+        "mild": {
+          "cases": 1000,
+          "baseline_successes": 1000,
+          "losses": 0,
+          "upper": 0.00655765532629607
+        },
+        "exact": {
+          "cases": 1000,
+          "baseline_successes": 1000,
+          "losses": 0,
+          "upper": 0.00655765532629607
+        }
+      },
+      "statistical_pass": true,
+      "success": 0.9473333333333334,
+      "reference_success": 0.846,
+      "candidate": "baseline_selected",
+      "reference": "baseline_original",
+      "sensitivity_gain": {
+        "noise2": -0.22916666666666666,
+        "clock4": 0.052083333333333336
+      },
+      "sensitivity_pass": false,
+      "latency_pass": true,
+      "adoption_pass": false
+    },
+    "baseline_selected/baseline_observer_only": {
+      "primary": {
+        "mean": 0.015,
+        "lower": 0.003333333333333333,
+        "upper": 0.026666666666666665,
+        "routes": 1000,
+        "replicates": 100000,
+        "alpha": 0.001388888888888889
+      },
+      "risk": {
+        "mild": {
+          "cases": 1000,
+          "baseline_successes": 1000,
+          "losses": 0,
+          "upper": 0.00655765532629607
+        },
+        "exact": {
+          "cases": 1000,
+          "baseline_successes": 1000,
+          "losses": 0,
+          "upper": 0.00655765532629607
+        }
+      },
+      "statistical_pass": true,
+      "success": 0.9473333333333334,
+      "reference_success": 0.9323333333333333,
+      "candidate": "baseline_selected",
+      "reference": "baseline_observer_only",
+      "sensitivity_gain": {
+        "noise2": -0.20833333333333334,
+        "clock4": 0.052083333333333336
+      },
+      "sensitivity_pass": false,
+      "latency_pass": true,
+      "adoption_pass": false
+    }
+  },
+  "accepted_learning_candidates": [],
+  "rejected_learning_candidates": [],
+  "structured_rule": "Accept estimator-only first if it passes against original;accept full selectedcore only if it passes against that accepted reference.Then evaluate learned controllers against accepted structured reference.",
+  "rule": "Predeclared confirmed primary gain>0 lower bound;conditional harm upper<1percent in both protected mixtures;no negative sensitivity net gain;full control p95<=1/48s.",
+  "interpretation": "Recommendation for the concrete frozen configuration and this simulation/sensor/fault distribution.Not an intrinsic ranking of architecture families."
+}

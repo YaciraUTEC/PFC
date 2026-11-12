@@ -1,0 +1,2063 @@
+{
+  "planned_confirmation_endpoints": 9,
+  "physical_asset_hashes": {
+    "gym_pybullet_drones\\assets\\architrave.urdf": "5b2efc0aaf96c49ccc3a4ca05a57e9de38f8bd2754688b5e858bdd15ddf40f05",
+    "gym_pybullet_drones\\assets\\box.urdf": "b979c54e2e6ddd6336ebe7fa664997474c7dca0aa3ac8d35d922aa66c289b0ee",
+    "gym_pybullet_drones\\assets\\cf2.dae": "9daee959281fc3da393d6c7826710e4b8ede6ffa2645d4049bc8c9e525f9f0bc",
+    "gym_pybullet_drones\\assets\\cf2p.urdf": "c00147fcede1121354a88f69bbcda3de41d6a9f36b444c0de1195fc880917414",
+    "gym_pybullet_drones\\assets\\cf2x.urdf": "28aaec98edcfc831cd81abbe2261a4e07db08e9ecd86490ac524d2d541d57ece",
+    "gym_pybullet_drones\\assets\\racer.urdf": "9264ba76d620c000ffe4fdc199239685f6099d6f73b034593f2661ed9158bf92"
+  },
+  "presentation_only_paths": [
+    "experiments/round5/report.py",
+    "experiments/round5/plots.py"
+  ],
+  "created_utc": "2026-11-12T13:23:49.702143+00:00",
+  "checkpoints": [
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_101\\bc.pt",
+      "sha256": "31a6177cd33080926cfceac441bd36d15c3fe282d06f7ef7b11edfa3275228a4"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_101\\best.pt",
+      "sha256": "befb21085f4b32ff1b01dcfc71270aefa51185d9615ebf725160b49a6173a137"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_101\\final.pt",
+      "sha256": "a70f8b648c6c21eb023d1ec9b52dbed4f93117ed0bb5ddbbfeefbb998cf0adef"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_102\\bc.pt",
+      "sha256": "3ee6528f8cd855f2b13d04359e5b523f4c54d560ee3b473ea3921ff356f68aba"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_102\\best.pt",
+      "sha256": "f5012ae579f7694883c70b578e18f79c9ad29d58c09370014132f7ad74e844dc"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_102\\final.pt",
+      "sha256": "13162be1a460c32f755c5f1e2da7c90a80fc9bf137bb2570b288cf519a21d6ad"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_103\\bc.pt",
+      "sha256": "73f531f9f33d4065fb50a3d20288e08801fedd94c2069451978917371becc37a"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_103\\best.pt",
+      "sha256": "0fa0dcaec5ea522cf3b67805f8419550840ceb4f5bb1202a03764eb08c24512f"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_103\\final.pt",
+      "sha256": "173a1f3d257c32dbf3789c7ac16b08e48b76267e3cf7b465c27b6c2acd24f619"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_104\\bc.pt",
+      "sha256": "26e777a607f0ff9746f461c38406bf3f9685b1585f7b76dbdf30fad8aa1ae1e7"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_104\\best.pt",
+      "sha256": "cc6d427dc281b7fe3b19fd0debabd5263c54147066edd709519e833409c89ced"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_104\\final.pt",
+      "sha256": "0d91f88e46950f67ebd28bec7a7883a094817e82625b437c3d70e61b0537c45f"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_105\\bc.pt",
+      "sha256": "0adc18f24f0180b2bc29eeeb7f760ff8161fb22bc9719b2d3d6ee8d2557ac74c"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_105\\best.pt",
+      "sha256": "053af4e171afb38e4b5add59f44b981296962954546993a6f4c7754d783c9c3d"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_105\\final.pt",
+      "sha256": "e6c766b546dc35436bb9b897d80a12868e60572c08b4381a44b297041f152bb7"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_101\\bc.pt",
+      "sha256": "ac67d07de3e0be6121903659ff504cb7b21df207d1ea77d049b1cd22e3cd03df"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_101\\best.pt",
+      "sha256": "0bc913c55f9d422bd58ed576dfa3d5e21f7e72aa77721e84e1404a5727f4812a"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_101\\final.pt",
+      "sha256": "7ad304be3cbfe6925fe07b2a4a1daeee91e4ead41055d2724c0df5a12fe257ed"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_102\\bc.pt",
+      "sha256": "b4d1834512c74f155dc49c3fcfa3db9b7c688680d2e9584d7afe9b80e9d19f6a"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_102\\best.pt",
+      "sha256": "941006a9780ff8b37635796318b48802c2b7287f9711fd10aa0dd09239f8e924"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_102\\final.pt",
+      "sha256": "6a0a44a727841de7cd4e8cf3ebe35e29152e8defd060082607754bcff58dbc13"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_103\\bc.pt",
+      "sha256": "0e19c87d60f62bd18056e4f0014826b893fb07c76ff3586413ca7237de65628c"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_103\\best.pt",
+      "sha256": "d1b8c10da2c841f85e5a6a05ea83273802471f894b861b4fd38d2a8792c029a6"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_103\\final.pt",
+      "sha256": "63b10c1ed2e6eff29f148eebb240e39048692dc728260a71bb2736464cc6ccbd"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_104\\bc.pt",
+      "sha256": "76bca63c821823e5be76a06359e82a3d79acb15f51d8c921ed9465de7414e386"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_104\\best.pt",
+      "sha256": "35402089c8cfe1b0f329ca8f0a369acfde43aa618ff23ea3084005b9e1c1f31b"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_104\\final.pt",
+      "sha256": "b9bc18a158bc9c9a3c3ce790d0652ee6b3b38e297ac89e4a0cd76e3da7e6e374"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_105\\bc.pt",
+      "sha256": "81582926d7007521185c7aaf3d043f5980a2c122091dfa44607017d803dc42ec"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_105\\best.pt",
+      "sha256": "c32f8266ef5f7d7c5c4180a4f4474ee44fc74da42cc31ee61794c4ed35fc748f"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_105\\final.pt",
+      "sha256": "047041cc07849a4fc31612c89397361786141236ff59ac6870c235fb6d882566"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_101\\bc.pt",
+      "sha256": "74ef81a51cdfea175f3d52a2313983923820f3263b9f765b0abe19c48861b592"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_101\\best.pt",
+      "sha256": "e0e8a048dacb14958e7791ad7916d5d6fba239d65a67f4faef4a82a32686bcdf"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_101\\final.pt",
+      "sha256": "b59301686a0a34cf80dde912b4895b55f8f089af8f1e541802b9b3320f6460e7"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_102\\bc.pt",
+      "sha256": "9fa003ecbc90f3c15bfd1097aca1347d6bfbe8697e1c46de6fe06690dfe067e3"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_102\\best.pt",
+      "sha256": "47a8b69b9ba16b0c6f04be46e608dd9244a90a07ce737dec7f2f127094081220"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_102\\final.pt",
+      "sha256": "8a71bf7fd362d0179651cf8030ccecbb34f8dd6937573fee6c26df9cbc636942"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_103\\bc.pt",
+      "sha256": "d7645153ebd9bd21c047349368136175eb98e626ecebadf29f98170aeb0ad946"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_103\\best.pt",
+      "sha256": "7b41aff086d87ff69209db8a3f341cae6a0d333a788ed92c037a87f12f790040"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_103\\final.pt",
+      "sha256": "53e97eb536f7ef2e0e7a33f530a1b144dbba69584c2aa4e77bd47cc3689cee72"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_104\\bc.pt",
+      "sha256": "7bff58c05c50ef7ea175d77861a3223559a14efe1f9a135492cf59143e9d9e88"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_104\\best.pt",
+      "sha256": "bfbc26fec97e86668e6df5392dbaace81e3a59bdad714cc60070cc3c35c347b8"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_104\\final.pt",
+      "sha256": "cda017f129496133e09f74ed14cc16c97a34ba78b4fde53f3343c04559ba2c73"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_105\\bc.pt",
+      "sha256": "3f521c7dccd58871016c6f82de42bd4622208e0f25df627311bbad94d7403125"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_105\\best.pt",
+      "sha256": "f16c529f3c58d2573fa2f548df104640c1fb2e0c64915300e093ca5b760ebf0f"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_105\\final.pt",
+      "sha256": "71bfc56e3364215a313e7ca6d21fc89ef79b122f63bd4785edf9eed1f4b7581f"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_101\\bc.pt",
+      "sha256": "cbd87a0819f1f27bc169f15e3d15b78b61990b2675f381a8582e68487646768f"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_101\\best.pt",
+      "sha256": "ef181b6caa520af9bc06a5601ea79b14c93de2e011b4395de3b16bcd7c63fb4d"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_101\\final.pt",
+      "sha256": "ec6d6499815ed46fd8c27b3d5a51e1eb0c5c9e19764264c112ecdaa62b82e205"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_102\\bc.pt",
+      "sha256": "245a4cf8fe3491126032237a459d8bbbe674a8c45d0b2f92ad273156bac9bbb8"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_102\\best.pt",
+      "sha256": "3e39005ffa4fc158f842dac3ba831920311e861a631873c70a31e71db1eb5db9"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_102\\final.pt",
+      "sha256": "681face002f697d6d36c667454581b362db7a2ed3106217c48648306b9cf9050"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_103\\bc.pt",
+      "sha256": "aad766570ae7547c464a4716e5e1a99ba1c54a7ab353959f2fdd5c59eeee0882"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_103\\best.pt",
+      "sha256": "a008dcc1bd462d75c3c3f1cb561b850ba88b6aac41d458f1ecb15b124b5e6980"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_103\\final.pt",
+      "sha256": "34b4f43f21859f2da37c4b4ca5b0dee9fb0eb4c6f249d3e8ee44d9ad22edab1e"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_104\\bc.pt",
+      "sha256": "d524f2f83b3633b999f51fdf5ae219f58e7d86a769b1ee9f253c86695b4c9f4b"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_104\\best.pt",
+      "sha256": "4d15dffb63f6b0a5064efee66a06870742c9c1d5357e096de5950fd0ce239d8a"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_104\\final.pt",
+      "sha256": "9942173d98206c5ba50583ae2e0538211be15569d48912a55223b7b22ca74a66"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_105\\bc.pt",
+      "sha256": "904dac11455254f290e8b7391166042ac28e8d984a3568204bdfeaa852d29a48"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_105\\best.pt",
+      "sha256": "b57333045ddfffe9b36e87e374b08cecf63573364c32b500acd409f07074f30e"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_105\\final.pt",
+      "sha256": "4d7a65a6cae013bb5ce33d9816963cf0d613f3a0f52f0276ac30ab44ed65251a"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_101\\bc.pt",
+      "sha256": "70dbfdb77e3e376a96cca8f3c4c0cdb1b48c68b7c27922caafcd2eda36481e2d"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_101\\best.pt",
+      "sha256": "a47308cb0d578e855dd92c8831e880ebc68dd5bd9cd420bb9b02117e202b0b77"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_101\\final.pt",
+      "sha256": "7d5be07c85ee0cfa0d7b012bcc8f4d2819ff3ac22c2cb1f41ca1ce8783ba0675"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_102\\bc.pt",
+      "sha256": "a42266624d03fcc3f75ff3d3385715c83cb9b693329a0fedebabd64ae0abbaac"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_102\\best.pt",
+      "sha256": "5850b5a78ad2d8c7b3d065bb8bd299c5ba12c1ebd2222684df8edbf7ef8ee3c0"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_102\\final.pt",
+      "sha256": "dc3f5b39010f88aa0431ecb4d204331bc66b8f913fa9703248acb10188f3ee72"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_103\\bc.pt",
+      "sha256": "c125656f1c173f16e49fa614c80cbff5e74bf34b004a589e6217a08a0550c1ba"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_103\\best.pt",
+      "sha256": "caf816f0f5951d985318cefecef4a6f2ad66419e17e119d0293a4a3a65292dd2"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_103\\final.pt",
+      "sha256": "c64c607756e9c02f8ec12f5dd773dec730ec29ac33dce54d31c1c46fed9e993e"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_104\\bc.pt",
+      "sha256": "6ddd2c555d270b8f8ad873cffa1c82d5f5e63da6c3358c157ca2874dad1e1708"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_104\\best.pt",
+      "sha256": "a3f376888326c671db8e535bdec16e2e7a2b75135963f25cfe2068df97b2679d"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_104\\final.pt",
+      "sha256": "78b3a06fb4e133862a4dd69fa57b37a76243465d07efce0c167cfbaa62f2e315"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_105\\bc.pt",
+      "sha256": "d33239693211c14a214731e694be22d9c8b106a5a338e769d4aac5eed7293ad5"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_105\\best.pt",
+      "sha256": "5c5b191189dbde20521e4018ed49087439cf06810f58985cfbab026df6cc969a"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_105\\final.pt",
+      "sha256": "09629453335aacb4e5c22ee8cc8d236f3ff834775b947f06e395ac30493f9f4c"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_101\\bc.pt",
+      "sha256": "53df5ee767d6d7667dd39178d7f0f3595e9bf44b89631f04a00039c1ad1dd977"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_101\\best.pt",
+      "sha256": "e07b4a87672966f1de62e93b97beb819b1b80f1c2af0ebd29efade969730d89f"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_101\\final.pt",
+      "sha256": "73f701b4ebbd9d8d6b35c0cecb6d1a0b26b3b97fda5e8b1e9c8766095d26855f"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_102\\bc.pt",
+      "sha256": "b35f93529bc9e094ff5d6964dc004fd025f50530895451a37103176b436c8c4c"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_102\\best.pt",
+      "sha256": "b22dd7016dfdbe15816cec1a803d9d6c251307e4e8c179ef9532ef29ff0e6f4c"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_102\\final.pt",
+      "sha256": "67d1adc86b5e86c75345c5684364e4ff5e57116676601219ae6f9bd15c63fda2"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_103\\bc.pt",
+      "sha256": "eaf2105e77588766566ee35e6d423b0c172574a97641a6cbcb59c9daa72b225d"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_103\\best.pt",
+      "sha256": "9f01a574232f6be7f79790e0c1601b0c6600850fd32bd9116e582b165125f6c5"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_103\\final.pt",
+      "sha256": "97f0922bd510eb8dca1d83ea3277286de907fb9b6151bfb0daef284555bb3ecf"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_104\\bc.pt",
+      "sha256": "25a8bf98f2285c3d6a839635841ec57c8f42c779159d96f19661f042c88b7392"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_104\\best.pt",
+      "sha256": "5936a604c0614bc29681c435c57bdff3bd37d978dbc871f0cd065635db4d9e8f"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_104\\final.pt",
+      "sha256": "971d5333687e508b3fffd783111806be60ad6731e19382b81acc1728f952c0db"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_105\\bc.pt",
+      "sha256": "fe638b2a64023d34f54026754bbdeac4bf257dd9e8ea4622cbfa2748f43d14c8"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_105\\best.pt",
+      "sha256": "a63ae2a55bc13d559541c3abf08ded087d255bd3efa2d8e7380e300f297c7515"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_105\\final.pt",
+      "sha256": "876d4380a246b87455174b4c47d5e6b2ab3185d91c14dbdc003c81f9ca45fd2e"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_101\\bc.pt",
+      "sha256": "fb9a97a32fd56ed259ddd0324ebc329295256c0a1291fd28b7d7b59326e186f4"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_102\\bc.pt",
+      "sha256": "65964b40191054948280abec53797bfbc2f208717a0ffdf40c0b235a697a5290"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_103\\bc.pt",
+      "sha256": "04f01b4f21ec450e95527e714cc7a11fd956e4d1748e928efae10ac08ef3acf5"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_104\\bc.pt",
+      "sha256": "f9b2ccdf47f05a12a101a77dd79367b4e3bb5d0fb1f6984c6d8299a1ce60c990"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_105\\bc.pt",
+      "sha256": "e8909d74610491dacb01c0a520f096fa8cb5b82b7ff61c17919072dd0ad6ae25"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_101\\bc.pt",
+      "sha256": "855813e6f44a28a124161c7ad79b79546fc2106e61846df5d4e2635bf61293a8"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_102\\bc.pt",
+      "sha256": "db19d958be96f1d258272437739d7194d2860ed9d4a62e4df6f3063afac6bfe4"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_103\\bc.pt",
+      "sha256": "a0133b4023e1e6473c0fb5a3ce33c3f57b0e909514b2f33cdaf89025449faf3b"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_104\\bc.pt",
+      "sha256": "8cca36151bbfc4f066a76591a2a87672c9ef42fb65d1d1b93d4b6563cc3a1d05"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_105\\bc.pt",
+      "sha256": "b2c3f26b42ba4cba18203e2f220fa16d9e1535acd2fedaf674ed16f915674f97"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_101\\bc.pt",
+      "sha256": "9a02781621ce23b8f87dc8c87d336e76d49512c568ecadd91ae7332e05104898"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_102\\bc.pt",
+      "sha256": "f4db3c4911c2e673ecde6e79b8d0c957e6f7ef4eca13f475dd77141d8ce3bf8b"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_103\\bc.pt",
+      "sha256": "c8cbdeaaa1ccda96f1c5438ca8e3cf9dff016a07937d893454d3a4345799000e"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_104\\bc.pt",
+      "sha256": "75ec52a015d6d20c0c1e48f7ec657dbb62fd58cf1c27401bd0540a30f6f09ede"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_105\\bc.pt",
+      "sha256": "5117de866513ce6c25cb2d8f2bc1a5845197a96877ab3ce344b3cd396225783d"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_101\\bc.pt",
+      "sha256": "0dc109d4a1dac60f38b012d3057dc5fff5320ffaeac907b1f72ce3cb8995bf97"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_102\\bc.pt",
+      "sha256": "f424a165fda215971940244f1503d0f429477f86ea56990d7eb78ff47531612c"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_103\\bc.pt",
+      "sha256": "64e2e88a15105fdb4bc5787484aeab647b43f76bcb81688786cae0b4d39fa187"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_104\\bc.pt",
+      "sha256": "29fa69d84ff5b15ed7eb6af960fd44f77eb11c27979ea63cbe09be597ec38954"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_105\\bc.pt",
+      "sha256": "0fbd677a02eafeeec73373272b3dceee593c323993ce0d513dfee389e0a5ba16"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_101\\bc.pt",
+      "sha256": "68592ce624961c30de0e6bd0efbe55bf137801840ec01866e8b2c7c5de5502cb"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_102\\bc.pt",
+      "sha256": "e977be7298f6878075725d8c093e37ce91a3d3da6f0266035e9f0e0f65aa996b"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_103\\bc.pt",
+      "sha256": "8e9c391e8307895db6b7a9193dc36f514b10b9762198eb701a26fc63ac0cf864"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_104\\bc.pt",
+      "sha256": "45b7a5257fd022f531f9af83c47a8deb701092969bff025311d556ea795f144c"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_105\\bc.pt",
+      "sha256": "929deedd1bf4817f110a0bd1c4741f7960a844b6f771884aa3ade061d6d4a014"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_101\\bc.pt",
+      "sha256": "6f4952de8a96f22929bdbb977416b4113d036c1051ba96d99e2cd740d494ab7f"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_102\\bc.pt",
+      "sha256": "411cb50e80d680bd7c7576c6b8ab0d7674013c4d3bd6e4c2d9fb2ea8fda20106"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_103\\bc.pt",
+      "sha256": "0a9dae900c49923226a34171a53a6953dc7d5bf2967d1da9748d0d1629dac9e4"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_104\\bc.pt",
+      "sha256": "621290e17638202551d24859a4f9677b5ea37dcb5d5f81882ec05b8a95a05447"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_105\\bc.pt",
+      "sha256": "ff0d1603f9903b96b045eac4fa8dca0b2e88f9bd195a080d4e65265d1e54a54d"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_101\\bc.pt",
+      "sha256": "fa5a84cb9e9199ca3d96cc4276c7c171dcf96c6f2c8e3a1799a8b5bdca078065"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_101\\best.pt",
+      "sha256": "abdc527f1dd0cbc805ba13899d50bc0886dc5bd8799276018816e6caf032729d"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_101\\final.pt",
+      "sha256": "3db92fdec9f0ce85086ca7b74fc36a6fce4849d2b12051234a0239f4567ce786"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_102\\bc.pt",
+      "sha256": "7f65e429bf4941748c4ab96938774d5fdd24db232080789924261a40a9079123"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_102\\best.pt",
+      "sha256": "7443dcf6e7d200079532e4263a758085b29174e7b2476a50f99ac56c2fa476e8"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_102\\final.pt",
+      "sha256": "48552af32db556a3721be26bdc0262821cc546c68233dddd33e57e999874c2c0"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_103\\bc.pt",
+      "sha256": "b4a2e2d6015a8aafee0abcf53ccd9985ced761e7eab07917d6abd0f60014670a"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_103\\best.pt",
+      "sha256": "f690d9e3411a97a72befc5d330c04471447b07fd14ce30cdd6f8b5c2ba8c3cd9"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_103\\final.pt",
+      "sha256": "5cdcb0de7d1671176ba0aa67e6f0e24457362f83d2856a8c2b655110fc25cbb3"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_104\\bc.pt",
+      "sha256": "3a191eba40305ffe40ef6d91934510b7fde313dc011ad6d017d7c650cb03eb5e"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_104\\best.pt",
+      "sha256": "407a015bf0bbacefc1de29406135e9640c363ccaecdab25970989ca67b8fa9eb"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_104\\final.pt",
+      "sha256": "0fffec63b89ef26ef6c16cc6aee6f8c91f72fc7e2ae5db5c454185abfbe16a9f"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_105\\bc.pt",
+      "sha256": "81ccc31ffd3c92dc8f47ce21bde7fbb7e1949ed273fa0e23290a49210c57c709"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_105\\best.pt",
+      "sha256": "c5833bc61285c0c4beea0182c40382ebaf6bab37a9337ac58f0cb0175143c621"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_105\\final.pt",
+      "sha256": "584f450f57b8a00859ab1cbc7423f3457239366311519b331dccace6e7461dac"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_101\\bc.pt",
+      "sha256": "14314ff86b055ed5d0a85e3968728d8f538bc3abbb767b89807d7bb7d42051e1"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_101\\best.pt",
+      "sha256": "6dfdbfd5a21551fed544208c3acded01f7d40120f21ddee685997bbc91ae61cc"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_101\\final.pt",
+      "sha256": "b0da49b155867547e4904492192323f3e9c5d632d501ccee435ca3f1ba6195eb"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_101\\reward.pt",
+      "sha256": "f119a310ed062868f61c250b3c42935152074e73d28e35d78924d4ca297528c9"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_101\\reward_initial.pt",
+      "sha256": "703641a707415fa639a73f6df13b78a59c8b1879c5057f4046074e00da88e054"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_102\\bc.pt",
+      "sha256": "0015105717d37f6c2347a419f000713a030857dab059748598ff725a671bdf6b"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_102\\best.pt",
+      "sha256": "466dea735c49b14da6b13c2c8d9fc17fb614a5a70e26defd930295f4fac3d002"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_102\\final.pt",
+      "sha256": "3f6c11c15562604b896204580cafddfbdeec26b0b97c8ab5d078a35270fdd12d"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_102\\reward.pt",
+      "sha256": "92c86439e73324973f1063941e1caf8f434bf5ff55ae072e779fb912ed6fa338"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_102\\reward_initial.pt",
+      "sha256": "3d5e580e711c5fbe270da1d14ee736d908371ec0dcc1f0c890ff4fd016032b6d"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_103\\bc.pt",
+      "sha256": "7629831c99a5c845c6c74982342afebdac3283be53df78b505ce611f64436eb6"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_103\\best.pt",
+      "sha256": "0722297b9e34d4bceb30ff556d44d5ef9a58d97244ebb8cad465db0ae72b78ab"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_103\\final.pt",
+      "sha256": "ae8f58390b45fdd0aeec8b8357680f6a08c19e29a031946be7352fe7907a7e9f"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_103\\reward.pt",
+      "sha256": "9f8920b422d113ce0f797ec3e7d37db1d5d1f6ac34d8700c367ee7ae1f1e00f0"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_103\\reward_initial.pt",
+      "sha256": "abcc057312bee694a0bf79a1499e568d940664fdfa6d3b7ee3b94172d236c37d"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_104\\bc.pt",
+      "sha256": "abfcd4b1dbb8e141dd2a8825d123c054c90d6e6cce4236dfc5014c6147853ffd"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_104\\best.pt",
+      "sha256": "6fee35e323bf8cfb96709a5a5201d5beca3202ef47061aacf03344ceca5179e0"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_104\\final.pt",
+      "sha256": "33b641e2c67858910abba34c7aedcb95719b67d6d5512c6e9297aa9c4d523e24"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_104\\reward.pt",
+      "sha256": "a664ea44337f65b49c66961c6005d156cdbc3eb6e9cf8e267e587df24a8c1474"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_104\\reward_initial.pt",
+      "sha256": "a0b7264b0afb37859b158272c2a6c1b813d902bd2de7955d3f246e71d1e5f88c"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_105\\bc.pt",
+      "sha256": "3a6c6fe254102a4d23dbc9b1e0c742c37a8a7516b61b7e12fd031b14087a64f6"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_105\\best.pt",
+      "sha256": "782ad9fa9a71466652a01f8d612390f3d0ecce0fc28eaf11b121c049392a4eff"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_105\\final.pt",
+      "sha256": "e48432424c24733f9125c429d08fcbce84128483f1702f12466824db67bba787"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_105\\reward.pt",
+      "sha256": "30f6e6c7c161b58d0e5918935c72422911680ca38ab50d53ea4732505924dca8"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_105\\reward_initial.pt",
+      "sha256": "396ed567eeffbafd1e29e0ba32adf524b481fa87f07d9dabc171e59ad22946b9"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_101\\bc.pt",
+      "sha256": "4b1cef0cb61837289262104b088cdf5e538d08c2713febb2e861b1fe51ae4ec9"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_101\\best.pt",
+      "sha256": "87258d390d0b0dc45c1ea4182e628c9926d45e9d114021433b40c30bfc407dda"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_101\\final.pt",
+      "sha256": "24109404679214b7d30a2a79e9c618f7e890cf2211b408683e01eb9a57683e4f"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_101\\reward.pt",
+      "sha256": "34c8466a088184a329b11138e46627910e439c55c89f24f6cf262b96cb160c0b"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_101\\reward_initial.pt",
+      "sha256": "436fe5b10a8b8e879eb8a71b417d1447bad733ea6ae697665d659d553e93478f"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_102\\bc.pt",
+      "sha256": "ca4467dfdc78565f0e779e1993b0d95e6d2f3d11202130cd4214714cfd0d1527"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_102\\best.pt",
+      "sha256": "cb679ee7aaddf0bae3c549ad2fb318f0c5b4cbdee0944d4d6ccb405cface3889"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_102\\final.pt",
+      "sha256": "7a5a44b7eb0a7fb634826d308324537cf9bf330859ad71bf4ded379499510a30"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_102\\reward.pt",
+      "sha256": "23c1645dfc15fa4c5d93c93120b599d00a172ede523f261326e31901d58c156e"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_102\\reward_initial.pt",
+      "sha256": "34f5c5f0a391c9445851ea628ee0673a380dadc33b64520f18a5587bb9fdecdf"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_103\\bc.pt",
+      "sha256": "84b466bcf8b4c7b2eaf62a1aad6de20a894dd82934401af2b68fc640f0af3ce8"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_103\\best.pt",
+      "sha256": "b1f2ab09b9473c4069dcf12fe87b2b1b5f3d0b89d9018c045e080c8f34f082c8"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_103\\final.pt",
+      "sha256": "e266878b39d3a1b1ce6388063aeb890c1546f207f2337be29358374c9208e2d8"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_103\\reward.pt",
+      "sha256": "ad49baff336eac26c7dca9a62ad0716635d1b456db532ec83e47796ef16c1b8b"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_103\\reward_initial.pt",
+      "sha256": "d5784a03114246101c108fd8d4440a64f535a2dc7a8c81a66b1197e54a3ec450"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_104\\bc.pt",
+      "sha256": "c897e694c74e064aeac9849439d9af66bddba8016e9370f18f95b3a606663aff"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_104\\best.pt",
+      "sha256": "72ed8d622c4a54ecbbc49647e13c8c9174a027f7bdf98038df364dbd2fb3f6a5"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_104\\final.pt",
+      "sha256": "a3dfc3572344ac8f523ab96ad0055de3043f04339d8207d2c09cd9c58f4663be"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_104\\reward.pt",
+      "sha256": "6474aefaf780eac7a1e3f11d32344230f2401bcc40c20bdd5e06f309ed332e6c"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_104\\reward_initial.pt",
+      "sha256": "419677be95798922d62e5f30d0f3bff7c93fe8b765b4b60cd12166db9d4057d0"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_105\\bc.pt",
+      "sha256": "65e688de0e3dfdbdda2c2d8adb4e060c99c4077f9f0a23383228b1386ed00c94"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_105\\best.pt",
+      "sha256": "ba31accd0dc1f4da47a48fbc4390ec659af5bb2bc0e54a86161cc3a64236ab8d"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_105\\final.pt",
+      "sha256": "52296f8b0a153438576775386da122fd8ab7128f4a857da5fd3a565e728258e1"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_105\\reward.pt",
+      "sha256": "43925094263be688d24abb207f4eae5aa1bfc96e8ab93ae701bc32c609513ee7"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_105\\reward_initial.pt",
+      "sha256": "8760428c1f1d3ceb961c90492c54633392620fe63916056e6b69184a00d65c28"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\judge.pt",
+      "sha256": "2be5f31c235eb8e73bea08cabee6cd8609e952ceb032f2b8778f1fce3df7d687"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\pilots\\residual\\lstm\\bc.pt",
+      "sha256": "0cbcec734ab340fdd5767eed2ef07e3916019aa414052538f2fd8491f3116ed6",
+      "role": "data_collection_pilot"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\pilots\\residual\\mamba\\bc.pt",
+      "sha256": "cd3789bd0cc546714bf281b32c3487240930227a8831a7f2bb397c019025797d",
+      "role": "data_collection_pilot"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\pilots\\residual\\mamba2\\bc.pt",
+      "sha256": "12751fc49b61c7bbf91273f2a03efbe3caff491f1a9ac498c38a3d0759216634",
+      "role": "data_collection_pilot"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\pilots\\residual\\mamba3\\bc.pt",
+      "sha256": "2f055654f0af96f2402d3637b31f72a047e49a934720c623453dc747892c423e",
+      "role": "data_collection_pilot"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\pilots\\residual\\gtrxl\\bc.pt",
+      "sha256": "a42ca403d0d99c555633a98de3d5b764c8bef69e81329a53ba1cf0c9557d46f3",
+      "role": "data_collection_pilot"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\pilots\\residual\\ltc\\bc.pt",
+      "sha256": "c3db4df928714c1750a3f77db37b538d99c6a528d5eb82500ede8e22f5180e12",
+      "role": "data_collection_pilot"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\pilots\\effectiveness\\lstm\\bc.pt",
+      "sha256": "3ea0b18dd7625ac12a023d90a4bd78e774285608f3b851b95b75d1a8dbd90a4b",
+      "role": "data_collection_pilot"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\pilots\\effectiveness\\mamba\\bc.pt",
+      "sha256": "40b58f7a29df0974c82cc07497e55b35cb089bdb7821e8b3a81b3798bd682d34",
+      "role": "data_collection_pilot"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\pilots\\effectiveness\\mamba2\\bc.pt",
+      "sha256": "ec1ead6b99ee7d08ff2424e85f37561b737e0932780ef3377226394c7dbc1e61",
+      "role": "data_collection_pilot"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\pilots\\effectiveness\\mamba3\\bc.pt",
+      "sha256": "ab4d754334ae4cb932c443a1601febe7e2a9e9349f736de4946effbc0848563c",
+      "role": "data_collection_pilot"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\pilots\\effectiveness\\gtrxl\\bc.pt",
+      "sha256": "abd09c43e24f5ec14af1243ae55bdece0cbce3ddb0ad75e3ad5515cfadb791de",
+      "role": "data_collection_pilot"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\pilots\\effectiveness\\ltc\\bc.pt",
+      "sha256": "818fdbbb3a341235be081721247f1e3a714f8f89b1e1dd6116d2c99126aa3f20",
+      "role": "data_collection_pilot"
+    }
+  ],
+  "source_hashes": {
+    "experiments\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments\\compile_support.py": "a542e02652849699d412934d5fd1193e69b01e1e1480441b28beb5116472e798",
+    "experiments\\env.py": "aa6d2e85e01703b362bce084e741c569db3a98e058f92449bd4a255407ca6ee7",
+    "experiments\\latency.py": "8a6e36f524b7872a6ad08a5c564480667a5845ba23a58443c9e65bad66a3bd10",
+    "experiments\\models.py": "ec8e2f6f292f6ab24c700555e391976631645d1189366d57ec481537df88d5b3",
+    "experiments\\paired.py": "688d2f7bd326eec4f0274db857507ba1a49c239dc4f1cfb9df76985b4ce3e370",
+    "experiments\\report.py": "60a7fd155bd15a72bcab2c02393206115b9bb620345953d1cef88d0a573cafa5",
+    "experiments\\round3\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments\\round3\\analyze.py": "5d31da8c19bfc0684b67e54be28d079bccd41d3222c79552b974006cf6678ce4",
+    "experiments\\round3\\benchmark_eval.py": "3121bfc1a71e9042146997d8d99d19df6c60bfafaa2d24d2566b4caaa268cf19",
+    "experiments\\round3\\check_api_parity.py": "a946a945f950eaaaabfe68b03ec9d433c9b73e14b18b9870f6643a36df5371b8",
+    "experiments\\round3\\check_evaluation.py": "33c17574b673750c4cc4f48bd48b06289deb86b2511ad600c35ff7ef38f6c8a0",
+    "experiments\\round3\\common.py": "8b5d750858e6cd51fa622b423bc68a701bd9b8eda5a0fdfd1492720fa540f449",
+    "experiments\\round3\\controller_pilot.py": "67918f1dad489ddc7ca80f6e0cc5a66786598c276d110134a9db3f9ca34153cb",
+    "experiments\\round3\\diagnose_policy.py": "d3a5b5fa587bda902c85db858818ff92fe2f442e84842c11dee3ab16cee7a2a6",
+    "experiments\\round3\\diagnose_rewards.py": "758fe11bc03f5fbdefb9b3f6f28b5dbea604fa399ef8649df7bcd44411e45e5e",
+    "experiments\\round3\\env.py": "3558063d07364daa41eb5809ce4ad3035fcbdf3a7915a70e9e3d83d85c590029",
+    "experiments\\round3\\evaluate.py": "a72b66586668cff95cfad551be95d98cebdcc320eacb3a68036d4ecd41e686af",
+    "experiments\\round3\\final_audit.py": "d5659b6848f4bed88256f4bcd62848a804491fd8b24f37b7b867eebb9208d272",
+    "experiments\\round3\\freeze_checkpoints.py": "0fd4809eb2624e02a69fe349764dbac6e30aef7f7de98ebda73cd6b879c54803",
+    "experiments\\round3\\rewards.py": "6be024ddb5e993e513fda9841b908670512204367222407b9a606c919a98e13c",
+    "experiments\\round3\\run.py": "9923e08d85b6fc240874e439b91563a779cd214279181c7b2571166c5ea22199",
+    "experiments\\round4\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments\\round4\\analyze.py": "fc5c6249277b90ea3478d6fc1729a90d638e70f3f34f9438a8027e8e139c1293",
+    "experiments\\round4\\campaign.py": "8bfd7b71d87eac7776a833c7e1137993bcce669f2e6fa37200906e05fd04a353",
+    "experiments\\round4\\check_backend.py": "8ec934e81a6ce29870086a4bebfd97621a67b349566316baf3cbedaf68a1fe09",
+    "experiments\\round4\\check_backend_flights.py": "c34e5d407fae0e2e18e8618ff58497f27593100d1e7b1822f130414567473bb4",
+    "experiments\\round4\\check_counterfactual.py": "2e6ce32f39fee9c201d5e3cf226b6f8e939e4b62357e0d27df841e9f1fc8ae89",
+    "experiments\\round4\\check_cuda_batch.py": "0110d70f3e0409913a34ef41301eb2096354d08b862daaa600aa143b116fe2c0",
+    "experiments\\round4\\check_evaluation.py": "57dc1a62008b42f3906e4bee3ad7fc346a0ba4a1d6b0b7e6aed5e10fbbfc8c4b",
+    "experiments\\round4\\check_float64.py": "0860e5bbf7fe48f4a1c5e0b593bb11ccb4d3a6b34075d50b709ffbdf7568bf85",
+    "experiments\\round4\\check_landing.py": "efdc7a316a6ba75ddea584d3858b9ae7a7dc2776932d4ce1715a68e6bdb3f52b",
+    "experiments\\round4\\counterfactual.py": "e6ea4635340096ee144fe1c3538b3af9046f6cbaf7ce2eb5a8f34bf804882a23",
+    "experiments\\round4\\data.py": "8686137cf0f25f83a0d3fb00c22dbd94776fd26e1144e263dcb3943610010ee5",
+    "experiments\\round4\\env.py": "6ff6503c976c9b5c4520221a79333c69669565a934fa9fc5c09583770621d174",
+    "experiments\\round4\\estimator.py": "3c0b8527f97067b7f06b9e535122d8c97fecac21deab5a0bed32a2c2d15df4d0",
+    "experiments\\round4\\evaluate.py": "e2173229a1ff8e6b628562dc9732def65fef59506655b25ccc4ad9253bff3004",
+    "experiments\\round4\\inference.py": "75a79ac45e927880add7526410aa39eda50d16892ec7f8b8c150cfe781aaf4cc",
+    "experiments\\round4\\landing.py": "a4d104e330927735fc03de7ec59e99539f3cec29bec5fa3623fa28990831b59d",
+    "experiments\\round4\\latency.py": "a97732cc5f9db8989d536f409f59fd449b70c2215e183a7972f6b6874f78c1a5",
+    "experiments\\round4\\legacy.py": "12f8899ec80b645c4a9ee05948595380783e9271b8199900d3ed9882437b33bd",
+    "experiments\\round4\\models.py": "7e31974cdff6468fba2a4ffd185baa131b6c9f7a3409fdb43c1a00701c2b4877",
+    "experiments\\round4\\parallel_evaluate.py": "a3d5dc9421e72672a5437faab2f47fc32783bb1a2866d6c6f3ade8e551b4c210",
+    "experiments\\round4\\parallel_train.py": "3d143fac186e74fef9cdf2fc8623e19c9c146e692cc27638b794eecda29a9943",
+    "experiments\\round4\\report.py": "c0e842c59095c5913160a11052e8241168972a1fad55813ed85bfb8d4ad15a32",
+    "experiments\\round4\\safety_selection.py": "88ac235330a777991b2e53436ddd1d1a67d485a950259dc4ec8fca5a2fbf77d8",
+    "experiments\\round4\\status.py": "f0fdc307289d7359a36e15bef7f1915ff0e3e0e095bbfedeec729a562b2c1f23",
+    "experiments\\round4\\train.py": "9e60ae6e31a4d50754f946e1fd15fe96fde3a9574080091e2ac62cba9a78da00",
+    "experiments\\round4\\verify_results.py": "a3719569302af1b8bc75bdab90d5760a9656638d28b69ed7cef1d1f8d2572467",
+    "experiments\\round5\\__init__.py": "354b8944c0260e3132d51729a76ff45a284fb4fd78d972c779b9e7e649ccadca",
+    "experiments\\round5\\analysis.py": "28fb70333fade58df3ca6cb7a2d96385635dd1650a64e88e4ad4e75042462e68",
+    "experiments\\round5\\bc.py": "0f77eb79a42b6adbcefd4fd8edd0ac8c06166b6b1ae9d84075ee214aba226153",
+    "experiments\\round5\\bootstrap.py": "24d124c6026e4cab9e4a34801d98fbbc526c8d8918d580d0ac40568fc19a46b5",
+    "experiments\\round5\\campaign.py": "eb087d56d23cd84857dfe6b017fb07773e60e03220112093bdb92804a57b6d0d",
+    "experiments\\round5\\confirm.py": "3939ef4c8ca18d08c179bfda84e7d96d95e8975024b175cce579bfdce7f78d44",
+    "experiments\\round5\\counterfactual.py": "f37f6d463ab2541ddbae3d6bbe05ef224c0195d075e35227ec80bb4ffb1bbb03",
+    "experiments\\round5\\data.py": "c97a94434a7041b94ac6baf46c90a581eae5f071d9b4808593ac819b344b35c3",
+    "experiments\\round5\\deployment.py": "843fe8eaabd633ca5314f5a1373a9555b9651cb6e1364d6bb6ffe2e83270d268",
+    "experiments\\round5\\diagnostics.py": "a29630000518bd19b76433403c4aada5e862d53238a13f86218fa25b48b4443c",
+    "experiments\\round5\\env.py": "21222658ea74119706ad1866746edd6ec06421b810f00c32705c68ea6099a51b",
+    "experiments\\round5\\estimator.py": "c8598111f441538d8102d78fc4cdb11a333b56ba7aaeff5a5fe88789c53fbc11",
+    "experiments\\round5\\evaluate.py": "52ad0360634ba13ad7464f34afc10aa1b7e28ef2addc12f4eea37af50a70ce41",
+    "experiments\\round5\\final_audit.py": "f4f806824eca2dda6f7edc5adb3f8be392f3d70ba730bb6666556fc5e406d2ff",
+    "experiments\\round5\\inference_audit.py": "7d437441002b8a19e77d740f4a49d83a04886fec153d2745094227b1e26ae87c",
+    "experiments\\round5\\inventory.py": "c187cc3f44bca0bf2ded4583a462c35455c74f9370239a1cd0c382d3d17124a7",
+    "experiments\\round5\\judge.py": "61f6bd3385662f32e5c57c0a780ce2caa11c478e173c7cfea3728f8487bb1631",
+    "experiments\\round5\\latency.py": "c2c5cf3aff8cc44bcc413fa343889d964ed49d396e9857affb536544474dd186",
+    "experiments\\round5\\losses.py": "c37451ecaf99fe72c00229d7c6d339a90bc541aec78c23c494c43fe1f6256062",
+    "experiments\\round5\\models.py": "19277fbd667a01f7f35b6678d1edf9cc3ab3d0e1d3d069e1984e2599863d9fc7",
+    "experiments\\round5\\observer_fallback.py": "a3ff035fa5cc5041233cdfd67c3a50485423648e2faef8a5bc423e063bc92657",
+    "experiments\\round5\\oracle_proposals.py": "0af87bcdac14af9ed3a25fe7ebd8d9b92c33a825d7ccb597af2de55b1e6c25a3",
+    "experiments\\round5\\physics_audit.py": "81e27d48bf098be2af522dd7e3a6ed80230be74adf23b9f7b48ccdd64fdeb661",
+    "experiments\\round5\\pilot.py": "0248033b1f101c1e4ba2cef9d2fb3de588237b2f1920d939a52dacc5c4f6e6a0",
+    "experiments\\round5\\pilot_reproduction.py": "3259089520dc7733cb6d25597b4890bcc201769a241da426d7580791dc52dfcd",
+    "experiments\\round5\\plots.py": "9bffcc2c935cfebfabcfc32b6923dbdd36e59bba6694da9ac24625bd1618e8d7",
+    "experiments\\round5\\policies.py": "20be07913a9380e2902ab95b0a5fc4338357bde696eb1354f8c487e4ff2040b9",
+    "experiments\\round5\\prepare.py": "cd68f18aa4eff145e92f82b54762ff1f46d4b414cf4ecc72f4ee4d7a56413463",
+    "experiments\\round5\\replay_benchmark.py": "9aa9a73425839bf743039f0e790684bd5e827386b5317520da91137942cf535b",
+    "experiments\\round5\\replay_cache.py": "6116404eec8957001e1d03b9ea601fc3b07c639f141cb47e584d90d9846f252a",
+    "experiments\\round5\\report.py": "dff997bde96650d190529adb6498221ad2821aaeef11c5b5d86a5bec7221b69d",
+    "experiments\\round5\\rewards.py": "6d427e1554c05a9cc2a35b208eaae9c4fb56a2fd96cf87aedcea900fbf0b60e0",
+    "experiments\\round5\\run_evaluation.py": "7e88493178132538b738d0599454f465ce8edc665de8cd5cda49b98ed440bd30",
+    "experiments\\round5\\select_core.py": "4674a16566aeab0040eb777cb56db2247539c1d8a3a82dca1a49f968e30ef699",
+    "experiments\\round5\\select_runtime.py": "354b4d8583237256e7f897204e1bd80378b9639596db901a9d1611642dbe7a46",
+    "experiments\\round5\\sensitivity.py": "794c2115ed05de668ee6bfe3fed4f5a825aac78d013022e9f92b68b76a202281",
+    "experiments\\round5\\smoke.py": "26951d0a171ed39c23a9fb7ee2963420b46a0a7aa4482c176f0a404f38f59d13",
+    "experiments\\round5\\statistics.py": "9579799838a6ff196804832eb7cc4ae5e58492b766ad5e30c66088862d5a1b9e",
+    "experiments\\round5\\structural_challenger.py": "a980cea9fc73b668d3469be2e0aadc9c40c310389cdefac9e53dbf47c8acd2bf",
+    "experiments\\round5\\supervisor.py": "b73694af5825b630008df0018f5de06f76f4271967be843e96aab11d22901fea",
+    "experiments\\round5\\train.py": "877cb9d845f58ed46ef5a3a66038568c2a695c98301022e90b881d1f22da5cdd",
+    "experiments\\round5\\verification.py": "260496bf5604b395c6f1f438ab29ee583ca69de17c0c65a52a7b488de5e6ddef",
+    "experiments\\round5\\worker.py": "8a7d0113cdaf54ffcc9660fb1cfe3d0b4e086ee44aa158a160289d885842a5dc",
+    "experiments\\run.py": "f34c261369322c5904367a7f610abda6c7d4023871b08bad4931a8b472f15b9e",
+    "experiments\\scan.py": "fecadb9bcb39e8fe522f2c041f8f5ff847c469db4fa319edd6159a9070175df2",
+    "experiments\\tests\\test_contract.py": "6fe6ee9c8c160ee6988680f4fd5d6b99fd3c977a6db9c1ea5df9bfa55bd321e4",
+    "experiments\\tests\\test_round3.py": "8c61aab765e921cb3ac1c1783bce30abd080b5362f4e49b79090c274e84c1810",
+    "experiments\\tests\\test_round3_rewards.py": "4837ae26a444bb585cc27d33824ac51f87f21115a9b2aae893433f0eb2438521",
+    "experiments\\tests\\test_round4.py": "e0e064dd406cfc90d082116a24d36447fdd647b19243247ef543c6b376b0b138",
+    "experiments\\tests\\test_round5.py": "084110ea3aba636797c8353e70d1f1a44ffe1283a91935c767fc416cbb6fdef7",
+    "experiments\\tests\\test_round5_bootstrap.py": "46c191b7dca407c0b3347a32fb7e16558e152a9c426e43ffe6c73a661c607170",
+    "experiments\\tests\\test_round5_protocol.py": "a22728d770e84ac80448c03272c4247978845625253101f08c51314a2e1ae858",
+    "experiments\\tests\\test_round5_replay.py": "e5e113b428a954aa40f9d16eb13c2b2d210689373f3442b3064e4af7b0a4f763",
+    "experiments\\tests\\test_round5_rewards.py": "c54e0ab7d28039a2cb97b2075d9d6a08444eade8ddc2b6b5ec80d6b230e31921",
+    "experiments\\tests\\test_round5_statistics.py": "626ab4f27117c4b5a4a366e01e74d920b9fde47b28831cbf0c12f2da7f64e1ca",
+    "experiments\\vendor_gtrxl.py": "e98684b3d7db761de9b01fbba926245214cb5798b7ce9b9dd8ff013d962c7fd2",
+    "experiments\\worker.py": "818373f419fe31d8cab86f01303c0c3f1f5824e97873bf211a3ea860ef92ad57",
+    "gym_pybullet_drones\\__init__.py": "c452bc19494d9d25b06be58ca1e33f9fb79e2f19a10b65d95c0c4295c6d2ed54",
+    "gym_pybullet_drones\\control\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "gym_pybullet_drones\\control\\BaseControl.py": "d9b0c7b517ffeda7fa072d0fb8baf020be1a6f389188db09e65f4d6789640962",
+    "gym_pybullet_drones\\control\\CTBRControl.py": "317326ad8f4ced025a0b9ba5bf53958ef82d11bbff741e26e997cc7df9d15229",
+    "gym_pybullet_drones\\control\\DSLPIDControl.py": "249d0091a0b97bd545b508fd68e9012703db51e5bff44b42daabc238c6960cb0",
+    "gym_pybullet_drones\\control\\LegacyDSLPIDControl.py": "6d26cd9e0df175a72c38a20819c338c676d127a00d44d6935ce99a6deff8669a",
+    "gym_pybullet_drones\\control\\MRAC.py": "b70a15aed67330bacad5d46c635c101eeb9b335c30f47fa3c4be915f3444fec0",
+    "gym_pybullet_drones\\control\\RobustDSLPIDControl.py": "56b3b6fa411af45df2a5ea8bfb85e1ec69efd5593c8ac064a489611886106ae0",
+    "gym_pybullet_drones\\envs\\__init__.py": "a1b1daa1a8ad61452855cb1dc5d5b12df6b972612b8b6b1808df14ac6c0e5ddb",
+    "gym_pybullet_drones\\envs\\BaseAviary.py": "97ddebe6ddb702a8eb4631a47552869ddc3d4d8f144aedc304166d98a948eb17",
+    "gym_pybullet_drones\\envs\\BaseRLAviary.py": "59a612fcfee12fa5780985fbb5412cad3121adf59ca65c7043c54a598901bdc1",
+    "gym_pybullet_drones\\envs\\BetaAviary.py": "6fb1528058be62375dbe5a487e9d08f09c89335ae992152597a5ea8a197de181",
+    "gym_pybullet_drones\\envs\\CFAviary.py": "04fd6d173b35bce6c297878cab0bd14b1c27c2a499ba361fcb64fcd3b6e0f08e",
+    "gym_pybullet_drones\\envs\\CtrlAviary.py": "15d595968f54e4460b532768870eff1e8708e7134ea1c25d3fb6c45efa293cb7",
+    "gym_pybullet_drones\\envs\\HoverAviary.py": "351946c80028491f3e8a38da29ff96c6d55181d711629a6927fe2470a21ee0f5",
+    "gym_pybullet_drones\\envs\\MultiHoverAviary.py": "a95e5c9af519a4399ae6695b4e5a97696e2bb30ba9ecdb014fec3684d0a8758a",
+    "gym_pybullet_drones\\envs\\VelocityAviary.py": "c6d79bf850d39d88f71c2a886088f7bceac1a1bd9062a1d2e87f4b088931b342",
+    "gym_pybullet_drones\\examples\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "gym_pybullet_drones\\examples\\beta.py": "76f264fd613699aab2fce5e7078dd088e298f5c7f04ac8fe6ae0cdd9ceb525dd",
+    "gym_pybullet_drones\\examples\\cf.py": "f1a28950a70409a3acaee36cb15e68048748b4e54873d473bc8447e557a42c08",
+    "gym_pybullet_drones\\examples\\debug.py": "ab0482518c02b5fc8774c6557e2de502d33f54e8fe6efe1483aec3230323cc2c",
+    "gym_pybullet_drones\\examples\\downwash.py": "45d6021e016a6e2e8b0b584882132586b3a39a2ab3fe012f5d550710a5a762f2",
+    "gym_pybullet_drones\\examples\\learn.py": "f5b0a036aba2a22f64d2d0b6d415de787c1e34ea9ae24ce2f366228475d3ca21",
+    "gym_pybullet_drones\\examples\\mrac.py": "e63589024bb5ec005eaef991fbf70ecf43a3b1377ba24522de97249dea5b1299",
+    "gym_pybullet_drones\\examples\\pid.py": "4a8383206d30dfe27d86dc4491695585acaf94d275f99d870d6fafea146f49a9",
+    "gym_pybullet_drones\\examples\\pid_velocity.py": "ce99a34e328e99a2c96432f0f1c26b3b009e68ba4c9790d75ca0b188938e38e7",
+    "gym_pybullet_drones\\examples\\play.py": "4ea59f44a935387401992ff3d9f55974aab1236c8f2051acb714cf772e7cc63c",
+    "gym_pybullet_drones\\utils\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "gym_pybullet_drones\\utils\\enums.py": "c20252e81be30d8fec3c5527247e1d372ce65ffc0f0a548ea63dc17a3e67092f",
+    "gym_pybullet_drones\\utils\\Logger.py": "3a0acb5766c90fcbbb4abedaf7b052813935baae43fdc0f6baa169a21b98ae9c",
+    "gym_pybullet_drones\\utils\\utils.py": "3592d6798fbafc0378897c02b34146f6bf82e8c3bc3e9a645ea43ed8b0121c9b"
+  },
+  "configuration_hashes": {
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\core_selection.json": "20403f2641f5b860a53754d1df27e23784a03c8473b27f2e910f4aefdeab4297",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\runtime_selection_complete.json": "8373802ba1557defdbfdbcc027638d02cd28aa237a8105881f01fcbe0da99c32",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\protocol_initial.json": "91a748d2de5733b99f3471ec7c4df26026bf57f1779f7cd92233d16fe0580f24",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\objective_and_sensor_amendment.json": "55262599a243a9a52325009516bb92eeb1b3e929363c0988e3dc3e2719c0f069",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\final_evaluation_protocol.json": "055b0160d857cc849902606d43f6919d34d89d5ca449077fa0271034d8ccef26",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\confirmation_case_plan.json": "259b1003ba5b6f21931c2f25b0494165fe2fe855c0a3445e030b100fb9169307",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\gate_training_amendment.json": "e461c6389ee69cf832af4f1e7cd5f39ebbb053d6abec72ee237bce307a7166bf",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\structural_challenger.json": "a260d80fd47d9995b1eb0aefbdb6241f59d2fcc8f6393cc7982f0a23f2b86db7",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\value_scale_amendment.json": "4e84079e6763ff449c9478e1e35cd8f822603a3889ea80eeab01cee4f23382bd",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\pre_freeze_correctness_amendment.json": "7b629f1d88d1f6ddb88f53de2b0d07164487f732067066e4f1c6229e4038e159",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\runtime_environment.json": "f2b67c2a9adf0ee78e1e005bde2942a894f07f8fa9688bcd76c6c120b0856c64",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\training_horizon_amendment.json": "17ac0af4f1c128c925f1125f8c207c65c6d0f3e4c4d201d0a9d63c5dbf9c3c46",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\statistical_precision_amendment.json": "777e6bfd1a326584bc5a73ae00efe1b1c1872bb6302fa0d38dad881bf8f76dbf",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\exact_replay_amendment.json": "8c51eb3d89289f6b6463ff27de596e2139602a15887ddb2cc94bca51a1890deb",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observer_fallback_selection.json": "dfcad19c36229e0aad6afc517f102865c2c0d6ec2216d6d9ff6f75c2b09e462e",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observer_confirmation_amendment.json": "fa6603cab8e21f9e2f3e0787b64235e57af13fd456b92d9fa3e1cda5a188050d",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\oracle_diagnostic_amendment.json": "45d7d9eb96d0b0593ef47859627a1ac9f3be1961768cccdc2343e773440be3f4",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\hpo\\lstm_selection.json": "63b8f599b33fabade05492f103b8ef9cc5589d7549a489cdfc65d041a8f308f4",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\hpo\\mamba_selection.json": "b5cf52b6810148caef5b26554355c69c0929dc82235e2477a8c012cad441f2b3",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\hpo\\mamba2_selection.json": "82069b1e8bb3a474c9212f5f35661747890b946005d46bcdb840f5ac4f89b990",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\hpo\\mamba3_selection.json": "c897f65ad4428d97de9403a12c1f9c4ac314fd4a3e18c8dec68d85a8a04ff74d",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\hpo\\gtrxl_selection.json": "951a41da8db3536a3903cccb4eb12f220edbed001ee50fb7db35e185ee8f744e",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\hpo\\ltc_selection.json": "f67c4384e1720101d078041c509fb8d56485481921fb38710224d3855e988323",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\experiments\\round5\\configs\\reference_inputs.json": "fe43d26cd679977779826327ba174328d40b9a9d91469cba8a603a681585bf80",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\experiments\\round5\\configs\\protocols\\exact_replay_amendment.json": "8c51eb3d89289f6b6463ff27de596e2139602a15887ddb2cc94bca51a1890deb",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\experiments\\round5\\configs\\protocols\\final_evaluation_protocol.json": "055b0160d857cc849902606d43f6919d34d89d5ca449077fa0271034d8ccef26",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\experiments\\round5\\configs\\protocols\\gate_training_amendment.json": "e461c6389ee69cf832af4f1e7cd5f39ebbb053d6abec72ee237bce307a7166bf",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\experiments\\round5\\configs\\protocols\\objective_and_sensor_amendment.json": "55262599a243a9a52325009516bb92eeb1b3e929363c0988e3dc3e2719c0f069",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\experiments\\round5\\configs\\protocols\\observer_confirmation_amendment.json": "fa6603cab8e21f9e2f3e0787b64235e57af13fd456b92d9fa3e1cda5a188050d",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\experiments\\round5\\configs\\protocols\\oracle_diagnostic_amendment.json": "45d7d9eb96d0b0593ef47859627a1ac9f3be1961768cccdc2343e773440be3f4",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\experiments\\round5\\configs\\protocols\\pre_freeze_correctness_amendment.json": "7b629f1d88d1f6ddb88f53de2b0d07164487f732067066e4f1c6229e4038e159",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\experiments\\round5\\configs\\protocols\\protocol_initial.json": "91a748d2de5733b99f3471ec7c4df26026bf57f1779f7cd92233d16fe0580f24",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\experiments\\round5\\configs\\protocols\\statistical_precision_amendment.json": "777e6bfd1a326584bc5a73ae00efe1b1c1872bb6302fa0d38dad881bf8f76dbf",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\experiments\\round5\\configs\\protocols\\training_horizon_amendment.json": "17ac0af4f1c128c925f1125f8c207c65c6d0f3e4c4d201d0a9d63c5dbf9c3c46",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\experiments\\round5\\configs\\protocols\\value_scale_amendment.json": "4e84079e6763ff449c9478e1e35cd8f822603a3889ea80eeab01cee4f23382bd"
+  },
+  "previous_frozen_models_verified": 147,
+  "test_routes": [
+    529000,
+    529001,
+    529002,
+    529003,
+    529004,
+    529005,
+    529006,
+    529007,
+    529008,
+    529009,
+    529010,
+    529011,
+    529012,
+    529013,
+    529014,
+    529015,
+    529016,
+    529017,
+    529018,
+    529019,
+    529020,
+    529021,
+    529022,
+    529023,
+    529024,
+    529025,
+    529026,
+    529027,
+    529028,
+    529029,
+    529030,
+    529031,
+    529032,
+    529033,
+    529034,
+    529035,
+    529036,
+    529037,
+    529038,
+    529039,
+    529040,
+    529041,
+    529042,
+    529043,
+    529044,
+    529045,
+    529046,
+    529047,
+    529048,
+    529049,
+    529050,
+    529051,
+    529052,
+    529053,
+    529054,
+    529055,
+    529056,
+    529057,
+    529058,
+    529059
+  ],
+  "confirmation_routes": [
+    531000,
+    531001,
+    531002,
+    531003,
+    531004,
+    531005,
+    531006,
+    531007,
+    531008,
+    531009,
+    531010,
+    531011,
+    531012,
+    531013,
+    531014,
+    531015,
+    531016,
+    531017,
+    531018,
+    531019,
+    531020,
+    531021,
+    531022,
+    531023,
+    531024,
+    531025,
+    531026,
+    531027,
+    531028,
+    531029,
+    531030,
+    531031,
+    531032,
+    531033,
+    531034,
+    531035,
+    531036,
+    531037,
+    531038,
+    531039,
+    531040,
+    531041,
+    531042,
+    531043,
+    531044,
+    531045,
+    531046,
+    531047,
+    531048,
+    531049,
+    531050,
+    531051,
+    531052,
+    531053,
+    531054,
+    531055,
+    531056,
+    531057,
+    531058,
+    531059,
+    531060,
+    531061,
+    531062,
+    531063,
+    531064,
+    531065,
+    531066,
+    531067,
+    531068,
+    531069,
+    531070,
+    531071,
+    531072,
+    531073,
+    531074,
+    531075,
+    531076,
+    531077,
+    531078,
+    531079,
+    531080,
+    531081,
+    531082,
+    531083,
+    531084,
+    531085,
+    531086,
+    531087,
+    531088,
+    531089,
+    531090,
+    531091,
+    531092,
+    531093,
+    531094,
+    531095,
+    531096,
+    531097,
+    531098,
+    531099,
+    531100,
+    531101,
+    531102,
+    531103,
+    531104,
+    531105,
+    531106,
+    531107,
+    531108,
+    531109,
+    531110,
+    531111,
+    531112,
+    531113,
+    531114,
+    531115,
+    531116,
+    531117,
+    531118,
+    531119,
+    531120,
+    531121,
+    531122,
+    531123,
+    531124,
+    531125,
+    531126,
+    531127,
+    531128,
+    531129,
+    531130,
+    531131,
+    531132,
+    531133,
+    531134,
+    531135,
+    531136,
+    531137,
+    531138,
+    531139,
+    531140,
+    531141,
+    531142,
+    531143,
+    531144,
+    531145,
+    531146,
+    531147,
+    531148,
+    531149,
+    531150,
+    531151,
+    531152,
+    531153,
+    531154,
+    531155,
+    531156,
+    531157,
+    531158,
+    531159,
+    531160,
+    531161,
+    531162,
+    531163,
+    531164,
+    531165,
+    531166,
+    531167,
+    531168,
+    531169,
+    531170,
+    531171,
+    531172,
+    531173,
+    531174,
+    531175,
+    531176,
+    531177,
+    531178,
+    531179,
+    531180,
+    531181,
+    531182,
+    531183,
+    531184,
+    531185,
+    531186,
+    531187,
+    531188,
+    531189,
+    531190,
+    531191,
+    531192,
+    531193,
+    531194,
+    531195,
+    531196,
+    531197,
+    531198,
+    531199,
+    531200,
+    531201,
+    531202,
+    531203,
+    531204,
+    531205,
+    531206,
+    531207,
+    531208,
+    531209,
+    531210,
+    531211,
+    531212,
+    531213,
+    531214,
+    531215,
+    531216,
+    531217,
+    531218,
+    531219,
+    531220,
+    531221,
+    531222,
+    531223,
+    531224,
+    531225,
+    531226,
+    531227,
+    531228,
+    531229,
+    531230,
+    531231,
+    531232,
+    531233,
+    531234,
+    531235,
+    531236,
+    531237,
+    531238,
+    531239,
+    531240,
+    531241,
+    531242,
+    531243,
+    531244,
+    531245,
+    531246,
+    531247,
+    531248,
+    531249,
+    531250,
+    531251,
+    531252,
+    531253,
+    531254,
+    531255,
+    531256,
+    531257,
+    531258,
+    531259,
+    531260,
+    531261,
+    531262,
+    531263,
+    531264,
+    531265,
+    531266,
+    531267,
+    531268,
+    531269,
+    531270,
+    531271,
+    531272,
+    531273,
+    531274,
+    531275,
+    531276,
+    531277,
+    531278,
+    531279,
+    531280,
+    531281,
+    531282,
+    531283,
+    531284,
+    531285,
+    531286,
+    531287,
+    531288,
+    531289,
+    531290,
+    531291,
+    531292,
+    531293,
+    531294,
+    531295,
+    531296,
+    531297,
+    531298,
+    531299,
+    531300,
+    531301,
+    531302,
+    531303,
+    531304,
+    531305,
+    531306,
+    531307,
+    531308,
+    531309,
+    531310,
+    531311,
+    531312,
+    531313,
+    531314,
+    531315,
+    531316,
+    531317,
+    531318,
+    531319,
+    531320,
+    531321,
+    531322,
+    531323,
+    531324,
+    531325,
+    531326,
+    531327,
+    531328,
+    531329,
+    531330,
+    531331,
+    531332,
+    531333,
+    531334,
+    531335,
+    531336,
+    531337,
+    531338,
+    531339,
+    531340,
+    531341,
+    531342,
+    531343,
+    531344,
+    531345,
+    531346,
+    531347,
+    531348,
+    531349,
+    531350,
+    531351,
+    531352,
+    531353,
+    531354,
+    531355,
+    531356,
+    531357,
+    531358,
+    531359,
+    531360,
+    531361,
+    531362,
+    531363,
+    531364,
+    531365,
+    531366,
+    531367,
+    531368,
+    531369,
+    531370,
+    531371,
+    531372,
+    531373,
+    531374,
+    531375,
+    531376,
+    531377,
+    531378,
+    531379,
+    531380,
+    531381,
+    531382,
+    531383,
+    531384,
+    531385,
+    531386,
+    531387,
+    531388,
+    531389,
+    531390,
+    531391,
+    531392,
+    531393,
+    531394,
+    531395,
+    531396,
+    531397,
+    531398,
+    531399,
+    531400,
+    531401,
+    531402,
+    531403,
+    531404,
+    531405,
+    531406,
+    531407,
+    531408,
+    531409,
+    531410,
+    531411,
+    531412,
+    531413,
+    531414,
+    531415,
+    531416,
+    531417,
+    531418,
+    531419,
+    531420,
+    531421,
+    531422,
+    531423,
+    531424,
+    531425,
+    531426,
+    531427,
+    531428,
+    531429,
+    531430,
+    531431,
+    531432,
+    531433,
+    531434,
+    531435,
+    531436,
+    531437,
+    531438,
+    531439,
+    531440,
+    531441,
+    531442,
+    531443,
+    531444,
+    531445,
+    531446,
+    531447,
+    531448,
+    531449,
+    531450,
+    531451,
+    531452,
+    531453,
+    531454,
+    531455,
+    531456,
+    531457,
+    531458,
+    531459,
+    531460,
+    531461,
+    531462,
+    531463,
+    531464,
+    531465,
+    531466,
+    531467,
+    531468,
+    531469,
+    531470,
+    531471,
+    531472,
+    531473,
+    531474,
+    531475,
+    531476,
+    531477,
+    531478,
+    531479,
+    531480,
+    531481,
+    531482,
+    531483,
+    531484,
+    531485,
+    531486,
+    531487,
+    531488,
+    531489,
+    531490,
+    531491,
+    531492,
+    531493,
+    531494,
+    531495,
+    531496,
+    531497,
+    531498,
+    531499,
+    531500,
+    531501,
+    531502,
+    531503,
+    531504,
+    531505,
+    531506,
+    531507,
+    531508,
+    531509,
+    531510,
+    531511,
+    531512,
+    531513,
+    531514,
+    531515,
+    531516,
+    531517,
+    531518,
+    531519,
+    531520,
+    531521,
+    531522,
+    531523,
+    531524,
+    531525,
+    531526,
+    531527,
+    531528,
+    531529,
+    531530,
+    531531,
+    531532,
+    531533,
+    531534,
+    531535,
+    531536,
+    531537,
+    531538,
+    531539,
+    531540,
+    531541,
+    531542,
+    531543,
+    531544,
+    531545,
+    531546,
+    531547,
+    531548,
+    531549,
+    531550,
+    531551,
+    531552,
+    531553,
+    531554,
+    531555,
+    531556,
+    531557,
+    531558,
+    531559,
+    531560,
+    531561,
+    531562,
+    531563,
+    531564,
+    531565,
+    531566,
+    531567,
+    531568,
+    531569,
+    531570,
+    531571,
+    531572,
+    531573,
+    531574,
+    531575,
+    531576,
+    531577,
+    531578,
+    531579,
+    531580,
+    531581,
+    531582,
+    531583,
+    531584,
+    531585,
+    531586,
+    531587,
+    531588,
+    531589,
+    531590,
+    531591,
+    531592,
+    531593,
+    531594,
+    531595,
+    531596,
+    531597,
+    531598,
+    531599,
+    531600,
+    531601,
+    531602,
+    531603,
+    531604,
+    531605,
+    531606,
+    531607,
+    531608,
+    531609,
+    531610,
+    531611,
+    531612,
+    531613,
+    531614,
+    531615,
+    531616,
+    531617,
+    531618,
+    531619,
+    531620,
+    531621,
+    531622,
+    531623,
+    531624,
+    531625,
+    531626,
+    531627,
+    531628,
+    531629,
+    531630,
+    531631,
+    531632,
+    531633,
+    531634,
+    531635,
+    531636,
+    531637,
+    531638,
+    531639,
+    531640,
+    531641,
+    531642,
+    531643,
+    531644,
+    531645,
+    531646,
+    531647,
+    531648,
+    531649,
+    531650,
+    531651,
+    531652,
+    531653,
+    531654,
+    531655,
+    531656,
+    531657,
+    531658,
+    531659,
+    531660,
+    531661,
+    531662,
+    531663,
+    531664,
+    531665,
+    531666,
+    531667,
+    531668,
+    531669,
+    531670,
+    531671,
+    531672,
+    531673,
+    531674,
+    531675,
+    531676,
+    531677,
+    531678,
+    531679,
+    531680,
+    531681,
+    531682,
+    531683,
+    531684,
+    531685,
+    531686,
+    531687,
+    531688,
+    531689,
+    531690,
+    531691,
+    531692,
+    531693,
+    531694,
+    531695,
+    531696,
+    531697,
+    531698,
+    531699,
+    531700,
+    531701,
+    531702,
+    531703,
+    531704,
+    531705,
+    531706,
+    531707,
+    531708,
+    531709,
+    531710,
+    531711,
+    531712,
+    531713,
+    531714,
+    531715,
+    531716,
+    531717,
+    531718,
+    531719,
+    531720,
+    531721,
+    531722,
+    531723,
+    531724,
+    531725,
+    531726,
+    531727,
+    531728,
+    531729,
+    531730,
+    531731,
+    531732,
+    531733,
+    531734,
+    531735,
+    531736,
+    531737,
+    531738,
+    531739,
+    531740,
+    531741,
+    531742,
+    531743,
+    531744,
+    531745,
+    531746,
+    531747,
+    531748,
+    531749,
+    531750,
+    531751,
+    531752,
+    531753,
+    531754,
+    531755,
+    531756,
+    531757,
+    531758,
+    531759,
+    531760,
+    531761,
+    531762,
+    531763,
+    531764,
+    531765,
+    531766,
+    531767,
+    531768,
+    531769,
+    531770,
+    531771,
+    531772,
+    531773,
+    531774,
+    531775,
+    531776,
+    531777,
+    531778,
+    531779,
+    531780,
+    531781,
+    531782,
+    531783,
+    531784,
+    531785,
+    531786,
+    531787,
+    531788,
+    531789,
+    531790,
+    531791,
+    531792,
+    531793,
+    531794,
+    531795,
+    531796,
+    531797,
+    531798,
+    531799,
+    531800,
+    531801,
+    531802,
+    531803,
+    531804,
+    531805,
+    531806,
+    531807,
+    531808,
+    531809,
+    531810,
+    531811,
+    531812,
+    531813,
+    531814,
+    531815,
+    531816,
+    531817,
+    531818,
+    531819,
+    531820,
+    531821,
+    531822,
+    531823,
+    531824,
+    531825,
+    531826,
+    531827,
+    531828,
+    531829,
+    531830,
+    531831,
+    531832,
+    531833,
+    531834,
+    531835,
+    531836,
+    531837,
+    531838,
+    531839,
+    531840,
+    531841,
+    531842,
+    531843,
+    531844,
+    531845,
+    531846,
+    531847,
+    531848,
+    531849,
+    531850,
+    531851,
+    531852,
+    531853,
+    531854,
+    531855,
+    531856,
+    531857,
+    531858,
+    531859,
+    531860,
+    531861,
+    531862,
+    531863,
+    531864,
+    531865,
+    531866,
+    531867,
+    531868,
+    531869,
+    531870,
+    531871,
+    531872,
+    531873,
+    531874,
+    531875,
+    531876,
+    531877,
+    531878,
+    531879,
+    531880,
+    531881,
+    531882,
+    531883,
+    531884,
+    531885,
+    531886,
+    531887,
+    531888,
+    531889,
+    531890,
+    531891,
+    531892,
+    531893,
+    531894,
+    531895,
+    531896,
+    531897,
+    531898,
+    531899,
+    531900,
+    531901,
+    531902,
+    531903,
+    531904,
+    531905,
+    531906,
+    531907,
+    531908,
+    531909,
+    531910,
+    531911,
+    531912,
+    531913,
+    531914,
+    531915,
+    531916,
+    531917,
+    531918,
+    531919,
+    531920,
+    531921,
+    531922,
+    531923,
+    531924,
+    531925,
+    531926,
+    531927,
+    531928,
+    531929,
+    531930,
+    531931,
+    531932,
+    531933,
+    531934,
+    531935,
+    531936,
+    531937,
+    531938,
+    531939,
+    531940,
+    531941,
+    531942,
+    531943,
+    531944,
+    531945,
+    531946,
+    531947,
+    531948,
+    531949,
+    531950,
+    531951,
+    531952,
+    531953,
+    531954,
+    531955,
+    531956,
+    531957,
+    531958,
+    531959,
+    531960,
+    531961,
+    531962,
+    531963,
+    531964,
+    531965,
+    531966,
+    531967,
+    531968,
+    531969,
+    531970,
+    531971,
+    531972,
+    531973,
+    531974,
+    531975,
+    531976,
+    531977,
+    531978,
+    531979,
+    531980,
+    531981,
+    531982,
+    531983,
+    531984,
+    531985,
+    531986,
+    531987,
+    531988,
+    531989,
+    531990,
+    531991,
+    531992,
+    531993,
+    531994,
+    531995,
+    531996,
+    531997,
+    531998,
+    531999
+  ]
+}

@@ -1,0 +1,950 @@
+{
+  "bundle": {
+    "id": "baseline_original",
+    "configuration": {
+      "estimator": "original",
+      "readiness": false,
+      "emergency": "legacy",
+      "reserve": 0.005
+    },
+    "checkpoint": null,
+    "checkpoint_sha256": null,
+    "gate_logit_threshold": 0.0,
+    "proposal_only": false,
+    "judge_path": null,
+    "judge_sha256": null,
+    "inference": {
+      "device": "cpu",
+      "dtype": "float64",
+      "action_dtype": "float32"
+    },
+    "decision_file": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\decision.json",
+    "primary_levels": [
+      0.28,
+      0.29,
+      0.295
+    ],
+    "maximum_training_fault_rpm_fraction": 0.295,
+    "deadline_seconds": 30
+  },
+  "rows": [
+    {
+      "task_reward": 99.99512445751884,
+      "manual_style": -0.009147224769986173,
+      "outcome": "stable_landing",
+      "deadline_terminal": false,
+      "gate_active": false,
+      "applied_amplitude": 0.0,
+      "applied_effectiveness": [
+        0.999040178844947,
+        0.9990607938252698,
+        0.7046605246654705,
+        0.9990587958212627
+      ],
+      "mission_success": true,
+      "stable_landing": true,
+      "waypoint_reached": true,
+      "descent_started": true,
+      "exposed": true,
+      "level": 0.295,
+      "motor": 2,
+      "episode_steps": 1107,
+      "tracking_rmse": 0.4682246150732815,
+      "mean_gate": 0.0,
+      "requested_gate": 0.0,
+      "effort": 0.0,
+      "gate_variation": 0.0,
+      "guard_off_fraction": 1.0,
+      "saturation": 0.14092140921409213,
+      "max_tilt": 0.4017237920645215,
+      "distance_to_goal": 0.08755423848498944,
+      "first_contact": {
+        "vertical_speed": 0.17896340597160845,
+        "horizontal_speed": 0.011125222627217638,
+        "tilt": 0.0007502659843069821,
+        "angular_speed": 0.02927313344942254,
+        "radius": 0.0875303970776666,
+        "angular_velocity": [
+          0.02297371482938701,
+          0.014308123815907455,
+          0.01115358066964892
+        ],
+        "body_angular_velocity": [
+          0.022982134937356156,
+          0.014273907878901117,
+          0.011180043360090292
+        ],
+        "velocity": [
+          0.009683461857527728,
+          -0.005477330094029478,
+          -0.17896340597160845
+        ],
+        "position": [
+          0.6966063102491604,
+          -1.7786506921212142,
+          0.014106856687322483
+        ]
+      },
+      "stable_seconds": 1.0,
+      "terminal_position": [
+        0.696600802599534,
+        -1.7786188504661617,
+        0.01348999991293565
+      ],
+      "terminal_velocity": [
+        2.447431142811067e-10,
+        7.154616953977132e-10,
+        -8.37956200955281e-09
+      ],
+      "terminal_angular_velocity": [
+        -1.7462266559466995e-07,
+        1.884243687022224e-07,
+        -5.3599464437776455e-09
+      ],
+      "eta_mae": 0.0015960539924266704,
+      "estimated_eta": [
+        0.999040178844947,
+        0.9990607938252698,
+        0.7046605246654705,
+        0.9990587958212627
+      ],
+      "true_eta": [
+        1.0,
+        1.0,
+        0.7050000000000001,
+        1.0
+      ],
+      "failed_motor_eta_mae": 0.0029825144159948878,
+      "first_estimate_within_2pct_seconds": 0.375,
+      "gate_prefault": 0.0,
+      "gate_postfault": 0.0,
+      "pre_fault_false_alarm_ticks": 0,
+      "seed": 528000,
+      "descent_paused_seconds": 0.0,
+      "descent_readiness_enabled": false,
+      "explicit_gate_rejections": 0,
+      "q_delta_energy": 0.0,
+      "configuration": {
+        "estimator": "original",
+        "readiness": false,
+        "emergency": "legacy",
+        "reserve": 0.005,
+        "intervention": "residual",
+        "gate_mode": "learned",
+        "gate_threshold": 0.0,
+        "noise_multiplier": 1.0,
+        "fault_clock": null,
+        "physics_hz": 240,
+        "contact_hz": 960,
+        "solver_iterations": 200,
+        "solver_residual": 1e-12,
+        "sensor_model": "shared_velocity_gyro",
+        "judge_path": null
+      },
+      "applied_eta_mae": 0.0015960539924266704,
+      "applied_failed_motor_eta_mae": 0.0029825144159948878,
+      "requested_on_fraction": 0.0,
+      "applied_on_fraction": 0.0,
+      "effectual_fraction": 0.0,
+      "estimated_95pct_coverage": 0.9833169774288518,
+      "precontact_trace_available": true,
+      "precontact_requested_on_fraction": 0.0,
+      "precontact_applied_on_fraction": 0.0,
+      "precontact_mean_amplitude": 0.0,
+      "precontact_max_body_yaw_rate": 0.054439187549346166,
+      "precontact_min_applied_eta": 0.7046605246654705
+    },
+    {
+      "task_reward": -100.00465815694957,
+      "manual_style": -3.920203807946338,
+      "outcome": "early_contact",
+      "deadline_terminal": false,
+      "gate_active": false,
+      "applied_amplitude": 0.0,
+      "applied_effectiveness": [
+        0.9993413695982055,
+        0.9997192066726137,
+        0.999388996378778,
+        0.7077961955095535
+      ],
+      "mission_success": false,
+      "stable_landing": false,
+      "waypoint_reached": false,
+      "descent_started": false,
+      "exposed": true,
+      "level": 0.295,
+      "motor": 3,
+      "episode_steps": 198,
+      "tracking_rmse": 0.888880283541257,
+      "mean_gate": 0.0,
+      "requested_gate": 0.0,
+      "effort": 0.0,
+      "gate_variation": 0.0,
+      "guard_off_fraction": 1.0,
+      "saturation": 0.09974747474747475,
+      "max_tilt": 0.4181360949222881,
+      "distance_to_goal": 0.6590050165201545,
+      "first_contact": null,
+      "stable_seconds": 0.0,
+      "terminal_position": [
+        -1.7881022141097636,
+        1.4195971723395473,
+        0.04600772593015493
+      ],
+      "terminal_velocity": [
+        0.45452571441281814,
+        -0.15881009748440747,
+        -0.7079476937345711
+      ],
+      "terminal_angular_velocity": [
+        -0.39100406203916654,
+        0.6174375370090844,
+        -5.818753093575026
+      ],
+      "eta_mae": 0.005338971689551576,
+      "estimated_eta": [
+        0.9993413695982055,
+        0.9997192066726137,
+        0.999388996378778,
+        0.7077961955095535
+      ],
+      "true_eta": [
+        1.0,
+        1.0,
+        1.0,
+        0.7050000000000001
+      ],
+      "failed_motor_eta_mae": 0.0231941640092036,
+      "first_estimate_within_2pct_seconds": 0.3958333333333333,
+      "gate_prefault": 0.0,
+      "gate_postfault": 0.0,
+      "pre_fault_false_alarm_ticks": 0,
+      "seed": 528001,
+      "descent_paused_seconds": 0.0,
+      "descent_readiness_enabled": false,
+      "explicit_gate_rejections": 0,
+      "q_delta_energy": 0.0,
+      "configuration": {
+        "estimator": "original",
+        "readiness": false,
+        "emergency": "legacy",
+        "reserve": 0.005,
+        "intervention": "residual",
+        "gate_mode": "learned",
+        "gate_threshold": 0.0,
+        "noise_multiplier": 1.0,
+        "fault_clock": null,
+        "physics_hz": 240,
+        "contact_hz": 960,
+        "solver_iterations": 200,
+        "solver_residual": 1e-12,
+        "sensor_model": "shared_velocity_gyro",
+        "judge_path": null
+      },
+      "applied_eta_mae": 0.005338971689551576,
+      "applied_failed_motor_eta_mae": 0.0231941640092036,
+      "requested_on_fraction": 0.0,
+      "applied_on_fraction": 0.0,
+      "effectual_fraction": 0.0,
+      "estimated_95pct_coverage": 0.8392857142857143,
+      "precontact_trace_available": false
+    },
+    {
+      "task_reward": 99.99513301628012,
+      "manual_style": -0.00898845677676565,
+      "outcome": "stable_landing",
+      "deadline_terminal": false,
+      "gate_active": false,
+      "applied_amplitude": 0.0,
+      "applied_effectiveness": [
+        0.9994994718420299,
+        0.9995174092459639,
+        0.7057030295525446,
+        0.9994850090675897
+      ],
+      "mission_success": true,
+      "stable_landing": true,
+      "waypoint_reached": true,
+      "descent_started": true,
+      "exposed": true,
+      "level": 0.295,
+      "motor": 2,
+      "episode_steps": 481,
+      "tracking_rmse": 0.25637341155627136,
+      "mean_gate": 0.0,
+      "requested_gate": 0.0,
+      "effort": 0.0,
+      "gate_variation": 0.0,
+      "guard_off_fraction": 1.0,
+      "saturation": 0.033783783783783786,
+      "max_tilt": 0.19912367815417648,
+      "distance_to_goal": 0.08650122069197615,
+      "first_contact": {
+        "vertical_speed": 0.1793460492096351,
+        "horizontal_speed": 0.011256338800729605,
+        "tilt": 0.001583420893297953,
+        "angular_speed": 0.005432081991163196,
+        "radius": 0.0865458513587775,
+        "angular_velocity": [
+          -0.0007731801318011308,
+          -0.005224686389353676,
+          -0.0012697871378345043
+        ],
+        "body_angular_velocity": [
+          -0.00078559177903817,
+          -0.005222806951928934,
+          -0.0012699007277381764
+        ],
+        "velocity": [
+          -0.005246298088095831,
+          -0.00995899189514947,
+          -0.1793460492096351
+        ],
+        "position": [
+          -0.34498734200117437,
+          1.5121503554483025,
+          0.013990250538946465
+        ]
+      },
+      "stable_seconds": 1.0,
+      "terminal_position": [
+        -0.3449863674292649,
+        1.5121040612219045,
+        0.013487777037845131
+      ],
+      "terminal_velocity": [
+        0.00024380352852788206,
+        -0.0003008738673600637,
+        0.00019987077447041098
+      ],
+      "terminal_angular_velocity": [
+        0.022279203894075478,
+        0.01806998105022752,
+        5.63511179681204e-07
+      ],
+      "eta_mae": 0.0020928339947054496,
+      "estimated_eta": [
+        0.9994994718420299,
+        0.9995174092459639,
+        0.7057030295525446,
+        0.9994850090675897
+      ],
+      "true_eta": [
+        1.0,
+        1.0,
+        0.7050000000000001,
+        1.0
+      ],
+      "failed_motor_eta_mae": 0.005413571020425929,
+      "first_estimate_within_2pct_seconds": 0.35416666666666663,
+      "gate_prefault": 0.0,
+      "gate_postfault": 0.0,
+      "pre_fault_false_alarm_ticks": 0,
+      "seed": 528002,
+      "descent_paused_seconds": 0.0,
+      "descent_readiness_enabled": false,
+      "explicit_gate_rejections": 0,
+      "q_delta_energy": 0.0,
+      "configuration": {
+        "estimator": "original",
+        "readiness": false,
+        "emergency": "legacy",
+        "reserve": 0.005,
+        "intervention": "residual",
+        "gate_mode": "learned",
+        "gate_threshold": 0.0,
+        "noise_multiplier": 1.0,
+        "fault_clock": null,
+        "physics_hz": 240,
+        "contact_hz": 960,
+        "solver_iterations": 200,
+        "solver_residual": 1e-12,
+        "sensor_model": "shared_velocity_gyro",
+        "judge_path": null
+      },
+      "applied_eta_mae": 0.0020928339947054496,
+      "applied_failed_motor_eta_mae": 0.005413571020425929,
+      "requested_on_fraction": 0.0,
+      "applied_on_fraction": 0.0,
+      "effectual_fraction": 0.0,
+      "estimated_95pct_coverage": 0.9623529411764706,
+      "precontact_trace_available": true,
+      "precontact_requested_on_fraction": 0.0,
+      "precontact_applied_on_fraction": 0.0,
+      "precontact_mean_amplitude": 0.0,
+      "precontact_max_body_yaw_rate": 0.03789099758491753,
+      "precontact_min_applied_eta": 0.7050185498750682
+    },
+    {
+      "task_reward": 99.99534283158265,
+      "manual_style": -0.005787709324563863,
+      "outcome": "stable_landing",
+      "deadline_terminal": false,
+      "gate_active": false,
+      "applied_amplitude": 0.0,
+      "applied_effectiveness": [
+        0.9995480633031015,
+        0.999557383985703,
+        0.7052255825814394,
+        0.9995290000354886
+      ],
+      "mission_success": true,
+      "stable_landing": true,
+      "waypoint_reached": true,
+      "descent_started": true,
+      "exposed": true,
+      "level": 0.295,
+      "motor": 2,
+      "episode_steps": 516,
+      "tracking_rmse": 0.28172313809339833,
+      "mean_gate": 0.0,
+      "requested_gate": 0.0,
+      "effort": 0.0,
+      "gate_variation": 0.0,
+      "guard_off_fraction": 1.0,
+      "saturation": 0.05232558139534884,
+      "max_tilt": 0.35234635755275867,
+      "distance_to_goal": 0.06562143551192022,
+      "first_contact": {
+        "vertical_speed": 0.17985795876524976,
+        "horizontal_speed": 0.009284620825544189,
+        "tilt": 0.0007982824418135936,
+        "angular_speed": 0.0033626425930624714,
+        "radius": 0.06574028586829223,
+        "angular_velocity": [
+          -0.002330332426776036,
+          -0.0015654453827888982,
+          -0.0018510258622987774
+        ],
+        "body_angular_velocity": [
+          -0.0023307621905649663,
+          -0.0015625647446172405,
+          -0.001852917763579906
+        ],
+        "velocity": [
+          0.002052004601036088,
+          0.009055024074592822,
+          -0.17985795876524976
+        ],
+        "position": [
+          -1.3831614341104592,
+          -1.6208251145748194,
+          0.014316548539722645
+        ]
+      },
+      "stable_seconds": 1.0,
+      "terminal_position": [
+        -1.3830569090346967,
+        -1.6207524322143436,
+        0.013488811254150907
+      ],
+      "terminal_velocity": [
+        7.286930070985712e-06,
+        2.9099411451352292e-05,
+        9.911688985581729e-05
+      ],
+      "terminal_angular_velocity": [
+        -0.0021533054319767303,
+        0.0005425993849559821,
+        -5.723930711584741e-07
+      ],
+      "eta_mae": 0.001964821178935101,
+      "estimated_eta": [
+        0.9995480633031015,
+        0.999557383985703,
+        0.7052255825814394,
+        0.9995290000354886
+      ],
+      "true_eta": [
+        1.0,
+        1.0,
+        0.7050000000000001,
+        1.0
+      ],
+      "failed_motor_eta_mae": 0.004978485221115314,
+      "first_estimate_within_2pct_seconds": 0.375,
+      "gate_prefault": 0.0,
+      "gate_postfault": 0.0,
+      "pre_fault_false_alarm_ticks": 0,
+      "seed": 528003,
+      "descent_paused_seconds": 0.0,
+      "descent_readiness_enabled": false,
+      "explicit_gate_rejections": 0,
+      "q_delta_energy": 0.0,
+      "configuration": {
+        "estimator": "original",
+        "readiness": false,
+        "emergency": "legacy",
+        "reserve": 0.005,
+        "intervention": "residual",
+        "gate_mode": "learned",
+        "gate_threshold": 0.0,
+        "noise_multiplier": 1.0,
+        "fault_clock": null,
+        "physics_hz": 240,
+        "contact_hz": 960,
+        "solver_iterations": 200,
+        "solver_residual": 1e-12,
+        "sensor_model": "shared_velocity_gyro",
+        "judge_path": null
+      },
+      "applied_eta_mae": 0.0019648211789351014,
+      "applied_failed_motor_eta_mae": 0.004978485221115314,
+      "requested_on_fraction": 0.0,
+      "applied_on_fraction": 0.0,
+      "effectual_fraction": 0.0,
+      "estimated_95pct_coverage": 0.9619686800894854,
+      "precontact_trace_available": true,
+      "precontact_requested_on_fraction": 0.0,
+      "precontact_applied_on_fraction": 0.0,
+      "precontact_mean_amplitude": 0.0,
+      "precontact_max_body_yaw_rate": 0.04544496777871764,
+      "precontact_min_applied_eta": 0.7047638532359632
+    },
+    {
+      "task_reward": -100.005,
+      "manual_style": -4.310274370354611,
+      "outcome": "early_contact",
+      "deadline_terminal": false,
+      "gate_active": false,
+      "applied_amplitude": 0.0,
+      "applied_effectiveness": [
+        0.9998512460786667,
+        0.7127246405003311,
+        0.9998706339323435,
+        0.9999740139609278
+      ],
+      "mission_success": false,
+      "stable_landing": false,
+      "waypoint_reached": false,
+      "descent_started": false,
+      "exposed": true,
+      "level": 0.295,
+      "motor": 1,
+      "episode_steps": 183,
+      "tracking_rmse": 0.8550555495995794,
+      "mean_gate": 0.0,
+      "requested_gate": 0.0,
+      "effort": 0.0,
+      "gate_variation": 0.0,
+      "guard_off_fraction": 1.0,
+      "saturation": 0.0778688524590164,
+      "max_tilt": 0.3922676507745157,
+      "distance_to_goal": 1.3551970133446343,
+      "first_contact": null,
+      "stable_seconds": 0.0,
+      "terminal_position": [
+        1.5330584390327382,
+        -0.8035237050123363,
+        0.0407365128113075
+      ],
+      "terminal_velocity": [
+        0.5196187638534118,
+        -0.7216857207381127,
+        -1.108123819351507
+      ],
+      "terminal_angular_velocity": [
+        1.173330649158665,
+        -0.13478185150173547,
+        -5.169340308716426
+      ],
+      "eta_mae": 0.005733675351585093,
+      "estimated_eta": [
+        0.9998512460786667,
+        0.7127246405003311,
+        0.9998706339323435,
+        0.9999740139609278
+      ],
+      "true_eta": [
+        1.0,
+        0.7050000000000001,
+        1.0,
+        1.0
+      ],
+      "failed_motor_eta_mae": 0.030124972778923172,
+      "first_estimate_within_2pct_seconds": 0.375,
+      "gate_prefault": 0.0,
+      "gate_postfault": 0.0,
+      "pre_fault_false_alarm_ticks": 0,
+      "seed": 528004,
+      "descent_paused_seconds": 0.0,
+      "descent_readiness_enabled": false,
+      "explicit_gate_rejections": 0,
+      "q_delta_energy": 0.0,
+      "configuration": {
+        "estimator": "original",
+        "readiness": false,
+        "emergency": "legacy",
+        "reserve": 0.005,
+        "intervention": "residual",
+        "gate_mode": "learned",
+        "gate_threshold": 0.0,
+        "noise_multiplier": 1.0,
+        "fault_clock": null,
+        "physics_hz": 240,
+        "contact_hz": 960,
+        "solver_iterations": 200,
+        "solver_residual": 1e-12,
+        "sensor_model": "shared_velocity_gyro",
+        "judge_path": null
+      },
+      "applied_eta_mae": 0.005733675351585093,
+      "applied_failed_motor_eta_mae": 0.030124972778923172,
+      "requested_on_fraction": 0.0,
+      "applied_on_fraction": 0.0,
+      "effectual_fraction": 0.0,
+      "estimated_95pct_coverage": 0.788235294117647,
+      "precontact_trace_available": false
+    },
+    {
+      "task_reward": 99.99531223909429,
+      "manual_style": -0.006211611110399106,
+      "outcome": "stable_landing",
+      "deadline_terminal": false,
+      "gate_active": false,
+      "applied_amplitude": 0.0,
+      "applied_effectiveness": [
+        0.7055765529345197,
+        0.9997167444483943,
+        0.9997070579511462,
+        0.9997264921163522
+      ],
+      "mission_success": true,
+      "stable_landing": true,
+      "waypoint_reached": true,
+      "descent_started": true,
+      "exposed": true,
+      "level": 0.295,
+      "motor": 0,
+      "episode_steps": 470,
+      "tracking_rmse": 0.23845830545702207,
+      "mean_gate": 0.0,
+      "requested_gate": 0.0,
+      "effort": 0.0,
+      "gate_variation": 0.0,
+      "guard_off_fraction": 1.0,
+      "saturation": 0.027127659574468086,
+      "max_tilt": 0.1741681988123104,
+      "distance_to_goal": 0.06877594849657173,
+      "first_contact": {
+        "vertical_speed": 0.18124425834972405,
+        "horizontal_speed": 0.007922497635619566,
+        "tilt": 0.0003323681812761622,
+        "angular_speed": 0.004692976975537387,
+        "radius": 0.06884159079532533,
+        "angular_velocity": [
+          -0.004615773175524854,
+          0.00024186682160493543,
+          -0.0008125092772614734
+        ],
+        "body_angular_velocity": [
+          -0.004615698251994423,
+          0.0002484853374060257,
+          -0.0008109362345794329
+        ],
+        "velocity": [
+          -0.0071292252243192146,
+          -0.0034554473642826994,
+          -0.18124425834972405
+        ],
+        "position": [
+          2.00316483249667,
+          1.914493230113985,
+          0.013817547087142869
+        ]
+      },
+      "stable_seconds": 1.0,
+      "terminal_position": [
+        2.003092815453014,
+        1.9145044081827909,
+        0.013489998926785167
+      ],
+      "terminal_velocity": [
+        1.0344899974147035e-07,
+        -5.1262322757251666e-08,
+        1.3919911910804939e-07
+      ],
+      "terminal_angular_velocity": [
+        3.617477635480979e-06,
+        5.822849611075282e-06,
+        2.7949276516686924e-07
+      ],
+      "eta_mae": 0.0021269064730729164,
+      "estimated_eta": [
+        0.7055765529345197,
+        0.9997167444483943,
+        0.9997070579511462,
+        0.9997264921163522
+      ],
+      "true_eta": [
+        0.7050000000000001,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "failed_motor_eta_mae": 0.005416282658182726,
+      "first_estimate_within_2pct_seconds": 0.35416666666666663,
+      "gate_prefault": 0.0,
+      "gate_postfault": 0.0,
+      "pre_fault_false_alarm_ticks": 0,
+      "seed": 528005,
+      "descent_paused_seconds": 0.0,
+      "descent_readiness_enabled": false,
+      "explicit_gate_rejections": 0,
+      "q_delta_energy": 0.0,
+      "configuration": {
+        "estimator": "original",
+        "readiness": false,
+        "emergency": "legacy",
+        "reserve": 0.005,
+        "intervention": "residual",
+        "gate_mode": "learned",
+        "gate_threshold": 0.0,
+        "noise_multiplier": 1.0,
+        "fault_clock": null,
+        "physics_hz": 240,
+        "contact_hz": 960,
+        "solver_iterations": 200,
+        "solver_residual": 1e-12,
+        "sensor_model": "shared_velocity_gyro",
+        "judge_path": null
+      },
+      "applied_eta_mae": 0.0021269064730729172,
+      "applied_failed_motor_eta_mae": 0.005416282658182726,
+      "requested_on_fraction": 0.0,
+      "applied_on_fraction": 0.0,
+      "effectual_fraction": 0.0,
+      "estimated_95pct_coverage": 0.9618138424821002,
+      "precontact_trace_available": true,
+      "precontact_requested_on_fraction": 0.0,
+      "precontact_applied_on_fraction": 0.0,
+      "precontact_mean_amplitude": 0.0,
+      "precontact_max_body_yaw_rate": 0.023458290462080682,
+      "precontact_min_applied_eta": 0.7047265137774934
+    },
+    {
+      "task_reward": -100.00447269738622,
+      "manual_style": -1.545463658998309,
+      "outcome": "early_contact",
+      "deadline_terminal": false,
+      "gate_active": false,
+      "applied_amplitude": 0.0,
+      "applied_effectiveness": [
+        0.9996455208875719,
+        0.9996575349376399,
+        0.705557933883457,
+        0.9996487960975392
+      ],
+      "mission_success": false,
+      "stable_landing": false,
+      "waypoint_reached": false,
+      "descent_started": false,
+      "exposed": true,
+      "level": 0.295,
+      "motor": 2,
+      "episode_steps": 330,
+      "tracking_rmse": 0.7638932767336528,
+      "mean_gate": 0.0,
+      "requested_gate": 0.0,
+      "effort": 0.0,
+      "gate_variation": 0.0,
+      "guard_off_fraction": 1.0,
+      "saturation": 0.05075757575757576,
+      "max_tilt": 0.393787482228829,
+      "distance_to_goal": 0.9193113805332767,
+      "first_contact": null,
+      "stable_seconds": 0.0,
+      "terminal_position": [
+        0.5644227048036327,
+        0.6859466871758212,
+        0.05183983631910417
+      ],
+      "terminal_velocity": [
+        -0.03332025871665572,
+        -0.018807857170513444,
+        -0.19456835520375557
+      ],
+      "terminal_angular_velocity": [
+        0.0026688622709104466,
+        -0.00164876221194882,
+        -0.0012302095647432755
+      ],
+      "eta_mae": 0.0029686637219232177,
+      "estimated_eta": [
+        0.9996455208875719,
+        0.9996575349376399,
+        0.705557933883457,
+        0.9996487960975392
+      ],
+      "true_eta": [
+        1.0,
+        1.0,
+        0.7050000000000001,
+        1.0
+      ],
+      "failed_motor_eta_mae": 0.009108794720521623,
+      "first_estimate_within_2pct_seconds": 0.375,
+      "gate_prefault": 0.0,
+      "gate_postfault": 0.0,
+      "pre_fault_false_alarm_ticks": 0,
+      "seed": 528006,
+      "descent_paused_seconds": 0.0,
+      "descent_readiness_enabled": false,
+      "explicit_gate_rejections": 0,
+      "q_delta_energy": 0.0,
+      "configuration": {
+        "estimator": "original",
+        "readiness": false,
+        "emergency": "legacy",
+        "reserve": 0.005,
+        "intervention": "residual",
+        "gate_mode": "learned",
+        "gate_threshold": 0.0,
+        "noise_multiplier": 1.0,
+        "fault_clock": null,
+        "physics_hz": 240,
+        "contact_hz": 960,
+        "solver_iterations": 200,
+        "solver_residual": 1e-12,
+        "sensor_model": "shared_velocity_gyro",
+        "judge_path": null
+      },
+      "applied_eta_mae": 0.002968663721923218,
+      "applied_failed_motor_eta_mae": 0.009108794720521623,
+      "requested_on_fraction": 0.0,
+      "applied_on_fraction": 0.0,
+      "effectual_fraction": 0.0,
+      "estimated_95pct_coverage": 0.9311740890688259,
+      "precontact_trace_available": false
+    },
+    {
+      "task_reward": 99.99586868237758,
+      "manual_style": -0.001653923168717402,
+      "outcome": "stable_landing",
+      "deadline_terminal": false,
+      "gate_active": false,
+      "applied_amplitude": 0.0,
+      "applied_effectiveness": [
+        0.9995455616395366,
+        0.705856362735014,
+        0.9995455886705206,
+        0.9995373872652666
+      ],
+      "mission_success": true,
+      "stable_landing": true,
+      "waypoint_reached": true,
+      "descent_started": true,
+      "exposed": true,
+      "level": 0.295,
+      "motor": 1,
+      "episode_steps": 564,
+      "tracking_rmse": 0.3331478336416707,
+      "mean_gate": 0.0,
+      "requested_gate": 0.0,
+      "effort": 0.0,
+      "gate_variation": 0.0,
+      "guard_off_fraction": 1.0,
+      "saturation": 0.06959219858156028,
+      "max_tilt": 0.3574096110317753,
+      "distance_to_goal": 0.013131761523397126,
+      "first_contact": {
+        "vertical_speed": 0.17974239652372398,
+        "horizontal_speed": 0.002832627763678627,
+        "tilt": 0.0013656622977396466,
+        "angular_speed": 0.027937195541500533,
+        "radius": 0.01305850043306756,
+        "angular_velocity": [
+          0.0013709984204746863,
+          0.0279024948247755,
+          -0.00024091618556993196
+        ],
+        "body_angular_velocity": [
+          0.001317236086808046,
+          0.027904729377985965,
+          -0.00027903791322134223
+        ],
+        "velocity": [
+          -0.0027417009154016127,
+          -0.0007119382965179907,
+          -0.17974239652372398
+        ],
+        "position": [
+          1.5534524127446947,
+          0.6249185828114379,
+          0.014457955036213098
+        ]
+      },
+      "stable_seconds": 1.0,
+      "terminal_position": [
+        1.5534267857101287,
+        0.6248488042247635,
+        0.01348999880480555
+      ],
+      "terminal_velocity": [
+        1.5803311022135134e-08,
+        -1.14467232484607e-08,
+        2.645458331562711e-11
+      ],
+      "terminal_angular_velocity": [
+        -3.758918679676456e-10,
+        -3.376485122492131e-10,
+        -7.324860334415347e-07
+      ],
+      "eta_mae": 0.0018796445875866395,
+      "estimated_eta": [
+        0.9995455616395366,
+        0.705856362735014,
+        0.9995455886705206,
+        0.9995373872652666
+      ],
+      "true_eta": [
+        1.0,
+        0.7050000000000001,
+        1.0,
+        1.0
+      ],
+      "failed_motor_eta_mae": 0.0046300303337685565,
+      "first_estimate_within_2pct_seconds": 0.375,
+      "gate_prefault": 0.0,
+      "gate_postfault": 0.0,
+      "pre_fault_false_alarm_ticks": 0,
+      "seed": 528007,
+      "descent_paused_seconds": 0.0,
+      "descent_readiness_enabled": false,
+      "explicit_gate_rejections": 0,
+      "q_delta_energy": 0.0,
+      "configuration": {
+        "estimator": "original",
+        "readiness": false,
+        "emergency": "legacy",
+        "reserve": 0.005,
+        "intervention": "residual",
+        "gate_mode": "learned",
+        "gate_threshold": 0.0,
+        "noise_multiplier": 1.0,
+        "fault_clock": null,
+        "physics_hz": 240,
+        "contact_hz": 960,
+        "solver_iterations": 200,
+        "solver_residual": 1e-12,
+        "sensor_model": "shared_velocity_gyro",
+        "judge_path": null
+      },
+      "applied_eta_mae": 0.0018796445875866395,
+      "applied_failed_motor_eta_mae": 0.0046300303337685565,
+      "requested_on_fraction": 0.0,
+      "applied_on_fraction": 0.0,
+      "effectual_fraction": 0.0,
+      "estimated_95pct_coverage": 0.9648033126293996,
+      "precontact_trace_available": true,
+      "precontact_requested_on_fraction": 0.0,
+      "precontact_applied_on_fraction": 0.0,
+      "precontact_mean_amplitude": 0.0,
+      "precontact_max_body_yaw_rate": 0.019884291255276635,
+      "precontact_min_applied_eta": 0.7048130364572789
+    }
+  ],
+  "successes": 5,
+  "cases": 8,
+  "scope": "Reproducibility check on validation routes;not additional independent evidence"
+}

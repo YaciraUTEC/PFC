@@ -1,0 +1,10 @@
+{
+  "architecture": "lstm",
+  "seed": 97,
+  "updates": 400,
+  "historical_loss": true,
+  "bit_identical": true,
+  "max_parameter_error": 0.0,
+  "seconds": 8.126489400863647,
+  "scope": "Auxiliary software reproducibility only;does not change or replace any training pilot or principal policy."
+}

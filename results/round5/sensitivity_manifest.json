@@ -1,0 +1,266 @@
+[
+  {
+    "id": "production_baseline_original",
+    "path": null,
+    "config": {
+      "estimator": "original",
+      "readiness": false,
+      "emergency": "legacy",
+      "reserve": 0.005
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "baseline"
+  },
+  {
+    "id": "production_baseline_observer_only",
+    "path": null,
+    "config": {
+      "estimator": "adaptive",
+      "readiness": false,
+      "emergency": "legacy",
+      "reserve": 0.005
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "baseline"
+  },
+  {
+    "id": "production_baseline_selected",
+    "path": null,
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "baseline"
+  },
+  {
+    "id": "family_residual_lstm",
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\lstm\\seed_101\\best.pt",
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003,
+      "intervention": "residual"
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "residual",
+    "seed": 101
+  },
+  {
+    "id": "family_residual_mamba",
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba\\seed_101\\best.pt",
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003,
+      "intervention": "residual"
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "residual",
+    "seed": 101
+  },
+  {
+    "id": "family_residual_mamba2",
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba2\\seed_101\\best.pt",
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003,
+      "intervention": "residual"
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "residual",
+    "seed": 101
+  },
+  {
+    "id": "family_residual_mamba3",
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\mamba3\\seed_101\\best.pt",
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003,
+      "intervention": "residual"
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "residual",
+    "seed": 101
+  },
+  {
+    "id": "family_residual_gtrxl",
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\gtrxl\\seed_101\\best.pt",
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003,
+      "intervention": "residual"
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "residual",
+    "seed": 101
+  },
+  {
+    "id": "family_residual_ltc",
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\models\\ltc\\seed_101\\best.pt",
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003,
+      "intervention": "residual"
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "residual",
+    "seed": 101
+  },
+  {
+    "id": "family_observer_lstm",
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\lstm\\seed_101\\bc.pt",
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003,
+      "intervention": "effectiveness"
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "observer",
+    "seed": 101
+  },
+  {
+    "id": "family_observer_mamba",
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba\\seed_101\\bc.pt",
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003,
+      "intervention": "effectiveness"
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "observer",
+    "seed": 101
+  },
+  {
+    "id": "family_observer_mamba2",
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba2\\seed_101\\bc.pt",
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003,
+      "intervention": "effectiveness"
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "observer",
+    "seed": 101
+  },
+  {
+    "id": "family_observer_mamba3",
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\mamba3\\seed_101\\bc.pt",
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003,
+      "intervention": "effectiveness"
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "observer",
+    "seed": 101
+  },
+  {
+    "id": "family_observer_gtrxl",
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\gtrxl\\seed_101\\bc.pt",
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003,
+      "intervention": "effectiveness"
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "observer",
+    "seed": 101
+  },
+  {
+    "id": "family_observer_ltc",
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\observers\\ltc\\seed_101\\bc.pt",
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003,
+      "intervention": "effectiveness"
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "observer",
+    "seed": 101
+  },
+  {
+    "id": "family_reward_csil",
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\csil\\seed_101\\best.pt",
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003,
+      "intervention": "residual"
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "reward",
+    "seed": 101
+  },
+  {
+    "id": "family_reward_meirl",
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\meirl\\seed_101\\best.pt",
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003,
+      "intervention": "residual"
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "reward",
+    "seed": 101
+  },
+  {
+    "id": "family_reward_rime",
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\reward_models\\rime\\seed_101\\best.pt",
+    "config": {
+      "estimator": "adaptive",
+      "readiness": true,
+      "emergency": "damped",
+      "reserve": 0.003,
+      "intervention": "residual"
+    },
+    "threshold": 0.0,
+    "shadow": false,
+    "kind": "reward",
+    "seed": 101
+  }
+]

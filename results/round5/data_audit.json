@@ -1,0 +1,13 @@
+{
+  "episodes": 1920,
+  "transitions": 1194194,
+  "successes": 1812,
+  "train_routes": 48,
+  "validation_routes": 12,
+  "paired_proposals": 61622,
+  "residual_positive_labels": 262,
+  "observer_positive_labels": 284,
+  "train_test_disjoint": true,
+  "transition_chain_verified": true,
+  "executed_actions_separate_from_teacher_labels": true
+}

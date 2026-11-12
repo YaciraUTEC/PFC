@@ -1,0 +1,21 @@
+{
+  "seconds": 1552.0451900959015,
+  "models": [
+    {
+      "id": "baseline_original",
+      "seconds": 837.1470317840576,
+      "cases": 5000
+    },
+    {
+      "id": "baseline_observer_only",
+      "seconds": 921.4633541107178,
+      "cases": 5000
+    },
+    {
+      "id": "baseline_selected",
+      "seconds": 709.6016426086426,
+      "cases": 5000
+    }
+  ],
+  "frozen_verified": true
+}

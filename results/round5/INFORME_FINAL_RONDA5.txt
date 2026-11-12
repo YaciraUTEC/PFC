@@ -1,0 +1,296 @@
+EVALUACIÓN FINAL RONDA 5 — CONTROL DE ATERRIZAJE CON FALLA DE UN MOTOR
+Generado: 2026-11-12T22:09:57.579613+00:00
+
+RECOMENDACIÓN CONCRETA: baseline_original
+Referencia estructurada aceptada: baseline_original
+Configuración: {"emergency": "legacy", "estimator": "original", "readiness": false, "reserve": 0.005}
+Ningún candidato aprendido superó todas las condiciones de incorporación. La recomendación es el controlador estructurado indicado, sin compensación neuronal.
+Esta decisión queda cerrada para el presupuesto y la distribución evaluados; no depende de completar otro entrenamiento. No equivale a una garantía de vuelo real ni demuestra inferioridad universal de una arquitectura.
+
+1. CONFIRMACIÓN INDEPENDIENTE Y REGLA DE ADOPCIÓN
+Jerarquía fijada antes de prueba: confirmar primero el estimador solo frente al controlador anterior;el perfil completo debe mejorar a esa referencia ya aceptada para incorporar descenso/frenado/reserva.Las redes deben superar finalmente a la referencia estructurada aceptada.Se cubren como máximo36extremos de las comparaciones necesarias,conservando la corrección simultánea predeclarada.
+1000 geometrías nuevas por controlador; en cada una se probaron 28%,29% y29.5% estimados, un nivel leve preseleccionado uniformemente entre0..25% y un nivel con efectividad exacta. 5000 vuelos por controlador. Modelos y compuertas se eligieron solo con validación.
+El controlador debe mejorar el resultado severo con límite inferior pareado>0, mantener el límite superior del daño condicional<1% en ambas mezclas protegidas, no perder éxito neto al duplicar ruido ni anticipar falla, y cumplir latencia p95≤20.83ms. Corrección para36 extremos; bootstrap primario100000remuestras por rutas; los intervalos de familias se calculan por separado.
+baseline_original: 2538/3000 = 84.60%
+  28%: 984/1000 = 98.40%
+  29%: 888/1000 = 88.80%
+  29.5%: 666/1000 = 66.60%
+baseline_observer_only: 2797/3000 = 93.23%
+  28%: 1000/1000 = 100.00%
+  29%: 966/1000 = 96.60%
+  29.5%: 831/1000 = 83.10%
+baseline_selected: 2842/3000 = 94.73%
+  28%: 1000/1000 = 100.00%
+  29%: 970/1000 = 97.00%
+  29.5%: 872/1000 = 87.20%
+baseline_observer_only/baseline_original: ganancia +8.63pp; intervalo [+6.77,+10.53]pp; adopción=False.
+  mild: 0 daños/1000 éxitos de referencia; límite superior 0.66%.
+  exact: 0 daños/1000 éxitos de referencia; límite superior 0.66%.
+  Sensibilidad: {"noise2": -0.020833333333333332, "clock4": 0.0}; cumple=False; latencia cumple=True.
+baseline_selected/baseline_original: ganancia +10.13pp; intervalo [+8.20,+12.10]pp; adopción=False.
+  mild: 0 daños/1000 éxitos de referencia; límite superior 0.66%.
+  exact: 0 daños/1000 éxitos de referencia; límite superior 0.66%.
+  Sensibilidad: {"noise2": -0.22916666666666666, "clock4": 0.052083333333333336}; cumple=False; latencia cumple=True.
+baseline_selected/baseline_observer_only: ganancia +1.50pp; intervalo [+0.33,+2.67]pp; adopción=False.
+  mild: 0 daños/1000 éxitos de referencia; límite superior 0.66%.
+  exact: 0 daños/1000 éxitos de referencia; límite superior 0.66%.
+  Sensibilidad: {"noise2": -0.20833333333333334, "clock4": 0.052083333333333336}; cumple=False; latencia cumple=True.
+
+RESULTADO DE ROBUSTEZ QUE DETERMINA LA RECOMENDACIÓN
+Perfil | prueba | éxito en 0% | éxito en 25% | éxito en 29.5% | éxito en 29.6%
+baseline_original | noise2 | 24/24 | 24/24 | 14/24 | 8/24
+baseline_original | clock4 | 24/24 | 24/24 | 2/24 | 0/24
+baseline_observer_only | noise2 | 24/24 | 24/24 | 13/24 | 7/24
+baseline_observer_only | clock4 | 24/24 | 24/24 | 2/24 | 0/24
+baseline_selected | noise2 | 24/24 | 24/24 | 0/24 | 0/24
+baseline_selected | clock4 | 24/24 | 24/24 | 6/24 | 1/24
+noise2 duplica el ruido de velocidad y giro;clock4 introduce la falla a los4s. Son24rutas nuevas por nivel, compartidas entre controladores. Estas rutas son distintas de las1000de confirmación: comparar perfiles dentro de cada prueba;no interpretar los porcentajes de ambos conjuntos como un antes/después sobre los mismos vuelos.
+Perfil completo con ruido doble cerca del límite: 48/48 agotaron el plazo de30s;descenso pausado en promedio26.77s (rango23.85–28.06s);velocidad angular terminal media4.36rad/s. La supervisión evita continuar el descenso mientras el vehículo sigue sin estar listo,pero en estos casos no consigue completar la tarea. No es un fallo de latencia ni una intervención neuronal: estas pruebas usan solo PID.
+baseline_observer_only/baseline_original: superó el criterio estadístico de ganancia y las mezclas protegidas;no supera la regla adicional de no perder éxito neto en sensibilidad,fijada antes de ver la prueba.
+baseline_selected/baseline_original: superó el criterio estadístico de ganancia y las mezclas protegidas;no supera la regla adicional de no perder éxito neto en sensibilidad,fijada antes de ver la prueba.
+baseline_selected/baseline_observer_only: superó el criterio estadístico de ganancia y las mezclas protegidas;no supera la regla adicional de no perder éxito neto en sensibilidad,fijada antes de ver la prueba.
+Estimador solo frente a referencia con ruido doble: 29.5%: -1 aterrizajes de 24, 29.6%: -1 aterrizajes de 24. Esta muestra pequeña no prueba inferioridad estadística universal;la decisión aplica la regla de incorporación acordada sin cambiarla después de ver el resultado.
+La recomendación general de esta evaluación es baseline_original. La ganancia nominal y el cumplimiento de robustez se informan por separado.
+
+Reutilización exacta de simulaciones: se reproduce la red paso a paso sobre observaciones de la trayectoria base, con memoria persistente y CPUfloat64. Solo si ejecuta la acción canónica nula en todos los pasos se reutiliza ese vuelo del PID. Cualquier acción distinta obliga a simular de nuevo el caso completo con la red. No se acorta el horizonte ni se omiten casos. Equivalencia, casos mixtos, contexto de efectividad, integridad y concurrencia se verifican con las seis arquitecturas. No se atribuye una mejora neuronal a esos vuelos sin intervención.
+La cota de daño se refiere a la mezcla predeclarada de severidades, condicionada a que la referencia aterrice bien. No certifica cada severidad o región de estados por separado. 100% observado significa todos los vuelos de esta muestra; no perfección fuera de ella.
+
+2. TODAS LAS ARQUITECTURAS — CORRECCIÓN DIRECTA Y DE EFECTIVIDAD
+Cada porcentaje por arquitectura/nivel combina5 semillas y60 rutas (300 vuelos); las mismas rutas se emparejan con el PID de60 vuelos. Las semillas no son300 geometrías independientes.
+CORRECCIÓN DIRECTA DE MOTORES
+Arquitectura | E25 raw | E28 raw | E29 raw | E29.5 raw | E29.5 elegida | Exacta raw(promedio0..29.5) | ON raw en29.5
+LSTM          | 100.00% | 100.00% |  95.00% |  84.33% |  88.33% | 100.00% |  11.10%
+Mamba         | 100.00% | 100.00% |  95.00% |  85.00% |  88.33% | 100.00% |   9.46%
+Mamba-2       | 100.00% | 100.00% |  95.00% |  85.67% |  88.33% |  99.97% |  10.23%
+Mamba-3 SISO  | 100.00% | 100.00% |  95.00% |  84.67% |  88.33% | 100.00% |   6.76%
+GTrXL         | 100.00% | 100.00% |  95.00% |  84.00% |  88.33% | 100.00% |   9.63%
+LTC           | 100.00% | 100.00% |  95.33% |  84.67% |  88.33% | 100.00% |  10.36%
+
+CORRECCIÓN DE EFECTIVIDAD
+Arquitectura | E25 raw | E28 raw | E29 raw | E29.5 raw | E29.5 elegida | Exacta raw(promedio0..29.5) | ON raw en29.5
+LSTM          | 100.00% | 100.00% |  95.00% |  85.67% |  88.33% | 100.00% |   7.46%
+Mamba         | 100.00% | 100.00% |  95.00% |  88.33% |  88.33% | 100.00% |   8.01%
+Mamba-2       | 100.00% | 100.00% |  95.00% |  88.00% |  88.33% | 100.00% |   8.41%
+Mamba-3 SISO  | 100.00% | 100.00% |  95.00% |  89.00% |  88.33% | 100.00% |   8.47%
+GTrXL         | 100.00% | 100.00% |  95.00% |  89.67% |  88.33% | 100.00% |   8.27%
+LTC           | 100.00% | 100.00% |  95.00% |  86.00% |  88.33% | 100.00% |   9.39%
+
+Familia | Ganancia severa raw sobre PID actualizado (pp) | Intervalo simultáneo entre15 familias
+residual_lstm            | -1.33 | [-3.71,+1.04]
+residual_mamba           | -1.11 | [-3.25,+1.03]
+residual_mamba2          | -0.89 | [-2.67,+0.89]
+residual_mamba3          | -1.22 | [-3.35,+0.91]
+residual_gtrxl           | -1.44 | [-3.78,+0.89]
+residual_ltc             | -1.11 | [-3.33,+1.10]
+observer_lstm            | -0.89 | [-3.03,+1.25]
+observer_mamba           | +0.00 | [-2.50,+2.50]
+observer_mamba2          | -0.11 | [-2.57,+2.35]
+observer_mamba3          | +0.22 | [-1.89,+2.34]
+observer_gtrxl           | +0.44 | [-1.73,+2.62]
+observer_ltc             | -0.78 | [-3.30,+1.74]
+reward_csil              | -1.22 | [-3.44,+0.99]
+reward_meirl             | -1.33 | [-3.71,+1.04]
+reward_rime              | -1.33 | [-3.63,+0.97]
+Configuraciones fijadas en validación; los campos de configuración comunes no utilizados por una arquitectura no se interpretan como mecanismos activos:
+LSTM: 78796 parámetros totales (38752 del codificador); configuración={'arch': 'lstm', 'width': 64, 'layers': 1, 'state': 32, 'head': 16, 'memory': 64, 'ode': 3, 'gate_bias': 2.0, 'lr': 5e-05, 'gae_lambda': 0.97}.
+Mamba: 131852 parámetros totales (85600 del codificador); configuración={'arch': 'mamba', 'width': 96, 'layers': 1, 'state': 32, 'head': 16, 'memory': 64, 'ode': 3, 'gate_bias': 2.0, 'lr': 3.5e-05, 'gae_lambda': 0.97}.
+Mamba-2: 124446 parámetros totales (78194 del codificador); configuración={'arch': 'mamba2', 'width': 96, 'layers': 1, 'state': 64, 'head': 32, 'memory': 64, 'ode': 3, 'gate_bias': 2.0, 'lr': 3.5e-05, 'gae_lambda': 0.97}.
+Mamba-3 SISO: 76892 parámetros totales (36848 del codificador); configuración={'arch': 'mamba3', 'width': 64, 'layers': 1, 'state': 32, 'head': 16, 'memory': 64, 'ode': 3, 'gate_bias': 2.0, 'lr': 0.0001, 'gae_lambda': 0.97}.
+GTrXL: 407276 parámetros totales (361024 del codificador); configuración={'arch': 'gtrxl', 'width': 96, 'layers': 2, 'state': 32, 'head': 16, 'memory': 128, 'ode': 3, 'gate_bias': 1.0, 'lr': 2.5e-05, 'gae_lambda': 0.97}.
+LTC: 86924 parámetros totales (46880 del codificador); configuración={'arch': 'ltc', 'width': 64, 'layers': 1, 'state': 32, 'head': 16, 'memory': 64, 'ode': 3, 'gate_bias': 2.0, 'lr': 5e-05, 'gae_lambda': 0.97}.
+LSTM: memoria por episodio y sesgo de olvido1. Mamba: estado selectivo y caché convolucional persistentes. Mamba-2: estado por cabezas y escalas de tiempo sin decaimiento de pesos. Mamba-3 SISO: fase rotatoria y recurrencia trapezoidal persistentes. GTrXL: memoria causal deslizante y compuertas GRU. LTC: integración con dt real1/48, restricciones implícitas positivas y número explícito de subpasos. Se usa calentamiento recurrente y critic separado del gradiente del actor en todas.
+Se usan implementaciones portables: Mamba-3 está limitado a SISO. La comparación no mide todos los mecanismos ni los núcleos acelerados oficiales de cada publicación. El presupuesto de ajuste por familia es pequeño y uniforme; no demuestra su óptimo global.
+
+3. IMITACIÓN INICIAL, AFINADO PPO Y RECOMPENSAS APRENDIDAS
+BC significa imitación inicial con datos agregados de estados visitados por alumnos. Todos los métodos de recompensa parten exactamente del mismo BC-LSTM de su semilla; el PPO manual utiliza la recompensa diseñada del aterrizaje. CSIL es imitación regularizada; MEIRL usa un conjunto de modelos de dinámica; RIME aprende preferencias automáticas de segmentos. Son adaptaciones locales, no reproducciones completas de los resultados publicados ni tres algoritmos IRL equivalentes.
+Modelo | E28 | E29 | E29.5 | Exacta media
+LSTM solo BC | 100.00% | 95.00% | 84.33% | 100.00%
+LSTM BC+PPO manual | 100.00% | 95.00% | 84.33% | 100.00%
+CSIL | 100.00% | 95.00% | 84.67% | 100.00%
+MEIRL | 100.00% | 95.00% | 84.33% | 100.00%
+RIME | 100.00% | 95.00% | 84.33% | 100.00%
+Todas las arquitecturas residuales en29.5% estimado | solo BC | mejor PPO reservado | final PPO | semillas con mejor punto=BC inicial
+LSTM | 84.33% | 84.33% | 84.33% | 4/5
+Mamba | 84.67% | 85.00% | 84.33% | 2/5
+Mamba-2 | 85.00% | 85.67% | 84.67% | 4/5
+Mamba-3 SISO | 85.00% | 84.67% | 86.00% | 2/5
+GTrXL | 83.33% | 84.00% | 84.67% | 4/5
+LTC | 84.67% | 84.67% | 83.67% | 3/5
+Para las seis redes se publican además los puntos finales del presupuesto y los mejores puntos intermedios elegidos en validación; no se selecciona retrospectivamente un checkpoint por su curva de prueba.
+
+4. CUÁNDO INTERVENIR: COMPUERTA, PROPUESTA Y VETO
+La acción tiene dirección, magnitud y decisión binaria explícita. Al apagarse se ejecuta exactamente el PID; los parámetros continuos inactivos no reciben gradientes de probabilidad espurios. El maestro evalúa una ráfaga de12 pasos y después el resto de la misión con PID, exigiendo beneficio mínimo absoluto y relativo. La compuerta se entrena con clases equilibradas porque los beneficios son raros. La propuesta se conserva aunque la compuerta interna la rechace, para permitir que un juez independiente decida.
+Opciones comparadas antes de prueba: compuerta aprendida, umbral mayor, veto conservador, propuesta autorizada por juez y abstención completa. El juez usa información medida; su calibración empírica no es una prueba formal de seguridad.
+residual_lstm: off; pérdidas en pantalla protegida=0; solo PID, no se atribuye éxito a la red
+residual_mamba: off; pérdidas en pantalla protegida=0; solo PID, no se atribuye éxito a la red
+residual_mamba2: off; pérdidas en pantalla protegida=0; solo PID, no se atribuye éxito a la red
+residual_mamba3: off; pérdidas en pantalla protegida=0; solo PID, no se atribuye éxito a la red
+residual_gtrxl: off; pérdidas en pantalla protegida=0; solo PID, no se atribuye éxito a la red
+residual_ltc: off; pérdidas en pantalla protegida=0; solo PID, no se atribuye éxito a la red
+observer_lstm: off; pérdidas en pantalla protegida=0; solo PID, no se atribuye éxito a la red
+observer_mamba: off; pérdidas en pantalla protegida=0; solo PID, no se atribuye éxito a la red
+observer_mamba2: off; pérdidas en pantalla protegida=0; solo PID, no se atribuye éxito a la red
+observer_mamba3: off; pérdidas en pantalla protegida=0; solo PID, no se atribuye éxito a la red
+observer_gtrxl: off; pérdidas en pantalla protegida=0; solo PID, no se atribuye éxito a la red
+observer_ltc: off; pérdidas en pantalla protegida=0; solo PID, no se atribuye éxito a la red
+reward_csil: off; pérdidas en pantalla protegida=0; solo PID, no se atribuye éxito a la red
+reward_meirl: off; pérdidas en pantalla protegida=0; solo PID, no se atribuye éxito a la red
+reward_rime: off; pérdidas en pantalla protegida=0; solo PID, no se atribuye éxito a la red
+Datos de entrenamiento/calibración: 27217 consultas-modo; 5122 continuaciones base fallidas y 41 con alguna propuesta capaz de rescatar el aterrizaje. No son vuelos o geometrías independientes ni resultados de prueba final.
+Propuestas reservadas gtrxl/effectiveness: 245, beneficios=0, ganancias negativas=182, rescates binarios=0, pérdidas binarias=0.
+Propuestas reservadas lstm/effectiveness: 245, beneficios=0, ganancias negativas=175, rescates binarios=0, pérdidas binarias=0.
+Propuestas reservadas ltc/effectiveness: 245, beneficios=0, ganancias negativas=175, rescates binarios=0, pérdidas binarias=0.
+Propuestas reservadas mamba/effectiveness: 245, beneficios=0, ganancias negativas=178, rescates binarios=0, pérdidas binarias=0.
+Propuestas reservadas mamba2/effectiveness: 244, beneficios=2, ganancias negativas=174, rescates binarios=0, pérdidas binarias=0.
+Propuestas reservadas mamba3/effectiveness: 244, beneficios=1, ganancias negativas=177, rescates binarios=0, pérdidas binarias=0.
+Propuestas reservadas gtrxl/residual: 245, beneficios=0, ganancias negativas=136, rescates binarios=0, pérdidas binarias=0.
+Propuestas reservadas lstm/residual: 245, beneficios=1, ganancias negativas=125, rescates binarios=0, pérdidas binarias=0.
+Propuestas reservadas ltc/residual: 245, beneficios=2, ganancias negativas=139, rescates binarios=0, pérdidas binarias=0.
+Propuestas reservadas mamba/residual: 245, beneficios=2, ganancias negativas=110, rescates binarios=0, pérdidas binarias=0.
+Propuestas reservadas mamba2/residual: 243, beneficios=0, ganancias negativas=153, rescates binarios=0, pérdidas binarias=0.
+Propuestas reservadas mamba3/residual: 244, beneficios=2, ganancias negativas=160, rescates binarios=0, pérdidas binarias=0.
+Diagnóstico de propuestas de los75modelos ya entrenados:4rutas reservadas por semilla,29.5%estimado;consulta enarranque,1segundo,trasfalla,iniciodedescensoyaproximación.Se compara su propia propuestaON12ticks con cero,y luego PID hasta terminar.No es el controlador desplegado ni un techo de todo control posible.
+residual_lstm: consultas=93, propuestas beneficiosas=0, propuestas que rescatan=0, propuestas que perjudican=0; TP=0,FP=25,FN=0,TN=68; precisiónON=0.0;recall=None.
+residual_mamba: consultas=94, propuestas beneficiosas=1, propuestas que rescatan=1, propuestas que perjudican=0; TP=1,FP=20,FN=0,TN=73; precisiónON=0.047619047619047616;recall=1.0.
+residual_mamba2: consultas=91, propuestas beneficiosas=1, propuestas que rescatan=1, propuestas que perjudican=0; TP=1,FP=22,FN=0,TN=68; precisiónON=0.043478260869565216;recall=1.0.
+residual_mamba3: consultas=92, propuestas beneficiosas=0, propuestas que rescatan=0, propuestas que perjudican=0; TP=0,FP=10,FN=0,TN=82; precisiónON=0.0;recall=None.
+residual_gtrxl: consultas=92, propuestas beneficiosas=1, propuestas que rescatan=1, propuestas que perjudican=0; TP=1,FP=24,FN=0,TN=67; precisiónON=0.04;recall=1.0.
+residual_ltc: consultas=95, propuestas beneficiosas=0, propuestas que rescatan=0, propuestas que perjudican=0; TP=0,FP=25,FN=0,TN=70; precisiónON=0.0;recall=None.
+observer_lstm: consultas=99, propuestas beneficiosas=1, propuestas que rescatan=0, propuestas que perjudican=0; TP=1,FP=27,FN=0,TN=71; precisiónON=0.03571428571428571;recall=1.0.
+observer_mamba: consultas=100, propuestas beneficiosas=0, propuestas que rescatan=0, propuestas que perjudican=0; TP=0,FP=26,FN=0,TN=74; precisiónON=0.0;recall=None.
+observer_mamba2: consultas=99, propuestas beneficiosas=0, propuestas que rescatan=0, propuestas que perjudican=0; TP=0,FP=26,FN=0,TN=73; precisiónON=0.0;recall=None.
+observer_mamba3: consultas=98, propuestas beneficiosas=1, propuestas que rescatan=1, propuestas que perjudican=0; TP=1,FP=20,FN=0,TN=77; precisiónON=0.047619047619047616;recall=1.0.
+observer_gtrxl: consultas=98, propuestas beneficiosas=1, propuestas que rescatan=0, propuestas que perjudican=0; TP=1,FP=25,FN=0,TN=72; precisiónON=0.038461538461538464;recall=1.0.
+observer_ltc: consultas=96, propuestas beneficiosas=0, propuestas que rescatan=0, propuestas que perjudican=0; TP=0,FP=27,FN=0,TN=69; precisiónON=0.0;recall=None.
+reward_csil: consultas=94, propuestas beneficiosas=0, propuestas que rescatan=0, propuestas que perjudican=0; TP=0,FP=25,FN=0,TN=69; precisiónON=0.0;recall=None.
+reward_meirl: consultas=93, propuestas beneficiosas=1, propuestas que rescatan=1, propuestas que perjudican=0; TP=1,FP=25,FN=0,TN=67; precisiónON=0.038461538461538464;recall=1.0.
+reward_rime: consultas=95, propuestas beneficiosas=0, propuestas que rescatan=0, propuestas que perjudican=0; TP=0,FP=26,FN=0,TN=69; precisiónON=0.0;recall=None.
+Juez: {"seconds": 22.172343254089355, "train_pairs": 44057, "validation_pairs": 17565, "calibration": 56.51914596557617, "heldout_lower_bound_coverage": 0.9899801015853882, "heldout_acceptance": 0.006831767503172159, "heldout_bound_only_acceptance": 0.006831767503172159, "heldout_support_fraction": 0.9977227449417114, "heldout_nonbenefit_rate_among_accepted": 0.30000001192092896, "heldout_harm_rate_among_accepted": 0.125, "regression_target": "Paired full-mission gain minus max(0.015,3percent absolute base cost)", "balanced_training": {"beneficial": 976, "harmful": 43075, "neutral": 6}, "calibration_quantile": 0.99, "interpretation": "Marginal heldout calibration under this proposal distribution,not a deployment guarantee or conditional near-limit bound."}
+
+5. ABLACIONES Y CAUSAS OBSERVADAS
+Variante | E28 | E29 | E29.5 | E29.6 | E30 | E35 | E50
+original | 98.33% | 88.33% | 71.67% | 21.67% | 0.00% | 0.00% | 0.00%
+selected | 100.00% | 95.00% | 88.33% | 81.67% | 0.00% | 0.00% | 0.00%
+balanced_governor | 100.00% | 96.67% | 91.67% | 90.00% | 0.00% | 0.00% | 0.00%
+ready_only | 98.33% | 88.33% | 71.67% | 6.67% | 0.00% | 0.00% | 0.00%
+observer_only | 100.00% | 96.67% | 86.67% | 5.00% | 0.00% | 0.00% | 0.00%
+yaw_only | 98.33% | 88.33% | 71.67% | 21.67% | 0.00% | 0.00% | 0.00%
+reserve_only | 98.33% | 90.00% | 76.67% | 58.33% | 0.00% | 0.00% | 0.00%
+without_observer | 98.33% | 90.00% | 76.67% | 63.33% | 0.00% | 0.00% | 0.00%
+without_ready | 100.00% | 95.00% | 88.33% | 81.67% | 0.00% | 0.00% | 0.00%
+without_yaw | 100.00% | 95.00% | 90.00% | 78.33% | 0.00% | 0.00% | 0.00%
+without_reserve | 100.00% | 96.67% | 83.33% | 1.67% | 0.00% | 0.00% | 0.00%
+Estimación en29.5% estimado | MAE eta del filtro | MAE eta aplicada | cobertura nominal95% del filtro | fracción con primer error<2% | tiempo condicional(segundos)
+DSLPID anterior | 0.00774590378619049 | 0.00774590378619049 | 0.9445372622781224 | 1.0 | 0.36770833333333336
+DSLPID actualizado | 0.001907432460873136 | 0.001907432460873136 | 0.9955673547054614 | 1.0 | 0.06631944444444444
+LSTM | 0.0020083397909366994 | 0.002055225835855405 | 0.9952771044610411 | 1.0 | 0.06631944444444444
+Mamba | 0.0019641020869481463 | 0.002016556367285085 | 0.9953932929228386 | 1.0 | 0.06631944444444444
+Mamba-2 | 0.0019587522286720967 | 0.0020141591909844047 | 0.9954154090660139 | 1.0 | 0.06631944444444444
+Mamba-3 SISO | 0.0019302074966713375 | 0.001972088572396801 | 0.9954759995253988 | 1.0 | 0.06631944444444444
+GTrXL | 0.001892271004544018 | 0.0019335398264609797 | 0.9955696863406437 | 1.0 | 0.06631944444444444
+LTC | 0.0020397588251630755 | 0.002094922219745341 | 0.9952018237675524 | 1.0 | 0.06631944444444444
+success_rates.csv incluye también MAE de los cuatro motores, amplitud antes/después de la falla, alarmas del filtro antes de la falla, fracción de acciones que modificaron realmente los motores y esfuerzo en velocidades cuadradas normalizadas. Activar la compuerta no equivale necesariamente a cambiar motores cuando la asignación satura.
+La cobertura se mide frente a la efectividad verdadera solo como métrica del filtro base; no es una banda calibrada para la corrección neuronal. El tiempo de recuperación se condiciona a haber alcanzado el error<2%; se informa también su fracción para no ocultar casos censurados.
+ready=supervisión de descenso; observer=estimación adaptativa; yaw=frenado angular en emergencia; reserve=conservación de margen de empuje. Las ablaciones individuales y de retirada permiten observar interacciones, sin asumir efectos aditivos.
+observer_gtrxl: pérdidas pareadas=4; violación angular=0, vertical=0, horizontal=0, radio=0, inclinación=0; pérdidas dominadas por yaw=0; compuerta OFF último segundo=0; desenlaces={'early_contact': 3, 'timeout': 1}
+observer_lstm: pérdidas pareadas=9; violación angular=0, vertical=0, horizontal=0, radio=0, inclinación=0; pérdidas dominadas por yaw=0; compuerta OFF último segundo=0; desenlaces={'early_contact': 8, 'timeout': 1}
+observer_ltc: pérdidas pareadas=11; violación angular=0, vertical=0, horizontal=0, radio=0, inclinación=0; pérdidas dominadas por yaw=0; compuerta OFF último segundo=0; desenlaces={'early_contact': 11}
+observer_mamba: pérdidas pareadas=9; violación angular=0, vertical=0, horizontal=0, radio=0, inclinación=0; pérdidas dominadas por yaw=0; compuerta OFF último segundo=0; desenlaces={'early_contact': 9}
+observer_mamba2: pérdidas pareadas=9; violación angular=0, vertical=0, horizontal=0, radio=0, inclinación=0; pérdidas dominadas por yaw=0; compuerta OFF último segundo=0; desenlaces={'early_contact': 7, 'timeout': 2}
+observer_mamba3: pérdidas pareadas=5; violación angular=0, vertical=0, horizontal=0, radio=0, inclinación=0; pérdidas dominadas por yaw=0; compuerta OFF último segundo=0; desenlaces={'early_contact': 4, 'timeout': 1}
+residual_gtrxl: pérdidas pareadas=13; violación angular=0, vertical=0, horizontal=0, radio=0, inclinación=0; pérdidas dominadas por yaw=0; compuerta OFF último segundo=1; desenlaces={'timeout': 6, 'early_contact': 7}
+residual_lstm: pérdidas pareadas=12; violación angular=0, vertical=0, horizontal=0, radio=0, inclinación=0; pérdidas dominadas por yaw=0; compuerta OFF último segundo=3; desenlaces={'early_contact': 5, 'timeout': 7}
+residual_ltc: pérdidas pareadas=11; violación angular=0, vertical=0, horizontal=0, radio=0, inclinación=0; pérdidas dominadas por yaw=0; compuerta OFF último segundo=3; desenlaces={'early_contact': 2, 'timeout': 9}
+residual_mamba: pérdidas pareadas=10; violación angular=0, vertical=0, horizontal=0, radio=0, inclinación=0; pérdidas dominadas por yaw=0; compuerta OFF último segundo=0; desenlaces={'early_contact': 5, 'timeout': 5}
+residual_mamba2: pérdidas pareadas=8; violación angular=0, vertical=0, horizontal=0, radio=0, inclinación=0; pérdidas dominadas por yaw=0; compuerta OFF último segundo=0; desenlaces={'early_contact': 6, 'timeout': 2}
+residual_mamba3: pérdidas pareadas=11; violación angular=1, vertical=0, horizontal=0, radio=0, inclinación=0; pérdidas dominadas por yaw=1; compuerta OFF último segundo=3; desenlaces={'timeout': 8, 'hard_landing': 1, 'early_contact': 2}
+reward_csil: pérdidas pareadas=11; violación angular=0, vertical=0, horizontal=0, radio=0, inclinación=0; pérdidas dominadas por yaw=0; compuerta OFF último segundo=2; desenlaces={'early_contact': 5, 'timeout': 6}
+reward_meirl: pérdidas pareadas=12; violación angular=0, vertical=0, horizontal=0, radio=0, inclinación=0; pérdidas dominadas por yaw=0; compuerta OFF último segundo=1; desenlaces={'early_contact': 6, 'timeout': 6}
+reward_rime: pérdidas pareadas=12; violación angular=0, vertical=0, horizontal=0, radio=0, inclinación=0; pérdidas dominadas por yaw=0; compuerta OFF último segundo=2; desenlaces={'early_contact': 7, 'timeout': 5}
+Las infracciones se superponen. Compensación OFF antes del contacto no prueba por sí sola un defecto de activación: también puede faltar autoridad o la propuesta puede empeorar el vuelo. Las propuestas pareadas y las ablaciones aportan la evidencia adicional; no se infiere causalidad solo de una traza.
+
+6. LÍMITES Y DEFINICIÓN DE ÉXITO
+Falla expresada como pérdida de RPM de un motor:29.5%RPM implica50.30% de pérdida de empuje de ese motor porque empuje∝RPM². El umbral estático aproximado29.7186% del modelo corresponde a vuelo estacionario normal con equilibrio de momentos; no es un límite universal de descenso transitorio. Se reportan29.6,30,35 y50% aunque fallen. No se cambia la tarea por vuelo giratorio; recuperar con un motor apagado exigiría otro régimen y otro controlador, no más entrenamiento de este mismo objetivo.
+Comprobación con parámetros reales del modelo: masa=0.0300kg; hover=15251.06RPM; máximo=21700RPM; límite estático=29.71860%. En29.5%, la relación empuje equilibrado máximo/peso es1.006230: margen vertical ideal0.623%, e inclinación máxima estática ideal6.379°. No incluye margen dinámico ni error de estimación.
+Antes del primer impacto: velocidad vertical y horizontal≤0.25m/s, inclinación≤12°, velocidad angular≤1rad/s y radio≤0.20m. Después:1segundo de contacto estable, velocidad≤0.10m/s, inclinación≤10°, velocidad angular≤0.5rad/s y altura≤0.055m. Llegar al punto o tocar el suelo no basta. Límite de30s es fallo terminal.
+Todos usan la misma medición ruidosa de velocidad y giro; posición y orientación se consideran medidas exactas. Ruido gaussiano nominal0.002, prueba secundaria al doble. Un solo motor afectado. Toda conclusión es para este simulador, estos sensores, rutas y distribución de falla.
+La precisión de contacto se fijó en960Hz (vuelo240Hz, control48Hz),200iteraciones y residuo1e-12. Se contrastó contra1920Hz/400iteraciones, restauración de estados y replay CPU/GPU. Los cambios numéricos se aplican también a la referencia: no se atribuye su efecto a una red ni se compara directamente el porcentaje nuevo con el histórico de otra precisión/sensor.
+
+7. TIEMPOS Y PRESUPUESTO REAL
+collect_initial: 0 h 26 min 42 s
+bc_pilots: 0 h 06 min 01 s
+collect_dagger: 1 h 07 min 41 s
+hpo: 1 h 37 min 18 s
+runtime_selection: 1 h 53 min 18 s
+actual_proposal_oracle: 0 h 14 min 37 s
+inference_audit: 0 h 08 min 31 s
+final_evaluation: 7 h 52 min 19 s
+confirmation: 0 h 25 min 52 s
+sensitivity: 0 h 15 min 25 s
+recommended_replay: 0 h 00 min 07 s
+latency: 0 h 00 min 13 s
+judge_fit: 0 h 00 min 22 s
+core_engineering_valid_version: 0 h 18 min 11 s
+continuous_governor_validation: 0 h 02 min 53 s
+estimator_only_validation: 0 h 00 min 14 s
+paired_physics_restoration: 0 h 00 min 48 s
+final_unit_suite: 0 h 02 min 21 s
+calendar_elapsed_initial_data_to_reporting: 23 h 34 min 37 s
+full_training_wall_union: 9 h 08 min 22 s
+training_process_seconds_sum: 18 h 10 min 09 s
+El primer ensayo corto de búsqueda se interrumpió y archivó al ampliar el horizonte GAE; no se usó para seleccionar modelos. Los24ensayos posteriores parten de inicialización idéntica dentro de cada arquitectura. Los recibos originales de datos/juez se conservaron sin volver a entrenarlos. Los tiempos por etapa pueden solaparse; el calendario desde el inicio de datos comunes se informa por separado y no incluye la implementación previa.
+Duración individual por método/fase: media y rango entre semillas; incluye simulación y validación según la fase. La suma de procesos no es tiempo de calendario porque hubo dos trabajadores simultáneos.
+residual/gtrxl/bc: n=5, media 0 h 00 min 23 s, rango 0 h 00 min 23 s–0 h 00 min 24 s; validación media 0 h 00 min 00 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 00 s.
+residual/gtrxl/ppo: n=5, media 0 h 28 min 20 s, rango 0 h 27 min 07 s–0 h 32 min 31 s; validación media 0 h 06 min 55 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 04 s.
+residual/lstm/bc: n=5, media 0 h 00 min 12 s, rango 0 h 00 min 09 s–0 h 00 min 24 s; validación media 0 h 00 min 00 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 00 s.
+residual/lstm/ppo: n=5, media 0 h 11 min 45 s, rango 0 h 11 min 28 s–0 h 12 min 09 s; validación media 0 h 02 min 10 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 04 s.
+residual/ltc/bc: n=5, media 0 h 11 min 30 s, rango 0 h 08 min 01 s–0 h 17 min 31 s; validación media 0 h 00 min 00 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 00 s.
+residual/ltc/ppo: n=5, media 0 h 54 min 24 s, rango 0 h 46 min 11 s–1 h 01 min 17 s; validación media 0 h 03 min 52 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 04 s.
+residual/mamba/bc: n=5, media 0 h 00 min 38 s, rango 0 h 00 min 37 s–0 h 00 min 40 s; validación media 0 h 00 min 00 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 00 s.
+residual/mamba/ppo: n=5, media 0 h 16 min 15 s, rango 0 h 16 min 06 s–0 h 16 min 31 s; validación media 0 h 03 min 53 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 03 s.
+residual/mamba2/bc: n=5, media 0 h 01 min 09 s, rango 0 h 01 min 03 s–0 h 01 min 10 s; validación media 0 h 00 min 00 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 00 s.
+residual/mamba2/ppo: n=5, media 0 h 19 min 16 s, rango 0 h 18 min 54 s–0 h 19 min 28 s; validación media 0 h 04 min 38 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 03 s.
+residual/mamba3/bc: n=5, media 0 h 00 min 36 s, rango 0 h 00 min 35 s–0 h 00 min 38 s; validación media 0 h 00 min 00 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 00 s.
+residual/mamba3/ppo: n=5, media 0 h 17 min 43 s, rango 0 h 17 min 08 s–0 h 18 min 24 s; validación media 0 h 03 min 06 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 03 s.
+observer/gtrxl/bc: n=5, media 0 h 00 min 27 s, rango 0 h 00 min 24 s–0 h 00 min 37 s; validación media 0 h 00 min 00 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 00 s.
+observer/lstm/bc: n=5, media 0 h 00 min 09 s, rango 0 h 00 min 07 s–0 h 00 min 14 s; validación media 0 h 00 min 00 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 00 s.
+observer/ltc/bc: n=5, media 0 h 10 min 36 s, rango 0 h 06 min 38 s–0 h 11 min 36 s; validación media 0 h 00 min 00 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 00 s.
+observer/mamba/bc: n=5, media 0 h 01 min 08 s, rango 0 h 01 min 01 s–0 h 01 min 15 s; validación media 0 h 00 min 00 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 00 s.
+observer/mamba2/bc: n=5, media 0 h 01 min 53 s, rango 0 h 01 min 46 s–0 h 01 min 56 s; validación media 0 h 00 min 00 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 00 s.
+observer/mamba3/bc: n=5, media 0 h 00 min 52 s, rango 0 h 00 min 40 s–0 h 00 min 57 s; validación media 0 h 00 min 00 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 00 s.
+reward/csil/ppo: n=5, media 0 h 15 min 07 s, rango 0 h 14 min 14 s–0 h 18 min 23 s; validación media 0 h 02 min 44 s; aprendizaje/carga de recompensa media 0 h 00 min 00 s; preparación media 0 h 00 min 06 s.
+reward/meirl/ppo: n=5, media 0 h 12 min 28 s, rango 0 h 12 min 26 s–0 h 12 min 31 s; validación media 0 h 02 min 13 s; aprendizaje/carga de recompensa media 0 h 00 min 07 s; preparación media 0 h 00 min 04 s.
+reward/rime/ppo: n=5, media 0 h 12 min 51 s, rango 0 h 12 min 45 s–0 h 12 min 55 s; validación media 0 h 02 min 10 s; aprendizaje/carga de recompensa media 0 h 00 min 16 s; preparación media 0 h 00 min 04 s.
+Los15 modelos de recompensas reutilizan el BC del LSTM correspondiente; no se suma como un nuevo entrenamiento supervisado. Se entrenaron30 residuales+30 correctores de efectividad+15 métodos de recompensa. Cada PPO principal completó524288pasos; BC principal1200actualizaciones;24búsquedas cortas y12pilotos se reportan aparte.
+baseline_original: control completo p95=0.803ms, red p95=0.000ms; cumple48Hz=True.
+baseline_observer_only: control completo p95=0.908ms, red p95=0.000ms; cumple48Hz=True.
+baseline_selected: control completo p95=0.837ms, red p95=0.000ms; cumple48Hz=True.
+family_residual_lstm: control completo p95=1.239ms, red p95=0.316ms; cumple48Hz=True.
+family_residual_mamba: control completo p95=2.312ms, red p95=1.358ms; cumple48Hz=True.
+family_residual_mamba2: control completo p95=2.964ms, red p95=1.981ms; cumple48Hz=True.
+family_residual_mamba3: control completo p95=1.791ms, red p95=0.843ms; cumple48Hz=True.
+family_residual_gtrxl: control completo p95=3.076ms, red p95=2.034ms; cumple48Hz=True.
+family_residual_ltc: control completo p95=1.496ms, red p95=0.564ms; cumple48Hz=True.
+family_observer_lstm: control completo p95=1.368ms, red p95=0.335ms; cumple48Hz=True.
+family_observer_mamba: control completo p95=2.387ms, red p95=1.352ms; cumple48Hz=True.
+family_observer_mamba2: control completo p95=3.028ms, red p95=1.972ms; cumple48Hz=True.
+family_observer_mamba3: control completo p95=1.778ms, red p95=0.801ms; cumple48Hz=True.
+family_observer_gtrxl: control completo p95=3.381ms, red p95=2.335ms; cumple48Hz=True.
+family_observer_ltc: control completo p95=1.618ms, red p95=0.579ms; cumple48Hz=True.
+family_reward_csil: control completo p95=1.374ms, red p95=0.348ms; cumple48Hz=True.
+family_reward_meirl: control completo p95=1.259ms, red p95=0.320ms; cumple48Hz=True.
+family_reward_rime: control completo p95=1.326ms, red p95=0.331ms; cumple48Hz=True.
+
+8. REPRODUCCIÓN Y ARCHIVOS
+Recomendación ejecutable: recommended_controller.json; evaluación: decision.json; curvas completas: success_rates.csv; costos: training_timings.csv y stage_timings.json; integridad: final_audit.json.
+Desde la raíz PFC, activar experiments/local_env.ps1 y ejecutar el Python de conda_env con -m experiments.round5.deployment. Reconstruye el PID, estimador, supervisión y política exactos del paquete recomendado. La política conserva memoria por episodio y se reinicia al terminar.
+El controlador conserva0..21700RPM, considera efectividad estimada, asignación saturada y antiwindup. La rama heredada conserva su valor predeterminado para compatibilidad. El artefacto recomendado identifica explícitamente las opciones nuevas.
+
+9. EVIDENCIA TEÓRICA UTILIZADA
+DAgger: https://proceedings.mlr.press/v15/ross11a.html
+CSIL: https://arxiv.org/html/2305.16498v3
+MEIRL: https://proceedings.mlr.press/v331/zhan26a.html
+RIME: https://proceedings.mlr.press/v235/cheng24k.html
+Time limits in RL: https://proceedings.mlr.press/v80/pardo18a.html
+Residual RL: https://arxiv.org/abs/1812.03201
+SPIBB: https://proceedings.mlr.press/v97/laroche19a.html

@@ -1,0 +1,59 @@
+{
+  "mass_kg": 0.029999999999999995,
+  "gravity_newtons": 0.294,
+  "kf": 3.16e-10,
+  "max_rpm": 21700.0,
+  "hover_rpm": 15251.063461570828,
+  "static_normal_hover_rpm_loss_limit": 0.29718601559581437,
+  "levels": [
+    {
+      "rpm_loss": 0.25,
+      "affected_motor_thrust_loss": 0.4375,
+      "balanced_max_thrust_to_weight": 1.138785,
+      "ideal_static_hover_tilt_degrees": 28.582531090071758
+    },
+    {
+      "rpm_loss": 0.28,
+      "affected_motor_thrust_loss": 0.48160000000000003,
+      "balanced_max_thrust_to_weight": 1.049504256,
+      "ideal_static_hover_tilt_degrees": 17.66805994913539
+    },
+    {
+      "rpm_loss": 0.29,
+      "affected_motor_thrust_loss": 0.4959,
+      "balanced_max_thrust_to_weight": 1.0205538106666665,
+      "ideal_static_hover_tilt_degrees": 11.518540240670307
+    },
+    {
+      "rpm_loss": 0.295,
+      "affected_motor_thrust_loss": 0.502975,
+      "balanced_max_thrust_to_weight": 1.0062304260000003,
+      "ideal_static_hover_tilt_degrees": 6.379286747081734
+    },
+    {
+      "rpm_loss": 0.296,
+      "affected_motor_thrust_loss": 0.504384,
+      "balanced_max_thrust_to_weight": 1.0033778961066664,
+      "ideal_static_hover_tilt_degrees": 4.7027340950918015
+    },
+    {
+      "rpm_loss": 0.3,
+      "affected_motor_thrust_loss": 0.51,
+      "balanced_max_thrust_to_weight": 0.9920082666666664,
+      "ideal_static_hover_tilt_degrees": null
+    },
+    {
+      "rpm_loss": 0.35,
+      "affected_motor_thrust_loss": 0.5774999999999999,
+      "balanced_max_thrust_to_weight": 0.8553540666666666,
+      "ideal_static_hover_tilt_degrees": null
+    },
+    {
+      "rpm_loss": 0.5,
+      "affected_motor_thrust_loss": 0.75,
+      "balanced_max_thrust_to_weight": 0.5061266666666667,
+      "ideal_static_hover_tilt_degrees": null
+    }
+  ],
+  "assumptions": "Fixed modeled mass,zero roll/pitch/yaw moments,normal hover,single weak motor,bounded RPM;not a reachability bound for transient descent or spinning flight."
+}

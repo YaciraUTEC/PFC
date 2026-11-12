@@ -1,0 +1,48 @@
+{
+  "specifications": [
+    {
+      "id": "baseline_original",
+      "path": null,
+      "config": {
+        "estimator": "original",
+        "readiness": false,
+        "emergency": "legacy",
+        "reserve": 0.005
+      },
+      "threshold": 0.0,
+      "shadow": false,
+      "kind": "baseline"
+    },
+    {
+      "id": "baseline_observer_only",
+      "path": null,
+      "config": {
+        "estimator": "adaptive",
+        "readiness": false,
+        "emergency": "legacy",
+        "reserve": 0.005
+      },
+      "threshold": 0.0,
+      "shadow": false,
+      "kind": "baseline"
+    },
+    {
+      "id": "baseline_selected",
+      "path": null,
+      "config": {
+        "estimator": "adaptive",
+        "readiness": true,
+        "emergency": "damped",
+        "reserve": 0.003
+      },
+      "threshold": 0.0,
+      "shadow": false,
+      "kind": "baseline"
+    }
+  ],
+  "cases": 5000,
+  "multiplicity_endpoints": 36,
+  "one_sided_family_error": 0.05,
+  "target": "Concrete frozen checkpoints,not a claim about every training seed",
+  "risk": "Conditional probability of harming a baseline-success flight in the predeclared severity mixture"
+}

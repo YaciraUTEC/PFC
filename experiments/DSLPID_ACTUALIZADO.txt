@@ -1,8 +1,10 @@
 DSLPID ACTUALIZADO: COMPONENTES DE CONTROL DE LA RONDA 5
 
 Esta actualización publica el mismo DSLPIDControl, estimador y supervisor
-utilizados en la evaluación local. La campaña de comparación sigue en curso;
-no incorpora sus resultados, datos de entrenamiento ni pesos de redes.
+utilizados en la evaluación local. La ronda 5 terminó; el informe y la auditoría
+están publicados en results/round5. La configuración completa mostrada aquí fue
+ensayada, pero no adoptada por la regla de robustez. La configuración aceptada
+está en results/round5/recommended_controller.json.
 
 COMPONENTES
 
@@ -18,7 +20,7 @@ COMPONENTES
   Suspende el descenso cuando la velocidad lateral, inclinación o giro
   exceden los umbrales; continúa a 0.18 m/s tras recuperar estabilidad.
 
-CONFIGURACIÓN COMPLETA ENSAYADA
+CONFIGURACIÓN COMPLETA ENSAYADA (NO ADOPTADA)
 
 from gym_pybullet_drones.control.DSLPIDControl import DSLPIDControl
 from gym_pybullet_drones.utils.enums import DroneModel

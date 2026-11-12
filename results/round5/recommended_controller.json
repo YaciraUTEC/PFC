@@ -1,0 +1,28 @@
+{
+  "id": "baseline_original",
+  "configuration": {
+    "estimator": "original",
+    "readiness": false,
+    "emergency": "legacy",
+    "reserve": 0.005
+  },
+  "checkpoint": null,
+  "checkpoint_sha256": null,
+  "gate_logit_threshold": 0.0,
+  "proposal_only": false,
+  "judge_path": null,
+  "judge_sha256": null,
+  "inference": {
+    "device": "cpu",
+    "dtype": "float64",
+    "action_dtype": "float32"
+  },
+  "decision_file": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\decision.json",
+  "primary_levels": [
+    0.28,
+    0.29,
+    0.295
+  ],
+  "maximum_training_fault_rpm_fraction": 0.295,
+  "deadline_seconds": 30
+}

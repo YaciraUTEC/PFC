@@ -1,0 +1,38 @@
+{
+  "report": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\INFORME_FINAL_RONDA5.txt",
+  "report_sha256": "8f2eee3f67f0ec1d1dc46284a4cc40ad5f9cdd4ffff0a422fdf8d12fc907c12c",
+  "figures": [
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\curvas_residuales.png",
+      "sha256": "07e05f3ad0ce46791927a36ae64c6b310d3b19c2c46ca469ab8e76e45005ce4f"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\curvas_estimadores.png",
+      "sha256": "5152a20eb4436fdac6b41faceaec646940b2658015d306b566d797796910a778"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\curvas_recompensas.png",
+      "sha256": "bab7e76c8fab5a7f28aa4c4da110021ab86fdafd7f54c5dc8619f25cf8d79483"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\efectividad_exacta_y_estimada.png",
+      "sha256": "8e4163b5d8d3c41cc00ade4069489f14eb0468ef4c834f5c28467c07e37d75cf"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\intervalos_familias.png",
+      "sha256": "7476181fcc45bb5c6ae26c7c7fa9d051da161f8b40766aa6b679b4fd0b9acffd"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\confirmacion_independiente.png",
+      "sha256": "5f5ec36a9826ad98a68c04e00de275a4a82f2f539cd5bd8b396db7bf77665f8d"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round5\\ablaciones_y_limites.png",
+      "sha256": "15915612311ba462619addd2a47519e330504721d49f18ce2c8fb4dacdb10f46"
+    }
+  ],
+  "presentation_sources": {
+    "report.py": "5195c695fcec28b874834db240f6ed9060269fd880f0d39aa359add1e6631246",
+    "plots.py": "a9f82de5f68a01c4fc8c6a4355f39e411bb28d9277a0332f97ebbe5c74342ff9"
+  }
+}
