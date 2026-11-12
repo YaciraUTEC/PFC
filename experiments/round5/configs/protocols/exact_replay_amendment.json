@@ -1,0 +1,8 @@
+{
+  "created_utc": "2026-11-12T02:27:04.253648+00:00",
+  "phase": "During training,before runtime selection or final test",
+  "purpose": "Identical-case acceleration only,no change in controller,weights,case coverage,horizon,metric or decision rule.",
+  "criterion": "CanonicalZERO at every step of the complete base trajectory with CPUfloat64 streaming recurrent inference;any nonzero action forces full-case simulation.",
+  "validation": "16differential/integrity tests passed all6architectures,including mixed cases and effectiveness context;enabled-path integration test added and full suite required before test freeze.",
+  "integrity": "Physical assets and source hashes included;NPZ observations checksum-verified and atomic;all result rows retain full case IDs."
+}

@@ -1,0 +1,6 @@
+{
+  "created_utc": "2026-11-11T23:25:05.266459+00:00",
+  "change": "PPO and critic use all rewards divided by100;the environment,counterfactual labels and evaluation score retain original units.",
+  "reason": "Prevent the100point terminal scale from dominating the shared gradient clipping through the value loss;positive scaling preserves reward ordering and PPOadvantages are normalised.",
+  "applied_to": "All production algorithms andHPO,before any of those fits begin."
+}

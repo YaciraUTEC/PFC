@@ -1,0 +1,23 @@
+{
+  "created_utc": "2026-11-11T22:26:52.261825+00:00",
+  "stage": "before scientific data generation",
+  "sensor_model": "One shared noisy velocity/gyro endpoint per control step,seen by controller,observer and policy;no additional observer-only noise.",
+  "reward": {
+    "terminal_success": 100,
+    "terminal_failure": -100,
+    "task_dense_bounds": [
+      -0.005,
+      0.005
+    ],
+    "secondary_bounds": [
+      -0.005,
+      0.005
+    ],
+    "gamma": 0.999,
+    "deadline_ticks": 1440,
+    "csil": "Actual recurrent BC mixed density and prior,then bounded hybrid shaping;not the unrestricted originalCSIL objective.",
+    "proof": "At most0.01absolute dense reward perstep. Minimum successful discounted return is100*gamma^1439-.01*(1-gamma^1440)/(1-gamma)>0;maximum failed return is its negative. Thus every success outranks every failure within the deadline."
+  },
+  "final_test_extra_interpolation_level": 0.15,
+  "reason": "Include the previously studied15percent interpolation level in final evaluation;no final results have been opened."
+}

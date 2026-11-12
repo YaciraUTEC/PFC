@@ -1,0 +1,90 @@
+{
+  "created_utc": "2026-11-11T23:00:24.491712+00:00",
+  "phase": "before final test and scientific model training",
+  "primary_family_comparison": {
+    "groups": 15,
+    "architectures": 6,
+    "training_seeds": 5,
+    "routes": 60,
+    "levels": [
+      0.28,
+      0.29,
+      0.295
+    ],
+    "condition": "estimated",
+    "bootstrap": "Cross training seeds and routeIDs,keeping severities paired",
+    "multiplicity": "Joint simultaneous intervals across15primary family contrasts"
+  },
+  "final_curve_levels": [
+    0.0,
+    0.02,
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.28,
+    0.29,
+    0.295
+  ],
+  "stress": [
+    0.296,
+    0.3,
+    0.35,
+    0.5
+  ],
+  "production_selection": "Before final test:one highest validated concrete checkpoint per approach(residual,observer,learned reward),up to3. Architecture choices and runtime gates use validation only. Full32route screen forces abstention if any protected case regresses.",
+  "confirmation": {
+    "routes": 1000,
+    "route_ids": [
+      531000,
+      531999
+    ],
+    "cases": 5000,
+    "checkpoint_seeds": "Single specific checkpoint selected on validation;five-seed family results reported separately",
+    "primary": "Each route at28,29,29.5percent,estimated;paired route bootstrap",
+    "mild": "One uniformly pre-sampled severity among0,2,5,10,15,20,25percent per route,estimated",
+    "exact": "One uniformly pre-sampled severity from the final curve grid per route,exact effectiveness",
+    "harm": "A failure where the same reference succeeds,conditional on reference success;exact one-sidedClopperPearson upper bound",
+    "multiplicity_endpoints": 36,
+    "family_error": 0.05,
+    "adoption": "Primary simultaneous lower bound>0 and each harm upper bound<1percent;latency and sensitivity checks must also pass",
+    "references": [
+      "original structured controller",
+      "selected structured controller",
+      "continuous governor only if it passes independent validation",
+      "estimator-only,chosen in reserved validation"
+    ],
+    "reason": "60route family comparisons alone cannot certify1percent rare-harm risk.Independent1000route confirmation targets the concrete recommended checkpoints.",
+    "structured_challenger": "The balanced governor enters production confirmation only if its reserved32route validation has no protected regressions and severe success at least equal to selectedcore;always reported as ablation."
+  },
+  "decision": "Confirm estimator-only against original first;full selectedcore must beat the accepted simpler reference.Learning must then beat accepted structured reference with unchanged safety/latency/sensitivity rules.",
+  "canonical_abstention": "An off strategy deploys onlyDSLPID;it is never counted as a neural success.A gate-logit upper bound can certify an identically zero policy and justify exact simulation reuse.",
+  "runtime_strategies": [
+    "learned gate",
+    "higher internal threshold",
+    "learned gate plus conservative veto",
+    "shadow proposal authorised by conservative judge",
+    "complete abstention"
+  ],
+  "sensitivity": {
+    "route_ids": [
+      530000,
+      530023
+    ],
+    "levels": [
+      0.0,
+      0.25,
+      0.295,
+      0.296
+    ],
+    "conditions": [
+      "double sensor noise",
+      "fault at4seconds"
+    ],
+    "coverage": "One representative of every trained family plus each production candidate and both structured references",
+    "adoption": "Reject a candidate that has a negative net paired success change against its accepted reference in either sensitivity condition"
+  },
+  "numerical_checks": "Natural versus restored continuations;higher contact frequency/solver precision;CPU64/GPU64 and batch8/16 replay on reserved validation routes.Original preimpact criterion unchanged.",
+  "presentation": "Only report.py andplots.py may change after freeze,with recorded hashes;control,training,evaluation,decision rules and model weights remain frozen."
+}

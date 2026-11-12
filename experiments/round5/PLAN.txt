@@ -1,0 +1,86 @@
+RONDA 5 — PLAN DE IMPLEMENTACIÓN Y DECISIÓN
+Fecha de inicio: 11 de noviembre de 2026
+Ubicación exclusiva: E:\UTEC\Tesis\TesisNicol
+Entorno existente: E:\UTEC\Tesis\TesisNicol\conda_env
+
+OBJETIVO
+Entregar una recomendación concreta de controlador, estimador, supervisor y uso
+(o abstención) de aprendizaje, con el aterrizaje controlado como resultado primario.
+Terminar la campaña y el informe; no concluir con una propuesta de pruebas pendientes.
+La recomendación puede ser conservar un controlador analítico si el aprendizaje
+no demuestra beneficio. No se exige que gane una arquitectura o método específico.
+
+ORDEN Y SEPARACIÓN DE DECISIONES
+A. Ingeniería y verificación: plazo de tarea terminal; estado terminal real;
+   maestro con corrección efectiva nula cuando no hay diferencia; apagado explícito;
+   preparación/pausa del descenso por movimiento angular, lateral y distancia.
+B. Piloto exclusivamente en validación: estimador original frente a estimación de
+   impulso/momento con integración de orientación, adaptación a cambios y bandas
+   verificadas; política de emergencia original frente a amortiguada/continua;
+   mismo límite de motores y mismos criterios de contacto/estabilidad.
+C. Datos: demostraciones, trayectorias negativas y estados inducidos por estudiantes.
+   Ramas desde estados completos idénticos: cero y propuestas con varias magnitudes,
+   intervención limitada seguida de controlador base, horizonte de hasta8s o terminal.
+   Guardar costes, decisiones, incertidumbre y procedencia; solo las comparaciones
+   verificadas supervisan el juicio de beneficio. La verdad de falla es privilegio
+   del maestro y métricas, nunca entrada del controlador estimado.
+D. Aprendizaje: LSTM, Mamba, Mamba-2, Mamba-3 SISO, GTrXL y LTC puro; cinco semillas.
+   Comparar imitación corregida/agregación, PPO conservador y alternativa de aprender
+   efectividad manteniendo el control estructurado. Comparar CSIL, ME-IRL y RIME
+   adaptados sobre una misma LSTM, con las mismas anclas de aterrizaje, observaciones
+   y presupuesto de ajuste. Documentar explícitamente cualquier adaptación.
+   No presentar estas adaptaciones como reproducción integral de artículos.
+E. Selección solo en validación, congelación de modelos/configuración/código,
+   evaluación final independiente y ablaciones de componentes.
+F. Auditoría y decisión: cobertura de casos, ausencia de verdad privilegiada,
+   pesos intactos, precisión/lote/dispositivo, reinicio de memoria, cálculos pareados,
+   figuras/tablas verificadas e informe final con configuración recomendada.
+
+PARTICIONES POR GEOMETRÍA, SIN SOLAPAMIENTO
+Pilotos de ingeniería:525000..525011.
+Entrenamiento/demostraciones:526000..526047.
+Validación de etiquetas/recompensa:527000..527011.
+Configuraciones y ajustes cortos:527100..527115.
+Selección de modelos/umbrales:528000..528031.
+Prueba final, sin consultar hasta congelación:529000..529059.
+Sensibilidad separada:530000..530023.
+Semillas de entrenamiento:101,102,103,104,105; piloto/HPO:97.
+
+NIVELES
+Entrenar incluyendo0,2,5,10,20,25,28,29,29.3,29.5% de pérdida deRPM.
+Prueba principal:0,2,5,10,20,25,28,29,29.5%; efectividad exacta y estimada.
+Estrés:29.6,30,35,50%; límites, sin ocultar fracasos ni cambiar la métrica.
+El29.5% deja de ser extrapolación de severidad; la independencia será por rutas.
+No se implementa ni se afirma una recuperación giratoria Mueller-DAndrea como
+parte de la tarea actual; aterrizaje estable exige frenar antes del contacto.
+
+ENTRENAMIENTO Y PRESUPUESTO
+Configuraciones iniciales derivadas de la búsqueda anterior; ajustes cortos
+comparables y selección reservada. BC1200actualizaciones; agregación adicional
+con estados de alumnos; PPO524288pasos por modelo, puntos intermedios explícitos.
+Esquemas y umbrales se podrán corregir durante ingeniería/validación, registrando
+motivo y nueva versión, antes de abrir prueba final. No prolongar entrenamiento
+por resultados de prueba final ni elegir modelos con esos resultados.
+Dos trabajadores como máximo, cada uno con8simuladores; control deRAM/GPU.
+Sin nuevas instalaciones salvo necesidad demostrada; todas las cachés enE:.
+
+REGLA DE DECISÓN
+Resultado primario: media de éxito en28,29,29.5% con efectividad estimada.
+Comparaciones pareadas por ruta/nivel, cinco semillas; remuestreo cruzado de
+semillas y rutas, intervalos y corrección por las comparaciones principales.
+Adoptar aprendizaje por mejora de éxito solo si límite inferior del intervalo
+simultáneo de ganancia es>0 y cumple no degradación de niveles0..25% y modo exacto.
+Margen práctico de no inferioridad:1punto porcentual; si no se puede establecer,
+no declarar equivalencia ni incorporar la red por esa regla.
+Si no hay mejora respaldada, seleccionar la mejor configuración estructurada
+según validación y reportar su resultado final, incluso si es analítica.
+Secundarios: pérdidas/ganancias pareadas, causas de fallo, preparación de descenso,
+error/incertidumbre del estimador, intervenciones y esfuerzo, tiempo y latencia.
+Ablaciones dirán qué cambio mejora la referencia y cuáles no se adoptan.
+
+CONDICIÓN DE CIERRE
+Todas las pruebas obligatorias pasan o el defecto se corrige y se repite la parte
+afectada. Todos los modelos previstos terminan o se documenta un fallo técnico
+resuelto; ningún entrenamiento queda simplemente pendiente. Pesos y resultados
+se auditan. El informe distingue recomendación, cambios incorporados y descartados,
+resultados por arquitectura/método y alcance físico de lo probado.

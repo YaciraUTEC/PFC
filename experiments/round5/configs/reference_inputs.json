@@ -1,0 +1,72 @@
+{
+  "starting_architectures": {
+    "lstm": {
+      "arch": "lstm",
+      "width": 64,
+      "layers": 1,
+      "state": 32,
+      "head": 16,
+      "memory": 64,
+      "ode": 3,
+      "gate_bias": 2.0,
+      "lr": 5e-05
+    },
+    "mamba": {
+      "arch": "mamba",
+      "width": 96,
+      "layers": 1,
+      "state": 32,
+      "head": 16,
+      "memory": 64,
+      "ode": 3,
+      "gate_bias": 2.0,
+      "lr": 3.5e-05
+    },
+    "mamba2": {
+      "arch": "mamba2",
+      "width": 96,
+      "layers": 1,
+      "state": 64,
+      "head": 32,
+      "memory": 64,
+      "ode": 3,
+      "gate_bias": 2.0,
+      "lr": 3.5e-05
+    },
+    "mamba3": {
+      "arch": "mamba3",
+      "width": 64,
+      "layers": 1,
+      "state": 32,
+      "head": 16,
+      "memory": 64,
+      "ode": 3,
+      "gate_bias": 2.0,
+      "lr": 5e-05
+    },
+    "gtrxl": {
+      "arch": "gtrxl",
+      "width": 96,
+      "layers": 2,
+      "state": 32,
+      "head": 16,
+      "memory": 128,
+      "ode": 3,
+      "gate_bias": 1.0,
+      "lr": 2.5e-05
+    },
+    "ltc": {
+      "arch": "ltc",
+      "width": 64,
+      "layers": 1,
+      "state": 32,
+      "head": 16,
+      "memory": 64,
+      "ode": 3,
+      "gate_bias": 2.0,
+      "lr": 5e-05
+    }
+  },
+  "case_plan_sha256": "01f96fd511e5db9f0b4b5bf3577c35a3dd7649c891700e28aee10ac1f4d8431c",
+  "note": "Frozen initial architecture settings from round4,already with half LR;no round4 outputs required.Reproduces the registered case-plan generator."
+}

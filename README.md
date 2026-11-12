@@ -70,3 +70,13 @@ La configuración ensayada, sus componentes y la integración están en
 [experiments/DSLPID_ACTUALIZADO.txt](experiments/DSLPID_ACTUALIZADO.txt).
 Incluye estimación adaptativa de efectividad, frenado angular de emergencia y
 supervisión del descenso. Los resultados finales de esta ronda siguen pendientes.
+
+## Entrenamiento y comparación completa de la ronda 5
+
+La reproducción y los parámetros se documentan en
+[experiments/round5/README.txt](experiments/round5/README.txt).
+Incluye las seis arquitecturas con memoria persistente, decisión explícita de
+intervención, imitación seguida de PPO protegido y ajuste de parámetros por
+arquitectura. También contiene las variantes con recompensa CSIL/ME-IRL/RIME,
+los estimadores neuronales, los protocolos reservados y las pruebas de regresión.
+Los checkpoints y resultados se generan en runs/ y permanecen fuera de Git.

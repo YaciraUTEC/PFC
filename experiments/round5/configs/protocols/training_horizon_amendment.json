@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-11-12T00:18:55.375828+00:00",
+  "phase": "before all scientific model training;first short HPO trial interrupted and archived without selection",
+  "gae_candidates": [
+    0.97,
+    0.995
+  ],
+  "learning_rate_candidates": "half and original selected round4 LR",
+  "architectures": 6,
+  "trials": 24,
+  "bc_updates_each": 400,
+  "ppo_steps_each": 65536,
+  "hpo_route_ids": [
+    527100,
+    527115
+  ],
+  "reason": "The terminal outcome can follow the intervention by seconds.GAE trace gamma*lambda gives effective trace scales about0.67s versus3.48s at48Hz.Compare both with matched budgets instead of assuming the shorter trace is preferable.",
+  "selection": "Reserved HPO validation only;carry chosen lambda into main configuration and all matched reward methods;no test-driven adjustment.",
+  "archived": "hpo_before_horizon_amendment",
+  "reuse": "Completed data/pilot/judge artifacts remain unchanged;their original stage timing receipts are preserved."
+}

@@ -1,0 +1,12 @@
+{
+  "phase": "before HPO and all scientific training and test",
+  "hpo_routes": [
+    527100,
+    527115
+  ],
+  "selection_routes": [
+    528000,
+    528007
+  ],
+  "reason": "Correct implementation to the predeclared disjoint split before either stage uses it;latency observation shape corrected from column slice to last history row;judge fit timed."
+}

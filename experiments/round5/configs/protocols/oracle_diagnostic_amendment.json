@@ -1,0 +1,23 @@
+{
+  "created_utc": "2026-11-12T04:52:49.475481+00:00",
+  "phase": "Before final test,while training continues",
+  "models": 75,
+  "routes": [
+    528016,
+    528017,
+    528018,
+    528019
+  ],
+  "fault": 0.295,
+  "condition": "estimated",
+  "phases": [
+    "startup",
+    "one_second",
+    "postfault",
+    "descent_start",
+    "near_contact"
+  ],
+  "comparison": "Same physical/controller/sensor RNG state;own proposal forcedON12ticks vsZERO,then base to mission terminal.",
+  "purpose": "Separate bad proposals from wrong learned gate decisions on actual frozen policies,not only early pilots.",
+  "selection": "Weights and runtime strategies fixed before this diagnosis.No policy,threshold or adoption-rule tuning from it."
+}

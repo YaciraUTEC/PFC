@@ -1,0 +1,57 @@
+{
+  "created_utc": "2026-11-11T23:11:13.917119+00:00",
+  "evidence": "All12initial pilots have a certified negative upper bound on the gate logit.Despite21268initial paired proposals including useful interventions,unbalancedBCElearned permanent abstention.",
+  "change": "Production andHPO use class-balanced gate loss:one third positive class mean,two thirds negative class mean.Regression and forward policy unchanged.Pilots intentionally retained as conservative data-generating policies;shadow exploration covers rejected proposals.",
+  "calibration": "Gate scores are not interpreted as probabilities.Calibration and acceptance remain on heldout validation and independent final confirmation.",
+  "dataset_sources_unchanged": true,
+  "pilot_checkpoints": [
+    {
+      "path": "runs\\intervention_round5\\pilots\\effectiveness\\gtrxl\\bc.pt",
+      "sha256": "abd09c43e24f5ec14af1243ae55bdece0cbce3ddb0ad75e3ad5515cfadb791de"
+    },
+    {
+      "path": "runs\\intervention_round5\\pilots\\effectiveness\\lstm\\bc.pt",
+      "sha256": "3ea0b18dd7625ac12a023d90a4bd78e774285608f3b851b95b75d1a8dbd90a4b"
+    },
+    {
+      "path": "runs\\intervention_round5\\pilots\\effectiveness\\ltc\\bc.pt",
+      "sha256": "818fdbbb3a341235be081721247f1e3a714f8f89b1e1dd6116d2c99126aa3f20"
+    },
+    {
+      "path": "runs\\intervention_round5\\pilots\\effectiveness\\mamba\\bc.pt",
+      "sha256": "40b58f7a29df0974c82cc07497e55b35cb089bdb7821e8b3a81b3798bd682d34"
+    },
+    {
+      "path": "runs\\intervention_round5\\pilots\\effectiveness\\mamba2\\bc.pt",
+      "sha256": "ec1ead6b99ee7d08ff2424e85f37561b737e0932780ef3377226394c7dbc1e61"
+    },
+    {
+      "path": "runs\\intervention_round5\\pilots\\effectiveness\\mamba3\\bc.pt",
+      "sha256": "ab4d754334ae4cb932c443a1601febe7e2a9e9349f736de4946effbc0848563c"
+    },
+    {
+      "path": "runs\\intervention_round5\\pilots\\residual\\gtrxl\\bc.pt",
+      "sha256": "a42ca403d0d99c555633a98de3d5b764c8bef69e81329a53ba1cf0c9557d46f3"
+    },
+    {
+      "path": "runs\\intervention_round5\\pilots\\residual\\lstm\\bc.pt",
+      "sha256": "0cbcec734ab340fdd5767eed2ef07e3916019aa414052538f2fd8491f3116ed6"
+    },
+    {
+      "path": "runs\\intervention_round5\\pilots\\residual\\ltc\\bc.pt",
+      "sha256": "c3db4df928714c1750a3f77db37b538d99c6a528d5eb82500ede8e22f5180e12"
+    },
+    {
+      "path": "runs\\intervention_round5\\pilots\\residual\\mamba\\bc.pt",
+      "sha256": "cd3789bd0cc546714bf281b32c3487240930227a8831a7f2bb397c019025797d"
+    },
+    {
+      "path": "runs\\intervention_round5\\pilots\\residual\\mamba2\\bc.pt",
+      "sha256": "12751fc49b61c7bbf91273f2a03efbe3caff491f1a9ac498c38a3d0759216634"
+    },
+    {
+      "path": "runs\\intervention_round5\\pilots\\residual\\mamba3\\bc.pt",
+      "sha256": "2f055654f0af96f2402d3637b31f72a047e49a934720c623453dc747892c423e"
+    }
+  ]
+}

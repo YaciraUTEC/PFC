@@ -1,0 +1,8 @@
+{
+  "created_utc": "2026-11-12T00:40:40.943500+00:00",
+  "phase": "before principal training and before final test",
+  "primary_route_bootstrap_replicates": 100000,
+  "previous": 10000,
+  "reason": "Reduce Monte Carlo error at multiplicity-adjusted confidence tails;decision rule,model selection and endpoint allocation unchanged.",
+  "family_crossed_bootstrap_replicates": 10000
+}

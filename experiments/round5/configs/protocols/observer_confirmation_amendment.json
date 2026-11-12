@@ -1,0 +1,13 @@
+{
+  "created_utc": "2026-11-12T03:50:00.382851+00:00",
+  "phase": "Before any final test;principal training still running",
+  "reason": "Determine which structured update to adopt by confirming the estimator-only alternative separately,then require incremental improvement before adding descent/yaw/reserve changes.",
+  "reference": "Estimator-only arm chosen on pre-existing32route validation plus supplemental15percent risk check;no final results inspected.",
+  "hierarchy": [
+    "estimator-only vsoriginal",
+    "full selectedcore vsaccepted simpler reference",
+    "learning candidates vsaccepted structured reference"
+  ],
+  "multiplicity": "Only prospective forward structured contrasts and learned-vs-possible-reference contrasts;max12comparisonsx3endpoints=36.No weakening of the confidence/risk rules.",
+  "unchanged": "All75models,training budgets,physical limits,case IDs,strict landing metric and primary severities unchanged."
+}
