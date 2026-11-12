@@ -63,3 +63,10 @@ validada del equilibrio giratorio de Mueller–D'Andrea.
 ## Nueva ronda: aterrizaje controlado y seis arquitecturas
 
 La ronda reproducible se documenta en [experiments/round4/README.txt](experiments/round4/README.txt). Exige contacto suave y un segundo de estabilidad en destino; incluye estimación de efectividad desde movimiento/comandos, memoria persistente y afinado protegido de la imitación. Los resultados anteriores se conservan.
+
+## Actualización del controlador y estimador de la ronda 5
+
+La configuración ensayada, sus componentes y la integración están en
+[experiments/DSLPID_ACTUALIZADO.txt](experiments/DSLPID_ACTUALIZADO.txt).
+Incluye estimación adaptativa de efectividad, frenado angular de emergencia y
+supervisión del descenso. Los resultados finales de esta ronda siguen pendientes.

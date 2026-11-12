@@ -19,7 +19,8 @@ class DSLPIDControl(OriginalDSLPIDControl):
                  min_rpm=0.,tilt_limit_deg=25.,allocation_weights=(4.,8.,8.,.25),
                  allocation_regularization=1e-6,antiwindup_gain=2.,
                  attitude_frequency=(25.,25.,12.),attitude_damping=1.,
-                 thrust_reserve_fraction=.05,emergency_thrust_ratio=1.02):
+                 thrust_reserve_fraction=.05,emergency_thrust_ratio=1.02,
+                 emergency_policy="legacy"):
         self._modern_ready=False
         super().__init__(drone_model,g)
         self._modern_fault_aware=bool(fault_aware)
@@ -36,6 +37,8 @@ class DSLPIDControl(OriginalDSLPIDControl):
         if not np.isfinite(self._allocation_regularization) or self._allocation_regularization<0:raise ValueError('Invalid regularization')
         self._thrust_reserve=float(thrust_reserve_fraction)
         self._emergency_ratio=float(emergency_thrust_ratio)
+        if emergency_policy not in ["legacy","damped","balanced"]:raise ValueError("Invalid emergency policy")
+        self._emergency_policy=emergency_policy
         if not np.isfinite(self._thrust_reserve) or not 0<=self._thrust_reserve<.5:raise ValueError('Invalid thrust reserve')
         if not np.isfinite(self._emergency_ratio) or not 1<=self._emergency_ratio<=1.2:raise ValueError('Invalid emergency ratio')
         self._aw_gain=float(antiwindup_gain)
@@ -173,7 +176,7 @@ class DSLPIDControl(OriginalDSLPIDControl):
         force=raw_force.copy()
         force[2]=max(force[2],.15*self.GRAVITY)
         tilt=self._tilt_limit
-        if not emergency:
+        if not emergency or self._emergency_policy=="balanced":
             available=max(self.GRAVITY,balanced_max*(1-self._thrust_reserve))
             tilt=min(tilt,np.arccos(np.clip(self.GRAVITY/available,0,1)))
         else:available=total_max*.9
@@ -186,7 +189,7 @@ class DSLPIDControl(OriginalDSLPIDControl):
         yd=np.cross(zdesired,heading);yd/=max(np.linalg.norm(yd),1e-9)
         Rd=np.column_stack([np.cross(yd,zdesired),yd,zdesired])
         error=.5*_vee(Rd.T@R-R.T@Rd)
-        if emergency:
+        if emergency and self._emergency_policy!="balanced":
             # Best-effort reduced-attitude request, not a validated spinning
             # equilibrium / emergency landing controller.
             error=R.T@np.cross(zdesired,R[:,2]);error[2]=0.
@@ -205,7 +208,7 @@ class DSLPIDControl(OriginalDSLPIDControl):
             desired_omega=Rd@omega_desired_body
         rate_error=omega-R.T@desired_omega
         torque=-self.KR*error-self.KW*rate_error-self.KI_R*self.integral_rpy_e+np.cross(omega,self.J@omega)
-        if emergency:torque[2]=0.
+        if emergency and self._emergency_policy=="legacy":torque[2]=0.
         desired=np.r_[max(0.,float(force@R[:,2])),torque]
         self._prepared=dict(dt=dt,R=R,raw_force=raw_force,force=force,position_error=ep,
             rotation_error=error,omega=omega,base_wrench=desired.copy(),emergency=emergency,
@@ -219,6 +222,35 @@ class DSLPIDControl(OriginalDSLPIDControl):
         delta=self._residual_wrench if residual_wrench is None else np.asarray(residual_wrench,float)
         if delta.shape!=(4,) or not np.isfinite(delta).all():raise ValueError('Residual wrench must contain four finite SI values')
         rpm,allocation=self.allocate_wrench(data['base_wrench']+delta)
+        return self._finish_prepared(rpm,allocation,delta)
+
+    def apply_prepared_q(self,q):
+        """Commit feasible squared normalized motor speeds, retaining anti-windup.
+
+        Zero intervention must pass the exact q returned by allocate_wrench.
+        The desired residual is measured relative to that allocated base, not
+        the infeasible raw wrench; this avoids projection-induced teacher labels.
+        """
+        if self._prepared is None:raise RuntimeError('Call prepare_control first')
+        q=np.asarray(q,float)
+        if q.shape!=(4,) or not np.isfinite(q).all():raise ValueError('Invalid motor q')
+        lo=(self._command_min/self.HOVER_RPM)**2;hi=(self._command_max/self.HOVER_RPM)**2
+        q=np.clip(q,lo,hi);q[self.motor_rpm_factors<=1e-8]=0.
+        base_rpm,_=self.allocate_wrench(self._prepared['base_wrench'],commit=False)
+        baseq=(base_rpm/self.HOVER_RPM)**2
+        A=self._allocation_matrix();delta=A@(q-baseq)
+        desired=self._prepared['base_wrench']+delta;achieved=A@q
+        allocation=dict(desired_wrench=desired.copy(),estimated_wrench=achieved.copy(),
+            allocation_error=(achieved-desired)/self.wrench_scale,
+            allocation_error_norm=float(np.linalg.norm((achieved-desired)/self.wrench_scale)),
+            motor_rpm_factors=self.motor_rpm_factors.copy(),solver_ok=True,
+            saturated_low=q<=lo+1e-7,saturated_high=q>=hi-1e-7,
+            unavailable_motors=self.motor_rpm_factors<=1e-8)
+        self._previous_q=q.copy()
+        return self._finish_prepared(self.HOVER_RPM*np.sqrt(q),allocation,delta)
+
+    def _finish_prepared(self,rpm,allocation,delta):
+        data=self._prepared
         dt=data['dt'];achieved=allocation['estimated_wrench']
         # Back-calculation in force units, including the reference governor.
         force_error=data['R'][:,2]*achieved[0]-data['raw_force']

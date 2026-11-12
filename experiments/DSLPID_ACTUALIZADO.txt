@@ -1,0 +1,84 @@
+DSLPID ACTUALIZADO: COMPONENTES DE CONTROL DE LA RONDA 5
+
+Esta actualización publica el mismo DSLPIDControl, estimador y supervisor
+utilizados en la evaluación local. La campaña de comparación sigue en curso;
+no incorpora sus resultados, datos de entrenamiento ni pesos de redes.
+
+COMPONENTES
+
+- gym_pybullet_drones/control/DSLPIDControl.py:
+  PID de posición y control de actitud con fuerza/pares en unidades SI.
+  Asignación acotada de RPM que incorpora la efectividad de cada motor,
+  anti-windup, reserva de empuje y modos de emergencia configurables.
+- experiments/round5/estimator.py:
+  RLS adaptativo de impulso/momento. Se alimenta de estados medidos y RPM
+  ordenadas; no acepta identidad, instante ni magnitud verdadera de falla.
+  Reutiliza experiments/round4/estimator.py como base.
+- experiments/round5/supervisor.py:
+  Suspende el descenso cuando la velocidad lateral, inclinación o giro
+  exceden los umbrales; continúa a 0.18 m/s tras recuperar estabilidad.
+
+CONFIGURACIÓN COMPLETA ENSAYADA
+
+from gym_pybullet_drones.control.DSLPIDControl import DSLPIDControl
+from gym_pybullet_drones.utils.enums import DroneModel
+from experiments.round5.estimator import make_estimator
+from experiments.round5.supervisor import DescentSupervisor
+
+controller = DSLPIDControl(
+    DroneModel.CF2X,
+    thrust_reserve_fraction=0.003,
+    emergency_thrust_ratio=1.0001,
+    emergency_policy="damped",
+)
+estimator = make_estimator(
+    controller, "adaptive", velocity_noise=0., gyro_noise=0.,
+)
+supervisor = DescentSupervisor(enabled=True)
+supervisor.reset()
+estimator.reset(seed=0)
+
+La configuración es explícita: los argumentos opcionales del constructor
+mantienen sus valores anteriores por defecto para conservar compatibilidad.
+"damped" conserva el frenado de velocidad angular en emergencia;
+"legacy" anula el par de yaw en ese modo; "balanced" conserva el control
+completo de actitud con la limitación de empuje equilibrado.
+
+INTEGRACIÓN EN EL BUCLE (48 Hz EN LA CAMPAÑA)
+
+1. Leer el estado medido y suministrar estimator.eta mediante
+   controller.set_motor_effectiveness(estimator.eta).
+2. Durante el aterrizaje, obtener target_pos y target_vel con
+   supervisor.reference(estado_medido, destino_xyz, 1/48).
+3. Invocar controller.computeControl con posición, cuaternión xyzw,
+   velocidad lineal, velocidad angular en coordenadas del mundo y referencias.
+   Los tres retornos son RPM ordenadas, error de posición y error de yaw.
+4. Aplicar las RPM a la planta y volver a medir el estado.
+5. Actualizar estimator.update(estado_anterior, estado_actual,
+   rpm_ordenadas, 1/48, contact=hay_contacto).
+   Usar esas mismas mediciones para controlador y estimador. Los parámetros
+   de ruido del ejemplo son cero porque el ruido ya está en la medición.
+
+El vector de estado sigue la convención del proyecto: posición [0:3],
+cuaternión xyzw [3:7], Euler roll/pitch/yaw [7:10], velocidad lineal [10:13]
+y velocidad angular del mundo [13:16]. Posiciones en metros, ángulos en
+radianes, velocidades en m/s y rad/s.
+
+La efectividad eta multiplica RPM: perder 20% de RPM equivale a eta=0.8 y
+a 0.64 del empuje con la misma orden. La planta aplica eta una sola vez;
+el controlador usa eta al cuadrado en su modelo de asignación. No se debe
+multiplicar otra vez la salida del controlador antes de aplicar la falla.
+El límite de comando se conserva en 21700 RPM.
+
+La incertidumbre que publica el estimador es una estimación de covarianza,
+no una garantía calibrada. Este perfil no implementa el equilibrio giratorio
+de recuperación con un motor completamente apagado.
+
+VERIFICACIÓN
+
+Desde la raíz del repositorio, en el entorno ya instalado:
+python -m pytest experiments/tests/test_round3.py experiments/tests/test_dslpid_update.py -q
+
+Las pruebas cubren compatibilidad del controlador, saturación y anti-windup,
+equivalencia de intervención nula en espacio motor, frenado angular de
+emergencia, pausas del descenso y recuperación sintética de efectividad.
