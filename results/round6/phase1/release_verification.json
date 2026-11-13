@@ -1,0 +1,28 @@
+{
+  "checked_at_utc": "2026-11-13T15:10:48.601285+00:00",
+  "base_remote_commit": "056069172b3a8cce01d6bae3704e41b3802705db",
+  "scope": "Lightweight CPU control and integration tests; no learned models or training.",
+  "command": "python -B -m pytest experiments/tests/test_round6_control.py experiments/tests/test_nmpc_indi.py -q -p no:cacheprovider",
+  "tests": 98,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "pytest_reported_seconds": 9.31,
+  "warnings": 9,
+  "warning_summary": "Existing pkg_resources deprecation and Gymnasium Box float32 precision warnings.",
+  "tested_files_lf_sha256": {
+    "experiments/round6/__init__.py": "869a1a9f64c924b4474e7b7d26ba6afa51427a95317524ddd82a9432422d77ca",
+    "experiments/round6/controllers.py": "8effc00eba107e793b5a3d80706954bb0e0ce5d0ebc8733c135f937c212f08bd",
+    "experiments/round6/estimator.py": "5c15f566a3ed97cec7f5a70d876ae699a67ed77c426c36415acb73c4c7cb4fa0",
+    "experiments/round6/supervisor.py": "576864f7bc02e9df030a65cc877ec6c4802a835f256764fc46e2a378f428d99c",
+    "experiments/round6/env.py": "b97dfc41c27361a5bf5dc03e037614635d3689dfbedfc9c8eec03cb561545d19",
+    "gym_pybullet_drones/control/NMPCINDIControl.py": "566266335eed4cc20ba06a88b40900664f66401a390d5fc3f53460965714cfac",
+    "gym_pybullet_drones/control/DSLPIDControl.py": "ad24916d993480e2d45be7c1e23d25caef29c86c2a58cb90c76810e6d92e7c55",
+    "experiments/round6/configs/verified_control.json": "1ada8bdfdeeb33c82193bdd631876370d67005335aa8dfc8c6c2ed678853222d",
+    "experiments/tests/test_round6_control.py": "7204015463f3a7bbfac08dbcf129581c4a66608cc5d0b4fc6963bcc97949a271",
+    "experiments/tests/test_nmpc_indi.py": "ec83077de3f9cbc0fd1e5bdd929739aa06e50b83ad2ee1671589b473997bf1e1"
+  },
+  "post_test_adjustments": [
+    "Removed a trailing empty line from the focused test file; no functional changes."
+  ]
+}

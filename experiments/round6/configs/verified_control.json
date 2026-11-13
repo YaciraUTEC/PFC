@@ -1,0 +1,9 @@
+{
+  "control_kind": "dslpid",
+  "manager": "coordinated",
+  "readiness": false,
+  "estimator": "structured",
+  "emergency": "legacy",
+  "reserve": 0.001,
+  "gate_mode": "off"
+}

@@ -290,3 +290,29 @@ def test_wrench_geometry_agrees_with_one_physics_step(physical_control, motor):
         assert velocity[2] == pytest.approx(force/c.MASS*1e-5, rel=1e-6)
     finally:
         p.disconnect(physicsClientId=client)
+
+
+@pytest.mark.parametrize("fraction", [-.1, 1.1, np.nan, np.inf])
+def test_fault_yaw_rate_fraction_rejects_invalid_values(fraction):
+    with pytest.raises(ValueError):
+        NMPCINDIControl(DroneModel.CF2X, fault_yaw_rate_fraction=fraction)
+
+
+def test_yaw_rate_weight_can_remain_active_with_free_heading(control, monkeypatch):
+    control.set_motor_effectiveness([.705, 1., 1., 1.])
+    state = np.r_[0., 0., 1., 0., 0., 0., 1., np.zeros(3),
+                  0., 0., 3., np.ones(4)]
+    zeros = np.zeros(3)
+    off, seed, heading = control._reference_parameters(state, state[:3], zeros, zeros, zeros)
+    assert heading == 0. and off[-2] == 0. and off[-1] == 0.
+    monkeypatch.setattr(control, "fault_yaw_rate_fraction", 1.)
+    on, _, heading = control._reference_parameters(state, state[:3], zeros, zeros, zeros)
+    assert heading == 0. and on[-2] == 0. and on[-1] == 1.
+    np.testing.assert_array_equal(on[:-1], off[:-1])
+    controls = np.repeat(seed[:, None], control.horizon, axis=1)
+    trajectory = np.repeat(state[:, None], control.horizon+1, axis=1)
+    decision = np.r_[trajectory.ravel(order="F"), controls.ravel(order="F")]
+    assert float(control._objective(decision, on)) > float(control._objective(decision, off))
+    control.set_motor_effectiveness(np.ones(4))
+    healthy, _, heading = control._reference_parameters(state, state[:3], zeros, zeros, zeros)
+    assert heading == 1. and healthy[-2] == 1. and healthy[-1] == 1.

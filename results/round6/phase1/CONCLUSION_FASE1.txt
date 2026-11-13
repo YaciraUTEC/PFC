@@ -1,0 +1,971 @@
+FASE1 CERRADA TRAS VALIDACION FISICA INDEPENDIENTE
+Control elegido: structured_governor
+Ganancias/perdidas: 71/0
+{
+  "dslpid_reference": {
+    "score": 0.8113839285714286,
+    "cells": {
+      "exact_noise1": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.295": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.296": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      },
+      "estimated_noise1": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 21,
+          "n": 24,
+          "percent": 87.5
+        },
+        "0.295": {
+          "success": 18,
+          "n": 24,
+          "percent": 75.0
+        },
+        "0.296": {
+          "success": 4,
+          "n": 24,
+          "percent": 16.666666666666664
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      },
+      "exact_noise2": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.295": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.296": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      },
+      "estimated_noise2": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 21,
+          "n": 24,
+          "percent": 87.5
+        },
+        "0.295": {
+          "success": 16,
+          "n": 24,
+          "percent": 66.66666666666666
+        },
+        "0.296": {
+          "success": 14,
+          "n": 24,
+          "percent": 58.333333333333336
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      }
+    },
+    "outcomes": {
+      "stable_landing": 574,
+      "hard_landing": 282,
+      "early_contact": 162,
+      "crash": 36,
+      "timeout": 2
+    },
+    "solve_p95_mean": 0.0,
+    "mean_pause_seconds": 0.0
+  },
+  "structured_governor": {
+    "score": 1.0690104166666665,
+    "cells": {
+      "exact_noise1": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.295": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.296": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      },
+      "estimated_noise1": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 23,
+          "n": 24,
+          "percent": 95.83333333333334
+        },
+        "0.295": {
+          "success": 18,
+          "n": 24,
+          "percent": 75.0
+        },
+        "0.296": {
+          "success": 18,
+          "n": 24,
+          "percent": 75.0
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      },
+      "exact_noise2": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.295": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.296": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      },
+      "estimated_noise2": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 23,
+          "n": 24,
+          "percent": 95.83333333333334
+        },
+        "0.295": {
+          "success": 18,
+          "n": 24,
+          "percent": 75.0
+        },
+        "0.296": {
+          "success": 17,
+          "n": 24,
+          "percent": 70.83333333333334
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      }
+    },
+    "outcomes": {
+      "stable_landing": 645,
+      "timeout": 193,
+      "early_contact": 135,
+      "hard_landing": 60,
+      "crash": 23
+    },
+    "solve_p95_mean": 0.0,
+    "mean_pause_seconds": 1.947147253787879
+  },
+  "landing_coordinated": {
+    "score": 1.0677083333333333,
+    "cells": {
+      "exact_noise1": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.295": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.296": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      },
+      "estimated_noise1": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 23,
+          "n": 24,
+          "percent": 95.83333333333334
+        },
+        "0.295": {
+          "success": 18,
+          "n": 24,
+          "percent": 75.0
+        },
+        "0.296": {
+          "success": 17,
+          "n": 24,
+          "percent": 70.83333333333334
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      },
+      "exact_noise2": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.295": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.296": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      },
+      "estimated_noise2": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 23,
+          "n": 24,
+          "percent": 95.83333333333334
+        },
+        "0.295": {
+          "success": 18,
+          "n": 24,
+          "percent": 75.0
+        },
+        "0.296": {
+          "success": 17,
+          "n": 24,
+          "percent": 70.83333333333334
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      }
+    },
+    "outcomes": {
+      "stable_landing": 644,
+      "hard_landing": 254,
+      "early_contact": 135,
+      "crash": 23
+    },
+    "solve_p95_mean": 0.0,
+    "mean_pause_seconds": 1.16668639520202
+  },
+  "landing_physical": {
+    "score": 1.0677083333333333,
+    "cells": {
+      "exact_noise1": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.295": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.296": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      },
+      "estimated_noise1": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 23,
+          "n": 24,
+          "percent": 95.83333333333334
+        },
+        "0.295": {
+          "success": 18,
+          "n": 24,
+          "percent": 75.0
+        },
+        "0.296": {
+          "success": 17,
+          "n": 24,
+          "percent": 70.83333333333334
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      },
+      "exact_noise2": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.295": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.296": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      },
+      "estimated_noise2": {
+        "0.0": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.02": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.25": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.28": {
+          "success": 24,
+          "n": 24,
+          "percent": 100.0
+        },
+        "0.29": {
+          "success": 23,
+          "n": 24,
+          "percent": 95.83333333333334
+        },
+        "0.295": {
+          "success": 18,
+          "n": 24,
+          "percent": 75.0
+        },
+        "0.296": {
+          "success": 17,
+          "n": 24,
+          "percent": 70.83333333333334
+        },
+        "0.3": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.35": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.4": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        },
+        "0.5": {
+          "success": 0,
+          "n": 24,
+          "percent": 0.0
+        }
+      }
+    },
+    "outcomes": {
+      "stable_landing": 644,
+      "hard_landing": 254,
+      "early_contact": 135,
+      "crash": 23
+    },
+    "solve_p95_mean": 0.0,
+    "mean_pause_seconds": 1.4582149621212122
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "scope": "Closed phase-1 control validation; not final round-6 learned-policy results.",
+  "source_files_sha256": {
+    "experiments/round6/__init__.py": "591abc6cb5fc3da85a52de1faa606fa4381236758ac01c49d9e512b62f01ba75",
+    "experiments/round6/controllers.py": "5483db4bde0f2e32daec5cf50097ac6047db5d666d5bff785f3aa15e5567f69a",
+    "experiments/round6/estimator.py": "a063b9f3263d7985123e4804f840f88f948a25757c5595426460f8354f30bb58",
+    "experiments/round6/supervisor.py": "bfba57143224b86127c4ed954bca5bf5a6853ff346aa94419afd5b837d6217af",
+    "experiments/round6/env.py": "154ce51a50075f900a5818b613c7be80340b96ac4841ef4baf6a7315cd30abff",
+    "gym_pybullet_drones/control/NMPCINDIControl.py": "e0f80bb7eac6449b81632c39456632b1800f2cf33027d5e5c414824baec0afb0"
+  },
+  "original_artifacts_sha256": {
+    "phase1_conclusion.json": "456d8a66691f879baa88df7e307b6d466a3c62a547750deaeb3329c5bb44c5ad",
+    "CONCLUSION_FASE1.txt": "cb7a958e0baa6fe2b2b8acaf2fa07ede55c99985bab4c534fddd91d96733dc0b",
+    "phase1_physical_closed.json": "9fcdfaef83f1d51065130644aa116ff2814b072f4fe15c1f30e35d15d548cd04",
+    "phase1_corrections_closed.json": "3a464dff0ae3bc1010a168035ee7df49c4fb92f9e0485ef131e16f0265d3c46a",
+    "data_audit.json": "ec7eeecf152feb541ea3aa492f0ca44fda54e1e7ea9ead2cec7414e106800381"
+  },
+  "source_hash_note": "Raw original source hashes above; LF-normalized hashes below are portable across Git autocrlf settings.",
+  "source_files_lf_sha256": {
+    "experiments/round6/__init__.py": "869a1a9f64c924b4474e7b7d26ba6afa51427a95317524ddd82a9432422d77ca",
+    "experiments/round6/controllers.py": "8effc00eba107e793b5a3d80706954bb0e0ce5d0ebc8733c135f937c212f08bd",
+    "experiments/round6/estimator.py": "5c15f566a3ed97cec7f5a70d876ae699a67ed77c426c36415acb73c4c7cb4fa0",
+    "experiments/round6/supervisor.py": "576864f7bc02e9df030a65cc877ec6c4802a835f256764fc46e2a378f428d99c",
+    "experiments/round6/env.py": "b97dfc41c27361a5bf5dc03e037614635d3689dfbedfc9c8eec03cb561545d19",
+    "gym_pybullet_drones/control/NMPCINDIControl.py": "566266335eed4cc20ba06a88b40900664f66401a390d5fc3f53460965714cfac"
+  },
+  "base_dslpid_lf_sha256": "ad24916d993480e2d45be7c1e23d25caef29c86c2a58cb90c76810e6d92e7c55"
+}

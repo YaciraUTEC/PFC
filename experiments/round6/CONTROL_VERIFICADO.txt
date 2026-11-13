@@ -1,0 +1,54 @@
+CONTROL ANALITICO VERIFICADO - RONDA 6, FASE 1
+
+Perfil seleccionado: configs/verified_control.json (structured_governor).
+La clase DSLPIDControl base conserva la version publicada en la ronda 5.
+El perfil elegido usa control_kind=dslpid, estimador structured, reserva 0.001,
+manager=coordinated y gate_mode=off: no agrega una politica residual aprendida.
+LandingEnv habilita internamente readiness al usar el gestor coordinado,
+aunque el comprobante original de configuracion registra readiness=false.
+
+Componentes
+- StructuredEstimator estima efectividad a partir de estados medidos, RPM
+  ordenadas e impulsos lineales/angulares en una ventana de ocho muestras.
+  Asume como maximo un rotor averiado; ancla los otros tres a efectividad uno.
+  La variable eta multiplica RPM; el empuje depende de eta al cuadrado.
+  No recibe el porcentaje real de falla ni identifica fallas multiples.
+- RecoveryDescent coordina descenso y frenado segun giro, velocidad y altura.
+  Pausa el descenso cuando falta margen y evita subir artificialmente la
+  referencia. Un tiempo de espera agotado no autoriza forzar el contacto.
+  El perfil seleccionado mantiene capacity_envelope=false; las variantes
+  con envolvente fisica son alternativas verificadas solo en sus pruebas.
+- LandingEnv mantiene el apagado tras el primer contacto incluso ante rebote
+  y registra como ejecutada la accion canonica de apagado.
+- CoordinatedDSLPID es una variante disponible para amortiguar giro con
+  rumbo liberado; no es la clase elegida por el perfil structured_governor.
+- NMPCAdapter conserva compatibilidad con el controlador NMPC publicado.
+  NMPCINDIControl agrega fault_yaw_rate_fraction, en [0,1], para separar el
+  peso del frenado angular del peso del rumbo. Su valor por defecto cero
+  conserva el comportamiento anterior. Las pruebas de interfaz/coste no
+  demuestran por si solas mejor aterrizaje ni tiempo real a 48 Hz.
+
+Evidencia cerrada
+results/round6/phase1 conserva comprobantes originales con SHA-256.
+En validacion fisica independiente, 24 trayectorias por celda y 44 celdas
+(1056 casos por controlador), se registraron 71 ganancias pareadas y cero
+perdidas frente a dslpid_reference. Es validacion de seleccion de control,
+no el test final de las redes ni la confirmacion de 1000 rutas de ronda 5.
+Los porcentajes y condiciones completos estan en phase1_conclusion.json.
+Los casos 30%, 35%, 40% y 50% siguen sin aterrizajes exitosos en esta fase.
+
+La auditoria data_audit.json valida coherencia de 1,142,003 transiciones de
+1664 episodios; no prueba la eficacia de una politica neuronal aprendida.
+No se incluyen datasets, pesos, modelos ni pipelines de entrenamiento de
+ronda 6 en esta publicacion. Su campana sigue en curso.
+
+Pruebas breves de CPU
+experiments/tests/test_round6_control.py comprueba contratos de descenso,
+estimacion por impulsos, interfaces de control, perfil elegido y apagado
+ante rebote. test_nmpc_indi.py cubre NMPC/INDI y el nuevo parametro de frenado.
+No construyen redes LSTM, Mamba, GTrXL ni LTC, ni entrenan politicas.
+
+Resultado de esta publicacion: 98 pruebas aprobadas, cero fallas, errores o
+saltos; 9.31 segundos de pytest. Recibo y huellas LF en
+results/round6/phase1/release_verification.json. Las nueve advertencias son
+deprecacion pkg_resources y conversion de limites Box a float32.

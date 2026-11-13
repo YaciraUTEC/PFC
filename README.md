@@ -71,3 +71,15 @@ histórico se mantienen en requirements.txt.
 Los comprobantes archivados contienen las rutas del PC original y sus huellas.
 Para otra ejecución se generan sus propios datos y comprobantes siguiendo el
 protocolo; el registro final original se conserva como evidencia del estudio.
+
+## Control verificado de la ronda 6
+
+Se publica el [conjunto analitico de control](experiments/round6/CONTROL_VERIFICADO.txt)
+de la fase 1: estimador estructurado de una falla, descenso coordinado y
+apagado persistente tras contacto. El perfil seleccionado conserva la clase
+DSLPIDControl base y agrega estos componentes mediante LandingEnv.
+
+Los [comprobantes de validacion](results/round6/phase1/phase1_conclusion.json)
+registran 71 ganancias pareadas y cero perdidas en 24 trayectorias por
+condicion. Esta fase esta cerrada; la comparacion neuronal de la ronda 6
+sigue en curso y no forma parte de esta publicacion.

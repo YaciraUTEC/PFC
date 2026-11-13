@@ -75,7 +75,7 @@ class NMPCINDIControl(BaseControl):
                  indi_gain=1., indi_filter_time_constant=0.04,
                  indi_torque_limit_fraction=0.5,
                  solver_maxiter=40, solver_time_limit=0.05,
-                 max_position_error=3.):
+                 max_position_error=3., fault_yaw_rate_fraction=0.):
         if drone_model not in (DroneModel.CF2X, DroneModel.CF2P):
             raise ValueError("NMPCINDIControl supports CF2X and CF2P")
         gravity = _positive(g, "g")
@@ -97,6 +97,9 @@ class NMPCINDIControl(BaseControl):
         self._wp = _vector(position_weights, 3, "position_weights")
         self._wv = _vector(velocity_weights, 3, "velocity_weights")
         self._ww = _vector(angular_rate_weights, 3, "angular_rate_weights")
+        self.fault_yaw_rate_fraction = float(fault_yaw_rate_fraction)
+        if not 0 <= self.fault_yaw_rate_fraction <= 1:
+            raise ValueError("fault_yaw_rate_fraction must lie in [0,1]")
         if np.any(self._wp <= 0) or np.any(self._wv < 0) or np.any(self._ww < 0):
             raise ValueError("Position weights must be positive; other weights nonnegative")
         self._attitude_weight = _positive(attitude_weight, "attitude_weight")
@@ -227,12 +230,13 @@ class NMPCINDIControl(BaseControl):
         n = self.horizon
         states = ca.SX.sym("states", 17, n+1)
         controls = ca.SX.sym("controls", 4, n)
-        parameters = ca.SX.sym("parameters", 17 + 13*(n+1) + 9)
+        parameters = ca.SX.sym("parameters", 17 + 13*(n+1) + 10)
         references = ca.reshape(parameters[17:17+13*(n+1)], 13, n+1)
-        capacity = parameters[-9:-5]
-        force_reference = parameters[-5:-1]
-        yaw_enabled = parameters[-1]
-        rate_weights = ca.vertcat(self._ww[0], self._ww[1], self._ww[2]*yaw_enabled)
+        capacity = parameters[-10:-6]
+        force_reference = parameters[-6:-2]
+        yaw_enabled = parameters[-2]
+        rate_enabled = parameters[-1]
+        rate_weights = ca.vertcat(self._ww[0], self._ww[1], self._ww[2]*rate_enabled)
 
         def state_cost(s, reference):
             rotation = self._rotation_symbolic(s[3:7])
@@ -347,7 +351,8 @@ class NMPCINDIControl(BaseControl):
                                     Rotation.from_euler("xyz", angles).as_quat(), velocity, body_rate]
         yaw_enabled = float(np.all(self.motor_rpm_factors >= .999))
         params = np.r_[state, reference.ravel(order="F"), cap/self._hover_force,
-                       force/self._hover_force, yaw_enabled]
+                       force/self._hover_force, yaw_enabled,
+                       yaw_enabled+(1-yaw_enabled)*self.fault_yaw_rate_fraction]
         seed = np.divide(force, cap, out=np.zeros(4), where=cap > 0)
         return params, seed, yaw_enabled
 
