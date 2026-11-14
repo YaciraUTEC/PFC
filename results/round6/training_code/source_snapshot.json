@@ -1,0 +1,112 @@
+{
+  "prepared_at_utc": "2026-11-14T16:18:32.505794+00:00",
+  "base_remote_commit": "4f00cfed66689e123aabbcba18fa59c2c077bb92",
+  "frozen_at_utc": "2026-11-14T11:59:10.423874+00:00",
+  "scope": "Round-6 neural models, PPO and FlashSAC/FQL training dependencies, teacher data and prospective HPO. No checkpoints, datasets, live test results, final evaluator or reporting pipeline.",
+  "source_files_original_sha256": {
+    "experiments/round6/controllers.py": "5483db4bde0f2e32daec5cf50097ac6047db5d666d5bff785f3aa15e5567f69a",
+    "experiments/round6/curriculum.py": "78ab1f79f85e796795ecd9f258826a44e3367a449291a6da20959165da460642",
+    "experiments/round6/data.py": "1f35abc8392325dce50bb53c84d46ef6f88de0242eb1971702a011fe70b8a910",
+    "experiments/round6/data_audit.py": "b0ef7b67e21920452ef1f08491db9dd6054d64ba5b22ddb2920ae2308a521166",
+    "experiments/round6/env.py": "154ce51a50075f900a5818b613c7be80340b96ac4841ef4baf6a7315cd30abff",
+    "experiments/round6/estimator.py": "a063b9f3263d7985123e4804f840f88f948a25757c5595426460f8354f30bb58",
+    "experiments/round6/evaluate.py": "83bbbc3aa575dc1658d9d95a69acdab26400a9061f03ed26d2ca23e3bb110f46",
+    "experiments/round6/finalize_expert_data.py": "cb9a7be4395847a6445076d5ab4aa3b28e21b5b687fdc76aa48d203de8fdfb4d",
+    "experiments/round6/hyperparameters.py": "ebe5640710f3b156fc846685101aa3c9bc01289d5722f24d632a9c4333c2bbfc",
+    "experiments/round6/models.py": "b604eb7f612074acae17e2a6baff7657e304d06bc9f86c4705aafc857c8c4804",
+    "experiments/round6/mpc_teacher_data.py": "91f02524b72aaa44e2c4a0a5bd1b7d86e3e86243556cf2fb0597fdd3a0841b28",
+    "experiments/round6/offpolicy.py": "2e8c7230f8d78becd42f9bd1df068705bea1eb74b4120bda3df45d89093f7d6c",
+    "experiments/round6/phase1.py": "603d2ae33a80040909b6c8af29e0d2c8e8b0dc6aeeb80c79aab34ecfdb8ea29a",
+    "experiments/round6/prepare_data.py": "61dda83f9c2343623d41e405359d00ef27e0e4c76a2284e82c59bdb172ff7706",
+    "experiments/round6/replay.py": "a9f85a501bf99c2e2ed9ba482b56c7565852ea8856a469a41d4275639bbc1fd4",
+    "experiments/round6/rescue_teacher_data.py": "d5d2cb0f11aca37eff12bee71675f0013dbec46958210e43fe8373093726c533",
+    "experiments/round6/resource_control.py": "7820a923450400451ba129c6448429472ce53637d7beeca855271a614ebc55af",
+    "experiments/round6/select.py": "11b90c2cfc43d0bb8bc8746a5bbcdbe28d0cd0c1905f58b09c53eb20f9a6d4c4",
+    "experiments/round6/supervisor.py": "bfba57143224b86127c4ed954bca5bf5a6853ff346aa94419afd5b837d6217af",
+    "experiments/round6/train.py": "da1e6b812dae945d52031bacb85be4158ffee042c233e6dd1ad6af0174608a70",
+    "experiments/round6/train_offpolicy.py": "731a5ddd2647466cfe2d36c80c80b9c843489b24e8efffac6b2d8562f4eb37ef",
+    "experiments/round6/train_utils.py": "61dcdfd336f5c96452524c1a7bf4b38ba884469b5a1a7de5097756d633e20909",
+    "experiments/round6/vendor_flash/__init__.py": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+    "experiments/round6/vendor_flash/distribution.py": "9028846db9fe18e80704fcd2a9a04a2fd8802e6da7e6bccc02f01c209e4957ef",
+    "experiments/round6/vendor_flash/layer.py": "bc741dc44c52344c1dd763cfac3204dfe37cf27453c2b39c5b80edb836002e57",
+    "experiments/round6/vendor_flash/network.py": "5261bd7cd3636a4ed7abf5dc66569efc2a2d9b04d786a5a37421067939de6b25",
+    "experiments/round6/vendor_flash/reward_normalization.py": "1ab8fd1ea1e187ad748b5cb7c2a2981ff040daffbedbe31b22336de44bc84736",
+    "experiments/tests/test_round6.py": "79091eb174b94587b6a58ec9896bd09bec4769aa057a8cc67322742a6df307de"
+  },
+  "source_files_lf_sha256": {
+    "experiments/round6/controllers.py": "8effc00eba107e793b5a3d80706954bb0e0ce5d0ebc8733c135f937c212f08bd",
+    "experiments/round6/curriculum.py": "24ebb4a55d673d34ac520e42cc27f05249f3b10dbc61ef460790d08f67f9bf91",
+    "experiments/round6/data.py": "2c94e2c13f3aeff1f39773b9a0028dcd3f1e9dc957f49d4a96302cdb05e31cd7",
+    "experiments/round6/data_audit.py": "f114d0c5451c449b387404577c2da71c4c9d4db1e9cface73795831d69fd757c",
+    "experiments/round6/env.py": "b97dfc41c27361a5bf5dc03e037614635d3689dfbedfc9c8eec03cb561545d19",
+    "experiments/round6/estimator.py": "5c15f566a3ed97cec7f5a70d876ae699a67ed77c426c36415acb73c4c7cb4fa0",
+    "experiments/round6/evaluate.py": "fcdfdb94003e22b594e617aabec9b078dceca65f3141276c1cdeea18077df77a",
+    "experiments/round6/finalize_expert_data.py": "6107528c527ad962259ed45f3a73ba84332d5758ffb84efd43378518b67af09e",
+    "experiments/round6/hyperparameters.py": "219bad2c12f34c96021bbe0e3212b6ff57cff37d95a250adafb46c27075cf9dd",
+    "experiments/round6/models.py": "a99781e447f480336d8dafb95bf2672fc753d63e912579a14a60ad9c2c956a1d",
+    "experiments/round6/mpc_teacher_data.py": "1b4b8290eb3113e57048ced19be5a2bc704fb542c24d649325e41c44f9e5ac62",
+    "experiments/round6/offpolicy.py": "93670701a1611ab5c3526c57d93419850ec04f93e0558fd705008d032746a17a",
+    "experiments/round6/phase1.py": "35ca07a391d624503642d334b5e297fe285dd2d5f3395b015b71807ee4cde6c1",
+    "experiments/round6/prepare_data.py": "9a2e9c57140934c21f3a0bb713486ffbfce995ba91bf87b61db623351417c59a",
+    "experiments/round6/replay.py": "4d62899f4a045cd5df05c061e2e8f615ead7ac941ea5f8401647dfaadf4d4a95",
+    "experiments/round6/rescue_teacher_data.py": "2975c027c045dc97147e4c9b31c7d094340c476e367c26e51e5874f50b8157e0",
+    "experiments/round6/resource_control.py": "72e3b639e6dc0ff7c58ed7b9abe57981bcf9e5192e1cd99587a5612d9660ccef",
+    "experiments/round6/select.py": "100e1c8c09b93d29a62b9226662c18e09a03dbf6aa50bc86c98ea30982aeb334",
+    "experiments/round6/supervisor.py": "576864f7bc02e9df030a65cc877ec6c4802a835f256764fc46e2a378f428d99c",
+    "experiments/round6/train.py": "3c05c152afa5d193c4148c21a684f16e2d9eb427f077aec9bafae7911616d25c",
+    "experiments/round6/train_offpolicy.py": "ed3b52d2b5c7f81ee45087a5024e80f4baa291d8776b8c12fc722e5c3e9f3a02",
+    "experiments/round6/train_utils.py": "b5a346d74f12eab06d09965890f2a5b74a0f07332417b13b1584a0fb9d3e60f3",
+    "experiments/round6/vendor_flash/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "experiments/round6/vendor_flash/distribution.py": "30c2987d80238ccc9c59dd6f7a9dd4056ed01773901d3d08a0db8c40f61b76ed",
+    "experiments/round6/vendor_flash/layer.py": "e44d18b47efc57b349d556951c3a2b16377a53f8d50335be68a186572d98231e",
+    "experiments/round6/vendor_flash/network.py": "170b4b370e37663b8954958339ec68595e3fae21dd1cc243afc7a02e3ffa2d20",
+    "experiments/round6/vendor_flash/reward_normalization.py": "f8516464eee0de7b4ea37cd0e0e6e6b427c249879e64bf976097fcfca1f25737",
+    "experiments/tests/test_round6.py": "7e7683953d08fff6f1ebd4b4274a3491752edb48c2c690a34a0f489e9d8fa330"
+  },
+  "source_hash_note": "Original hashes match the pre-test source freeze. LF-normalized hashes verify portable Git checkouts.",
+  "artifact_files_sha256": {
+    "results/round6/training_code/PLAN.txt": "58a35ee89f8f968943a814474dd3b6161aa560e9527a0707879ade19af9810d3",
+    "results/round6/training_code/AMENDMENT_ENGINEERING.txt": "eb009e4149daaf0533547563fc9eb243af958c917493ca546b493fae6a3ea860",
+    "results/round6/training_code/AMENDMENT_FINAL_EVALUATION.txt": "44a11410a8d58d16fdc14c40166a5b9b87a14101792ab01e2dd3640a8f82c8d5",
+    "results/round6/training_code/hpo_protocol.json": "3f3569a31c63d578b8ea3c3a3c22341a3073093224355e51e4a74311ed1dbad5",
+    "results/round6/training_code/hpo_selection.json": "5a28660d73d55ab4055464ea72e4cd9b34e3b61afabb7e5243c160d47b3443e4",
+    "results/round6/training_code/dataset_fingerprint.json": "9d692f888cf3a90a152bff8f835c603933e9dc5e78bc60d504adbe104f1a60df",
+    "results/round6/training_code/tests_before_test_receipt.json": "f447be285ea0c90529173bbc9084c03a79b1c0b9f5c1291bd8cf571fc7af0075",
+    "results/round6/training_code/tests_before_test_0.log": "9de542661b7a3c9b025a780df0173355ae82ece508a3c5fdd5604d0f3c4a5cc3",
+    "results/round6/phase1/phase1_closed.json": "1ba2951fc34f9fc926dcc2661b3b2a3c1919189e673f5bc80cf55719813cf2e1"
+  },
+  "license_files_lf_sha256": {
+    "experiments/round6/vendor_flash/LICENSE": "5e7a0ca5f1955091e476af95148f32b48b58feb851a36e09b5c89a0c05bd4421",
+    "experiments/round6/FQL_LICENSE": "c068c3f538ddf3e7352b8dce0e5a259119c70f77444dfe1e257c960e43af0db7"
+  },
+  "upstream_urls": {
+    "FlashSAC": "https://github.com/Holiday-Robot/FlashSAC.git",
+    "fql": "https://github.com/seohongpark/fql.git"
+  },
+  "upstream_commits": {
+    "FlashSAC": "87edc9061150ae9e962dd84e6544e27a1554b3ab",
+    "fql": "e8cd16eb490332924dfa2492097219f181765933"
+  },
+  "original_pretest_verification": {
+    "tests": 303,
+    "warnings": 50,
+    "pytest_seconds": 147.3,
+    "rerun_during_publication": false
+  },
+  "gate_corrections_proposed_after_test": "Not implemented in this snapshot; the current learned Q-difference gate is retained.",
+  "inherited_files_lf_sha256": {
+    "experiments/models.py": "4b51ce68a5c912c265700fb57dd757347826b627b12cec7f2bac6d1644d18f1d",
+    "experiments/round4/models.py": "8fb0e58c196c2bd7a43fbb53201aee45f8a97cc59362c4677012c43f1cce853f",
+    "experiments/round5/models.py": "a00e057a39f0f466342d8876df4d860223244fb39c23270b71f0540034e164e7",
+    "experiments/vendor_gtrxl.py": "e98684b3d7db761de9b01fbba926245214cb5798b7ce9b9dd8ff013d962c7fd2",
+    "experiments/round5/bc.py": "49a8a552a0c8f4f8863593bb654c9a2b86baccf2f11a79aac6b0b6788bfba955",
+    "experiments/round5/losses.py": "5bd0f931018f8fb0a885341285f101957b5cbab92e5be170cebabd85efc2f292",
+    "experiments/round5/configs/reference_inputs.json": "67d70bdb653cc4126e7fdd9fde9537a1c6258c6bb3962917eb5d916672f2aa4d"
+  },
+  "publication_static_checks": {
+    "compiled_python_files": 28,
+    "relative_import_targets_resolved": true,
+    "inherited_core_and_training_files": 7,
+    "network_models_instantiated": false
+  }
+}

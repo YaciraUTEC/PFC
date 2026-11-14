@@ -7,7 +7,7 @@ La **ronda 5 terminó** el 12 de noviembre de 2026, con 75 modelos entrenados,
 Los [resultados completos](results/round5/README.md) incluyen informe, tablas,
 siete gráficas, tiempos, configuración recomendada y comprobantes de integridad.
 
-## Conclusión de la campaña
+## Conclusión de la ronda 5
 
 La recomendación registrada conserva el DSLPID de referencia de la ronda 4,
 sin compensación neuronal. El estimador adaptativo y el perfil completo mejoraron
@@ -83,3 +83,16 @@ Los [comprobantes de validacion](results/round6/phase1/phase1_conclusion.json)
 registran 71 ganancias pareadas y cero perdidas en 24 trayectorias por
 condicion. Esta fase esta cerrada; la comparacion neuronal de la ronda 6
 sigue en curso y no forma parte de esta publicacion.
+
+## Codigo neuronal y entrenamiento de la ronda 6
+
+Se publican [Mamba-3 y GTrXL](experiments/round6/models.py),
+[PPO protegido](experiments/round6/train.py) y las adaptaciones recurrentes
+de [FlashSAC y FQL](experiments/round6/offpolicy.py), con sus
+[entrenamientos offline/online](experiments/round6/train_offpolicy.py).
+
+La [guia de entrenamiento](experiments/round6/README.txt) describe dependencias,
+datos, busqueda de parametros y orden de ejecucion. Se conservan las licencias
+y el [comprobante de fuentes congeladas](results/round6/training_code/source_snapshot.json).
+Los pesos y datasets permanecen fuera de Git. La evaluacion final de ronda 6
+sigue en curso; las mejoras posteriores propuestas para la compuerta quedan pendientes.

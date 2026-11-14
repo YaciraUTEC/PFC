@@ -1,0 +1,11 @@
+Ronda 6, solicitada el 13 de noviembre de 2026.
+Todo se ejecuta y guarda dentro de E:\UTEC\Tesis\TesisNicol.
+
+Fase 1: coordinacion de recuperacion, descenso y frenado. Comparar DSLPID de referencia, supervisor anterior, supervisor coordinado, frenado y filtrado; probar NMPCINDI original y con frenado. Ajustes solo en rutas de desarrollo. Cerrar una conclusion con validacion independiente antes de entrenar.
+Fase 2: Mamba-3 y GTrXL exclusivamente. Comparacion de ruido nominal fijo, schedule lineal y adaptativo con el mismo presupuesto, datos y cinco semillas. Estudiantes conservan memoria, abstencion explicita y regularizacion de imitacion. Cerrar conclusion antes de seleccionar algoritmo off-policy.
+Fase 3: FlashSAC y FQL offline->online sobre la base y schedule seleccionados en validacion. Replay registra la accion efectivamente ejecutada; deadlines son terminales; historial de cada episodio se reconstruye sin mezclar rutas ni estados ocultos obsoletos. Comparar con PPO y abstencion total, cinco semillas.
+
+Criterio primario conservado: aterrizaje suave y un segundo de contacto estable (round4/landing.py). Girar en vuelo no cuenta como aterrizar. Efectividad exacta y estimada; ruido nominal y doble; fallas RPM 0,2,10,25,28,29,29.5,29.6,30,35,40,50, y 100 para diagnostico NMPC. Ninguna capacidad de rotor se aumenta.
+Separaciones: desarrollo 610000..610015, validacion 611000..611031, test final 612000..612059, confirmacion 613000..613199. Entrenamiento 620000 en adelante. Semillas de modelo 201..205. Se registran diferencias pareadas por ruta y variabilidad entre modelos; los vuelos repetidos no se llaman rutas independientes.
+Seleccion: rendimiento severo robusto a ambos ruidos, penalizando deterioros exactos y nominales. Una mejora se adopta solo si aporta ganancia en test independiente sin esconder danos en casos faciles. Si ninguna red supera a la base, conclusion explicita y politica OFF disponible. Resultados de prueba nunca ajustan el entrenamiento posterior: solo se abre el test final despues de seleccionar las tres fases.
+Tiempos reales por etapa, fuentes de algoritmos y huellas de archivos se guardan junto con resultados. No se sobrescriben resultados de rondas anteriores.

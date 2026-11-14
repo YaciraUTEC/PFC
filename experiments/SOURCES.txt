@@ -5,3 +5,11 @@ Mamba-1: modules/mamba_simple.py and selective_scan_ref.
 GTrXL: https://github.com/opendilab/DI-engine/blob/main/ding/torch_utils/network/gtrxl.py (Apache-2.0), downloaded 2026-11-10. Only nn_module helper imports replaced by equivalent local torch helpers.
 LTC: ncps.torch.LTC from author package https://github.com/mlech26l/ncps, ode_unfolds=3 explicitly recorded.
 All six policies consume the same finite observation window. This is a bounded-context architecture comparison, not a benchmark of unlimited recurrent memory or optimized CUDA kernels.
+
+Round 6 - recurrent PPO and off-policy adaptations:
+FlashSAC: https://github.com/Holiday-Robot/FlashSAC.git at 87edc9061150ae9e962dd84e6544e27a1554b3ab
+fql: https://github.com/seohongpark/fql.git at e8cd16eb490332924dfa2492097219f181765933
+FlashSAC: official MIT network/layer/distribution/reward-normalization blocks in round6/vendor_flash; LICENSE retained.
+FQL: PyTorch adaptation of official agents/fql.py losses; MIT notice in round6/FQL_LICENSE.
+Mamba-3 SISO and GTrXL cores are reused; round6 adds 88-dimensional physics-only inputs and a frozen-PPO-memory adaptation for FlashSAC/FQL.
+These are task-specific recurrent adaptations with a learned extrinsic Q-difference gate; not reproductions of the original benchmark results or a certified safety filter.

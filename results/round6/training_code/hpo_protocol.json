@@ -1,0 +1,115 @@
+{
+  "jobs": [
+    {
+      "arch": "mamba3",
+      "method": "flashsac",
+      "tag": "sigma_0.015",
+      "params": {
+        "target_sigma": 0.015
+      }
+    },
+    {
+      "arch": "mamba3",
+      "method": "flashsac",
+      "tag": "sigma_0.05",
+      "params": {
+        "target_sigma": 0.05
+      }
+    },
+    {
+      "arch": "mamba3",
+      "method": "flashsac",
+      "tag": "sigma_0.15",
+      "params": {
+        "target_sigma": 0.15
+      }
+    },
+    {
+      "arch": "mamba3",
+      "method": "fql",
+      "tag": "alpha_1",
+      "params": {
+        "fql_alpha": 1.0
+      }
+    },
+    {
+      "arch": "mamba3",
+      "method": "fql",
+      "tag": "alpha_10",
+      "params": {
+        "fql_alpha": 10.0
+      }
+    },
+    {
+      "arch": "mamba3",
+      "method": "fql",
+      "tag": "alpha_30",
+      "params": {
+        "fql_alpha": 30.0
+      }
+    },
+    {
+      "arch": "gtrxl",
+      "method": "flashsac",
+      "tag": "sigma_0.015",
+      "params": {
+        "target_sigma": 0.015
+      }
+    },
+    {
+      "arch": "gtrxl",
+      "method": "flashsac",
+      "tag": "sigma_0.05",
+      "params": {
+        "target_sigma": 0.05
+      }
+    },
+    {
+      "arch": "gtrxl",
+      "method": "flashsac",
+      "tag": "sigma_0.15",
+      "params": {
+        "target_sigma": 0.15
+      }
+    },
+    {
+      "arch": "gtrxl",
+      "method": "fql",
+      "tag": "alpha_1",
+      "params": {
+        "fql_alpha": 1.0
+      }
+    },
+    {
+      "arch": "gtrxl",
+      "method": "fql",
+      "tag": "alpha_10",
+      "params": {
+        "fql_alpha": 10.0
+      }
+    },
+    {
+      "arch": "gtrxl",
+      "method": "fql",
+      "tag": "alpha_30",
+      "params": {
+        "fql_alpha": 30.0
+      }
+    }
+  ],
+  "model_seed": 191,
+  "prior_seed": 201,
+  "online_steps": 65536,
+  "offline_steps_fql": 10000,
+  "validation_routes": [
+    611064,
+    611065,
+    611066,
+    611067,
+    611068,
+    611069,
+    611070,
+    611071
+  ],
+  "selected_before_final_model_fits": true
+}

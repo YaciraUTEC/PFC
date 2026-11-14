@@ -1,0 +1,26 @@
+{
+  "checked_at_utc": "2026-11-14T16:21:26.545574+00:00",
+  "tests": 5,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "pytest_seconds": 6.65,
+  "warnings": 1,
+  "warning_summary": "Existing pkg_resources deprecation.",
+  "compiled_python_files": 28,
+  "local_relative_imports_resolved": true,
+  "inherited_files_checked": 7,
+  "neural_models_instantiated": false,
+  "training_started": false,
+  "gpu_used": false,
+  "main_evaluation_modified": false,
+  "selected_tests": [
+    "test_noise_schedule_linear_plateaus_and_adaptive_uses_severe_strata",
+    "test_distributional_terminal_projection_preserves_mass_and_reward",
+    "test_replay_keeps_actions_matched_to_the_transition",
+    "test_onset_sampling_preserves_the_first_activation_and_off_context",
+    "test_exploration_switch_uses_boolean_mask_and_preserves_baseline"
+  ],
+  "scope": "New publication checks are lightweight CPU tests and static checks. The archived 303-test pre-test run was not repeated.",
+  "format_note": "Preserved the original frozen train_utils.py byte content, including its trailing empty line; all other whitespace checks apply normally."
+}
