@@ -5,10 +5,12 @@ Implementacion neuronal: models.py, train.py, offpolicy.py, train_offpolicy.py.
 Configuracion registrada: configs/training_reference.json.
 Fuentes, licencias y huellas: results/round6/training_code/source_snapshot.json.
 
-Esta publicacion agrega el codigo de aprendizaje congelado antes del test.
-La evaluacion final de la campana original sigue en curso. No constituye una
-recomendacion final de politica ni incorpora las correcciones de compuerta
-propuestas despues de observar resultados. No incluye pesos ni datasets.
+Esta entrega incorpora el codigo de evaluacion final y los resultados cerrados.
+Informe, tablas y graficas: results/round6/final/README.md.
+FlashSAC + GTrXL obtuvo mayor exito medio; la recomendacion conservadora del
+controlador base aplica la condicion adicional de preservar todos sus exitos.
+No se reentreno ni se ajustaron umbrales despues de observar el test.
+Los pesos y datasets completos permanecen en el almacenamiento local.
 
 Mamba-3/GTrXL
 Los nucleos existentes de rondas anteriores se conservan; la entrada pasa a
@@ -48,8 +50,8 @@ Flash necesarios estan en vendor_flash y las perdidas FQL estan adaptadas aqui.
 
 Entradas historicas y ejecuciones nuevas
 OUT se resuelve respecto a la raiz local: runs/intervention_round6.
-No ejecutar estos entrypoints en el PC mientras la campana original este activa:
-comparten esa carpeta de resultados. En otra copia limpia se puede entrenar
+No ejecutar una segunda copia mientras haya una campana activa: los entrypoints
+comparten runs/intervention_round6. La campana historica original ya termino. En otra copia limpia se puede entrenar
 sobre el controlador historico seleccionado reutilizando como entradas:
 results/round6/phase1/phase1_conclusion.json, phase1_closed.json,
 phase1_physical_closed.json y phase1_corrections_closed.json.
@@ -78,11 +80,27 @@ estado de simulacion interrumpido.
 finalize_expert_data es un auxiliar historico previo al conjunto rescue:
 no ejecutarlo despues de rescue_teacher_data, que ya publica el fingerprint final.
 
-La orquestacion, prueba final y presentacion de la campana original no forman
-parte de esta entrega de entrenamiento. Las rutas, protocolos y fuentes
-archivados permiten revisar exactamente que se entreno.
+La entrega final agrega campaign.py, final_evaluation.py, latency.py, report.py
+y los drivers de desarrollo/seleccion del control. PLAN y amendments originales
+se conservan en results/round6/final. El evaluador cientifico historico verifica
+los checkpoints/datos locales de esta ronda y de ronda5 y los commits de los
+repositorios originales bajo ../vendor/FlashSAC y ../vendor/fql. Por ello la
+evaluacion completa requiere esos artefactos originales, que no se incluyen
+en el paquete resumido; no basta copiar los cierres historicos. Los hashes y
+commits estan en final/frozen_before_test.json.
+La secuencia 1-8 anterior permite una ejecucion nueva del aprendizaje con datos
+y modelos nuevos; no declara que esa corrida sea la historica ya evaluada.
+campaign/report mantienen un paso de revision visual antes del cierre. No
+fabricar presentation_verified.json sin revisar las figuras reales.
 
-Verificacion
+Para revisar la publicacion no es necesario reentrenar: abrir
+results/round6/final/README.md. Las tablas distinguen 60 rutas por punto para
+los controladores principales/redes de 12 para NMPC secundario. Las dos
+variantes finales de NMPC usan INDI desactivado, como decidio el desarrollo.
+Los 303 tests historicos y las comprobaciones de publicacion se informan
+por separado.
+
+Verificacion de la publicacion preliminar (historica)
 experiments/tests/test_round6.py conserva las pruebas originales de ingenieria.
 Algunas construyen redes y requieren CUDA; no se ejecutan automaticamente.
 El recibo historico registra 303 pruebas aprobadas antes de abrir test.
@@ -93,3 +111,10 @@ Comprobacion de publicacion: 28 modulos compilan, imports relativos resueltos,
 siete archivos heredados coinciden y cinco pruebas pequenas CPU aprobaron en
 6.65s. No se construyeron redes, no se uso GPU ni se modifico la campana activa.
 Recibo: results/round6/training_code/publication_verification.json.
+
+VERIFICACION DE LA ENTREGA FINAL
+La copia final paso 351 pruebas, cero fallas, errores o saltos; 158.22 segundos
+de pytest. Incluye las pruebas adicionales de control/NMPC que ya estaban
+publicadas y las nuevas pruebas de informes. No se inicio una nueva campana
+de entrenamiento ni se modificaron los datos/modelos historicos.
+Recibos: results/round6/final/publication_validation.json y publication_tests.xml.

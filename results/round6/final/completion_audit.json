@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "coverage": {
+    "test": {
+      "files": 256,
+      "recorded_model_route_cases": 179712
+    },
+    "ablations": {
+      "files": 120,
+      "recorded_model_route_cases": 3840
+    },
+    "sensitivity": {
+      "files": 62,
+      "recorded_model_route_cases": 1984
+    },
+    "confirmation": {
+      "files": 24,
+      "recorded_model_route_cases": 19200
+    }
+  },
+  "total_recorded_model_route_cases": 204736,
+  "final_models": 60,
+  "hyperparameter_pilots": 12,
+  "all_frozen_sources_including_report_unchanged": true,
+  "integrity": {
+    "source_files": 182,
+    "checkpoints": 132,
+    "physical_assets": 6,
+    "passed": true
+  },
+  "high_fault_successes": [],
+  "note": "Recorded cases include repeated route geometries/model seeds and certified OFF replays;not all are independent physical simulations."
+}

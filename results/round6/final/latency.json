@@ -1,0 +1,73 @@
+{
+  "controllers": {
+    "selected": {
+      "samples": 448,
+      "median_ms": 0.4612500051734969,
+      "p95_ms": 0.6805599827202967,
+      "p99_ms": 0.9625819986104021,
+      "max_ms": 1.301399985095486
+    },
+    "nmpc_fast_10": {
+      "samples": 448,
+      "median_ms": 19.381599995540455,
+      "p95_ms": 21.91487000527559,
+      "p99_ms": 22.869155005319044,
+      "max_ms": 24.72359998500906
+    },
+    "nmpc_matched": {
+      "samples": 448,
+      "median_ms": 45.615700000780635,
+      "p95_ms": 65.71676499734166,
+      "p99_ms": 90.70890300616142,
+      "max_ms": 105.88809999171644
+    }
+  },
+  "neural": {
+    "mamba3_ppo": {
+      "samples": 496,
+      "median_ms": 0.5809000140288845,
+      "p95_ms": 0.7396000146400183,
+      "p99_ms": 1.1595649950322708,
+      "max_ms": 2.1929999929852784
+    },
+    "mamba3_flashsac": {
+      "samples": 496,
+      "median_ms": 1.1646999919321388,
+      "p95_ms": 1.3981250231154263,
+      "p99_ms": 1.5672199981054291,
+      "max_ms": 1.99280001106672
+    },
+    "mamba3_fql": {
+      "samples": 496,
+      "median_ms": 1.1646999919321388,
+      "p95_ms": 1.462225009163376,
+      "p99_ms": 1.810285011015367,
+      "max_ms": 2.287500014062971
+    },
+    "gtrxl_ppo": {
+      "samples": 496,
+      "median_ms": 1.6027500096242875,
+      "p95_ms": 1.9933500079787336,
+      "p99_ms": 2.403010016132612,
+      "max_ms": 2.964499988593161
+    },
+    "gtrxl_flashsac": {
+      "samples": 496,
+      "median_ms": 2.2667500015813857,
+      "p95_ms": 2.7636250015348196,
+      "p99_ms": 3.1328300072345896,
+      "max_ms": 3.8435999886132777
+    },
+    "gtrxl_fql": {
+      "samples": 496,
+      "median_ms": 2.30690001626499,
+      "p95_ms": 2.8748999975505285,
+      "p99_ms": 3.329230009694584,
+      "max_ms": 5.229400005191565
+    }
+  },
+  "seconds": 41.62644028663635,
+  "control_period_ms": 20.833333333333332,
+  "scope": "Sequential,1CPUthread,no experimental training workers;validation observations only. Includes governor/controller/observer;neural timing separate. Not a hard real-time proof.",
+  "selection_note": "Phase1 screening used loaded timing. This dedicated measurement is reported separately;no learning hyperparameters or test data are used."
+}

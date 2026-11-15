@@ -1,0 +1,80 @@
+{
+  "created_epoch": 1794762867.1641283,
+  "figures": [
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\comparacion_estimated.png",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\comparacion_exact.png",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\schedules.png"
+  ],
+  "recommendation": {
+    "controller": "structured_governor",
+    "learned_family": null,
+    "representative": null,
+    "reason": "The validation-selected candidate did not meet all prospective gain/protection requirements; retain base controller and abstention.",
+    "candidate_family": "flashsac_gtrxl_linear",
+    "primary": {
+      "mean": 0.13583333333333333,
+      "lower": 0.017469949192682466,
+      "upper": 0.2541967174739842,
+      "bootstrap_sd": 0.04529106001047867,
+      "family": "flashsac_gtrxl_linear",
+      "total_losses": 54,
+      "severe_estimated_losses": 47,
+      "mild_losses": 0,
+      "exact_losses": 7,
+      "gains_all_levels": 250
+    },
+    "confirmation": {
+      "mean": 0.1435,
+      "lower": 0.09399999999999997,
+      "upper": 0.193,
+      "bootstrap_sd": 0.025198816286754435,
+      "training_seeds": 5,
+      "routes": 200,
+      "total_losses": 140,
+      "mild_losses": 0,
+      "exact_losses": 39
+    },
+    "sum_component_p95_ms": 3.4441849842551164,
+    "acceptance_checks": {
+      "runtime_48hz": true,
+      "primary_confirmed_gain": true,
+      "independent_confirmation_gain": true,
+      "protected_primary": false,
+      "protected_confirmation": false,
+      "protected_shifted_fault": false
+    },
+    "shifted_fault": [
+      {
+        "family": "flashsac_gtrxl_linear",
+        "fault_clock_seconds": 4.0,
+        "cases": 160,
+        "routes": 16,
+        "training_seeds": 5,
+        "success_percent": 61.25,
+        "baseline_success_percent": 62.5,
+        "paired_difference_pp": -1.25,
+        "gains": 26,
+        "losses": 28
+      },
+      {
+        "family": "flashsac_gtrxl_linear",
+        "fault_clock_seconds": 8.0,
+        "cases": 160,
+        "routes": 16,
+        "training_seeds": 5,
+        "success_percent": 21.875,
+        "baseline_success_percent": 0.0,
+        "paired_difference_pp": 21.875,
+        "gains": 35,
+        "losses": 0
+      }
+    ]
+  },
+  "rate_rows": 768,
+  "training_models": 60,
+  "figure_sha256": {
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\comparacion_estimated.png": "fd6be0014dce2f8765a26618c3b2641580873475f2933904bd31df1fe0c14020",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\comparacion_exact.png": "1eceee052c95f7458e16229926f5b965ae18b8aff3d620f27eedd75353e0dd48",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\schedules.png": "57dde5976885db40c0f6916d0856f9a67fee572d28540156ee1791cee2bc01b9"
+  }
+}

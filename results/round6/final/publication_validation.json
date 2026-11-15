@@ -1,0 +1,15 @@
+{
+  "checked_utc": "2026-11-15T18:50:49.290671+00:00",
+  "tests": 351,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "pytest_seconds": 158.22,
+  "warnings": 58,
+  "command": "python -m pytest experiments/tests -q --disable-warnings --junitxml results/round6/final/publication_tests.xml",
+  "environment_python": "E:\\UTEC\\Tesis\\TesisNicol\\conda_env\\python.exe",
+  "original_historical_tests": 303,
+  "published_suite_includes_additional_existing_tests": true,
+  "new_training_campaign_started": false,
+  "scope": "Full test suite in the isolated publication checkout;the historical frozen evaluation and its data/models were left unchanged."
+}

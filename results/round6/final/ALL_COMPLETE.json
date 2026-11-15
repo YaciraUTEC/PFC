@@ -1,0 +1,20 @@
+{
+  "status": "complete",
+  "finished_utc": "2026-11-15T17:22:27.8100296Z",
+  "final_models": 60,
+  "hyperparameter_pilots": 12,
+  "tests_passed": 303,
+  "test_files": 256,
+  "gate_ablation_files": 120,
+  "sensitivity_files": 62,
+  "confirmation_files": 24,
+  "recorded_model_route_cases": 204736,
+  "all_frozen_sources_and_models_verified": true,
+  "all_three_figures_visually_verified": true,
+  "campaign_exit_code": 0,
+  "temporary_awake_guard_active": false,
+  "report_complete": true,
+  "remaining_required_work": 0,
+  "recommended_controller": "structured_governor",
+  "neural_compensation_enabled": false
+}

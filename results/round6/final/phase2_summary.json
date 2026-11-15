@@ -1,0 +1,508 @@
+{
+  "schedule_by_arch": {
+    "mamba3": "linear",
+    "gtrxl": "linear"
+  },
+  "summary": {
+    "mamba3": {
+      "nominal": {
+        "mean_score": 0.97265625,
+        "sd_score": 0.03268203228648733,
+        "mean_intervention": 0.030465163459240392,
+        "training_seeds": 5
+      },
+      "linear": {
+        "mean_score": 1.00390625,
+        "sd_score": 0.044538102542935075,
+        "mean_intervention": 0.024454070073388883,
+        "training_seeds": 5
+      },
+      "adaptive": {
+        "mean_score": 1.00234375,
+        "sd_score": 0.04302198406955739,
+        "mean_intervention": 0.02830918700982992,
+        "training_seeds": 5
+      },
+      "full": {
+        "mean_score": 0.99453125,
+        "sd_score": 0.04441803041312446,
+        "mean_intervention": 0.028219930632458097,
+        "training_seeds": 5
+      }
+    },
+    "gtrxl": {
+      "nominal": {
+        "mean_score": 0.953125,
+        "sd_score": 0.06001601394006,
+        "mean_intervention": 0.057134843130778434,
+        "training_seeds": 5
+      },
+      "linear": {
+        "mean_score": 0.9859375,
+        "sd_score": 0.016710351278287062,
+        "mean_intervention": 0.030034046890964117,
+        "training_seeds": 5
+      },
+      "adaptive": {
+        "mean_score": 0.9609375,
+        "sd_score": 0.06064829655123033,
+        "mean_intervention": 0.05616756060646573,
+        "training_seeds": 5
+      },
+      "full": {
+        "mean_score": 0.9859375,
+        "sd_score": 0.016710351278287062,
+        "mean_intervention": 0.03136846379158514,
+        "training_seeds": 5
+      }
+    }
+  },
+  "finished_epoch": 1794602015.28995,
+  "seconds": 1622.413580417633,
+  "decision_basis": "Independent validation routes611008..611015;five training seeds;all test routes still closed.",
+  "scope": "Nominal/full-range controls distinguish augmentation exposure from the noise-range schedule.",
+  "model_summaries": [
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "nominal",
+        "seed": 201,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_201\\nominal\\best.pt"
+      },
+      "score": 1.01953125,
+      "mean_intervention": 0.022351638229780493
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "nominal",
+        "seed": 202,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_202\\nominal\\best.pt"
+      },
+      "score": 0.98046875,
+      "mean_intervention": 0.034940407652867045
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "nominal",
+        "seed": 203,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_203\\nominal\\best.pt"
+      },
+      "score": 0.94140625,
+      "mean_intervention": 0.02372181817736646
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "nominal",
+        "seed": 204,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_204\\nominal\\best.pt"
+      },
+      "score": 0.94140625,
+      "mean_intervention": 0.03749424797132464
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "nominal",
+        "seed": 205,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_205\\nominal\\best.pt"
+      },
+      "score": 0.98046875,
+      "mean_intervention": 0.03381770526486331
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "linear",
+        "seed": 201,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_201\\linear\\best.pt"
+      },
+      "score": 1.01953125,
+      "mean_intervention": 0.01853010312820006
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "linear",
+        "seed": 202,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_202\\linear\\best.pt"
+      },
+      "score": 1.05859375,
+      "mean_intervention": 0.023186583015013057
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "linear",
+        "seed": 203,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_203\\linear\\best.pt"
+      },
+      "score": 1.01953125,
+      "mean_intervention": 0.016567888323263825
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "linear",
+        "seed": 204,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_204\\linear\\best.pt"
+      },
+      "score": 0.94140625,
+      "mean_intervention": 0.030168070635604154
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "linear",
+        "seed": 205,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_205\\linear\\best.pt"
+      },
+      "score": 0.98046875,
+      "mean_intervention": 0.03381770526486331
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "adaptive",
+        "seed": 201,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_201\\adaptive\\best.pt"
+      },
+      "score": 1.015625,
+      "mean_intervention": 0.017368831686339643
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "adaptive",
+        "seed": 202,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_202\\adaptive\\best.pt"
+      },
+      "score": 1.0546875,
+      "mean_intervention": 0.025845365554494792
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "adaptive",
+        "seed": 203,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_203\\adaptive\\best.pt"
+      },
+      "score": 1.01953125,
+      "mean_intervention": 0.027019784572127226
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "adaptive",
+        "seed": 204,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_204\\adaptive\\best.pt"
+      },
+      "score": 0.94140625,
+      "mean_intervention": 0.03749424797132464
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "adaptive",
+        "seed": 205,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_205\\adaptive\\best.pt"
+      },
+      "score": 0.98046875,
+      "mean_intervention": 0.03381770526486331
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "full",
+        "seed": 201,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_201\\full\\best.pt"
+      },
+      "score": 1.0546875,
+      "mean_intervention": 0.021072383594658097
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "full",
+        "seed": 202,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_202\\full\\best.pt"
+      },
+      "score": 0.98046875,
+      "mean_intervention": 0.034940407652867045
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "full",
+        "seed": 203,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_203\\full\\best.pt"
+      },
+      "score": 1.01953125,
+      "mean_intervention": 0.02753051829867408
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "full",
+        "seed": 204,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_204\\full\\best.pt"
+      },
+      "score": 0.9375,
+      "mean_intervention": 0.02373863835122796
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "mamba3",
+        "schedule": "full",
+        "seed": 205,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\mamba3\\seed_205\\full\\best.pt"
+      },
+      "score": 0.98046875,
+      "mean_intervention": 0.03381770526486331
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "nominal",
+        "seed": 201,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_201\\nominal\\best.pt"
+      },
+      "score": 0.9713541666666667,
+      "mean_intervention": 0.07649756998356981
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "nominal",
+        "seed": 202,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_202\\nominal\\best.pt"
+      },
+      "score": 0.98046875,
+      "mean_intervention": 0.030364194784478923
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "nominal",
+        "seed": 203,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_203\\nominal\\best.pt"
+      },
+      "score": 0.8567708333333333,
+      "mean_intervention": 0.10437866538156866
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "nominal",
+        "seed": 204,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_204\\nominal\\best.pt"
+      },
+      "score": 0.94140625,
+      "mean_intervention": 0.037599697812223117
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "nominal",
+        "seed": 205,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_205\\nominal\\best.pt"
+      },
+      "score": 1.015625,
+      "mean_intervention": 0.036834087692051674
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "linear",
+        "seed": 201,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_201\\linear\\best.pt"
+      },
+      "score": 0.9765625,
+      "mean_intervention": 0.026758292952459416
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "linear",
+        "seed": 202,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_202\\linear\\best.pt"
+      },
+      "score": 0.98046875,
+      "mean_intervention": 0.030364194784478923
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "linear",
+        "seed": 203,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_203\\linear\\best.pt"
+      },
+      "score": 0.98046875,
+      "mean_intervention": 0.027431886355114593
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "linear",
+        "seed": 204,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_204\\linear\\best.pt"
+      },
+      "score": 0.9765625,
+      "mean_intervention": 0.02878177267071597
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "linear",
+        "seed": 205,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_205\\linear\\best.pt"
+      },
+      "score": 1.015625,
+      "mean_intervention": 0.036834087692051674
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "adaptive",
+        "seed": 201,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_201\\adaptive\\best.pt"
+      },
+      "score": 0.9713541666666667,
+      "mean_intervention": 0.07649756998356981
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "adaptive",
+        "seed": 202,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_202\\adaptive\\best.pt"
+      },
+      "score": 0.98046875,
+      "mean_intervention": 0.030364194784478923
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "adaptive",
+        "seed": 203,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_203\\adaptive\\best.pt"
+      },
+      "score": 0.8567708333333333,
+      "mean_intervention": 0.10437866538156866
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "adaptive",
+        "seed": 204,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_204\\adaptive\\best.pt"
+      },
+      "score": 0.98046875,
+      "mean_intervention": 0.03276328519065957
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "adaptive",
+        "seed": 205,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_205\\adaptive\\best.pt"
+      },
+      "score": 1.015625,
+      "mean_intervention": 0.036834087692051674
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "full",
+        "seed": 201,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_201\\full\\best.pt"
+      },
+      "score": 0.9765625,
+      "mean_intervention": 0.02436412421394167
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "full",
+        "seed": 202,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_202\\full\\best.pt"
+      },
+      "score": 0.98046875,
+      "mean_intervention": 0.030364194784478923
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "full",
+        "seed": 203,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_203\\full\\best.pt"
+      },
+      "score": 0.98046875,
+      "mean_intervention": 0.027144102910841156
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "full",
+        "seed": 204,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_204\\full\\best.pt"
+      },
+      "score": 0.9765625,
+      "mean_intervention": 0.03813580935661226
+    },
+    {
+      "entry": {
+        "kind": "ppo",
+        "arch": "gtrxl",
+        "schedule": "full",
+        "seed": 205,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2\\gtrxl\\seed_205\\full\\best.pt"
+      },
+      "score": 1.015625,
+      "mean_intervention": 0.036834087692051674
+    }
+  ],
+  "archive_note": "Derived summary without per-episode traces;original full conclusion remains in the local run.",
+  "original_sha256": "dae935cb94ed83dbc5684378d4b32964e9d82d0d3aab5960fdd2b41a4917de0c"
+}

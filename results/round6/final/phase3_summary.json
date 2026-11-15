@@ -1,0 +1,269 @@
+{
+  "best_family": "gtrxl_flashsac",
+  "representative": {
+    "kind": "flashsac",
+    "arch": "gtrxl",
+    "schedule": "linear",
+    "seed": 201,
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt"
+  },
+  "summary": {
+    "mamba3_ppo": {
+      "score": 1.00390625,
+      "sd": 0.044538102542935075,
+      "intervention": 0.024454070073388883
+    },
+    "mamba3_flashsac": {
+      "score": 1.1018229166666667,
+      "sd": 0.053205680667529676,
+      "intervention": 0.07008722240358867
+    },
+    "mamba3_fql": {
+      "score": 1.0265625000000003,
+      "sd": 0.0673228711350354,
+      "intervention": 0.09278315378569993
+    },
+    "gtrxl_ppo": {
+      "score": 0.9859375,
+      "sd": 0.016710351278287062,
+      "intervention": 0.030034046890964117
+    },
+    "gtrxl_flashsac": {
+      "score": 1.16484375,
+      "sd": 0.06313157453386538,
+      "intervention": 0.07053007498583272
+    },
+    "gtrxl_fql": {
+      "score": 1.0388020833333331,
+      "sd": 0.06963650740856048,
+      "intervention": 0.09377920774182322
+    }
+  },
+  "finished_epoch": 1794657012.6428266,
+  "seconds": 2398.099923849106,
+  "acceptance": "Family is selected on validation; independent test/confirmation may accept it or retain the base. No further hyperparameter changes.",
+  "model_summaries": [
+    {
+      "entry": {
+        "kind": "flashsac",
+        "arch": "mamba3",
+        "schedule": "linear",
+        "seed": 201,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\mamba3\\seed_201\\best.pt"
+      },
+      "score": 1.05859375,
+      "mean_intervention": 0.033414192730365354
+    },
+    {
+      "entry": {
+        "kind": "flashsac",
+        "arch": "mamba3",
+        "schedule": "linear",
+        "seed": 202,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\mamba3\\seed_202\\best.pt"
+      },
+      "score": 1.171875,
+      "mean_intervention": 0.05792969140533811
+    },
+    {
+      "entry": {
+        "kind": "flashsac",
+        "arch": "mamba3",
+        "schedule": "linear",
+        "seed": 203,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\mamba3\\seed_203\\best.pt"
+      },
+      "score": 1.0442708333333333,
+      "mean_intervention": 0.10261651152479677
+    },
+    {
+      "entry": {
+        "kind": "flashsac",
+        "arch": "mamba3",
+        "schedule": "linear",
+        "seed": 204,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\mamba3\\seed_204\\best.pt"
+      },
+      "score": 1.09765625,
+      "mean_intervention": 0.06780603874501147
+    },
+    {
+      "entry": {
+        "kind": "flashsac",
+        "arch": "mamba3",
+        "schedule": "linear",
+        "seed": 205,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\mamba3\\seed_205\\best.pt"
+      },
+      "score": 1.13671875,
+      "mean_intervention": 0.08866967761243168
+    },
+    {
+      "entry": {
+        "kind": "fql",
+        "arch": "mamba3",
+        "schedule": "linear",
+        "seed": 201,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\fql\\mamba3\\seed_201\\best.pt"
+      },
+      "score": 1.02734375,
+      "mean_intervention": 0.05414732860591479
+    },
+    {
+      "entry": {
+        "kind": "fql",
+        "arch": "mamba3",
+        "schedule": "linear",
+        "seed": 202,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\fql\\mamba3\\seed_202\\best.pt"
+      },
+      "score": 0.9205729166666667,
+      "mean_intervention": 0.13691478032472928
+    },
+    {
+      "entry": {
+        "kind": "fql",
+        "arch": "mamba3",
+        "schedule": "linear",
+        "seed": 203,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\fql\\mamba3\\seed_203\\best.pt"
+      },
+      "score": 1.015625,
+      "mean_intervention": 0.06717196392652593
+    },
+    {
+      "entry": {
+        "kind": "fql",
+        "arch": "mamba3",
+        "schedule": "linear",
+        "seed": 204,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\fql\\mamba3\\seed_204\\best.pt"
+      },
+      "score": 1.0807291666666667,
+      "mean_intervention": 0.12279407202455177
+    },
+    {
+      "entry": {
+        "kind": "fql",
+        "arch": "mamba3",
+        "schedule": "linear",
+        "seed": 205,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\fql\\mamba3\\seed_205\\best.pt"
+      },
+      "score": 1.0885416666666667,
+      "mean_intervention": 0.0828876240467779
+    },
+    {
+      "entry": {
+        "kind": "flashsac",
+        "arch": "gtrxl",
+        "schedule": "linear",
+        "seed": 201,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt"
+      },
+      "score": 1.2109375,
+      "mean_intervention": 0.0687255173008223
+    },
+    {
+      "entry": {
+        "kind": "flashsac",
+        "arch": "gtrxl",
+        "schedule": "linear",
+        "seed": 202,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_202\\best.pt"
+      },
+      "score": 1.09765625,
+      "mean_intervention": 0.03729179852275451
+    },
+    {
+      "entry": {
+        "kind": "flashsac",
+        "arch": "gtrxl",
+        "schedule": "linear",
+        "seed": 203,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_203\\best.pt"
+      },
+      "score": 1.2109375,
+      "mean_intervention": 0.0904255075127857
+    },
+    {
+      "entry": {
+        "kind": "flashsac",
+        "arch": "gtrxl",
+        "schedule": "linear",
+        "seed": 204,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_204\\best.pt"
+      },
+      "score": 1.2109375,
+      "mean_intervention": 0.07286446611797621
+    },
+    {
+      "entry": {
+        "kind": "flashsac",
+        "arch": "gtrxl",
+        "schedule": "linear",
+        "seed": 205,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_205\\best.pt"
+      },
+      "score": 1.09375,
+      "mean_intervention": 0.08334308547482487
+    },
+    {
+      "entry": {
+        "kind": "fql",
+        "arch": "gtrxl",
+        "schedule": "linear",
+        "seed": 201,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\fql\\gtrxl\\seed_201\\best.pt"
+      },
+      "score": 1.09375,
+      "mean_intervention": 0.1089087905101287
+    },
+    {
+      "entry": {
+        "kind": "fql",
+        "arch": "gtrxl",
+        "schedule": "linear",
+        "seed": 202,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\fql\\gtrxl\\seed_202\\best.pt"
+      },
+      "score": 1.0052083333333333,
+      "mean_intervention": 0.10754888320420186
+    },
+    {
+      "entry": {
+        "kind": "fql",
+        "arch": "gtrxl",
+        "schedule": "linear",
+        "seed": 203,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\fql\\gtrxl\\seed_203\\best.pt"
+      },
+      "score": 1.1223958333333333,
+      "mean_intervention": 0.07073342042146165
+    },
+    {
+      "entry": {
+        "kind": "fql",
+        "arch": "gtrxl",
+        "schedule": "linear",
+        "seed": 204,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\fql\\gtrxl\\seed_204\\best.pt"
+      },
+      "score": 0.94921875,
+      "mean_intervention": 0.07125608492285235
+    },
+    {
+      "entry": {
+        "kind": "fql",
+        "arch": "gtrxl",
+        "schedule": "linear",
+        "seed": 205,
+        "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\fql\\gtrxl\\seed_205\\best.pt"
+      },
+      "score": 1.0234375,
+      "mean_intervention": 0.11044885965047156
+    }
+  ],
+  "archive_note": "Derived summary without per-episode traces;original full conclusion remains in the local run.",
+  "original_sha256": "464162c51b46e03e64f8b1c7bf2ea58861805646b10cb18d6f276d14075261bb"
+}

@@ -1,0 +1,11 @@
+{
+  "mean": 0.1435,
+  "lower": 0.09399999999999997,
+  "upper": 0.193,
+  "bootstrap_sd": 0.025198816286754435,
+  "training_seeds": 5,
+  "routes": 200,
+  "total_losses": 140,
+  "mild_losses": 0,
+  "exact_losses": 39
+}

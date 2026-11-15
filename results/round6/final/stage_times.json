@@ -1,0 +1,120 @@
+{
+  "data_receipt": {
+    "started_epoch": 1794559383.198317,
+    "finished_epoch": 1794559898.248703,
+    "seconds": 515.0503859519958,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\data_0.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "final_evaluation_receipt": {
+    "started_epoch": 1794717722.6220422,
+    "finished_epoch": 1794762847.0926554,
+    "seconds": 45124.470613241196,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\final_evaluation_0.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "mpc_expert_data_receipt": {
+    "started_epoch": 1794560576.5621357,
+    "finished_epoch": 1794560901.5964286,
+    "seconds": 325.0342929363251,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\mpc_expert_data_0.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "phase2_selection_receipt": {
+    "started_epoch": 1794600390.5625656,
+    "finished_epoch": 1794602020.732896,
+    "seconds": 1630.1703305244446,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2_selection_0.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "phase2_training_receipt": {
+    "started_epoch": 1794569067.565998,
+    "finished_epoch": 1794600390.5585525,
+    "seconds": 31322.992554426193,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2_training_0.log",
+        "exit_code": 0
+      },
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2_training_1.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "phase3_selection_receipt": {
+    "started_epoch": 1794654612.2177327,
+    "finished_epoch": 1794657017.4961605,
+    "seconds": 2405.278427839279,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3_selection_0.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "phase3_training_receipt": {
+    "started_epoch": 1794603072.4756954,
+    "finished_epoch": 1794654612.2133293,
+    "seconds": 51539.73763394356,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3_training_0.log",
+        "exit_code": 0
+      },
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3_training_1.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "rescue_expert_data_receipt": {
+    "started_epoch": 1794563138.6502144,
+    "finished_epoch": 1794563323.6737866,
+    "seconds": 185.0235722064972,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\rescue_expert_data_0.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "tests_before_test_receipt": {
+    "started_epoch": 1794717522.5839071,
+    "finished_epoch": 1794717722.6114683,
+    "seconds": 200.02756118774414,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\tests_before_test_0.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "training_smoke_receipt": {
+    "started_epoch": 1794559898.254567,
+    "finished_epoch": 1794560193.292672,
+    "seconds": 295.0381050109863,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\training_smoke_0.log",
+        "exit_code": 0
+      }
+    ]
+  }
+}

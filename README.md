@@ -96,3 +96,8 @@ datos, busqueda de parametros y orden de ejecucion. Se conservan las licencias
 y el [comprobante de fuentes congeladas](results/round6/training_code/source_snapshot.json).
 Los pesos y datasets permanecen fuera de Git. La evaluacion final de ronda 6
 sigue en curso; las mejoras posteriores propuestas para la compuerta quedan pendientes.
+
+
+### Evaluación final de recuperación y aterrizaje — ronda 6
+
+[Código y documentación](experiments/round6/README.txt) · [Resultados, tablas y gráficas](results/round6/final/README.md). Comparación Mamba-3/GTrXL con PPO, FlashSAC y FQL, schedules de ruido y NMPC; cinco semillas por configuración y aterrizaje estricto. La mejora media de FlashSAC + GTrXL se distingue del criterio conservador de preservar todos los éxitos de DSLPID.

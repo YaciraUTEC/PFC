@@ -1,0 +1,800 @@
+RESULTADO FINAL RONDA6
+
+Control elegido: structured_governor
+Familia aprendida aceptada: NINGUNA; conservar el control base
+The validation-selected candidate did not meet all prospective gain/protection requirements; retain base controller and abstention.
+
+FASE1: COORDINACION Y CONTROL
+Ganancias/perdidas pareadas en validacion: 71/0.
+Se implementaron y compararon supervisor continuo, fases de recuperacion/descenso/frenado, limites de aceleracion angular, asignacion de empuje y filtrado. Solo se conserva la version que gano la comparacion.
+El observador estructurado supone una sola falla. No se presenta como estimador general multifalla.
+NMPC por defecto y sus ajustes se evaluaron aparte. Una version INDI0 se identifica como NMPC sin compensacion INDI. Horizonte/retardo/gain son adaptaciones al simulador; no reproducen el hardware del paper.
+NMPC secundario tiene12rutas porpunto, frente a60 en principales.0/12 no prueba imposibilidad fisica ni exito poblacional nulo. Se rechazo para48Hz una variante que supera20.83ms porcalculo.
+
+FASE2: SCHEDULES DE RUIDO
+{
+  "mamba3": {
+    "nominal": {
+      "mean_score": 0.97265625,
+      "sd_score": 0.03268203228648733,
+      "mean_intervention": 0.030465163459240392,
+      "training_seeds": 5
+    },
+    "linear": {
+      "mean_score": 1.00390625,
+      "sd_score": 0.044538102542935075,
+      "mean_intervention": 0.024454070073388883,
+      "training_seeds": 5
+    },
+    "adaptive": {
+      "mean_score": 1.00234375,
+      "sd_score": 0.04302198406955739,
+      "mean_intervention": 0.02830918700982992,
+      "training_seeds": 5
+    },
+    "full": {
+      "mean_score": 0.99453125,
+      "sd_score": 0.04441803041312446,
+      "mean_intervention": 0.028219930632458097,
+      "training_seeds": 5
+    }
+  },
+  "gtrxl": {
+    "nominal": {
+      "mean_score": 0.953125,
+      "sd_score": 0.06001601394006,
+      "mean_intervention": 0.057134843130778434,
+      "training_seeds": 5
+    },
+    "linear": {
+      "mean_score": 0.9859375,
+      "sd_score": 0.016710351278287062,
+      "mean_intervention": 0.030034046890964117,
+      "training_seeds": 5
+    },
+    "adaptive": {
+      "mean_score": 0.9609375,
+      "sd_score": 0.06064829655123033,
+      "mean_intervention": 0.05616756060646573,
+      "training_seeds": 5
+    },
+    "full": {
+      "mean_score": 0.9859375,
+      "sd_score": 0.016710351278287062,
+      "mean_intervention": 0.03136846379158514,
+      "training_seeds": 5
+    }
+  }
+}
+Seleccion por arquitectura: {'mamba3': 'linear', 'gtrxl': 'linear'}
+BC y regularizacion de imitacion se restringen a ruido nominal en todas las ramas de fase2;solo los rollouts online amplian el ruido. Las ramas no ven ruido doble por la clonacion antes del curriculum.
+Lineal: ampliar upper1->2durante80%delpresupuesto y mantener. Adaptativo: ampliar/reducir segun exito de entrenamiento en cada estrato severo estimado y proteger casos faciles. Nominal y full son controles de exposicion.
+sigma nominal=.002m/s en velocidad lineal y.002rad/s en giros; doble=.004en ambas. Posicion/orientacion siguen exactas. Se muestrea un multiplicador uniforme[.5,upper] por episodio en entrenamiento.
+
+FASE3: FLASH SAC Y FLOW Q-LEARNING
+{
+  "mamba3_ppo": {
+    "score": 1.00390625,
+    "sd": 0.044538102542935075,
+    "intervention": 0.024454070073388883
+  },
+  "mamba3_flashsac": {
+    "score": 1.1018229166666667,
+    "sd": 0.053205680667529676,
+    "intervention": 0.07008722240358867
+  },
+  "mamba3_fql": {
+    "score": 1.0265625000000003,
+    "sd": 0.0673228711350354,
+    "intervention": 0.09278315378569993
+  },
+  "gtrxl_ppo": {
+    "score": 0.9859375,
+    "sd": 0.016710351278287062,
+    "intervention": 0.030034046890964117
+  },
+  "gtrxl_flashsac": {
+    "score": 1.16484375,
+    "sd": 0.06313157453386538,
+    "intervention": 0.07053007498583272
+  },
+  "gtrxl_fql": {
+    "score": 1.0388020833333331,
+    "sd": 0.06963650740856048,
+    "intervention": 0.09377920774182322
+  }
+}
+PARAMETROS ELEGIDOS ANTES DE LOS MODELOS FINALES
+{
+  "selected": {
+    "mamba3": {
+      "flashsac": {
+        "target_sigma": 0.15
+      },
+      "fql": {
+        "fql_alpha": 1.0
+      }
+    },
+    "gtrxl": {
+      "flashsac": {
+        "target_sigma": 0.15
+      },
+      "fql": {
+        "fql_alpha": 1.0
+      }
+    }
+  },
+  "results": [
+    {
+      "arch": "mamba3",
+      "method": "flashsac",
+      "tag": "sigma_0.015",
+      "params": {
+        "target_sigma": 0.015
+      },
+      "score": 0.83203125,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\hpo\\mamba3\\flashsac\\sigma_0.015",
+      "seconds": 726.5903542041779
+    },
+    {
+      "arch": "mamba3",
+      "method": "flashsac",
+      "tag": "sigma_0.05",
+      "params": {
+        "target_sigma": 0.05
+      },
+      "score": 0.8424479166666667,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\hpo\\mamba3\\flashsac\\sigma_0.05",
+      "seconds": 604.5589382648468
+    },
+    {
+      "arch": "mamba3",
+      "method": "flashsac",
+      "tag": "sigma_0.15",
+      "params": {
+        "target_sigma": 0.15
+      },
+      "score": 0.8997395833333333,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\hpo\\mamba3\\flashsac\\sigma_0.15",
+      "seconds": 611.863668680191
+    },
+    {
+      "arch": "mamba3",
+      "method": "fql",
+      "tag": "alpha_1",
+      "params": {
+        "fql_alpha": 1.0
+      },
+      "score": 1.01953125,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\hpo\\mamba3\\fql\\alpha_1",
+      "seconds": 863.0033392906189
+    },
+    {
+      "arch": "mamba3",
+      "method": "fql",
+      "tag": "alpha_10",
+      "params": {
+        "fql_alpha": 10.0
+      },
+      "score": 0.9765625,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\hpo\\mamba3\\fql\\alpha_10",
+      "seconds": 779.1711339950562
+    },
+    {
+      "arch": "mamba3",
+      "method": "fql",
+      "tag": "alpha_30",
+      "params": {
+        "fql_alpha": 30.0
+      },
+      "score": 0.98046875,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\hpo\\mamba3\\fql\\alpha_30",
+      "seconds": 772.3217430114746
+    },
+    {
+      "arch": "gtrxl",
+      "method": "flashsac",
+      "tag": "sigma_0.015",
+      "params": {
+        "target_sigma": 0.015
+      },
+      "score": 0.9270833333333333,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\hpo\\gtrxl\\flashsac\\sigma_0.015",
+      "seconds": 876.1640889644623
+    },
+    {
+      "arch": "gtrxl",
+      "method": "flashsac",
+      "tag": "sigma_0.05",
+      "params": {
+        "target_sigma": 0.05
+      },
+      "score": 0.94921875,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\hpo\\gtrxl\\flashsac\\sigma_0.05",
+      "seconds": 951.6856818199158
+    },
+    {
+      "arch": "gtrxl",
+      "method": "flashsac",
+      "tag": "sigma_0.15",
+      "params": {
+        "target_sigma": 0.15
+      },
+      "score": 1.0234375,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\hpo\\gtrxl\\flashsac\\sigma_0.15",
+      "seconds": 999.6959133148193
+    },
+    {
+      "arch": "gtrxl",
+      "method": "fql",
+      "tag": "alpha_1",
+      "params": {
+        "fql_alpha": 1.0
+      },
+      "score": 1.015625,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\hpo\\gtrxl\\fql\\alpha_1",
+      "seconds": 1038.3214893341064
+    },
+    {
+      "arch": "gtrxl",
+      "method": "fql",
+      "tag": "alpha_10",
+      "params": {
+        "fql_alpha": 10.0
+      },
+      "score": 0.98046875,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\hpo\\gtrxl\\fql\\alpha_10",
+      "seconds": 1020.5585370063782
+    },
+    {
+      "arch": "gtrxl",
+      "method": "fql",
+      "tag": "alpha_30",
+      "params": {
+        "fql_alpha": 30.0
+      },
+      "score": 1.015625,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\hpo\\gtrxl\\fql\\alpha_30",
+      "seconds": 977.7678174972534
+    }
+  ],
+  "seconds": 5215.368080377579,
+  "finished_epoch": 1794608240.4662628,
+  "final_fql_offline_updates": 100000,
+  "interpretation": "One development seed per architecture;final comparison uses5fresh head seeds. Native recurrent priors are from the closed phase2 choice. No final-test inputs."
+}
+Encoders Mamba-3/GTrXL congelados desde PPO elegido; cabezas off-policy entrenadas con replay de acciones ejecutadas. Memoria de cada episodio reconstruida desdecero. Mamba-3 es referencia matematica portable, no benchmark de kernels fusionados.
+Compuerta extrinseca separada: compara Q(a) frente a Q(0) usando recompensa real/100, umbral.005 y ambos criticos. La entropia SAC no decide si aterrizar mejor. Es una estimacion aprendida, no garantia formal de seguridad.
+FlashSAC reutiliza bloques oficiales MIT, critico distribucional, BN/RMS/weight normalization y normalizacion de retorno; FQL porta a PyTorch el algoritmo oficial con flujoBC, distillation y Q. Gamma.999 porhorizonte largo, FQL4x512 conalpha seleccionado en validacion, Flashactor128/critic256con2bloques. Se igualan interacciones, no parametros ni segundos.
+Se incorporaron demostraciones adicionales de un profesor NMPC calculado fuera de tiempo real, con estado medido y efectividad estimada;accionesresidualesproyectadasyejecutadas. Se repitieron las inicializacionesanteriores con el conjunto comun ampliado, identificado por hash.
+PPO/FlashSAC/FQL usan la misma recompensa de tarea y aterrizaje estricto. Estas pruebas no comparan nuevos metodos IRL.
+
+EVIDENCIA INDEPENDIENTE
+{
+  "contrasts": [
+    {
+      "mean": -0.03166666666666667,
+      "lower": -0.11371745641779174,
+      "upper": 0.050384123084458395,
+      "bootstrap_sd": 0.03139625712382017,
+      "family": "ppo_mamba3_linear",
+      "total_losses": 135,
+      "severe_estimated_losses": 126,
+      "mild_losses": 0,
+      "exact_losses": 9,
+      "gains_all_levels": 84
+    },
+    {
+      "mean": 0.06333333333333334,
+      "lower": -0.04299153506644904,
+      "upper": 0.16965820173311572,
+      "bootstrap_sd": 0.040684592032097254,
+      "family": "flashsac_mamba3_linear",
+      "total_losses": 130,
+      "severe_estimated_losses": 87,
+      "mild_losses": 3,
+      "exact_losses": 40,
+      "gains_all_levels": 188
+    },
+    {
+      "mean": -0.03333333333333333,
+      "lower": -0.1480606423031961,
+      "upper": 0.08139397563652945,
+      "bootstrap_sd": 0.0438997370100558,
+      "family": "fql_mamba3_linear",
+      "total_losses": 174,
+      "severe_estimated_losses": 133,
+      "mild_losses": 0,
+      "exact_losses": 41,
+      "gains_all_levels": 104
+    },
+    {
+      "mean": -0.04583333333333333,
+      "lower": -0.1475,
+      "upper": 0.055833333333333325,
+      "bootstrap_sd": 0.03890215825186029,
+      "family": "ppo_gtrxl_linear",
+      "total_losses": 151,
+      "severe_estimated_losses": 142,
+      "mild_losses": 0,
+      "exact_losses": 9,
+      "gains_all_levels": 85
+    },
+    {
+      "mean": 0.13583333333333333,
+      "lower": 0.017469949192682466,
+      "upper": 0.2541967174739842,
+      "bootstrap_sd": 0.04529106001047867,
+      "family": "flashsac_gtrxl_linear",
+      "total_losses": 54,
+      "severe_estimated_losses": 47,
+      "mild_losses": 0,
+      "exact_losses": 7,
+      "gains_all_levels": 250
+    },
+    {
+      "mean": -0.029166666666666667,
+      "lower": -0.1133133968489066,
+      "upper": 0.05498006351557325,
+      "bootstrap_sd": 0.03219825653042052,
+      "family": "fql_gtrxl_linear",
+      "total_losses": 246,
+      "severe_estimated_losses": 136,
+      "mild_losses": 6,
+      "exact_losses": 108,
+      "gains_all_levels": 97
+    }
+  ],
+  "simultaneous_critical": 2.613393992396424,
+  "replicates": 10000,
+  "training_seeds": 5,
+  "routes": 60,
+  "interpretation": "Crossed training-seed/route bootstrap with simultaneous standardised band;not a rare-harm confidence interval."
+}
+{
+  "mean": 0.1435,
+  "lower": 0.09399999999999997,
+  "upper": 0.193,
+  "bootstrap_sd": 0.025198816286754435,
+  "training_seeds": 5,
+  "routes": 200,
+  "total_losses": 140,
+  "mild_losses": 0,
+  "exact_losses": 39
+}
+CRITERIOS DE ACEPTACION
+{
+  "runtime_48hz": true,
+  "primary_confirmed_gain": true,
+  "independent_confirmation_gain": true,
+  "protected_primary": false,
+  "protected_confirmation": false,
+  "protected_shifted_fault": false
+}
+SENSIBILIDAD AL INSTANTE DE FALLA
+[
+  {
+    "family": "flashsac_gtrxl_linear",
+    "fault_clock_seconds": 4.0,
+    "cases": 160,
+    "routes": 16,
+    "training_seeds": 5,
+    "success_percent": 61.25,
+    "baseline_success_percent": 62.5,
+    "paired_difference_pp": -1.25,
+    "gains": 26,
+    "losses": 28
+  },
+  {
+    "family": "flashsac_gtrxl_linear",
+    "fault_clock_seconds": 8.0,
+    "cases": 160,
+    "routes": 16,
+    "training_seeds": 5,
+    "success_percent": 21.875,
+    "baseline_success_percent": 0.0,
+    "paired_difference_pp": 21.875,
+    "gains": 35,
+    "losses": 0
+  },
+  {
+    "family": "flashsac_mamba3_linear",
+    "fault_clock_seconds": 4.0,
+    "cases": 160,
+    "routes": 16,
+    "training_seeds": 5,
+    "success_percent": 51.25,
+    "baseline_success_percent": 62.5,
+    "paired_difference_pp": -11.25,
+    "gains": 21,
+    "losses": 39
+  },
+  {
+    "family": "flashsac_mamba3_linear",
+    "fault_clock_seconds": 8.0,
+    "cases": 160,
+    "routes": 16,
+    "training_seeds": 5,
+    "success_percent": 5.625,
+    "baseline_success_percent": 0.0,
+    "paired_difference_pp": 5.625,
+    "gains": 9,
+    "losses": 0
+  },
+  {
+    "family": "fql_gtrxl_linear",
+    "fault_clock_seconds": 4.0,
+    "cases": 160,
+    "routes": 16,
+    "training_seeds": 5,
+    "success_percent": 28.75,
+    "baseline_success_percent": 62.5,
+    "paired_difference_pp": -33.75,
+    "gains": 11,
+    "losses": 65
+  },
+  {
+    "family": "fql_gtrxl_linear",
+    "fault_clock_seconds": 8.0,
+    "cases": 160,
+    "routes": 16,
+    "training_seeds": 5,
+    "success_percent": 2.5,
+    "baseline_success_percent": 0.0,
+    "paired_difference_pp": 2.5,
+    "gains": 4,
+    "losses": 0
+  },
+  {
+    "family": "fql_mamba3_linear",
+    "fault_clock_seconds": 4.0,
+    "cases": 160,
+    "routes": 16,
+    "training_seeds": 5,
+    "success_percent": 32.5,
+    "baseline_success_percent": 62.5,
+    "paired_difference_pp": -30.0,
+    "gains": 5,
+    "losses": 53
+  },
+  {
+    "family": "fql_mamba3_linear",
+    "fault_clock_seconds": 8.0,
+    "cases": 160,
+    "routes": 16,
+    "training_seeds": 5,
+    "success_percent": 2.5,
+    "baseline_success_percent": 0.0,
+    "paired_difference_pp": 2.5,
+    "gains": 4,
+    "losses": 0
+  },
+  {
+    "family": "ppo_gtrxl_linear",
+    "fault_clock_seconds": 4.0,
+    "cases": 160,
+    "routes": 16,
+    "training_seeds": 5,
+    "success_percent": 14.375,
+    "baseline_success_percent": 62.5,
+    "paired_difference_pp": -48.125,
+    "gains": 3,
+    "losses": 80
+  },
+  {
+    "family": "ppo_gtrxl_linear",
+    "fault_clock_seconds": 8.0,
+    "cases": 160,
+    "routes": 16,
+    "training_seeds": 5,
+    "success_percent": 0.625,
+    "baseline_success_percent": 0.0,
+    "paired_difference_pp": 0.625,
+    "gains": 1,
+    "losses": 0
+  },
+  {
+    "family": "ppo_mamba3_linear",
+    "fault_clock_seconds": 4.0,
+    "cases": 160,
+    "routes": 16,
+    "training_seeds": 5,
+    "success_percent": 20.0,
+    "baseline_success_percent": 62.5,
+    "paired_difference_pp": -42.5,
+    "gains": 4,
+    "losses": 72
+  },
+  {
+    "family": "ppo_mamba3_linear",
+    "fault_clock_seconds": 8.0,
+    "cases": 160,
+    "routes": 16,
+    "training_seeds": 5,
+    "success_percent": 5.0,
+    "baseline_success_percent": 0.0,
+    "paired_difference_pp": 5.0,
+    "gains": 8,
+    "losses": 0
+  }
+]
+COMPuERTA
+[
+  {
+    "family": "flashsac_gtrxl_linear",
+    "cases": 640,
+    "gated_success_percent": 98.125,
+    "ungated_success_percent": 42.03125,
+    "prevented_failures": 364,
+    "missed_benefits": 5
+  },
+  {
+    "family": "flashsac_mamba3_linear",
+    "cases": 640,
+    "gated_success_percent": 95.0,
+    "ungated_success_percent": 47.96875,
+    "prevented_failures": 307,
+    "missed_benefits": 6
+  },
+  {
+    "family": "fql_gtrxl_linear",
+    "cases": 640,
+    "gated_success_percent": 86.40625,
+    "ungated_success_percent": 2.96875,
+    "prevented_failures": 535,
+    "missed_benefits": 1
+  },
+  {
+    "family": "fql_mamba3_linear",
+    "cases": 640,
+    "gated_success_percent": 89.0625,
+    "ungated_success_percent": 4.0625,
+    "prevented_failures": 545,
+    "missed_benefits": 1
+  },
+  {
+    "family": "ppo_gtrxl_linear",
+    "cases": 640,
+    "gated_success_percent": 91.40625,
+    "ungated_success_percent": 91.875,
+    "prevented_failures": 8,
+    "missed_benefits": 11
+  },
+  {
+    "family": "ppo_mamba3_linear",
+    "cases": 640,
+    "gated_success_percent": 93.28125,
+    "ungated_success_percent": 92.8125,
+    "prevented_failures": 10,
+    "missed_benefits": 7
+  }
+]
+Casos logicos de redes: 172800; certificados OFF reutilizados: 62411. No son todos simulaciones independientes.
+Las tablas distinguen casos por modelo,60rutas y5semillas. Intervalos primarios: bootstrap cruzado rutas/semillas con banda simultanea para6familias. La confirmacion usa200rutas nuevas.
+Ablacion de compuerta en16rutas,5semillas y dos severidades; sensibilidad con inicio de falla4s/8s. VerCSV y JSON, sin ajustes posteriores a test.
+
+LIMITES DEL RESULTADO
+El limite29.7186% corresponde al vuelo estacionario normal con momentos equilibrados. No es una demostracion de imposibilidad para descenso transitorio o vuelo giratorio.50%RPM significa75%deperdida de empuje en ese motor.
+Se incluyeron experiencias de entrenamiento a30%,35%y50%, con probabilidad total8%porreinicio, ademas de los niveles principales. No es una busqueda exhaustiva de maniobras giratorias. Ver exposicion real por nivel en complete.json.
+El exito sigue exigiendo contacto suave y un segundo estable. Mantenerse girando en vuelo no cuenta. No se relajan umbrales para presentar mejores tasas.
+Los resultados se limitan a esta planta simulada y este modelo de ruido; no prueban vuelo real.
+
+TIEMPOS REALES POR ETAPA
+{
+  "data_receipt": {
+    "started_epoch": 1794559383.198317,
+    "finished_epoch": 1794559898.248703,
+    "seconds": 515.0503859519958,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\data_0.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "final_evaluation_receipt": {
+    "started_epoch": 1794717722.6220422,
+    "finished_epoch": 1794762847.0926554,
+    "seconds": 45124.470613241196,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\final_evaluation_0.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "mpc_expert_data_receipt": {
+    "started_epoch": 1794560576.5621357,
+    "finished_epoch": 1794560901.5964286,
+    "seconds": 325.0342929363251,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\mpc_expert_data_0.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "phase2_selection_receipt": {
+    "started_epoch": 1794600390.5625656,
+    "finished_epoch": 1794602020.732896,
+    "seconds": 1630.1703305244446,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2_selection_0.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "phase2_training_receipt": {
+    "started_epoch": 1794569067.565998,
+    "finished_epoch": 1794600390.5585525,
+    "seconds": 31322.992554426193,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2_training_0.log",
+        "exit_code": 0
+      },
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase2_training_1.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "phase3_selection_receipt": {
+    "started_epoch": 1794654612.2177327,
+    "finished_epoch": 1794657017.4961605,
+    "seconds": 2405.278427839279,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3_selection_0.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "phase3_training_receipt": {
+    "started_epoch": 1794603072.4756954,
+    "finished_epoch": 1794654612.2133293,
+    "seconds": 51539.73763394356,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3_training_0.log",
+        "exit_code": 0
+      },
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3_training_1.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "rescue_expert_data_receipt": {
+    "started_epoch": 1794563138.6502144,
+    "finished_epoch": 1794563323.6737866,
+    "seconds": 185.0235722064972,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\rescue_expert_data_0.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "tests_before_test_receipt": {
+    "started_epoch": 1794717522.5839071,
+    "finished_epoch": 1794717722.6114683,
+    "seconds": 200.02756118774414,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\tests_before_test_0.log",
+        "exit_code": 0
+      }
+    ]
+  },
+  "training_smoke_receipt": {
+    "started_epoch": 1794559898.254567,
+    "finished_epoch": 1794560193.292672,
+    "seconds": 295.0381050109863,
+    "jobs": [
+      {
+        "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\training_smoke_0.log",
+        "exit_code": 0
+      }
+    ]
+  }
+}
+TIEMPO DE CONTROL DEDICADO
+{
+  "controllers": {
+    "selected": {
+      "samples": 448,
+      "median_ms": 0.4612500051734969,
+      "p95_ms": 0.6805599827202967,
+      "p99_ms": 0.9625819986104021,
+      "max_ms": 1.301399985095486
+    },
+    "nmpc_fast_10": {
+      "samples": 448,
+      "median_ms": 19.381599995540455,
+      "p95_ms": 21.91487000527559,
+      "p99_ms": 22.869155005319044,
+      "max_ms": 24.72359998500906
+    },
+    "nmpc_matched": {
+      "samples": 448,
+      "median_ms": 45.615700000780635,
+      "p95_ms": 65.71676499734166,
+      "p99_ms": 90.70890300616142,
+      "max_ms": 105.88809999171644
+    }
+  },
+  "neural": {
+    "mamba3_ppo": {
+      "samples": 496,
+      "median_ms": 0.5809000140288845,
+      "p95_ms": 0.7396000146400183,
+      "p99_ms": 1.1595649950322708,
+      "max_ms": 2.1929999929852784
+    },
+    "mamba3_flashsac": {
+      "samples": 496,
+      "median_ms": 1.1646999919321388,
+      "p95_ms": 1.3981250231154263,
+      "p99_ms": 1.5672199981054291,
+      "max_ms": 1.99280001106672
+    },
+    "mamba3_fql": {
+      "samples": 496,
+      "median_ms": 1.1646999919321388,
+      "p95_ms": 1.462225009163376,
+      "p99_ms": 1.810285011015367,
+      "max_ms": 2.287500014062971
+    },
+    "gtrxl_ppo": {
+      "samples": 496,
+      "median_ms": 1.6027500096242875,
+      "p95_ms": 1.9933500079787336,
+      "p99_ms": 2.403010016132612,
+      "max_ms": 2.964499988593161
+    },
+    "gtrxl_flashsac": {
+      "samples": 496,
+      "median_ms": 2.2667500015813857,
+      "p95_ms": 2.7636250015348196,
+      "p99_ms": 3.1328300072345896,
+      "max_ms": 3.8435999886132777
+    },
+    "gtrxl_fql": {
+      "samples": 496,
+      "median_ms": 2.30690001626499,
+      "p95_ms": 2.8748999975505285,
+      "p99_ms": 3.329230009694584,
+      "max_ms": 5.229400005191565
+    }
+  },
+  "seconds": 41.62644028663635,
+  "control_period_ms": 20.833333333333332,
+  "scope": "Sequential,1CPUthread,no experimental training workers;validation observations only. Includes governor/controller/observer;neural timing separate. Not a hard real-time proof.",
+  "selection_note": "Phase1 screening used loaded timing. This dedicated measurement is reported separately;no learning hyperparameters or test data are used."
+}
+training_times.csv separa datos, representacion, inicializacion, offline, online y validacion con espera de turno segun el metodo; vacio significa no medido/no aplicable. Las sumas de trabajos concurrentes no equivalen al tiempo de reloj de la campaña.
+
+FUENTES PRIMARIAS
+FlashSAC https://arxiv.org/abs/2604.04539 ; codigo https://github.com/Holiday-Robot/FlashSAC
+FQL https://proceedings.mlr.press/v267/park25f.html ; codigo https://github.com/seohongpark/fql
+NMPC tolerante a fallas https://arxiv.org/abs/2109.12886
+Ver frozen_before_test.json para commits, hashes, activos y modelos anteriores preservados.
+
+## Aclaraciones finales de auditoría
+
+La comprobación final validó 60 modelos definitivos, 12 pilotos y 204.736 registros modelo/ruta. Los registros reutilizan geometrías entre semillas y algunos certificados OFF: no equivalen a ese número de vuelos físicamente independientes. Las 182 fuentes congeladas, incluido el generador del informe, permanecen idénticas; también se verificaron los 132 checkpoints y los 198 checkpoints anteriores.
+
+Los 54 éxitos perdidos por GTrXL + FlashSAC en la prueba principal se clasifican en 23 contactos tempranos, 12 aterrizajes bruscos y 19 episodios sin terminar a tiempo; 48 corresponden al 29,6% de pérdida de RPM. Es una clasificación descriptiva, no una demostración de una única causa. La compuerta reduce muchos fallos, pero valorar una ventaja esperada no certifica conservar el éxito de cada vuelo.
+
+La ablación de la compuerta utiliza 16 rutas; la comparación principal, 60. Por eso el 96,25% del subconjunto de GTrXL + FlashSAC no debe compararse directamente con sus tasas del conjunto principal. Los datos detallados están en `candidate_loss_analysis.json` y `gate_summary_estimated_noise2.csv`.
+
+
+Comparación justa de NMPC en rutas comunes: con efectividad estimada y ruido doble, al reunir 29,5% y 29,6%, DSLPID logra 21/24 aterrizajes, NMPC rápido 23/24 (3 ganancias y 1 pérdida frente a la base) y NMPC de mayor horizonte 24/24 (3 ganancias y ninguna pérdida). Son 12 rutas por severidad. El cálculo dedicado p95 fue de 21,91 ms y 65,72 ms respectivamente, frente a un período de 20,83 ms. La mejor calidad de NMPC de mayor horizonte no lo hace compatible con 48 Hz en esta implementación. En ninguna configuración evaluada hubo éxitos con 30%, 35%, 40% o 50% bajo este criterio de aterrizaje.
+
+Las dos variantes finales del archivo NMPCINDIControl usan INDI desactivado (ganancia 0), elegido en desarrollo. La comparación pareada de NMPC con DSLPID se hizo solo en las mismas 12 rutas; sus ganancias y pérdidas descriptivas están en `nmpc_paired_subset.json`. No se extrapola un 12/12 a las 60 rutas principales.
+
+Hubo una interrupción de la ejecución. El último resultado previo quedó guardado el 14/11/2026 a las 11:54 y se reanudó el 14/11/2026 a las 23:38, hora de Lima. No se conoce la hora exacta de parada; el intervalo entre ese guardado y la reanudación fue de 11.74 horas. Los 117 archivos conservados se validaron antes de continuar. La fila `final_evaluation_receipt` mide solamente el tramo reanudado; antes hubo al menos 5.02 horas hasta el último resultado previo. Ese intervalo sin progreso no se debe sumar como entrenamiento activo. El tiempo total desde el inicio de la campaña sí incluye esta interrupción. Las duraciones de etapas corresponden a los recibos preservados; en etapas reanudadas no equivalen necesariamente al cómputo acumulado de todos los intentos.
+
+La configuración operativa elegida está exportada en `recommended_configuration.json` y en `E:/UTEC/Tesis/TesisNicol/CONFIGURACION_RECOMENDADA_RONDA6.json`. Conserva el controlador y el supervisor probados, con compensación neural desactivada.

@@ -1,0 +1,161 @@
+{
+  "schedule_by_arch": {
+    "mamba3": "linear",
+    "gtrxl": "linear"
+  },
+  "rows": [
+    {
+      "arch": "mamba3",
+      "schedule": "nominal",
+      "critical_estimated_noise2": [
+        {
+          "level": 0.295,
+          "success": 27,
+          "cases": 40,
+          "percent": 67.5
+        },
+        {
+          "level": 0.296,
+          "success": 23,
+          "cases": 40,
+          "percent": 57.5
+        }
+      ],
+      "score": 0.97265625
+    },
+    {
+      "arch": "mamba3",
+      "schedule": "linear",
+      "critical_estimated_noise2": [
+        {
+          "level": 0.295,
+          "success": 28,
+          "cases": 40,
+          "percent": 70.0
+        },
+        {
+          "level": 0.296,
+          "success": 25,
+          "cases": 40,
+          "percent": 62.5
+        }
+      ],
+      "score": 1.00390625
+    },
+    {
+      "arch": "mamba3",
+      "schedule": "adaptive",
+      "critical_estimated_noise2": [
+        {
+          "level": 0.295,
+          "success": 29,
+          "cases": 40,
+          "percent": 72.5
+        },
+        {
+          "level": 0.296,
+          "success": 26,
+          "cases": 40,
+          "percent": 65.0
+        }
+      ],
+      "score": 1.00234375
+    },
+    {
+      "arch": "mamba3",
+      "schedule": "full",
+      "critical_estimated_noise2": [
+        {
+          "level": 0.295,
+          "success": 29,
+          "cases": 40,
+          "percent": 72.5
+        },
+        {
+          "level": 0.296,
+          "success": 23,
+          "cases": 40,
+          "percent": 57.5
+        }
+      ],
+      "score": 0.99453125
+    },
+    {
+      "arch": "gtrxl",
+      "schedule": "nominal",
+      "critical_estimated_noise2": [
+        {
+          "level": 0.295,
+          "success": 27,
+          "cases": 40,
+          "percent": 67.5
+        },
+        {
+          "level": 0.296,
+          "success": 22,
+          "cases": 40,
+          "percent": 55.0
+        }
+      ],
+      "score": 0.953125
+    },
+    {
+      "arch": "gtrxl",
+      "schedule": "linear",
+      "critical_estimated_noise2": [
+        {
+          "level": 0.295,
+          "success": 28,
+          "cases": 40,
+          "percent": 70.0
+        },
+        {
+          "level": 0.296,
+          "success": 24,
+          "cases": 40,
+          "percent": 60.0
+        }
+      ],
+      "score": 0.9859375
+    },
+    {
+      "arch": "gtrxl",
+      "schedule": "adaptive",
+      "critical_estimated_noise2": [
+        {
+          "level": 0.295,
+          "success": 27,
+          "cases": 40,
+          "percent": 67.5
+        },
+        {
+          "level": 0.296,
+          "success": 22,
+          "cases": 40,
+          "percent": 55.0
+        }
+      ],
+      "score": 0.9609375
+    },
+    {
+      "arch": "gtrxl",
+      "schedule": "full",
+      "critical_estimated_noise2": [
+        {
+          "level": 0.295,
+          "success": 28,
+          "cases": 40,
+          "percent": 70.0
+        },
+        {
+          "level": 0.296,
+          "success": 24,
+          "cases": 40,
+          "percent": 60.0
+        }
+      ],
+      "score": 0.9859375
+    }
+  ],
+  "interpretation": "Linear selected prospectively for both;Mamba3differencevsadaptive is small;GTrXLtiesfullrange;composite objectiveisnotasuccesspercentage."
+}

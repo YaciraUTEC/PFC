@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "seconds": 335.20835757255554,
+  "serial_seconds": 187.05134844779968,
+  "parallel_seconds": 123.0228579044342,
+  "logical_cases_each_execution": 192,
+  "model_workers": 2,
+  "physical_envs_per_model": 8,
+  "certification_batch": 64,
+  "routes": [
+    611088,
+    611089,
+    611090,
+    611091
+  ],
+  "models": [
+    "ppo_mamba3_linear_201",
+    "ppo_gtrxl_linear_201",
+    "flashsac_mamba3_linear_201",
+    "fql_gtrxl_linear_201"
+  ],
+  "noise": [
+    1.0,
+    2.0
+  ],
+  "levels": [
+    0.0,
+    0.295,
+    0.296
+  ],
+  "gated_and_ungated": true,
+  "max_numeric_difference": 8.881784197001252e-16,
+  "relative_and_absolute_tolerance": 1e-10,
+  "all_discrete_outcomes_identical": true,
+  "scope": "Validation-only execution equivalence;no model selection or tuning;all final test routes remain closed."
+}

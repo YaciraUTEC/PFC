@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "transitions": 1142003,
+  "episodes": 1664,
+  "expert_episodes": 629,
+  "positive_bc_interventions": 13128,
+  "steps_by_level": {
+    "0.0": 80780,
+    "0.02": 80943,
+    "0.1": 80806,
+    "0.25": 80858,
+    "0.28": 121295,
+    "0.29": 123030,
+    "0.295": 109561,
+    "0.296": 124995,
+    "0.3": 167502,
+    "0.35": 151945,
+    "0.5": 20288
+  },
+  "states_finite": true,
+  "next_state_continuity": true,
+  "one_terminal_per_episode": true,
+  "actuator_limits_preserved": true,
+  "actions_are_executed_requests_not_counterfactual_teacher": true
+}

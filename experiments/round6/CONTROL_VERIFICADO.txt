@@ -39,8 +39,9 @@ Los casos 30%, 35%, 40% y 50% siguen sin aterrizajes exitosos en esta fase.
 
 La auditoria data_audit.json valida coherencia de 1,142,003 transiciones de
 1664 episodios; no prueba la eficacia de una politica neuronal aprendida.
-No se incluyen datasets, pesos, modelos ni pipelines de entrenamiento de
-ronda 6 en esta publicacion. Su campana sigue en curso.
+La entrega final del codigo, entrenamiento, evaluacion e informes esta en
+results/round6/final/README.md. La campana historica ya termino. Los pesos y
+datasets completos permanecen locales; los hashes se publican como evidencia.
 
 Pruebas breves de CPU
 experiments/tests/test_round6_control.py comprueba contratos de descenso,

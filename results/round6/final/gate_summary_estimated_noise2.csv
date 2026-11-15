@@ -1,0 +1,7 @@
+﻿family,cases,gated_success_percent,ungated_success_percent,prevented_failures,missed_benefits
+flashsac_gtrxl_linear,160,96.25,40.625,92,3
+flashsac_mamba3_linear,160,91.875,48.125,71,1
+fql_gtrxl_linear,160,81.875,1.875,128,0
+fql_mamba3_linear,160,79.375,5.625,119,1
+ppo_gtrxl_linear,160,86.25,84.375,7,4
+ppo_mamba3_linear,160,86.25,86.875,4,5

@@ -1,0 +1,11 @@
+{
+  "started_epoch": 1794717722.6220422,
+  "finished_epoch": 1794762847.0926554,
+  "seconds": 45124.470613241196,
+  "jobs": [
+    {
+      "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\final_evaluation_0.log",
+      "exit_code": 0
+    }
+  ]
+}

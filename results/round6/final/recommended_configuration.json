@@ -1,0 +1,17 @@
+{
+  "selected_controller": "structured_governor",
+  "configuration": {
+    "control_kind": "dslpid",
+    "manager": "coordinated",
+    "readiness": false,
+    "estimator": "structured",
+    "emergency": "legacy",
+    "reserve": 0.001,
+    "gate_mode": "off"
+  },
+  "neural_compensation_enabled": false,
+  "model": null,
+  "entry_point": "experiments.round6.evaluate.evaluate(config=configuration,condition=\"estimated\",model=None)",
+  "reason": "Retain the validated coordinated base under the prospectively fixed no-loss acceptance contract.",
+  "source_recommendation": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\recommendation.json"
+}

@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "verified_utc": "2026-11-15T17:22:19.2107472Z",
+  "figures": [
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\comparacion_estimated.png",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\comparacion_exact.png",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\schedules.png"
+  ],
+  "figure_sha256": {
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\schedules.png": "57dde5976885db40c0f6916d0856f9a67fee572d28540156ee1791cee2bc01b9",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\comparacion_estimated.png": "fd6be0014dce2f8765a26618c3b2641580873475f2933904bd31df1fe0c14020",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\comparacion_exact.png": "1eceee052c95f7458e16229926f5b965ae18b8aff3d620f27eedd75353e0dd48"
+  },
+  "checks": {
+    "all_three_real_figures_visually_inspected": true,
+    "sample_sizes_distinguished": true,
+    "source_and_models_unchanged": true,
+    "axes_labels_units_and_legends_readable": true,
+    "no_clipped_legend_or_caption": true
+  },
+  "scope": "Visual review of actual final outputs;no changes to numerical results or acceptance criteria."
+}

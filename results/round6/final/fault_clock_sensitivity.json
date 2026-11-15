@@ -1,0 +1,149 @@
+{
+  "rows": [
+    {
+      "family": "flashsac_gtrxl_linear",
+      "fault_clock_seconds": 4.0,
+      "cases": 160,
+      "routes": 16,
+      "training_seeds": 5,
+      "success_percent": 61.25,
+      "baseline_success_percent": 62.5,
+      "paired_difference_pp": -1.25,
+      "gains": 26,
+      "losses": 28
+    },
+    {
+      "family": "flashsac_gtrxl_linear",
+      "fault_clock_seconds": 8.0,
+      "cases": 160,
+      "routes": 16,
+      "training_seeds": 5,
+      "success_percent": 21.875,
+      "baseline_success_percent": 0.0,
+      "paired_difference_pp": 21.875,
+      "gains": 35,
+      "losses": 0
+    },
+    {
+      "family": "flashsac_mamba3_linear",
+      "fault_clock_seconds": 4.0,
+      "cases": 160,
+      "routes": 16,
+      "training_seeds": 5,
+      "success_percent": 51.25,
+      "baseline_success_percent": 62.5,
+      "paired_difference_pp": -11.25,
+      "gains": 21,
+      "losses": 39
+    },
+    {
+      "family": "flashsac_mamba3_linear",
+      "fault_clock_seconds": 8.0,
+      "cases": 160,
+      "routes": 16,
+      "training_seeds": 5,
+      "success_percent": 5.625,
+      "baseline_success_percent": 0.0,
+      "paired_difference_pp": 5.625,
+      "gains": 9,
+      "losses": 0
+    },
+    {
+      "family": "fql_gtrxl_linear",
+      "fault_clock_seconds": 4.0,
+      "cases": 160,
+      "routes": 16,
+      "training_seeds": 5,
+      "success_percent": 28.75,
+      "baseline_success_percent": 62.5,
+      "paired_difference_pp": -33.75,
+      "gains": 11,
+      "losses": 65
+    },
+    {
+      "family": "fql_gtrxl_linear",
+      "fault_clock_seconds": 8.0,
+      "cases": 160,
+      "routes": 16,
+      "training_seeds": 5,
+      "success_percent": 2.5,
+      "baseline_success_percent": 0.0,
+      "paired_difference_pp": 2.5,
+      "gains": 4,
+      "losses": 0
+    },
+    {
+      "family": "fql_mamba3_linear",
+      "fault_clock_seconds": 4.0,
+      "cases": 160,
+      "routes": 16,
+      "training_seeds": 5,
+      "success_percent": 32.5,
+      "baseline_success_percent": 62.5,
+      "paired_difference_pp": -30.0,
+      "gains": 5,
+      "losses": 53
+    },
+    {
+      "family": "fql_mamba3_linear",
+      "fault_clock_seconds": 8.0,
+      "cases": 160,
+      "routes": 16,
+      "training_seeds": 5,
+      "success_percent": 2.5,
+      "baseline_success_percent": 0.0,
+      "paired_difference_pp": 2.5,
+      "gains": 4,
+      "losses": 0
+    },
+    {
+      "family": "ppo_gtrxl_linear",
+      "fault_clock_seconds": 4.0,
+      "cases": 160,
+      "routes": 16,
+      "training_seeds": 5,
+      "success_percent": 14.375,
+      "baseline_success_percent": 62.5,
+      "paired_difference_pp": -48.125,
+      "gains": 3,
+      "losses": 80
+    },
+    {
+      "family": "ppo_gtrxl_linear",
+      "fault_clock_seconds": 8.0,
+      "cases": 160,
+      "routes": 16,
+      "training_seeds": 5,
+      "success_percent": 0.625,
+      "baseline_success_percent": 0.0,
+      "paired_difference_pp": 0.625,
+      "gains": 1,
+      "losses": 0
+    },
+    {
+      "family": "ppo_mamba3_linear",
+      "fault_clock_seconds": 4.0,
+      "cases": 160,
+      "routes": 16,
+      "training_seeds": 5,
+      "success_percent": 20.0,
+      "baseline_success_percent": 62.5,
+      "paired_difference_pp": -42.5,
+      "gains": 4,
+      "losses": 72
+    },
+    {
+      "family": "ppo_mamba3_linear",
+      "fault_clock_seconds": 8.0,
+      "cases": 160,
+      "routes": 16,
+      "training_seeds": 5,
+      "success_percent": 5.0,
+      "baseline_success_percent": 0.0,
+      "paired_difference_pp": 5.0,
+      "gains": 8,
+      "losses": 0
+    }
+  ],
+  "scope": "Estimated effectiveness,noise2,29.5/29.6%;same routes/5model seeds;descriptive paired diagnostic,not independent physical repetitions."
+}

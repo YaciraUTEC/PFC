@@ -1,0 +1,1931 @@
+{
+  "summary": {
+    "total": 54,
+    "by_outcome": {
+      "timeout": 19,
+      "early_contact": 23,
+      "hard_landing": 12
+    },
+    "by_motor": {
+      "0": 17,
+      "2": 21,
+      "3": 13,
+      "1": 3
+    },
+    "by_regime": {
+      "estimated_noise1": 25,
+      "estimated_noise2": 22,
+      "exact_noise1": 4,
+      "exact_noise2": 3
+    },
+    "by_level": {
+      "29.5": 6,
+      "29.6": 48
+    },
+    "prefault_action_cases": 0,
+    "mean_on_fraction": 0.18744829898640822
+  },
+  "cases": [
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.295,
+      "seed": 612032,
+      "training_seed": 202,
+      "motor": 0,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.1451388888888889,
+      "mean_gate": 0.03500973783019516,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.07148724124704615,
+        "horizontal_speed": 0.00800817000886747,
+        "tilt": 0.0013469067011349727,
+        "angular_speed": 0.015624519784383744,
+        "radius": 0.06014897664887353,
+        "angular_velocity": [
+          0.0019852092645139363,
+          -0.013867399557753745,
+          0.006919522539474693
+        ],
+        "body_angular_velocity": [
+          0.001961349360125026,
+          -0.013861833576435428,
+          0.006937456095669626
+        ],
+        "velocity": [
+          0.006243500718376392,
+          0.005014926287649489,
+          -0.07148724124704615
+        ],
+        "position": [
+          0.9980566010073163,
+          0.345819658995357,
+          0.014404098262107508
+        ]
+      },
+      "terminal_velocity": [
+        -1.182943933349816e-07,
+        -3.026704245733511e-08,
+        6.83481049534862e-15
+      ],
+      "terminal_angular_velocity": [
+        -1.5089930936409956e-13,
+        4.632279305512538e-14,
+        -1.1970907831239921e-06
+      ],
+      "distance_to_goal": 0.06006936075810162,
+      "max_tilt": 0.3645744822557553,
+      "failed_motor_eta_mae": 0.0012549856960908134,
+      "baseline_failed_motor_eta_mae": 0.0023083677354094603
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.295,
+      "seed": 612020,
+      "training_seed": 203,
+      "motor": 2,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.07553956834532374,
+      "mean_gate": 0.02683392735265142,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -0.1757297641494534,
+        0.2780342013043152,
+        -0.36730080385107944
+      ],
+      "terminal_angular_velocity": [
+        0.004030240098445308,
+        0.010499898727694856,
+        0.0012534819912829458
+      ],
+      "distance_to_goal": 2.0424990501938267,
+      "max_tilt": 0.3301125352024879,
+      "failed_motor_eta_mae": 0.008731693298442917,
+      "baseline_failed_motor_eta_mae": 0.002994867017909568
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.295,
+      "seed": 612048,
+      "training_seed": 205,
+      "motor": 3,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.2012987012987013,
+      "mean_gate": 0.052841195231908326,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -0.013466032318369221,
+        0.11968491422184085,
+        -0.274690235171458
+      ],
+      "terminal_angular_velocity": [
+        0.01548125391036052,
+        -0.00467238841098149,
+        0.3804419883004686
+      ],
+      "distance_to_goal": 0.3215970183366627,
+      "max_tilt": 0.4054760437502581,
+      "failed_motor_eta_mae": 0.006627721127657213,
+      "baseline_failed_motor_eta_mae": 0.001277403060281605
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612007,
+      "training_seed": 201,
+      "motor": 0,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.09572301425661914,
+      "mean_gate": 0.02277734972794527,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -0.0034925413194568954,
+        -0.00021252488789831242,
+        -0.03542373353450551
+      ],
+      "terminal_angular_velocity": [
+        0.003402921146093819,
+        0.003682035275650014,
+        0.0012905540070835793
+      ],
+      "distance_to_goal": 0.3651230680109289,
+      "max_tilt": 0.3820276705753969,
+      "failed_motor_eta_mae": 0.003974827796983316,
+      "baseline_failed_motor_eta_mae": 0.0026608809190978157
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612020,
+      "training_seed": 201,
+      "motor": 2,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.07013888888888889,
+      "mean_gate": 0.022120405133399697,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.13302207880743291,
+        "horizontal_speed": 0.008838202348377195,
+        "tilt": 0.0006021698038209394,
+        "angular_speed": 0.013623094398168627,
+        "radius": 0.06352978366403986,
+        "angular_velocity": [
+          -0.013525577834400124,
+          0.0015533648341002325,
+          0.00048425501461343314
+        ],
+        "body_angular_velocity": [
+          -0.013523368309158543,
+          0.0015739286592198888,
+          0.0004795405425468816
+        ],
+        "velocity": [
+          -0.007248420186383819,
+          -0.005057096553605016,
+          -0.13302207880743291
+        ],
+        "position": [
+          -1.775740548128348,
+          -1.5783027840204782,
+          0.01416224327262396
+        ]
+      },
+      "terminal_velocity": [
+        -2.894751164464843e-07,
+        -1.998982536274243e-07,
+        3.025249003633934e-07
+      ],
+      "terminal_angular_velocity": [
+        1.4953858329348688e-05,
+        -2.1459962121001676e-05,
+        -1.9688038834524973e-08
+      ],
+      "distance_to_goal": 0.06351390132041511,
+      "max_tilt": 0.3396075635675216,
+      "failed_motor_eta_mae": 0.0012218083064022144,
+      "baseline_failed_motor_eta_mae": 0.002247726752677051
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612021,
+      "training_seed": 201,
+      "motor": 3,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.2722222222222222,
+      "mean_gate": 0.04367596045550373,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -0.009540120929482266,
+        0.002476215255112811,
+        -0.1681443194733204
+      ],
+      "terminal_angular_velocity": [
+        0.06801549021153633,
+        0.024580611359072052,
+        0.45010738313185306
+      ],
+      "distance_to_goal": 0.06882325102379065,
+      "max_tilt": 0.4384466071005061,
+      "failed_motor_eta_mae": 0.00479206302682451,
+      "baseline_failed_motor_eta_mae": 0.005327310654046651
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612032,
+      "training_seed": 201,
+      "motor": 0,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.04097222222222222,
+      "mean_gate": 0.0105894994818502,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.012373758063907982,
+        0.012809273264943116,
+        -0.18206413963457768
+      ],
+      "terminal_angular_velocity": [
+        0.008306041089861988,
+        -0.03716894233693608,
+        -0.005563768285056212
+      ],
+      "distance_to_goal": 0.13435735644275942,
+      "max_tilt": 0.3533724308075533,
+      "failed_motor_eta_mae": 0.0012402626744264095,
+      "baseline_failed_motor_eta_mae": 0.00229048939568348
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612039,
+      "training_seed": 201,
+      "motor": 2,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.08517350157728706,
+      "mean_gate": 0.033541814479918136,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -0.006724885688195528,
+        -0.04567453169017871,
+        -0.14053506899039164
+      ],
+      "terminal_angular_velocity": [
+        0.011027481899852148,
+        0.01322907714094168,
+        5.1311868110299255
+      ],
+      "distance_to_goal": 1.2228639169992475,
+      "max_tilt": 0.47902884630664566,
+      "failed_motor_eta_mae": 0.009041193513956238,
+      "baseline_failed_motor_eta_mae": 0.008677803302676734
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612003,
+      "training_seed": 202,
+      "motor": 1,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.05277777777777778,
+      "mean_gate": 0.015366407442424032,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -0.010168280023550856,
+        0.016851093875394296,
+        0.015183714137774711
+      ],
+      "terminal_angular_velocity": [
+        0.021598760306887017,
+        0.2633597915240295,
+        -4.000575628657055
+      ],
+      "distance_to_goal": 0.0014976740693187671,
+      "max_tilt": 0.3313911705768608,
+      "failed_motor_eta_mae": 0.0023801404182773544,
+      "baseline_failed_motor_eta_mae": 0.0028427573878391497
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612011,
+      "training_seed": 202,
+      "motor": 1,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.12569444444444444,
+      "mean_gate": 0.030977909515301386,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -0.0020792779378637077,
+        -0.008352666181951834,
+        -0.0002720621019500984
+      ],
+      "terminal_angular_velocity": [
+        0.021329147053373486,
+        0.009483202329158748,
+        -5.006606295990201
+      ],
+      "distance_to_goal": 0.03479754442879429,
+      "max_tilt": 0.3778568805985316,
+      "failed_motor_eta_mae": 0.0022610915350766065,
+      "baseline_failed_motor_eta_mae": 0.0023681640763219213
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612020,
+      "training_seed": 202,
+      "motor": 2,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.0975609756097561,
+      "mean_gate": 0.042485245636531284,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -0.3144030485854259,
+        -0.14565400366610148,
+        -0.3149008696665424
+      ],
+      "terminal_angular_velocity": [
+        -0.0007442563194936878,
+        0.0004566385292458094,
+        -0.0020100985270466347
+      ],
+      "distance_to_goal": 2.820984106152763,
+      "max_tilt": 0.3481673995623227,
+      "failed_motor_eta_mae": 0.008392786866773971,
+      "baseline_failed_motor_eta_mae": 0.002247726752677051
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612029,
+      "training_seed": 202,
+      "motor": 2,
+      "outcome": "hard_landing",
+      "applied_on_fraction": 0.22957198443579765,
+      "mean_gate": 0.03506999129451203,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.25732652277346535,
+        "horizontal_speed": 0.010012972039953863,
+        "tilt": 0.0026521576588781313,
+        "angular_speed": 0.030219294159331868,
+        "radius": 0.07672317004648196,
+        "angular_velocity": [
+          -0.015047482445752039,
+          0.01649909219616936,
+          -0.020360721211079846
+        ],
+        "body_angular_velocity": [
+          -0.015032653547568253,
+          0.016522321046202045,
+          -0.020352837002571452
+        ],
+        "velocity": [
+          -0.009424038352673459,
+          -0.0033833578291746712,
+          -0.25732652277346535
+        ],
+        "position": [
+          0.7877460783169947,
+          -0.00834743315529907,
+          0.014568456494767654
+        ]
+      },
+      "terminal_velocity": [
+        -0.005812444000196229,
+        0.001444590953207342,
+        0.017186514094057748
+      ],
+      "terminal_angular_velocity": [
+        -0.10976309239326376,
+        -0.42646586431257827,
+        0.006304965628053855
+      ],
+      "distance_to_goal": 0.07670428693131519,
+      "max_tilt": 0.36480877917136145,
+      "failed_motor_eta_mae": 0.003140990749897677,
+      "baseline_failed_motor_eta_mae": 0.0026901615605140162
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612021,
+      "training_seed": 203,
+      "motor": 3,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.027303754266211604,
+      "mean_gate": 0.0065743335277960975,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -0.007475578133179228,
+        -0.04847434413409351,
+        -0.17739844180394695
+      ],
+      "terminal_angular_velocity": [
+        0.025401210627890296,
+        -0.013101747721956094,
+        -5.7542693786770505
+      ],
+      "distance_to_goal": 0.9249344517627738,
+      "max_tilt": 0.45981069340812813,
+      "failed_motor_eta_mae": 0.01041635618013877,
+      "baseline_failed_motor_eta_mae": 0.005327310654046651
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612032,
+      "training_seed": 203,
+      "motor": 0,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.08055555555555556,
+      "mean_gate": 0.024519360231028662,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.007544833987840154,
+        0.007036545489571216,
+        -0.17233719287925456
+      ],
+      "terminal_angular_velocity": [
+        0.007979640336231287,
+        -0.033718663471979944,
+        0.016280207691987687
+      ],
+      "distance_to_goal": 0.07810833517861053,
+      "max_tilt": 0.32723815375508347,
+      "failed_motor_eta_mae": 0.001237038242943697,
+      "baseline_failed_motor_eta_mae": 0.00229048939568348
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612035,
+      "training_seed": 203,
+      "motor": 0,
+      "outcome": "hard_landing",
+      "applied_on_fraction": 0.565989847715736,
+      "mean_gate": 0.12838676352488812,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.2651654325296733,
+        "horizontal_speed": 0.021038603773346043,
+        "tilt": 0.0009494728449435008,
+        "angular_speed": 0.026113589480520113,
+        "radius": 0.15518436290351978,
+        "angular_velocity": [
+          -0.019577431630096565,
+          -0.013988023112731215,
+          -0.01014785374962226
+        ],
+        "body_angular_velocity": [
+          -0.019567076098934755,
+          -0.013995567359120185,
+          -0.010157420085432934
+        ],
+        "velocity": [
+          -0.01836118530658623,
+          -0.010270818996995919,
+          -0.2651654325296733
+        ],
+        "position": [
+          1.710721683900459,
+          0.3832429787434699,
+          0.013533361396642997
+        ]
+      },
+      "terminal_velocity": [
+        -0.0061282974795764614,
+        0.0013665107290849788,
+        0.019129989944251496
+      ],
+      "terminal_angular_velocity": [
+        -0.2322938301217409,
+        -0.44614574038502985,
+        -0.003990082285802949
+      ],
+      "distance_to_goal": 0.15502203238087564,
+      "max_tilt": 0.23976746282693023,
+      "failed_motor_eta_mae": 0.004946707025475341,
+      "baseline_failed_motor_eta_mae": 0.0024084253054452403
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612039,
+      "training_seed": 203,
+      "motor": 2,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.12828947368421054,
+      "mean_gate": 0.0483761230777753,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.00838388087358087,
+        -0.4134824132019091,
+        -0.25856234929629734
+      ],
+      "terminal_angular_velocity": [
+        0.06510222421477964,
+        0.25660874707946074,
+        5.154932208890827
+      ],
+      "distance_to_goal": 1.4041731747211135,
+      "max_tilt": 0.49175439800083304,
+      "failed_motor_eta_mae": 0.010311507498669404,
+      "baseline_failed_motor_eta_mae": 0.008677803302676734
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612020,
+      "training_seed": 204,
+      "motor": 2,
+      "outcome": "hard_landing",
+      "applied_on_fraction": 0.11737089201877934,
+      "mean_gate": 0.03192236161381239,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.2505441741492805,
+        "horizontal_speed": 0.019167278967045717,
+        "tilt": 0.003399929339439771,
+        "angular_speed": 0.6165110008037161,
+        "radius": 0.07347020187485827,
+        "angular_velocity": [
+          -0.011288058183596421,
+          -0.023942824839323536,
+          0.6159424770164474
+        ],
+        "body_angular_velocity": [
+          -0.011427261632509511,
+          0.020679683482311563,
+          0.6160580999342946
+        ],
+        "velocity": [
+          -0.011010760278847771,
+          -0.015689096248104967,
+          -0.2505441741492805
+        ],
+        "position": [
+          -1.8146027740772022,
+          -1.5564914990236625,
+          0.014388102468994723
+        ]
+      },
+      "terminal_velocity": [
+        -0.0016324124044049372,
+        -0.0006933804520498888,
+        0.004854369884950763
+      ],
+      "terminal_angular_velocity": [
+        0.06747513859835676,
+        -0.07836199901076168,
+        -0.0036588769598033446
+      ],
+      "distance_to_goal": 0.07342651548524814,
+      "max_tilt": 0.3304815742856762,
+      "failed_motor_eta_mae": 0.0014296416121649068,
+      "baseline_failed_motor_eta_mae": 0.002247726752677051
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612021,
+      "training_seed": 204,
+      "motor": 3,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.07526881720430108,
+      "mean_gate": 0.024251989459478727,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -1.2621069444594426,
+        1.0378864925331759,
+        -0.9229813452145379
+      ],
+      "terminal_angular_velocity": [
+        -0.47496603947311705,
+        0.19983172827130544,
+        -4.513609935938002
+      ],
+      "distance_to_goal": 2.778221997502265,
+      "max_tilt": 0.45425813133459314,
+      "failed_motor_eta_mae": 0.019286365952198917,
+      "baseline_failed_motor_eta_mae": 0.005327310654046651
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612032,
+      "training_seed": 204,
+      "motor": 0,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.07945736434108527,
+      "mean_gate": 0.02260933845311172,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.0013618241837965405,
+        -0.018854124147317693,
+        -0.03493440653098746
+      ],
+      "terminal_angular_velocity": [
+        -0.011175832496139914,
+        -0.005866855759508921,
+        -0.0011218155063693125
+      ],
+      "distance_to_goal": 1.091408789980569,
+      "max_tilt": 0.35746961182675346,
+      "failed_motor_eta_mae": 0.003916800878074847,
+      "baseline_failed_motor_eta_mae": 0.00229048939568348
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612039,
+      "training_seed": 204,
+      "motor": 2,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.1875,
+      "mean_gate": 0.04694260973483324,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.04460650992602838,
+        -0.24448339495576135,
+        -0.20032110758133267
+      ],
+      "terminal_angular_velocity": [
+        0.08760291851484772,
+        0.45688933684252375,
+        5.825698562670099
+      ],
+      "distance_to_goal": 1.6417758289130215,
+      "max_tilt": 0.46519119351752514,
+      "failed_motor_eta_mae": 0.010877922397587343,
+      "baseline_failed_motor_eta_mae": 0.008677803302676734
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612007,
+      "training_seed": 205,
+      "motor": 0,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.11576354679802955,
+      "mean_gate": 0.032863395040845636,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.00951096993069988,
+        0.020182689761483515,
+        -0.09813714882203
+      ],
+      "terminal_angular_velocity": [
+        0.006465450970413743,
+        0.0037134080626712238,
+        0.0009614650563604828
+      ],
+      "distance_to_goal": 0.1851947632249537,
+      "max_tilt": 0.38220808582496807,
+      "failed_motor_eta_mae": 0.00502491556966468,
+      "baseline_failed_motor_eta_mae": 0.0026608809190978157
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612020,
+      "training_seed": 205,
+      "motor": 2,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.024691358024691357,
+      "mean_gate": 0.016386935151653525,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.008547135419306112,
+        0.03134112203377732,
+        -0.11572095385049827
+      ],
+      "terminal_angular_velocity": [
+        -0.00901965341371817,
+        0.003957625793073755,
+        -0.0009657570694315633
+      ],
+      "distance_to_goal": 0.4417919922387449,
+      "max_tilt": 0.34288604911544046,
+      "failed_motor_eta_mae": 0.005197382865706943,
+      "baseline_failed_motor_eta_mae": 0.002247726752677051
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612030,
+      "training_seed": 205,
+      "motor": 3,
+      "outcome": "hard_landing",
+      "applied_on_fraction": 0.10229276895943562,
+      "mean_gate": 0.027413821935233194,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.3094102726039341,
+        "horizontal_speed": 0.4320281514085894,
+        "tilt": 0.062220009760448086,
+        "angular_speed": 0.21778705939760132,
+        "radius": 0.5838209056026157,
+        "angular_velocity": [
+          -0.21756862414062653,
+          -0.009736011941390158,
+          0.0005541679224105215
+        ],
+        "body_angular_velocity": [
+          -0.2175638902812462,
+          -0.009748921354567636,
+          0.00145444806254695
+        ],
+        "velocity": [
+          0.05708944409205349,
+          -0.42823955793782453,
+          -0.3094102726039341
+        ],
+        "position": [
+          -1.0477674102199208,
+          2.508968362537734,
+          0.01804261501897273
+        ]
+      },
+      "terminal_velocity": [
+        0.056380149456782984,
+        -0.41333824244551776,
+        -0.2695953411945346
+      ],
+      "terminal_angular_velocity": [
+        -4.551591609456244,
+        0.007944837777311618,
+        -0.04805406453665262
+      ],
+      "distance_to_goal": 0.5804253960092498,
+      "max_tilt": 0.2833026040492656,
+      "failed_motor_eta_mae": 0.0034605934355976535,
+      "baseline_failed_motor_eta_mae": 0.0038214709108966567
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612032,
+      "training_seed": 205,
+      "motor": 0,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.024390243902439025,
+      "mean_gate": 0.013215550053410414,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -0.011150791229136946,
+        -0.03500103681882424,
+        -0.11432088675541009
+      ],
+      "terminal_angular_velocity": [
+        0.003961251379817167,
+        -0.0017936625183360476,
+        -0.00033754908637781867
+      ],
+      "distance_to_goal": 0.4989305370827089,
+      "max_tilt": 0.35813212565554925,
+      "failed_motor_eta_mae": 0.005215705867831512,
+      "baseline_failed_motor_eta_mae": 0.00229048939568348
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612047,
+      "training_seed": 205,
+      "motor": 2,
+      "outcome": "hard_landing",
+      "applied_on_fraction": 0.04192355117139334,
+      "mean_gate": 0.011757810886044391,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.08572639123181222,
+        "horizontal_speed": 0.023897337498273843,
+        "tilt": 0.007002440993456534,
+        "angular_speed": 5.139603647107539,
+        "radius": 0.1100102861547309,
+        "angular_velocity": [
+          0.023134347097568803,
+          -0.0012854067527522722,
+          5.1395514200244135
+        ],
+        "body_angular_velocity": [
+          -0.03424634287342399,
+          -0.03270710542783949,
+          5.139385477137849
+        ],
+        "velocity": [
+          -0.020305057770760835,
+          0.012601086002105936,
+          -0.08572639123181222
+        ],
+        "position": [
+          0.9415210970796599,
+          1.2773955006027486,
+          0.014654989416451396
+        ]
+      },
+      "terminal_velocity": [
+        -0.020434041720658852,
+        0.012013248549859893,
+        -0.08521275454355345
+      ],
+      "terminal_angular_velocity": [
+        0.02418573290116371,
+        0.0003296463783937051,
+        5.134705326348555
+      ],
+      "distance_to_goal": 0.10984874908641491,
+      "max_tilt": 0.37707908922143285,
+      "failed_motor_eta_mae": 0.0038569564361437565,
+      "baseline_failed_motor_eta_mae": 0.002912569704023613
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.295,
+      "seed": 612032,
+      "training_seed": 202,
+      "motor": 0,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.1625,
+      "mean_gate": 0.039623592297236124,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.07298039303035148,
+        "horizontal_speed": 0.008082342402056998,
+        "tilt": 0.002577376984042152,
+        "angular_speed": 0.026559267724629416,
+        "radius": 0.06040318011503163,
+        "angular_velocity": [
+          0.011475453072831229,
+          -0.023695206344096945,
+          -0.003499410686452509
+        ],
+        "body_angular_velocity": [
+          0.011192342416605239,
+          -0.023838175573320696,
+          -0.0034449323118949282
+        ],
+        "velocity": [
+          0.006503497063215203,
+          0.004798831592464954,
+          -0.07298039303035148
+        ],
+        "position": [
+          0.9982438337426939,
+          0.34539380937714464,
+          0.014508165365222413
+        ]
+      },
+      "terminal_velocity": [
+        -2.3963264665464573e-06,
+        2.8444233404998733e-06,
+        1.4620661028424617e-05
+      ],
+      "terminal_angular_velocity": [
+        -0.00021148606671476814,
+        -0.00017712929218352108,
+        2.34034322354941e-07
+      ],
+      "distance_to_goal": 0.06030935111874787,
+      "max_tilt": 0.3611082047126269,
+      "failed_motor_eta_mae": 0.0012647597343978636,
+      "baseline_failed_motor_eta_mae": 0.0023935767623427515
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.295,
+      "seed": 612048,
+      "training_seed": 205,
+      "motor": 3,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.20454545454545456,
+      "mean_gate": 0.05427577036928821,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -0.013186725238564042,
+        0.11878467466687169,
+        -0.2711505904836766
+      ],
+      "terminal_angular_velocity": [
+        0.022538731180225237,
+        -0.009919974011783909,
+        0.3638634418057773
+      ],
+      "distance_to_goal": 0.32145375889513944,
+      "max_tilt": 0.4052610842556131,
+      "failed_motor_eta_mae": 0.006625150706353838,
+      "baseline_failed_motor_eta_mae": 0.0012881075282751644
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612007,
+      "training_seed": 201,
+      "motor": 0,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.09730848861283643,
+      "mean_gate": 0.023324923115487426,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -0.0037891883153697717,
+        -0.00025169116787588655,
+        -0.04036658639859422
+      ],
+      "terminal_angular_velocity": [
+        0.00028145149595914436,
+        -0.007147359490437444,
+        -0.0013425234640942084
+      ],
+      "distance_to_goal": 0.36462440653204575,
+      "max_tilt": 0.38120104222041484,
+      "failed_motor_eta_mae": 0.004057269034886985,
+      "baseline_failed_motor_eta_mae": 0.00274657816868299
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612020,
+      "training_seed": 201,
+      "motor": 2,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.075,
+      "mean_gate": 0.022778776329424648,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.20968338589779625,
+        "horizontal_speed": 0.011403666284523844,
+        "tilt": 0.00024240658652246983,
+        "angular_speed": 0.02191235619266887,
+        "radius": 0.07822698610370787,
+        "angular_velocity": [
+          -0.017188854856014586,
+          0.013422577309704562,
+          0.0021281543689925134
+        ],
+        "body_angular_velocity": [
+          -0.017143538647481072,
+          0.013479625600883291,
+          0.002133103423823727
+        ],
+        "velocity": [
+          -0.008682216214823736,
+          -0.00739342453318066,
+          -0.20968338589779625
+        ],
+        "position": [
+          -1.7631400505296315,
+          -1.5694554796776417,
+          0.013724707488502401
+        ]
+      },
+      "terminal_velocity": [
+        1.9042965674549222e-06,
+        1.3984589951185626e-06,
+        4.934406040641923e-06
+      ],
+      "terminal_angular_velocity": [
+        -0.00011113415521303941,
+        0.00013456945685526544,
+        -1.056671278120176e-06
+      ],
+      "distance_to_goal": 0.07821959865064755,
+      "max_tilt": 0.33955926811094495,
+      "failed_motor_eta_mae": 0.0012353806994194378,
+      "baseline_failed_motor_eta_mae": 0.0022875783379390953
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612021,
+      "training_seed": 201,
+      "motor": 3,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.35665914221218964,
+      "mean_gate": 0.088184411248558,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -0.00855474151239238,
+        -0.00016311646673147559,
+        -0.2386805223118221
+      ],
+      "terminal_angular_velocity": [
+        -0.01774787420241002,
+        -0.005173712412695231,
+        -0.0020778321410137705
+      ],
+      "distance_to_goal": 0.15520285165220346,
+      "max_tilt": 0.4347579870833547,
+      "failed_motor_eta_mae": 0.013164012870344698,
+      "baseline_failed_motor_eta_mae": 0.006757212912795984
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612032,
+      "training_seed": 201,
+      "motor": 0,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.20434782608695654,
+      "mean_gate": 0.05111848964639332,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.5117666846498342,
+        0.22179838853098804,
+        -0.17633532843306834
+      ],
+      "terminal_angular_velocity": [
+        0.05184907139010587,
+        -0.13230363986093963,
+        0.016009336895702452
+      ],
+      "distance_to_goal": 2.0217433938526446,
+      "max_tilt": 0.3530966589417201,
+      "failed_motor_eta_mae": 0.0045616597285732,
+      "baseline_failed_motor_eta_mae": 0.002285423718424967
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612039,
+      "training_seed": 201,
+      "motor": 2,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.1361111111111111,
+      "mean_gate": 0.035309227659470505,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.02728894919509685,
+        -0.01919616844593215,
+        0.0010594264389683706
+      ],
+      "terminal_angular_velocity": [
+        -0.08666427219170172,
+        -0.05158010898083699,
+        5.849565899320278
+      ],
+      "distance_to_goal": 0.03509306683308425,
+      "max_tilt": 0.48629692549828835,
+      "failed_motor_eta_mae": 0.003527234906214944,
+      "baseline_failed_motor_eta_mae": 0.008243249654317556
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612003,
+      "training_seed": 202,
+      "motor": 1,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.05763888888888889,
+      "mean_gate": 0.01646478223717875,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.021887771685900028,
+        0.026936620480636744,
+        0.028180155500579784
+      ],
+      "terminal_angular_velocity": [
+        0.0547060189104655,
+        0.19453370103453602,
+        -4.287917743850693
+      ],
+      "distance_to_goal": 0.005371304288788558,
+      "max_tilt": 0.329649820029015,
+      "failed_motor_eta_mae": 0.002406577249570236,
+      "baseline_failed_motor_eta_mae": 0.002854350629668398
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612029,
+      "training_seed": 202,
+      "motor": 2,
+      "outcome": "hard_landing",
+      "applied_on_fraction": 0.21611001964636542,
+      "mean_gate": 0.031080111480649188,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.27770429451850764,
+        "horizontal_speed": 0.007672959451769372,
+        "tilt": 0.0042412144090773094,
+        "angular_speed": 0.017662638676449734,
+        "radius": 0.09136799041925926,
+        "angular_velocity": [
+          0.0010712637477019026,
+          -0.014177106641226473,
+          -0.01048002129200938
+        ],
+        "body_angular_velocity": [
+          0.0007968308103066489,
+          -0.014238029357103821,
+          -0.010421726618023222
+        ],
+        "velocity": [
+          -0.00765129209641873,
+          -0.0005762256535223052,
+          -0.27770429451850764
+        ],
+        "position": [
+          0.8007724051860127,
+          -0.0014045405298763545,
+          0.014561455127982055
+        ]
+      },
+      "terminal_velocity": [
+        -0.004369586701522526,
+        0.004052100350325448,
+        -0.265809653313832
+      ],
+      "terminal_angular_velocity": [
+        -1.1266886454213805,
+        0.6892380965209688,
+        -0.00010616881766636194
+      ],
+      "distance_to_goal": 0.09136261448278929,
+      "max_tilt": 0.3646443498276464,
+      "failed_motor_eta_mae": 0.0032012813583104987,
+      "baseline_failed_motor_eta_mae": 0.002729226334537908
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612014,
+      "training_seed": 203,
+      "motor": 0,
+      "outcome": "hard_landing",
+      "applied_on_fraction": 0.6674937965260546,
+      "mean_gate": 0.154639899139073,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.25443641408230044,
+        "horizontal_speed": 0.03648870251435201,
+        "tilt": 0.0038489800250449025,
+        "angular_speed": 0.4468582989953589,
+        "radius": 0.1440898936427239,
+        "angular_velocity": [
+          -0.002611871024528479,
+          -0.008668463830781417,
+          0.44676657803106895
+        ],
+        "body_angular_velocity": [
+          -0.004294662792354785,
+          -0.009080882074847042,
+          0.4467453780771193
+        ],
+        "velocity": [
+          -0.03632154388733731,
+          -0.0034886760842916076,
+          -0.25443641408230044
+        ],
+        "position": [
+          1.9029174334081675,
+          -1.1313679058833783,
+          0.014620088872534404
+        ]
+      },
+      "terminal_velocity": [
+        0.004256208166193674,
+        -0.0038174296171003316,
+        0.01594786227153447
+      ],
+      "terminal_angular_velocity": [
+        0.27172114877268216,
+        0.33035771336294273,
+        0.006394426558865893
+      ],
+      "distance_to_goal": 0.14378960153692624,
+      "max_tilt": 0.20007634936401336,
+      "failed_motor_eta_mae": 0.004758046972621787,
+      "baseline_failed_motor_eta_mae": 0.002213891098293766
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612021,
+      "training_seed": 203,
+      "motor": 3,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.3090277777777778,
+      "mean_gate": 0.06700644789056645,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.1905836269113783,
+        0.45120667242841483,
+        -0.042330791655569196
+      ],
+      "terminal_angular_velocity": [
+        0.008250205539775547,
+        -0.06431636215141324,
+        -0.028451845084733453
+      ],
+      "distance_to_goal": 0.6403731227280814,
+      "max_tilt": 0.45894846140684664,
+      "failed_motor_eta_mae": 0.0022263774369204307,
+      "baseline_failed_motor_eta_mae": 0.006757212912795984
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612032,
+      "training_seed": 203,
+      "motor": 0,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.08472222222222223,
+      "mean_gate": 0.02532711952096886,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.007364553924096087,
+        0.00625223265882303,
+        -0.16189602348821744
+      ],
+      "terminal_angular_velocity": [
+        0.013262027382727205,
+        -0.060826198483830654,
+        0.0017887114046903716
+      ],
+      "distance_to_goal": 0.07498386849618902,
+      "max_tilt": 0.3274297702735175,
+      "failed_motor_eta_mae": 0.0012470153790599685,
+      "baseline_failed_motor_eta_mae": 0.002285423718424967
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612035,
+      "training_seed": 203,
+      "motor": 0,
+      "outcome": "hard_landing",
+      "applied_on_fraction": 0.550761421319797,
+      "mean_gate": 0.12637500540556643,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.26163601981573686,
+        "horizontal_speed": 0.022686290701924055,
+        "tilt": 0.0026774316928866696,
+        "angular_speed": 0.057935549744656,
+        "radius": 0.15709879782755076,
+        "angular_velocity": [
+          -0.03921653051484486,
+          0.03072628717328511,
+          -0.029571725264829683
+        ],
+        "body_angular_velocity": [
+          -0.040338821139865935,
+          0.029315995999399214,
+          -0.029493724956753502
+        ],
+        "velocity": [
+          -0.021412959926854512,
+          -0.007493526071425161,
+          -0.26163601981573686
+        ],
+        "position": [
+          1.712547178689258,
+          0.3796627352552951,
+          0.014534104477714539
+        ]
+      },
+      "terminal_velocity": [
+        0.010485749239029445,
+        -0.017575321261941848,
+        0.006691279360094074
+      ],
+      "terminal_angular_velocity": [
+        -0.29145576001105766,
+        -0.2373165489869158,
+        0.0645674631052396
+      ],
+      "distance_to_goal": 0.15723695835782753,
+      "max_tilt": 0.24018667170313077,
+      "failed_motor_eta_mae": 0.0049454138858897835,
+      "baseline_failed_motor_eta_mae": 0.002428607332490581
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612039,
+      "training_seed": 203,
+      "motor": 2,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.1276595744680851,
+      "mean_gate": 0.048992242796201235,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.022110444447073933,
+        -0.7828960275307137,
+        -0.32724221265195425
+      ],
+      "terminal_angular_velocity": [
+        0.03517786842382702,
+        0.34842038533743563,
+        5.628596756436778
+      ],
+      "distance_to_goal": 1.1808820215347893,
+      "max_tilt": 0.4996122817339941,
+      "failed_motor_eta_mae": 0.011351007963725887,
+      "baseline_failed_motor_eta_mae": 0.008243249654317556
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612021,
+      "training_seed": 204,
+      "motor": 3,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.0891089108910891,
+      "mean_gate": 0.028296979199541678,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -0.07761512384467076,
+        0.5461619546879407,
+        -0.659480115243768
+      ],
+      "terminal_angular_velocity": [
+        -0.2696359505722835,
+        0.26396433174701417,
+        -3.7320121478362998
+      ],
+      "distance_to_goal": 2.1495002208182936,
+      "max_tilt": 0.44878187320413065,
+      "failed_motor_eta_mae": 0.01682204289368423,
+      "baseline_failed_motor_eta_mae": 0.006757212912795984
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612029,
+      "training_seed": 204,
+      "motor": 2,
+      "outcome": "hard_landing",
+      "applied_on_fraction": 0.28107074569789675,
+      "mean_gate": 0.036382837060760585,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.3147393515895062,
+        "horizontal_speed": 0.012000775086617841,
+        "tilt": 0.005538890192571418,
+        "angular_speed": 0.4172067478256516,
+        "radius": 0.08895768938366266,
+        "angular_velocity": [
+          -0.009155004647562859,
+          0.035354635909545976,
+          0.4156052286014499
+        ],
+        "body_angular_velocity": [
+          -0.003830057724571265,
+          0.0362507034315126,
+          0.4156112216841647
+        ],
+        "velocity": [
+          -0.009511466894244352,
+          0.007317827560094674,
+          -0.3147393515895062
+        ],
+        "position": [
+          0.8130861148170828,
+          -0.037197770414419164,
+          0.013670317085277077
+        ]
+      },
+      "terminal_velocity": [
+        0.009913879856070224,
+        0.011963239174522779,
+        -0.27416823131559
+      ],
+      "terminal_angular_velocity": [
+        -1.3031632044770958,
+        4.43713516635432,
+        0.4939191850635164
+      ],
+      "distance_to_goal": 0.08900737079256153,
+      "max_tilt": 0.3641963054324191,
+      "failed_motor_eta_mae": 0.0030671726511180245,
+      "baseline_failed_motor_eta_mae": 0.002729226334537908
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612032,
+      "training_seed": 204,
+      "motor": 0,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.0798611111111111,
+      "mean_gate": 0.02328413768361012,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.015824920347126445,
+        -0.008184490684373134,
+        -0.25211782903524965
+      ],
+      "terminal_angular_velocity": [
+        -0.03251949843529763,
+        -0.0281207984677201,
+        -0.034652076931393404
+      ],
+      "distance_to_goal": 0.09894798637312231,
+      "max_tilt": 0.3547177475734246,
+      "failed_motor_eta_mae": 0.0012478084406040396,
+      "baseline_failed_motor_eta_mae": 0.002285423718424967
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612039,
+      "training_seed": 204,
+      "motor": 2,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.1910828025477707,
+      "mean_gate": 0.04745803526632345,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.007033589825270447,
+        -0.40429655927983055,
+        -0.20995009752318158
+      ],
+      "terminal_angular_velocity": [
+        -0.055844075066179374,
+        0.4523354089295692,
+        5.461973143182193
+      ],
+      "distance_to_goal": 1.59916215639137,
+      "max_tilt": 0.46653954303899764,
+      "failed_motor_eta_mae": 0.01106644540303973,
+      "baseline_failed_motor_eta_mae": 0.008243249654317556
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612007,
+      "training_seed": 205,
+      "motor": 0,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.11722488038277512,
+      "mean_gate": 0.03195590208592027,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.008441669578419566,
+        0.019220673411056585,
+        -0.08772300612448368
+      ],
+      "terminal_angular_velocity": [
+        -8.119087457161649e-05,
+        0.0023839185448316542,
+        0.005593669263475837
+      ],
+      "distance_to_goal": 0.17926382329363943,
+      "max_tilt": 0.3815244668073253,
+      "failed_motor_eta_mae": 0.004855648012249495,
+      "baseline_failed_motor_eta_mae": 0.00274657816868299
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612013,
+      "training_seed": 205,
+      "motor": 3,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.0625,
+      "mean_gate": 0.011533168682621584,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        -0.00013492601040200963,
+        0.0006243297718791028,
+        -0.1599214182753579
+      ],
+      "terminal_angular_velocity": [
+        -0.04681958589193943,
+        0.025339191307329544,
+        0.033593042700873585
+      ],
+      "distance_to_goal": 0.037497849302446734,
+      "max_tilt": 0.3380319647886442,
+      "failed_motor_eta_mae": 0.0017475046668091528,
+      "baseline_failed_motor_eta_mae": 0.0031989576051548933
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612020,
+      "training_seed": 205,
+      "motor": 2,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.023017902813299233,
+      "mean_gate": 0.015072850010279195,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.018913816877945747,
+        0.03542447073225399,
+        -0.1307132814474869
+      ],
+      "terminal_angular_velocity": [
+        0.014240289738080095,
+        -0.009003976483543692,
+        0.010297114124899025
+      ],
+      "distance_to_goal": 0.45581842400479905,
+      "max_tilt": 0.33944293065217185,
+      "failed_motor_eta_mae": 0.005437527079700899,
+      "baseline_failed_motor_eta_mae": 0.0022875783379390953
+    },
+    {
+      "condition": "estimated",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612032,
+      "training_seed": 205,
+      "motor": 0,
+      "outcome": "early_contact",
+      "applied_on_fraction": 0.06636155606407322,
+      "mean_gate": 0.02165115425188427,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.0004737157618667243,
+        -0.025717208191403357,
+        -0.09051736223096697
+      ],
+      "terminal_angular_velocity": [
+        0.005377294656496198,
+        -0.013494979792756923,
+        0.010809842562945524
+      ],
+      "distance_to_goal": 0.5380842252653191,
+      "max_tilt": 0.35012860832067,
+      "failed_motor_eta_mae": 0.0047731925364773815,
+      "baseline_failed_motor_eta_mae": 0.002285423718424967
+    },
+    {
+      "condition": "exact",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612034,
+      "training_seed": 201,
+      "motor": 3,
+      "outcome": "hard_landing",
+      "applied_on_fraction": 0.29772727272727273,
+      "mean_gate": 0.05573069175535982,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.39038542549259664,
+        "horizontal_speed": 0.008363242823947974,
+        "tilt": 0.0037555888666156475,
+        "angular_speed": 0.778768174248285,
+        "radius": 0.0069586773766098795,
+        "angular_velocity": [
+          -0.0076684385039659814,
+          -0.005464804827809661,
+          -0.7787112431325954
+        ],
+        "body_angular_velocity": [
+          -0.0008939105898013175,
+          -0.008236371939133218,
+          -0.778724105394937
+        ],
+        "velocity": [
+          0.00207056885747924,
+          0.0081028744985193,
+          -0.39038542549259664
+        ],
+        "position": [
+          0.30041686794054273,
+          -0.357541617917181,
+          0.014362273198748497
+        ]
+      },
+      "terminal_velocity": [
+        0.003424072569351245,
+        0.0012685457341444703,
+        0.011937086236192662
+      ],
+      "terminal_angular_velocity": [
+        -0.09530901776146727,
+        0.24991551876966467,
+        -0.0033667774955783436
+      ],
+      "distance_to_goal": 0.006985978671610385,
+      "max_tilt": 0.2520474113121171,
+      "failed_motor_eta_mae": 0.0,
+      "baseline_failed_motor_eta_mae": 0.0
+    },
+    {
+      "condition": "exact",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612049,
+      "training_seed": 202,
+      "motor": 2,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.6020833333333333,
+      "mean_gate": 0.12839724812656642,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.00811521568829578,
+        0.011241947832184077,
+        -0.0031461356790802664
+      ],
+      "terminal_angular_velocity": [
+        -0.07238347301597345,
+        0.21933625360556425,
+        0.0036713428832829895
+      ],
+      "distance_to_goal": 0.32169769715141966,
+      "max_tilt": 0.321353753967082,
+      "failed_motor_eta_mae": 0.0,
+      "baseline_failed_motor_eta_mae": 0.0
+    },
+    {
+      "condition": "exact",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612021,
+      "training_seed": 203,
+      "motor": 3,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.23194444444444445,
+      "mean_gate": 0.047898642429047164,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.1333505227647285,
+        "horizontal_speed": 0.005577438976847929,
+        "tilt": 0.0004756981242484261,
+        "angular_speed": 0.015483539539448254,
+        "radius": 0.0460078374867608,
+        "angular_velocity": [
+          0.0003684623447444608,
+          -0.012628845206900535,
+          0.008950782139584688
+        ],
+        "body_angular_velocity": [
+          0.00038983551326342053,
+          -0.012629522177559185,
+          0.008948921415947107
+        ],
+        "velocity": [
+          -0.004423802072397195,
+          0.003396733837779574,
+          -0.1333505227647285
+        ],
+        "position": [
+          0.7561246626637479,
+          1.4447214495053697,
+          0.014397391493361819
+        ]
+      },
+      "terminal_velocity": [
+        -3.939157190005384e-07,
+        2.117709711789889e-08,
+        3.6297283482339404e-07
+      ],
+      "terminal_angular_velocity": [
+        -1.7579292094304813e-06,
+        -2.2415119096723516e-05,
+        -7.800601415162432e-07
+      ],
+      "distance_to_goal": 0.045984444065096,
+      "max_tilt": 0.35618149555016304,
+      "failed_motor_eta_mae": 0.0,
+      "baseline_failed_motor_eta_mae": 0.0
+    },
+    {
+      "condition": "exact",
+      "noise_multiplier": 1.0,
+      "level": 0.296,
+      "seed": 612010,
+      "training_seed": 204,
+      "motor": 2,
+      "outcome": "hard_landing",
+      "applied_on_fraction": 0.2364341085271318,
+      "mean_gate": 0.030056010152018347,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.2570398530611033,
+        "horizontal_speed": 0.014047216281631268,
+        "tilt": 0.005826601353655378,
+        "angular_speed": 0.3796348630895959,
+        "radius": 0.09375379313766717,
+        "angular_velocity": [
+          -0.011293146341691603,
+          0.021683646082198006,
+          0.37884682077502424
+        ],
+        "body_angular_velocity": [
+          -0.0063911116572762236,
+          0.02353947481501916,
+          0.37885046666234096
+        ],
+        "velocity": [
+          -0.007040323850886407,
+          0.01215558000827466,
+          -0.2570398530611033
+        ],
+        "position": [
+          0.42355179647619656,
+          -0.4200699470384915,
+          0.01479868500396027
+        ]
+      },
+      "terminal_velocity": [
+        0.007780855120823683,
+        0.017959440274307875,
+        -0.22378943063084053
+      ],
+      "terminal_angular_velocity": [
+        -1.5196863559314457,
+        3.4305060645522754,
+        0.42166986499688464
+      ],
+      "distance_to_goal": 0.09373185269305698,
+      "max_tilt": 0.27237358536039274,
+      "failed_motor_eta_mae": 0.0,
+      "baseline_failed_motor_eta_mae": 0.0
+    },
+    {
+      "condition": "exact",
+      "noise_multiplier": 2.0,
+      "level": 0.295,
+      "seed": 612049,
+      "training_seed": 202,
+      "motor": 2,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.6409722222222223,
+      "mean_gate": 0.14036270829124584,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.008588895354179223,
+        0.011279537531965828,
+        0.0011145808305189125
+      ],
+      "terminal_angular_velocity": [
+        -0.027674122946466078,
+        0.11040805755907666,
+        0.07187361747385525
+      ],
+      "distance_to_goal": 0.3389601068988643,
+      "max_tilt": 0.3214326850762498,
+      "failed_motor_eta_mae": 0.0,
+      "baseline_failed_motor_eta_mae": 0.0
+    },
+    {
+      "condition": "exact",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612044,
+      "training_seed": 201,
+      "motor": 3,
+      "outcome": "hard_landing",
+      "applied_on_fraction": 0.2847682119205298,
+      "mean_gate": 0.04506514213206226,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": {
+        "vertical_speed": 0.3154097437668465,
+        "horizontal_speed": 0.011547276308091605,
+        "tilt": 0.0002449525422039553,
+        "angular_speed": 0.1758094892068743,
+        "radius": 0.026278687205684624,
+        "angular_velocity": [
+          -0.004563564000488558,
+          -0.009887736541044958,
+          -0.17547188676506098
+        ],
+        "body_angular_velocity": [
+          0.0004799360256450961,
+          -0.010921531508134708,
+          -0.17546927453577213
+        ],
+        "velocity": [
+          0.00961116638440887,
+          0.0064003961491944095,
+          -0.3154097437668465
+        ],
+        "position": [
+          -1.4187810840880397,
+          -0.8044770031629894,
+          0.01323357432825725
+        ]
+      },
+      "terminal_velocity": [
+        -0.002071434260350213,
+        -0.0020265653407731963,
+        0.027076750984762837
+      ],
+      "terminal_angular_velocity": [
+        0.23633112987569596,
+        -0.2556065200468165,
+        0.022254607103633722
+      ],
+      "distance_to_goal": 0.026225476135824374,
+      "max_tilt": 0.3211199149321734,
+      "failed_motor_eta_mae": 0.0,
+      "baseline_failed_motor_eta_mae": 0.0
+    },
+    {
+      "condition": "exact",
+      "noise_multiplier": 2.0,
+      "level": 0.296,
+      "seed": 612049,
+      "training_seed": 202,
+      "motor": 2,
+      "outcome": "timeout",
+      "applied_on_fraction": 0.6055555555555555,
+      "mean_gate": 0.13019378555731642,
+      "pre_fault_false_alarm_ticks": 0,
+      "first_contact": null,
+      "terminal_velocity": [
+        0.0038993034308786407,
+        0.008975953093921945,
+        -0.006752233438207417
+      ],
+      "terminal_angular_velocity": [
+        -0.07337489128976195,
+        0.23025443023106573,
+        0.009539549774956323
+      ],
+      "distance_to_goal": 0.3242464625200714,
+      "max_tilt": 0.3214326850762498,
+      "failed_motor_eta_mae": 0.0,
+      "baseline_failed_motor_eta_mae": 0.0
+    }
+  ],
+  "scope": "Descriptive paired counterexamples from frozen primary test;not used for tuning or acceptance changes."
+}
