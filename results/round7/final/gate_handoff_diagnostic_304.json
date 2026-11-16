@@ -1,0 +1,95 @@
+{
+  "scope": "Post-hoc option-memory timeline of the same frozen loss; no parameter change. Remaining budget indicates selected feedback option, interrupted marks risk-model interruption, not proof that returning to baseline is viable.",
+  "rows": [
+    {
+      "t": 2.25,
+      "applied": 0.0,
+      "previous_remaining": 0.0,
+      "remaining": 0.0,
+      "interrupted": false,
+      "rescue": 0.08241307676130401,
+      "harm": 0.01793049297601026
+    },
+    {
+      "t": 2.2708333333333335,
+      "applied": 0.169336202126928,
+      "previous_remaining": 0.0,
+      "remaining": 23.0,
+      "interrupted": false,
+      "rescue": 0.04531526512602189,
+      "harm": 0.003752336141066705
+    },
+    {
+      "t": 2.2916666666666665,
+      "applied": 0.17684823111552114,
+      "previous_remaining": 23.0,
+      "remaining": 22.0,
+      "interrupted": false,
+      "rescue": 0.03614177647650282,
+      "harm": 0.0018455811987880058
+    },
+    {
+      "t": 2.3125,
+      "applied": 0.1804891842108527,
+      "previous_remaining": 22.0,
+      "remaining": 21.0,
+      "interrupted": false,
+      "rescue": 0.031673779134461975,
+      "harm": 0.0012640224519144285
+    },
+    {
+      "t": 2.3333333333333335,
+      "applied": 0.18334782772889788,
+      "previous_remaining": 21.0,
+      "remaining": 20.0,
+      "interrupted": false,
+      "rescue": 0.028582708436860626,
+      "harm": 0.0009225064095678114
+    },
+    {
+      "t": 2.3541666666666665,
+      "applied": 0.1868085624930167,
+      "previous_remaining": 20.0,
+      "remaining": 19.0,
+      "interrupted": false,
+      "rescue": 0.026679319985402464,
+      "harm": 0.0007616724871233887
+    },
+    {
+      "t": 2.375,
+      "applied": 0.18700725834578757,
+      "previous_remaining": 19.0,
+      "remaining": 18.0,
+      "interrupted": false,
+      "rescue": 0.02535325390894817,
+      "harm": 0.000642562959456765
+    },
+    {
+      "t": 2.3958333333333335,
+      "applied": 0.18681090708014408,
+      "previous_remaining": 18.0,
+      "remaining": 17.0,
+      "interrupted": false,
+      "rescue": 0.024412864471395134,
+      "harm": 0.0005596561410998255
+    },
+    {
+      "t": 2.4166666666666665,
+      "applied": 0.0,
+      "previous_remaining": 17.0,
+      "remaining": 16.0,
+      "interrupted": false,
+      "rescue": 0.022993853535754418,
+      "harm": 0.0004351245660931726
+    },
+    {
+      "t": 2.4375,
+      "applied": 0.0,
+      "previous_remaining": 16.0,
+      "remaining": 15.0,
+      "interrupted": false,
+      "rescue": 0.0223779514871687,
+      "harm": 0.0004003517628196102
+    }
+  ]
+}

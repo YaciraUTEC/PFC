@@ -1,0 +1,100 @@
+{
+  "closed": true,
+  "finished_epoch": 1794824646.8740034,
+  "conclusion": "Four matched-budget recipes isolate conflicting demonstration targets, gate coupling and physical output parameterization.",
+  "selected_recipe": "teacher_direct",
+  "results": [
+    {
+      "recipe": "original",
+      "groups": 256,
+      "seed": 301,
+      "updates": 1200,
+      "seconds": 31.91319751739502,
+      "started_epoch": 1794824518.961105,
+      "finished_epoch": 1794824550.8743026,
+      "fidelity": [
+        {
+          "update": 1200,
+          "active_mse": 0.04157466448616885,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        }
+      ],
+      "final_active_mse": 0.04157466448616885,
+      "best_active_mse": 0.04157466448616885,
+      "teacher_episodes": 4210,
+      "active_episodes": 2085,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\proposal_repair\\smoke\\original\\groups_256\\seed_301\\final.pt"
+    },
+    {
+      "recipe": "teacher_gate",
+      "groups": 256,
+      "seed": 301,
+      "updates": 1200,
+      "seconds": 30.455250024795532,
+      "started_epoch": 1794824550.9324148,
+      "finished_epoch": 1794824581.3876648,
+      "fidelity": [
+        {
+          "update": 1200,
+          "active_mse": 0.04162131006076321,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        }
+      ],
+      "final_active_mse": 0.04162131006076321,
+      "best_active_mse": 0.04162131006076321,
+      "teacher_episodes": 2117,
+      "active_episodes": 2085,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\proposal_repair\\smoke\\teacher_gate\\groups_256\\seed_301\\final.pt"
+    },
+    {
+      "recipe": "teacher_physical",
+      "groups": 256,
+      "seed": 301,
+      "updates": 1200,
+      "seconds": 35.96005892753601,
+      "started_epoch": 1794824581.4495468,
+      "finished_epoch": 1794824617.4096057,
+      "fidelity": [
+        {
+          "update": 1200,
+          "active_mse": 0.025619511740163914,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        }
+      ],
+      "final_active_mse": 0.025619511740163914,
+      "best_active_mse": 0.025619511740163914,
+      "teacher_episodes": 2117,
+      "active_episodes": 2085,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\proposal_repair\\smoke\\teacher_physical\\groups_256\\seed_301\\final.pt"
+    },
+    {
+      "recipe": "teacher_direct",
+      "groups": 256,
+      "seed": 301,
+      "updates": 1200,
+      "seconds": 29.34558916091919,
+      "started_epoch": 1794824617.4707384,
+      "finished_epoch": 1794824646.8163276,
+      "fidelity": [
+        {
+          "update": 1200,
+          "active_mse": 0.017648811334924724,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        }
+      ],
+      "final_active_mse": 0.017648811334924724,
+      "best_active_mse": 0.017648811334924724,
+      "teacher_episodes": 2117,
+      "active_episodes": 2085,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\proposal_repair\\smoke\\teacher_direct\\groups_256\\seed_301\\final.pt"
+    }
+  ]
+}

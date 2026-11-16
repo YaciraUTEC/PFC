@@ -1,0 +1,7 @@
+{
+  "closed": true,
+  "finished_epoch": 1794832343.1589265,
+  "conclusion": "Natural caller and two independently reconstructed branches agree exactly, including observer and controller state.",
+  "maximum_error": 0.0,
+  "method": "natural_prefix_replay"
+}

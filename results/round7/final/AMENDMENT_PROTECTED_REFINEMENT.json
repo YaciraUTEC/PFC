@@ -1,0 +1,30 @@
+{
+  "created_epoch": 1794818858.199285,
+  "stage": "h4_protected_finetuning",
+  "final_test_unopened": true,
+  "reason": "A new FlashSAC Bellman target must include the deployed authorizer and held-option state. Reusing the old ungated target would mismatch the new controller. For this bounded study, refine proposals directly from observed terminal rescue/harm labels and preserve the prior; do not claim a new online FlashSAC benchmark.",
+  "method": "one supervised counterfactual refinement and one student-state aggregation round",
+  "model_seeds": [
+    301,
+    302,
+    303,
+    304,
+    305
+  ],
+  "updates": 1200,
+  "lr": 3e-05,
+  "min_lr": 3e-06,
+  "warmup": 100,
+  "prior_anchor": 0.3,
+  "encoder": "frozen during head refinement; the independent9 BC scale fits already train GTrXL end to end",
+  "feedback_training_routes": [
+    720128,
+    720160
+  ],
+  "gate_recalibration_routes": [
+    730000,
+    730128
+  ],
+  "protected_selection": "Keep refinement only if full-flight development improves paired success/protection versus its own unrefined candidate; otherwise retain the unrefined version.",
+  "original_online_budget_not_executed": "No new524288-step online head is represented as if completed; document this design change and actual times."
+}

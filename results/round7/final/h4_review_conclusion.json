@@ -1,0 +1,44 @@
+{
+  "closed": true,
+  "finished_epoch": 1794840454.4745526,
+  "conclusion": "Ninguna familia conserva todos los aterrizajes de la base en desarrollo. Cabeza original/compuerta original4rescates6perdidas; original/actualizada3/3; refinada/original3/5; refinada/actualizada0/4. El afinado queda descartado. Se congela la mejor familia experimental original/actualizada, pero ya falla la proteccion de desarrollo y no se autorizara su despliegue aunque mejore una media de prueba. Se completa el estudio reservado para cuantificar generalizacion sin retocar parametros.",
+  "comparisons": {
+    "unrefined_original_gate": {
+      "cases": 960,
+      "success": 0.846875,
+      "critical_difference": -0.008333333333333333,
+      "gains": 4,
+      "losses": 6,
+      "exact_losses": 0,
+      "mild_losses": 0
+    },
+    "unrefined_updated_gate": {
+      "cases": 960,
+      "success": 0.8489583333333334,
+      "critical_difference": 0.0,
+      "gains": 3,
+      "losses": 3,
+      "exact_losses": 0,
+      "mild_losses": 0
+    },
+    "refined_original_gate": {
+      "cases": 960,
+      "success": 0.846875,
+      "critical_difference": -0.008333333333333333,
+      "gains": 3,
+      "losses": 5,
+      "exact_losses": 0,
+      "mild_losses": 0
+    },
+    "refined_updated_gate": {
+      "cases": 960,
+      "success": 0.8447916666666666,
+      "critical_difference": -0.016666666666666666,
+      "gains": 0,
+      "losses": 4,
+      "exact_losses": 0,
+      "mild_losses": 0
+    }
+  },
+  "next": "Preflight numerico de48casos de desarrollo en los10modelos; luego pruebas finales y latencia."
+}

@@ -1,0 +1,24 @@
+{
+  "created_epoch": 1794819779.472343,
+  "final_test_unopened": true,
+  "gate_data_not_started": true,
+  "reason": "Binary terminal success can be flat for isolated short actions even when a coordinated feedback recovery succeeds. Holding a motor correction open-loop also misrepresents the deployed recurrent controller. Preserve the experimentally helpful native gate and train a baseline-relative outer authorizer over feedback recovery options.",
+  "options": [
+    {
+      "ticks": 1,
+      "alpha": 1.0
+    },
+    {
+      "ticks": 24,
+      "alpha": 0.5
+    },
+    {
+      "ticks": 96,
+      "alpha": 1.0
+    }
+  ],
+  "feedback_rate_hz": 48,
+  "label": "Native proposal policy with the chosen gain for a bounded feedback prefix, then DSLPID until terminal; two common future-noise realizations.",
+  "execution": "Recompute proposal at each tick; do not hold motor commands. Preserve native abstention within an option. Reassess risk each tick and allow an emergency abort. Validate the full composition, not just labels.",
+  "data_sampling": "Query native onsets plus periodic states, with spacing and phase quotas; previous-gate input remains masked."
+}

@@ -1,0 +1,235 @@
+{
+  "closed": true,
+  "finished_epoch": 1794825191.0437045,
+  "conclusion": "Original and expanded demonstrations compared again with the measured best proposal-only recipe and the same training budget.",
+  "selected_recipe": "teacher_direct",
+  "selected_groups": 256,
+  "means": {
+    "0": 0.017688815349761626,
+    "256": 0.012981765171750181
+  },
+  "results": [
+    {
+      "recipe": "teacher_direct",
+      "groups": 0,
+      "seed": 301,
+      "updates": 3600,
+      "seconds": 71.37975764274597,
+      "started_epoch": 1794824751.8718321,
+      "finished_epoch": 1794824823.2515898,
+      "fidelity": [
+        {
+          "update": 1200,
+          "active_mse": 0.0192207271615593,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        },
+        {
+          "update": 2400,
+          "active_mse": 0.01766181668721228,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        },
+        {
+          "update": 3600,
+          "active_mse": 0.017993880900792732,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        }
+      ],
+      "final_active_mse": 0.017993880900792732,
+      "best_active_mse": 0.01766181668721228,
+      "teacher_episodes": 16,
+      "active_episodes": 16,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\proposal_repair\\scale\\teacher_direct\\groups_0\\seed_301\\final.pt"
+    },
+    {
+      "recipe": "teacher_direct",
+      "groups": 0,
+      "seed": 302,
+      "updates": 3600,
+      "seconds": 75.5953631401062,
+      "started_epoch": 1794824823.2596967,
+      "finished_epoch": 1794824898.8550599,
+      "fidelity": [
+        {
+          "update": 1200,
+          "active_mse": 0.019823673676058653,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        },
+        {
+          "update": 2400,
+          "active_mse": 0.018236115096702372,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        },
+        {
+          "update": 3600,
+          "active_mse": 0.01835994549949805,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        }
+      ],
+      "final_active_mse": 0.01835994549949805,
+      "best_active_mse": 0.018236115096702372,
+      "teacher_episodes": 16,
+      "active_episodes": 16,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\proposal_repair\\scale\\teacher_direct\\groups_0\\seed_302\\final.pt"
+    },
+    {
+      "recipe": "teacher_direct",
+      "groups": 0,
+      "seed": 303,
+      "updates": 3600,
+      "seconds": 65.48409080505371,
+      "started_epoch": 1794824898.8569124,
+      "finished_epoch": 1794824964.3410032,
+      "fidelity": [
+        {
+          "update": 1200,
+          "active_mse": 0.019528252119810546,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        },
+        {
+          "update": 2400,
+          "active_mse": 0.017266167521498458,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        },
+        {
+          "update": 3600,
+          "active_mse": 0.0167126196489941,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        }
+      ],
+      "final_active_mse": 0.0167126196489941,
+      "best_active_mse": 0.0167126196489941,
+      "teacher_episodes": 16,
+      "active_episodes": 16,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\proposal_repair\\scale\\teacher_direct\\groups_0\\seed_303\\final.pt"
+    },
+    {
+      "recipe": "teacher_direct",
+      "groups": 256,
+      "seed": 301,
+      "updates": 3600,
+      "seconds": 71.7989251613617,
+      "started_epoch": 1794824964.3491192,
+      "finished_epoch": 1794825036.1480443,
+      "fidelity": [
+        {
+          "update": 1200,
+          "active_mse": 0.01672062041175123,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        },
+        {
+          "update": 2400,
+          "active_mse": 0.013925164001857556,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        },
+        {
+          "update": 3600,
+          "active_mse": 0.013044246529009089,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        }
+      ],
+      "final_active_mse": 0.013044246529009089,
+      "best_active_mse": 0.013044246529009089,
+      "teacher_episodes": 2117,
+      "active_episodes": 2085,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\proposal_repair\\scale\\teacher_direct\\groups_256\\seed_301\\final.pt"
+    },
+    {
+      "recipe": "teacher_direct",
+      "groups": 256,
+      "seed": 302,
+      "updates": 3600,
+      "seconds": 77.78859567642212,
+      "started_epoch": 1794825036.2090306,
+      "finished_epoch": 1794825113.9976263,
+      "fidelity": [
+        {
+          "update": 1200,
+          "active_mse": 0.01613754286469004,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        },
+        {
+          "update": 2400,
+          "active_mse": 0.01389829413459492,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        },
+        {
+          "update": 3600,
+          "active_mse": 0.012961874284508032,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        }
+      ],
+      "final_active_mse": 0.012961874284508032,
+      "best_active_mse": 0.012961874284508032,
+      "teacher_episodes": 2117,
+      "active_episodes": 2085,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\proposal_repair\\scale\\teacher_direct\\groups_256\\seed_302\\final.pt"
+    },
+    {
+      "recipe": "teacher_direct",
+      "groups": 256,
+      "seed": 303,
+      "updates": 3600,
+      "seconds": 76.92818784713745,
+      "started_epoch": 1794825114.0551245,
+      "finished_epoch": 1794825190.9833124,
+      "fidelity": [
+        {
+          "update": 1200,
+          "active_mse": 0.015386237380534157,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        },
+        {
+          "update": 2400,
+          "active_mse": 0.013952889487781148,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        },
+        {
+          "update": 3600,
+          "active_mse": 0.012939174701733419,
+          "routes": 8,
+          "episodes": 64,
+          "active_frames": 30617
+        }
+      ],
+      "final_active_mse": 0.012939174701733419,
+      "best_active_mse": 0.012939174701733419,
+      "teacher_episodes": 2117,
+      "active_episodes": 2085,
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\proposal_repair\\scale\\teacher_direct\\groups_256\\seed_303\\final.pt"
+    }
+  ]
+}

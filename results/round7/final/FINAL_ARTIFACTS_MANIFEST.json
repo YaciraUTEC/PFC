@@ -1,0 +1,28 @@
+{
+  "created_epoch": 1794853820.533518,
+  "complete": true,
+  "source_files_verified": 250,
+  "frozen_inputs_verified": 12,
+  "files": {
+    "ALL_COMPLETE.json": "d414b381ed47b80e95ba6d708015de6acbb971ad1887a4ae295923f21a030c5b",
+    "CONCLUSION_GLOBAL_RONDA7.txt": "34bfcad4bd953403e2b082b9a96082deba09f78ff6b1ad714d980583b458a03a",
+    "INFORME_FINAL.txt": "dcb33ca93a3bbb964fdf61fab0b18b324ccb140baaf0b334c6db8b2a15224106",
+    "final_results.json": "4c9c555ad3db4e4742c7b97450c55e1af6a0a7bd4bda70ba98408cf84ac7df77",
+    "tabla_por_falla.csv": "451d1124d6a9e38d4c7512406ff13fbb54b1e9fcb6bd5f9fbac6a0e045614719",
+    "inventario_evaluacion.csv": "2afb017b277f29406053b495351fbacb38efaa6f849f2d478d097c91110246b2",
+    "timing_audit.json": "96e693f49077f8a67b222beb1a5ab864b9427897ec3aab8102f2b0e5e20f527a",
+    "comparacion_final.png": "3e2430ad99875adb8cbada3f86f920d4309f8c56b086e9ceddd2cd527bc31ae9",
+    "demostraciones_y_supervision.png": "ed1795b2db39559712208ecdab5a09390a9e78b9b3973ceee6c77ae1108b02c8",
+    "diagnostico_intervencion.png": "c167e84ee8889cf45e314a63f953d00f02511a1ba94cab57911fecf84aa0f09d",
+    "deployment_recommendation.json": "1acf2a2c0072d28cafb9088fd47f191c2fb234a7f180eea4f637d21a1eced6c8",
+    "selected_candidate.json": "a605e8e923d248a676c95b109c523120911c4140fe352226406ff23c2a723be2",
+    "frozen_before_final.json": "793de5236149cea74a0bf7af29d83f1e20028f4964b50621299a3b19ea8448c9",
+    "presentation_verified.json": "c202a80b4ea3ce83246d3f50080c65c8558a2ed95b90494ca15716f15640b4af",
+    "changed_outcomes.json": "3ddfc6e96f6f45b8b5bba42644f0643a077bca7ca05ad014273ac50d450f13d1",
+    "failure_mode_summary.json": "7f85d5c97a29f4b4f0f4be55c14aa08a79089442dbc2f82f98da0749481a8cd6",
+    "label_support_audit.json": "52438b88d7ec7659b9a457a2a31a6627761bc85c2d619836d22fb4233848de69",
+    "h5_tests_receipt.json": "ec4f6f943cc1baf758096056a14536dd66d265d56a236f02cfb1111fa0f804ad"
+  },
+  "report_generator": "E:\\UTEC\\Tesis\\TesisNicol\\_tmp\\write_round7_conclusion.py",
+  "scope": "Frozen-study outputs and actually reviewed presentation, after successful closure; simulator results only. No model or frozen source changed after test."
+}

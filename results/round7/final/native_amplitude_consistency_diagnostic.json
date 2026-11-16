@@ -1,0 +1,90 @@
+{
+  "scope": "Post-hoc frozen-critic evaluations on the actual recorded history; no tuning or policy change. The implemented native eligibility evaluates the raw full proposal even when the selected option applies half. These Q values are discounted-return estimates, not landing probabilities.",
+  "rows": [
+    {
+      "tick": 109,
+      "seconds": 2.2708333333333335,
+      "recorded_native_on": true,
+      "actual_applied_max": 0.169336202126928,
+      "native_threshold": 0.005,
+      "full_advantage": [
+        0.07728150129160394,
+        0.056795101070207465
+      ],
+      "half_advantage": [
+        0.04271999688352146,
+        0.0361677143921284
+      ],
+      "full_pass": true,
+      "half_pass": true
+    },
+    {
+      "tick": 115,
+      "seconds": 2.3958333333333335,
+      "recorded_native_on": true,
+      "actual_applied_max": 0.18681090708014408,
+      "native_threshold": 0.005,
+      "full_advantage": [
+        0.008107631863291331,
+        0.045104328660877435
+      ],
+      "half_advantage": [
+        0.0032319468417583153,
+        0.025594485746903928
+      ],
+      "full_pass": true,
+      "half_pass": false
+    },
+    {
+      "tick": 116,
+      "seconds": 2.4166666666666665,
+      "recorded_native_on": false,
+      "actual_applied_max": 0.0,
+      "native_threshold": 0.005,
+      "full_advantage": [
+        -0.010081714599035507,
+        0.03962633735966392
+      ],
+      "half_advantage": [
+        -0.006163623400593288,
+        0.022680789489829323
+      ],
+      "full_pass": false,
+      "half_pass": false
+    },
+    {
+      "tick": 120,
+      "seconds": 2.5,
+      "recorded_native_on": false,
+      "actual_applied_max": 0.0,
+      "native_threshold": 0.005,
+      "full_advantage": [
+        -0.0558693102291139,
+        0.0011268468771570284
+      ],
+      "half_advantage": [
+        -0.026861666034296405,
+        0.0024693932023645004
+      ],
+      "full_pass": false,
+      "half_pass": false
+    },
+    {
+      "tick": 132,
+      "seconds": 2.75,
+      "recorded_native_on": false,
+      "actual_applied_max": 0.0,
+      "native_threshold": 0.005,
+      "full_advantage": [
+        -0.006743009569028402,
+        -0.041688261273355565
+      ],
+      "half_advantage": [
+        -0.0034237742032150464,
+        -0.020521862290083348
+      ],
+      "full_pass": false,
+      "half_pass": false
+    }
+  ]
+}

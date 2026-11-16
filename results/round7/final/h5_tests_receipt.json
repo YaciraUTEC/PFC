@@ -1,0 +1,13 @@
+{
+  "started_epoch": 1794837432.0375907,
+  "finished_epoch": 1794837597.07685,
+  "seconds": 165.03925919532776,
+  "exit_code": 0,
+  "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\h5_tests.log",
+  "args": [
+    "-m",
+    "pytest",
+    "experiments/tests",
+    "-q"
+  ]
+}

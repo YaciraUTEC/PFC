@@ -1,0 +1,36 @@
+{
+  "groups": 256,
+  "seconds": 5785.04566526413,
+  "episodes": 4224,
+  "successful_proposals": 2101,
+  "active_demonstration_episodes": 2069,
+  "active_steps": 1016798,
+  "distinct_active_seeds": 256,
+  "rescues": 315,
+  "by_level": {
+    "0.0": {
+      "episodes": 64,
+      "successful_teacher": 32
+    },
+    "0.25": {
+      "episodes": 64,
+      "successful_teacher": 32
+    },
+    "0.28": {
+      "episodes": 1024,
+      "successful_teacher": 512
+    },
+    "0.29": {
+      "episodes": 1024,
+      "successful_teacher": 512
+    },
+    "0.295": {
+      "episodes": 1024,
+      "successful_teacher": 501
+    },
+    "0.296": {
+      "episodes": 1024,
+      "successful_teacher": 512
+    }
+  }
+}

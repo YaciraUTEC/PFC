@@ -1,0 +1,40 @@
+{
+  "recommendation": "DSLPID + estimador estructurado + RecoveryDescent; residual OFF",
+  "learned_candidate_accepted": false,
+  "base_controller": "DSLPIDControl",
+  "base_configuration": {
+    "control_kind": "dslpid",
+    "manager": "coordinated",
+    "readiness": false,
+    "estimator": "structured",
+    "emergency": "legacy",
+    "reserve": 0.001,
+    "gate_mode": "learned"
+  },
+  "residual_policy_specs": [],
+  "landing_criteria": {
+    "radius": 0.2,
+    "first_vertical_speed": 0.25,
+    "first_horizontal_speed": 0.25,
+    "first_tilt": 0.20943951023931956,
+    "first_angular_speed": 1.0,
+    "settled_speed": 0.1,
+    "settled_tilt": 0.17453292519943295,
+    "settled_angular_speed": 0.5,
+    "settled_height": 0.055,
+    "hold_seconds": 1.0
+  },
+  "evidence": {
+    "accepted": false,
+    "development_protection": false,
+    "development_losses": 3,
+    "recommendation": "DSLPID + estimador estructurado + RecoveryDescent; residual OFF",
+    "positive_primary": false,
+    "positive_confirmation": false,
+    "zero_new_losses": false,
+    "complete_chain_deadline": true,
+    "observed_losses": 23,
+    "scope": "Decision for this frozen empirical study; not a proof of universal safety or the impossibility of future learned improvements."
+  },
+  "scope": "An empty residual_policy_specs list explicitly means zero neural correction. The separately saved selected_candidate.json is an experimental candidate, not an authorization to deploy it."
+}

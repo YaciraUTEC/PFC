@@ -13,3 +13,8 @@ FlashSAC: official MIT network/layer/distribution/reward-normalization blocks in
 FQL: PyTorch adaptation of official agents/fql.py losses; MIT notice in round6/FQL_LICENSE.
 Mamba-3 SISO and GTrXL cores are reused; round6 adds 88-dimensional physics-only inputs and a frozen-PPO-memory adaptation for FlashSAC/FQL.
 These are task-specific recurrent adaptations with a learned extrinsic Q-difference gate; not reproductions of the original benchmark results or a certified safety filter.
+
+Round 7: GTrXL-only task-specific study, reusing the published round6 FlashSAC proposals and existing GTrXL source/license.
+Counterfactual labels use natural-prefix replay; rejected PyBullet save/restore prototypes remain diagnostics only.
+The learned authorization ensemble and predictive screen are empirical mechanisms, not transferred formal safety guarantees. Refinement is supervised with a frozen encoder, not a new online FlashSAC benchmark.
+Frozen source and final study evidence: results/round7/final; original references and scope: experiments/round7/FORMULACION_GLOBAL.txt.

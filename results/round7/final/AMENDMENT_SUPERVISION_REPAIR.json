@@ -1,0 +1,36 @@
+{
+  "created_epoch": 1794824516.520187,
+  "final_test_unopened": true,
+  "gate_data_not_started": true,
+  "evidence": "84 identical-input conflicting valid proposal targets in16 pilot groups; actual motor projection error below5e-13. Expanded clones have0.2%skill over zero vs22%for the old clone; no hard amplitude-clamp saturation was found.",
+  "scope": "One finite supervision repair before authorization; preserve every initial scale result as a control.",
+  "smoke_recipes": [
+    "original",
+    "teacher_gate",
+    "teacher_physical",
+    "teacher_direct"
+  ],
+  "smoke_updates": 1200,
+  "smoke_seed": 301,
+  "repaired_quantity_comparison": {
+    "groups": [
+      0,
+      256
+    ],
+    "seeds": [
+      301,
+      302,
+      303
+    ],
+    "updates": 3600
+  },
+  "five_selected_seeds": [
+    301,
+    302,
+    303,
+    304,
+    305
+  ],
+  "repair": "Proposal regression uses successful teacher trajectories, including their natural OFF prefixes; baseline abstention belongs in terminal authorization labels. Direct output and removal of gate loss are isolated experimentally.",
+  "query_fix": "Observe initial fault/native onsets after12ticks instead of excluding all first96ticks; audits show fault onsets around59ticks in waypoint-triggered missions."
+}

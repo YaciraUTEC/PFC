@@ -1,0 +1,83 @@
+{
+  "complete": true,
+  "cases_per_model": 2560,
+  "baseline_cases": 2560,
+  "entries": [
+    {
+      "name": "candidate_301",
+      "metrics": {
+        "cases": 2560,
+        "success": 0.866015625,
+        "gains": 3,
+        "losses": 5,
+        "critical_difference": -0.0015625,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "fresh": 75,
+      "reused": 2485,
+      "identical_policy_reuse": 0
+    },
+    {
+      "name": "candidate_302",
+      "metrics": {
+        "cases": 2560,
+        "success": 0.869140625,
+        "gains": 7,
+        "losses": 1,
+        "critical_difference": 0.0046875,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "fresh": 40,
+      "reused": 2520,
+      "identical_policy_reuse": 0
+    },
+    {
+      "name": "candidate_303",
+      "metrics": {
+        "cases": 2560,
+        "success": 0.8671875,
+        "gains": 2,
+        "losses": 1,
+        "critical_difference": 0.00078125,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "fresh": 60,
+      "reused": 2500,
+      "identical_policy_reuse": 0
+    },
+    {
+      "name": "candidate_304",
+      "metrics": {
+        "cases": 2560,
+        "success": 0.866015625,
+        "gains": 1,
+        "losses": 3,
+        "critical_difference": -0.0015625,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "fresh": 55,
+      "reused": 2505,
+      "identical_policy_reuse": 0
+    },
+    {
+      "name": "candidate_305",
+      "metrics": {
+        "cases": 2560,
+        "success": 0.866796875,
+        "gains": 2,
+        "losses": 2,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "fresh": 32,
+      "reused": 2528,
+      "identical_policy_reuse": 0
+    }
+  ],
+  "seconds": 513.4613575935364
+}

@@ -1,0 +1,16 @@
+{
+  "scope": "Algebra of frozen model predictions, not empirical event rates or calibrated confidence bounds. P(Bsuccess,Cfailure) is distinct from P(Cfailure|Bsuccess). This diagnoses objective alignment, without changing any policy or adoption criterion.",
+  "case": {
+    "seed": 740035,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null
+  },
+  "predicted_baseline_success": 0.00658982974813058,
+  "predicted_joint_harm": 0.003752336141066705,
+  "predicted_harm_given_baseline_success": 0.5694132146784486,
+  "predicted_preservation_given_baseline_success": 0.43058678532155137,
+  "predicted_rescue_given_baseline_failure": 0.04561586591622335,
+  "predicted_net_advantage": 0.041562928984955186
+}

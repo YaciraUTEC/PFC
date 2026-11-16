@@ -1,0 +1,61 @@
+{
+  "entries": [
+    {
+      "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+      "mode": "counterfactual",
+      "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback.pt",
+      "minimum_gain": 0.02,
+      "maximum_harm": 0.005,
+      "uncertainty_penalty": 1.0,
+      "continuation_gain": 0.0
+    },
+    {
+      "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_202\\best.pt",
+      "mode": "counterfactual",
+      "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_302.pt",
+      "minimum_gain": 0.02,
+      "maximum_harm": 0.005,
+      "uncertainty_penalty": 1.0,
+      "continuation_gain": 0.0
+    },
+    {
+      "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_203\\best.pt",
+      "mode": "counterfactual",
+      "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_303.pt",
+      "minimum_gain": 0.02,
+      "maximum_harm": 0.005,
+      "uncertainty_penalty": 1.0,
+      "continuation_gain": 0.0
+    },
+    {
+      "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_204\\best.pt",
+      "mode": "counterfactual",
+      "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_304.pt",
+      "minimum_gain": 0.02,
+      "maximum_harm": 0.005,
+      "uncertainty_penalty": 1.0,
+      "continuation_gain": 0.0
+    },
+    {
+      "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_205\\best.pt",
+      "mode": "counterfactual",
+      "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_305.pt",
+      "minimum_gain": 0.02,
+      "maximum_harm": 0.005,
+      "uncertainty_penalty": 1.0,
+      "continuation_gain": 0.0
+    }
+  ],
+  "family": "unrefined_updated_gate",
+  "source": "flashsac",
+  "development": {
+    "cases": 960,
+    "success": 0.8489583333333334,
+    "critical_difference": 0.0,
+    "gains": 3,
+    "losses": 3,
+    "exact_losses": 0,
+    "mild_losses": 0
+  },
+  "parameters_frozen_pending_tests": true
+}

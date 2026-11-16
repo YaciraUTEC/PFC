@@ -1,0 +1,767 @@
+{
+  "closed": true,
+  "finished_epoch": 1794840399.0569532,
+  "conclusion": "Retain the refinement only if independent full-flight development supports it. Five-model family selection is complete before final test.",
+  "selected_family": "unrefined_updated_gate",
+  "selected": {
+    "name": "unrefined_updated_gate",
+    "refined_head": false,
+    "updated_authorizer": true,
+    "metrics": {
+      "cases": 960,
+      "success": 0.8489583333333334,
+      "critical_difference": 0.0,
+      "gains": 3,
+      "losses": 3,
+      "exact_losses": 0,
+      "mild_losses": 0
+    },
+    "entries": [
+      {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_202\\best.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_302.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_203\\best.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_303.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_204\\best.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_304.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_205\\best.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_305.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      }
+    ]
+  },
+  "comparisons": {
+    "unrefined_original_gate": {
+      "name": "unrefined_original_gate",
+      "refined_head": false,
+      "updated_authorizer": false,
+      "metrics": {
+        "cases": 960,
+        "success": 0.846875,
+        "critical_difference": -0.008333333333333333,
+        "gains": 4,
+        "losses": 6,
+        "exact_losses": 0,
+        "mild_losses": 0
+      },
+      "entries": [
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_202\\best.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_302.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_203\\best.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_303.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_204\\best.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_304.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_205\\best.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_305.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0
+        }
+      ]
+    },
+    "unrefined_updated_gate": {
+      "name": "unrefined_updated_gate",
+      "refined_head": false,
+      "updated_authorizer": true,
+      "metrics": {
+        "cases": 960,
+        "success": 0.8489583333333334,
+        "critical_difference": 0.0,
+        "gains": 3,
+        "losses": 3,
+        "exact_losses": 0,
+        "mild_losses": 0
+      },
+      "entries": [
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_202\\best.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_302.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_203\\best.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_303.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_204\\best.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_304.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_205\\best.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_305.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0
+        }
+      ]
+    },
+    "refined_original_gate": {
+      "name": "refined_original_gate",
+      "refined_head": true,
+      "updated_authorizer": false,
+      "metrics": {
+        "cases": 960,
+        "success": 0.846875,
+        "critical_difference": -0.008333333333333333,
+        "gains": 3,
+        "losses": 5,
+        "exact_losses": 0,
+        "mild_losses": 0
+      },
+      "entries": [
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_301\\model.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0,
+          "controller_version_override": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_302\\model.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_302.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0,
+          "controller_version_override": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_303\\model.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_303.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0,
+          "controller_version_override": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_304\\model.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_304.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0,
+          "controller_version_override": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_305\\model.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_305.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0,
+          "controller_version_override": 0.0
+        }
+      ]
+    },
+    "refined_updated_gate": {
+      "name": "refined_updated_gate",
+      "refined_head": true,
+      "updated_authorizer": true,
+      "metrics": {
+        "cases": 960,
+        "success": 0.8447916666666666,
+        "critical_difference": -0.016666666666666666,
+        "gains": 0,
+        "losses": 4,
+        "exact_losses": 0,
+        "mild_losses": 0
+      },
+      "entries": [
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_301\\model.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_302\\model.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_302.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_303\\model.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_303.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_304\\model.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_304.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0
+        },
+        {
+          "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_305\\model.pt",
+          "mode": "counterfactual",
+          "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_305.pt",
+          "minimum_gain": 0.02,
+          "maximum_harm": 0.005,
+          "uncertainty_penalty": 1.0,
+          "continuation_gain": 0.0
+        }
+      ]
+    }
+  },
+  "results": [
+    {
+      "name": "unrefined_original_gate_301",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.8489583333333334,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\unrefined_original_gate_301.json"
+    },
+    {
+      "name": "unrefined_original_gate_302",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_202\\best.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_302.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.84375,
+        "gains": 2,
+        "losses": 3,
+        "critical_difference": -0.020833333333333332,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\unrefined_original_gate_302.json"
+    },
+    {
+      "name": "unrefined_original_gate_303",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_203\\best.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_303.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.84375,
+        "gains": 0,
+        "losses": 1,
+        "critical_difference": -0.020833333333333332,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\unrefined_original_gate_303.json"
+    },
+    {
+      "name": "unrefined_original_gate_304",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_204\\best.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_304.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.8541666666666666,
+        "gains": 1,
+        "losses": 0,
+        "critical_difference": 0.020833333333333332,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\unrefined_original_gate_304.json"
+    },
+    {
+      "name": "unrefined_original_gate_305",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_205\\best.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_305.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.84375,
+        "gains": 1,
+        "losses": 2,
+        "critical_difference": -0.020833333333333332,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\unrefined_original_gate_305.json"
+    },
+    {
+      "name": "unrefined_updated_gate_301",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.8489583333333334,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\unrefined_updated_gate_301.json"
+    },
+    {
+      "name": "unrefined_updated_gate_302",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_202\\best.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_302.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.859375,
+        "gains": 2,
+        "losses": 0,
+        "critical_difference": 0.041666666666666664,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\unrefined_updated_gate_302.json"
+    },
+    {
+      "name": "unrefined_updated_gate_303",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_203\\best.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_303.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.8541666666666666,
+        "gains": 1,
+        "losses": 0,
+        "critical_difference": 0.020833333333333332,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\unrefined_updated_gate_303.json"
+    },
+    {
+      "name": "unrefined_updated_gate_304",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_204\\best.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_304.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.8333333333333334,
+        "gains": 0,
+        "losses": 3,
+        "critical_difference": -0.0625,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\unrefined_updated_gate_304.json"
+    },
+    {
+      "name": "unrefined_updated_gate_305",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_205\\best.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_305.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.8489583333333334,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\unrefined_updated_gate_305.json"
+    },
+    {
+      "name": "refined_original_gate_301",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_301\\model.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0,
+        "controller_version_override": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.8489583333333334,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\refined_original_gate_301.json"
+    },
+    {
+      "name": "refined_original_gate_302",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_302\\model.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_302.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0,
+        "controller_version_override": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.8541666666666666,
+        "gains": 3,
+        "losses": 2,
+        "critical_difference": 0.020833333333333332,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\refined_original_gate_302.json"
+    },
+    {
+      "name": "refined_original_gate_303",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_303\\model.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_303.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0,
+        "controller_version_override": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.84375,
+        "gains": 0,
+        "losses": 1,
+        "critical_difference": -0.020833333333333332,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\refined_original_gate_303.json"
+    },
+    {
+      "name": "refined_original_gate_304",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_304\\model.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_304.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0,
+        "controller_version_override": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.8385416666666666,
+        "gains": 0,
+        "losses": 2,
+        "critical_difference": -0.041666666666666664,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\refined_original_gate_304.json"
+    },
+    {
+      "name": "refined_original_gate_305",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_305\\model.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_seed_305.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0,
+        "controller_version_override": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.8489583333333334,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\refined_original_gate_305.json"
+    },
+    {
+      "name": "refined_updated_gate_301",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_301\\model.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.8489583333333334,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\refined_updated_gate_301.json"
+    },
+    {
+      "name": "refined_updated_gate_302",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_302\\model.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_302.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.84375,
+        "gains": 0,
+        "losses": 1,
+        "critical_difference": -0.020833333333333332,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\refined_updated_gate_302.json"
+    },
+    {
+      "name": "refined_updated_gate_303",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_303\\model.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_303.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.84375,
+        "gains": 0,
+        "losses": 1,
+        "critical_difference": -0.020833333333333332,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\refined_updated_gate_303.json"
+    },
+    {
+      "name": "refined_updated_gate_304",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_304\\model.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_304.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.8385416666666666,
+        "gains": 0,
+        "losses": 2,
+        "critical_difference": -0.041666666666666664,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\refined_updated_gate_304.json"
+    },
+    {
+      "name": "refined_updated_gate_305",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_305\\model.pt",
+        "mode": "counterfactual",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback_seed_305.pt",
+        "minimum_gain": 0.02,
+        "maximum_harm": 0.005,
+        "uncertainty_penalty": 1.0,
+        "continuation_gain": 0.0
+      },
+      "metrics": {
+        "cases": 192,
+        "success": 0.8489583333333334,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement_flights\\refined_updated_gate_305.json"
+    }
+  ],
+  "seconds": 759.5310850143433,
+  "no_online_sac_training_claim": true
+}

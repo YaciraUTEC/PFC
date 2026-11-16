@@ -1,0 +1,35 @@
+{
+  "complete": true,
+  "finished_epoch": 1794853755.5743735,
+  "remaining_required_work": 0,
+  "decision": {
+    "accepted": false,
+    "development_protection": false,
+    "development_losses": 3,
+    "recommendation": "DSLPID + estimador estructurado + RecoveryDescent; residual OFF",
+    "positive_primary": false,
+    "positive_confirmation": false,
+    "zero_new_losses": false,
+    "complete_chain_deadline": true,
+    "observed_losses": 23,
+    "scope": "Decision for this frozen empirical study; not a proof of universal safety or the impossibility of future learned improvements."
+  },
+  "milestones": [
+    "h0_reproduction",
+    "h0_gate_pilot",
+    "h0_natural_fork",
+    "h0_composed_method",
+    "h0_composed_acquisition_pilot",
+    "h2_natural_labels",
+    "h2_execution_equivalence",
+    "h1_supervision_repair",
+    "h2_counterfactual_gate",
+    "h3_filter_ablation",
+    "h3_continuation_ablation",
+    "h4_protected_finetuning",
+    "h5_execution_preflight",
+    "h5_frozen_test",
+    "h6_latency",
+    "h6_report"
+  ]
+}

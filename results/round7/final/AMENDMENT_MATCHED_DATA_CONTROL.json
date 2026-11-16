@@ -1,0 +1,20 @@
+{
+  "created_epoch": 1794819347.573861,
+  "final_test_unopened": true,
+  "reason": "Add a same-recipe no-new-data control; the original1200-update round6 model alone cannot isolate demonstration quantity from optimizer and supervision changes.",
+  "groups": [
+    0,
+    16,
+    64,
+    256
+  ],
+  "seeds": [
+    301,
+    302,
+    303
+  ],
+  "updates": 3600,
+  "shared_hyperparameters": true,
+  "validation": "The same reserved feasible teacher routes assess action fidelity; native success is a separate measure. Fidelity to this teacher is not proof of globally optimal control.",
+  "schedule": "Run the control after scale64 while acquisition continues; serialize GPU writers with the common training lock."
+}

@@ -1,0 +1,158 @@
+{
+  "complete": true,
+  "cases_per_model": 256,
+  "baseline_cases": 256,
+  "entries": [
+    {
+      "name": "candidate_301",
+      "metrics": {
+        "cases": 256,
+        "success": 0.2578125,
+        "gains": 9,
+        "losses": 5,
+        "critical_difference": 0.015625,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "fresh": 127,
+      "reused": 129,
+      "identical_policy_reuse": 0
+    },
+    {
+      "name": "candidate_302",
+      "metrics": {
+        "cases": 256,
+        "success": 0.28515625,
+        "gains": 14,
+        "losses": 3,
+        "critical_difference": 0.04296875,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "fresh": 76,
+      "reused": 180,
+      "identical_policy_reuse": 0
+    },
+    {
+      "name": "candidate_303",
+      "metrics": {
+        "cases": 256,
+        "success": 0.24609375,
+        "gains": 1,
+        "losses": 0,
+        "critical_difference": 0.00390625,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "fresh": 36,
+      "reused": 220,
+      "identical_policy_reuse": 0
+    },
+    {
+      "name": "candidate_304",
+      "metrics": {
+        "cases": 256,
+        "success": 0.25,
+        "gains": 3,
+        "losses": 1,
+        "critical_difference": 0.0078125,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "fresh": 30,
+      "reused": 226,
+      "identical_policy_reuse": 0
+    },
+    {
+      "name": "candidate_305",
+      "metrics": {
+        "cases": 256,
+        "success": 0.2578125,
+        "gains": 5,
+        "losses": 1,
+        "critical_difference": 0.015625,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "fresh": 82,
+      "reused": 174,
+      "identical_policy_reuse": 0
+    },
+    {
+      "name": "reference_201",
+      "metrics": {
+        "cases": 256,
+        "success": 0.4609375,
+        "gains": 72,
+        "losses": 16,
+        "critical_difference": 0.21875,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "fresh": 256,
+      "reused": 0,
+      "identical_policy_reuse": 0
+    },
+    {
+      "name": "reference_202",
+      "metrics": {
+        "cases": 256,
+        "success": 0.41015625,
+        "gains": 60,
+        "losses": 17,
+        "critical_difference": 0.16796875,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "fresh": 256,
+      "reused": 0,
+      "identical_policy_reuse": 0
+    },
+    {
+      "name": "reference_203",
+      "metrics": {
+        "cases": 256,
+        "success": 0.53515625,
+        "gains": 81,
+        "losses": 6,
+        "critical_difference": 0.29296875,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "fresh": 256,
+      "reused": 0,
+      "identical_policy_reuse": 0
+    },
+    {
+      "name": "reference_204",
+      "metrics": {
+        "cases": 256,
+        "success": 0.42578125,
+        "gains": 59,
+        "losses": 12,
+        "critical_difference": 0.18359375,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "fresh": 256,
+      "reused": 0,
+      "identical_policy_reuse": 0
+    },
+    {
+      "name": "reference_205",
+      "metrics": {
+        "cases": 256,
+        "success": 0.4140625,
+        "gains": 67,
+        "losses": 23,
+        "critical_difference": 0.171875,
+        "mild_losses": 0,
+        "exact_losses": 0
+      },
+      "fresh": 249,
+      "reused": 7,
+      "identical_policy_reuse": 0
+    }
+  ],
+  "seconds": 421.0090546607971
+}

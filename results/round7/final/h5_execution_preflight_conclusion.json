@@ -1,0 +1,87 @@
+{
+  "closed": true,
+  "finished_epoch": 1794841120.6952214,
+  "conclusion": "All five selected model replicas and all five reference replicas agree between conservative OFF reuse and fresh full simulations on development-only routes.",
+  "checks": [
+    {
+      "certification_flags_equal": true,
+      "index": 0,
+      "cases": 48,
+      "largest_terminal_position_difference": 0.0,
+      "off_reuse": 48,
+      "fresh": 0
+    },
+    {
+      "certification_flags_equal": true,
+      "index": 1,
+      "cases": 48,
+      "largest_terminal_position_difference": 0.0,
+      "off_reuse": 48,
+      "fresh": 0
+    },
+    {
+      "certification_flags_equal": true,
+      "index": 2,
+      "cases": 48,
+      "largest_terminal_position_difference": 0.0,
+      "off_reuse": 48,
+      "fresh": 0
+    },
+    {
+      "certification_flags_equal": true,
+      "index": 3,
+      "cases": 48,
+      "largest_terminal_position_difference": 0.0,
+      "off_reuse": 48,
+      "fresh": 0
+    },
+    {
+      "certification_flags_equal": true,
+      "index": 4,
+      "cases": 48,
+      "largest_terminal_position_difference": 0.0,
+      "off_reuse": 48,
+      "fresh": 0
+    },
+    {
+      "certification_flags_equal": true,
+      "index": 5,
+      "cases": 48,
+      "largest_terminal_position_difference": 0.0,
+      "off_reuse": 4,
+      "fresh": 44
+    },
+    {
+      "certification_flags_equal": true,
+      "index": 6,
+      "cases": 48,
+      "largest_terminal_position_difference": 0.0,
+      "off_reuse": 2,
+      "fresh": 46
+    },
+    {
+      "certification_flags_equal": true,
+      "index": 7,
+      "cases": 48,
+      "largest_terminal_position_difference": 0.0,
+      "off_reuse": 4,
+      "fresh": 44
+    },
+    {
+      "certification_flags_equal": true,
+      "index": 8,
+      "cases": 48,
+      "largest_terminal_position_difference": 0.0,
+      "off_reuse": 0,
+      "fresh": 48
+    },
+    {
+      "certification_flags_equal": true,
+      "index": 9,
+      "cases": 48,
+      "largest_terminal_position_difference": 0.0,
+      "off_reuse": 4,
+      "fresh": 44
+    }
+  ]
+}

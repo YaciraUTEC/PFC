@@ -1,0 +1,11 @@
+{
+  "created_epoch": 1794832337.694169,
+  "legacy_run": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7",
+  "current_run": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay",
+  "final_test_unopened": true,
+  "reason": "A no-op PyBullet restore produced different next physical state with identical visible initial physical state and identical actual rotor speeds. The old tests compared two restored branches and missed this natural-execution mismatch.",
+  "evidence": "snapshot_natural_diagnostic_v3.log: visible initial error0, actualRPMerror0, next physical state error0.00471152939. Explicit base reset and kinematic refresh did not repair it.",
+  "repair": "Each counterfactual branch resets a separate simulator and deterministically replays the exact requested-action prefix. The caller is never modified. Natural replay probe: all compared prefix states and the complete terminal continuation agree exactly, including after an alternate branch.",
+  "retained": "H1 demonstrations, proposal models and their action-fidelity study contain no simulator forks and remain valid. Previous natural controller evaluations remain diagnostic; old counterfactual training/calibration labels are rejected.",
+  "required": "Regenerate every gate train/calibration label and fit/select again. Keep original records intact. Final test routes remain untouched."
+}

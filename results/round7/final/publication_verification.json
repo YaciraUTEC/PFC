@@ -1,0 +1,22 @@
+{
+  "checked_at_utc": "2026-11-16T20:35:05.882415+00:00",
+  "tests": 6,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "pytest_seconds": 20.66,
+  "warnings": 1,
+  "warning_summary": "Existing pkg_resources deprecation.",
+  "compiled_python_sources": 45,
+  "compiled_archived_report_generator": true,
+  "local_import_targets_resolved": true,
+  "frozen_source_files_verified": 250,
+  "frozen_inputs_verified": 12,
+  "original_final_artifacts_verified": 18,
+  "archived_artifact_hashes_verified": 55,
+  "neural_models_instantiated": false,
+  "gpu_used": false,
+  "training_started": false,
+  "original_worktree_modified": false,
+  "scope": "Publication checks only. Historical full-suite evidence remains separate: 375 passed before the final study."
+}

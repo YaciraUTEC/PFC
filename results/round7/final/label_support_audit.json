@@ -1,0 +1,60 @@
+{
+  "train": {
+    "route_clusters": 240,
+    "query_states": 1720,
+    "option_queries": 6880,
+    "paired_option_future_records": 13752,
+    "classes": {
+      "both_success": {
+        "paired_option_future_records": 9042,
+        "query_states": 1245,
+        "route_clusters": 187
+      },
+      "rescue": {
+        "paired_option_future_records": 347,
+        "query_states": 154,
+        "route_clusters": 62
+      },
+      "harm": {
+        "paired_option_future_records": 868,
+        "query_states": 350,
+        "route_clusters": 79
+      },
+      "both_fail": {
+        "paired_option_future_records": 3495,
+        "query_states": 486,
+        "route_clusters": 110
+      }
+    },
+    "scope": "Classes can coexist at the same queried state under different actions/futures. Route clusters, query states, option queries and future records are distinct counts; only routes are independent scenario clusters."
+  },
+  "calibration": {
+    "route_clusters": 240,
+    "query_states": 1732,
+    "option_queries": 6928,
+    "paired_option_future_records": 13843,
+    "classes": {
+      "both_success": {
+        "paired_option_future_records": 9111,
+        "query_states": 1266,
+        "route_clusters": 187
+      },
+      "rescue": {
+        "paired_option_future_records": 440,
+        "query_states": 184,
+        "route_clusters": 71
+      },
+      "harm": {
+        "paired_option_future_records": 942,
+        "query_states": 383,
+        "route_clusters": 83
+      },
+      "both_fail": {
+        "paired_option_future_records": 3350,
+        "query_states": 485,
+        "route_clusters": 107
+      }
+    },
+    "scope": "Classes can coexist at the same queried state under different actions/futures. Route clusters, query states, option queries and future records are distinct counts; only routes are independent scenario clusters."
+  }
+}

@@ -1,0 +1,84 @@
+RONDA 7: GTRXL, DEMOSTRACIONES Y AUTORIZACION
+
+DECISION: DSLPID + estimador estructurado + RecoveryDescent; residual OFF
+Candidato supera todos los criterios prospectivos: False
+
+Falla (%) significa perdida de RPM de un motor; la fuerza depende aproximadamente del cuadrado de esa velocidad. Exito: contacto dentro de todos los limites y 1s estable antes de30s; criterio sin cambios.
+Solo se trabajo con Transformer/GTrXL. La arquitectura base de control permanece congelada. No se entreno Mamba ni se representa el afinado supervisado como un nuevo entrenamiento online FlashSAC.
+
+H1: ampliar datos con etiquetas incompatibles produjo colapso. Se verificaron84 pares de entrada identica con orden base0 y orden maestra distinta; eliminar esos pares solamente no basto. La ablacion separo la perdida fisica de la autorizacion y evaluo una salida de cuatro correcciones fisicas.
+Curva original0/16/64/256 y reparacion conservadas completas. La seleccion de cantidad uso fidelidad en maestros de8 rutas independientes. Eso no autoriza a concluir que el error de accion equivale a exito de vuelo.
+H2: etiquetas de continuaciones completas y estados naturales reconstruidos por el historial exacto de acciones, dos futuros por consulta, opciones de politica realimentada de1/24/96ticks y hasta terminal, con veto nativo y vuelta a base al cerrar opciones breves. La red no recibe identidad de ruta, motor fallado ni efectividad verdadera en modo estimado.
+Verificacion adicional: save/restore de PyBullet no conservaba el siguiente paso natural. Se rechazo esa fuente de etiquetas, se conservaron los diagnosticos previos y se regenero toda autorizacion por prefijos reproducidos exactamente, sin modificar el vuelo consultado.
+H3: ablacion propuesta/compuerta/filtro. El filtro es una aproximacion predictiva comparativa; no se atribuyen garantias formales de alcanzabilidad.
+H4: una ronda de afinado supervisado de cabezas, encoder congelado y anclaje al modelo anterior, seguida de agregacion de estados del alumno compuesto seleccionado y recalibracion; ablacion2x2 cabeza/compuerta cuando procede. No es una reproduccion completa de DAgger ni un ensayo de un nuevo algoritmo SAC.
+H5: fuentes, modelos y criterio congelados antes de64 rutas principales,320 de confirmacion y32 con otros instantes; ninguna seleccion sobre esos resultados. Cinco replicas neuronales; niveles/ruidos repetidos se agrupan por ruta para incertidumbre.
+
+RESUMEN DE HITOS:
+H1: 256 escenarios nuevos, 2101 episodios maestros exitosos, 2069 demostraciones activas. MSE con supervision reparada: datos anteriores 0.01768882, ampliados 0.01298177; mejora 26.61%.
+H2: diagnostico probabilistico {'confusion_matrix': [[2523, 4, 34, 231], [31, 3, 5, 90], [183, 11, 181, 75], [213, 14, 24, 931]], 'per_class': {'0': {'truth': 2792, 'predicted': 2950, 'recall': 0.9036532951289399, 'precision': 0.8552542372881355}, '1': {'truth': 129, 'predicted': 32, 'recall': 0.023255813953488372, 'precision': 0.09375}, '2': {'truth': 450, 'predicted': 244, 'recall': 0.4022222222222222, 'precision': 0.7418032786885246}, '3': {'truth': 1182, 'predicted': 1327, 'recall': 0.7876480541455161, 'precision': 0.7015825169555389}}, 'samples': 4553, 'brier': 0.3002096292415436, 'nll': 0.6191298961639404, 'accuracy': 0.7990336042169998, 'labels': {'0': 2792, '2': 450, '3': 1182, '1': 129}, 'benefit_bins': [{'lower': -1.0, 'upper': 0.0, 'n': 3197, 'predicted_advantage': -0.1025058850646019, 'observed_advantage': -0.10634970284641852, 'harm_rate': 0.12042539881138567}, {'lower': 0.0, 'upper': 0.025, 'n': 332, 'predicted_advantage': 0.010948069393634796, 'observed_advantage': -0.006024096385542169, 'harm_rate': 0.045180722891566265}, {'lower': 0.025, 'upper': 0.05, 'n': 236, 'predicted_advantage': 0.03668585419654846, 'observed_advantage': -0.01694915254237288, 'harm_rate': 0.06779661016949153}, {'lower': 0.05, 'upper': 0.1, 'n': 364, 'predicted_advantage': 0.0691743716597557, 'observed_advantage': 0.005494505494505495, 'harm_rate': 0.013736263736263736}, {'lower': 0.1, 'upper': 0.25, 'n': 350, 'predicted_advantage': 0.15357321500778198, 'observed_advantage': 0.07142857142857142, 'harm_rate': 0.054285714285714284}, {'lower': 0.25, 'upper': 1.01, 'n': 74, 'predicted_advantage': 0.3124806880950928, 'observed_advantage': -0.02702702702702703, 'harm_rate': 0.13513513513513514}], 'scope': 'Marginal validation diagnostics on paired queries; not a per-flight safety certificate', 'constant_training_prior_reference': {'probabilities': [0.6206745988429211, 0.022704944875013646, 0.08339700906014627, 0.273223447221919], 'brier': 0.5465014861046977, 'nll': 0.9820767165173567, 'brier_skill': 0.45067005877449706}}
+H3: configuracion seleccionada en ablacion y control de continuidad no negativa flashsac_nonnegative_continuation; metricas {'cases': 128, 'success': 0.9375, 'gains': 0, 'losses': 0, 'critical_difference': 0.0, 'mild_losses': 0, 'exact_losses': 0}
+H4: familia seleccionada unrefined_updated_gate; metricas {'cases': 960, 'success': 0.8489583333333334, 'critical_difference': 0.0, 'gains': 3, 'losses': 3, 'exact_losses': 0, 'mild_losses': 0}
+Fuente del candidato final: flashsac; configuracion {'proposer': 'E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt', 'mode': 'counterfactual', 'gate': 'E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback.pt', 'minimum_gain': 0.02, 'maximum_harm': 0.005, 'uncertainty_penalty': 1.0, 'continuation_gain': 0.0}
+
+DETALLE DE DESARROLLO (no son las rutas de prueba):
+  H2 flashsac_native: exito 100.000%, rescates 10, perdidas 0, diferencia critica 31.250pp.
+  H2 flashsac_conservative: exito 93.750%, rescates 2, perdidas 0, diferencia critica 6.250pp.
+  H2 flashsac_balanced: exito 93.750%, rescates 2, perdidas 0, diferencia critica 6.250pp.
+  H2 flashsac_mean: exito 92.969%, rescates 1, perdidas 0, diferencia critica 3.125pp.
+  H2 bc_native: exito 48.438%, rescates 0, perdidas 56, diferencia critica -65.625pp.
+  H2 bc_conservative: exito 92.188%, rescates 0, perdidas 0, diferencia critica 0.000pp.
+  H2 bc_balanced: exito 92.188%, rescates 1, perdidas 1, diferencia critica 0.000pp.
+  H2 bc_mean: exito 92.969%, rescates 2, perdidas 1, diferencia critica 3.125pp.
+  H2 flashsac_raised_threshold: exito 100.000%, rescates 10, perdidas 0, diferencia critica 31.250pp.
+  H3 flashsac_forced: exito 50.781%, rescates 0, perdidas 55, diferencia critica -56.250pp.
+  H3 flashsac_forced_screen: exito 56.250%, rescates 3, perdidas 51, diferencia critica -40.625pp.
+  H3 flashsac_native: exito 96.875%, rescates 6, perdidas 2, diferencia critica 12.500pp.
+  H3 flashsac_native_screen: exito 96.875%, rescates 6, perdidas 2, diferencia critica 12.500pp.
+  H3 flashsac_counterfactual: exito 93.750%, rescates 0, perdidas 0, diferencia critica 0.000pp.
+  H3 flashsac_counterfactual_screen: exito 93.750%, rescates 0, perdidas 0, diferencia critica 0.000pp.
+  H3 bc_forced: exito 51.562%, rescates 0, perdidas 54, diferencia critica -65.625pp.
+  H3 bc_forced_screen: exito 51.562%, rescates 0, perdidas 54, diferencia critica -62.500pp.
+  H3 bc_native: exito 42.969%, rescates 0, perdidas 65, diferencia critica -75.000pp.
+  H3 bc_native_screen: exito 47.656%, rescates 1, perdidas 60, diferencia critica -62.500pp.
+  H3 bc_counterfactual: exito 93.750%, rescates 0, perdidas 0, diferencia critica 0.000pp.
+  H3 bc_counterfactual_screen: exito 93.750%, rescates 0, perdidas 0, diferencia critica 0.000pp.
+  H3 flashsac_raised_threshold: exito 95.312%, rescates 4, perdidas 2, diferencia critica 6.250pp.
+  H3 flashsac_raised_threshold_screen: exito 96.094%, rescates 5, perdidas 2, diferencia critica 9.375pp.
+  H3 flashsac_nonnegative_continuation: exito 93.750%, rescates 0, perdidas 0, diferencia critica 0.000pp.
+  H3 flashsac_nonnegative_continuation_screen: exito 93.750%, rescates 0, perdidas 0, diferencia critica 0.000pp.
+  H3 bc_nonnegative_continuation: exito 93.750%, rescates 0, perdidas 0, diferencia critica 0.000pp.
+  H3 bc_nonnegative_continuation_screen: exito 93.750%, rescates 0, perdidas 0, diferencia critica 0.000pp.
+  H4 unrefined_original_gate: {'cases': 960, 'success': 0.846875, 'critical_difference': -0.008333333333333333, 'gains': 4, 'losses': 6, 'exact_losses': 0, 'mild_losses': 0}
+  H4 unrefined_updated_gate: {'cases': 960, 'success': 0.8489583333333334, 'critical_difference': 0.0, 'gains': 3, 'losses': 3, 'exact_losses': 0, 'mild_losses': 0}
+  H4 refined_original_gate: {'cases': 960, 'success': 0.846875, 'critical_difference': -0.008333333333333333, 'gains': 3, 'losses': 5, 'exact_losses': 0, 'mild_losses': 0}
+  H4 refined_updated_gate: {'cases': 960, 'success': 0.8447916666666666, 'critical_difference': -0.016666666666666666, 'gains': 0, 'losses': 4, 'exact_losses': 0, 'mild_losses': 0}
+  Etiquetas finales train: 240 grupos, 13752 comparaciones, clases {'0': 9042, '2': 868, '3': 3495, '1': 347}, 17710 comprobaciones de prefijo, error maximo 0.0; los futuros y opciones no son rutas independientes.
+  Etiquetas finales calibration: 240 grupos, 13843 comparaciones, clases {'0': 9111, '2': 942, '3': 3350, '1': 440}, 17830 comprobaciones de prefijo, error maximo 0.0; los futuros y opciones no son rutas independientes.
+Soporte efectivo de las etiquetas: {'train': {'route_clusters': 240, 'query_states': 1720, 'option_queries': 6880, 'paired_option_future_records': 13752, 'classes': {'both_success': {'paired_option_future_records': 9042, 'query_states': 1245, 'route_clusters': 187}, 'rescue': {'paired_option_future_records': 347, 'query_states': 154, 'route_clusters': 62}, 'harm': {'paired_option_future_records': 868, 'query_states': 350, 'route_clusters': 79}, 'both_fail': {'paired_option_future_records': 3495, 'query_states': 486, 'route_clusters': 110}}, 'scope': 'Classes can coexist at the same queried state under different actions/futures. Route clusters, query states, option queries and future records are distinct counts; only routes are independent scenario clusters.'}, 'calibration': {'route_clusters': 240, 'query_states': 1732, 'option_queries': 6928, 'paired_option_future_records': 13843, 'classes': {'both_success': {'paired_option_future_records': 9111, 'query_states': 1266, 'route_clusters': 187}, 'rescue': {'paired_option_future_records': 440, 'query_states': 184, 'route_clusters': 71}, 'harm': {'paired_option_future_records': 942, 'query_states': 383, 'route_clusters': 83}, 'both_fail': {'paired_option_future_records': 3350, 'query_states': 485, 'route_clusters': 107}}, 'scope': 'Classes can coexist at the same queried state under different actions/futures. Route clusters, query states, option queries and future records are distinct counts; only routes are independent scenario clusters.'}}
+Dos futuros no certifican una probabilidad de dano del0.5%. El umbral de probabilidad aprendido y la penalizacion por desacuerdo son reglas de seleccion, no cotas de seguridad demostradas.
+
+RESULTADOS EN RUTAS RESERVADAS:
+primary: diferencia critica estimada 0.312 pp, IC95% [0.000, 1.172]; rescates 5, perdidas 1 (exacta 0, leves 0); rutas 64, replicas5.
+  Rutas protegidas perjudicadas 1/64; cota superior unilateral95% 7.199% (independencia de rutas, no garantia universal).
+  Referencia GTrXL+FlashSAC anterior: diferencia critica estimada 9.297pp, IC95% [2.734, 16.562]; rescates 155, perdidas 45.
+confirmation: diferencia critica estimada 0.047 pp, IC95% [-0.250, 0.391]; rescates 15, perdidas 12 (exacta 0, leves 0); rutas 320, replicas5.
+  Rutas protegidas perjudicadas 9/320; cota superior unilateral95% 4.856% (independencia de rutas, no garantia universal).
+shifted: diferencia critica estimada 1.719 pp, IC95% [0.234, 3.750]; rescates 32, perdidas 10 (exacta 0, leves 0); rutas 32, replicas5.
+  Rutas protegidas perjudicadas 9/30; cota superior unilateral95% 46.507% (independencia de rutas, no garantia universal).
+  Referencia GTrXL+FlashSAC anterior: diferencia critica estimada 20.703pp, IC95% [14.375, 27.422]; rescates 339, perdidas 74.
+
+LATENCIA:
+DSLPID: cadena completa p95=1.131 ms, p99=1.354 ms; p95 protegido por fases=1.161 ms; limite20.833ms.
+previous_GTrXL: cadena completa p95=4.239 ms, p99=4.574 ms; p95 protegido por fases=4.239 ms; limite20.833ms.
+candidate_301: cadena completa p95=7.536 ms, p99=8.571 ms; p95 protegido por fases=7.655 ms; limite20.833ms.
+candidate_302: cadena completa p95=7.372 ms, p99=8.014 ms; p95 protegido por fases=7.434 ms; limite20.833ms.
+candidate_303: cadena completa p95=7.384 ms, p99=7.996 ms; p95 protegido por fases=7.437 ms; limite20.833ms.
+candidate_304: cadena completa p95=7.303 ms, p99=7.933 ms; p95 protegido por fases=7.350 ms; limite20.833ms.
+candidate_305: cadena completa p95=7.216 ms, p99=7.920 ms; p95 protegido por fases=7.256 ms; limite20.833ms.
+
+EJECUCIONES: {'baseline_flights': 5120, 'logical_cases': 38400, 'fresh_simulations': 13796, 'verified_off_reuse': 24604, 'identical_policy_reuse': 0}
+Reuso OFF exige identidad de accion comprobada en toda la historia base. No se cuentan registros logicos reutilizados como nuevas simulaciones independientes. Si la seleccion coincide exactamente con la referencia congelada, su evaluacion se comparte y se contabiliza aparte como identical_policy_reuse.
+Fuentes teoricas: DAgger https://proceedings.mlr.press/v15/ross11a.html ; DPRL https://proceedings.mlr.press/v258/sharma25a.html ; gatekeeper https://arxiv.org/abs/2508.09963 ; filtros predictivos https://arxiv.org/abs/1812.05506 . Se emplearon ideas, no se trasladaron garantias sin sus hipotesis.
+
+Archivos: deployment_recommendation.json (configuracion recomendada), final_results.json, label_support_audit.json, tabla_por_falla.csv, comparacion_final.png, demostraciones_y_supervision.png, changed_outcomes.json, inventario_evaluacion.csv, timing_audit.json.

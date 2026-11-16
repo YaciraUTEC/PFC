@@ -1,0 +1,17 @@
+{
+  "validated": true,
+  "inference_device": "cpu",
+  "certification_device": "cuda",
+  "fast_gtrxl": true,
+  "workers": 16,
+  "certification_batch": 16,
+  "precision": "float64",
+  "created_epoch": 1794837096.6220114,
+  "reason": "GPU execution was slower; GPU OFF-history verification was faster. Frozen CPU K/V cache and16 cases matched original whole flights exactly and reduced wall time.",
+  "validated_development_scopes": [
+    "420stepsx4cases including partial resets: maximum action difference0",
+    "64 paired whole-flight cases: equal outcomes/steps, terminal position error0",
+    "CPU/CUDA OFF-certification flags agree on representative models"
+  ],
+  "final_selected_ten_model_preflight_required": true
+}

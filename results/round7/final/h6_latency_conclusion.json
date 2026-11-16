@@ -1,0 +1,330 @@
+{
+  "closed": true,
+  "finished_epoch": 1794853555.8536198,
+  "conclusion": "Complete-chain timing finished without training workers; all five selected replicas measured.",
+  "results": [
+    {
+      "name": "DSLPID",
+      "samples": 1565,
+      "p50_ms": 0.9395000000000001,
+      "p95_ms": 1.13056,
+      "p99_ms": 1.3538079999999995,
+      "max_ms": 2.0410999999999997,
+      "inference_p95_ms": 0.0009,
+      "controller_observer_supervisor_p95_ms": 1.12964,
+      "deadline_ms": 20.833333333333332,
+      "deadline_miss_fraction": 0.0,
+      "flights": [
+        {
+          "seed": 719970,
+          "level": 0.295,
+          "outcome": "stable_landing",
+          "steps": 868
+        },
+        {
+          "seed": 719971,
+          "level": 0.296,
+          "outcome": "stable_landing",
+          "steps": 745
+        }
+      ],
+      "scope": "Measured complete inference + control/observer/supervisor/observation bookkeeping in one process; plant integration excluded, first24ticks warmup excluded per flight. Quantiles of the complete chain, not sums of component quantiles; empirical timing, not hard-real-time proof.",
+      "conditional_latency": {
+        "postfault_flight": {
+          "samples": 1135,
+          "p95_ms": 1.16101,
+          "p99_ms": 1.3677040000000003
+        },
+        "screen_attempt": {
+          "samples": 0,
+          "p95_ms": null,
+          "p99_ms": null
+        },
+        "applied_intervention": {
+          "samples": 0,
+          "p95_ms": null,
+          "p99_ms": null
+        }
+      },
+      "guarded_p95_ms": 1.16101,
+      "conditional_scope": "Also inspect active phases so frequent OFF decisions cannot hide intervention cost; guarded p95 includes strata with at least24 samples."
+    },
+    {
+      "name": "previous_GTrXL",
+      "samples": 1143,
+      "p50_ms": 3.6093,
+      "p95_ms": 4.23851,
+      "p99_ms": 4.574031999999999,
+      "max_ms": 4.7476,
+      "inference_p95_ms": 3.11099,
+      "controller_observer_supervisor_p95_ms": 1.2557999999999998,
+      "deadline_ms": 20.833333333333332,
+      "deadline_miss_fraction": 0.0,
+      "flights": [
+        {
+          "seed": 719970,
+          "level": 0.295,
+          "outcome": "hard_landing",
+          "steps": 396
+        },
+        {
+          "seed": 719971,
+          "level": 0.296,
+          "outcome": "stable_landing",
+          "steps": 795
+        }
+      ],
+      "scope": "Measured complete inference + control/observer/supervisor/observation bookkeeping in one process; plant integration excluded, first24ticks warmup excluded per flight. Quantiles of the complete chain, not sums of component quantiles; empirical timing, not hard-real-time proof.",
+      "conditional_latency": {
+        "postfault_flight": {
+          "samples": 760,
+          "p95_ms": 4.206074999999999,
+          "p99_ms": 4.513058999999999
+        },
+        "screen_attempt": {
+          "samples": 140,
+          "p95_ms": 3.9809099999999997,
+          "p99_ms": 4.261779999999997
+        },
+        "applied_intervention": {
+          "samples": 140,
+          "p95_ms": 3.9809099999999997,
+          "p99_ms": 4.261779999999997
+        }
+      },
+      "guarded_p95_ms": 4.23851,
+      "conditional_scope": "Also inspect active phases so frequent OFF decisions cannot hide intervention cost; guarded p95 includes strata with at least24 samples."
+    },
+    {
+      "name": "candidate_301",
+      "samples": 1565,
+      "p50_ms": 6.2246,
+      "p95_ms": 7.53602,
+      "p99_ms": 8.570575999999988,
+      "max_ms": 15.8951,
+      "inference_p95_ms": 6.23788,
+      "controller_observer_supervisor_p95_ms": 1.3856799999999998,
+      "deadline_ms": 20.833333333333332,
+      "deadline_miss_fraction": 0.0,
+      "flights": [
+        {
+          "seed": 719970,
+          "level": 0.295,
+          "outcome": "stable_landing",
+          "steps": 868
+        },
+        {
+          "seed": 719971,
+          "level": 0.296,
+          "outcome": "stable_landing",
+          "steps": 745
+        }
+      ],
+      "scope": "Measured complete inference + control/observer/supervisor/observation bookkeeping in one process; plant integration excluded, first24ticks warmup excluded per flight. Quantiles of the complete chain, not sums of component quantiles; empirical timing, not hard-real-time proof.",
+      "conditional_latency": {
+        "postfault_flight": {
+          "samples": 1135,
+          "p95_ms": 7.65495,
+          "p99_ms": 8.899430000000011
+        },
+        "screen_attempt": {
+          "samples": 0,
+          "p95_ms": null,
+          "p99_ms": null
+        },
+        "applied_intervention": {
+          "samples": 0,
+          "p95_ms": null,
+          "p99_ms": null
+        }
+      },
+      "guarded_p95_ms": 7.65495,
+      "conditional_scope": "Also inspect active phases so frequent OFF decisions cannot hide intervention cost; guarded p95 includes strata with at least24 samples."
+    },
+    {
+      "name": "candidate_302",
+      "samples": 1531,
+      "p50_ms": 6.228,
+      "p95_ms": 7.37235,
+      "p99_ms": 8.01393,
+      "max_ms": 9.184800000000001,
+      "inference_p95_ms": 6.102600000000001,
+      "controller_observer_supervisor_p95_ms": 1.4245999999999999,
+      "deadline_ms": 20.833333333333332,
+      "deadline_miss_fraction": 0.0,
+      "flights": [
+        {
+          "seed": 719970,
+          "level": 0.295,
+          "outcome": "stable_landing",
+          "steps": 834
+        },
+        {
+          "seed": 719971,
+          "level": 0.296,
+          "outcome": "stable_landing",
+          "steps": 745
+        }
+      ],
+      "scope": "Measured complete inference + control/observer/supervisor/observation bookkeeping in one process; plant integration excluded, first24ticks warmup excluded per flight. Quantiles of the complete chain, not sums of component quantiles; empirical timing, not hard-real-time proof.",
+      "conditional_latency": {
+        "postfault_flight": {
+          "samples": 1101,
+          "p95_ms": 7.4336,
+          "p99_ms": 8.162099999999999
+        },
+        "screen_attempt": {
+          "samples": 5,
+          "p95_ms": 7.06026,
+          "p99_ms": 7.126932
+        },
+        "applied_intervention": {
+          "samples": 5,
+          "p95_ms": 7.06026,
+          "p99_ms": 7.126932
+        }
+      },
+      "guarded_p95_ms": 7.4336,
+      "conditional_scope": "Also inspect active phases so frequent OFF decisions cannot hide intervention cost; guarded p95 includes strata with at least24 samples."
+    },
+    {
+      "name": "candidate_303",
+      "samples": 1565,
+      "p50_ms": 6.2599,
+      "p95_ms": 7.38396,
+      "p99_ms": 7.996103999999996,
+      "max_ms": 10.9117,
+      "inference_p95_ms": 6.13288,
+      "controller_observer_supervisor_p95_ms": 1.41616,
+      "deadline_ms": 20.833333333333332,
+      "deadline_miss_fraction": 0.0,
+      "flights": [
+        {
+          "seed": 719970,
+          "level": 0.295,
+          "outcome": "stable_landing",
+          "steps": 868
+        },
+        {
+          "seed": 719971,
+          "level": 0.296,
+          "outcome": "stable_landing",
+          "steps": 745
+        }
+      ],
+      "scope": "Measured complete inference + control/observer/supervisor/observation bookkeeping in one process; plant integration excluded, first24ticks warmup excluded per flight. Quantiles of the complete chain, not sums of component quantiles; empirical timing, not hard-real-time proof.",
+      "conditional_latency": {
+        "postfault_flight": {
+          "samples": 1135,
+          "p95_ms": 7.437259999999999,
+          "p99_ms": 8.05767
+        },
+        "screen_attempt": {
+          "samples": 0,
+          "p95_ms": null,
+          "p99_ms": null
+        },
+        "applied_intervention": {
+          "samples": 0,
+          "p95_ms": null,
+          "p99_ms": null
+        }
+      },
+      "guarded_p95_ms": 7.437259999999999,
+      "conditional_scope": "Also inspect active phases so frequent OFF decisions cannot hide intervention cost; guarded p95 includes strata with at least24 samples."
+    },
+    {
+      "name": "candidate_304",
+      "samples": 1581,
+      "p50_ms": 6.2258,
+      "p95_ms": 7.3028,
+      "p99_ms": 7.932820000000003,
+      "max_ms": 8.9427,
+      "inference_p95_ms": 6.0419,
+      "controller_observer_supervisor_p95_ms": 1.4248,
+      "deadline_ms": 20.833333333333332,
+      "deadline_miss_fraction": 0.0,
+      "flights": [
+        {
+          "seed": 719970,
+          "level": 0.295,
+          "outcome": "stable_landing",
+          "steps": 884
+        },
+        {
+          "seed": 719971,
+          "level": 0.296,
+          "outcome": "stable_landing",
+          "steps": 745
+        }
+      ],
+      "scope": "Measured complete inference + control/observer/supervisor/observation bookkeeping in one process; plant integration excluded, first24ticks warmup excluded per flight. Quantiles of the complete chain, not sums of component quantiles; empirical timing, not hard-real-time proof.",
+      "conditional_latency": {
+        "postfault_flight": {
+          "samples": 1151,
+          "p95_ms": 7.3497,
+          "p99_ms": 8.01875
+        },
+        "screen_attempt": {
+          "samples": 1,
+          "p95_ms": 6.7804,
+          "p99_ms": 6.7804
+        },
+        "applied_intervention": {
+          "samples": 1,
+          "p95_ms": 6.7804,
+          "p99_ms": 6.7804
+        }
+      },
+      "guarded_p95_ms": 7.3497,
+      "conditional_scope": "Also inspect active phases so frequent OFF decisions cannot hide intervention cost; guarded p95 includes strata with at least24 samples."
+    },
+    {
+      "name": "candidate_305",
+      "samples": 1590,
+      "p50_ms": 6.159649999999999,
+      "p95_ms": 7.216239999999999,
+      "p99_ms": 7.919680999999996,
+      "max_ms": 9.0959,
+      "inference_p95_ms": 5.9309,
+      "controller_observer_supervisor_p95_ms": 1.380885,
+      "deadline_ms": 20.833333333333332,
+      "deadline_miss_fraction": 0.0,
+      "flights": [
+        {
+          "seed": 719970,
+          "level": 0.295,
+          "outcome": "stable_landing",
+          "steps": 868
+        },
+        {
+          "seed": 719971,
+          "level": 0.296,
+          "outcome": "stable_landing",
+          "steps": 770
+        }
+      ],
+      "scope": "Measured complete inference + control/observer/supervisor/observation bookkeeping in one process; plant integration excluded, first24ticks warmup excluded per flight. Quantiles of the complete chain, not sums of component quantiles; empirical timing, not hard-real-time proof.",
+      "conditional_latency": {
+        "postfault_flight": {
+          "samples": 1160,
+          "p95_ms": 7.25574,
+          "p99_ms": 7.9628270000000025
+        },
+        "screen_attempt": {
+          "samples": 1,
+          "p95_ms": 6.0249,
+          "p99_ms": 6.0249
+        },
+        "applied_intervention": {
+          "samples": 1,
+          "p95_ms": 6.0249,
+          "p99_ms": 6.0249
+        }
+      },
+      "guarded_p95_ms": 7.25574,
+      "conditional_scope": "Also inspect active phases so frequent OFF decisions cannot hide intervention cost; guarded p95 includes strata with at least24 samples."
+    }
+  ],
+  "seconds": 61.16423583030701
+}

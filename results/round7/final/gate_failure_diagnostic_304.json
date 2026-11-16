@@ -1,0 +1,61 @@
+{
+  "scope": "Post-hoc diagnosis of already frozen outcomes; not used for tuning. Paired full policy causes the difference under common noise. The first divergent command is a timeline marker, not an isolated-action causal ablation.",
+  "reports": [
+    {
+      "case": {
+        "seed": 740035,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "model": 304,
+      "base_outcome": "stable_landing",
+      "candidate_outcome": "timeout",
+      "base_contact": {
+        "vertical_speed": 0.13855158883528831,
+        "horizontal_speed": 0.0022043666733419626,
+        "tilt": 1.2055581710535927e-05,
+        "angular_speed": 0.004190888585280057,
+        "radius": 0.05704237421089195
+      },
+      "candidate_contact": null,
+      "base_steps": 645,
+      "candidate_steps": 1440,
+      "prefix_observation_error": 0.0,
+      "first_applied_tick": 109,
+      "first_applied_seconds": 2.2708333333333335,
+      "applied_steps": 7,
+      "first_applied_motor_delta": [
+        -0.169336202126928,
+        0.1665617591960711,
+        0.0,
+        0.14265590139238463
+      ],
+      "first_command_rpm": [
+        14536.222726394386,
+        14777.601703769938,
+        21700.0,
+        14807.874903753462
+      ],
+      "estimated_eta": [
+        1.0,
+        1.0,
+        0.7053355338506998,
+        1.0
+      ],
+      "true_eta": [
+        1.0,
+        1.0,
+        0.704,
+        1.0
+      ],
+      "predicted_rescue": 0.04531526512602189,
+      "predicted_harm": 0.003752336141066705,
+      "predicted_base_success": 0.00658982974813058,
+      "first_previous_option_remaining": 0.0,
+      "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\primary\\candidate_304\\changed_outcome_traces\\dddb170c17af.npz",
+      "baseline_trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\primary\\baseline_histories\\dddb170c17af.npz"
+    }
+  ]
+}

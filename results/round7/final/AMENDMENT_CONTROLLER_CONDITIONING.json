@@ -1,0 +1,32 @@
+{
+  "created_epoch": 1794820113.9377882,
+  "final_test_unopened": true,
+  "gate_data_not_started": true,
+  "reason": "A feedback option value depends on which recovery controller continues, not only its first action. Include the known controller identity, preserve a common risk representation, and fully cross controller and environmental strata instead of accidentally coupling policy index to noise/effectiveness condition.",
+  "descriptor": [
+    "controller_family",
+    "five_controller_model_identifiers",
+    "refinement_version"
+  ],
+  "physical_route_seed_is_never_input": true,
+  "feature_dimension": 196,
+  "initial_proposers": "five existing FlashSAC GTrXL and five selected-scale BC GTrXL",
+  "initial_training_routes": [
+    720000,
+    720160
+  ],
+  "initial_calibration_routes": [
+    730000,
+    730160
+  ],
+  "feedback_training_routes": [
+    720160,
+    720240
+  ],
+  "feedback_calibration_routes": [
+    730160,
+    730240
+  ],
+  "stratification": "Each controller receives all16 exact/estimated x noise1/2 x four fault-clock cells; two severities per route and two future-noise continuations per query.",
+  "note": "Known model identity does not authorize generalization to an unseen learned controller; final evaluation is for the five specified model seeds."
+}

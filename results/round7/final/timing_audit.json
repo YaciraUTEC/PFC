@@ -1,0 +1,731 @@
+{
+  "stages": [
+    {
+      "stage": "h0_contract_tests_receipt",
+      "seconds": 15.006741046905518,
+      "exit_code": 0,
+      "started_epoch": 1794832894.0451882,
+      "finished_epoch": 1794832909.0519292,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h2_gate_flights_receipt",
+      "seconds": 450.1291718482971,
+      "exit_code": 0,
+      "started_epoch": 1794835609.4527776,
+      "finished_epoch": 1794836059.5819495,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h2_gate_training_receipt",
+      "seconds": 25.007606506347656,
+      "exit_code": 0,
+      "started_epoch": 1794835584.4411104,
+      "finished_epoch": 1794835609.4487169,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h2_labels_calibration_receipt",
+      "seconds": 2660.204530954361,
+      "exit_code": 0,
+      "started_epoch": 1794832909.1969357,
+      "finished_epoch": 1794835569.4014666,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h2_labels_train_receipt",
+      "seconds": 2675.2123572826385,
+      "exit_code": 0,
+      "started_epoch": 1794832909.1906738,
+      "finished_epoch": 1794835584.403031,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h2_study_receipt",
+      "seconds": 3155.330748319626,
+      "exit_code": 0,
+      "started_epoch": 1794832909.057017,
+      "finished_epoch": 1794836064.3877654,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h2_verified_gate_flights_receipt",
+      "seconds": 125.03114128112793,
+      "exit_code": 0,
+      "started_epoch": 1794837097.369477,
+      "finished_epoch": 1794837222.4006183,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h3_continuation_ablation_receipt",
+      "seconds": 80.02262735366821,
+      "exit_code": 0,
+      "started_epoch": 1794837465.6069014,
+      "finished_epoch": 1794837545.6295288,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h3_filter_ablation_receipt",
+      "seconds": 160.04212880134583,
+      "exit_code": 0,
+      "started_epoch": 1794837305.5647726,
+      "finished_epoch": 1794837465.6069014,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h4_composed_acquisition_pilot_receipt",
+      "seconds": 65.02270197868347,
+      "exit_code": 0,
+      "started_epoch": 1794837566.3909945,
+      "finished_epoch": 1794837631.4136965,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h4_feedback_calibration_receipt",
+      "seconds": 1755.302951335907,
+      "exit_code": 0,
+      "started_epoch": 1794837776.7280028,
+      "finished_epoch": 1794839532.0309541,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h4_feedback_gate_301_receipt",
+      "seconds": 25.016030311584473,
+      "exit_code": 0,
+      "started_epoch": 1794839532.0370455,
+      "finished_epoch": 1794839557.0530758,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h4_feedback_gate_302_receipt",
+      "seconds": 20.022292852401733,
+      "exit_code": 0,
+      "started_epoch": 1794839557.054714,
+      "finished_epoch": 1794839577.0770068,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h4_feedback_gate_303_receipt",
+      "seconds": 20.018974542617798,
+      "exit_code": 0,
+      "started_epoch": 1794839577.0811448,
+      "finished_epoch": 1794839597.1001194,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h4_feedback_gate_304_receipt",
+      "seconds": 20.02773427963257,
+      "exit_code": 0,
+      "started_epoch": 1794839597.1082213,
+      "finished_epoch": 1794839617.1359556,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h4_feedback_gate_305_receipt",
+      "seconds": 20.0283420085907,
+      "exit_code": 0,
+      "started_epoch": 1794839617.1403887,
+      "finished_epoch": 1794839637.1687307,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h4_feedback_train_receipt",
+      "seconds": 1735.3324935436249,
+      "exit_code": 0,
+      "started_epoch": 1794837776.69453,
+      "finished_epoch": 1794839512.0270236,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h4_head_refinement_receipt",
+      "seconds": 60.031455755233765,
+      "exit_code": 0,
+      "started_epoch": 1794837716.6513147,
+      "finished_epoch": 1794837776.6827705,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h4_original_gate_302_receipt",
+      "seconds": 20.009501934051514,
+      "exit_code": 0,
+      "started_epoch": 1794837631.5602722,
+      "finished_epoch": 1794837651.5697742,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h4_original_gate_303_receipt",
+      "seconds": 20.018436193466187,
+      "exit_code": 0,
+      "started_epoch": 1794837651.5738368,
+      "finished_epoch": 1794837671.592273,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h4_original_gate_304_receipt",
+      "seconds": 25.014946222305298,
+      "exit_code": 0,
+      "started_epoch": 1794837671.604081,
+      "finished_epoch": 1794837696.6190271,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h4_original_gate_305_receipt",
+      "seconds": 20.025579690933228,
+      "exit_code": 0,
+      "started_epoch": 1794837696.622722,
+      "finished_epoch": 1794837716.6483016,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h4_pipeline_receipt",
+      "seconds": 2775.4470994472504,
+      "exit_code": 0,
+      "started_epoch": 1794837631.4178107,
+      "finished_epoch": 1794840406.8649101,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h4_validation_receipt",
+      "seconds": 765.1319239139557,
+      "exit_code": 0,
+      "started_epoch": 1794839637.1743412,
+      "finished_epoch": 1794840402.306265,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h5_execution_preflight_receipt",
+      "seconds": 670.0878338813782,
+      "exit_code": 0,
+      "started_epoch": 1794840454.4787657,
+      "finished_epoch": 1794841124.5665996,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h5_frozen_test_receipt",
+      "seconds": 12251.542313337326,
+      "exit_code": 0,
+      "started_epoch": 1794841239.0627246,
+      "finished_epoch": 1794853490.605038,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h5_tests_receipt",
+      "seconds": 165.03925919532776,
+      "exit_code": 0,
+      "started_epoch": 1794837432.0375907,
+      "finished_epoch": 1794837597.07685,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "h6_latency_receipt",
+      "seconds": 70.02095484733582,
+      "exit_code": 0,
+      "started_epoch": 1794853490.631423,
+      "finished_epoch": 1794853560.6523778,
+      "duration_scope": "Wall time for the subprocess stage; may include dependency waits."
+    },
+    {
+      "stage": "retained_H1/proposal_repair\\scale\\teacher_direct\\groups_0\\seed_301",
+      "seconds": 71.37975764274597,
+      "exit_code": 0,
+      "started_epoch": 1794824751.8718321,
+      "finished_epoch": 1794824823.2515898
+    },
+    {
+      "stage": "retained_H1/proposal_repair\\scale\\teacher_direct\\groups_0\\seed_302",
+      "seconds": 75.5953631401062,
+      "exit_code": 0,
+      "started_epoch": 1794824823.2596967,
+      "finished_epoch": 1794824898.8550599
+    },
+    {
+      "stage": "retained_H1/proposal_repair\\scale\\teacher_direct\\groups_0\\seed_303",
+      "seconds": 65.48409080505371,
+      "exit_code": 0,
+      "started_epoch": 1794824898.8569124,
+      "finished_epoch": 1794824964.3410032
+    },
+    {
+      "stage": "retained_H1/proposal_repair\\scale\\teacher_direct\\groups_256\\seed_301",
+      "seconds": 71.7989251613617,
+      "exit_code": 0,
+      "started_epoch": 1794824964.3491192,
+      "finished_epoch": 1794825036.1480443
+    },
+    {
+      "stage": "retained_H1/proposal_repair\\scale\\teacher_direct\\groups_256\\seed_302",
+      "seconds": 77.78859567642212,
+      "exit_code": 0,
+      "started_epoch": 1794825036.2090306,
+      "finished_epoch": 1794825113.9976263
+    },
+    {
+      "stage": "retained_H1/proposal_repair\\scale\\teacher_direct\\groups_256\\seed_303",
+      "seconds": 76.92818784713745,
+      "exit_code": 0,
+      "started_epoch": 1794825114.0551245,
+      "finished_epoch": 1794825190.9833124
+    },
+    {
+      "stage": "retained_H1/proposal_repair\\scale\\teacher_direct\\groups_256\\seed_304",
+      "seconds": 74.94222688674927,
+      "exit_code": 0,
+      "started_epoch": 1794825254.70074,
+      "finished_epoch": 1794825329.642967
+    },
+    {
+      "stage": "retained_H1/proposal_repair\\scale\\teacher_direct\\groups_256\\seed_305",
+      "seconds": 83.68795132637024,
+      "exit_code": 0,
+      "started_epoch": 1794825329.7087672,
+      "finished_epoch": 1794825413.3967185
+    },
+    {
+      "stage": "retained_H1/proposal_repair\\smoke\\original\\groups_256\\seed_301",
+      "seconds": 31.91319751739502,
+      "exit_code": 0,
+      "started_epoch": 1794824518.961105,
+      "finished_epoch": 1794824550.8743026
+    },
+    {
+      "stage": "retained_H1/proposal_repair\\smoke\\teacher_direct\\groups_256\\seed_301",
+      "seconds": 29.34558916091919,
+      "exit_code": 0,
+      "started_epoch": 1794824617.4707384,
+      "finished_epoch": 1794824646.8163276
+    },
+    {
+      "stage": "retained_H1/proposal_repair\\smoke\\teacher_gate\\groups_256\\seed_301",
+      "seconds": 30.455250024795532,
+      "exit_code": 0,
+      "started_epoch": 1794824550.9324148,
+      "finished_epoch": 1794824581.3876648
+    },
+    {
+      "stage": "retained_H1/proposal_repair\\smoke\\teacher_physical\\groups_256\\seed_301",
+      "seconds": 35.96005892753601,
+      "exit_code": 0,
+      "started_epoch": 1794824581.4495468,
+      "finished_epoch": 1794824617.4096057
+    },
+    {
+      "stage": "backend_pilot_conclusion",
+      "seconds": 158.21970891952515,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h0_composed_acquisition_pilot_conclusion",
+      "seconds": 58.36436653137207,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h0_composed_method_conclusion",
+      "seconds": 106.48823499679565,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h0_gate_pilot_conclusion",
+      "seconds": 6.266146183013916,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h0_reproduction_conclusion",
+      "seconds": 3.0054614543914795,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h1_data_and_proposals_conclusion",
+      "seconds": 6565.3287987709045,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h1_matched_original_data_conclusion",
+      "seconds": 1280.3634510040283,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h1_proposal_selection_conclusion",
+      "seconds": 22.560052633285522,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h2_counterfactual_gate_conclusion",
+      "seconds": 122.21419429779053,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h2_gate_model_conclusion",
+      "seconds": 20.2632954120636,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h2_original_cpu_evaluation_conclusion",
+      "seconds": 443.6851909160614,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h3_continuation_ablation_conclusion",
+      "seconds": 72.57978582382202,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h3_filter_ablation_conclusion",
+      "seconds": 226.75311183929443,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h3_initial_filter_ablation_conclusion",
+      "seconds": 154.1733260154724,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h4_feedback_gate_301_conclusion",
+      "seconds": 20.15939450263977,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h4_feedback_gate_302_conclusion",
+      "seconds": 13.674964904785156,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h4_feedback_gate_303_conclusion",
+      "seconds": 14.023913860321045,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h4_feedback_gate_304_conclusion",
+      "seconds": 16.37296152114868,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h4_feedback_gate_305_conclusion",
+      "seconds": 15.788549184799194,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h4_original_gate_302_conclusion",
+      "seconds": 13.843250036239624,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h4_original_gate_303_conclusion",
+      "seconds": 13.362401485443115,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h4_original_gate_304_conclusion",
+      "seconds": 18.34692645072937,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h4_original_gate_305_conclusion",
+      "seconds": 14.704448461532593,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h4_protected_finetuning_conclusion",
+      "seconds": 759.5310850143433,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h5_aux_baseline_confirmation_conclusion",
+      "seconds": 443.88999676704407,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h5_aux_future_confirmation_candidate_305_conclusion",
+      "seconds": 192.97327184677124,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h5_aux_future_shifted_baseline_conclusion",
+      "seconds": 177.97213053703308,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h5_aux_future_shifted_reference_201_conclusion",
+      "seconds": 308.56839895248413,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h5_aux_future_shifted_reference_202_conclusion",
+      "seconds": 520.3112032413483,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h5_aux_future_shifted_reference_203_conclusion",
+      "seconds": 427.4446575641632,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h5_aux_future_shifted_reference_204_conclusion",
+      "seconds": 406.78512692451477,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h5_aux_future_shifted_reference_205_conclusion",
+      "seconds": 372.97318029403687,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h5_aux_reference205_conclusion",
+      "seconds": 3729.700039625168,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h5_frozen_test_conclusion",
+      "seconds": 12244.311505317688,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h6_latency_conclusion",
+      "seconds": 61.16423583030701,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h6_ood30_diagnostic_conclusion",
+      "seconds": 44.89816498756409,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "h6_switching_case_ablation_conclusion",
+      "seconds": 18.45128297805786,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "kv_flight_pilot_conclusion",
+      "seconds": 150.59659934043884,
+      "duration_scope": "Duration reported by the milestone itself; consult the receipt for whether acquisition, validation or calibration is included."
+    },
+    {
+      "stage": "preliminary_snapshot_diagnostic/h2_calibration_acquisition_parallel_receipt",
+      "seconds": 1275.1077673435211,
+      "exit_code": 0,
+      "duration_scope": "Preliminary labeling/evaluation before the natural-execution restoration check; not final-policy evidence."
+    },
+    {
+      "stage": "preliminary_snapshot_diagnostic/h2_gate_flights_receipt",
+      "seconds": 435.0464689731598,
+      "exit_code": 0,
+      "duration_scope": "Preliminary labeling/evaluation before the natural-execution restoration check; not final-policy evidence."
+    },
+    {
+      "stage": "preliminary_snapshot_diagnostic/h2_gate_training_receipt",
+      "seconds": 1265.1132216453552,
+      "exit_code": 0,
+      "duration_scope": "Preliminary labeling/evaluation before the natural-execution restoration check; not final-policy evidence."
+    },
+    {
+      "stage": "preliminary_snapshot_diagnostic/h2_labels_calibration_receipt",
+      "seconds": 320.029367685318,
+      "exit_code": 0,
+      "duration_scope": "Preliminary labeling/evaluation before the natural-execution restoration check; not final-policy evidence."
+    },
+    {
+      "stage": "preliminary_snapshot_diagnostic/h2_labels_train_receipt",
+      "seconds": 1150.0881872177124,
+      "exit_code": 0,
+      "duration_scope": "Preliminary labeling/evaluation before the natural-execution restoration check; not final-policy evidence."
+    },
+    {
+      "stage": "preliminary_snapshot_diagnostic/h2_terminal_calibration_parallel_receipt",
+      "seconds": 1400.1248211860657,
+      "exit_code": 0,
+      "duration_scope": "Preliminary labeling/evaluation before the natural-execution restoration check; not final-policy evidence."
+    },
+    {
+      "stage": "preliminary_snapshot_diagnostic/h2_terminal_option_extension_receipt",
+      "seconds": 2055.1677570343018,
+      "exit_code": 0,
+      "duration_scope": "Preliminary labeling/evaluation before the natural-execution restoration check; not final-policy evidence."
+    },
+    {
+      "stage": "preliminary_snapshot_diagnostic/h3_continuation_control_receipt",
+      "seconds": 155.02125906944275,
+      "exit_code": 0,
+      "duration_scope": "Preliminary labeling/evaluation before the natural-execution restoration check; not final-policy evidence."
+    },
+    {
+      "stage": "preliminary_snapshot_diagnostic/h3_filter_ablation_receipt",
+      "seconds": 1235.0979137420654,
+      "exit_code": 0,
+      "duration_scope": "Preliminary labeling/evaluation before the natural-execution restoration check; not final-policy evidence."
+    },
+    {
+      "stage": "preliminary_snapshot_diagnostic/h4_composed_acquisition_pilot_receipt",
+      "seconds": 75.01305651664734,
+      "exit_code": 1,
+      "duration_scope": "Preliminary labeling/evaluation before the natural-execution restoration check; not final-policy evidence."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\bc_curve\\groups_0\\seed_301",
+      "seconds": 450.71995878219604,
+      "exit_code": 0,
+      "started_epoch": 1794819351.4283638,
+      "finished_epoch": 1794819802.1483226,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\bc_curve\\groups_0\\seed_302",
+      "seconds": 414.1115322113037,
+      "exit_code": 0,
+      "started_epoch": 1794819802.154347,
+      "finished_epoch": 1794820216.2658792,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\bc_curve\\groups_0\\seed_303",
+      "seconds": 415.5017409324646,
+      "exit_code": 0,
+      "started_epoch": 1794820216.2780247,
+      "finished_epoch": 1794820631.7797656,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\bc_curve\\groups_0\\seed_304",
+      "seconds": 245.20524883270264,
+      "exit_code": 0,
+      "started_epoch": 1794823058.7639499,
+      "finished_epoch": 1794823303.9691987,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\bc_curve\\groups_0\\seed_305",
+      "seconds": 246.13945746421814,
+      "exit_code": 0,
+      "started_epoch": 1794823303.973358,
+      "finished_epoch": 1794823550.1128154,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\bc_curve\\groups_16\\seed_301",
+      "seconds": 500.89539313316345,
+      "exit_code": 0,
+      "started_epoch": 1794816377.5399897,
+      "finished_epoch": 1794816878.4353828,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\bc_curve\\groups_16\\seed_302",
+      "seconds": 432.45361495018005,
+      "exit_code": 0,
+      "started_epoch": 1794816878.461465,
+      "finished_epoch": 1794817310.9150798,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\bc_curve\\groups_16\\seed_303",
+      "seconds": 478.78771901130676,
+      "exit_code": 0,
+      "started_epoch": 1794817310.9381907,
+      "finished_epoch": 1794817789.7259097,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\bc_curve\\groups_256\\seed_301",
+      "seconds": 253.52805185317993,
+      "exit_code": 0,
+      "started_epoch": 1794822167.587794,
+      "finished_epoch": 1794822421.115846,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\bc_curve\\groups_256\\seed_302",
+      "seconds": 246.7825310230255,
+      "exit_code": 0,
+      "started_epoch": 1794822421.1778243,
+      "finished_epoch": 1794822667.9603553,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\bc_curve\\groups_256\\seed_303",
+      "seconds": 269.29932022094727,
+      "exit_code": 0,
+      "started_epoch": 1794822668.0340664,
+      "finished_epoch": 1794822937.3333867,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\bc_curve\\groups_64\\seed_301",
+      "seconds": 493.7196526527405,
+      "exit_code": 0,
+      "started_epoch": 1794817799.3043559,
+      "finished_epoch": 1794818293.0240085,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\bc_curve\\groups_64\\seed_302",
+      "seconds": 433.65515875816345,
+      "exit_code": 0,
+      "started_epoch": 1794818293.053095,
+      "finished_epoch": 1794818726.7082539,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7\\bc_curve\\groups_64\\seed_303",
+      "seconds": 435.74986457824707,
+      "exit_code": 0,
+      "started_epoch": 1794818726.7374206,
+      "finished_epoch": 1794819162.4872851,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_301",
+      "seconds": 10.562235355377197,
+      "exit_code": 0,
+      "started_epoch": 1794837718.9466217,
+      "finished_epoch": 1794837729.508857,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_302",
+      "seconds": 11.216451644897461,
+      "exit_code": 0,
+      "started_epoch": 1794837729.516636,
+      "finished_epoch": 1794837740.7330875,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_303",
+      "seconds": 9.80182409286499,
+      "exit_code": 0,
+      "started_epoch": 1794837740.741346,
+      "finished_epoch": 1794837750.54317,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_304",
+      "seconds": 11.567556619644165,
+      "exit_code": 0,
+      "started_epoch": 1794837750.54317,
+      "finished_epoch": 1794837762.1107266,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\refinement\\flashsac\\seed_305",
+      "seconds": 9.24484133720398,
+      "exit_code": 0,
+      "started_epoch": 1794837762.1107266,
+      "finished_epoch": 1794837771.355568,
+      "epoch_scope": "File modification time used where the original receipt retained duration only."
+    },
+    {
+      "stage": "demonstration_audit_16",
+      "seconds": 404.18945121765137,
+      "exit_code": 0,
+      "started_epoch": 1794815665.4192293,
+      "finished_epoch": 1794816069.6086805,
+      "epoch_scope": "File modification time; reuses existing pilot groups."
+    },
+    {
+      "stage": "demonstration_audit_256",
+      "seconds": 5785.04566526413,
+      "exit_code": 0,
+      "started_epoch": 1794816377.5243018,
+      "finished_epoch": 1794822162.569967,
+      "epoch_scope": "File modification time; reuses existing pilot groups."
+    }
+  ],
+  "scope": "Stage durations may overlap; do not sum them as wall-clock time. Process receipts may include dependency waits (not pure training). Milestone and fit receipts give their measured computation/validation scopes. Original BC fits include full-flight validation; repairs include action-fidelity validation. Demonstration generation includes pilot reuse."
+}

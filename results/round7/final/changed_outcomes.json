@@ -1,0 +1,3626 @@
+[
+  {
+    "phase": "primary",
+    "model_seed": 301,
+    "route": 740029,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\primary\\candidate_301\\changed_outcome_traces\\220c64b5b6d6.npz",
+    "first_contact": {
+      "vertical_speed": 0.17221128110254383,
+      "horizontal_speed": 0.15405998483381236,
+      "tilt": 0.05565603569740706,
+      "angular_speed": 0.016172136747545987,
+      "radius": 0.07344913785615664
+    },
+    "steps": 451,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 451,
+      "authorized_steps": 3,
+      "final_requested_steps": 3,
+      "applied_steps": 3,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 3.125,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.00018332956689434666,
+        "max": 0.0001953088743592923,
+        "min": 0.00017013639647875227
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.03569376315912349,
+        "max": 0.03662079954297084,
+        "min": 0.03446700187899312
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.00020054472911892735,
+        "max": 0.00021349032840930332,
+        "min": 0.0001863904905802202
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00026593021968874625,
+      "effectiveness_error_max_during_intervention": 0.0010960779195742232
+    }
+  },
+  {
+    "phase": "primary",
+    "model_seed": 301,
+    "route": 740029,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\primary\\candidate_301\\changed_outcome_traces\\8daeea89c519.npz",
+    "first_contact": {
+      "vertical_speed": 0.13891082101867755,
+      "horizontal_speed": 0.029448434129417812,
+      "tilt": 0.0024738048278845617,
+      "angular_speed": 0.023365110834141244,
+      "radius": 0.04895576792497418
+    },
+    "steps": 481,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 481,
+      "authorized_steps": 5,
+      "final_requested_steps": 5,
+      "applied_steps": 5,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 3.1666666666666665,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0010493275328734009,
+        "max": 0.002636245551659465,
+        "min": 0.0001810623539549983
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.06209470386771361,
+        "max": 0.09033326783745198,
+        "min": 0.03618077933554307
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0012228905872181204,
+        "max": 0.003136452730034428,
+        "min": 0.0001989388765384139
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00023635509637603413,
+      "effectiveness_error_max_during_intervention": 0.0010213051267654594
+    }
+  },
+  {
+    "phase": "primary",
+    "model_seed": 302,
+    "route": 740038,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\primary\\candidate_302\\changed_outcome_traces\\768a72fd22c1.npz",
+    "first_contact": {
+      "vertical_speed": 0.0507318952342784,
+      "horizontal_speed": 0.0028598522237860357,
+      "tilt": 0.0006197329111417166,
+      "angular_speed": 0.023917830476770884,
+      "radius": 0.02324589151329708
+    },
+    "steps": 1420,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 1420,
+      "authorized_steps": 2,
+      "final_requested_steps": 2,
+      "applied_steps": 2,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 16.916666666666668,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0028207855535808115,
+        "max": 0.002847741140698641,
+        "min": 0.0027938299664629815
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.0605876257347265,
+        "max": 0.061015088008920075,
+        "min": 0.06016016346053293
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0038611900578138705,
+        "max": 0.003908720273143784,
+        "min": 0.0038136598424839577
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00019764255098442263,
+      "effectiveness_error_max_during_intervention": 0.0008029436776867405
+    }
+  },
+  {
+    "phase": "primary",
+    "model_seed": 304,
+    "route": 740035,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\primary\\candidate_304\\changed_outcome_traces\\dddb170c17af.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 7,
+      "final_requested_steps": 7,
+      "applied_steps": 7,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 2.2708333333333335,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0013926196841452757,
+        "max": 0.003752336141066705,
+        "min": 0.0005596561410998255
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.031165566791370437,
+        "max": 0.04531526512602189,
+        "min": 0.024412864471395134
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0022409353776822786,
+        "max": 0.00658982974813058,
+        "min": 0.0007625068387637716
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 0,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00022514821122818614,
+      "effectiveness_error_max_during_intervention": 0.0013355338506998438
+    }
+  },
+  {
+    "phase": "primary",
+    "model_seed": 304,
+    "route": 740029,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\primary\\candidate_304\\changed_outcome_traces\\8daeea89c519.npz",
+    "first_contact": {
+      "vertical_speed": 0.1720960544807462,
+      "horizontal_speed": 0.08606811436339346,
+      "tilt": 0.04715794278171887,
+      "angular_speed": 0.17550724847312846,
+      "radius": 0.06311448654192435
+    },
+    "steps": 451,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 451,
+      "authorized_steps": 2,
+      "final_requested_steps": 2,
+      "applied_steps": 2,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 3.2708333333333335,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0002870566278845729,
+        "max": 0.0003375466332158814,
+        "min": 0.0002365666225532644
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.034409235963583404,
+        "max": 0.03579840867152118,
+        "min": 0.033020063255645625
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0003558192560133681,
+        "max": 0.0004222854910791688,
+        "min": 0.00028935302094756747
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0002589634955565412,
+      "effectiveness_error_max_during_intervention": 0.0010377333687034973
+    }
+  },
+  {
+    "phase": "primary",
+    "model_seed": 304,
+    "route": 740035,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\primary\\candidate_304\\changed_outcome_traces\\295ee8c601a5.npz",
+    "first_contact": {
+      "vertical_speed": 0.1338104019423642,
+      "horizontal_speed": 0.005216017581991059,
+      "tilt": 0.0003862949668993369,
+      "angular_speed": 0.02467685594324528,
+      "radius": 0.029411298820330868
+    },
+    "steps": 1304,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 1304,
+      "authorized_steps": 6,
+      "final_requested_steps": 6,
+      "applied_steps": 6,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 2.2708333333333335,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0016064212990224071,
+        "max": 0.004021910442043261,
+        "min": 0.0006683316775965492
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.03242834882781814,
+        "max": 0.045944520117100006,
+        "min": 0.02537602901222272
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0026261294326169055,
+        "max": 0.007127599564069467,
+        "min": 0.0009325595076350736
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 0,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00024431843970390554,
+      "effectiveness_error_max_during_intervention": 0.0013132359501106805
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 301,
+    "route": 750066,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null,
+    "kind": "loss",
+    "outcome": "early_contact",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_301\\changed_outcome_traces\\17450afe6b3d.npz",
+    "first_contact": null,
+    "steps": 190,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 190,
+      "authorized_steps": 11,
+      "final_requested_steps": 11,
+      "applied_steps": 11,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 2.75,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.00138086096368641,
+        "max": 0.001809656229633423,
+        "min": 0.0011475842433980568
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.05014757639186347,
+        "max": 0.054869077118661846,
+        "min": 0.0484769024976267
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0018062945880776323,
+        "max": 0.00249530188884785,
+        "min": 0.0014505074307298617
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00013105115965996526,
+      "effectiveness_error_max_during_intervention": 0.0008180396469358309
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 301,
+    "route": 750066,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "loss",
+    "outcome": "early_contact",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_301\\changed_outcome_traces\\a3d45334db1f.npz",
+    "first_contact": null,
+    "steps": 188,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 188,
+      "authorized_steps": 11,
+      "final_requested_steps": 11,
+      "applied_steps": 11,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 2.75,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0012054821033618329,
+        "max": 0.0014238475412468813,
+        "min": 0.0010611671214111249
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.04680560691658408,
+        "max": 0.05188659397212677,
+        "min": 0.04551234512280178
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0015498424603420551,
+        "max": 0.0019147734796292654,
+        "min": 0.0013318800692970728
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00011389721163665434,
+      "effectiveness_error_max_during_intervention": 0.0007577931143735173
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 301,
+    "route": 750095,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_301\\changed_outcome_traces\\62be8bc8a1ef.npz",
+    "first_contact": {
+      "vertical_speed": 0.1355419912365384,
+      "horizontal_speed": 0.009676729033540214,
+      "tilt": 0.00013841071721250968,
+      "angular_speed": 0.02908280653684468,
+      "radius": 0.06761270026994748
+    },
+    "steps": 850,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 850,
+      "authorized_steps": 23,
+      "final_requested_steps": 23,
+      "applied_steps": 23,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 2.8333333333333335,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.001673444201104672,
+        "max": 0.002344264954094974,
+        "min": 0.0013361272969375296
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.024393143069743408,
+        "max": 0.03153600511273422,
+        "min": 0.020347815204078676
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0041380582407640025,
+        "max": 0.007336410528037419,
+        "min": 0.003104240806973902
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00015236963427329214,
+      "effectiveness_error_max_during_intervention": 0.0010131986015917693
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 301,
+    "route": 750081,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_301\\changed_outcome_traces\\01b1deb15810.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 74,
+      "final_requested_steps": 74,
+      "applied_steps": 74,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 6.541666666666667,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.001142380147639258,
+        "max": 0.003103648834537896,
+        "min": 0.0004017061129424708
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.03352262328869787,
+        "max": 0.06209283223424377,
+        "min": 0.017055912274406292
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0022856417255622172,
+        "max": 0.010071367664160691,
+        "min": 0.0007236864068259628
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 4,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0004275912985331367,
+      "effectiveness_error_max_during_intervention": 0.0021170155672365354
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 301,
+    "route": 750131,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_301\\changed_outcome_traces\\5918ec69c15f.npz",
+    "first_contact": {
+      "vertical_speed": 0.13359755904643575,
+      "horizontal_speed": 0.002927814932264238,
+      "tilt": 0.0005298815390070471,
+      "angular_speed": 0.01394468351773584,
+      "radius": 0.0234161079884671
+    },
+    "steps": 1369,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 1369,
+      "authorized_steps": 87,
+      "final_requested_steps": 87,
+      "applied_steps": 87,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 5.354166666666667,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.002001869163641427,
+        "max": 0.0030064584866754808,
+        "min": 0.0010767087554846096
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.04970744270795345,
+        "max": 0.09007675387945142,
+        "min": 0.025111850922642915
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.00396240696343365,
+        "max": 0.014551851492824862,
+        "min": 0.0018096675186627348
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 9,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0004419735962191545,
+      "effectiveness_error_max_during_intervention": 0.004413886675436962
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 301,
+    "route": 750219,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_301\\changed_outcome_traces\\373cb0762418.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 33,
+      "final_requested_steps": 33,
+      "applied_steps": 33,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 9.416666666666666,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.002785107850329907,
+        "max": 0.004330071076604678,
+        "min": 0.0022155481676303986
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.07183657437728848,
+        "max": 0.12393489894291192,
+        "min": 0.047248894146627786
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.007024420049215315,
+        "max": 0.013318085653609802,
+        "min": 0.004692312545403884
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 5,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00040702388322196573,
+      "effectiveness_error_max_during_intervention": 0.0019384979247322187
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 301,
+    "route": 750219,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_301\\changed_outcome_traces\\c986f11a411f.npz",
+    "first_contact": {
+      "vertical_speed": 0.06671030244962767,
+      "horizontal_speed": 0.008798753779374344,
+      "tilt": 0.0008803996034674117,
+      "angular_speed": 0.07828404434491548,
+      "radius": 0.05182591082333114
+    },
+    "steps": 1188,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 1188,
+      "authorized_steps": 8,
+      "final_requested_steps": 8,
+      "applied_steps": 8,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 10.791666666666666,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0029173037114207673,
+        "max": 0.0031641729664911833,
+        "min": 0.002660493703575097
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.07403747161020205,
+        "max": 0.09987358819383639,
+        "min": 0.05735480588851153
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0053670385183898165,
+        "max": 0.006916590861559834,
+        "min": 0.00450617592225776
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 2,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.0004565243946997137,
+      "effectiveness_error_max_during_intervention": 0.0019065739092752887
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 301,
+    "route": 750248,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_301\\changed_outcome_traces\\4841088dc3e7.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 79,
+      "final_requested_steps": 79,
+      "applied_steps": 79,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 6.291666666666667,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0021442930001442867,
+        "max": 0.004048450355975574,
+        "min": 0.0006214725851359708
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.04769198178815418,
+        "max": 0.1203134652357845,
+        "min": 0.018062483180812914
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.007171136888725225,
+        "max": 0.031445473988203076,
+        "min": 0.0019312998566489072
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 5,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0003659954977351236,
+      "effectiveness_error_max_during_intervention": 0.0021406117482754006
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 302,
+    "route": 750086,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_302\\changed_outcome_traces\\0cea511519f5.npz",
+    "first_contact": {
+      "vertical_speed": 0.07635860391462349,
+      "horizontal_speed": 0.0088243409164665,
+      "tilt": 0.0008657093229211283,
+      "angular_speed": 0.0602336888926708,
+      "radius": 0.04044549406678296
+    },
+    "steps": 819,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 819,
+      "authorized_steps": 63,
+      "final_requested_steps": 63,
+      "applied_steps": 63,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 3.1875,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0025563113301215862,
+        "max": 0.0034180303769010406,
+        "min": 0.0017702733477018933
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.05472760304934538,
+        "max": 0.07435458839910013,
+        "min": 0.043291966317311574
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.003382916373531183,
+        "max": 0.00481211798540576,
+        "min": 0.002139597919297967
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 4,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.001946504628124368,
+      "effectiveness_error_max_during_intervention": 0.023486125164587035
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 302,
+    "route": 750131,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_302\\changed_outcome_traces\\5918ec69c15f.npz",
+    "first_contact": {
+      "vertical_speed": 0.1350795767019991,
+      "horizontal_speed": 0.007413800234441855,
+      "tilt": 0.00039078002776828634,
+      "angular_speed": 0.04140966412140311,
+      "radius": 0.06861774718889246
+    },
+    "steps": 927,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 927,
+      "authorized_steps": 15,
+      "final_requested_steps": 15,
+      "applied_steps": 15,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.979166666666667,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0021923406514408467,
+        "max": 0.0027655936692966066,
+        "min": 0.001228502910977565
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.053047076754706116,
+        "max": 0.07625328593158436,
+        "min": 0.02387303044500319
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0032193489548194383,
+        "max": 0.005054773626456302,
+        "min": 0.0018022124039088869
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0012567494445423692,
+      "effectiveness_error_max_during_intervention": 0.005295201826577167
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 302,
+    "route": 750142,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_302\\changed_outcome_traces\\4272c3387d53.npz",
+    "first_contact": {
+      "vertical_speed": 0.1349051853921378,
+      "horizontal_speed": 0.0093819047184526,
+      "tilt": 0.0006854871542869733,
+      "angular_speed": 0.0257928847363086,
+      "radius": 0.05477292492594194
+    },
+    "steps": 945,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 945,
+      "authorized_steps": 23,
+      "final_requested_steps": 23,
+      "applied_steps": 23,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.6875,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.001615083614465235,
+        "max": 0.0026246329198243083,
+        "min": 0.0005979990440932416
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.04337076851842279,
+        "max": 0.08419729660886795,
+        "min": 0.016533508706150803
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.002246755722814035,
+        "max": 0.003773625411375799,
+        "min": 0.0008418086648429193
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0008217608356486722,
+      "effectiveness_error_max_during_intervention": 0.004763811226666359
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 302,
+    "route": 750142,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_302\\changed_outcome_traces\\40d5c75d2911.npz",
+    "first_contact": {
+      "vertical_speed": 0.1361297532558189,
+      "horizontal_speed": 0.008779987874687365,
+      "tilt": 0.00034098465953678224,
+      "angular_speed": 0.02436528858858627,
+      "radius": 0.056587143121046665
+    },
+    "steps": 1044,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 1044,
+      "authorized_steps": 19,
+      "final_requested_steps": 19,
+      "applied_steps": 19,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.6875,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0014924904534549348,
+        "max": 0.0026875606661925524,
+        "min": 0.0006055730088832889
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.03982820980701227,
+        "max": 0.076469881366597,
+        "min": 0.015771756635839653
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.002173244169495504,
+        "max": 0.003890262926157009,
+        "min": 0.000913512510939432
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 0,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0007082844791721133,
+      "effectiveness_error_max_during_intervention": 0.003855850180159659
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 302,
+    "route": 750197,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_302\\changed_outcome_traces\\e5b57c7b53a6.npz",
+    "first_contact": {
+      "vertical_speed": 0.13070868991679527,
+      "horizontal_speed": 0.0052847787189262505,
+      "tilt": 0.0003154789979337389,
+      "angular_speed": 0.07078221568544305,
+      "radius": 0.04706286814131775
+    },
+    "steps": 910,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 910,
+      "authorized_steps": 27,
+      "final_requested_steps": 27,
+      "applied_steps": 27,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.291666666666667,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0013485196863514649,
+        "max": 0.0024443604628619506,
+        "min": 0.0005210309786008784
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.03824210990614409,
+        "max": 0.08522931221028503,
+        "min": 0.020431303904927967
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0017774104189865925,
+        "max": 0.003060990101643838,
+        "min": 0.0006501158052776385
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 2,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00093437982910242,
+      "effectiveness_error_max_during_intervention": 0.006561113620773162
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 302,
+    "route": 750219,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_302\\changed_outcome_traces\\c986f11a411f.npz",
+    "first_contact": {
+      "vertical_speed": 0.06712647119408147,
+      "horizontal_speed": 0.00942313420431345,
+      "tilt": 0.00041478571602760904,
+      "angular_speed": 0.02016810864363116,
+      "radius": 0.044731842063786074
+    },
+    "steps": 925,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 925,
+      "authorized_steps": 22,
+      "final_requested_steps": 22,
+      "applied_steps": 22,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.895833333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0016308275114141825,
+        "max": 0.002545436353233694,
+        "min": 0.0008397072215234669
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.04546749518546141,
+        "max": 0.08859319341950522,
+        "min": 0.021558842850513526
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0021389815697954095,
+        "max": 0.0034259061480777005,
+        "min": 0.0010705702635898633
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.0005995913155287625,
+      "effectiveness_error_max_during_intervention": 0.0036504064190031604
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 302,
+    "route": 750284,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_302\\changed_outcome_traces\\e1a57f2f918f.npz",
+    "first_contact": {
+      "vertical_speed": 0.13267789614788764,
+      "horizontal_speed": 0.008103133469955493,
+      "tilt": 0.0007314819916178487,
+      "angular_speed": 0.03494901882080222,
+      "radius": 0.053843247480746634
+    },
+    "steps": 857,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 857,
+      "authorized_steps": 13,
+      "final_requested_steps": 13,
+      "applied_steps": 13,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 3.5833333333333335,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0028991881270199965,
+        "max": 0.003239674882917307,
+        "min": 0.002569727406997784
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.07542306666729043,
+        "max": 0.0855243658688205,
+        "min": 0.06603083342397396
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.003829517487403455,
+        "max": 0.00428274651068474,
+        "min": 0.003229136321743481
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 2,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.004660767820398556,
+      "effectiveness_error_max_during_intervention": 0.02833088633279257
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 302,
+    "route": 750284,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null,
+    "kind": "loss",
+    "outcome": "hard_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_302\\changed_outcome_traces\\03c8b926e8d9.npz",
+    "first_contact": {
+      "vertical_speed": 0.45745219962429345,
+      "horizontal_speed": 0.5602632988585398,
+      "tilt": 0.03915703289756871,
+      "angular_speed": 6.087121090341716,
+      "radius": 0.43531709794080153
+    },
+    "steps": 614,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 614,
+      "authorized_steps": 3,
+      "final_requested_steps": 3,
+      "applied_steps": 3,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.291666666666667,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0028220201760157456,
+        "max": 0.0029572394000379637,
+        "min": 0.0027388718411772636
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.07445826972391928,
+        "max": 0.07577211294554365,
+        "min": 0.0732478153490706
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0034442721675482144,
+        "max": 0.0037891445330302275,
+        "min": 0.0032166889654473836
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 3,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0048915124147644136,
+      "effectiveness_error_max_during_intervention": 0.022588336123396835
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 303,
+    "route": 750131,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_303\\changed_outcome_traces\\5918ec69c15f.npz",
+    "first_contact": {
+      "vertical_speed": 0.13422989067093039,
+      "horizontal_speed": 0.008388329696110522,
+      "tilt": 0.0006340898793570272,
+      "angular_speed": 0.006323321102055716,
+      "radius": 0.0571521267770529
+    },
+    "steps": 1056,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 1056,
+      "authorized_steps": 6,
+      "final_requested_steps": 6,
+      "applied_steps": 6,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 5.020833333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.002501210396219922,
+        "max": 0.0038544633449487495,
+        "min": 0.0019393032431877968
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.0726949263793184,
+        "max": 0.13205322586048224,
+        "min": 0.05740472355836638
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.003932662210338515,
+        "max": 0.00653399492244109,
+        "min": 0.0029285496301198967
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 2,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0011428209731019952,
+      "effectiveness_error_max_during_intervention": 0.004922369788401881
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 303,
+    "route": 750219,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_303\\changed_outcome_traces\\c986f11a411f.npz",
+    "first_contact": {
+      "vertical_speed": 0.07585609159070106,
+      "horizontal_speed": 0.00715356012495073,
+      "tilt": 0.0004874225338973207,
+      "angular_speed": 0.032505632175390625,
+      "radius": 0.03801646022544098
+    },
+    "steps": 1031,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 1031,
+      "authorized_steps": 7,
+      "final_requested_steps": 7,
+      "applied_steps": 7,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 3.7916666666666665,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.002721691394052231,
+        "max": 0.004026658411799198,
+        "min": 0.0022462672972564206
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.05877319439623326,
+        "max": 0.07010728603494204,
+        "min": 0.05306330654837584
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.005538322417680866,
+        "max": 0.009583300194125385,
+        "min": 0.00419248674329342
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.0005413983292541899,
+      "effectiveness_error_max_during_intervention": 0.0022249079957256113
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 303,
+    "route": 750259,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_303\\changed_outcome_traces\\e7c7faee56c2.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 3,
+      "final_requested_steps": 3,
+      "applied_steps": 3,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.125,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.002813503342674718,
+        "max": 0.0030275957093726775,
+        "min": 0.0026337900378622238
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.06272869930364537,
+        "max": 0.06421829336669217,
+        "min": 0.06105344291338982
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.004648345320069002,
+        "max": 0.004960461741361265,
+        "min": 0.004347333706529592
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0004020567677555653,
+      "effectiveness_error_max_during_intervention": 0.00171707050716996
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 304,
+    "route": 750246,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null,
+    "kind": "loss",
+    "outcome": "early_contact",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_304\\changed_outcome_traces\\5080c87eac13.npz",
+    "first_contact": null,
+    "steps": 188,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 188,
+      "authorized_steps": 5,
+      "final_requested_steps": 5,
+      "applied_steps": 5,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 2.3333333333333335,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0031517031509836007,
+        "max": 0.003906541234403702,
+        "min": 0.0028022704319800597
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.04666396322153758,
+        "max": 0.04877720242219883,
+        "min": 0.04489622834708201
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.005427436858293217,
+        "max": 0.007033868135995475,
+        "min": 0.004773994000155837
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00013050037741769717,
+      "effectiveness_error_max_during_intervention": 0.0008166667699639474
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 304,
+    "route": 750219,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_304\\changed_outcome_traces\\c986f11a411f.npz",
+    "first_contact": {
+      "vertical_speed": 0.07900759050760002,
+      "horizontal_speed": 0.008782305731908538,
+      "tilt": 0.0005080499503403357,
+      "angular_speed": 0.03621131605605593,
+      "radius": 0.0536580332659952
+    },
+    "steps": 1198,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 1198,
+      "authorized_steps": 7,
+      "final_requested_steps": 7,
+      "applied_steps": 7,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 3.9583333333333335,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0018891834056987483,
+        "max": 0.002268283317302906,
+        "min": 0.0017653968898963266
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.02572592704532839,
+        "max": 0.03350530132640358,
+        "min": 0.020688210262103084
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0045563335468529085,
+        "max": 0.006333294289126122,
+        "min": 0.0037208192932106027
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 2,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.0005426935535923058,
+      "effectiveness_error_max_during_intervention": 0.0022823781094396534
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 304,
+    "route": 750284,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null,
+    "kind": "loss",
+    "outcome": "early_contact",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_304\\changed_outcome_traces\\03c8b926e8d9.npz",
+    "first_contact": null,
+    "steps": 189,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 189,
+      "authorized_steps": 6,
+      "final_requested_steps": 6,
+      "applied_steps": 6,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 2.3125,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0025528891357774583,
+        "max": 0.0036164471236182576,
+        "min": 0.0021679865866416122
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.04321107840171896,
+        "max": 0.04706978125770072,
+        "min": 0.04099807894184931
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.004277777815932889,
+        "max": 0.006424400691078678,
+        "min": 0.0034731561465759873
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 0,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00013859566899788087,
+      "effectiveness_error_max_during_intervention": 0.0009227099770743319
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 304,
+    "route": 750259,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_304\\changed_outcome_traces\\e7c7faee56c2.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 1,
+      "final_requested_steps": 1,
+      "applied_steps": 1,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.145833333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.003505042855125678,
+        "max": 0.003505042855125678,
+        "min": 0.003505042855125678
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.060627973172595974,
+        "max": 0.060627973172595974,
+        "min": 0.060627973172595974
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0045309821617245906,
+        "max": 0.0045309821617245906,
+        "min": 0.0045309821617245906
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00040556359141921683,
+      "effectiveness_error_max_during_intervention": 0.0016222543656768673
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 305,
+    "route": 750063,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_305\\changed_outcome_traces\\e2688bb16fc3.npz",
+    "first_contact": {
+      "vertical_speed": 0.13033197583384526,
+      "horizontal_speed": 0.003677898703720717,
+      "tilt": 0.0014989037086142489,
+      "angular_speed": 0.028877844881305063,
+      "radius": 0.03481254479272315
+    },
+    "steps": 858,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 858,
+      "authorized_steps": 17,
+      "final_requested_steps": 17,
+      "applied_steps": 17,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 3.25,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.000579829887204996,
+        "max": 0.0028379934617107413,
+        "min": 1.4537188782223217e-05
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.03582995466362416,
+        "max": 0.06885725790071069,
+        "min": 0.013674481553196184
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0033518502912580103,
+        "max": 0.027162222110576596,
+        "min": 1.9142143941683274e-05
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00020615114740668572,
+      "effectiveness_error_max_during_intervention": 0.0017185756281784537
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 305,
+    "route": 750063,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_305\\changed_outcome_traces\\35689eeda5a6.npz",
+    "first_contact": {
+      "vertical_speed": 0.13426026129171667,
+      "horizontal_speed": 0.004923018709981914,
+      "tilt": 0.00020017380721548746,
+      "angular_speed": 0.0077530902798185995,
+      "radius": 0.033088054056653965
+    },
+    "steps": 875,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 875,
+      "authorized_steps": 14,
+      "final_requested_steps": 14,
+      "applied_steps": 14,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 3.2708333333333335,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0006282105376015193,
+        "max": 0.0021555094412702273,
+        "min": 1.2790529643005451e-05
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.041404037996265956,
+        "max": 0.07670038764728564,
+        "min": 0.013037479707867302
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.00221954349099194,
+        "max": 0.013515245313474089,
+        "min": 1.669334845348533e-05
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00019446807623539223,
+      "effectiveness_error_max_during_intervention": 0.00135545073028287
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 305,
+    "route": 750110,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": null,
+    "kind": "loss",
+    "outcome": "hard_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_305\\changed_outcome_traces\\f69172c0c6f6.npz",
+    "first_contact": {
+      "vertical_speed": 0.26151827325993904,
+      "horizontal_speed": 0.04809854234585269,
+      "tilt": 0.009254668332056869,
+      "angular_speed": 0.06610075312044908,
+      "radius": 0.3101468414370427
+    },
+    "steps": 462,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 462,
+      "authorized_steps": 17,
+      "final_requested_steps": 17,
+      "applied_steps": 17,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 7.541666666666667,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.002147614493230654,
+        "max": 0.0033803789515146725,
+        "min": 0.0007515184367747138
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.10584802808472442,
+        "max": 0.14252087018608592,
+        "min": 0.04693734860660919
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.005169660693406625,
+        "max": 0.010755664034476684,
+        "min": 0.0011673936831835068
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 10,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 2.7226110193077993e-05,
+      "effectiveness_error_max_during_intervention": 0.0002741805451978996
+    }
+  },
+  {
+    "phase": "confirmation",
+    "model_seed": 305,
+    "route": 750102,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\confirmation\\candidate_305\\changed_outcome_traces\\1f99450c99b2.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 19,
+      "final_requested_steps": 19,
+      "applied_steps": 19,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 7.1875,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0021236971980500238,
+        "max": 0.0028850999700752826,
+        "min": 0.0016745564038263838
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.08164064128112959,
+        "max": 0.0992207654615745,
+        "min": 0.07474215807162121
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.006403472926139824,
+        "max": 0.007761685908372997,
+        "min": 0.005084926256235091
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 4,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00042425526263236525,
+      "effectiveness_error_max_during_intervention": 0.0018970682332151156
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 301,
+    "route": 760003,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_301\\changed_outcome_traces\\d134b05c3cd8.npz",
+    "first_contact": {
+      "vertical_speed": 0.03976728588714969,
+      "horizontal_speed": 0.0048329101629101395,
+      "tilt": 0.0006559891542069658,
+      "angular_speed": 0.03589237446529758,
+      "radius": 0.033179606772818344
+    },
+    "steps": 793,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 793,
+      "authorized_steps": 3,
+      "final_requested_steps": 3,
+      "applied_steps": 3,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.0625,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0008159436620187948,
+        "max": 0.0013360473786676807,
+        "min": 0.0004678006900964694
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.03801579403367416,
+        "max": 0.044667707904249454,
+        "min": 0.03393142774904014
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.001025151160934777,
+        "max": 0.0017063548610284076,
+        "min": 0.0005738400142738566
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0470713688134795,
+      "effectiveness_error_max_during_intervention": 0.22547156523762013
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 301,
+    "route": 760004,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_301\\changed_outcome_traces\\97a86e144bd9.npz",
+    "first_contact": {
+      "vertical_speed": 0.06832652195148006,
+      "horizontal_speed": 0.007672321308499228,
+      "tilt": 0.0009247056413431853,
+      "angular_speed": 0.03007688315538602,
+      "radius": 0.03667551603102966
+    },
+    "steps": 858,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 858,
+      "authorized_steps": 2,
+      "final_requested_steps": 2,
+      "applied_steps": 2,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 5.083333333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0006173967702107802,
+        "max": 0.0006589336010909288,
+        "min": 0.0005758599393306318
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.04207152197334642,
+        "max": 0.04283819795542171,
+        "min": 0.04130484599127113
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0008817682206809645,
+        "max": 0.0009285982681366441,
+        "min": 0.0008349381732252849
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.042236368440850686,
+      "effectiveness_error_max_during_intervention": 0.1862420513013472
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 301,
+    "route": 760008,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_301\\changed_outcome_traces\\517696950128.npz",
+    "first_contact": {
+      "vertical_speed": 0.0665390712911964,
+      "horizontal_speed": 0.007120847779650092,
+      "tilt": 0.001250051336327784,
+      "angular_speed": 0.04320399224471829,
+      "radius": 0.024399450753958902
+    },
+    "steps": 930,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 930,
+      "authorized_steps": 2,
+      "final_requested_steps": 2,
+      "applied_steps": 2,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 5.083333333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0004659609796153083,
+        "max": 0.0005495209451245823,
+        "min": 0.00038240101410603436
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.03436397859227966,
+        "max": 0.03540946268343234,
+        "min": 0.033318494501126984
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0006185358763001331,
+        "max": 0.0007295938402509215,
+        "min": 0.0005074779123493446
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.04243027205345812,
+      "effectiveness_error_max_during_intervention": 0.18635082210697607
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 301,
+    "route": 760008,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_301\\changed_outcome_traces\\3aa4e23455c8.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 3,
+      "final_requested_steps": 3,
+      "applied_steps": 3,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.0625,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0006561809145340913,
+        "max": 0.0010404733533335294,
+        "min": 0.00038604429151111006
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.03220581322703001,
+        "max": 0.035411157818189966,
+        "min": 0.030297076741229594
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0008127980103105735,
+        "max": 0.001301907982568964,
+        "min": 0.00047227512738086353
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.046680570326025156,
+      "effectiveness_error_max_during_intervention": 0.22452822584258425
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 301,
+    "route": 760014,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_301\\changed_outcome_traces\\38dcc38e1670.npz",
+    "first_contact": {
+      "vertical_speed": 0.09529662396027966,
+      "horizontal_speed": 0.005127650443156906,
+      "tilt": 0.000455949291594364,
+      "angular_speed": 0.03013811440876615,
+      "radius": 0.05033323934011819
+    },
+    "steps": 693,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 693,
+      "authorized_steps": 2,
+      "final_requested_steps": 2,
+      "applied_steps": 2,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.083333333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0024195696172984865,
+        "max": 0.0025903504061836114,
+        "min": 0.0022487888284133616
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.05198142861332962,
+        "max": 0.05536393109450192,
+        "min": 0.04859892613215733
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.002627313944472156,
+        "max": 0.0028226776278321157,
+        "min": 0.002431950261112196
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.04225047916645057,
+      "effectiveness_error_max_during_intervention": 0.18673918185748584
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 301,
+    "route": 760010,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_301\\changed_outcome_traces\\87e71f799203.npz",
+    "first_contact": {
+      "vertical_speed": 0.0741447159333537,
+      "horizontal_speed": 0.0055819811723113386,
+      "tilt": 0.0021865689963001898,
+      "angular_speed": 0.0364625798348321,
+      "radius": 0.05190943755546065
+    },
+    "steps": 881,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 881,
+      "authorized_steps": 2,
+      "final_requested_steps": 2,
+      "applied_steps": 2,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 5.083333333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.00043747592921977176,
+        "max": 0.0005111497672107736,
+        "min": 0.00036380209122877
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.031568220141438,
+        "max": 0.03235093517316756,
+        "min": 0.030785505109708445
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0005685387284299407,
+        "max": 0.0006642477339084757,
+        "min": 0.00047282972295140563
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.04243297674325301,
+      "effectiveness_error_max_during_intervention": 0.1867141324324071
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 301,
+    "route": 760010,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_301\\changed_outcome_traces\\946a47598d38.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 2,
+      "final_requested_steps": 2,
+      "applied_steps": 2,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.083333333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.00043291881752394006,
+        "max": 0.0005304020930711011,
+        "min": 0.00033543554197677897
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.029701509285012265,
+        "max": 0.031371918694389,
+        "min": 0.02803109987563553
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0005234746466510562,
+        "max": 0.0006427005373964032,
+        "min": 0.00040424875590570913
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.04209661669435896,
+      "effectiveness_error_max_during_intervention": 0.18523032764866088
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 301,
+    "route": 760030,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_301\\changed_outcome_traces\\184e5993cb4a.npz",
+    "first_contact": {
+      "vertical_speed": 0.08419519726682131,
+      "horizontal_speed": 0.007196017255192238,
+      "tilt": 0.0005407102423654641,
+      "angular_speed": 0.08898100285484141,
+      "radius": 0.04309588802279067
+    },
+    "steps": 912,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 912,
+      "authorized_steps": 11,
+      "final_requested_steps": 11,
+      "applied_steps": 11,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 7.229166666666667,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.002125697121937072,
+        "max": 0.0035738157019400327,
+        "min": 0.0012177934095062707
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.07559656434771216,
+        "max": 0.10170933901784222,
+        "min": 0.06251105205394179
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.003681515755150996,
+        "max": 0.0070102091998531825,
+        "min": 0.0019383348865066722
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 2,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0005123910283699941,
+      "effectiveness_error_max_during_intervention": 0.0023335830086179676
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 301,
+    "route": 760015,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_301\\changed_outcome_traces\\b1b667bcf76a.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 3,
+      "final_requested_steps": 3,
+      "applied_steps": 3,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.0625,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0007047085486979976,
+        "max": 0.0010201109235427554,
+        "min": 0.0005058753395498497
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.040366829509015816,
+        "max": 0.04425507147496777,
+        "min": 0.03810598878693191
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0008622452037330314,
+        "max": 0.0012518986939642645,
+        "min": 0.0006187696360215877
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.04697344060995078,
+      "effectiveness_error_max_during_intervention": 0.22680524749957343
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 301,
+    "route": 760028,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_301\\changed_outcome_traces\\d7b2f2c949d7.npz",
+    "first_contact": {
+      "vertical_speed": 0.0876584731348862,
+      "horizontal_speed": 0.008903688705084508,
+      "tilt": 0.0005733494977947074,
+      "angular_speed": 0.024113249122918123,
+      "radius": 0.034503557710966054
+    },
+    "steps": 882,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 882,
+      "authorized_steps": 10,
+      "final_requested_steps": 10,
+      "applied_steps": 10,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 6.1875,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0025122555102106083,
+        "max": 0.0037132161434321963,
+        "min": 0.0018032372409127406
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.07816337333264221,
+        "max": 0.09736651272612555,
+        "min": 0.06939340312753253
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.004454767810374237,
+        "max": 0.0079056686299404,
+        "min": 0.003047779959991081
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 2,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0005106801978895181,
+      "effectiveness_error_max_during_intervention": 0.0023805549325328634
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 301,
+    "route": 760022,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 7.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_301\\changed_outcome_traces\\639125760b85.npz",
+    "first_contact": {
+      "vertical_speed": 0.0905763109406378,
+      "horizontal_speed": 0.0076183279624533985,
+      "tilt": 0.0006339556146308595,
+      "angular_speed": 0.042789250189317694,
+      "radius": 0.044580066202083456
+    },
+    "steps": 908,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 908,
+      "authorized_steps": 3,
+      "final_requested_steps": 3,
+      "applied_steps": 3,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 9.270833333333334,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0020815851776221045,
+        "max": 0.0022515850274519777,
+        "min": 0.001911054619951622
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.06977400273033425,
+        "max": 0.07295328796788936,
+        "min": 0.0674847537606602
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0034996601792619867,
+        "max": 0.0038418461950928398,
+        "min": 0.0030037465359504228
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.00035717775722097594,
+      "effectiveness_error_max_during_intervention": 0.001455269394698977
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 301,
+    "route": 760016,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_301\\changed_outcome_traces\\a4ea06af926a.npz",
+    "first_contact": {
+      "vertical_speed": 0.13477974936092169,
+      "horizontal_speed": 0.009341130358037202,
+      "tilt": 0.0005983114215207026,
+      "angular_speed": 0.021267349245370545,
+      "radius": 0.08863469900574919
+    },
+    "steps": 700,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 700,
+      "authorized_steps": 3,
+      "final_requested_steps": 3,
+      "applied_steps": 3,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.0625,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.002154370654724302,
+        "max": 0.002350770827390502,
+        "min": 0.0020235879682831935
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.05634172012549293,
+        "max": 0.06549017307859563,
+        "min": 0.04778710152873286
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.002309464189300805,
+        "max": 0.0025313558825765157,
+        "min": 0.002162064250081243
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.04724796024875271,
+      "effectiveness_error_max_during_intervention": 0.2255432669178673
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 301,
+    "route": 760027,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_301\\changed_outcome_traces\\fc1923ddfb7c.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 2,
+      "final_requested_steps": 2,
+      "applied_steps": 2,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.083333333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0004337527759175338,
+        "max": 0.0005322603054654305,
+        "min": 0.00033524524636963717
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.029182360564671696,
+        "max": 0.03073539058254791,
+        "min": 0.027629330546795478
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0005268298155067959,
+        "max": 0.0006487423181071058,
+        "min": 0.00040491731290648607
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.04186958954769776,
+      "effectiveness_error_max_during_intervention": 0.18516531222180244
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 301,
+    "route": 760028,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_301\\changed_outcome_traces\\63e6e7189d60.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 4,
+      "final_requested_steps": 4,
+      "applied_steps": 4,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 7.25,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.002826229823271734,
+        "max": 0.0033311076370062475,
+        "min": 0.0022078129051358833
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.0837838735151824,
+        "max": 0.09010260381838205,
+        "min": 0.07792806347037813
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.004825263871906948,
+        "max": 0.005533196448493899,
+        "min": 0.003942099408676031
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.00043886525374729757,
+      "effectiveness_error_max_during_intervention": 0.0021541194575460665
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760002,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\628582b8c9cc.npz",
+    "first_contact": {
+      "vertical_speed": 0.13558399609869182,
+      "horizontal_speed": 0.00910144079453764,
+      "tilt": 0.0006296055065204308,
+      "angular_speed": 0.028396814820908032,
+      "radius": 0.04473973311703715
+    },
+    "steps": 862,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 862,
+      "authorized_steps": 14,
+      "final_requested_steps": 14,
+      "applied_steps": 14,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 8.1875,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0022148608940844076,
+        "max": 0.002629466782710288,
+        "min": 0.0015433842244930319
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.057472738337744085,
+        "max": 0.06232673072119047,
+        "min": 0.04549050617343564
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.002814862235258293,
+        "max": 0.003495605762797332,
+        "min": 0.001834755804306143
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 6,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.000493460746616379,
+      "effectiveness_error_max_during_intervention": 0.0020136217521342648
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760007,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\8bfd3d224b3f.npz",
+    "first_contact": {
+      "vertical_speed": 0.11487223521275026,
+      "horizontal_speed": 0.005175574533860243,
+      "tilt": 0.0007826936371427087,
+      "angular_speed": 0.047855131725904165,
+      "radius": 0.05439270138084229
+    },
+    "steps": 927,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 927,
+      "authorized_steps": 1,
+      "final_requested_steps": 1,
+      "applied_steps": 1,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 5.0625,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0023971296214223593,
+        "max": 0.0023971296214223593,
+        "min": 0.0023971296214223593
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.06372761148853413,
+        "max": 0.06372761148853413,
+        "min": 0.06372761148853413
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.003324746792940292,
+        "max": 0.003324746792940292,
+        "min": 0.003324746792940292
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.05682340368624786,
+      "effectiveness_error_max_during_intervention": 0.22729361474499143
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760010,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\87e71f799203.npz",
+    "first_contact": {
+      "vertical_speed": 0.06676978995325199,
+      "horizontal_speed": 0.0029406285100754374,
+      "tilt": 0.0012573655877239785,
+      "angular_speed": 0.07636726510803,
+      "radius": 0.04184820443642279
+    },
+    "steps": 872,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 872,
+      "authorized_steps": 1,
+      "final_requested_steps": 1,
+      "applied_steps": 1,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 5.0625,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0011002276578746726,
+        "max": 0.0011002276578746726,
+        "min": 0.0011002276578746726
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.0668956690138227,
+        "max": 0.0668956690138227,
+        "min": 0.0668956690138227
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0018530959987493926,
+        "max": 0.0018530959987493926,
+        "min": 0.0018530959987493926
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.05630605268804384,
+      "effectiveness_error_max_during_intervention": 0.22522421075217536
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760017,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\692fde5180f2.npz",
+    "first_contact": {
+      "vertical_speed": 0.13432047912547948,
+      "horizontal_speed": 0.006096347953257354,
+      "tilt": 0.0005419281942057565,
+      "angular_speed": 0.04774187432210711,
+      "radius": 0.02747498335782512
+    },
+    "steps": 899,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 899,
+      "authorized_steps": 12,
+      "final_requested_steps": 12,
+      "applied_steps": 12,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 8.0625,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0021437265788616018,
+        "max": 0.0025303332469284903,
+        "min": 0.001477715227245802
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.05558682324440822,
+        "max": 0.06468464311310983,
+        "min": 0.041420405288251326
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0028139747514530204,
+        "max": 0.003686658469056114,
+        "min": 0.0018742801192112456
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 5,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0005715432003648366,
+      "effectiveness_error_max_during_intervention": 0.002345185977399633
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760000,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\fe5e5a1c7a02.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 11,
+      "final_requested_steps": 11,
+      "applied_steps": 11,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 6.0625,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0015157884099683454,
+        "max": 0.003259601499441884,
+        "min": 0.0007770532427162541
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.06289444317107641,
+        "max": 0.1030242143699766,
+        "min": 0.048350840662970525
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.003264765855339455,
+        "max": 0.007252389388731277,
+        "min": 0.0012911890435746438
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 2,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0005385391275448555,
+      "effectiveness_error_max_during_intervention": 0.0023017694361435748
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760024,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 7.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\49346ffa3529.npz",
+    "first_contact": {
+      "vertical_speed": 0.06864884998023936,
+      "horizontal_speed": 0.009088271240537871,
+      "tilt": 0.00025258489288949436,
+      "angular_speed": 0.04024328193412114,
+      "radius": 0.0597409053154763
+    },
+    "steps": 856,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 856,
+      "authorized_steps": 3,
+      "final_requested_steps": 3,
+      "applied_steps": 3,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 7.083333333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0021979280711718306,
+        "max": 0.0026655302011712426,
+        "min": 0.0018406506054067112
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.07349622905490903,
+        "max": 0.09593352583584126,
+        "min": 0.06102890265753138
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0032476995022248274,
+        "max": 0.004326466434613475,
+        "min": 0.0023742870042986614
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 2,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.015577200078446799,
+      "effectiveness_error_max_during_intervention": 0.18526233668273406
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760013,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\f9d602645b21.npz",
+    "first_contact": {
+      "vertical_speed": 0.062338361645366956,
+      "horizontal_speed": 0.0033045201321445323,
+      "tilt": 0.001624941299700135,
+      "angular_speed": 0.036914611179534255,
+      "radius": 0.007435561441420666
+    },
+    "steps": 848,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 848,
+      "authorized_steps": 1,
+      "final_requested_steps": 1,
+      "applied_steps": 1,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.104166666666667,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.003248113878090426,
+        "max": 0.003248113878090426,
+        "min": 0.003248113878090426
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.04917117319927761,
+        "max": 0.04917117319927761,
+        "min": 0.04917117319927761
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.01437221310601437,
+        "max": 0.01437221310601437,
+        "min": 0.01437221310601437
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.03684261655373938,
+      "effectiveness_error_max_during_intervention": 0.14737046621495753
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760016,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\13c9c7c404ae.npz",
+    "first_contact": {
+      "vertical_speed": 0.13305035814154423,
+      "horizontal_speed": 0.0029390922776298552,
+      "tilt": 0.0011541361311961501,
+      "angular_speed": 0.03483563743428677,
+      "radius": 0.01349445951421649
+    },
+    "steps": 949,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 949,
+      "authorized_steps": 9,
+      "final_requested_steps": 9,
+      "applied_steps": 9,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 5.083333333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0022534753933600754,
+        "max": 0.0026936230675885606,
+        "min": 0.001639896102087982
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.0648757236851607,
+        "max": 0.08200641823982772,
+        "min": 0.055588368465103545
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0028284974316085624,
+        "max": 0.0034906547077491286,
+        "min": 0.0020341476365642866
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 3,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.005782656965843822,
+      "effectiveness_error_max_during_intervention": 0.18678453724208888
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760019,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\60ff32f604db.npz",
+    "first_contact": {
+      "vertical_speed": 0.026498387653810945,
+      "horizontal_speed": 0.008268008155291266,
+      "tilt": 0.0009509399547458722,
+      "angular_speed": 0.034575194275435324,
+      "radius": 0.055634563036874356
+    },
+    "steps": 827,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 827,
+      "authorized_steps": 1,
+      "final_requested_steps": 1,
+      "applied_steps": 1,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 5.083333333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0025365576838975623,
+        "max": 0.0025365576838975623,
+        "min": 0.0025365576838975623
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.05735150569065306,
+        "max": 0.05735150569065306,
+        "min": 0.05735150569065306
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.003207159692156515,
+        "max": 0.003207159692156515,
+        "min": 0.003207159692156515
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.0464936139471927,
+      "effectiveness_error_max_during_intervention": 0.1859744557887708
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760021,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\d52e1ce30d0a.npz",
+    "first_contact": {
+      "vertical_speed": 0.07067709552459561,
+      "horizontal_speed": 0.007731729971572544,
+      "tilt": 0.0008373260447553479,
+      "angular_speed": 0.08702309769352416,
+      "radius": 0.057550558953265135
+    },
+    "steps": 799,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 799,
+      "authorized_steps": 2,
+      "final_requested_steps": 2,
+      "applied_steps": 2,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.083333333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0024757567078069463,
+        "max": 0.0025709264285574945,
+        "min": 0.002380586987056398
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.11549587954841983,
+        "max": 0.11769672053888268,
+        "min": 0.11329503855795699
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.003504066809070966,
+        "max": 0.00364122808805299,
+        "min": 0.0033669055300889423
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.041941612730239816,
+      "effectiveness_error_max_during_intervention": 0.18436524484689176
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760015,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\65114677acbb.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 1,
+      "final_requested_steps": 1,
+      "applied_steps": 1,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 5.0625,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.002049803788157279,
+        "max": 0.002049803788157279,
+        "min": 0.002049803788157279
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.10457042321546979,
+        "max": 0.10457042321546979,
+        "min": 0.10457042321546979
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.003638052129864349,
+        "max": 0.003638052129864349,
+        "min": 0.003638052129864349
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.056379496024759834,
+      "effectiveness_error_max_during_intervention": 0.22551798409903934
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760018,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\ac7c4e67e565.npz",
+    "first_contact": {
+      "vertical_speed": 0.060164173286619375,
+      "horizontal_speed": 0.0073691992381088285,
+      "tilt": 0.0010759586595695352,
+      "angular_speed": 0.05583130137592208,
+      "radius": 0.05287305126138015
+    },
+    "steps": 825,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 825,
+      "authorized_steps": 2,
+      "final_requested_steps": 2,
+      "applied_steps": 2,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 5.083333333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0019337236173797244,
+        "max": 0.0024417661938077304,
+        "min": 0.0014256810409517184
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.10788237801686446,
+        "max": 0.11569976494597851,
+        "min": 0.10006499108775041
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.002581864867547528,
+        "max": 0.003226282278161203,
+        "min": 0.0019374474569338526
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.0419927981987091,
+      "effectiveness_error_max_during_intervention": 0.1852350281241404
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760026,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\6e5e80a6acc1.npz",
+    "first_contact": {
+      "vertical_speed": 0.13654022256166626,
+      "horizontal_speed": 0.004405667236938416,
+      "tilt": 0.0013501842779520999,
+      "angular_speed": 0.030421232570053344,
+      "radius": 0.020529807390576763
+    },
+    "steps": 823,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 823,
+      "authorized_steps": 9,
+      "final_requested_steps": 9,
+      "applied_steps": 9,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 7.708333333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.002114176744801072,
+        "max": 0.002648609862274819,
+        "min": 0.0015529179202774012
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.056875160585027076,
+        "max": 0.0698481777675652,
+        "min": 0.045430390179865277
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.002725963229826713,
+        "max": 0.003478579875548312,
+        "min": 0.0019441202140699984
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 2,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.0007859916081465376,
+      "effectiveness_error_max_during_intervention": 0.004179181161475198
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760030,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\26e1abe40940.npz",
+    "first_contact": {
+      "vertical_speed": 0.20484138346473899,
+      "horizontal_speed": 0.021509307117719024,
+      "tilt": 0.0006873333757907163,
+      "angular_speed": 0.033597773436907924,
+      "radius": 0.18686857235320894
+    },
+    "steps": 485,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 485,
+      "authorized_steps": 7,
+      "final_requested_steps": 7,
+      "applied_steps": 7,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.0625,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.002511947565889225,
+        "max": 0.0028240370726758386,
+        "min": 0.0019713996743691703
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.14152460843057701,
+        "max": 0.17609814918037947,
+        "min": 0.05626210481848231
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.005285149020491687,
+        "max": 0.0069725620911779106,
+        "min": 0.0038184936839908696
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 2,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00821601236183606,
+      "effectiveness_error_max_during_intervention": 0.2266118966040831
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760018,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\1c294e286e71.npz",
+    "first_contact": {
+      "vertical_speed": 0.07129386093625399,
+      "horizontal_speed": 0.007911814321855719,
+      "tilt": 0.0015686833273772516,
+      "angular_speed": 0.03290919965219803,
+      "radius": 0.0573510786943844
+    },
+    "steps": 750,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 750,
+      "authorized_steps": 2,
+      "final_requested_steps": 2,
+      "applied_steps": 2,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.083333333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0015489204081568344,
+        "max": 0.0016470882889848442,
+        "min": 0.0014507525273288243
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.08401646338883208,
+        "max": 0.08703768306875025,
+        "min": 0.08099524370891391
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0022749093354184303,
+        "max": 0.0025107822022590615,
+        "min": 0.0020390364685777987
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.042258239772329564,
+      "effectiveness_error_max_during_intervention": 0.18543617981645144
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760023,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\18daa941ed31.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 3,
+      "final_requested_steps": 3,
+      "applied_steps": 3,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.0625,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.001499267087668178,
+        "max": 0.001906367167791879,
+        "min": 0.0010904305163577886
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.04686512912748655,
+        "max": 0.04935946834110466,
+        "min": 0.043992805719467704
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.00193074813364538,
+        "max": 0.002395842185466984,
+        "min": 0.0014661916905258988
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.04722779812536023,
+      "effectiveness_error_max_during_intervention": 0.22594082383814396
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 302,
+    "route": 760026,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_302\\changed_outcome_traces\\355285ca2476.npz",
+    "first_contact": {
+      "vertical_speed": 0.06938797132905909,
+      "horizontal_speed": 0.005912460674805938,
+      "tilt": 0.0008341570700870787,
+      "angular_speed": 0.08105611673418742,
+      "radius": 0.016301030862469344
+    },
+    "steps": 897,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 897,
+      "authorized_steps": 3,
+      "final_requested_steps": 3,
+      "applied_steps": 3,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 8.770833333333334,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0026153573722005625,
+        "max": 0.0027929499633386986,
+        "min": 0.0023842349669242475
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.058286178956692865,
+        "max": 0.060969692744289566,
+        "min": 0.055662953155464885
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.003346496956859329,
+        "max": 0.003848945418528312,
+        "min": 0.002904988649586416
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.0005449302814548584,
+      "effectiveness_error_max_during_intervention": 0.0021797211258194338
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 303,
+    "route": 760018,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_303\\changed_outcome_traces\\ac7c4e67e565.npz",
+    "first_contact": {
+      "vertical_speed": 0.03555033647385915,
+      "horizontal_speed": 0.007122963940689393,
+      "tilt": 0.001375630375350456,
+      "angular_speed": 0.0193902075012715,
+      "radius": 0.05177659165563624
+    },
+    "steps": 831,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 831,
+      "authorized_steps": 2,
+      "final_requested_steps": 2,
+      "applied_steps": 2,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 5.083333333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0009015358250303274,
+        "max": 0.001170459318721212,
+        "min": 0.0006326123313394429
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.1615907128199907,
+        "max": 0.18040227452082844,
+        "min": 0.14277915111915299
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0015813170867352768,
+        "max": 0.0021796057975677074,
+        "min": 0.0009830283759028461
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.0419942296881758,
+      "effectiveness_error_max_during_intervention": 0.1852350281241404
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 304,
+    "route": 760018,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_304\\changed_outcome_traces\\1c294e286e71.npz",
+    "first_contact": {
+      "vertical_speed": 0.08731186038369632,
+      "horizontal_speed": 0.009586646404009051,
+      "tilt": 0.0012665160439543919,
+      "angular_speed": 0.023287682053200653,
+      "radius": 0.058897874971049674
+    },
+    "steps": 764,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 764,
+      "authorized_steps": 1,
+      "final_requested_steps": 1,
+      "applied_steps": 1,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.104166666666667,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0013267712068172793,
+        "max": 0.0013267712068172793,
+        "min": 0.0013267712068172793
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.08275901675017304,
+        "max": 0.08275901675017304,
+        "min": 0.08275901675017304
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0015825542796630177,
+        "max": 0.0015825542796630177,
+        "min": 0.0015825542796630177
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.03817894893322751,
+      "effectiveness_error_max_during_intervention": 0.15271579573291005
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 304,
+    "route": 760024,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_304\\changed_outcome_traces\\5fa701697ed2.npz",
+    "first_contact": {
+      "vertical_speed": 0.12268341765217705,
+      "horizontal_speed": 0.013842713781279662,
+      "tilt": 0.000622051818453127,
+      "angular_speed": 0.020469724824959658,
+      "radius": 0.09240535752085298
+    },
+    "steps": 736,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 736,
+      "authorized_steps": 1,
+      "final_requested_steps": 1,
+      "applied_steps": 1,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.104166666666667,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0016516712074909328,
+        "max": 0.0016516712074909328,
+        "min": 0.0016516712074909328
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.08614724940030045,
+        "max": 0.08614724940030045,
+        "min": 0.08614724940030045
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0027642620041152905,
+        "max": 0.0027642620041152905,
+        "min": 0.0027642620041152905
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.038536586775667486,
+      "effectiveness_error_max_during_intervention": 0.15414634710266994
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 304,
+    "route": 760021,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_304\\changed_outcome_traces\\d52e1ce30d0a.npz",
+    "first_contact": {
+      "vertical_speed": 0.0699549368561186,
+      "horizontal_speed": 0.010040703500016736,
+      "tilt": 0.00131991338385427,
+      "angular_speed": 0.04436975041685603,
+      "radius": 0.06720474634410319
+    },
+    "steps": 774,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 774,
+      "authorized_steps": 1,
+      "final_requested_steps": 1,
+      "applied_steps": 1,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 4.104166666666667,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0012622085074271896,
+        "max": 0.0012622085074271896,
+        "min": 0.0012622085074271896
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.0896382676711543,
+        "max": 0.0896382676711543,
+        "min": 0.0896382676711543
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0015232485747344287,
+        "max": 0.0015232485747344287,
+        "min": 0.0015232485747344287
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.037808822724591185,
+      "effectiveness_error_max_during_intervention": 0.15123529089836474
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 304,
+    "route": 760021,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_304\\changed_outcome_traces\\b3217202cb36.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 1,
+      "final_requested_steps": 1,
+      "applied_steps": 1,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 5.104166666666667,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0008728807465842578,
+        "max": 0.0008728807465842578,
+        "min": 0.0008728807465842578
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.0830443415394647,
+        "max": 0.0830443415394647,
+        "min": 0.0830443415394647
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0010636419525959034,
+        "max": 0.0010636419525959034,
+        "min": 0.0010636419525959034
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.03809596194938791,
+      "effectiveness_error_max_during_intervention": 0.15238384779755165
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 305,
+    "route": 760002,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "loss",
+    "outcome": "timeout",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_305\\changed_outcome_traces\\d2d4a5802975.npz",
+    "first_contact": null,
+    "steps": 1440,
+    "stable_seconds": 0.0,
+    "policy_diagnostics": {
+      "steps": 1440,
+      "authorized_steps": 10,
+      "final_requested_steps": 10,
+      "applied_steps": 10,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 6.958333333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0011026505331381263,
+        "max": 0.002019694193362065,
+        "min": 0.0007179929591749927
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.06439726469053689,
+        "max": 0.0867185621193637,
+        "min": 0.054559268642489854
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0015150199908510892,
+        "max": 0.002874842791736453,
+        "min": 0.0009610396394273891
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 2,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.0003937529216848451,
+      "effectiveness_error_max_during_intervention": 0.001807894949553912
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 305,
+    "route": 760022,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 7.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_305\\changed_outcome_traces\\639125760b85.npz",
+    "first_contact": {
+      "vertical_speed": 0.08900706398928644,
+      "horizontal_speed": 0.00668242767941902,
+      "tilt": 0.0009857837701279129,
+      "angular_speed": 0.0202379834541023,
+      "radius": 0.04138128717848629
+    },
+    "steps": 880,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 880,
+      "authorized_steps": 7,
+      "final_requested_steps": 7,
+      "applied_steps": 7,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 9.0,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0009722144530747749,
+        "max": 0.0015485455098493935,
+        "min": 0.0008001279101521935
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.09063243928863061,
+        "max": 0.12434283334232306,
+        "min": 0.07604520361447765
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.0017392239347269914,
+        "max": 0.0032446714192708613,
+        "min": 0.0013355287827522865
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.0003867816789775158,
+      "effectiveness_error_max_during_intervention": 0.0017175725452813762
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 305,
+    "route": 760019,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 5.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_305\\changed_outcome_traces\\60ff32f604db.npz",
+    "first_contact": {
+      "vertical_speed": 0.07575555734220919,
+      "horizontal_speed": 0.009112398988214504,
+      "tilt": 0.0005840267145021156,
+      "angular_speed": 0.038936014556397926,
+      "radius": 0.053121360468546444
+    },
+    "steps": 796,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 796,
+      "authorized_steps": 10,
+      "final_requested_steps": 10,
+      "applied_steps": 10,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 7.0625,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0014178607650936722,
+        "max": 0.0024020181220452737,
+        "min": 0.0008395646240156665
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.10811204424095004,
+        "max": 0.14026887223006354,
+        "min": 0.08636557842143844
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.002504596661909266,
+        "max": 0.004880880320591042,
+        "min": 0.001359495331405028
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.00037654056361767496,
+      "effectiveness_error_max_during_intervention": 0.0017170853270296327
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 305,
+    "route": 760019,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_305\\changed_outcome_traces\\ea7d1c743887.npz",
+    "first_contact": {
+      "vertical_speed": 0.0663291736987047,
+      "horizontal_speed": 0.008664286541838278,
+      "tilt": 0.001291832476057315,
+      "angular_speed": 0.09984608544436387,
+      "radius": 0.05733979333812222
+    },
+    "steps": 753,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 753,
+      "authorized_steps": 7,
+      "final_requested_steps": 7,
+      "applied_steps": 7,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 6.125,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.001951337322814341,
+        "max": 0.002565663963312156,
+        "min": 0.0014247819970193913
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.1258463614835821,
+        "max": 0.14787341200400414,
+        "min": 0.11243040996766145
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.003368837736799462,
+        "max": 0.004989680442653464,
+        "min": 0.0023636234251450997
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 1,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.0003615712132314692,
+      "effectiveness_error_max_during_intervention": 0.0015398809300274374
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 305,
+    "route": 760030,
+    "level": 0.295,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 7.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_305\\changed_outcome_traces\\43507546d91a.npz",
+    "first_contact": {
+      "vertical_speed": 0.07043560577728505,
+      "horizontal_speed": 0.007905665011591515,
+      "tilt": 0.00034035184367816105,
+      "angular_speed": 0.028084893978387232,
+      "radius": 0.05263376753558618
+    },
+    "steps": 904,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 904,
+      "authorized_steps": 3,
+      "final_requested_steps": 3,
+      "applied_steps": 3,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 7.104166666666667,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.0021292053801949063,
+        "max": 0.0026506274770195376,
+        "min": 0.0012847815928485403
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.11751915165618239,
+        "max": 0.15268344721655983,
+        "min": 0.055428261849065574
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.004757006528600211,
+        "max": 0.006707134997960365,
+        "min": 0.0020897020293503075
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 3,
+      "effectiveness_error_max": 0.29499999999999993,
+      "effectiveness_error_mean_during_intervention": 0.012837288128217134,
+      "effectiveness_error_max_during_intervention": 0.15229288680185404
+    }
+  },
+  {
+    "phase": "shifted",
+    "model_seed": 305,
+    "route": 760028,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 2.0,
+    "clock": 4.0,
+    "kind": "rescue",
+    "outcome": "stable_landing",
+    "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\final\\shifted\\candidate_305\\changed_outcome_traces\\d7b2f2c949d7.npz",
+    "first_contact": {
+      "vertical_speed": 0.13361596680623908,
+      "horizontal_speed": 0.007139722114248219,
+      "tilt": 0.0007778943244380789,
+      "angular_speed": 0.030920174616924864,
+      "radius": 0.030219695957183
+    },
+    "steps": 903,
+    "stable_seconds": 1.0,
+    "policy_diagnostics": {
+      "steps": 903,
+      "authorized_steps": 10,
+      "final_requested_steps": 10,
+      "applied_steps": 10,
+      "applied_scope": "exact post-saturation motor delta",
+      "first_intervention_seconds": 6.020833333333333,
+      "interpretation": "First activation is a timeline marker, not proof that this isolated action caused the terminal failure.",
+      "predicted_harm_when_authorized": {
+        "mean": 0.00145876423442508,
+        "max": 0.002756623525969198,
+        "min": 0.0006648395092124986
+      },
+      "predicted_rescue_when_authorized": {
+        "mean": 0.10232610679027507,
+        "max": 0.135650087633887,
+        "min": 0.07213858592558887
+      },
+      "predicted_base_success_when_authorized": {
+        "mean": 0.002456714480532105,
+        "max": 0.005724222921454169,
+        "min": 0.0009521825822183245
+      },
+      "screen_veto_steps": 0,
+      "interrupted_steps": 2,
+      "effectiveness_error_max": 0.29600000000000004,
+      "effectiveness_error_mean_during_intervention": 0.00041536392647497364,
+      "effectiveness_error_max_during_intervention": 0.00217986187095498
+    }
+  }
+]

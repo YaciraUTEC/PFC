@@ -1,0 +1,9 @@
+{
+  "created_epoch": 1794829619.7900796,
+  "final_test_unopened": true,
+  "h3_initial_still_running": true,
+  "evidence": "Development route710017 at29.6% in both noise regimes timed out;12of23 authorized active steps had predicted rescue-minus-harm below0. This is evidence of a design inconsistency, not proof that those steps caused timeout.",
+  "change": "Expose continuation_gain as a parameter; preserve-.005 for every completed control. Test0.0 for both proposal sources with/without the physical screen on all128H3development cases.",
+  "selection": "Combine the14 original configurations and4 new ones with the same prespecified protection/gain ranking. Prefer nonnegative continuation on an exact metric-rank tie; validate selection with five seeds and untouched final routes.",
+  "runtime_integrity": "Do not modify policy.py until the running initial H3 process finishes. Original14-way conclusion is preserved byte-for-byte."
+}

@@ -1,0 +1,28 @@
+{
+  "closed": true,
+  "finished_epoch": 1794837566.3867714,
+  "conclusion": "En8 rutas independientes FlashSAC nativo rescata6 y pierde2 aterrizajes de la base; el filtro no elimina esas perdidas. Forzar la propuesta causa55 perdidas; filtrar deja51. La compuerta contrafactual conservadora no gana ni pierde en este bloque. Se elige para afinado por proteccion medida, sin declarar mejora: FlashSAC contrafactual con continuacion no negativa y sin filtro. La tolerancia de continuacion0 y-.005 empatan con las etiquetas naturales corregidas; el diagnostico causal previo de etiquetas restauradas no se transfiere.",
+  "selected": {
+    "name": "flashsac_nonnegative_continuation",
+    "spec": {
+      "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+      "mode": "counterfactual",
+      "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate.pt",
+      "minimum_gain": 0.02,
+      "maximum_harm": 0.005,
+      "uncertainty_penalty": 1.0,
+      "continuation_gain": 0.0
+    },
+    "metrics": {
+      "cases": 128,
+      "success": 0.9375,
+      "gains": 0,
+      "losses": 0,
+      "critical_difference": 0.0,
+      "mild_losses": 0,
+      "exact_losses": 0
+    },
+    "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\continuation_flights\\flashsac_nonnegative_continuation.json"
+  },
+  "next": "H4: cinco semillas, afinado anclado, agregacion de estados compuestos y ablacion factorial cabeza/compuerta."
+}

@@ -1,0 +1,10 @@
+{
+  "closed": true,
+  "finished_epoch": 1794832581.8519182,
+  "conclusion": "The complete label acquisition leaves the original composed student trajectory exactly identical to fresh natural execution, including four-option counterfactual queries.",
+  "maximum_history_error": 0.0,
+  "prefix_replay_checks": 82,
+  "maximum_prefix_error": 0.0,
+  "pilot_excluded": true,
+  "seconds": 106.48823499679565
+}

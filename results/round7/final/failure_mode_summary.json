@@ -1,0 +1,33 @@
+{
+  "summary": {
+    "rescue": {
+      "cases": 52,
+      "route_clusters": 29,
+      "outcomes": {
+        "stable_landing": 52
+      },
+      "by_phase": {
+        "primary": 5,
+        "confirmation": 15,
+        "shifted": 32
+      },
+      "median_applied_steps": 6.0
+    },
+    "loss": {
+      "cases": 23,
+      "route_clusters": 19,
+      "outcomes": {
+        "timeout": 17,
+        "early_contact": 4,
+        "hard_landing": 2
+      },
+      "by_phase": {
+        "primary": 1,
+        "confirmation": 12,
+        "shifted": 10
+      },
+      "median_applied_steps": 5.0
+    }
+  },
+  "scope": "Descriptive audit of all changed candidate outcomes in the three frozen phases; repeated settings/model seeds are not independent routes and these counts do not establish a causal failure mechanism."
+}

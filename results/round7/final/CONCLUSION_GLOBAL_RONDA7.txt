@@ -1,0 +1,169 @@
+CONCLUSIÓN INTEGRADA: DEMOSTRACIONES Y AUTORIZACIÓN DE INTERVENCIÓN GTrXL
+
+2026-11-16 13:28:44.834922
+
+
+
+La recomendación operativa de esta evaluación es: DSLPID + estimador estructurado + RecoveryDescent; residual OFF.
+
+La decisión responde al criterio declarado antes de abrir las rutas finales: mejora crítica con límite inferior del IC 95% positivo en la prueba principal y en la confirmación, ausencia de nuevas pérdidas de aterrizajes de la base en desarrollo y pruebas, y latencia completa dentro del periodo de control. No se cambió ese criterio después de ver resultados.
+
+Esta exigencia es más fuerte que maximizar el porcentaje medio de aterrizajes: una política puede rescatar muchos vuelos y perjudicar algunos que DSLPID ya resolvía. Las dos cantidades se informan por separado. Recomendar la base bajo el requisito de preservación no equivale a afirmar que gane en todos los promedios.
+
+
+
+La cifra de 36 ejemplos describía una etapa inicial. La auditoría de la clonación realmente utilizada encontró 316 demostraciones con el nivel nominal de ruido, 284 con una falla presente: 300 sin compensación activa y 16 con correcciones activas exitosas, distribuidas en 8 escenarios. Esas 16 aportaban 7238 pasos activos y 77 inicios de activación. Sobremuestrear esos pasos no crea trayectorias independientes. El problema era la diversidad efectiva de maniobras y decisiones, no solamente el número bruto de episodios con una falla presente.
+
+Esta ejecución añadió 256 escenarios y 2101 trayectorias maestras exitosas; 2069 contienen intervención activa. El maestro NMPC usó efectividad estimada; su generación fue fuera de línea y su uso como maestro no demuestra que pueda ejecutarse en tiempo real.
+
+La ampliación inicial con la supervisión original produjo colapso. Se identificaron 84 pares de entrada idéntica con órdenes base y maestra incompatibles para esa misma supervisión. Una maniobra factible puede enseñar cómo actuar aunque DSLPID también tenga éxito; eso no es una etiqueta de que convenga intervenir. Separé la propuesta física de la autorización y comparé cuatro recetas con el mismo presupuesto.
+
+Con la salida de cuatro correcciones físicas y supervisión separada, la comparación 0 frente a 256 escenarios adicionales, tres semillas y 3600 actualizaciones por ajuste, redujo el MSE medio de 0.01768882 a 0.01298177: mejora del 26.61%. La fidelidad se midió en ocho rutas maestras independientes; se completaron cinco réplicas. Este resultado valida una mejora al imitar acciones. No demuestra por sí mismo una mejora del aterrizaje.
+
+Los ajustes de propuestas usaron learning rate máximo 1e-4, calentamiento 200 pasos, descenso cosenoidal hasta 1e-5, secuencias de hasta 128 pasos con hasta 32 previos de calentamiento y batch 8. Se mantuvo el presupuesto 3600 para comparar cantidad de datos; no se eligió una parada temprana que pareciera buena sólo por abstenerse. El afinado posterior modificó únicamente la cabeza: 1200 actualizaciones, learning rate máximo 3e-5, calentamiento 100, descenso cosenoidal y anclaje 0.3 a la propuesta anterior. Ese afinado fue supervisado; no fue una nueva campaña online FlashSAC.
+
+
+
+Para aprender cuándo y cuánto, las etiquetas compararon DSLPID hasta el final con opciones de la política realimentada: 1 paso a amplitud completa, 24 a media amplitud, 96 completos y hasta el terminal. Se recalculaba la propuesta en cada paso y se conservaba el veto interno del modelo. Cada consulta tuvo dos futuros de ruido pareados. Los desenlaces fueron ambos aterrizan, rescate, pérdida y ambos fallan. El beneficio buscado era P(rescate)-P(pérdida), no una simple mejora de una recompensa intermedia.
+
+La regla externa exige beneficio estimado superior a 0.02 y daño estimado, penalizado por desacuerdo, inferior a 0.005. Ese 0.005 es una probabilidad del modelo; el 0.005 del veto interno de nuestra implementación anterior compara valores de retorno y tiene otras unidades. Ninguno convierte por sí mismo un desacuerdo de tres redes en un intervalo de confianza calibrado. Dos futuros por consulta tampoco certifican un riesgo del 0.5%.
+
+Nuestro primer método de restaurar simulaciones no conservaba la continuación natural. Se rechazaron sus etiquetas y se regeneró toda la supervisión de compuertas con simuladores independientes, reconstruidos desde el inicio mediante el historial exacto de acciones. También se verificó que consultar continuaciones no alterara el vuelo del alumno. Los pesos de imitación H1, generados sin bifurcaciones, conservaron validez. No se mezclaron etiquetas rechazadas con la evaluación corregida.
+
+La adquisición final contiene 240 escenarios de entrenamiento y 240 de calibración. Los dos futuros y las cuatro opciones no se cuentan como nuevos escenarios. La agregación adicional siguió estados del alumno compuesto previo y etiquetó las propuestas refinadas; fue una ronda limitada, no una reproducción completa de DAgger ni una demostración de convergencia de su distribución.
+
+Soporte train: 240 rutas, 1720 estados consultados, 6880 consultas de opción y 13752 registros opción/futuro. Los rescates aparecen en 154 estados y 62 rutas; sus 347 registros no son recuperaciones independientes.
+
+Soporte calibration: 240 rutas, 1732 estados consultados, 6928 consultas de opción y 13843 registros opción/futuro. Los rescates aparecen en 184 estados y 71 rutas; sus 440 registros no son recuperaciones independientes.
+
+
+
+El filtro físico ensayado comparó propuestas y OFF mediante predicción breve, fuerza/par disponibles, frenado y plazo. No era un certificado de alcanzabilidad. En la ablación de desarrollo no eliminó las pérdidas de la política nativa; al forzar propuestas redujo 55 pérdidas a 51, un resultado insuficiente. Se descartó de la configuración elegida. La continuidad con beneficio no negativo empató en los vuelos corregidos con la tolerancia anterior: no se le atribuye una mejora experimental que no ocurrió.
+
+La comparación factorial del afinado se cerró con cinco semillas antes de la prueba final. Cada familia incluye 960 casos combinados de cuatro rutas, varios regímenes y tres instantes; no 960 rutas independientes:
+
+  Propuesta anterior + compuerta inicial: rescates 4; pérdidas 6; éxito 84.688%; diferencia crítica estimada -0.833 puntos.
+
+  Propuesta anterior + compuerta actualizada: rescates 3; pérdidas 3; éxito 84.896%; diferencia crítica estimada 0.000 puntos.
+
+  Propuesta afinada + compuerta inicial: rescates 3; pérdidas 5; éxito 84.688%; diferencia crítica estimada -0.833 puntos.
+
+  Propuesta afinada + compuerta actualizada: rescates 0; pérdidas 4; éxito 84.479%; diferencia crítica estimada -1.667 puntos.
+
+Se descartó la cabeza refinada. El candidato experimental seleccionado conserva la propuesta FlashSAC anterior y usa la compuerta actualizada. Ninguna familia satisfizo la preservación de desarrollo; esa condición sigue siendo vinculante aunque otra media de prueba resulte favorable.
+
+
+
+La prueba reservada utilizó 64 rutas principales, 320 de confirmación crítica y 32 con otros instantes de falla, cinco réplicas candidatas y cinco referencias donde correspondía. Las rutas fueron distintas de entrenamiento, calibración y desarrollo. Los intervalos remuestrean rutas y semillas de modelo; las repeticiones de ruido, nivel e instante no se tratan como sujetos independientes. Todos los controladores conservaron el mismo criterio: contacto dentro de todos los límites y un segundo estable antes de 30 segundos.
+
+En las siguientes cifras la diferencia e IC corresponden a 29.5/29.6% con efectividad estimada; rescates y pérdidas cuentan todos los regímenes de esa fase, y pueden repetir una ruta bajo varios ajustes:
+
+  Principal, candidato: diferencia +0.3125 pp; IC 95% [+0.0000, +1.1719]pp; rescates 5, pérdidas 1; 64 rutas y cinco réplicas.
+
+  Principal, referencia anterior: diferencia +9.2969 pp; IC 95% [+2.7344, +16.5625]pp; rescates 155, pérdidas 45.
+
+  Confirmación, candidato: diferencia +0.0469 pp; IC 95% [-0.2500, +0.3906]pp; rescates 15, pérdidas 12; 320 rutas y cinco réplicas.
+
+  Otros instantes, candidato: diferencia +1.7188 pp; IC 95% [+0.2344, +3.7500]pp; rescates 32, pérdidas 10; 32 rutas y cinco réplicas.
+
+  Otros instantes, referencia anterior: diferencia +20.7031 pp; IC 95% [+14.3750, +27.4219]pp; rescates 339, pérdidas 74.
+
+  Auditoría descriptiva global de cambios, rescue: 52 casos en 29 rutas; desenlaces {'stable_landing': 52}; fases {'primary': 5, 'confirmation': 15, 'shifted': 32}; mediana de pasos de corrección realmente aplicada 6.0.
+
+  Auditoría descriptiva global de cambios, loss: 23 casos en 19 rutas; desenlaces {'timeout': 17, 'early_contact': 4, 'hard_landing': 2}; fases {'primary': 1, 'confirmation': 12, 'shifted': 10}; mediana de pasos de corrección realmente aplicada 5.0.
+
+
+
+Curva crítica de éxito estable en la prueba principal, efectividad estimada. Valores en%; redes promediadas sobre cinco réplicas, 64 rutas por celda:
+
+Ruido | Falla RPM | DSLPID | GTrXL anterior | GTrXL con compuerta nueva
+
+x 1 | 29.5 | 78.125 | 89.688 | 78.125
+
+x 1 | 29.6 | 78.125 | 83.750 | 78.438
+
+x 2 | 29.5 | 79.688 | 89.375 | 79.688
+
+x 2 | 29.6 | 73.438 | 83.750 | 74.375
+
+
+
+Falla significa pérdida de RPM de un motor; la fuerza depende aproximadamente del cuadrado de la velocidad del rotor. A la misma orden, 29.5/29.6% de pérdida RPM equivale a 50.30/50.44% de pérdida de capacidad de empuje de ese motor. Una pérdida del 50% de RPM equivaldría a una pérdida del 75% de la capacidad de empuje de ese motor a igual orden. Se mantienen estas unidades al interpretar el límite de hover y las curvas. Ruido doble significa duplicar la desviación estándar del ruido gaussiano añadido a velocidad lineal y angular: 0.002 a 0.004 en sus respectivas unidades; la varianza se cuadruplica. No se estudiaron todas las formas de ruido de un dron real.
+
+El diagnóstico de una pérdida muestra el problema de retorno. En la ruta 740035, réplica 304, 29.6% estimado y ruido normal, las historias coinciden exactamente hasta 2.2708 s. La compuerta inicia una opción 24 pasos a media amplitud; el motor fallado está saturado y la corrección modifica principalmente los otros motores. Se aplican siete pasos efectivos. DSLPID solo aterriza a 13.4375 s, mientras la política compuesta agota 30 s. Al final conserva un giro de aproximadamente 4.3 rad/s y el supervisor espera frenado cerca de 0.29 m; la corrección ya estaba apagada. No hay un fallo de desconexión del anti-windup: el controlador sí recibe la orden aplicada.
+
+La ablación causal acotada desde el mismo estado y RNG reproduce exactamente la base y el vuelo compuesto: base estable 645 pasos; compuesto con veto interno de nuestra implementación anterior timeout 1440; opción 24 con veto interno de nuestra implementación anterior timeout 1440; opción 24 sin ese veto y luego base estable 1137 pasos. El apagado de la actuación a los siete pasos lo produjo el veto interno, mientras la compuerta externa mantenía su opción. La primera orden divergente es un marcador temporal; no se afirma que su efecto aislado explique todo el vuelo. Esta comparación individual demuestra una interacción de políticas en ese estado, no que quitar el veto globalmente sea mejor.
+
+La elegibilidad heredada también valora la propuesta a amplitud completa aunque la opción seleccionada aplique la mitad. En el paso 115 del caso diagnosticado, la ventaja mínima predicha para la propuesta completa era 0.0081 y para la mitad 0.0032, a ambos lados del umbral 0.005. Es una inconsistencia entre la elegibilidad y la acción escalada. Corregir esa evaluación por amplitud apagaría antes en ese instante: este dato no demuestra que el ajuste aislado cure el vuelo. Refuerza la necesidad de definir y valorar una opción de control coherente en lugar de superponer decisiones con objetivos distintos.
+
+El ensayo de forzar la red siempre no equivale al de autorizar selectivamente opciones sin el veto interno. Por eso los grandes fallos del primero no descartan el segundo. La pila evaluada combina un veto cuyo crítico Bellman asume futuras decisiones de la política neuronal con una compuerta que intenta predecir aterrizaje al ejecutar una opción y volver a DSLPID. Sus objetivos y continuaciones difieren. La evidencia actual no autoriza sustituir esa pila por una variante nueva sin su propio estudio; sí permite rechazar la adopción de la pila que se evaluó.
+
+El diagnóstico del rescate 740029 muestra capacidad útil: con ruido normal la velocidad horizontal al contacto pasa de 0.766 a 0.154 m/s y la vertical de 0.203 a 0.172 m/s; se logra un segundo estable. Fueron tres pasos de corrección. Repetir esa ruta con ruido doble produce otro registro de rescate, no otra ruta independiente. No todos los beneficios son cruces microscópicos del umbral.
+
+La comprobación descriptiva de 30% usa las primeras cuatro rutas, 16 casos de la réplica 301: 14 vuelos tuvieron corrección aplicada tras saturar y ninguno aterrizó estable. Esa observación no es una demostración de imposibilidad física universal. El límite de hover balanceado no equivale a un teorema de imposibilidad de todo aterrizaje dinámico.
+
+
+
+La formulación global que resulta separa habilidad, beneficio y retorno. La imitación debe enseñar una propuesta física factible, sin confundirla con necesidad. La autorización debe comparar opciones realmente ejecutadas y una continuación de respaldo coherente, incluyendo las memorias del controlador, del estimador y del supervisor. Apagar una red no deshace la trayectoria ni restablece las integrales. Comparar DSLPID desde un estado ya modificado tampoco equivale a preservar el vuelo que DSLPID habría realizado desde el inicio.
+
+Una estructura causal más clara mantendría la predicción de éxito de la base independiente de la amplitud y duración elegidas para la intervención, conservando el contexto observado y la propuesta original como información. En el modelo genérico de cuatro clases esa invariancia no está impuesta: en la misma consulta del caso 740035 la probabilidad marginal asignada a la base varía entre 0.66% y 1.70% al cambiar la opción. Esto es un diagnóstico de consistencia del modelo, no una prueba de mala calibración probabilística basada en un solo desenlace.
+
+También hay que distinguir dos objetivos probabilísticos. La regla ensayada limita P(base acierta, opción falla), una pérdida conjunta. No limita directamente P(opción falla dado que base acierta). En el caso 740035, las propias salidas del modelo dan 0.375% de daño conjunto y 0.659% de éxito base: daño condicionado a un éxito base de aproximadamente 56.9%. El límite conjunto 0.5% permitía actuar porque el modelo consideraba casi imposible el éxito de DSLPID. Estas cifras son predicciones del modelo, no frecuencias empíricas ni cotas calibradas. Una formulación orientada a preservar aterrizajes necesita distinguir explícitamente éxito de base, preservación condicionada y rescate condicionado; eso alinea el objetivo, sin convertir una red en certificado físico.
+
+Una parametrización que separa los objetivos sería p_B(h)=P(Y_B=1|h), s(h,o)=P(Y_o=1|Y_B=1,h) y r(h,o)=P(Y_o=1|Y_B=0,h). Aquí h contiene el historial observable y las memorias pertinentes; o define una opción completa y realmente ejecutada, incluida su amplitud, duración, saturación, veto y retorno. Entonces P(ambos aciertan)=p_B*s, P(daño)=p_B*(1-s), P(rescate)=(1-p_B)*r y P(ambos fallan)=(1-p_B)*(1-r). El beneficio esperado de aterrizaje es Delta=(1-p_B)*r-p_B*(1-s). Esta factorización impone que el éxito marginal de la base no cambie al elegir otra opción.
+
+Una regla coherente exigiría simultáneamente una cota inferior positiva del beneficio, una cota superior aceptable del daño condicionado 1-s y viabilidad física del retorno antes del plazo. El modelo ensayado no proporciona esas cotas calibradas: la desviación entre miembros de un ensemble no las sustituye. Las probabilidades conjuntas son contrafactuales definidos por las continuaciones del simulador con futuros de ruido pareados; su interpretación depende de ese modelo y de ese acoplamiento. No se presentan como una garantía de preservación observable en un dron real.
+
+Dos futuros por consulta ayudan a reducir variación de etiquetas, pero no certifican un riesgo raro. Como referencia matemática, con cero pérdidas en n ensayos protegidos independientes, el límite binomial unilateral 95% es 1-0.05**(1/n): se necesitan al menos 598 para que sea menor del 0.5%, incluso antes de considerar múltiples decisiones, modelos o selección. Esta cifra ilustra la dificultad de certificar ese umbral; no es una afirmación de que añadir 598 trayectorias arbitrarias arregle el controlador. Las rutas repetidas, opciones y cuadros correlacionados de esta ejecución no satisfacen por contarse varias veces ese requisito de independencia.
+
+Para defender preservación por vuelo hace falta una regla de retorno que mantenga viable el aterrizaje, no sólo una predicción de recompensa o una condición instantánea de RPM. Un respaldo que puede permanecer en el aire indefinidamente satisface ciertas nociones de seguridad y aun así falla aquí. La condición pertinente es alcanzar el conjunto terminal de aterrizaje con tiempo para estabilizarse antes del plazo, atendiendo al giro, altura, frenado, fuerza/par, saturación e incertidumbre. El filtro aproximado ensayado no demostró esa propiedad. Las propuestas de una gestión coherente de opciones y una representación causal separada son formulaciones de diseño; esta ejecución no demuestra su superioridad global.
+
+La autorización también debe referirse a la corrección que realmente llegará a los motores después de saturar, con sus efectos acoplados en fuerza y par. En el caso diagnosticado el motor averiado ya estaba en su máximo, mientras cambiaban los otros tres. Respetar cada límite de RPM no demuestra que se conserve capacidad de frenado ni la viabilidad del retorno.
+
+La ampliación de datos debe juzgarse por escenarios y estados de decisión relevantes: inicio, continuación, retirada de compensación y transferencia al respaldo. Más cuadros de una maniobra no reemplazan ejemplos pareados donde intervenir perjudica una recuperación de la base. La evidencia de esta ronda confirma mejora de fidelidad al reparar supervisión y ampliar diversidad; no confirma una mejora de aterrizaje segura de la pila neuronal probada. Tampoco demuestra incapacidad intrínseca del Transformer.
+
+
+
+Latencia medida de cadena completa, integración física excluida:
+
+  DSLPID: percentil 95 1.131 ms, percentil 99 1.354 ms; percentil 95 protegido por fases 1.161 ms. Periodo disponible 20.833 ms.
+
+  GTrXL+FlashSAC anterior: percentil 95 4.239 ms, percentil 99 4.574 ms; percentil 95 protegido por fases 4.239 ms. Periodo disponible 20.833 ms.
+
+  Candidato semilla 301: percentil 95 7.536 ms, percentil 99 8.571 ms; percentil 95 protegido por fases 7.655 ms. Periodo disponible 20.833 ms.
+
+  Candidato semilla 302: percentil 95 7.372 ms, percentil 99 8.014 ms; percentil 95 protegido por fases 7.434 ms. Periodo disponible 20.833 ms.
+
+  Candidato semilla 303: percentil 95 7.384 ms, percentil 99 7.996 ms; percentil 95 protegido por fases 7.437 ms. Periodo disponible 20.833 ms.
+
+  Candidato semilla 304: percentil 95 7.303 ms, percentil 99 7.933 ms; percentil 95 protegido por fases 7.350 ms. Periodo disponible 20.833 ms.
+
+  Candidato semilla 305: percentil 95 7.216 ms, percentil 99 7.920 ms; percentil 95 protegido por fases 7.256 ms. Periodo disponible 20.833 ms.
+
+La medición se realizó sin trabajadores de entrenamiento/evaluación simultáneos. Son tiempos empíricos, no una garantía de tiempo real duro. Los modelos, código y umbrales siguieron congelados. La planificación auxiliar de una referencia con ocho procesos utilizó la vía ya contrastada con la ejecución de dieciséis en los diez modelos; se registró como cambio de programación de recursos, no de política.
+
+
+
+Recuento de evaluación final: {'baseline_flights': 5120, 'logical_cases': 38400, 'fresh_simulations': 13796, 'verified_off_reuse': 24604, 'identical_policy_reuse': 0}. Los casos de abstención completa reutilizan el vuelo base sólo cuando se verifica identidad de la política durante toda su historia. No se cuentan como simulaciones independientes nuevas. Los diagnósticos adicionales y el desarrollo se documentan aparte.
+
+Las 375 pruebas automatizadas pasaron. La adquisición final verificó 35540 reproducciones naturales de prefijos con error cero. La precomprobación de los diez modelos, 48 casos de desarrollo cada uno, conservó desenlaces, pasos y posición terminal exacta y coincidencia de las comprobaciones OFF CPU/CUDA. No se entrenó Mamba. Todo el trabajo y los artefactos quedaron en la carpeta E:\UTEC\Tesis\TesisNicol, usando su entorno conda existente.
+
+Los tiempos por etapa están en timing_audit.json. Incluyen generación de datos, entrenamiento, validación y los intentos preliminares rechazados. Sus intervalos pueden solaparse y no deben sumarse como tiempo de pared ni llamarse todos tiempo de entrenamiento. La afinación de las cinco cabezas tomó alrededor de un minuto; la adquisición adicional de entrenamiento/calibración tomó unos 29 minutos en paralelo; la validación factorial 12.7 min y la precomprobación numérica 11.2 min. El coste principal posterior fue la evaluación completa de vuelos.
+
+
+
+La evaluación reservada completa (H5) ocupó 3.403 horas de pared; la medición de latencia 70.0 segundos y la generación del informe automático 15.0 segundos. Es tiempo de evaluación e informe, no entrenamiento.
+
+
+
+Fundamento primario y límites: DAgger justifica aprender también en estados inducidos por el alumno, sin convertir una sola ronda en garantía de convergencia: https://proceedings.mlr.press/v15/ross11a.html . DPRL restringe desviaciones respecto a una base a regiones con soporte suficiente; sus garantías no se transfieren a nuestra red recurrente continua por usar un ensemble: https://proceedings.mlr.press/v258/sharma25a.html . Los filtros predictivos y gatekeeper requieren respaldo y supuestos verificables; sus garantías no pertenecen al filtro heurístico que ensayamos y una seguridad de horizonte infinito no implica cumplir nuestro plazo de aterrizaje: https://arxiv.org/abs/1812.05506 y https://arxiv.org/abs/2508.09963 .
+
+
+
+Estos resultados corresponden a simulación local con la planta y el ruido descritos; no constituyen validación de vuelo en un dron real.
+
+La evaluación queda resuelta con la recomendación y las razones cuantificadas anteriores. Se conservan las mejoras comprobadas de supervisión, datos, adquisición y auditoría. El afinado y el filtro no se incorporan al controlador operativo; la compuerta neuronal permanece como resultado experimental. La configuración concreta recomendada es deployment_recommendation.json; los candidatos guardados no constituyen autorización de despliegue.
+
+
+
+Archivos de evidencia: final_results.json; INFORME_FINAL.txt; tabla_por_falla.csv; comparacion_final.png; demostraciones_y_supervision.png; diagnostico_intervencion.png; changed_outcomes.json; label_support_audit.json; gate_failure_diagnostic_304.json; h6_switching_case_ablation_conclusion.json; baseline_marginal_consistency_diagnostic.json; native_amplitude_consistency_diagnostic.json; risk_definition_diagnostic.json; timing_audit.json.

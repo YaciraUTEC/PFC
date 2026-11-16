@@ -2,6 +2,11 @@
 
 Control de un cuadricóptero Crazyflie ante pérdida de efectividad en un motor.
 
+La **ronda 7 terminó el 16 de noviembre de 2026**. Se conserva DSLPID con
+estimador estructurado y descenso coordinado, con residual neuronal apagado.
+[Resultados e informes de ronda 7](results/round7/final/README.md) ·
+[Código y alcance](experiments/round7/README.txt).
+
 La **ronda 5 terminó** el 12 de noviembre de 2026, con 75 modelos entrenados,
 129 bloques de evaluación y auditoría final aprobada.
 Los [resultados completos](results/round5/README.md) incluyen informe, tablas,
@@ -81,8 +86,8 @@ DSLPIDControl base y agrega estos componentes mediante LandingEnv.
 
 Los [comprobantes de validacion](results/round6/phase1/phase1_conclusion.json)
 registran 71 ganancias pareadas y cero perdidas en 24 trayectorias por
-condicion. Esta fase esta cerrada; la comparacion neuronal de la ronda 6
-sigue en curso y no forma parte de esta publicacion.
+condicion. Esta fase y la comparacion neuronal de la ronda 6 estan cerradas;
+los resultados finales se conservan en results/round6/final.
 
 ## Codigo neuronal y entrenamiento de la ronda 6
 
@@ -95,9 +100,18 @@ La [guia de entrenamiento](experiments/round6/README.txt) describe dependencias,
 datos, busqueda de parametros y orden de ejecucion. Se conservan las licencias
 y el [comprobante de fuentes congeladas](results/round6/training_code/source_snapshot.json).
 Los pesos y datasets permanecen fuera de Git. La evaluacion final de ronda 6
-sigue en curso; las mejoras posteriores propuestas para la compuerta quedan pendientes.
+esta cerrada; el estudio posterior de la compuerta se documenta en ronda 7.
 
 
 ### Evaluación final de recuperación y aterrizaje — ronda 6
 
 [Código y documentación](experiments/round6/README.txt) · [Resultados, tablas y gráficas](results/round6/final/README.md). Comparación Mamba-3/GTrXL con PPO, FlashSAC y FQL, schedules de ruido y NMPC; cinco semillas por configuración y aterrizaje estricto. La mejora media de FlashSAC + GTrXL se distingue del criterio conservador de preservar todos los éxitos de DSLPID.
+
+## Ronda 7: demostraciones y autorización de intervención
+
+Se publica el [código congelado de ronda 7](experiments/round7/README.txt), las
+pruebas de ingeniería y el [estudio final completo](results/round7/final/README.md).
+Sólo GTrXL: más demostraciones, supervisión reparada, compuerta contrafactual,
+ablaciones, afinado supervisado y validación reservada con cinco réplicas.
+La mejora de imitación y el tiempo de cálculo se distinguen del criterio de
+aterrizaje y preservación de éxitos del controlador base.

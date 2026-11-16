@@ -1,0 +1,10 @@
+{
+  "verified": true,
+  "verified_epoch": 1794853752.6901767,
+  "method": "Both final scientific PNGs actually opened and visually inspected: complete labels, units, no clipped content, correct evaluated levels, explicit min/max band scope, three seed points and distinction between imitation error and flight success.",
+  "plots": {
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\comparacion_final.png": "3e2430ad99875adb8cbada3f86f920d4309f8c56b086e9ceddd2cd527bc31ae9",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\demostraciones_y_supervision.png": "ed1795b2db39559712208ecdab5a09390a9e78b9b3973ceee6c77ae1108b02c8"
+  },
+  "integrated_report_sha256": "34bfcad4bd953403e2b082b9a96082deba09f78ff6b1ad714d980583b458a03a"
+}
