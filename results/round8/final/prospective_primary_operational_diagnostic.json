@@ -1,0 +1,41 @@
+{
+  "primary_complete_for_operational_policy": true,
+  "operational_gate": 505,
+  "counts": {
+    "active_rescues": 83,
+    "active_preserved_landings": 907,
+    "active_lost_landings": 0,
+    "active_both_fail": 129,
+    "maximum_protected_active_finish_delay_seconds": 7.458333333333333,
+    "protected_active_latest_finish_seconds": 29.3125,
+    "protected_active_cases": 907,
+    "mean_protected_finish_delay_seconds": -0.0042524488239779465,
+    "mean_protected_active_finish_delay_seconds": -0.026644615950018373,
+    "cases": 6656,
+    "base_successes": 5683,
+    "candidate_successes": 5766,
+    "gains": 83,
+    "losses": 0,
+    "base_percent": 85.38161057692308,
+    "candidate_percent": 86.62860576923077,
+    "difference_pp": 1.2469951923076923,
+    "active_cases": 1119
+  },
+  "critical_estimated_route_statistics": {
+    "mean": 0.054036458333333336,
+    "lower95": 0.036458333333333336,
+    "upper95": 0.07291666666666667,
+    "route_clusters": 384,
+    "replicates": 20000,
+    "scope": "Route-cluster paired bootstrap for the development-selected operational checkpoint; repeated noise and severity settings remain clustered."
+  },
+  "unique_rescued_routes": 37,
+  "baseline_failure_types_among_rescues": {
+    "hard_landing": 22,
+    "timeout": 14,
+    "early_contact": 47
+  },
+  "rescues_latest_finish_seconds": 29.541666666666668,
+  "rescues_max_contact_vertical": 0.1364823164883537,
+  "scope": "Descriptive primary summary only; policy frozen and unchanged, confirmation and assigned evidence still pending. No checkpoint reselection."
+}

@@ -1,0 +1,10 @@
+{
+  "seconds": 1743.3432393074036,
+  "exit_code": 0,
+  "args": [
+    "-m",
+    "experiments.round8.active_data",
+    "--workers",
+    "16"
+  ]
+}

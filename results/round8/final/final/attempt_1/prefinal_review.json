@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "formal_outcomes_unread": true,
+  "checks_sha256": {
+    "selection.json": "574a94d3edbb5c36e9b666b96c6ef6dcafd40499eaf072995bdcb613fb46c874",
+    "preflight.json": "6a8626a9a563ca2a1eebf182a21fe1c5585c9e6779c2c89f9e5e09a5fc693ff2",
+    "latency.json": "a5a67482266d92e853083f43e7f4446211f103fd01911da9ea1f3c3d803e4072",
+    "tests.json": "350dfd403842d25c9f165f62fc1e6c0e4b83777e2c4104b728ef7c0814454255"
+  },
+  "compaction_proofs": {
+    "h10_compact_first_decisions": "64696dbb4ae7a4aeb04f9761f639ad0a46032f1180e1ce1a0acc5a64b8c7241d",
+    "h10_compact_physical": "9ed95f6c6ee5418e738823eb55381983a6d61ad9263c6e03b4ffa357ae141f2a",
+    "h10_compact_near_threshold": "9e396c7c62d718421575327998a44dd06ea844db1a863b60ae69c1e19c62eb79",
+    "h10_compact_paired_timing": "1265e386205ee3fe3633d7001d10f1b3e6c9c9a8e5c86d88f723de3eb4174543",
+    "h10_compact_execution": "57d070e76547636d74480c1958460b9c9a7722b6e38508568357ae8e9960a4a3"
+  },
+  "round7_integrity": {
+    "source_count": 250,
+    "artifact_count": 12,
+    "final_manifest_sha": "70a14b9cdc84436a926f1d5e6ca7e53234468ad42897b2b42ad700dba1564686"
+  }
+}

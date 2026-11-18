@@ -1,0 +1,14 @@
+{
+  "seconds": 2.106631278991699,
+  "exit_code": 0,
+  "args": [
+    "-m",
+    "experiments.round8.recalibrate",
+    "--seeds",
+    "501",
+    "502",
+    "503",
+    "504",
+    "505"
+  ]
+}

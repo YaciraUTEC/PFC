@@ -1,0 +1,16 @@
+{
+  "scenarios": 2048,
+  "gains": 67,
+  "losses": 0,
+  "protected_baseline_successes": 1513,
+  "log_e_value": 46.44086109751633,
+  "e_value": 147573952589676412928,
+  "benefit_alpha": 0.0125,
+  "preservation_alpha": 0.0125,
+  "positive_gain_evidence": true,
+  "conditional_harm_upper": 0.0028920601676341185,
+  "maximum_conditional_harm": 0.005,
+  "preservation_evidence": true,
+  "both_statistical_conditions": true,
+  "scope": "One independently assigned estimated-effectiveness critical episode and model per independent scenario. Zero observed losses is still required in every additional stress/curve test. Bound covers the fixed simulated mixture, not universal safety or the risk conditional on actual neural actuation."
+}

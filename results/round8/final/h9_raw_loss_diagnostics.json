@@ -1,0 +1,621 @@
+{
+  "rows": [
+    {
+      "kind": "loss",
+      "case": {
+        "seed": 812092,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "baseline_outcome": "stable_landing",
+      "candidate_outcome": "timeout",
+      "baseline_steps": 1229,
+      "candidate_steps": 1440,
+      "baseline_contact": {
+        "vertical_speed": 0.13455136633436449,
+        "horizontal_speed": 0.010384392947031933,
+        "tilt": 0.00022932025596348696,
+        "angular_speed": 0.01144286799707139,
+        "radius": 0.07453498942651895
+      },
+      "candidate_contact": null,
+      "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\observed_support_v1\\raw\\seed_502\\changed_outcome_traces\\8af3978b4b2a.npz",
+      "option_start_tick": 497,
+      "option_start_seconds": 10.354166666666666,
+      "option_id": 5,
+      "option_description": [
+        24,
+        0.5,
+        false
+      ],
+      "duration": 24,
+      "actual_motor_intervention_steps": 24,
+      "first_actual_motor_intervention_seconds": 10.354166666666666,
+      "prefix_observation_difference": 0.0,
+      "initial_estimated_eta": [
+        0.7062486437603013,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "initial_true_eta_for_audit_only": [
+        0.704,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "initial_physical_delta": [
+        0.0,
+        0.10701027512550415,
+        -0.03231203404128648,
+        -0.07266158628730657
+      ],
+      "initial_forecasts": {
+        "base_success": 0.17282849327349678,
+        "preservation": 0.9917327085864777,
+        "joint_rescue": 0.04397475360943621,
+        "joint_harm": 0.0014288235184519778,
+        "conditional_harm": 0.019247383829686937,
+        "lower_gain": 0.017583526546788193
+      },
+      "forecast_scope": "Conditional_harm is the actual decision risk under max_member",
+      "gate_seed": 502,
+      "source_sha256": "551d6b28d07f603d3c4bcdb5402f5848022d6bfe060b2d6a20978ea8e5036922",
+      "other_gates": {
+        "raw/seed_505": {
+          "outcome": "stable_landing",
+          "stable_landing": true,
+          "decision": {
+            "options_started": 0,
+            "actual_motor_intervention_steps": 0,
+            "first_actual_intervention_seconds": null,
+            "option_start_seconds": null,
+            "scope": "Complete-policy OFF identity verified on entire base history"
+          }
+        },
+        "bootstrap_native/seed_502": {
+          "outcome": "stable_landing",
+          "stable_landing": true,
+          "decision": {
+            "options_started": 0,
+            "actual_motor_intervention_steps": 0,
+            "first_actual_intervention_seconds": null,
+            "option_start_seconds": null,
+            "scope": "Complete-policy OFF identity verified on entire base history"
+          }
+        }
+      }
+    },
+    {
+      "kind": "loss",
+      "case": {
+        "seed": 812100,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "baseline_outcome": "stable_landing",
+      "candidate_outcome": "timeout",
+      "baseline_steps": 1219,
+      "candidate_steps": 1440,
+      "baseline_contact": {
+        "vertical_speed": 0.13418022780998046,
+        "horizontal_speed": 0.005919688680028223,
+        "tilt": 0.0005068807151447082,
+        "angular_speed": 0.0418041260925368,
+        "radius": 0.0693549895416547
+      },
+      "candidate_contact": null,
+      "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\observed_support_v1\\raw\\seed_502\\changed_outcome_traces\\87c0d8129602.npz",
+      "option_start_tick": 93,
+      "option_start_seconds": 1.9375,
+      "option_id": 5,
+      "option_description": [
+        24,
+        0.5,
+        false
+      ],
+      "duration": 24,
+      "actual_motor_intervention_steps": 24,
+      "first_actual_motor_intervention_seconds": 1.9375,
+      "prefix_observation_difference": 0.0,
+      "initial_estimated_eta": [
+        1.0,
+        1.0,
+        0.7839994600051183,
+        1.0
+      ],
+      "initial_true_eta_for_audit_only": [
+        1.0,
+        1.0,
+        0.704,
+        1.0
+      ],
+      "initial_physical_delta": [
+        0.10793661596925193,
+        -0.19798503210101828,
+        0.0,
+        -0.22485916306890905
+      ],
+      "initial_forecasts": {
+        "base_success": 0.4347082728691423,
+        "preservation": 0.9929377994477908,
+        "joint_rescue": 0.13192430728007903,
+        "joint_harm": 0.003069997004706364,
+        "conditional_harm": 0.011776285720296986,
+        "lower_gain": 0.07679335701088061
+      },
+      "forecast_scope": "Conditional_harm is the actual decision risk under max_member",
+      "gate_seed": 502,
+      "source_sha256": "551d6b28d07f603d3c4bcdb5402f5848022d6bfe060b2d6a20978ea8e5036922",
+      "other_gates": {
+        "raw/seed_505": {
+          "outcome": "stable_landing",
+          "stable_landing": true,
+          "decision": {
+            "options_started": 0,
+            "actual_motor_intervention_steps": 0,
+            "first_actual_intervention_seconds": null,
+            "option_start_seconds": null,
+            "scope": "Complete-policy OFF identity verified on entire base history"
+          }
+        },
+        "bootstrap_native/seed_502": {
+          "outcome": "stable_landing",
+          "stable_landing": true,
+          "decision": {
+            "options_started": 0,
+            "actual_motor_intervention_steps": 0,
+            "first_actual_intervention_seconds": null,
+            "option_start_seconds": null,
+            "scope": "Complete-policy OFF identity verified on entire base history"
+          }
+        }
+      }
+    },
+    {
+      "kind": "loss",
+      "case": {
+        "seed": 812103,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "baseline_outcome": "stable_landing",
+      "candidate_outcome": "early_contact",
+      "baseline_steps": 1032,
+      "candidate_steps": 346,
+      "baseline_contact": {
+        "vertical_speed": 0.13407138261212917,
+        "horizontal_speed": 0.008323230258386837,
+        "tilt": 0.00028900208398764524,
+        "angular_speed": 0.020999467905981648,
+        "radius": 0.04164744813994772
+      },
+      "candidate_contact": null,
+      "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\observed_support_v1\\raw\\seed_502\\changed_outcome_traces\\142d1798b5c8.npz",
+      "option_start_tick": 95,
+      "option_start_seconds": 1.9791666666666667,
+      "option_id": 5,
+      "option_description": [
+        24,
+        0.5,
+        false
+      ],
+      "duration": 24,
+      "actual_motor_intervention_steps": 24,
+      "first_actual_motor_intervention_seconds": 1.9791666666666667,
+      "prefix_observation_difference": 0.0,
+      "initial_estimated_eta": [
+        1.0,
+        1.0,
+        0.7869014636296694,
+        1.0
+      ],
+      "initial_true_eta_for_audit_only": [
+        1.0,
+        1.0,
+        0.704,
+        1.0
+      ],
+      "initial_physical_delta": [
+        0.10208258741233894,
+        -0.22166950591968787,
+        0.0,
+        -0.2520057409198138
+      ],
+      "initial_forecasts": {
+        "base_success": 0.3203614985659893,
+        "preservation": 0.9897151231985528,
+        "joint_rescue": 0.12621239069044007,
+        "joint_harm": 0.003294878544678212,
+        "conditional_harm": 0.013425287430627653,
+        "lower_gain": 0.07841070831229449
+      },
+      "forecast_scope": "Conditional_harm is the actual decision risk under max_member",
+      "gate_seed": 502,
+      "source_sha256": "551d6b28d07f603d3c4bcdb5402f5848022d6bfe060b2d6a20978ea8e5036922",
+      "other_gates": {
+        "raw/seed_505": {
+          "outcome": "stable_landing",
+          "stable_landing": true,
+          "decision": {
+            "options_started": 0,
+            "actual_motor_intervention_steps": 0,
+            "first_actual_intervention_seconds": null,
+            "option_start_seconds": null,
+            "scope": "Complete-policy OFF identity verified on entire base history"
+          }
+        },
+        "bootstrap_native/seed_502": {
+          "outcome": "stable_landing",
+          "stable_landing": true,
+          "decision": {
+            "options_started": 0,
+            "actual_motor_intervention_steps": 0,
+            "first_actual_intervention_seconds": null,
+            "option_start_seconds": null,
+            "scope": "Complete-policy OFF identity verified on entire base history"
+          }
+        }
+      }
+    },
+    {
+      "kind": "loss",
+      "case": {
+        "seed": 812100,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "baseline_outcome": "stable_landing",
+      "candidate_outcome": "timeout",
+      "baseline_steps": 1024,
+      "candidate_steps": 1440,
+      "baseline_contact": {
+        "vertical_speed": 0.13220364929664177,
+        "horizontal_speed": 0.009442626829306447,
+        "tilt": 0.0005182035094103141,
+        "angular_speed": 0.0250058917858882,
+        "radius": 0.07496577747237633
+      },
+      "candidate_contact": null,
+      "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\observed_support_v1\\raw\\seed_502\\changed_outcome_traces\\65178b70fe2a.npz",
+      "option_start_tick": 93,
+      "option_start_seconds": 1.9375,
+      "option_id": 5,
+      "option_description": [
+        24,
+        0.5,
+        false
+      ],
+      "duration": 24,
+      "actual_motor_intervention_steps": 24,
+      "first_actual_motor_intervention_seconds": 1.9375,
+      "prefix_observation_difference": 0.0,
+      "initial_estimated_eta": [
+        1.0,
+        1.0,
+        0.7841383380868624,
+        1.0
+      ],
+      "initial_true_eta_for_audit_only": [
+        1.0,
+        1.0,
+        0.704,
+        1.0
+      ],
+      "initial_physical_delta": [
+        0.10907613288543115,
+        -0.20247924992443045,
+        0.0,
+        -0.22962602253603165
+      ],
+      "initial_forecasts": {
+        "base_success": 0.410538149606239,
+        "preservation": 0.9923029352901839,
+        "joint_rescue": 0.14654994019375825,
+        "joint_harm": 0.0031599387033673745,
+        "conditional_harm": 0.012863053985443629,
+        "lower_gain": 0.08774441853721494
+      },
+      "forecast_scope": "Conditional_harm is the actual decision risk under max_member",
+      "gate_seed": 502,
+      "source_sha256": "551d6b28d07f603d3c4bcdb5402f5848022d6bfe060b2d6a20978ea8e5036922",
+      "other_gates": {
+        "raw/seed_505": {
+          "outcome": "stable_landing",
+          "stable_landing": true,
+          "decision": {
+            "options_started": 0,
+            "actual_motor_intervention_steps": 0,
+            "first_actual_intervention_seconds": null,
+            "option_start_seconds": null,
+            "scope": "Complete-policy OFF identity verified on entire base history"
+          }
+        },
+        "bootstrap_native/seed_502": {
+          "outcome": "stable_landing",
+          "stable_landing": true,
+          "decision": {
+            "options_started": 0,
+            "actual_motor_intervention_steps": 0,
+            "first_actual_intervention_seconds": null,
+            "option_start_seconds": null,
+            "scope": "Complete-policy OFF identity verified on entire base history"
+          }
+        }
+      }
+    },
+    {
+      "kind": "loss",
+      "case": {
+        "seed": 812103,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "baseline_outcome": "stable_landing",
+      "candidate_outcome": "early_contact",
+      "baseline_steps": 1032,
+      "candidate_steps": 335,
+      "baseline_contact": {
+        "vertical_speed": 0.13407138261212917,
+        "horizontal_speed": 0.008323230258386837,
+        "tilt": 0.00028900208398764524,
+        "angular_speed": 0.020999467905981648,
+        "radius": 0.04164744813994772
+      },
+      "candidate_contact": null,
+      "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\observed_support_v1\\raw\\seed_503\\changed_outcome_traces\\142d1798b5c8.npz",
+      "option_start_tick": 96,
+      "option_start_seconds": 2.0,
+      "option_id": 5,
+      "option_description": [
+        24,
+        0.5,
+        false
+      ],
+      "duration": 24,
+      "actual_motor_intervention_steps": 24,
+      "first_actual_motor_intervention_seconds": 2.0,
+      "prefix_observation_difference": 0.0,
+      "initial_estimated_eta": [
+        1.0,
+        1.0,
+        0.7484824279263006,
+        1.0
+      ],
+      "initial_true_eta_for_audit_only": [
+        1.0,
+        1.0,
+        0.704,
+        1.0
+      ],
+      "initial_physical_delta": [
+        0.07093079461282098,
+        -0.24837131906131613,
+        0.0,
+        -0.25316898062892396
+      ],
+      "initial_forecasts": {
+        "base_success": 0.1733129349142025,
+        "preservation": 0.98858985963142,
+        "joint_rescue": 0.08398969345227968,
+        "joint_harm": 0.0019775249150616315,
+        "conditional_harm": 0.016242493926961643,
+        "lower_gain": 0.07327069364384443
+      },
+      "forecast_scope": "Conditional_harm is the actual decision risk under max_member",
+      "gate_seed": 503,
+      "source_sha256": "24e50afe806816677ac1650e76681838b7a6225ea09ceee00e957887a1e23994",
+      "other_gates": {
+        "raw/seed_505": {
+          "outcome": "stable_landing",
+          "stable_landing": true,
+          "decision": {
+            "options_started": 0,
+            "actual_motor_intervention_steps": 0,
+            "first_actual_intervention_seconds": null,
+            "option_start_seconds": null,
+            "scope": "Complete-policy OFF identity verified on entire base history"
+          }
+        },
+        "bootstrap_native/seed_502": {
+          "outcome": "stable_landing",
+          "stable_landing": true,
+          "decision": {
+            "options_started": 0,
+            "actual_motor_intervention_steps": 0,
+            "first_actual_intervention_seconds": null,
+            "option_start_seconds": null,
+            "scope": "Complete-policy OFF identity verified on entire base history"
+          }
+        }
+      }
+    },
+    {
+      "kind": "loss",
+      "case": {
+        "seed": 812100,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "baseline_outcome": "stable_landing",
+      "candidate_outcome": "timeout",
+      "baseline_steps": 1219,
+      "candidate_steps": 1440,
+      "baseline_contact": {
+        "vertical_speed": 0.13418022780998046,
+        "horizontal_speed": 0.005919688680028223,
+        "tilt": 0.0005068807151447082,
+        "angular_speed": 0.0418041260925368,
+        "radius": 0.0693549895416547
+      },
+      "candidate_contact": null,
+      "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\observed_support_v1\\raw\\seed_503\\changed_outcome_traces\\87c0d8129602.npz",
+      "option_start_tick": 93,
+      "option_start_seconds": 1.9375,
+      "option_id": 5,
+      "option_description": [
+        24,
+        0.5,
+        false
+      ],
+      "duration": 24,
+      "actual_motor_intervention_steps": 24,
+      "first_actual_motor_intervention_seconds": 1.9375,
+      "prefix_observation_difference": 0.0,
+      "initial_estimated_eta": [
+        1.0,
+        1.0,
+        0.7839994600051183,
+        1.0
+      ],
+      "initial_true_eta_for_audit_only": [
+        1.0,
+        1.0,
+        0.704,
+        1.0
+      ],
+      "initial_physical_delta": [
+        0.10793661596925193,
+        -0.19798503210101828,
+        0.0,
+        -0.22485916306890905
+      ],
+      "initial_forecasts": {
+        "base_success": 0.41340949615116673,
+        "preservation": 0.9909096950148607,
+        "joint_rescue": 0.126876123454062,
+        "joint_harm": 0.003758018403766893,
+        "conditional_harm": 0.010958678714099168,
+        "lower_gain": 0.0905033968727314
+      },
+      "forecast_scope": "Conditional_harm is the actual decision risk under max_member",
+      "gate_seed": 503,
+      "source_sha256": "24e50afe806816677ac1650e76681838b7a6225ea09ceee00e957887a1e23994",
+      "other_gates": {
+        "raw/seed_505": {
+          "outcome": "stable_landing",
+          "stable_landing": true,
+          "decision": {
+            "options_started": 0,
+            "actual_motor_intervention_steps": 0,
+            "first_actual_intervention_seconds": null,
+            "option_start_seconds": null,
+            "scope": "Complete-policy OFF identity verified on entire base history"
+          }
+        },
+        "bootstrap_native/seed_502": {
+          "outcome": "stable_landing",
+          "stable_landing": true,
+          "decision": {
+            "options_started": 0,
+            "actual_motor_intervention_steps": 0,
+            "first_actual_intervention_seconds": null,
+            "option_start_seconds": null,
+            "scope": "Complete-policy OFF identity verified on entire base history"
+          }
+        }
+      }
+    },
+    {
+      "kind": "loss",
+      "case": {
+        "seed": 812100,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "baseline_outcome": "stable_landing",
+      "candidate_outcome": "timeout",
+      "baseline_steps": 1024,
+      "candidate_steps": 1440,
+      "baseline_contact": {
+        "vertical_speed": 0.13220364929664177,
+        "horizontal_speed": 0.009442626829306447,
+        "tilt": 0.0005182035094103141,
+        "angular_speed": 0.0250058917858882,
+        "radius": 0.07496577747237633
+      },
+      "candidate_contact": null,
+      "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\observed_support_v1\\raw\\seed_503\\changed_outcome_traces\\65178b70fe2a.npz",
+      "option_start_tick": 93,
+      "option_start_seconds": 1.9375,
+      "option_id": 5,
+      "option_description": [
+        24,
+        0.5,
+        false
+      ],
+      "duration": 24,
+      "actual_motor_intervention_steps": 24,
+      "first_actual_motor_intervention_seconds": 1.9375,
+      "prefix_observation_difference": 0.0,
+      "initial_estimated_eta": [
+        1.0,
+        1.0,
+        0.7841383380868624,
+        1.0
+      ],
+      "initial_true_eta_for_audit_only": [
+        1.0,
+        1.0,
+        0.704,
+        1.0
+      ],
+      "initial_physical_delta": [
+        0.10907613288543115,
+        -0.20247924992443045,
+        0.0,
+        -0.22962602253603165
+      ],
+      "initial_forecasts": {
+        "base_success": 0.3839166022787725,
+        "preservation": 0.9900163870912573,
+        "joint_rescue": 0.1402472816083649,
+        "joint_harm": 0.0038328747463909824,
+        "conditional_harm": 0.011921316894096923,
+        "lower_gain": 0.10221034536464008
+      },
+      "forecast_scope": "Conditional_harm is the actual decision risk under max_member",
+      "gate_seed": 503,
+      "source_sha256": "24e50afe806816677ac1650e76681838b7a6225ea09ceee00e957887a1e23994",
+      "other_gates": {
+        "raw/seed_505": {
+          "outcome": "stable_landing",
+          "stable_landing": true,
+          "decision": {
+            "options_started": 0,
+            "actual_motor_intervention_steps": 0,
+            "first_actual_intervention_seconds": null,
+            "option_start_seconds": null,
+            "scope": "Complete-policy OFF identity verified on entire base history"
+          }
+        },
+        "bootstrap_native/seed_502": {
+          "outcome": "stable_landing",
+          "stable_landing": true,
+          "decision": {
+            "options_started": 0,
+            "actual_motor_intervention_steps": 0,
+            "first_actual_intervention_seconds": null,
+            "option_start_seconds": null,
+            "scope": "Complete-policy OFF identity verified on entire base history"
+          }
+        }
+      }
+    }
+  ],
+  "scope": "Descriptive diagnosis on development only. Identical frozen proposer201 and raw24half option; gates differ only in their learned authorization. Other policies may choose a different first intervention or none; do not attribute every flight difference to one motor command."
+}

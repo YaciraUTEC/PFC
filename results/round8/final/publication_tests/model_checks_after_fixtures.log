@@ -1,0 +1,8 @@
+......                                                                   [100%]
+============================== warnings summary ===============================
+gym_pybullet_drones\envs\BaseAviary.py:7
+  E:\UTEC\Tesis\TesisNicol\publicacion_round8_20261117\gym_pybullet_drones\envs\BaseAviary.py:7: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+    import pkg_resources
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+6 passed, 1 warning in 18.45s

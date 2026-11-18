@@ -1,0 +1,7 @@
+{
+  "gpu": "NVIDIA GeForce RTX 3080 Ti",
+  "gpu_memory_bytes": 12884377600,
+  "logical_cpu_count": 24,
+  "processor": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+  "platform": "Windows-10-10.0.26300-SP0"
+}

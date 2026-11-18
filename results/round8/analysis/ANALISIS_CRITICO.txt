@@ -1,0 +1,221 @@
+ANÁLISIS CRÍTICO DEL PROTOCOLO DE RESCATE Y PERJUICIO
+
+17 de noviembre de 2026. Análisis de resultados existentes; sin vuelos ni entrenamientos nuevos.
+
+
+
+CONCLUSIÓN EJECUTIVA
+
+La objeción detecta una limitación real del objetivo de selección. R8 respondió correctamente a la instrucción de añadir rescates conservando todos los aterrizajes observados de DSLPID. Ese contrato no equivale a maximizar aterrizajes con un riesgo pequeño y cuantificado: son dos preguntas diferentes. Mantendría505 como resultado de preservación y504 como candidato de mayor rendimiento medio. No descartaría científicamente504 por perder12 aterrizajes, ni lo recomendaría sin definir qué pérdidas y qué frecuencia serían aceptables.
+
+La auditoría añade una tercera pregunta: qué gravedad tienen los fallos, incluso cuando ambos controladores fallan. Rescate y perjuicio binarios son necesarios pero insuficientes para caracterizar seguridad física. El éxito de R8 sigue siendo252 rescates y0 aterrizajes base perdidos; eso no significa ausencia de cualquier deterioro físico.
+
+
+
+1. QUÉ SE EXIGIÓ REALMENTE
+
+El protocolo no prohibía rescates: los incentivaba. Prohibía aceptar el checkpoint operativo si perdía un solo aterrizaje exitoso de la base en desarrollo o prueba. Las cinco compuertas501..505 se evaluaron completas como sensibilidad secundaria en principal, confirmación y otros instantes. Las variantes que no cumplían elegibilidad se conservaron en disco; la versión sin guarda505 se midió sobre8064 condiciones de desarrollo, pero no recibió una confirmación formal nueva.
+
+Hay tres cantidades distintas: (a) riesgo condicional pronosticado de la opción, máximo permitido0,02; (b) cota estadística de perjuicio a nivel de vuelo en la mezcla registrada, máximo0,005; (c) requisito adicional de cero pérdidas observadas. No son la misma probabilidad. La confianza estadística tampoco es el porcentaje de aterrizajes.
+
+La dureza principal estaba en selección/aceptación. No se introdujo una penalización infinita en el reward IRL. El ajuste de las cabezas usa pérdidas de clasificación para base, preservación y rescate, normalizadas por sus grupos. El parámetro penalty=1 controla el desacuerdo del ensemble; no representa por sí mismo cuánto vale social o físicamente perder un aterrizaje. Las predicciones del ensemble no son cotas de confianza certificadas.
+
+El test secuencial de beneficio se especializó a E=2^G * 1[L=0]. Una pérdida lo deja en cero, aunque existan muchos rescates. Esto es válido para el contrato estricto, pero inadecuado para seleccionar bajo un presupuesto de perjuicio positivo.
+
+
+
+2. FORMULACIÓN DE LAS DOS TASAS
+
+B=1 significa que DSLPID aterriza controlado y estable; C=1 que lo hace la política candidata, en el mismo escenario y con la misma realización de incertidumbre simulada.
+
+Rescate R=P(C=1|B=0)=G/N_fallos_base.
+
+Perjuicio H=P(C=0|B=1)=L/N_éxitos_base. Preservación=1−H.
+
+La mejora de éxito absoluto es Δ=P(C=1)−P(B=1)=qR−(1−q)H, donde q=P(B=0). Esta identidad se comprobó numéricamente en todas las tablas. R y H usan denominadores diferentes; no deben sumarse como si contaran el mismo número de vuelos.
+
+R y H dependen de la distribución conjunta de los dos resultados potenciales. El simulador permite compararlos con un acoplamiento definido por las mismas condiciones y realizaciones de ruido; en un vuelo físico solo se observa una continuación. La diferencia de éxitos depende únicamente de los marginales, pero las tasas individuales de rescate y perjuicio dependen también del acoplamiento contrafactual. Por eso hay que documentar qué se mantiene idéntico al reconstruir ambos mundos y no trasladar sin más estas tasas a hardware. El trabajo[3] estudia precisamente esta dificultad de identificación.
+
+Los porcentajes de RPM, las tasas de aterrizaje y la confianza estadística se mantienen separados. El29,6% describe pérdida de RPM de UN motor, no26% de probabilidad de fallo de misión ni pérdida de empuje de todo el dron.
+
+
+
+3. CONFIRMACIÓN COMPLETA: LA COMPARACIÓN QUE IMPORTA AHORA
+
+Son8192 condiciones sobre1024 rutas; el subconjunto crítico con efectividad estimada contiene4096 condiciones:1076 fallos y3020 éxitos de DSLPID. Todos los rescates y perjuicios de estas compuertas en confirmación están en ese subconjunto. Las otras4096 condiciones son de efectividad exacta y tuvieron éxito con la base.
+
+501: G=15, L=0; rescate=1,39%; perjuicio crítico=0,000%; perjuicio global=0,000%; aterrizajes netos +15; éxito crítico=74,10%.
+
+502: G=163, L=14; rescate=15,15%; perjuicio crítico=0,464%; perjuicio global=0,197%; aterrizajes netos +149; éxito crítico=77,37%.
+
+503: G=147, L=16; rescate=13,66%; perjuicio crítico=0,530%; perjuicio global=0,225%; aterrizajes netos +131; éxito crítico=76,93%.
+
+504: G=186, L=12; rescate=17,29%; perjuicio crítico=0,397%; perjuicio global=0,169%; aterrizajes netos +174; éxito crítico=77,98%.
+
+505: G=135, L=0; rescate=12,55%; perjuicio crítico=0,000%; perjuicio global=0,000%; aterrizajes netos +135; éxito crítico=77,03%.
+
+505 es el mejor punto observado con cero perjuicios.504 ofrece más rescates con mayor perjuicio. En confirmación504 domina en ambas tasas a502 y503;505 domina a501 en las tasas puntuales observadas. Esto no prueba dominancia de sus riesgos verdaderos: son estimaciones con incertidumbre. La frontera empírica relevante es505/504.
+
+La504 alcanza3194/4096=77,98% de éxito crítico, frente a3155/4096=77,03% de505 y3020/4096=73,73% de DSLPID. Su ventaja neta sobre505 es39 condiciones,0,952 puntos porcentuales críticos. El bootstrap pareado por1024 rutas arroja IC95 descriptivo[0,342;1,636]pp para esa diferencia. Es un intervalo exploratorio puntual, no cobertura simultánea de todos los análisis.
+
+En la comparación directa,504 gana56 condiciones que505 no resuelve, pero pierde17 que505 sí resuelve:12 eran éxitos de DSLPID y5 eran rescates de505. Por tanto, cambiar el controlador recomendado también requiere fijar si la referencia protegida será DSLPID o la política505 ya mejorada.
+
+En la condición aleatoria por ruta asignada antes de ver los resultados,504 gana15 y pierde2 frente a505 en1024 rutas independientes. El test pareado exacto de beneficio da p=0,001175; corregido por cuatro alternativas frente a505, p=0,004700. Es evidencia exploratoria ajustada de ventaja media en esa mezcla, no prueba de una tolerancia de daño ni corrección por cualquier otro análisis que se hubiera buscado.
+
+
+
+4. LA COMPARACIÓN75/137 DE LAS CAPTURAS ES CORRECTA, CON DOS PRECISIONES
+
+En los mismos8064 casos de desarrollo, la505 con guarda rescata75/1825=4,11% y pierde0/6239. Sin guarda rescata137/1825=7,51% y pierde3/6239=0,0481%. En la zona crítica estimada:75/1311=5,72% frente a137/1311=10,45%; el perjuicio de la segunda es3/1505=0,1993%.
+
+Primera precisión: sin guarda no significa sin compuerta de preservación ni sin criterio aprendido. Se quita el requisito adicional de pérdida de efectividad observada>2% para iniciar; se mantienen pesos, actor, opción, veto nativo de entrada y tests aprendidos de beneficio/perjuicio.
+
+Segunda precisión: no se trata de los137 rescates frente a tres sacrificios respecto a una política vacía. Las versiones comparten73 rescates; quitar la guarda añade64 y deja de rescatar2. El cambio neto de rescates es62 y añade3 pérdidas de éxitos base. Frente a la política con guarda, hay64 victorias y5 derrotas directas. Los tres perjuicios ocurren en dos rutas, no en tres escenarios independientes.
+
+Estos datos incluyen desarrollo utilizado en adquisición/selección. Son diagnóstico y motivación científica; no demuestran generalización de la505 sin guarda. La ventaja observada de504 en confirmación es evidencia de otra compuerta, no confirmación automática de la505 sin guarda.
+
+
+
+5. UN COSTO EXPLÍCITO CAMBIA LA RESPUESTA
+
+Si un rescate vale1 y perder un aterrizaje de DSLPID cuestaλ, la utilidad adicional esperada es Uλ=qR−λ(1−q)H. En un conjunto fijo, el marcador equivalente es G−λL. El contrato de cero pérdidas actúa como preferencia lexicográfica: primero cero perjuicios, después rescates.
+
+En desarrollo, quitar la guarda505 cambia la utilidad en62−3λ: se prefiere siλ<20,67. No son45,67, que es137/3 y compara contra DSLPID, no contra la alternativa con guarda.
+
+En confirmación,504 frente a505 cambia la utilidad en51−12λ. Siλ=1,504 gana39 aterrizajes netos; siλ>4,25,505 se prefiere bajo este modelo sencillo. El número4,25 es un punto de indiferencia observado, no una valoración física universal. En particular, perder un vuelo por deadline y provocar un contacto peligroso no tienen por qué tener el mismo costo.
+
+La frecuencia de fallos de la base importa. Manteniendo hipotéticamente las tasas condicionales críticas observadas,504 supera en utilidad con costo igual a505 cuando q>7,735%. Si la base fallara en1%, ese intercambio podría invertirse. No es una predicción de campo: mantener R/H constantes al cambiar población es una hipótesis que debe comprobarse. El muestreo deliberado de rutas difíciles no da por sí mismo la prevalencia real de averías o fallos de misión.
+
+
+
+6. POR QUÉ NO ELEGIRÍA F1 O UNA MEDIA COMO CRITERIO PRINCIPAL
+
+La media armónica de R y1−H es un índice definible, pero no es el F1 estándar de precisión y recall. Cuando R es pequeño y la preservación cercana a1, su sensibilidad a R domina: la razón de derivadas respecto a R y preservación es[(1−H)/R]^2. Con R=0,1 esa razón ronda100. Puede ocultar perjuicios pequeños sin expresar qué riesgo es admisible.
+
+La media aritmética[R+(1−H)]/2 equivale a ponderar igual los dos grupos condicionales. No equivale a valorar igual cada vuelo: con q desigual, implica otro costo relativo por evento. Ninguno de esos promedios elimina la necesidad de expresar preferencias.
+
+Se puede construir formalmente un F1 sobre un clasificador retrospectivo de cambio de resultado: TP=G, FP=L, FN=casos donde ambos fallan, TN=casos donde ambos aterrizan. Pero ese cambio se conoce al observar ambas continuaciones; no es la decisión real de abrir la compuerta. La clasificación de activación también contiene intervenciones que no cambian el desenlace. Mantendría R/H, sus denominadores, el éxito neto y la gravedad visibles, con índices agregados solo como análisis secundario. Las advertencias sobre preferencias implícitas en F-measure tienen antecedentes metodológicos[12].
+
+
+
+7. SEGURIDAD FÍSICA: EL PUNTO CIEGO QUE FALTABA
+
+En los12 perjuicios de504 en confirmación hubo7 timeouts,2 contactos prematuros y3 hard_landings. Se registraron contactos con velocidad vertical de hasta0,365m/s y distancias al objetivo de hasta2,20m; no necesariamente en el mismo caso. El límite de contacto es0,25m/s y el radio0,20m. No corresponde interpretar todos como errores insignificantes por un umbral numérico estricto.
+
+Los tres perjuicios de desarrollo sin guarda505 tampoco eran todos ligeramente fuera de tolerancia: uno tuvo giro al contacto de5,44rad/s frente a límite1rad/s; en los otros dos faltó el primer contacto clasificado al terminar por early_contact.
+
+Incluso H=0 puede ocultar cambios entre fallos. En principal,505 cambió14 timeouts a hard_landing y2 a early_contact, todos al30% de pérdida de RPM; también cambió14 hard_landing a timeout. Entre los14 contactos registrados de la primera dirección hubo giro de hasta8,32rad/s. En confirmación505 cambió8 early_contact a timeout.
+
+No afirmo que todo timeout sea físicamente seguro ni que cada transición tenga un orden universal de gravedad. El dato demuestra que el indicador de aterrizajes base perdidos no mide esos cambios. Debe añadirse riesgo físico absoluto en TODOS los vuelos y la matriz de tipos de fallo, además del perjuicio relativo a B=1. La categoría ambos fallan no puede tratarse siempre como costo idéntico.
+
+Para una nueva evaluación registraría energía/velocidad/rotación al impacto, distancia fuera de zona, violaciones de envolvente durante el vuelo, plazo y estabilidad; reportaría los cuantiles de cola y, si hay suficientes casos, CVaR de un costo físico previamente definido. La ponderación por gravedad y los umbrales se fijan antes de ver qué modelo ganaría. Las trazas completas de los candidatos no se guardaron para todos los cambios ambos-fallan bajo el protocolo antiguo; los contactos y desenlaces disponibles permiten esta auditoría parcial, no reconstruir toda su gravedad.
+
+
+
+8. CERO OBSERVADO, INCERTIDUMBRE Y TAMAÑO MUESTRAL
+
+La evidencia registrada de505 usó2048 escenarios independientes con una sola condición asignada por ruta:67 rescates,0 pérdidas y1513 éxitos base protegidos. La cota secuencial de perjuicio fue0,2892% conα=0,0125. El resultado no demuestra H≤0,1%, aunque se hayan observado cero pérdidas.
+
+Con cero eventos y n éxitos base independientes, la cota binomial unilateral a confianza1−α es1−α^(1/n). Para certificar H≤0,1% al95% en una prueba fija sin otras correcciones hacen falta al menos2995 éxitos base sin pérdidas. Conα=0,0125 hacen falta4380. No se sustituyen por pasos temporales ni por ruidos repetidos de la misma ruta.
+
+Como comprobación exploratoria, tomé exactamente la condición de confirmación asignada antes de resultados a cada una de1024 rutas. Hubo755 éxitos base.504 perdió1: H observado0,1325%, cota unilateral95%0,6268%; corrigiendo por cinco modelos,0,8760%; reservando error para cinco modelos y dos afirmaciones por modelo,0,9799%. Son cotas sobre esa mezcla crítica estimada, no sobre el porcentaje global que mezcla vuelos de efectividad exacta. No justifican una tolerancia0,1% ni0,5% con esa muestra. Una tolerancia elegida después para que el candidato pase no es un criterio de diseño defendible.
+
+El criterio de cero eventos tampoco es equivalente a cumplir una tolerancia positiva. Si el riesgo verdadero fuera0,1%, la probabilidad de observar cero en5000 vuelos protegidos sería solo0,67%. Una política podría cumplir un presupuesto0,5% y casi siempre ser rechazada por cero-observado. Eso sería intencional bajo el contrato estricto, pero no debería mantenerse por accidente al cambiar de objetivo.
+
+Para permitir perjuicios sin perder rigor: test fijo al tamaño registrado con cotas binomiales/pareadas o secuencias de confianza válidas bajo parada opcional[9]. El e-process actual corresponde a apostar todo: factor2 en rescate,0 en perjuicio,1 en empate. Una alternativa derivada es producto de(1+b_i D_i), con D_i∈{−1,0,1} y0≤b_i<1 elegido de forma predecible; bajo beneficio no positivo su esperanza condicional no crece y un perjuicio ya no anula toda evidencia. Elegir b después de ver los datos requeriría una mezcla o corrección, no escoger el que más favorezca al modelo. La cota de H también debe admitir eventos positivos; no basta cambiar el proceso de beneficio.
+
+Los cinco modelos y los umbrales probados requieren control de selección y de múltiples afirmaciones. Las cotas familiares indicadas para una sola mezcla no certifican simultáneamente cualquier ruido, severidad, reloj y métrica inspeccionados. Los bootstrap del informe son descriptivos por ruta; un bootstrap de cero pérdidas devuelve cero y no certifica riesgo nulo.
+
+
+
+9. QUÉ APORTA LA LITERATURA
+
+[1] SPIBB(2019) y[2] DPRL(2025) tratan mejora frente a una base con incertidumbre, restringiendo cambios donde hay poco soporte. Sus garantías sobre rendimiento esperado no equivalen a no perjudicar ninguna realización individual. Son útiles para justificar respaldo y cobertura, no para imponer cero pérdidas por definición.
+
+[3] Counterfactually Safe Reinforcement Learning, prepublicación de mayo2026, formaliza daño individual frente a una alternativa y diferencia frecuencia y magnitud del perjuicio. Es especialmente pertinente para nuestra formulación. Su identificación requiere supuestos sobre resultados potenciales conjuntos, incluyendo cópulas y correlación de sensibilidad; sus garantías funcionales no se transfieren a GTrXL no lineal con observación parcial. La evidencia experimental no es una demostración de control de vuelo.
+
+[4] Seldonian algorithms y[5] Learn then Test separan objetivo útil y restricciones de riesgo con error estadístico explícito. LTT admite familias y riesgos no monótonos con corrección de comparaciones. Es el ajuste conceptual más directo para el protocolo: seleccionar dentro de un conjunto con perjuicio acotado, manteniendo un conjunto de evaluación que no se use para ajustar la red.
+
+[6] Conformal Risk Control y[7] Conformal Risk Training(NeurIPS2025) aportan control de riesgo y entrenamiento que recibe información de la restricción, incluyendo medidas de cola. La segunda tiene resultados en segmentación y operación de baterías, no en este dron. El CRC estándar y el entrenamiento de ese trabajo requieren monotonía de las pérdidas en el parámetro de control. Retrasar la primera intervención no garantiza trayectorias anidadas ni daño monótono: nuestras ablaciones lo muestran. Por tanto, no pondría una etiqueta conformal a un umbral sin justificar ese supuesto; para una rejilla de políticas completas, LTT resulta más directo.
+
+[8] Conformal Policy Control(ICML2026,v4) es atractivo como regulador frente a una política de referencia. Requiere una referencia con riesgo controlado, cocientes de densidad, continuidad absoluta entre políticas y condiciones de estabilidad; la versión revisada incluye un término de corrección dependiente de estabilidad. DSLPID determinista frente a acciones residuales deterministas distintas no ofrece automáticamente ese soporte. Además, el historial visitado cambia en control cerrado. Un traslado literal no proporciona una garantía gratuita; no sería mi primera implementación.
+
+[10] RL con restricciones de probabilidad/CVaR justifica separar rendimiento medio y riesgo de cola. [11] Los filtros predictivos justifican una capa física bajo modelos, incertidumbres y posibilidades de respaldo adecuadas. Respetar RPM o volver a DSLPID desde cualquier estado no prueba recuperabilidad ni cumplimiento del aterrizaje. Esas garantías deben justificarse para la planta y la falla, no heredarse de un nombre de algoritmo.
+
+En nuestras ablaciones, imponer soporte observable redujo rescates nativos354→330 e incrementó pérdidas23→29 al sumar cinco ajustes sobre los mismos1408 casos. En opciones raw redujo175→82 rescates sin reducir las10 pérdidas. Para la505 elegida sí eliminó los3 perjuicios del conjunto completo. La regla observable es una restricción con costos y efectos empíricos, no un orden universal de seguridad. [LTT y CRC deben evaluarse con esta no-monotonía presente.]
+
+
+
+10. PROTOCOLO QUE RECOMENDARÍA PARA UNA SIGUIENTE PREGUNTA
+
+A. Conservar el cierre R8 y el artefacto505, con su alcance exacto. Mantener504 y505 sin guarda como candidatos científicos; no confundir evidencia formal de504 con evidencia de generalización de505 sin guarda.
+
+B. Declarar el dominio de operación y la población objetivo: fallas, ruido, reloj y distribución de rutas. Separar evaluación representativa de un conjunto de tensión deliberadamente difícil. Informar resultados globales y de los grupos donde se interviene; no diluir perjuicios críticos añadiendo vuelos fáciles de efectividad exacta.
+
+C. Mantener el criterio de éxito constante y separar métricas: R/H; éxito neto; frecuencia y severidad de contactos/violaciones absolutas en todos los vuelos; tiempo/energía/actividad. Proteger también grupos críticos con límites propios, cuando exista tamaño muestral suficiente.
+
+D. Definir antes de seleccionar toleranciasε para perjuicio de tarea y para riesgos físicos concretos. El0,1% de las capturas es una ilustración, no un estándar. No decidirlo observando dónde cae el candidato favorito. Para violaciones realmente inadmisibles conservar veto de ingeniería y análisis de recuperabilidad; para fallos de tarea tolerables usar riesgo estadístico explícito.
+
+E. Seleccionar máximo rescate certificado o máximo éxito neto de la población objetivo dentro del conjunto admisible. Estas funciones objetivo no son idénticas si H varía. Para maximizar aterrizajes la función natural es qR−(1−q)H; para priorizar rescate de una población crítica se puede elegir R con H acotado y declarar la prioridad. No usar F1 como sustituto de esa decisión.
+
+F. Entrenar la autorización con el mismo horizonte terminal y la misma opción que se ejecuta. Si se explicita un costo, usar el beneficio(1−pB)r−λ pB(1−s), con incertidumbre y calibración separadas, o una restricción con multiplicador ajustado exclusivamente en desarrollo. Ampliar datos donde las políticas de la frontera discrepan, donde el riesgo está cerca del límite y donde ambos fallan con consecuencias distintas. Más episodios de imitación correctos pero inactivos no sustituyen este soporte.
+
+G. Congelar un conjunto finito de políticas completas y evaluar sus curvas de rescate/perjuicio. Cambiar un umbral cambia el primer estado de intervención: no basta filtrar a posteriori las activaciones guardadas. Calibrar/seleccionar con LTT o inferencia simultánea adecuada a rutas independientes; confirmar un nuevo candidato en rutas reservadas con tamaño calculado paraε. Hay inferencias postselección legítimas, como el ajuste finito realizado aquí, pero no se deben presentar los datos ya vistos como nuevamente ciegos.
+
+H. Si se usa evaluación secuencial, registrar un proceso de evidencia que tolere el presupuesto positivo y el gasto de error entre candidatos/revisiones. Registrar gravedad y contactos aunque ambos controladores fallen; no detener el análisis científico al primer fallo tolerable. Un evento físico fuera de una envolvente realmente inadmisible sí puede justificar parada y diagnóstico.
+
+
+
+CONCLUSIÓN PARA LA TESIS
+
+505 demuestra mejora de éxito con preservación empírica bajo el contrato original.504 demuestra un intercambio medido de mayor rescate y mayor perjuicio, con mejor tasa media observada en principal y confirmación. La505 sin guarda merece investigación, pero su cifra137/3 sigue siendo desarrollo. La aportación más completa es un método de intervención selectiva con frontera rescate/perjuicio, restricciones de riesgo explícitas y auditoría de gravedad, no la afirmación de que un único checkpoint es universalmente superior.
+
+No propondría borrar el requisito de seguridad ni seguir exigiendo cero pérdidas para cualquier objetivo. Separaría preservación empírica estricta, riesgo de tarea tolerable y seguridad física. Esa separación permite aprender sin declarar seguros, por promedio o por ausencia de aterrizajes perdidos, estados que no hemos justificado.
+
+
+
+FUENTES PRIMARIAS CONSULTADAS
+
+[1] Laroche et al., SPIBB, ICML2019: https://proceedings.mlr.press/v97/laroche19a.html
+
+[2] Sharma et al., DPRL, AISTATS2025: https://proceedings.mlr.press/v258/sharma25a.html
+
+[3] Li, Wu, Shi, Counterfactually Safe Reinforcement Learning, preprint2026: https://arxiv.org/abs/2605.25114 ; supuestos: https://arxiv.org/html/2605.25114v1
+
+[4] Thomas et al., Science2019: https://people.cs.umass.edu/~bsilva/papers/preventing_undesirable_behavior_ML_SCIENCE2019.pdf
+
+[5] Angelopoulos et al., Learn then Test,2021/rev2022: https://arxiv.org/abs/2110.01052
+
+[6] Angelopoulos et al., Conformal Risk Control, versión revisada2025: https://arxiv.org/abs/2208.02814
+
+[7] Yeh et al., NeurIPS2025: https://proceedings.neurips.cc/paper_files/paper/2025/hash/6559542f75b4452ebaaf82094c7defb7-Abstract-Conference.html
+
+[8] Prinster et al., Conformal Policy Control, ICML2026,v4: https://arxiv.org/abs/2603.02196 ; condiciones/estabilidad: https://arxiv.org/html/2603.02196v4
+
+[9] Howard et al., Annals of Statistics2021: https://arxiv.org/abs/1810.08240
+
+[10] Chow et al., JMLR2018: https://www.jmlr.org/papers/v18/15-636.html
+
+[11] Wabersich/Zeilinger, versión2021: https://arxiv.org/abs/1812.05506
+
+[12] Hand/Christen, Statistics and Computing2018: https://researchportalplus.anu.edu.au/en/publications/a-note-on-using-the-f-measure-for-evaluating-record-linkage-algor/
+
+
+
+ARCHIVOS DE ESTA AUDITORÍA
+
+analisis_recalculado.json: recálculos, bootstrap por ruta, incertidumbre, utilidad y transiciones.
+
+fuentes_locales_sha256.json: archivos originales leídos y sus huellas; fuentes originales intactas.
+
+tasas_condicionales.csv: global/crítico, desarrollo/principal/confirmación.
+
+submuestra_independiente_confirmacion.csv: una condición preasignada por ruta, cotas y ajustes declarados.
+
+sensibilidad_coste.csv y sensibilidad_frecuencia_fallo.csv: hipótesis de sensibilidad explícitas.
+
+transiciones_entre_fallos.json y timeout_a_contacto505.json: punto ciego de resultados binarios.
+
+rescate_perjuicio_confirmacion.png/svg y sensibilidad_al_costo.png/svg: figuras científicas.
+
+analizar_resultados.py y presentar_analisis.py: reproducción local con el entorno existente. No entrenan ni modifican controladores.

@@ -1,0 +1,14 @@
+{
+  "closed": true,
+  "finished_epoch": 1794910003.739446,
+  "conclusion": "Isolated complete-data deep ensembles fitted: all120 training routes per member, same conditional loss, optimizer, tuning/calibration routes and model architecture. No extra demonstrations fabricated.",
+  "seeds": [
+    501,
+    502,
+    503,
+    504,
+    505
+  ],
+  "reference": "https://arxiv.org/abs/1612.01474",
+  "scope": "Independent initialization/minibatches induce diversity; disagreement still is not a formal calibrated safety bound."
+}

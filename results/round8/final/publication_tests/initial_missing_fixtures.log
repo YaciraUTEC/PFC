@@ -1,0 +1,192 @@
+........................................................................ [ 16%]
+........................................................................ [ 33%]
+........................................................................ [ 50%]
+........................................................................ [ 67%]
+........................................................................ [ 84%]
+.....................................FFFsss......................        [100%]
+================================== FAILURES ===================================
+____ test_compaction_preserves_all_admissible_features_and_forecasts[501] _____
+
+seed = 501
+
+    @pytest.mark.parametrize('seed',[501,505])
+    def test_compaction_preserves_all_admissible_features_and_forecasts(seed):
+>    torch.set_num_threads(1);torch.manual_seed(381);a,b=models(seed);obs=torch.randn(7,88,dtype=torch.float64)*.1;obs[:,64:68]=.5;obs[:,72]=.8;obs[:,31]=1.1;obs[:,57]=0;context=torch.randn(7,184,dtype=torch.float64);raw=torch.randn(7,4,dtype=torch.float64)*.2;on=torch.ones(7,dtype=torch.bool)
+                                                         ^^^^^^^^^^^^
+
+experiments\tests\test_round8_compact.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+experiments\tests\test_round8_compact.py:13: in models
+    a=install(Policy.from_spec(spec));b=install(Policy.from_spec(dict(spec,compact_options=True)))
+              ^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\loading_compact.py:9: in from_spec
+    model=Previous.from_spec(spec)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\loading_guarded.py:7: in from_spec
+    return GuardedFactory.from_spec(spec)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\policy_guarded.py:31: in from_spec
+    def from_spec(cls,spec):return FastObservedLossOptions.from_spec(spec)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\policy_guarded.py:16: in from_spec
+    model=super().from_spec(spec);model.observed_loss_min=float(spec.get('observed_loss_min',.02));model.sigma_multiplier=float(spec.get('sigma_multiplier',0.));return model
+          ^^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\policy_v2.py:40: in from_spec
+    model=cls(load_policy(spec['proposer']),FactorGate.load(spec['gate']),option_mode=spec.get('option_mode','both'),risk_aggregation=spec.get('risk_aggregation','weighted_std'),minimum_gain=spec.get('minimum_gain',.005),maximum_harm=spec.get('maximum_harm',.005),penalty=spec.get('penalty',1.),allowed_options=spec.get('allowed_options'))
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\factor_gate.py:27: in load
+    d=torch.load(path,map_location='cpu',weights_only=False);m=cls(d['dim'],d['context_dim'],d['members']);m.load_state_dict(d['state']);return m.eval()
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\conda_env\Lib\site-packages\torch\serialization.py:1484: in load
+    with _open_file_like(f, "rb") as opened_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+..\conda_env\Lib\site-packages\torch\serialization.py:759: in _open_file_like
+    return _open_file(name_or_buffer, mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <torch.serialization._open_file object at 0x000002BE82EE3D90>
+name = 'E:\\UTEC\\Tesis\\TesisNicol\\publicacion_round8_20261117\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_501.pt'
+mode = 'rb'
+
+    def __init__(self, name: Union[str, os.PathLike[str]], mode: str) -> None:
+>       super().__init__(open(name, mode))
+                         ^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'E:\\UTEC\\Tesis\\TesisNicol\\publicacion_round8_20261117\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_501.pt'
+
+..\conda_env\Lib\site-packages\torch\serialization.py:740: FileNotFoundError
+____ test_compaction_preserves_all_admissible_features_and_forecasts[505] _____
+
+seed = 505
+
+    @pytest.mark.parametrize('seed',[501,505])
+    def test_compaction_preserves_all_admissible_features_and_forecasts(seed):
+>    torch.set_num_threads(1);torch.manual_seed(381);a,b=models(seed);obs=torch.randn(7,88,dtype=torch.float64)*.1;obs[:,64:68]=.5;obs[:,72]=.8;obs[:,31]=1.1;obs[:,57]=0;context=torch.randn(7,184,dtype=torch.float64);raw=torch.randn(7,4,dtype=torch.float64)*.2;on=torch.ones(7,dtype=torch.bool)
+                                                         ^^^^^^^^^^^^
+
+experiments\tests\test_round8_compact.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+experiments\tests\test_round8_compact.py:13: in models
+    a=install(Policy.from_spec(spec));b=install(Policy.from_spec(dict(spec,compact_options=True)))
+              ^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\loading_compact.py:9: in from_spec
+    model=Previous.from_spec(spec)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\loading_guarded.py:7: in from_spec
+    return GuardedFactory.from_spec(spec)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\policy_guarded.py:31: in from_spec
+    def from_spec(cls,spec):return FastObservedLossOptions.from_spec(spec)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\policy_guarded.py:16: in from_spec
+    model=super().from_spec(spec);model.observed_loss_min=float(spec.get('observed_loss_min',.02));model.sigma_multiplier=float(spec.get('sigma_multiplier',0.));return model
+          ^^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\policy_v2.py:40: in from_spec
+    model=cls(load_policy(spec['proposer']),FactorGate.load(spec['gate']),option_mode=spec.get('option_mode','both'),risk_aggregation=spec.get('risk_aggregation','weighted_std'),minimum_gain=spec.get('minimum_gain',.005),maximum_harm=spec.get('maximum_harm',.005),penalty=spec.get('penalty',1.),allowed_options=spec.get('allowed_options'))
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\factor_gate.py:27: in load
+    d=torch.load(path,map_location='cpu',weights_only=False);m=cls(d['dim'],d['context_dim'],d['members']);m.load_state_dict(d['state']);return m.eval()
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\conda_env\Lib\site-packages\torch\serialization.py:1484: in load
+    with _open_file_like(f, "rb") as opened_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+..\conda_env\Lib\site-packages\torch\serialization.py:759: in _open_file_like
+    return _open_file(name_or_buffer, mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <torch.serialization._open_file object at 0x000002BE93DB4F50>
+name = 'E:\\UTEC\\Tesis\\TesisNicol\\publicacion_round8_20261117\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_505.pt'
+mode = 'rb'
+
+    def __init__(self, name: Union[str, os.PathLike[str]], mode: str) -> None:
+>       super().__init__(open(name, mode))
+                         ^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'E:\\UTEC\\Tesis\\TesisNicol\\publicacion_round8_20261117\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_505.pt'
+
+..\conda_env\Lib\site-packages\torch\serialization.py:740: FileNotFoundError
+____ test_compact_feedback_and_resets_match_dense_actions_with_real_gtrxl _____
+
+    def test_compact_feedback_and_resets_match_dense_actions_with_real_gtrxl():
+>    torch.set_num_threads(1);torch.manual_seed(889);a,b=models(505,True);sa=sb=None;starts=0
+                                                         ^^^^^^^^^^^^^^^^
+
+experiments\tests\test_round8_compact.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+experiments\tests\test_round8_compact.py:13: in models
+    a=install(Policy.from_spec(spec));b=install(Policy.from_spec(dict(spec,compact_options=True)))
+              ^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\loading_compact.py:9: in from_spec
+    model=Previous.from_spec(spec)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\loading_guarded.py:7: in from_spec
+    return GuardedFactory.from_spec(spec)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\policy_guarded.py:31: in from_spec
+    def from_spec(cls,spec):return FastObservedLossOptions.from_spec(spec)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\policy_guarded.py:16: in from_spec
+    model=super().from_spec(spec);model.observed_loss_min=float(spec.get('observed_loss_min',.02));model.sigma_multiplier=float(spec.get('sigma_multiplier',0.));return model
+          ^^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\policy_v2.py:40: in from_spec
+    model=cls(load_policy(spec['proposer']),FactorGate.load(spec['gate']),option_mode=spec.get('option_mode','both'),risk_aggregation=spec.get('risk_aggregation','weighted_std'),minimum_gain=spec.get('minimum_gain',.005),maximum_harm=spec.get('maximum_harm',.005),penalty=spec.get('penalty',1.),allowed_options=spec.get('allowed_options'))
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments\round8\factor_gate.py:27: in load
+    d=torch.load(path,map_location='cpu',weights_only=False);m=cls(d['dim'],d['context_dim'],d['members']);m.load_state_dict(d['state']);return m.eval()
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\conda_env\Lib\site-packages\torch\serialization.py:1484: in load
+    with _open_file_like(f, "rb") as opened_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+..\conda_env\Lib\site-packages\torch\serialization.py:759: in _open_file_like
+    return _open_file(name_or_buffer, mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <torch.serialization._open_file object at 0x000002BE9346E150>
+name = 'E:\\UTEC\\Tesis\\TesisNicol\\publicacion_round8_20261117\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_505.pt'
+mode = 'rb'
+
+    def __init__(self, name: Union[str, os.PathLike[str]], mode: str) -> None:
+>       super().__init__(open(name, mode))
+                         ^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'E:\\UTEC\\Tesis\\TesisNicol\\publicacion_round8_20261117\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_505.pt'
+
+..\conda_env\Lib\site-packages\torch\serialization.py:740: FileNotFoundError
+============================== warnings summary ===============================
+gym_pybullet_drones\envs\BaseAviary.py:7
+  E:\UTEC\Tesis\TesisNicol\publicacion_round8_20261117\gym_pybullet_drones\envs\BaseAviary.py:7: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+    import pkg_resources
+
+experiments/tests/test_contract.py: 2 warnings
+experiments/tests/test_round3.py: 2 warnings
+experiments/tests/test_round4.py: 2 warnings
+experiments/tests/test_round5.py: 12 warnings
+experiments/tests/test_round5_protocol.py: 2 warnings
+experiments/tests/test_round6.py: 4 warnings
+experiments/tests/test_round6_control.py: 4 warnings
+experiments/tests/test_round7.py: 7 warnings
+  E:\UTEC\Tesis\TesisNicol\conda_env\Lib\site-packages\gymnasium\spaces\box.py:236: UserWarning: [33mWARN: Box low's precision lowered by casting to float32, current low.dtype=float64[0m
+    gym.logger.warn(
+
+experiments/tests/test_contract.py: 2 warnings
+experiments/tests/test_round3.py: 2 warnings
+experiments/tests/test_round4.py: 2 warnings
+experiments/tests/test_round5.py: 12 warnings
+experiments/tests/test_round5_protocol.py: 2 warnings
+experiments/tests/test_round6.py: 4 warnings
+experiments/tests/test_round6_control.py: 4 warnings
+experiments/tests/test_round7.py: 7 warnings
+  E:\UTEC\Tesis\TesisNicol\conda_env\Lib\site-packages\gymnasium\spaces\box.py:306: UserWarning: [33mWARN: Box high's precision lowered by casting to float32, current high.dtype=float64[0m
+    gym.logger.warn(
+
+experiments/tests/test_round5_rewards.py::test_transition_reward_handles_mixed_actions_and_actual_prefixes
+  E:\UTEC\Tesis\TesisNicol\publicacion_round8_20261117\experiments\round5\rewards.py:47: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+  Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:836.)
+    self.opt.zero_grad();loss.backward();nn.utils.clip_grad_norm_(list(self.r.parameters())+list(self.phi.parameters()),10.);self.opt.step();losses.append(float(loss))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED experiments/tests/test_round8_compact.py::test_compaction_preserves_all_admissible_features_and_forecasts[501]
+FAILED experiments/tests/test_round8_compact.py::test_compaction_preserves_all_admissible_features_and_forecasts[505]
+FAILED experiments/tests/test_round8_compact.py::test_compact_feedback_and_resets_match_dense_actions_with_real_gtrxl
+3 failed, 419 passed, 3 skipped, 72 warnings in 327.06s (0:05:27)

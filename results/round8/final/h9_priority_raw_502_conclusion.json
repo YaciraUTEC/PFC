@@ -1,0 +1,15 @@
+{
+  "closed": true,
+  "finished_epoch": 1794921896.4060247,
+  "conclusion": "First full observed-support raw candidate evaluated while other controls finish; no final case used.",
+  "metrics": {
+    "cases": 1408,
+    "success": 0.7457386363636364,
+    "gains": 20,
+    "losses": 4,
+    "critical_difference": 0.020833333333333332,
+    "mild_losses": 0,
+    "exact_losses": 0
+  },
+  "workers": 2
+}

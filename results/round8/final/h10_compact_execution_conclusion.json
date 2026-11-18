@@ -1,0 +1,175 @@
+{
+  "closed": true,
+  "finished_epoch": 1794937654.6347456,
+  "conclusion": "Only admissible option rows retained: same first decisions on all8064cases and all5gates, matched full physical flights, near-threshold replays and explicitly reused equivalent development outcomes. Actor, thresholds, amplitude, history and intervention semantics unchanged.",
+  "passed": true,
+  "selected_family": "compact_guarded_raw",
+  "recommended_operational_gate": 505,
+  "operational_development_losses": 0,
+  "entries": [
+    {
+      "seed": 501,
+      "spec": {
+        "version": 4,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_501.pt",
+        "minimum_gain": 0.01,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "both",
+        "risk_aggregation": "max_member",
+        "allowed_options": [
+          5
+        ],
+        "fast_execution": true,
+        "observed_loss_min": 0.02,
+        "sigma_multiplier": 0.0,
+        "compact_options": true
+      },
+      "metrics": {
+        "cases": 8064,
+        "success": 0.7752976190476191,
+        "gains": 13,
+        "losses": 0,
+        "critical_difference": 0.004616477272727273,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 502,
+      "spec": {
+        "version": 4,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_502.pt",
+        "minimum_gain": 0.01,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "both",
+        "risk_aggregation": "max_member",
+        "allowed_options": [
+          5
+        ],
+        "fast_execution": true,
+        "observed_loss_min": 0.02,
+        "sigma_multiplier": 0.0,
+        "compact_options": true
+      },
+      "metrics": {
+        "cases": 8064,
+        "success": 0.7847222222222222,
+        "gains": 93,
+        "losses": 4,
+        "critical_difference": 0.03160511363636364,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 503,
+      "spec": {
+        "version": 4,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_503.pt",
+        "minimum_gain": 0.01,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "both",
+        "risk_aggregation": "max_member",
+        "allowed_options": [
+          5
+        ],
+        "fast_execution": true,
+        "observed_loss_min": 0.02,
+        "sigma_multiplier": 0.0,
+        "compact_options": true
+      },
+      "metrics": {
+        "cases": 8064,
+        "success": 0.7837301587301587,
+        "gains": 85,
+        "losses": 4,
+        "critical_difference": 0.028764204545454544,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 504,
+      "spec": {
+        "version": 4,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_504.pt",
+        "minimum_gain": 0.01,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "both",
+        "risk_aggregation": "max_member",
+        "allowed_options": [
+          5
+        ],
+        "fast_execution": true,
+        "observed_loss_min": 0.02,
+        "sigma_multiplier": 0.0,
+        "compact_options": true
+      },
+      "metrics": {
+        "cases": 8064,
+        "success": 0.7854662698412699,
+        "gains": 101,
+        "losses": 6,
+        "critical_difference": 0.033735795454545456,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 505,
+      "spec": {
+        "version": 4,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_505.pt",
+        "minimum_gain": 0.01,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "both",
+        "risk_aggregation": "max_member",
+        "allowed_options": [
+          5
+        ],
+        "fast_execution": true,
+        "observed_loss_min": 0.02,
+        "sigma_multiplier": 0.0,
+        "compact_options": true
+      },
+      "metrics": {
+        "cases": 8064,
+        "success": 0.7829861111111112,
+        "gains": 75,
+        "losses": 0,
+        "critical_difference": 0.026633522727272728,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    }
+  ],
+  "losses": 14,
+  "cases_per_model": 8064,
+  "development_folder": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\checkpoint_selection\\with_severity_sweep\\compact_guarded_raw",
+  "selection_default_range": [
+    812000,
+    812128
+  ],
+  "selection_shifted_range": [
+    813000,
+    813032
+  ],
+  "prior_conclusion_sha256": "bfd08adb748a0fa19c6d3f2ae583c27e6b95cd86d5bc301c313abab4b36f15c0",
+  "proofs": {
+    "h10_compact_first_decisions": "64696dbb4ae7a4aeb04f9761f639ad0a46032f1180e1ce1a0acc5a64b8c7241d",
+    "h10_compact_physical": "9ed95f6c6ee5418e738823eb55381983a6d61ad9263c6e03b4ffa357ae141f2a",
+    "h10_compact_near_threshold": "9e396c7c62d718421575327998a44dd06ea844db1a863b60ae69c1e19c62eb79",
+    "h10_compact_paired_timing": "1265e386205ee3fe3633d7001d10f1b3e6c9c9a8e5c86d88f723de3eb4174543"
+  },
+  "seconds": 545.449343919754
+}

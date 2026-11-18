@@ -1,0 +1,40 @@
+[
+  {
+    "phase": "primary",
+    "gate": 504,
+    "both_fail": 874,
+    "changed_failure_outcomes": {
+      "hard_landing -> early_contact": 1,
+      "timeout -> hard_landing": 15,
+      "hard_landing -> timeout": 13,
+      "timeout -> early_contact": 2
+    }
+  },
+  {
+    "phase": "primary",
+    "gate": 505,
+    "both_fail": 890,
+    "changed_failure_outcomes": {
+      "hard_landing -> timeout": 14,
+      "timeout -> hard_landing": 14,
+      "timeout -> early_contact": 2
+    }
+  },
+  {
+    "phase": "confirmation",
+    "gate": 504,
+    "both_fail": 890,
+    "changed_failure_outcomes": {
+      "early_contact -> timeout": 10,
+      "hard_landing -> early_contact": 4
+    }
+  },
+  {
+    "phase": "confirmation",
+    "gate": 505,
+    "both_fail": 941,
+    "changed_failure_outcomes": {
+      "early_contact -> timeout": 8
+    }
+  }
+]

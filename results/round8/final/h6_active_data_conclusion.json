@@ -1,0 +1,59 @@
+{
+  "closed": true,
+  "finished_epoch": 1794913702.341958,
+  "conclusion": "New fixed201 short-option support acquired at actual first-decision distributions; four paired futures and exact natural histories, train/calibration split by route.",
+  "support": {
+    "train": {
+      "routes": 112,
+      "query_states": 1117,
+      "records": 8936,
+      "classes": {
+        "0": {
+          "records": 6818,
+          "routes": 111
+        },
+        "1": {
+          "records": 639,
+          "routes": 46
+        },
+        "2": {
+          "records": 104,
+          "routes": 16
+        },
+        "3": {
+          "records": 1375,
+          "routes": 54
+        }
+      }
+    },
+    "calibration": {
+      "routes": 31,
+      "query_states": 274,
+      "records": 2192,
+      "classes": {
+        "0": {
+          "records": 1534,
+          "routes": 30
+        },
+        "1": {
+          "records": 314,
+          "routes": 15
+        },
+        "2": {
+          "records": 38,
+          "routes": 5
+        },
+        "3": {
+          "records": 306,
+          "routes": 13
+        }
+      }
+    }
+  },
+  "cases": 1562,
+  "prefix_checks": 16692,
+  "maximum_prefix_error": 0.0,
+  "maximum_caller_history_error": 0.0,
+  "maximum_projection_error": 1.4244094254101114e-07,
+  "seconds": 1739.79327917099
+}

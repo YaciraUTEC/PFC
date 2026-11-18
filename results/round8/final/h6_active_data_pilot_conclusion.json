@@ -1,0 +1,55 @@
+{
+  "closed": true,
+  "finished_epoch": 1794912011.6834452,
+  "conclusion": "Actionable first-decision states replay naturally; native/raw24half options and four paired future continuations preserve caller and actuator semantics.",
+  "cases": [
+    {
+      "seed": 760023,
+      "level": 0.295,
+      "condition": "estimated",
+      "noise": 2.0,
+      "clock": 4.0
+    },
+    {
+      "seed": 810085,
+      "level": 0.296,
+      "condition": "estimated",
+      "noise": 1.0,
+      "clock": null
+    }
+  ],
+  "pilot_labels": [
+    {
+      "case": {
+        "seed": 760023,
+        "level": 0.295,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": 4.0
+      },
+      "query_states": 3,
+      "labels": {
+        "0": 15,
+        "2": 9
+      },
+      "prefix_error": 0.0,
+      "caller_error": 0.0
+    },
+    {
+      "case": {
+        "seed": 810085,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "query_states": 1,
+      "labels": {
+        "1": 4,
+        "0": 4
+      },
+      "prefix_error": 0.0,
+      "caller_error": 0.0
+    }
+  ]
+}

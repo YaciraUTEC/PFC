@@ -1,0 +1,14 @@
+{
+  "seconds": 2889.9404606819153,
+  "exit_code": 0,
+  "args": [
+    "-m",
+    "experiments.round8.data",
+    "--split",
+    "train",
+    "--groups",
+    "120",
+    "--workers",
+    "8"
+  ]
+}

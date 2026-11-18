@@ -1,0 +1,26 @@
+{
+  "closed": true,
+  "finished_epoch": 1794902780.7898257,
+  "conclusion": "Two pilot rescues without lost baseline landings. Conditional risk alone was insufficient on old-state data; natural-base data and coherent native options advance. Native-only wins the simplicity tie because raw-only options added no pilot rescues.",
+  "selected": {
+    "version": 2,
+    "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+    "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_501.pt",
+    "minimum_gain": 0.005,
+    "maximum_harm": 0.02,
+    "penalty": 1.0,
+    "option_mode": "native",
+    "risk_aggregation": "max_member",
+    "allowed_options": null
+  },
+  "pilot": {
+    "cases": 304,
+    "success": 0.9506578947368421,
+    "gains": 2,
+    "losses": 0,
+    "critical_difference": 0.02631578947368421,
+    "mild_losses": 0,
+    "exact_losses": 0
+  },
+  "acceptance_pending": true
+}

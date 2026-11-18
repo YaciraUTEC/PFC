@@ -1,0 +1,1422 @@
+{
+  "scope": "Analysis only; original R8, frozen policies, delivered ZIP and formal conclusions remain unchanged. Existing tests now inspected are exploratory for any changed objective or model selection.",
+  "tables": [
+    {
+      "dataset": "dev_guarded505",
+      "gate": 505,
+      "scope": "global",
+      "cases": 8064,
+      "routes": 640,
+      "base_successes": 6239,
+      "base_failures": 1825,
+      "gains": 75,
+      "losses": 0,
+      "rescue_percent": 4.10958904109589,
+      "harm_percent": 0.0,
+      "net_success_gain_pp": 0.9300595238095238,
+      "baseline_failure_percent": 22.63144841269841,
+      "base_success_percent": 77.36855158730158,
+      "candidate_success_percent": 78.29861111111111,
+      "rescued_routes": 35,
+      "harmed_routes": 0
+    },
+    {
+      "dataset": "dev_guarded505",
+      "gate": 505,
+      "scope": "critical_estimated",
+      "cases": 2816,
+      "routes": 576,
+      "base_successes": 1505,
+      "base_failures": 1311,
+      "gains": 75,
+      "losses": 0,
+      "rescue_percent": 5.720823798627003,
+      "harm_percent": 0.0,
+      "net_success_gain_pp": 2.663352272727273,
+      "baseline_failure_percent": 46.55539772727273,
+      "base_success_percent": 53.44460227272727,
+      "candidate_success_percent": 56.10795454545455,
+      "rescued_routes": 35,
+      "harmed_routes": 0
+    },
+    {
+      "dataset": "dev_unguarded505",
+      "gate": 505,
+      "scope": "global",
+      "cases": 8064,
+      "routes": 640,
+      "base_successes": 6239,
+      "base_failures": 1825,
+      "gains": 137,
+      "losses": 3,
+      "rescue_percent": 7.506849315068494,
+      "harm_percent": 0.04808462894694662,
+      "net_success_gain_pp": 1.6617063492063493,
+      "baseline_failure_percent": 22.63144841269841,
+      "base_success_percent": 77.36855158730158,
+      "candidate_success_percent": 79.03025793650794,
+      "rescued_routes": 62,
+      "harmed_routes": 2
+    },
+    {
+      "dataset": "dev_unguarded505",
+      "gate": 505,
+      "scope": "critical_estimated",
+      "cases": 2816,
+      "routes": 576,
+      "base_successes": 1505,
+      "base_failures": 1311,
+      "gains": 137,
+      "losses": 3,
+      "rescue_percent": 10.450038138825324,
+      "harm_percent": 0.19933554817275745,
+      "net_success_gain_pp": 4.7585227272727275,
+      "baseline_failure_percent": 46.55539772727273,
+      "base_success_percent": 53.44460227272727,
+      "candidate_success_percent": 58.203125,
+      "rescued_routes": 62,
+      "harmed_routes": 2
+    },
+    {
+      "dataset": "primary",
+      "gate": 501,
+      "scope": "global",
+      "cases": 6656,
+      "routes": 384,
+      "base_successes": 5683,
+      "base_failures": 973,
+      "gains": 17,
+      "losses": 0,
+      "rescue_percent": 1.7471736896197325,
+      "harm_percent": 0.0,
+      "net_success_gain_pp": 0.25540865384615385,
+      "baseline_failure_percent": 14.618389423076923,
+      "base_success_percent": 85.38161057692308,
+      "candidate_success_percent": 85.63701923076923,
+      "rescued_routes": 8,
+      "harmed_routes": 0
+    },
+    {
+      "dataset": "primary",
+      "gate": 501,
+      "scope": "critical_estimated",
+      "cases": 1536,
+      "routes": 384,
+      "base_successes": 1082,
+      "base_failures": 454,
+      "gains": 17,
+      "losses": 0,
+      "rescue_percent": 3.7444933920704844,
+      "harm_percent": 0.0,
+      "net_success_gain_pp": 1.1067708333333333,
+      "baseline_failure_percent": 29.557291666666668,
+      "base_success_percent": 70.44270833333333,
+      "candidate_success_percent": 71.54947916666667,
+      "rescued_routes": 8,
+      "harmed_routes": 0
+    },
+    {
+      "dataset": "primary",
+      "gate": 502,
+      "scope": "global",
+      "cases": 6656,
+      "routes": 384,
+      "base_successes": 5683,
+      "base_failures": 973,
+      "gains": 98,
+      "losses": 3,
+      "rescue_percent": 10.071942446043165,
+      "harm_percent": 0.052789019883864155,
+      "net_success_gain_pp": 1.4272836538461537,
+      "baseline_failure_percent": 14.618389423076923,
+      "base_success_percent": 85.38161057692308,
+      "candidate_success_percent": 86.80889423076923,
+      "rescued_routes": 43,
+      "harmed_routes": 2
+    },
+    {
+      "dataset": "primary",
+      "gate": 502,
+      "scope": "critical_estimated",
+      "cases": 1536,
+      "routes": 384,
+      "base_successes": 1082,
+      "base_failures": 454,
+      "gains": 98,
+      "losses": 3,
+      "rescue_percent": 21.58590308370044,
+      "harm_percent": 0.27726432532347506,
+      "net_success_gain_pp": 6.184895833333333,
+      "baseline_failure_percent": 29.557291666666668,
+      "base_success_percent": 70.44270833333333,
+      "candidate_success_percent": 76.62760416666667,
+      "rescued_routes": 43,
+      "harmed_routes": 2
+    },
+    {
+      "dataset": "primary",
+      "gate": 503,
+      "scope": "global",
+      "cases": 6656,
+      "routes": 384,
+      "base_successes": 5683,
+      "base_failures": 973,
+      "gains": 88,
+      "losses": 2,
+      "rescue_percent": 9.044193216855087,
+      "harm_percent": 0.0351926799225761,
+      "net_success_gain_pp": 1.2920673076923077,
+      "baseline_failure_percent": 14.618389423076923,
+      "base_success_percent": 85.38161057692308,
+      "candidate_success_percent": 86.67367788461539,
+      "rescued_routes": 37,
+      "harmed_routes": 2
+    },
+    {
+      "dataset": "primary",
+      "gate": 503,
+      "scope": "critical_estimated",
+      "cases": 1536,
+      "routes": 384,
+      "base_successes": 1082,
+      "base_failures": 454,
+      "gains": 88,
+      "losses": 2,
+      "rescue_percent": 19.383259911894275,
+      "harm_percent": 0.18484288354898337,
+      "net_success_gain_pp": 5.598958333333333,
+      "baseline_failure_percent": 29.557291666666668,
+      "base_success_percent": 70.44270833333333,
+      "candidate_success_percent": 76.04166666666667,
+      "rescued_routes": 37,
+      "harmed_routes": 2
+    },
+    {
+      "dataset": "primary",
+      "gate": 504,
+      "scope": "global",
+      "cases": 6656,
+      "routes": 384,
+      "base_successes": 5683,
+      "base_failures": 973,
+      "gains": 99,
+      "losses": 2,
+      "rescue_percent": 10.174717368961973,
+      "harm_percent": 0.0351926799225761,
+      "net_success_gain_pp": 1.4573317307692308,
+      "baseline_failure_percent": 14.618389423076923,
+      "base_success_percent": 85.38161057692308,
+      "candidate_success_percent": 86.8389423076923,
+      "rescued_routes": 44,
+      "harmed_routes": 1
+    },
+    {
+      "dataset": "primary",
+      "gate": 504,
+      "scope": "critical_estimated",
+      "cases": 1536,
+      "routes": 384,
+      "base_successes": 1082,
+      "base_failures": 454,
+      "gains": 99,
+      "losses": 2,
+      "rescue_percent": 21.80616740088106,
+      "harm_percent": 0.18484288354898337,
+      "net_success_gain_pp": 6.315104166666667,
+      "baseline_failure_percent": 29.557291666666668,
+      "base_success_percent": 70.44270833333333,
+      "candidate_success_percent": 76.7578125,
+      "rescued_routes": 44,
+      "harmed_routes": 1
+    },
+    {
+      "dataset": "primary",
+      "gate": 505,
+      "scope": "global",
+      "cases": 6656,
+      "routes": 384,
+      "base_successes": 5683,
+      "base_failures": 973,
+      "gains": 83,
+      "losses": 0,
+      "rescue_percent": 8.53031860226105,
+      "harm_percent": 0.0,
+      "net_success_gain_pp": 1.2469951923076923,
+      "baseline_failure_percent": 14.618389423076923,
+      "base_success_percent": 85.38161057692308,
+      "candidate_success_percent": 86.62860576923077,
+      "rescued_routes": 37,
+      "harmed_routes": 0
+    },
+    {
+      "dataset": "primary",
+      "gate": 505,
+      "scope": "critical_estimated",
+      "cases": 1536,
+      "routes": 384,
+      "base_successes": 1082,
+      "base_failures": 454,
+      "gains": 83,
+      "losses": 0,
+      "rescue_percent": 18.28193832599119,
+      "harm_percent": 0.0,
+      "net_success_gain_pp": 5.403645833333333,
+      "baseline_failure_percent": 29.557291666666668,
+      "base_success_percent": 70.44270833333333,
+      "candidate_success_percent": 75.84635416666667,
+      "rescued_routes": 37,
+      "harmed_routes": 0
+    },
+    {
+      "dataset": "confirmation",
+      "gate": 501,
+      "scope": "global",
+      "cases": 8192,
+      "routes": 1024,
+      "base_successes": 7116,
+      "base_failures": 1076,
+      "gains": 15,
+      "losses": 0,
+      "rescue_percent": 1.3940520446096654,
+      "harm_percent": 0.0,
+      "net_success_gain_pp": 0.18310546875,
+      "baseline_failure_percent": 13.134765625,
+      "base_success_percent": 86.865234375,
+      "candidate_success_percent": 87.04833984375,
+      "rescued_routes": 9,
+      "harmed_routes": 0
+    },
+    {
+      "dataset": "confirmation",
+      "gate": 501,
+      "scope": "critical_estimated",
+      "cases": 4096,
+      "routes": 1024,
+      "base_successes": 3020,
+      "base_failures": 1076,
+      "gains": 15,
+      "losses": 0,
+      "rescue_percent": 1.3940520446096654,
+      "harm_percent": 0.0,
+      "net_success_gain_pp": 0.3662109375,
+      "baseline_failure_percent": 26.26953125,
+      "base_success_percent": 73.73046875,
+      "candidate_success_percent": 74.0966796875,
+      "rescued_routes": 9,
+      "harmed_routes": 0
+    },
+    {
+      "dataset": "confirmation",
+      "gate": 502,
+      "scope": "global",
+      "cases": 8192,
+      "routes": 1024,
+      "base_successes": 7116,
+      "base_failures": 1076,
+      "gains": 163,
+      "losses": 14,
+      "rescue_percent": 15.148698884758364,
+      "harm_percent": 0.19673974142776843,
+      "net_success_gain_pp": 1.81884765625,
+      "baseline_failure_percent": 13.134765625,
+      "base_success_percent": 86.865234375,
+      "candidate_success_percent": 88.68408203125,
+      "rescued_routes": 82,
+      "harmed_routes": 8
+    },
+    {
+      "dataset": "confirmation",
+      "gate": 502,
+      "scope": "critical_estimated",
+      "cases": 4096,
+      "routes": 1024,
+      "base_successes": 3020,
+      "base_failures": 1076,
+      "gains": 163,
+      "losses": 14,
+      "rescue_percent": 15.148698884758364,
+      "harm_percent": 0.4635761589403974,
+      "net_success_gain_pp": 3.6376953125,
+      "baseline_failure_percent": 26.26953125,
+      "base_success_percent": 73.73046875,
+      "candidate_success_percent": 77.3681640625,
+      "rescued_routes": 82,
+      "harmed_routes": 8
+    },
+    {
+      "dataset": "confirmation",
+      "gate": 503,
+      "scope": "global",
+      "cases": 8192,
+      "routes": 1024,
+      "base_successes": 7116,
+      "base_failures": 1076,
+      "gains": 147,
+      "losses": 16,
+      "rescue_percent": 13.661710037174721,
+      "harm_percent": 0.22484541877459246,
+      "net_success_gain_pp": 1.59912109375,
+      "baseline_failure_percent": 13.134765625,
+      "base_success_percent": 86.865234375,
+      "candidate_success_percent": 88.46435546875,
+      "rescued_routes": 73,
+      "harmed_routes": 11
+    },
+    {
+      "dataset": "confirmation",
+      "gate": 503,
+      "scope": "critical_estimated",
+      "cases": 4096,
+      "routes": 1024,
+      "base_successes": 3020,
+      "base_failures": 1076,
+      "gains": 147,
+      "losses": 16,
+      "rescue_percent": 13.661710037174721,
+      "harm_percent": 0.5298013245033113,
+      "net_success_gain_pp": 3.1982421875,
+      "baseline_failure_percent": 26.26953125,
+      "base_success_percent": 73.73046875,
+      "candidate_success_percent": 76.9287109375,
+      "rescued_routes": 73,
+      "harmed_routes": 11
+    },
+    {
+      "dataset": "confirmation",
+      "gate": 504,
+      "scope": "global",
+      "cases": 8192,
+      "routes": 1024,
+      "base_successes": 7116,
+      "base_failures": 1076,
+      "gains": 186,
+      "losses": 12,
+      "rescue_percent": 17.286245353159853,
+      "harm_percent": 0.16863406408094433,
+      "net_success_gain_pp": 2.1240234375,
+      "baseline_failure_percent": 13.134765625,
+      "base_success_percent": 86.865234375,
+      "candidate_success_percent": 88.9892578125,
+      "rescued_routes": 80,
+      "harmed_routes": 7
+    },
+    {
+      "dataset": "confirmation",
+      "gate": 504,
+      "scope": "critical_estimated",
+      "cases": 4096,
+      "routes": 1024,
+      "base_successes": 3020,
+      "base_failures": 1076,
+      "gains": 186,
+      "losses": 12,
+      "rescue_percent": 17.286245353159853,
+      "harm_percent": 0.3973509933774834,
+      "net_success_gain_pp": 4.248046875,
+      "baseline_failure_percent": 26.26953125,
+      "base_success_percent": 73.73046875,
+      "candidate_success_percent": 77.978515625,
+      "rescued_routes": 80,
+      "harmed_routes": 7
+    },
+    {
+      "dataset": "confirmation",
+      "gate": 505,
+      "scope": "global",
+      "cases": 8192,
+      "routes": 1024,
+      "base_successes": 7116,
+      "base_failures": 1076,
+      "gains": 135,
+      "losses": 0,
+      "rescue_percent": 12.546468401486987,
+      "harm_percent": 0.0,
+      "net_success_gain_pp": 1.64794921875,
+      "baseline_failure_percent": 13.134765625,
+      "base_success_percent": 86.865234375,
+      "candidate_success_percent": 88.51318359375,
+      "rescued_routes": 63,
+      "harmed_routes": 0
+    },
+    {
+      "dataset": "confirmation",
+      "gate": 505,
+      "scope": "critical_estimated",
+      "cases": 4096,
+      "routes": 1024,
+      "base_successes": 3020,
+      "base_failures": 1076,
+      "gains": 135,
+      "losses": 0,
+      "rescue_percent": 12.546468401486987,
+      "harm_percent": 0.0,
+      "net_success_gain_pp": 3.2958984375,
+      "baseline_failure_percent": 26.26953125,
+      "base_success_percent": 73.73046875,
+      "candidate_success_percent": 77.0263671875,
+      "rescued_routes": 63,
+      "harmed_routes": 0
+    }
+  ],
+  "overlaps": {
+    "development_guard_vs_no_guard": {
+      "first": "dev_guarded505",
+      "second": "dev_unguarded505",
+      "first_metrics": {
+        "cases": 8064,
+        "routes": 640,
+        "base_successes": 6239,
+        "base_failures": 1825,
+        "gains": 75,
+        "losses": 0,
+        "rescue_percent": 4.10958904109589,
+        "harm_percent": 0.0,
+        "net_success_gain_pp": 0.9300595238095238,
+        "baseline_failure_percent": 22.63144841269841,
+        "base_success_percent": 77.36855158730158,
+        "candidate_success_percent": 78.29861111111111,
+        "rescued_routes": 35,
+        "harmed_routes": 0,
+        "loss_outcomes": {}
+      },
+      "second_metrics": {
+        "cases": 8064,
+        "routes": 640,
+        "base_successes": 6239,
+        "base_failures": 1825,
+        "gains": 137,
+        "losses": 3,
+        "rescue_percent": 7.506849315068494,
+        "harm_percent": 0.04808462894694662,
+        "net_success_gain_pp": 1.6617063492063493,
+        "baseline_failure_percent": 22.63144841269841,
+        "base_success_percent": 77.36855158730158,
+        "candidate_success_percent": 79.03025793650794,
+        "rescued_routes": 62,
+        "harmed_routes": 2,
+        "loss_outcomes": {
+          "hard_landing": 1,
+          "early_contact": 2
+        }
+      },
+      "shared_rescues": 73,
+      "second_only_rescues": 64,
+      "first_only_rescues": 2,
+      "second_minus_first_net_gains": 62,
+      "second_minus_first_losses": 3,
+      "utility_cost_break_even": 20.666666666666668,
+      "direct_second_wins": 64,
+      "direct_second_loses": 5
+    },
+    "confirmation505_vs504": {
+      "first": "confirmation_505",
+      "second": "confirmation_504",
+      "first_metrics": {
+        "cases": 8192,
+        "routes": 1024,
+        "base_successes": 7116,
+        "base_failures": 1076,
+        "gains": 135,
+        "losses": 0,
+        "rescue_percent": 12.546468401486987,
+        "harm_percent": 0.0,
+        "net_success_gain_pp": 1.64794921875,
+        "baseline_failure_percent": 13.134765625,
+        "base_success_percent": 86.865234375,
+        "candidate_success_percent": 88.51318359375,
+        "rescued_routes": 63,
+        "harmed_routes": 0,
+        "loss_outcomes": {}
+      },
+      "second_metrics": {
+        "cases": 8192,
+        "routes": 1024,
+        "base_successes": 7116,
+        "base_failures": 1076,
+        "gains": 186,
+        "losses": 12,
+        "rescue_percent": 17.286245353159853,
+        "harm_percent": 0.16863406408094433,
+        "net_success_gain_pp": 2.1240234375,
+        "baseline_failure_percent": 13.134765625,
+        "base_success_percent": 86.865234375,
+        "candidate_success_percent": 88.9892578125,
+        "rescued_routes": 80,
+        "harmed_routes": 7,
+        "loss_outcomes": {
+          "early_contact": 2,
+          "timeout": 7,
+          "hard_landing": 3
+        }
+      },
+      "shared_rescues": 130,
+      "second_only_rescues": 56,
+      "first_only_rescues": 5,
+      "second_minus_first_net_gains": 51,
+      "second_minus_first_losses": 12,
+      "utility_cost_break_even": 4.25,
+      "direct_second_wins": 56,
+      "direct_second_loses": 17
+    }
+  },
+  "independent_direct504_vs505": {
+    "scenarios": 1024,
+    "wins504": 15,
+    "losses504": 2,
+    "net504_minus505": 13,
+    "one_sided_p": 0.0011749267578125,
+    "bonferroni_four_comparisons_to_development_selected505_p": 0.00469970703125,
+    "scope": "Exploratory fixed-sample exact paired comparison, same preassigned condition per route. Adjusted over four alternative frozen gates versus the previously selected505; does not certify a harm tolerance or adjust additional searched objectives/groups."
+  },
+  "independent_confirmation_subsample": [
+    {
+      "gate": 501,
+      "scenarios": 1024,
+      "baseline_successes": 755,
+      "baseline_failures": 269,
+      "gains": 4,
+      "losses": 0,
+      "rescue_percent": 1.486988847583643,
+      "harm_percent": 0.0,
+      "harm_upper95_percent": 0.39599957713918515,
+      "harm_upper_family95_five_models_percent": 0.6080998589311843,
+      "harm_upper_joint95_five_models_two_claims_percent": 0.6993072767249473,
+      "mcnemar_one_sided_p_fixed_sample": 0.0625,
+      "benefit_p_bonferroni_five_models": 0.3125
+    },
+    {
+      "gate": 502,
+      "scenarios": 1024,
+      "baseline_successes": 755,
+      "baseline_failures": 269,
+      "gains": 44,
+      "losses": 4,
+      "rescue_percent": 16.356877323420075,
+      "harm_percent": 0.5298013245033113,
+      "harm_upper95_percent": 1.2082534740767725,
+      "harm_upper_family95_five_models_percent": 1.5293123194676694,
+      "harm_upper_joint95_five_models_two_claims_percent": 1.658621877988394,
+      "mcnemar_one_sided_p_fixed_sample": 7.569163074094831e-10,
+      "benefit_p_bonferroni_five_models": 3.784581537047416e-09
+    },
+    {
+      "gate": 503,
+      "scenarios": 1024,
+      "baseline_successes": 755,
+      "baseline_failures": 269,
+      "gains": 34,
+      "losses": 3,
+      "rescue_percent": 12.639405204460967,
+      "harm_percent": 0.3973509933774834,
+      "harm_upper95_percent": 1.0237453577490203,
+      "harm_upper_family95_five_models_percent": 1.3242853053502102,
+      "harm_upper_joint95_five_models_two_claims_percent": 1.4463090842797572,
+      "mcnemar_one_sided_p_fixed_sample": 6.165646482259035e-08,
+      "benefit_p_bonferroni_five_models": 3.0828232411295176e-07
+    },
+    {
+      "gate": 504,
+      "scenarios": 1024,
+      "baseline_successes": 755,
+      "baseline_failures": 269,
+      "gains": 47,
+      "losses": 1,
+      "rescue_percent": 17.472118959107807,
+      "harm_percent": 0.13245033112582782,
+      "harm_upper95_percent": 0.6267707148095438,
+      "harm_upper_family95_five_models_percent": 0.8759759986186832,
+      "harm_upper_joint95_five_models_two_claims_percent": 0.9799429921796518,
+      "mcnemar_one_sided_p_fixed_sample": 1.7408297026122455e-13,
+      "benefit_p_bonferroni_five_models": 8.704148513061227e-13
+    },
+    {
+      "gate": 505,
+      "scenarios": 1024,
+      "baseline_successes": 755,
+      "baseline_failures": 269,
+      "gains": 33,
+      "losses": 0,
+      "rescue_percent": 12.267657992565056,
+      "harm_percent": 0.0,
+      "harm_upper95_percent": 0.39599957713918515,
+      "harm_upper_family95_five_models_percent": 0.6080998589311843,
+      "harm_upper_joint95_five_models_two_claims_percent": 0.6993072767249473,
+      "mcnemar_one_sided_p_fixed_sample": 1.1641532182693481e-10,
+      "benefit_p_bonferroni_five_models": 5.820766091346741e-10
+    }
+  ],
+  "descriptive_route_bootstrap": {
+    "replicates": 10000,
+    "route_clusters": 1024,
+    "conditions_per_route": 4,
+    "metrics": {
+      "501": {
+        "rescue_percent": [
+          0.5454297970631908,
+          2.3985793528295387
+        ],
+        "harm_percent": [
+          0.0,
+          0.0
+        ],
+        "net_success_gain_pp": [
+          0.146484375,
+          0.634765625
+        ]
+      },
+      "502": {
+        "rescue_percent": [
+          11.94022548704618,
+          18.549905838041433
+        ],
+        "harm_percent": [
+          0.16655147261781109,
+          0.8135731205298621
+        ],
+        "net_success_gain_pp": [
+          2.7587890625,
+          4.5654296875
+        ]
+      },
+      "503": {
+        "rescue_percent": [
+          10.554549917162669,
+          17.00997474578762
+        ],
+        "harm_percent": [
+          0.23333333333333334,
+          0.8789451074648656
+        ],
+        "net_success_gain_pp": [
+          2.34375,
+          4.1259765625
+        ]
+      },
+      "504": {
+        "rescue_percent": [
+          13.614065360415566,
+          21.319859881696523
+        ],
+        "harm_percent": [
+          0.13119055428009183,
+          0.7304177511144395
+        ],
+        "net_success_gain_pp": [
+          3.173828125,
+          5.37109375
+        ]
+      },
+      "505": {
+        "rescue_percent": [
+          9.519644601215605,
+          15.934102826448395
+        ],
+        "harm_percent": [
+          0.0,
+          0.0
+        ],
+        "net_success_gain_pp": [
+          2.4658203125,
+          4.1748046875
+        ]
+      }
+    },
+    "net504_minus505_gain_pp_ci95": [
+      0.341796875,
+      1.6357421875
+    ],
+    "scope": "Post-hoc descriptive pointwise paired route-bootstrap, not simultaneous/model-selection adjusted certification. Zero empirical harm produces degenerate bootstrap intervals; never interpret them as a zero population-risk bound."
+  },
+  "formal_loss_severity": [
+    {
+      "dataset": "primary_501",
+      "losses": 0,
+      "harmed_routes": 0,
+      "outcomes": {},
+      "known_first_contacts": 0,
+      "unknown_first_contacts": 0,
+      "max_vertical_contact_speed": null,
+      "max_angular_contact_speed": null,
+      "max_contact_radius": null
+    },
+    {
+      "dataset": "primary_502",
+      "losses": 3,
+      "harmed_routes": 2,
+      "outcomes": {
+        "hard_landing": 1,
+        "early_contact": 2
+      },
+      "known_first_contacts": 1,
+      "unknown_first_contacts": 2,
+      "max_vertical_contact_speed": 0.21363745920728996,
+      "max_angular_contact_speed": 0.25675759214820393,
+      "max_contact_radius": 0.1235965739927665
+    },
+    {
+      "dataset": "primary_503",
+      "losses": 2,
+      "harmed_routes": 2,
+      "outcomes": {
+        "hard_landing": 1,
+        "timeout": 1
+      },
+      "known_first_contacts": 1,
+      "unknown_first_contacts": 1,
+      "max_vertical_contact_speed": 0.21363745920728996,
+      "max_angular_contact_speed": 0.25675759214820393,
+      "max_contact_radius": 0.1235965739927665
+    },
+    {
+      "dataset": "primary_504",
+      "losses": 2,
+      "harmed_routes": 1,
+      "outcomes": {
+        "hard_landing": 2
+      },
+      "known_first_contacts": 2,
+      "unknown_first_contacts": 0,
+      "max_vertical_contact_speed": 0.19186886185201993,
+      "max_angular_contact_speed": 0.1015569980972485,
+      "max_contact_radius": 0.46555703810200777
+    },
+    {
+      "dataset": "primary_505",
+      "losses": 0,
+      "harmed_routes": 0,
+      "outcomes": {},
+      "known_first_contacts": 0,
+      "unknown_first_contacts": 0,
+      "max_vertical_contact_speed": null,
+      "max_angular_contact_speed": null,
+      "max_contact_radius": null
+    },
+    {
+      "dataset": "confirmation_501",
+      "losses": 0,
+      "harmed_routes": 0,
+      "outcomes": {},
+      "known_first_contacts": 0,
+      "unknown_first_contacts": 0,
+      "max_vertical_contact_speed": null,
+      "max_angular_contact_speed": null,
+      "max_contact_radius": null
+    },
+    {
+      "dataset": "confirmation_502",
+      "losses": 14,
+      "harmed_routes": 8,
+      "outcomes": {
+        "early_contact": 7,
+        "timeout": 6,
+        "hard_landing": 1
+      },
+      "known_first_contacts": 5,
+      "unknown_first_contacts": 9,
+      "max_vertical_contact_speed": 0.18477194801640423,
+      "max_angular_contact_speed": 4.9540440571182085,
+      "max_contact_radius": 0.09181024429116266
+    },
+    {
+      "dataset": "confirmation_503",
+      "losses": 16,
+      "harmed_routes": 11,
+      "outcomes": {
+        "early_contact": 7,
+        "timeout": 9
+      },
+      "known_first_contacts": 4,
+      "unknown_first_contacts": 12,
+      "max_vertical_contact_speed": 0.13618166155772277,
+      "max_angular_contact_speed": 0.034869774127620705,
+      "max_contact_radius": 0.06760676267812614
+    },
+    {
+      "dataset": "confirmation_504",
+      "losses": 12,
+      "harmed_routes": 7,
+      "outcomes": {
+        "early_contact": 2,
+        "timeout": 7,
+        "hard_landing": 3
+      },
+      "known_first_contacts": 5,
+      "unknown_first_contacts": 7,
+      "max_vertical_contact_speed": 0.3647407417479833,
+      "max_angular_contact_speed": 0.5697856018771249,
+      "max_contact_radius": 2.196817814505336
+    },
+    {
+      "dataset": "confirmation_505",
+      "losses": 0,
+      "harmed_routes": 0,
+      "outcomes": {},
+      "known_first_contacts": 0,
+      "unknown_first_contacts": 0,
+      "max_vertical_contact_speed": null,
+      "max_angular_contact_speed": null,
+      "max_contact_radius": null
+    }
+  ],
+  "both_fail_transitions": [
+    {
+      "phase": "primary",
+      "gate": 504,
+      "both_fail": 874,
+      "changed_failure_outcomes": {
+        "hard_landing -> early_contact": 1,
+        "timeout -> hard_landing": 15,
+        "hard_landing -> timeout": 13,
+        "timeout -> early_contact": 2
+      }
+    },
+    {
+      "phase": "primary",
+      "gate": 505,
+      "both_fail": 890,
+      "changed_failure_outcomes": {
+        "hard_landing -> timeout": 14,
+        "timeout -> hard_landing": 14,
+        "timeout -> early_contact": 2
+      }
+    },
+    {
+      "phase": "confirmation",
+      "gate": 504,
+      "both_fail": 890,
+      "changed_failure_outcomes": {
+        "early_contact -> timeout": 10,
+        "hard_landing -> early_contact": 4
+      }
+    },
+    {
+      "phase": "confirmation",
+      "gate": 505,
+      "both_fail": 941,
+      "changed_failure_outcomes": {
+        "early_contact -> timeout": 8
+      }
+    }
+  ],
+  "binary_metric_blind_spot": {
+    "cases": 16,
+    "all_at_30_percent": true,
+    "known_contacts": 14,
+    "maximum_recorded_angular_contact_speed": 8.323611755805416,
+    "maximum_recorded_vertical_contact_speed": 0.26113792045305456,
+    "scope": "Outcome-category changes inside both-fail cells, not lost successful landings. These are not automatically all worse: baseline timeout is not a physical-safety certificate; an agreed severity metric is needed."
+  },
+  "unguarded505_development_losses": [
+    {
+      "kind": "loss",
+      "case": {
+        "seed": 760006,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": 4.0
+      },
+      "baseline_outcome": "stable_landing",
+      "candidate_outcome": "hard_landing",
+      "baseline_steps": 945,
+      "candidate_steps": 459,
+      "baseline_contact": {
+        "vertical_speed": 0.1333276586331502,
+        "horizontal_speed": 0.0029563548329233987,
+        "tilt": 0.000842822671561207,
+        "angular_speed": 0.026899655126339864,
+        "radius": 0.020307592759136427
+      },
+      "candidate_contact": {
+        "vertical_speed": 0.15828094712663396,
+        "horizontal_speed": 0.016871035574945563,
+        "tilt": 0.004602742463127365,
+        "angular_speed": 5.437637642402838,
+        "radius": 0.11129940172804845
+      },
+      "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\checkpoint_selection\\expanded_raw\\known_seed_505\\changed_outcome_traces\\c87eb1ea7bb9.npz",
+      "option_start_tick": 57,
+      "option_start_seconds": 1.1875,
+      "option_id": 5,
+      "option_description": [
+        24,
+        0.5,
+        false
+      ],
+      "duration": 24,
+      "actual_motor_intervention_steps": 24,
+      "first_actual_motor_intervention_seconds": 1.1875,
+      "prefix_observation_difference": 0.0,
+      "initial_estimated_eta": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "initial_true_eta_for_audit_only": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "initial_physical_delta": [
+        -0.13239213824272134,
+        0.10257922035066576,
+        -0.0591707747396544,
+        -0.0066629606954983845
+      ],
+      "initial_forecasts": {
+        "base_success": 0.8912412911175277,
+        "preservation": 0.998282835171739,
+        "joint_rescue": 0.019304642723016983,
+        "joint_harm": 0.0015304081986009632,
+        "conditional_harm": 0.002240255525882362,
+        "lower_gain": 0.013146744849969492
+      },
+      "forecast_scope": "Conditional_harm is the actual decision risk under max_member",
+      "true_loss_at_start_for_diagnosis_only": 0.0,
+      "observed_loss_at_start": 0.0
+    },
+    {
+      "kind": "loss",
+      "case": {
+        "seed": 810177,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "baseline_outcome": "stable_landing",
+      "candidate_outcome": "early_contact",
+      "baseline_steps": 858,
+      "candidate_steps": 225,
+      "baseline_contact": {
+        "vertical_speed": 0.13476510589282797,
+        "horizontal_speed": 0.011405105990939551,
+        "tilt": 0.0008165246164945949,
+        "angular_speed": 0.01926870770570242,
+        "radius": 0.06333263498128776
+      },
+      "candidate_contact": null,
+      "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\checkpoint_selection\\expanded_raw\\known_seed_505\\changed_outcome_traces\\2e917d23b3cd.npz",
+      "option_start_tick": 88,
+      "option_start_seconds": 1.8333333333333333,
+      "option_id": 5,
+      "option_description": [
+        24,
+        0.5,
+        false
+      ],
+      "duration": 24,
+      "actual_motor_intervention_steps": 24,
+      "first_actual_motor_intervention_seconds": 1.8333333333333333,
+      "prefix_observation_difference": 0.0,
+      "initial_estimated_eta": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "initial_true_eta_for_audit_only": [
+        1.0,
+        1.0,
+        1.0,
+        0.704
+      ],
+      "initial_physical_delta": [
+        -0.2182909250259401,
+        -0.012970264682225077,
+        -0.048504088770495925,
+        0.014076436320146329
+      ],
+      "initial_forecasts": {
+        "base_success": 0.7869130862253985,
+        "preservation": 0.9912815129803677,
+        "joint_rescue": 0.0861047037564132,
+        "joint_harm": 0.006860691527834947,
+        "conditional_harm": 0.010737793211599733,
+        "lower_gain": 0.046785383647945517
+      },
+      "forecast_scope": "Conditional_harm is the actual decision risk under max_member",
+      "true_loss_at_start_for_diagnosis_only": 0.29600000000000004,
+      "observed_loss_at_start": 0.0
+    },
+    {
+      "kind": "loss",
+      "case": {
+        "seed": 810177,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "baseline_outcome": "stable_landing",
+      "candidate_outcome": "early_contact",
+      "baseline_steps": 762,
+      "candidate_steps": 224,
+      "baseline_contact": {
+        "vertical_speed": 0.1334696837691575,
+        "horizontal_speed": 0.002669577686632589,
+        "tilt": 0.00038990006541843824,
+        "angular_speed": 0.013038734453233206,
+        "radius": 0.0186214421699957
+      },
+      "candidate_contact": null,
+      "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\checkpoint_selection\\expanded_raw\\known_seed_505\\changed_outcome_traces\\1f527abc29b4.npz",
+      "option_start_tick": 88,
+      "option_start_seconds": 1.8333333333333333,
+      "option_id": 5,
+      "option_description": [
+        24,
+        0.5,
+        false
+      ],
+      "duration": 24,
+      "actual_motor_intervention_steps": 24,
+      "first_actual_motor_intervention_seconds": 1.8333333333333333,
+      "prefix_observation_difference": 0.0,
+      "initial_estimated_eta": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "initial_true_eta_for_audit_only": [
+        1.0,
+        1.0,
+        1.0,
+        0.704
+      ],
+      "initial_physical_delta": [
+        -0.21655616164207472,
+        -0.012681250257602675,
+        -0.046545325368101194,
+        0.013252323137093881
+      ],
+      "initial_forecasts": {
+        "base_success": 0.7727377614116087,
+        "preservation": 0.9911888407528245,
+        "joint_rescue": 0.0896140861729376,
+        "joint_harm": 0.006808715472103532,
+        "conditional_harm": 0.010700140053500617,
+        "lower_gain": 0.049490289628795106
+      },
+      "forecast_scope": "Conditional_harm is the actual decision risk under max_member",
+      "true_loss_at_start_for_diagnosis_only": 0.29600000000000004,
+      "observed_loss_at_start": 0.0
+    }
+  ],
+  "protected_sample_sizes": [
+    {
+      "harm_tolerance_percent": 0.1,
+      "alpha": 0.05,
+      "independent_zero_loss_protected_flights_required": 2995
+    },
+    {
+      "harm_tolerance_percent": 0.1,
+      "alpha": 0.0125,
+      "independent_zero_loss_protected_flights_required": 4380
+    },
+    {
+      "harm_tolerance_percent": 0.1,
+      "alpha": 0.01,
+      "independent_zero_loss_protected_flights_required": 4603
+    },
+    {
+      "harm_tolerance_percent": 0.5,
+      "alpha": 0.05,
+      "independent_zero_loss_protected_flights_required": 598
+    },
+    {
+      "harm_tolerance_percent": 0.5,
+      "alpha": 0.0125,
+      "independent_zero_loss_protected_flights_required": 875
+    },
+    {
+      "harm_tolerance_percent": 0.5,
+      "alpha": 0.01,
+      "independent_zero_loss_protected_flights_required": 919
+    },
+    {
+      "harm_tolerance_percent": 1.0,
+      "alpha": 0.05,
+      "independent_zero_loss_protected_flights_required": 299
+    },
+    {
+      "harm_tolerance_percent": 1.0,
+      "alpha": 0.0125,
+      "independent_zero_loss_protected_flights_required": 437
+    },
+    {
+      "harm_tolerance_percent": 1.0,
+      "alpha": 0.01,
+      "independent_zero_loss_protected_flights_required": 459
+    }
+  ],
+  "utility_scores": [
+    {
+      "gate": 501,
+      "lambda_harm": 1.0,
+      "score": 15.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 502,
+      "lambda_harm": 1.0,
+      "score": 149.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 503,
+      "lambda_harm": 1.0,
+      "score": 131.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 504,
+      "lambda_harm": 1.0,
+      "score": 174.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 505,
+      "lambda_harm": 1.0,
+      "score": 135.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 501,
+      "lambda_harm": 2.0,
+      "score": 15.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 502,
+      "lambda_harm": 2.0,
+      "score": 135.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 503,
+      "lambda_harm": 2.0,
+      "score": 115.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 504,
+      "lambda_harm": 2.0,
+      "score": 162.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 505,
+      "lambda_harm": 2.0,
+      "score": 135.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 501,
+      "lambda_harm": 4.25,
+      "score": 15.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 502,
+      "lambda_harm": 4.25,
+      "score": 103.5,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 503,
+      "lambda_harm": 4.25,
+      "score": 79.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 504,
+      "lambda_harm": 4.25,
+      "score": 135.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 505,
+      "lambda_harm": 4.25,
+      "score": 135.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 501,
+      "lambda_harm": 5.0,
+      "score": 15.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 502,
+      "lambda_harm": 5.0,
+      "score": 93.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 503,
+      "lambda_harm": 5.0,
+      "score": 67.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 504,
+      "lambda_harm": 5.0,
+      "score": 126.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 505,
+      "lambda_harm": 5.0,
+      "score": 135.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 501,
+      "lambda_harm": 10.0,
+      "score": 15.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 502,
+      "lambda_harm": 10.0,
+      "score": 23.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 503,
+      "lambda_harm": 10.0,
+      "score": -13.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 504,
+      "lambda_harm": 10.0,
+      "score": 66.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 505,
+      "lambda_harm": 10.0,
+      "score": 135.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 501,
+      "lambda_harm": 20.0,
+      "score": 15.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 502,
+      "lambda_harm": 20.0,
+      "score": -117.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 503,
+      "lambda_harm": 20.0,
+      "score": -173.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 504,
+      "lambda_harm": 20.0,
+      "score": -54.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    },
+    {
+      "gate": 505,
+      "lambda_harm": 20.0,
+      "score": 135.0,
+      "scope": "Observed confirmation counts only; scalar utility assumes equal value per rescue and equal cost per lost baseline landing."
+    }
+  ],
+  "prevalence_sensitivity": [
+    {
+      "hypothetical_baseline_failure_percent": 1.0,
+      "gate": 504,
+      "expected_net_success_gain_pp": -0.22051502991211014,
+      "assumption": "Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates."
+    },
+    {
+      "hypothetical_baseline_failure_percent": 1.0,
+      "gate": 505,
+      "expected_net_success_gain_pp": 0.12546468401486988,
+      "assumption": "Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates."
+    },
+    {
+      "hypothetical_baseline_failure_percent": 5.0,
+      "gate": 504,
+      "expected_net_success_gain_pp": 0.4868288239493833,
+      "assumption": "Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates."
+    },
+    {
+      "hypothetical_baseline_failure_percent": 5.0,
+      "gate": 505,
+      "expected_net_success_gain_pp": 0.6273234200743494,
+      "assumption": "Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates."
+    },
+    {
+      "hypothetical_baseline_failure_percent": 10.0,
+      "gate": 504,
+      "expected_net_success_gain_pp": 1.3710086412762499,
+      "assumption": "Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates."
+    },
+    {
+      "hypothetical_baseline_failure_percent": 10.0,
+      "gate": 505,
+      "expected_net_success_gain_pp": 1.2546468401486988,
+      "assumption": "Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates."
+    },
+    {
+      "hypothetical_baseline_failure_percent": 26.26953125,
+      "gate": 504,
+      "expected_net_success_gain_pp": 4.248046875,
+      "assumption": "Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates."
+    },
+    {
+      "hypothetical_baseline_failure_percent": 26.26953125,
+      "gate": 505,
+      "expected_net_success_gain_pp": 3.2958984375,
+      "assumption": "Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates."
+    },
+    {
+      "hypothetical_baseline_failure_percent": 40.0,
+      "gate": 504,
+      "expected_net_success_gain_pp": 6.67608754523745,
+      "assumption": "Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates."
+    },
+    {
+      "hypothetical_baseline_failure_percent": 40.0,
+      "gate": 505,
+      "expected_net_success_gain_pp": 5.018587360594795,
+      "assumption": "Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates."
+    }
+  ],
+  "critical504_vs505_equal_cost_prevalence_break_even_percent": 7.734886061390264,
+  "zero_loss_acceptance_example": {
+    "true_harm_percent": 0.1,
+    "independent_protected_flights": 5000,
+    "probability_pass_zero_losses": 0.006721111959865588
+  },
+  "registered_selected505_independent_evidence": {
+    "scenarios": 2048,
+    "gains": 67,
+    "losses": 0,
+    "protected_baseline_successes": 1513,
+    "log_e_value": 46.44086109751633,
+    "e_value": 147573952589676412928,
+    "benefit_alpha": 0.0125,
+    "preservation_alpha": 0.0125,
+    "positive_gain_evidence": true,
+    "conditional_harm_upper": 0.0028920601676341185,
+    "maximum_conditional_harm": 0.005,
+    "preservation_evidence": true,
+    "both_statistical_conditions": true,
+    "scope": "One independently assigned estimated-effectiveness critical episode and model per independent scenario. Zero observed losses is still required in every additional stress/curve test. Bound covers the fixed simulated mixture, not universal safety or the risk conditional on actual neural actuation."
+  }
+}

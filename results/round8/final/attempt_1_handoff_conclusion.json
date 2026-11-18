@@ -1,0 +1,91 @@
+{
+  "closed": true,
+  "finished_epoch": 1794956036.3900702,
+  "conclusion": "Portable source, models, data and evidence bundle tested from its relocated path.",
+  "folder": "E:\\UTEC\\Tesis\\TesisNicol\\ENTREGA_NICOLE_RONDA8\\intento_1",
+  "archive": "E:\\UTEC\\Tesis\\TesisNicol\\ENTREGA_NICOLE_RONDA8\\intento_1.zip",
+  "archive_sha256": "9a2664fc7483c3de11cd39917b596deac70393a7fc4f53aac4cc097143cff9c3",
+  "archive_contents_verified": true,
+  "smoke_test": {
+    "passed": true,
+    "actual_development_rescue": true,
+    "demo_case": {
+      "seed": 740016,
+      "level": 0.295,
+      "condition": "estimated",
+      "noise": 1.0,
+      "clock": null
+    },
+    "relocated_regression_exit_code": 0,
+    "powershell_launcher_exit_code": 0,
+    "powershell_launcher_matches_relocated_python": true,
+    "project_imports_within_bundle": true,
+    "seconds": 205.50735068321228,
+    "original_and_relocated_exit_codes": [
+      0,
+      0
+    ],
+    "maximum_terminal_position_difference": 0.0,
+    "first_contact_and_stability_equal": true,
+    "relocated_source_root": "E:\\UTEC\\Tesis\\TesisNicol\\ENTREGA_NICOLE_RONDA8\\intento_1\\PFC_round8",
+    "scope": "Actual baseline and guarded GTrXL demo from relocated source and relative model configuration; subprocess source path and caches constrained to bundle."
+  },
+  "raw_outcome_recalculation": {
+    "known_legacy_cases": 8,
+    "known_legacy_losses": 0,
+    "passed": true,
+    "summary_checks": [
+      {
+        "phase": "primary",
+        "subset": "all",
+        "cases": 6656,
+        "passed": true
+      },
+      {
+        "phase": "primary",
+        "subset": "estimated_critical",
+        "cases": 1536,
+        "passed": true
+      },
+      {
+        "phase": "confirmation",
+        "subset": "all",
+        "cases": 8192,
+        "passed": true
+      },
+      {
+        "phase": "confirmation",
+        "subset": "estimated_critical",
+        "cases": 4096,
+        "passed": true
+      },
+      {
+        "phase": "shifted",
+        "subset": "all",
+        "cases": 512,
+        "passed": true
+      },
+      {
+        "phase": "shifted",
+        "subset": "estimated_critical",
+        "cases": 512,
+        "passed": true
+      },
+      {
+        "phase": "assigned_initial",
+        "subset": "all",
+        "cases": 1024,
+        "passed": true
+      },
+      {
+        "phase": "assigned_initial",
+        "subset": "estimated_critical",
+        "cases": 1024,
+        "passed": true
+      }
+    ],
+    "curve_rows": 108,
+    "all_formal_replica_metrics_equal": true,
+    "scope": "All aggregate counts, rates and curve points recomputed from the copied per-case outcome files; no original simulator histories needed for this audit."
+  }
+}

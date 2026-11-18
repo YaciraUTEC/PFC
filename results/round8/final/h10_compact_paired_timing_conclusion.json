@@ -1,0 +1,25 @@
+{
+  "closed": true,
+  "finished_epoch": 1794937654.6131012,
+  "conclusion": "Same recorded context, same CPU, alternating order; this isolates option-table gate computation. Whole-chain timing is measured separately and includes hardware variability.",
+  "passed": true,
+  "timing": {
+    "dense8": {
+      "samples": 1000,
+      "p50_ms": 0.94165,
+      "p95_ms": 1.1633549999999997,
+      "p99_ms": 1.5046479999999998
+    },
+    "compact1": {
+      "samples": 1000,
+      "p50_ms": 0.72665,
+      "p95_ms": 0.903235,
+      "p99_ms": 1.153729
+    }
+  },
+  "options": [
+    8,
+    1
+  ],
+  "scope": "Inference arithmetic timing only, not full deadline evidence; old and new whole-chain timings were not simultaneous."
+}

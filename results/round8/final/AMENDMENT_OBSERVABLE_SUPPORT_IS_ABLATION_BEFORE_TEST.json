@@ -1,0 +1,15 @@
+{
+  "created_epoch": 1794927320.0705087,
+  "before_any_formal_selection_freeze_allocation_or_outcome": true,
+  "reason": "Observed-degradation entry support was a plausible conservative restriction, not a physical safety certificate. Same learned raw505: version3 has35rescues0loss on new1408, version4 has15rescues0loss. Making version4 mandatory would discard a potentially better terminal-preserving policy without checking its complete known/severity preservation. Active acquisition also includes earlier stopping states, so healthy observations are not categorically absent from training.",
+  "change": "Treat observed-support guard as an explicit ablation, not a mandatory delivery invariant. All registered option-policy variants with zero fresh/known development losses and positive new-default gain can be qualified on all8064cases by actual implementation. Ranking unchanged: new-default rescues, shifted rescues, fewer interventions, smaller menu and deterministic tie-break. No final data used.",
+  "unchanged": [
+    "Zero operational baseline losses required in every development and formal phase",
+    "Full8064development qualification before selecting",
+    "Five-fit formal sensitivity still fully evaluated",
+    "Positive operational bootstrap principal and confirmation",
+    "Independent assigned e-process and conditional harm bound with revision-wise alpha spending",
+    "CPU/GPU identity checks, full-chain timing, full regression, portable handoff"
+  ],
+  "prior_guard_design_sha": "4c1c969ff0f956b9c2bd20e953b47cbc330e5a6ff86397b65f55c5cab862b6f5"
+}

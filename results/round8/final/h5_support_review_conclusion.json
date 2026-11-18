@@ -1,0 +1,71 @@
+{
+  "closed": true,
+  "finished_epoch": 1794911960.262953,
+  "conclusion": "Complete-data ensemble ablation closed before targeted expansion. Audit finds only three own short-option rescue routes and one harm route in initial training; increase independent counterfactual support at actual authorization times next.",
+  "previous_results": {
+    "gains": 12,
+    "losses": 1,
+    "statistics": {
+      "mean": 0.0010216346153846154,
+      "lower95": 0.0,
+      "upper95": 0.003125,
+      "replicates": 20000,
+      "model_seeds": 5,
+      "route_clusters": 416,
+      "gains": 12,
+      "losses": 1,
+      "mild_losses": 0,
+      "exact_losses": 0,
+      "protected_route_clusters": 413,
+      "harmed_route_clusters": 1,
+      "harmed_route_upper95": 0.011434423756273288,
+      "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+    }
+  },
+  "effective_support": {
+    "train": {
+      "0": {
+        "records": 213,
+        "states": 107,
+        "routes": 17
+      },
+      "1": {
+        "records": 7,
+        "states": 4,
+        "routes": 3
+      },
+      "2": {
+        "records": 2,
+        "states": 1,
+        "routes": 1
+      },
+      "3": {
+        "records": 86,
+        "states": 44,
+        "routes": 9
+      }
+    },
+    "calibration": {
+      "0": {
+        "records": 202,
+        "states": 103,
+        "routes": 18
+      },
+      "1": {
+        "records": 5,
+        "states": 3,
+        "routes": 3
+      },
+      "2": {
+        "records": 3,
+        "states": 2,
+        "routes": 2
+      },
+      "3": {
+        "records": 90,
+        "states": 47,
+        "routes": 11
+      }
+    }
+  }
+}

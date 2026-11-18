@@ -1,0 +1,49 @@
+{
+  "cases": [
+    {
+      "case": {
+        "seed": 812003,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "baseline_outcome": "stable_landing",
+      "naive_outcome": "early_contact",
+      "learned_outcome": "stable_landing",
+      "baseline_steps": 957,
+      "naive_steps": 185,
+      "learned_steps": 957,
+      "naive_summary": {
+        "options_started": 1,
+        "actual_motor_intervention_steps": 24,
+        "first_actual_intervention_seconds": 2.1666666666666665,
+        "option_start_seconds": 2.1666666666666665,
+        "option_id": 5,
+        "initial_forecasts": {
+          "base_success": 0.03774681491731554,
+          "preservation": 0.811821004533108,
+          "joint_rescue": 0.026880337853930375,
+          "joint_harm": 0.007103157713215132,
+          "conditional_harm": 0.22524157213680396,
+          "lower_gain": 0.0050041346601966755
+        }
+      },
+      "learned_summary": {
+        "options_started": 0,
+        "actual_motor_intervention_steps": 0,
+        "first_actual_intervention_seconds": null,
+        "option_start_seconds": null,
+        "scope": "Complete-policy OFF identity verified on entire base history"
+      },
+      "prefix_observation_difference_through_first_decision": 0.0,
+      "scope": "Same baseline prefix at the first actual intervention. Both preservation and conservative gain tests reject this initial proposal; not an isolation of the conditional-harm threshold alone.",
+      "baseline_trace_relative_to_probe": "counterexample_baseline_histories/62e09ea14578.npz",
+      "naive_trace_relative_to_probe": "changed_outcome_traces/62e09ea14578.npz",
+      "baseline_trace_sha256": "46b54af19177063794dc59f46a23ed4fc9dc271ec4261c2fc2225394460ad960",
+      "naive_trace_sha256": "ad7f1ab7914ceb37843346d4c77231bb47e46e92995b11e5cbbb56677d3c88c9"
+    }
+  ],
+  "probe_conclusion_sha256": "62cc940619a746827e514311a6f812a332b4431d35ff89738e993dceaec0fdc6",
+  "scope": "Post-hoc diagnostic of a development-only ablation; the preselected formal policy is unchanged."
+}

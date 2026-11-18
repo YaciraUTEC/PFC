@@ -1,0 +1,21 @@
+{
+  "spec": {
+    "version": 4,
+    "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+    "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\full_support_v1\\seed_505.pt",
+    "minimum_gain": 0.01,
+    "maximum_harm": 0.02,
+    "penalty": 1.0,
+    "option_mode": "both",
+    "risk_aggregation": "max_member",
+    "allowed_options": [
+      5
+    ],
+    "fast_execution": true,
+    "observed_loss_min": 0.02,
+    "sigma_multiplier": 0.0
+  },
+  "cases": 1408,
+  "workers": 2,
+  "scope": "Same declared development cohort and policy as upcoming guarded_flow.raw501; exact cached result reused there. No second16-worker pool."
+}

@@ -1,0 +1,14 @@
+{
+  "seconds": 34.19752740859985,
+  "exit_code": 0,
+  "args": [
+    "-m",
+    "experiments.round8.fit",
+    "--seed",
+    "502",
+    "--folder",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\data\\base_options_v1",
+    "--tag",
+    "base_options_v1"
+  ]
+}

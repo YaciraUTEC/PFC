@@ -1,0 +1,6 @@
+{
+  "closed": true,
+  "finished_epoch": 1794901729.0591884,
+  "conclusion": "Both naturally reconstructed train/calibration datasets complete before fitting; no changes to baseline or landing contract.",
+  "groups_per_split": 120
+}

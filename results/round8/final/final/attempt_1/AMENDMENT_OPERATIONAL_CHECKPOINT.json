@@ -1,0 +1,7 @@
+{
+  "created_before_final_allocation": true,
+  "operational_gate": 505,
+  "change": "Independent assigned statistical stream uses the actual development-selected operational checkpoint; random level and noise only. All five fits remain evaluated. Crossed bootstrap and family losses are secondary sensitivity diagnostics, as declared in AMENDMENT_FIXED_CHECKPOINT_ESTIMAND_BEFORE_TEST.json; operational checkpoint has the primary zero-loss and gain requirements.",
+  "reason": "Family-mixture evidence should not be advertised as checkpoint-specific deployment evidence.",
+  "prior_design": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\AMENDMENT_FINAL_POWER_AND_SEQUENTIAL_EVIDENCE.json"
+}

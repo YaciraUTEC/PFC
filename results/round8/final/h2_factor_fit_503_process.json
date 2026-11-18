@@ -1,0 +1,14 @@
+{
+  "pid": 29748,
+  "args": [
+    "-m",
+    "experiments.round8.fit",
+    "--seed",
+    "503",
+    "--folder",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\data\\base_options_v1",
+    "--tag",
+    "base_options_v1"
+  ],
+  "started_epoch": 1794901802.22486
+}

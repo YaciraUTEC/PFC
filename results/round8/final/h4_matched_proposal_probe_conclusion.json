@@ -1,0 +1,135 @@
+{
+  "closed": true,
+  "finished_epoch": 1794907168.036661,
+  "conclusion": "Matched state and identical24-half native option separate proposal quality from gate prediction; factual failure reproduced exactly. Individual case, not a global ranking.",
+  "case": {
+    "seed": 810239,
+    "level": 0.296,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null
+  },
+  "tick": 82,
+  "baseline": {
+    "outcome": "stable_landing",
+    "steps": 1071
+  },
+  "proposers": [
+    {
+      "proposer": 201,
+      "outcome": "stable_landing",
+      "steps": 781,
+      "first_contact": {
+        "vertical_speed": 0.13289098815405656,
+        "horizontal_speed": 0.013481896562357256,
+        "tilt": 0.00010339571357562641,
+        "angular_speed": 0.011096536643394161,
+        "radius": 0.09437500316091009
+      },
+      "terminal_position": [
+        -1.6668635399868188,
+        0.6735212517929763,
+        0.013486654227694812
+      ],
+      "initial_delta": [
+        -0.00906137980537179,
+        0.7894502147975904,
+        -0.44495895479680303,
+        -0.23455968238039848
+      ],
+      "initial_native_on": true
+    },
+    {
+      "proposer": 202,
+      "outcome": "stable_landing",
+      "steps": 1366,
+      "first_contact": {
+        "vertical_speed": 0.13296262399868014,
+        "horizontal_speed": 0.009803970343483282,
+        "tilt": 0.0003874424315504062,
+        "angular_speed": 0.006146891041243186,
+        "radius": 0.07148101975147865
+      },
+      "terminal_position": [
+        -1.5607755511722228,
+        0.5529171739595633,
+        0.013489999013295461
+      ],
+      "initial_delta": [
+        -0.13237327115347008,
+        0.10385591472871399,
+        -0.4942257748802201,
+        0.03411135040943082
+      ],
+      "initial_native_on": false
+    },
+    {
+      "proposer": 203,
+      "outcome": "stable_landing",
+      "steps": 1071,
+      "first_contact": {
+        "vertical_speed": 0.13381809685958426,
+        "horizontal_speed": 0.0068059602070633385,
+        "tilt": 0.0004027288815741251,
+        "angular_speed": 0.00440915342841452,
+        "radius": 0.07119340357081554
+      },
+      "terminal_position": [
+        -1.6277494226330973,
+        0.5567847049287042,
+        0.01348999801968625
+      ],
+      "initial_delta": [
+        -0.22977681239020334,
+        0.313175287417541,
+        -0.09824981320119308,
+        -0.17164381687855024
+      ],
+      "initial_native_on": false
+    },
+    {
+      "proposer": 204,
+      "outcome": "stable_landing",
+      "steps": 805,
+      "first_contact": {
+        "vertical_speed": 0.13419108229479024,
+        "horizontal_speed": 0.01219609492244966,
+        "tilt": 0.0004924833799394502,
+        "angular_speed": 0.024953765410017266,
+        "radius": 0.08777765004777625
+      },
+      "terminal_position": [
+        -1.6614732730620896,
+        0.6696546512273732,
+        0.013489998538680428
+      ],
+      "initial_delta": [
+        -0.22146577580765606,
+        0.48203023229263225,
+        -0.3274885383470617,
+        -0.1387638424934708
+      ],
+      "initial_native_on": true
+    },
+    {
+      "proposer": 205,
+      "outcome": "early_contact",
+      "steps": 259,
+      "first_contact": null,
+      "terminal_position": [
+        0.2976592821530984,
+        1.5161167352483345,
+        0.05483009782461369
+      ],
+      "initial_delta": [
+        -0.013887238946653592,
+        0.6156150872015451,
+        -0.12269907526469909,
+        0.018178329141323262
+      ],
+      "initial_native_on": true
+    }
+  ],
+  "factual_position_error": 0.0,
+  "seconds": 7.2610766887664795
+}

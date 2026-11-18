@@ -1,0 +1,32 @@
+{
+  "case": {
+    "seed": 740000,
+    "level": 0.0,
+    "condition": "estimated",
+    "noise": 1.0,
+    "clock": null
+  },
+  "results": [
+    {
+      "seed": 501,
+      "first": null
+    },
+    {
+      "seed": 502,
+      "first": null
+    },
+    {
+      "seed": 503,
+      "first": null
+    },
+    {
+      "seed": 504,
+      "first": null
+    },
+    {
+      "seed": 505,
+      "first": null
+    }
+  ],
+  "scope": "Read-only diagnostic on baseline histories; until first intervention the observed history is exactly the deployed history. No physical result inferred."
+}

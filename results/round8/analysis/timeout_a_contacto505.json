@@ -1,0 +1,326 @@
+[
+  {
+    "case": {
+      "seed": 840008,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 1.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "hard_landing",
+    "baseline_first_contact": null,
+    "candidate_first_contact": {
+      "vertical_speed": 0.23853288979695864,
+      "horizontal_speed": 0.022902933821544777,
+      "tilt": 0.005794806356607764,
+      "angular_speed": 6.788764295639441,
+      "radius": 0.11542246850780187
+    },
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 8.895833333333334
+  },
+  {
+    "case": {
+      "seed": 840007,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 1.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "hard_landing",
+    "baseline_first_contact": null,
+    "candidate_first_contact": {
+      "vertical_speed": 0.025393456962636205,
+      "horizontal_speed": 0.026015891936603915,
+      "tilt": 0.01439134939936884,
+      "angular_speed": 7.976870121091024,
+      "radius": 0.07925086309905084
+    },
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 13.145833333333334
+  },
+  {
+    "case": {
+      "seed": 840005,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 2.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "hard_landing",
+    "baseline_first_contact": null,
+    "candidate_first_contact": {
+      "vertical_speed": 0.24356630582095584,
+      "horizontal_speed": 0.47448493139039416,
+      "tilt": 0.06708253600859906,
+      "angular_speed": 8.323611755805416,
+      "radius": 0.2753430050240643
+    },
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 8.0
+  },
+  {
+    "case": {
+      "seed": 840005,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 1.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "hard_landing",
+    "baseline_first_contact": null,
+    "candidate_first_contact": {
+      "vertical_speed": 0.26113792045305456,
+      "horizontal_speed": 0.026940263309855696,
+      "tilt": 0.009431543136338575,
+      "angular_speed": 6.3328245839402415,
+      "radius": 0.09461510762734585
+    },
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 9.0625
+  },
+  {
+    "case": {
+      "seed": 840008,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 2.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "hard_landing",
+    "baseline_first_contact": null,
+    "candidate_first_contact": {
+      "vertical_speed": 0.2294163299006449,
+      "horizontal_speed": 0.0026317442807440032,
+      "tilt": 0.00625350824987206,
+      "angular_speed": 6.465102125795721,
+      "radius": 0.10695416535676817
+    },
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 9.270833333333334
+  },
+  {
+    "case": {
+      "seed": 840011,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 1.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "early_contact",
+    "baseline_first_contact": null,
+    "candidate_first_contact": null,
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 11.0
+  },
+  {
+    "case": {
+      "seed": 840030,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 1.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "hard_landing",
+    "baseline_first_contact": null,
+    "candidate_first_contact": {
+      "vertical_speed": 0.23560841381991124,
+      "horizontal_speed": 0.267505908393662,
+      "tilt": 0.05124808982242476,
+      "angular_speed": 6.464845031853409,
+      "radius": 0.22531524167554848
+    },
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 9.5625
+  },
+  {
+    "case": {
+      "seed": 840035,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 2.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "hard_landing",
+    "baseline_first_contact": null,
+    "candidate_first_contact": {
+      "vertical_speed": 0.16609988818415738,
+      "horizontal_speed": 0.02769673305591102,
+      "tilt": 0.010707328750502976,
+      "angular_speed": 6.36024344810771,
+      "radius": 0.08578822430221218
+    },
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 10.229166666666666
+  },
+  {
+    "case": {
+      "seed": 840035,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 1.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "hard_landing",
+    "baseline_first_contact": null,
+    "candidate_first_contact": {
+      "vertical_speed": 0.1718418618376342,
+      "horizontal_speed": 0.018459754813265245,
+      "tilt": 0.0072658421526314776,
+      "angular_speed": 6.281996347901168,
+      "radius": 0.08826218917011018
+    },
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 10.104166666666666
+  },
+  {
+    "case": {
+      "seed": 840057,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 2.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "hard_landing",
+    "baseline_first_contact": null,
+    "candidate_first_contact": {
+      "vertical_speed": 0.04868102055700529,
+      "horizontal_speed": 0.01722401732930911,
+      "tilt": 0.012188098274782986,
+      "angular_speed": 7.5098617977662965,
+      "radius": 0.07327431163849565
+    },
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 13.229166666666666
+  },
+  {
+    "case": {
+      "seed": 840075,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 1.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "hard_landing",
+    "baseline_first_contact": null,
+    "candidate_first_contact": {
+      "vertical_speed": 0.16481886589875674,
+      "horizontal_speed": 0.02108455577234845,
+      "tilt": 0.006078541724405704,
+      "angular_speed": 6.215197812696875,
+      "radius": 0.07299323609020533
+    },
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 10.9375
+  },
+  {
+    "case": {
+      "seed": 840057,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 1.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "hard_landing",
+    "baseline_first_contact": null,
+    "candidate_first_contact": {
+      "vertical_speed": 0.054903996997702445,
+      "horizontal_speed": 0.00486510045876371,
+      "tilt": 0.005829955983841373,
+      "angular_speed": 7.335505846615327,
+      "radius": 0.057029511324406236
+    },
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 13.4375
+  },
+  {
+    "case": {
+      "seed": 840080,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 1.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "early_contact",
+    "baseline_first_contact": null,
+    "candidate_first_contact": null,
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 9.916666666666666
+  },
+  {
+    "case": {
+      "seed": 840102,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 2.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "hard_landing",
+    "baseline_first_contact": null,
+    "candidate_first_contact": {
+      "vertical_speed": 0.1636916794784721,
+      "horizontal_speed": 0.032412484328213684,
+      "tilt": 0.007896470790883424,
+      "angular_speed": 6.35532935628365,
+      "radius": 0.14595599039007176
+    },
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 10.145833333333334
+  },
+  {
+    "case": {
+      "seed": 840115,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 2.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "hard_landing",
+    "baseline_first_contact": null,
+    "candidate_first_contact": {
+      "vertical_speed": 0.153355495651559,
+      "horizontal_speed": 0.026115393344566463,
+      "tilt": 0.007621916182745932,
+      "angular_speed": 6.184938348088873,
+      "radius": 0.09218597744788204
+    },
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 11.666666666666666
+  },
+  {
+    "case": {
+      "seed": 840115,
+      "level": 0.3,
+      "condition": "estimated",
+      "noise": 1.0,
+      "clock": null
+    },
+    "baseline_outcome": "timeout",
+    "candidate_outcome": "hard_landing",
+    "baseline_first_contact": null,
+    "candidate_first_contact": {
+      "vertical_speed": 0.1519199212696955,
+      "horizontal_speed": 0.02658846376280101,
+      "tilt": 0.006986050754232589,
+      "angular_speed": 6.222122841730804,
+      "radius": 0.09318647967548735
+    },
+    "baseline_finish_seconds": 30.0,
+    "candidate_finish_seconds": 11.604166666666666
+  }
+]

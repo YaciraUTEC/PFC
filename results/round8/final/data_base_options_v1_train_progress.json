@@ -1,0 +1,7 @@
+{
+  "split": "train",
+  "groups_complete": 120,
+  "target": 120,
+  "samples": 12288,
+  "seconds": 2886.4759407043457
+}

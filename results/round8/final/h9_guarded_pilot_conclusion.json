@@ -1,0 +1,69 @@
+{
+  "closed": true,
+  "finished_epoch": 1794919941.686898,
+  "conclusion": "Observable entry support tested on the prefault harmful intervention and postfault harmful intervention, with native/raw/both menus; true fault time logged only after the policy decision, never fed to it.",
+  "rows": [
+    {
+      "menu": "native",
+      "seed": 760006,
+      "clock": 4.0,
+      "outcome": "stable_landing",
+      "steps": 945,
+      "initial": []
+    },
+    {
+      "menu": "native",
+      "seed": 812021,
+      "clock": null,
+      "outcome": "timeout",
+      "steps": 1440,
+      "initial": [
+        {
+          "time": 1.4791666666666667,
+          "observed_loss": 0.10330085456371307,
+          "actual_fault_time": 1.3958333333333333,
+          "option": 1
+        }
+      ]
+    },
+    {
+      "menu": "raw",
+      "seed": 760006,
+      "clock": 4.0,
+      "outcome": "stable_landing",
+      "steps": 945,
+      "initial": []
+    },
+    {
+      "menu": "raw",
+      "seed": 812021,
+      "clock": null,
+      "outcome": "stable_landing",
+      "steps": 575,
+      "initial": []
+    },
+    {
+      "menu": "both",
+      "seed": 760006,
+      "clock": 4.0,
+      "outcome": "stable_landing",
+      "steps": 945,
+      "initial": []
+    },
+    {
+      "menu": "both",
+      "seed": 812021,
+      "clock": null,
+      "outcome": "timeout",
+      "steps": 1440,
+      "initial": [
+        {
+          "time": 1.4791666666666667,
+          "observed_loss": 0.10330085456371307,
+          "actual_fault_time": 1.3958333333333333,
+          "option": 1
+        }
+      ]
+    }
+  ]
+}

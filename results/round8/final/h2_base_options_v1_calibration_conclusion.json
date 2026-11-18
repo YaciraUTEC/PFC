@@ -1,0 +1,17 @@
+{
+  "closed": true,
+  "finished_epoch": 1794901720.0079615,
+  "conclusion": "Natural-base states paired with explicit native/raw options; strict boundary examples retained.",
+  "groups": 120,
+  "samples": 12128,
+  "labels": {
+    "3": 3225,
+    "1": 751,
+    "0": 7429,
+    "2": 723
+  },
+  "prefix_checks": 12128,
+  "maximum_prefix_error": 0.0,
+  "maximum_projection_error": 1.483053663452194e-07,
+  "seconds": 2878.447544336319
+}

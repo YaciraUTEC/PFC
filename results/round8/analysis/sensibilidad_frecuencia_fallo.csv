@@ -1,0 +1,11 @@
+﻿hypothetical_baseline_failure_percent,gate,expected_net_success_gain_pp,assumption
+1.0,504,-0.22051502991211014,Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates.
+1.0,505,0.12546468401486988,Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates.
+5.0,504,0.4868288239493833,Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates.
+5.0,505,0.6273234200743494,Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates.
+10.0,504,1.3710086412762499,Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates.
+10.0,505,1.2546468401486988,Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates.
+26.26953125,504,4.248046875,Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates.
+26.26953125,505,3.2958984375,Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates.
+40.0,504,6.67608754523745,Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates.
+40.0,505,5.018587360594795,Illustration only: the conditional rescue/harm distributions remain fixed at the observed critical-estimated confirmation distribution. Not an estimate of real-world rates.

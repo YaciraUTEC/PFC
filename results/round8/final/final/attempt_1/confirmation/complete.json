@@ -1,0 +1,91 @@
+{
+  "complete": true,
+  "entries": [
+    {
+      "seed": 501,
+      "metrics": {
+        "cases": 8192,
+        "success": 0.8704833984375,
+        "gains": 15,
+        "losses": 0,
+        "critical_difference": 0.003662109375,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 502,
+      "metrics": {
+        "cases": 8192,
+        "success": 0.8868408203125,
+        "gains": 163,
+        "losses": 14,
+        "critical_difference": 0.036376953125,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 503,
+      "metrics": {
+        "cases": 8192,
+        "success": 0.8846435546875,
+        "gains": 147,
+        "losses": 16,
+        "critical_difference": 0.031982421875,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 504,
+      "metrics": {
+        "cases": 8192,
+        "success": 0.889892578125,
+        "gains": 186,
+        "losses": 12,
+        "critical_difference": 0.04248046875,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 505,
+      "metrics": {
+        "cases": 8192,
+        "success": 0.8851318359375,
+        "gains": 135,
+        "losses": 0,
+        "critical_difference": 0.032958984375,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    }
+  ],
+  "cases_per_model": 8192,
+  "reference_curve": null,
+  "family_statistics": {
+    "mean": 0.0294921875,
+    "lower95": 0.015576171875,
+    "upper95": 0.042724609375,
+    "replicates": 20000,
+    "model_seeds": 5,
+    "route_clusters": 1024,
+    "gains": 646,
+    "losses": 42,
+    "mild_losses": 0,
+    "exact_losses": 0,
+    "protected_route_clusters": 1024,
+    "harmed_route_clusters": 15,
+    "harmed_route_upper95": 0.02246654667975464,
+    "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+  },
+  "operational_statistics": {
+    "mean": 0.032958984375,
+    "lower95": 0.024658203125,
+    "upper95": 0.0419921875,
+    "route_clusters": 1024,
+    "replicates": 20000,
+    "scope": "Route-cluster paired bootstrap for the development-selected operational checkpoint; repeated noise and severity settings remain clustered."
+  }
+}

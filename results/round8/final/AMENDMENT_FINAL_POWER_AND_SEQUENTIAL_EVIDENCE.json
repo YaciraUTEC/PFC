@@ -1,0 +1,51 @@
+{
+  "created_before_any_final_case": true,
+  "reason": "Gains are sparse in development, and user explicitly requests iterative improvement. Increase critical-route precision without counting correlated settings as independent, and control repeated final revisions/optional continuation.",
+  "main_critical_routes": [
+    840000,
+    840384
+  ],
+  "curve_routes": [
+    840000,
+    840128
+  ],
+  "confirmation_full_grid_routes": [
+    850000,
+    851024
+  ],
+  "assigned_only_initial_routes": [
+    852000,
+    853024
+  ],
+  "assigned_only_optional_extension_routes": [
+    854000,
+    856048
+  ],
+  "shift_routes": [
+    860000,
+    860064
+  ],
+  "initial_independent_assigned_cases": 2048,
+  "maximum_independent_assigned_cases": 4096,
+  "primary_baseline_cases": 6656,
+  "confirmation_full_grid_baseline_cases": 8192,
+  "shift_baseline_cases": 512,
+  "assigned_extra_initial_baseline_cases": 1024,
+  "initial_total_baseline_cases": 16384,
+  "assignments_generated_only_after_candidate_freeze": true,
+  "assignment_population": "uniformly sampled frozen model501..505, lossRPM29.5/29.6, noise1/2; estimated effectiveness, default clock; one episode/model per independent route.",
+  "alpha_spending": "Benefit .025/2**attempt and preservation .025/2**attempt; total over all adaptive revisions<=.05 under iid simulation and independent assignment assumptions.",
+  "benefit_rule": "E=2**independent_gains if zero independent losses, else0; accept evidence if E>=1/alpha_benefit. The2/0/1 multiplier has null conditional expectation1+P(gain)-P(loss)<=1, so Ville handles continuation for a fixed candidate.",
+  "preservation_rule": "Zero losses in all protected tests plus upper conditional harm on independently assigned protected successes:1-alpha_preservation**(1/n_protected)<=.005. On zero-loss branch the crossing event is bounded at any stopping time.",
+  "additional_existing_criteria": [
+    "lower95 crossed model/route bootstrap gain>0 in main and confirmation",
+    "zero observed lost baseline successes in selected-family development and all tests",
+    "full-chain guardedp95<20.833ms"
+  ],
+  "stopping": "Complete all initially allocated curve/stress tests. After2048 assigned episodes, a fixed candidate with zero losses may collect a predeclared additional2048 assigned-only fresh routes if benefit evidence is still insufficient. Stop/reject on observed harm; any revised candidate uses new disjoint routes and next alpha allocation.",
+  "references": [
+    "https://arxiv.org/abs/2210.01948",
+    "https://arxiv.org/abs/1810.08240"
+  ],
+  "scope": "No formal claim about unmodeled plant dynamics; independent-episode inference covers the specified simulated critical mixture."
+}

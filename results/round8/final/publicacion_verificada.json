@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "base_commit": "e27eb6e5526965b29221adbc18b7a30e538cb239",
+  "target_branch": "codex/dslpid-irl-round3",
+  "original_frozen_sources_and_artifacts_unchanged": true,
+  "original_delivered_zip_unchanged": true,
+  "staged_evidence_bytes_verified": 340,
+  "reanalysis": {
+    "passed": true,
+    "reanalysis_json_equal": true,
+    "reanalysis_sha256": "70e4ea9c688def763e9c6c2cd8ff0bbd70128f998cc05aaaf1dce8f196a82d63",
+    "archived_analysis_sha256": "70e4ea9c688def763e9c6c2cd8ff0bbd70128f998cc05aaaf1dce8f196a82d63",
+    "csv_and_failure_transitions_equal": true,
+    "all_projected_fields_equal_original": true,
+    "manifest_entries_verified": 340,
+    "new_python_syntax_valid": true,
+    "no_credentials_patterns_found": true,
+    "no_github_oversize_files": true,
+    "scope": "Published terminal projections reproduce original analysis exactly; no training or final evaluation flights run."
+  },
+  "regression": {
+    "unique_test_cases_verified": 425,
+    "initial_run": {
+      "passed": 419,
+      "failed": 3,
+      "skipped": 3,
+      "reason": "Two active_v1 checkpoint fixture files had not yet been copied to the publication checkout."
+    },
+    "targeted_recheck": {
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "source_code_changed": false
+    },
+    "no_outstanding_failed_or_skipped_cases": true,
+    "single_clean_full_suite_invocation": false,
+    "scope": "419 unaffected cases passed the complete suite; all3 failures and3 skips were then rechecked successfully after restoring local model fixtures. Source code was not modified."
+  },
+  "weights_and_training_data_remain_local": true,
+  "scope": "Publication verification, no new training or scientific test flights. Historical result receipts remain distinct and unchanged."
+}

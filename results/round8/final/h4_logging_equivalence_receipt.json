@@ -1,0 +1,8 @@
+{
+  "seconds": 14.534439325332642,
+  "exit_code": 0,
+  "args": [
+    "-m",
+    "experiments.round8.logging_check"
+  ]
+}

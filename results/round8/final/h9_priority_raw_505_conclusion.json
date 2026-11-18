@@ -1,0 +1,15 @@
+{
+  "closed": true,
+  "finished_epoch": 1794924429.4033036,
+  "conclusion": "Observed-support candidate evaluated while other controls finish; exact cache can be reused, no final case used.",
+  "metrics": {
+    "cases": 1408,
+    "success": 0.7450284090909091,
+    "gains": 15,
+    "losses": 0,
+    "critical_difference": 0.01953125,
+    "mild_losses": 0,
+    "exact_losses": 0
+  },
+  "workers": 2
+}

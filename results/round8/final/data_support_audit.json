@@ -1,0 +1,126 @@
+{
+  "train": {
+    "201": {
+      "routes": 24,
+      "query_states": 154,
+      "option_future_records": 2464,
+      "class_records": {
+        "0": 1542,
+        "2": 178,
+        "3": 594,
+        "1": 150
+      },
+      "scope": "Rows/options/futures are correlated; independent scenario count is routes, not records."
+    },
+    "202": {
+      "routes": 24,
+      "query_states": 154,
+      "option_future_records": 2464,
+      "class_records": {
+        "0": 1429,
+        "2": 315,
+        "3": 595,
+        "1": 125
+      },
+      "scope": "Rows/options/futures are correlated; independent scenario count is routes, not records."
+    },
+    "203": {
+      "routes": 24,
+      "query_states": 152,
+      "option_future_records": 2432,
+      "class_records": {
+        "0": 1487,
+        "2": 113,
+        "1": 240,
+        "3": 592
+      },
+      "scope": "Rows/options/futures are correlated; independent scenario count is routes, not records."
+    },
+    "204": {
+      "routes": 24,
+      "query_states": 154,
+      "option_future_records": 2464,
+      "class_records": {
+        "0": 1646,
+        "2": 146,
+        "3": 538,
+        "1": 134
+      },
+      "scope": "Rows/options/futures are correlated; independent scenario count is routes, not records."
+    },
+    "205": {
+      "routes": 24,
+      "query_states": 154,
+      "option_future_records": 2464,
+      "class_records": {
+        "0": 1655,
+        "2": 65,
+        "3": 578,
+        "1": 166
+      },
+      "scope": "Rows/options/futures are correlated; independent scenario count is routes, not records."
+    }
+  },
+  "calibration": {
+    "201": {
+      "routes": 24,
+      "query_states": 150,
+      "option_future_records": 2400,
+      "class_records": {
+        "0": 1486,
+        "2": 154,
+        "3": 613,
+        "1": 147
+      },
+      "scope": "Rows/options/futures are correlated; independent scenario count is routes, not records."
+    },
+    "202": {
+      "routes": 24,
+      "query_states": 154,
+      "option_future_records": 2464,
+      "class_records": {
+        "0": 1414,
+        "2": 306,
+        "3": 663,
+        "1": 81
+      },
+      "scope": "Rows/options/futures are correlated; independent scenario count is routes, not records."
+    },
+    "203": {
+      "routes": 24,
+      "query_states": 150,
+      "option_future_records": 2400,
+      "class_records": {
+        "0": 1470,
+        "2": 106,
+        "3": 619,
+        "1": 205
+      },
+      "scope": "Rows/options/futures are correlated; independent scenario count is routes, not records."
+    },
+    "204": {
+      "routes": 24,
+      "query_states": 154,
+      "option_future_records": 2464,
+      "class_records": {
+        "0": 1633,
+        "2": 103,
+        "3": 598,
+        "1": 130
+      },
+      "scope": "Rows/options/futures are correlated; independent scenario count is routes, not records."
+    },
+    "205": {
+      "routes": 24,
+      "query_states": 150,
+      "option_future_records": 2400,
+      "class_records": {
+        "0": 1426,
+        "2": 54,
+        "3": 732,
+        "1": 188
+      },
+      "scope": "Rows/options/futures are correlated; independent scenario count is routes, not records."
+    }
+  }
+}

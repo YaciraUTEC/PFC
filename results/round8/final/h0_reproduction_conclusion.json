@@ -1,0 +1,14 @@
+{
+  "closed": true,
+  "finished_epoch": 1794897836.7600632,
+  "conclusion": "The isolated copy preserves natural baseline outcomes, step counts and terminal positions; previous sources and selected models remain unchanged.",
+  "integrity": {
+    "source_count": 250,
+    "artifact_count": 12,
+    "final_manifest_sha": "70a14b9cdc84436a926f1d5e6ca7e53234468ad42897b2b42ad700dba1564686"
+  },
+  "cases": 4,
+  "largest_position_difference": 0.0,
+  "structural_tests_passed": 9,
+  "seconds": 5.167766571044922
+}

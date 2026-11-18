@@ -1,0 +1,15 @@
+{
+  "closed": true,
+  "finished_epoch": 1794931377.9228806,
+  "conclusion": "Prospectively declared development severity sweep evaluated before any frozen final trial.",
+  "metrics": {
+    "cases": 1280,
+    "success": 0.8,
+    "gains": 0,
+    "losses": 0,
+    "critical_difference": 0.0,
+    "mild_losses": 0,
+    "exact_losses": 0
+  },
+  "workers": 2
+}

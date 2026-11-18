@@ -1,0 +1,46 @@
+{
+  "closed": true,
+  "finished_epoch": 1794937617.8322496,
+  "conclusion": "Every dense and compact first authorization matches the actual original policy on all8064development cases for all5gates; actor/feedback/budget are unchanged. Near-threshold cases are flagged for direct CPU physical replay.",
+  "passed": true,
+  "cases_per_model": 8064,
+  "models": 5,
+  "first_decisions_compared": 40320,
+  "maximum_selected_feature_difference": 0.0,
+  "maximum_selected_forecast_difference": 9.992007221626409e-16,
+  "source_baseline_sha": "8636b9bf06b4bec6e1a370ffc643cc4b070e3f7f0234fdf22dccc71e3ef07acb",
+  "original_references": [
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\checkpoint_selection\\with_severity_sweep\\guarded_raw\\seed_501\\results.json",
+      "sha256": "70ec559cd83e6e4c4d83519eecf02972b6dd9b6d2762cc6536e43f3319e85faf"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\checkpoint_selection\\with_severity_sweep\\guarded_raw\\seed_502\\results.json",
+      "sha256": "a74f59217b10a2887b7bfe7ac49fc358020f3aba70236d3bcc6dc652d5d33972"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\checkpoint_selection\\with_severity_sweep\\guarded_raw\\seed_503\\results.json",
+      "sha256": "db8eea7bc5f747a032e96d8a248ad2da40f18e4c0a3d54a30672e96e8f70cc98"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\checkpoint_selection\\with_severity_sweep\\guarded_raw\\seed_504\\results.json",
+      "sha256": "8de3d0f8fbfd281d4cce6b98cbc385481867be4654fab80db1d9b6e0313e2db3"
+    },
+    {
+      "path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\checkpoint_selection\\with_severity_sweep\\guarded_raw\\seed_505\\results.json",
+      "sha256": "31d1524f1d8a97e2b9d87097b7fb74564be1c1b5725fa5d5b95231015a498ffc"
+    }
+  ],
+  "source_sha256": "a14f643f5e3a388a1e92277b86da9ad6c1f5b176bf002584b7429093f093387a",
+  "loader_sha256": "ba01d8e9bae6d96a719ee1b0203dfb78f20332c0533b12f15c1b3c94c3607656",
+  "arrays_sha256": "b33b4dbc449be5ebe0441ada644fb18ff949e28f6941ac2519a3a3739c9f00e4",
+  "inputs_sha256": "47b5e391dbe1cb7d3408fc10d17f85e066ddc20f61157ad9c1a112431020945f",
+  "near_threshold_cases": {
+    "501": 1,
+    "502": 0,
+    "503": 2,
+    "504": 1,
+    "505": 1
+  },
+  "seconds": 1135.437890291214
+}

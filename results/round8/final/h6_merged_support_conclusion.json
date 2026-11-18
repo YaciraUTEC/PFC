@@ -1,0 +1,7 @@
+{
+  "closed": true,
+  "finished_epoch": 1794913703.9424453,
+  "conclusion": "Original counterfactual data preserved and augmented with disjoint route-split first-decision queries. Hardlinks preserve exact original bytes.",
+  "folder": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\data\\active_merged_v1",
+  "scope": "No final test routes used. Old810/740 development now contributes training/calibration labels and is not advertised as an independent held-out validation."
+}

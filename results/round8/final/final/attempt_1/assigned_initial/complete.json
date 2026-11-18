@@ -1,0 +1,13 @@
+{
+  "complete": true,
+  "metrics": {
+    "cases": 1024,
+    "success": 0.7734375,
+    "gains": 34,
+    "losses": 0,
+    "critical_difference": 0.033203125,
+    "mild_losses": 0,
+    "exact_losses": 0
+  },
+  "cases": 1024
+}

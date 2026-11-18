@@ -1,0 +1,144 @@
+{
+  "closed": true,
+  "finished_epoch": 1794936856.142545,
+  "conclusion": "Eight complete paired physical flights have identical float32 motor requests, observations, physical states, first contacts, settling times and termination; all five gates, actual rescues and losses included.",
+  "passed": true,
+  "checks": [
+    {
+      "gate_seed": 501,
+      "case": {
+        "seed": 812046,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "steps": 664,
+      "outcome": "stable_landing",
+      "option_starts": [
+        67
+      ],
+      "maximum_physical_state_difference": 0.0,
+      "commands_sha256": "3b622bd8e02aa13fb5be32d6eb55036aa4227380fbefebb5e9553882221ed134"
+    },
+    {
+      "gate_seed": 502,
+      "case": {
+        "seed": 812092,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "steps": 1440,
+      "outcome": "timeout",
+      "option_starts": [
+        497
+      ],
+      "maximum_physical_state_difference": 0.0,
+      "commands_sha256": "ef066e84f6fba188ad11f69da9661e9b7db21f119fcc9e97ac014fc704ae4228"
+    },
+    {
+      "gate_seed": 503,
+      "case": {
+        "seed": 812100,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "steps": 1440,
+      "outcome": "timeout",
+      "option_starts": [
+        93
+      ],
+      "maximum_physical_state_difference": 0.0,
+      "commands_sha256": "c6c3b6b42f104bfa7d4196e7317bb77b57d5a58ab6f4af1ef351f35bd095dbeb"
+    },
+    {
+      "gate_seed": 504,
+      "case": {
+        "seed": 812040,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "steps": 325,
+      "outcome": "hard_landing",
+      "option_starts": [
+        89
+      ],
+      "maximum_physical_state_difference": 0.0,
+      "commands_sha256": "b5213cda669edf6c72d818d5b77acdf32857a29520b1ec70e51008d2f44b7652"
+    },
+    {
+      "gate_seed": 505,
+      "case": {
+        "seed": 812002,
+        "level": 0.295,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "steps": 1007,
+      "outcome": "stable_landing",
+      "option_starts": [
+        84
+      ],
+      "maximum_physical_state_difference": 0.0,
+      "commands_sha256": "dac0fccb0e4d52cb7160728b1010a98553305c454bc950d1745d749a2b6ce934"
+    },
+    {
+      "gate_seed": 505,
+      "case": {
+        "seed": 760006,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": 4.0
+      },
+      "steps": 945,
+      "outcome": "stable_landing",
+      "option_starts": [],
+      "maximum_physical_state_difference": 0.0,
+      "commands_sha256": "83b163d6c08c0612a132c6ddf5d2a62e150fa6a97242f9a1296aac0ca42acaa3"
+    },
+    {
+      "gate_seed": 505,
+      "case": {
+        "seed": 810177,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "steps": 762,
+      "outcome": "stable_landing",
+      "option_starts": [],
+      "maximum_physical_state_difference": 0.0,
+      "commands_sha256": "27242cadb63a11cbd69b797049c063b92eeebf5fb54ff4b07aac4df30edfc97b"
+    },
+    {
+      "gate_seed": 505,
+      "case": {
+        "seed": 810085,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "steps": 722,
+      "outcome": "stable_landing",
+      "option_starts": [
+        68
+      ],
+      "maximum_physical_state_difference": 0.0,
+      "commands_sha256": "301aa7071fa4b70282ea994cf5001d232673d0bb9b7c4ee94d848def90236024"
+    }
+  ],
+  "maximum_physical_state_difference": 0.0,
+  "source_sha256": "8eaba701424f3f889632cabcdfc2183c71a1f8493e1840716f37ee7db60d4e4c",
+  "loader_sha256": "ba01d8e9bae6d96a719ee1b0203dfb78f20332c0533b12f15c1b3c94c3607656",
+  "seconds": 91.01202464103699
+}

@@ -1,0 +1,319 @@
+{
+  "closed": true,
+  "finished_epoch": 1794906216.7650118,
+  "conclusion": "Both unchanged and improved-baseline-prognosis families evaluated in five paired replicas on larger new-route development; no final route consumed.",
+  "families": {
+    "native": {
+      "entries": [
+        {
+          "seed": 501,
+          "spec": {
+            "version": 2,
+            "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+            "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_501.pt",
+            "minimum_gain": 0.005,
+            "maximum_harm": 0.02,
+            "penalty": 1.0,
+            "option_mode": "native",
+            "risk_aggregation": "max_member",
+            "allowed_options": null
+          },
+          "metrics": {
+            "cases": 2560,
+            "success": 0.73515625,
+            "gains": 7,
+            "losses": 0,
+            "critical_difference": 0.004557291666666667,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 502,
+          "spec": {
+            "version": 2,
+            "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_202\\best.pt",
+            "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_502.pt",
+            "minimum_gain": 0.005,
+            "maximum_harm": 0.02,
+            "penalty": 1.0,
+            "option_mode": "native",
+            "risk_aggregation": "max_member",
+            "allowed_options": null
+          },
+          "metrics": {
+            "cases": 2560,
+            "success": 0.73359375,
+            "gains": 3,
+            "losses": 0,
+            "critical_difference": 0.001953125,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 503,
+          "spec": {
+            "version": 2,
+            "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_203\\best.pt",
+            "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_503.pt",
+            "minimum_gain": 0.005,
+            "maximum_harm": 0.02,
+            "penalty": 1.0,
+            "option_mode": "native",
+            "risk_aggregation": "max_member",
+            "allowed_options": null
+          },
+          "metrics": {
+            "cases": 2560,
+            "success": 0.7328125,
+            "gains": 1,
+            "losses": 0,
+            "critical_difference": 0.0006510416666666666,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 504,
+          "spec": {
+            "version": 2,
+            "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_204\\best.pt",
+            "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_504.pt",
+            "minimum_gain": 0.005,
+            "maximum_harm": 0.02,
+            "penalty": 1.0,
+            "option_mode": "native",
+            "risk_aggregation": "max_member",
+            "allowed_options": null
+          },
+          "metrics": {
+            "cases": 2560,
+            "success": 0.732421875,
+            "gains": 0,
+            "losses": 0,
+            "critical_difference": 0.0,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 505,
+          "spec": {
+            "version": 2,
+            "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_205\\best.pt",
+            "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_505.pt",
+            "minimum_gain": 0.005,
+            "maximum_harm": 0.02,
+            "penalty": 1.0,
+            "option_mode": "native",
+            "risk_aggregation": "max_member",
+            "allowed_options": null
+          },
+          "metrics": {
+            "cases": 2560,
+            "success": 0.73203125,
+            "gains": 0,
+            "losses": 1,
+            "critical_difference": -0.0006510416666666666,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        }
+      ],
+      "statistics": {
+        "default": {
+          "mean": 0.0017578125,
+          "lower95": -0.0005859375,
+          "upper95": 0.005859375,
+          "replicates": 20000,
+          "model_seeds": 5,
+          "route_clusters": 256,
+          "gains": 10,
+          "losses": 1,
+          "mild_losses": 0,
+          "exact_losses": 0,
+          "protected_route_clusters": 256,
+          "harmed_route_clusters": 1,
+          "harmed_route_upper95": 0.018395769886273675,
+          "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+        },
+        "shifted": {
+          "mean": 0.000390625,
+          "lower95": 0.0,
+          "upper95": 0.00234375,
+          "replicates": 20000,
+          "model_seeds": 5,
+          "route_clusters": 64,
+          "gains": 1,
+          "losses": 0,
+          "mild_losses": 0,
+          "exact_losses": 0,
+          "protected_route_clusters": 63,
+          "harmed_route_clusters": 0,
+          "harmed_route_upper95": 0.04643845148393823,
+          "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+        }
+      },
+      "gains": 11,
+      "losses": 1
+    },
+    "forecast_augmented": {
+      "entries": [
+        {
+          "seed": 501,
+          "spec": {
+            "version": 2,
+            "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+            "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_forecast_augmented\\seed_501.pt",
+            "minimum_gain": 0.005,
+            "maximum_harm": 0.02,
+            "penalty": 1.0,
+            "option_mode": "native",
+            "risk_aggregation": "max_member",
+            "allowed_options": null
+          },
+          "metrics": {
+            "cases": 2560,
+            "success": 0.7328125,
+            "gains": 1,
+            "losses": 0,
+            "critical_difference": 0.0006510416666666666,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 502,
+          "spec": {
+            "version": 2,
+            "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_202\\best.pt",
+            "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_forecast_augmented\\seed_502.pt",
+            "minimum_gain": 0.005,
+            "maximum_harm": 0.02,
+            "penalty": 1.0,
+            "option_mode": "native",
+            "risk_aggregation": "max_member",
+            "allowed_options": null
+          },
+          "metrics": {
+            "cases": 2560,
+            "success": 0.733984375,
+            "gains": 4,
+            "losses": 0,
+            "critical_difference": 0.0026041666666666665,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 503,
+          "spec": {
+            "version": 2,
+            "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_203\\best.pt",
+            "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_forecast_augmented\\seed_503.pt",
+            "minimum_gain": 0.005,
+            "maximum_harm": 0.02,
+            "penalty": 1.0,
+            "option_mode": "native",
+            "risk_aggregation": "max_member",
+            "allowed_options": null
+          },
+          "metrics": {
+            "cases": 2560,
+            "success": 0.73359375,
+            "gains": 5,
+            "losses": 2,
+            "critical_difference": 0.001953125,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 504,
+          "spec": {
+            "version": 2,
+            "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_204\\best.pt",
+            "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_forecast_augmented\\seed_504.pt",
+            "minimum_gain": 0.005,
+            "maximum_harm": 0.02,
+            "penalty": 1.0,
+            "option_mode": "native",
+            "risk_aggregation": "max_member",
+            "allowed_options": null
+          },
+          "metrics": {
+            "cases": 2560,
+            "success": 0.732421875,
+            "gains": 0,
+            "losses": 0,
+            "critical_difference": 0.0,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 505,
+          "spec": {
+            "version": 2,
+            "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_205\\best.pt",
+            "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_forecast_augmented\\seed_505.pt",
+            "minimum_gain": 0.005,
+            "maximum_harm": 0.02,
+            "penalty": 1.0,
+            "option_mode": "native",
+            "risk_aggregation": "max_member",
+            "allowed_options": null
+          },
+          "metrics": {
+            "cases": 2560,
+            "success": 0.733203125,
+            "gains": 3,
+            "losses": 1,
+            "critical_difference": 0.0013020833333333333,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        }
+      ],
+      "statistics": {
+        "default": {
+          "mean": 0.0015625,
+          "lower95": -0.00078125,
+          "upper95": 0.00546875,
+          "replicates": 20000,
+          "model_seeds": 5,
+          "route_clusters": 256,
+          "gains": 11,
+          "losses": 3,
+          "mild_losses": 0,
+          "exact_losses": 0,
+          "protected_route_clusters": 256,
+          "harmed_route_clusters": 3,
+          "harmed_route_upper95": 0.03000754299814186,
+          "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+        },
+        "shifted": {
+          "mean": 0.00078125,
+          "lower95": 0.0,
+          "upper95": 0.003125,
+          "replicates": 20000,
+          "model_seeds": 5,
+          "route_clusters": 64,
+          "gains": 2,
+          "losses": 0,
+          "mild_losses": 0,
+          "exact_losses": 0,
+          "protected_route_clusters": 63,
+          "harmed_route_clusters": 0,
+          "harmed_route_upper95": 0.04643845148393823,
+          "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+        }
+      },
+      "gains": 13,
+      "losses": 3
+    }
+  },
+  "cases_per_model": 2560,
+  "seconds": 1531.312400817871
+}

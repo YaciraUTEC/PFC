@@ -1,0 +1,25 @@
+{
+  "controller": "gym_pybullet_drones.control.DSLPIDControl.DSLPIDControl",
+  "supervisor": "experiments.round6.supervisor.RecoveryDescent",
+  "effectiveness_estimator": "experiments.round6.estimator.StructuredEstimator",
+  "effective_config": {
+    "estimator": "structured",
+    "readiness": true,
+    "emergency": "legacy",
+    "reserve": 0.001,
+    "intervention": "residual",
+    "gate_mode": "learned",
+    "gate_threshold": 0.0,
+    "noise_multiplier": 1.0,
+    "fault_clock": null,
+    "physics_hz": 240,
+    "contact_hz": 960,
+    "solver_iterations": 200,
+    "solver_residual": 1e-12,
+    "sensor_model": "shared_velocity_gyro",
+    "control_kind": "dslpid",
+    "manager": "coordinated"
+  },
+  "sensor_sigma": 0.002,
+  "scope": "Actual common baseline contract instantiated from the frozen phase1 input configuration. Environment manager may override readiness before construction. Both baseline and neural policy use this same plant/controller/observer/supervisor; noise and fault timing vary only according to each paired case."
+}

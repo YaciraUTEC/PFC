@@ -1,0 +1,11 @@
+{
+  "closed": true,
+  "finished_epoch": 1794913706.897248,
+  "conclusion": "All factual counterfactual native arms reproduce the previous actual full-option flights.",
+  "checked_whole_option_pairs": 940,
+  "pending": 0,
+  "maximum_contact_measure_difference": 0.0,
+  "failures": [],
+  "passed": true,
+  "scope": "Factual native24half option from identical natural state versus the actually executed old compound policy at its exact first decision; matching outcomes, steps, stable duration and contact measures. Multiple gates sharing a tick are not independent flights."
+}

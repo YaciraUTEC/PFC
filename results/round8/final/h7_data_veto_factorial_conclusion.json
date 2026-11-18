@@ -1,0 +1,337 @@
+{
+  "closed": true,
+  "finished_epoch": 1794925156.5252712,
+  "conclusion": "Complete2x2 matched development ablation distinguishes data expansion from internal cancellation semantics; final test still separate.",
+  "cells": {
+    "original_native": {
+      "entries": [
+        {
+          "seed": 501,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.734375,
+            "gains": 0,
+            "losses": 0,
+            "critical_difference": 0.0,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 502,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.7350852272727273,
+            "gains": 1,
+            "losses": 0,
+            "critical_difference": 0.0013020833333333333,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 503,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.734375,
+            "gains": 0,
+            "losses": 0,
+            "critical_difference": 0.0,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 504,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.734375,
+            "gains": 0,
+            "losses": 0,
+            "critical_difference": 0.0,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 505,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.7350852272727273,
+            "gains": 1,
+            "losses": 0,
+            "critical_difference": 0.0013020833333333333,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        }
+      ],
+      "statistics": {
+        "mean": 0.0003125,
+        "lower95": 0.0,
+        "upper95": 0.00140625,
+        "replicates": 20000,
+        "model_seeds": 5,
+        "route_clusters": 160,
+        "gains": 2,
+        "losses": 0,
+        "mild_losses": 0,
+        "exact_losses": 0,
+        "protected_route_clusters": 159,
+        "harmed_route_clusters": 0,
+        "harmed_route_upper95": 0.018664699758660745,
+        "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+      },
+      "gains": 2,
+      "losses": 0
+    },
+    "expanded_native": {
+      "entries": [
+        {
+          "seed": 501,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.7791193181818182,
+            "gains": 64,
+            "losses": 1,
+            "critical_difference": 0.08203125,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 502,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.7833806818181818,
+            "gains": 76,
+            "losses": 7,
+            "critical_difference": 0.08984375,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 503,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.78125,
+            "gains": 69,
+            "losses": 3,
+            "critical_difference": 0.0859375,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 504,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.7805397727272727,
+            "gains": 72,
+            "losses": 7,
+            "critical_difference": 0.08463541666666667,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 505,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.7826704545454546,
+            "gains": 73,
+            "losses": 5,
+            "critical_difference": 0.08854166666666667,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        }
+      ],
+      "statistics": {
+        "mean": 0.1028125,
+        "lower95": 0.0671875,
+        "upper95": 0.14078125,
+        "replicates": 20000,
+        "model_seeds": 5,
+        "route_clusters": 160,
+        "gains": 354,
+        "losses": 23,
+        "mild_losses": 0,
+        "exact_losses": 0,
+        "protected_route_clusters": 159,
+        "harmed_route_clusters": 8,
+        "harmed_route_upper95": 0.08895078621050138,
+        "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+      },
+      "gains": 354,
+      "losses": 23
+    },
+    "expanded_raw": {
+      "entries": [
+        {
+          "seed": 501,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.7492897727272727,
+            "gains": 21,
+            "losses": 0,
+            "critical_difference": 0.02734375,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 502,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.7599431818181818,
+            "gains": 40,
+            "losses": 4,
+            "critical_difference": 0.046875,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 503,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.7634943181818182,
+            "gains": 44,
+            "losses": 3,
+            "critical_difference": 0.053385416666666664,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 504,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.7571022727272727,
+            "gains": 35,
+            "losses": 3,
+            "critical_difference": 0.041666666666666664,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 505,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.7592329545454546,
+            "gains": 35,
+            "losses": 0,
+            "critical_difference": 0.045572916666666664,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        }
+      ],
+      "statistics": {
+        "mean": 0.05046875,
+        "lower95": 0.02765625,
+        "upper95": 0.07671875,
+        "replicates": 20000,
+        "model_seeds": 5,
+        "route_clusters": 160,
+        "gains": 175,
+        "losses": 10,
+        "mild_losses": 0,
+        "exact_losses": 0,
+        "protected_route_clusters": 159,
+        "harmed_route_clusters": 4,
+        "harmed_route_upper95": 0.05664125923637039,
+        "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+      },
+      "gains": 175,
+      "losses": 10
+    },
+    "original_raw": {
+      "entries": [
+        {
+          "seed": 501,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.734375,
+            "gains": 0,
+            "losses": 0,
+            "critical_difference": 0.0,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 502,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.734375,
+            "gains": 0,
+            "losses": 0,
+            "critical_difference": 0.0,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 503,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.734375,
+            "gains": 0,
+            "losses": 0,
+            "critical_difference": 0.0,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 504,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.734375,
+            "gains": 0,
+            "losses": 0,
+            "critical_difference": 0.0,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        },
+        {
+          "seed": 505,
+          "metrics": {
+            "cases": 1408,
+            "success": 0.734375,
+            "gains": 0,
+            "losses": 0,
+            "critical_difference": 0.0,
+            "mild_losses": 0,
+            "exact_losses": 0
+          }
+        }
+      ],
+      "statistics": {
+        "mean": 0.0,
+        "lower95": 0.0,
+        "upper95": 0.0,
+        "replicates": 20000,
+        "model_seeds": 5,
+        "route_clusters": 160,
+        "gains": 0,
+        "losses": 0,
+        "mild_losses": 0,
+        "exact_losses": 0,
+        "protected_route_clusters": 159,
+        "harmed_route_clusters": 0,
+        "harmed_route_upper95": 0.018664699758660745,
+        "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+      },
+      "gains": 0,
+      "losses": 0
+    }
+  },
+  "cases_per_model": 1408,
+  "seconds": 239.6567370891571
+}

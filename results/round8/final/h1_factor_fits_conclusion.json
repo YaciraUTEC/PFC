@@ -1,0 +1,10 @@
+{
+  "closed": true,
+  "finished_epoch": 1794897957.0782263,
+  "conclusion": "Three route-bootstrap seeds fitted with separate baseline/preservation/rescue likelihoods and disjoint calibration roles.",
+  "seeds": [
+    501,
+    502,
+    503
+  ]
+}

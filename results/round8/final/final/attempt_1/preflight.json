@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "seed": 501,
+      "cases": 16,
+      "cpu_gpu_off_flags_equal": true,
+      "fresh_vs_identity_max_terminal_position_error": 0.0
+    },
+    {
+      "seed": 502,
+      "cases": 16,
+      "cpu_gpu_off_flags_equal": true,
+      "fresh_vs_identity_max_terminal_position_error": 0.0
+    },
+    {
+      "seed": 503,
+      "cases": 16,
+      "cpu_gpu_off_flags_equal": true,
+      "fresh_vs_identity_max_terminal_position_error": 0.0
+    },
+    {
+      "seed": 504,
+      "cases": 16,
+      "cpu_gpu_off_flags_equal": true,
+      "fresh_vs_identity_max_terminal_position_error": 0.0
+    },
+    {
+      "seed": 505,
+      "cases": 16,
+      "cpu_gpu_off_flags_equal": true,
+      "fresh_vs_identity_max_terminal_position_error": 0.0
+    }
+  ],
+  "scope": "Development-only routes include active rescue and the rejected late-intervention diagnosis; all exact/estimated and noise1/2 combinations."
+}

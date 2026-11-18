@@ -1,0 +1,247 @@
+{
+  "closed": true,
+  "finished_epoch": 1794902857.8470216,
+  "conclusion": "Conditional mixture temperatures aligned before any new-policy flight pilot; original weights and raw checkpoints preserved.",
+  "results": [
+    {
+      "seed": 501,
+      "before": [
+        1.0,
+        1.0,
+        0.75
+      ],
+      "after": [
+        1.0,
+        1.0,
+        0.75
+      ],
+      "assessment": {
+        "samples": 3072,
+        "labels": {
+          "0": 1581,
+          "2": 171,
+          "3": 1066,
+          "1": 254
+        },
+        "joint_nll": 0.7928338050842285,
+        "joint_brier": 0.42894150395958813,
+        "components": {
+          "baseline": {
+            "samples": 3072,
+            "positive": 1752,
+            "mean_prediction": 0.6312779784202576,
+            "brier": 0.1539478749036789,
+            "nll": 0.47211900748445146
+          },
+          "preservation": {
+            "samples": 1752,
+            "positive": 1581,
+            "mean_prediction": 0.9089927077293396,
+            "brier": 0.06505684554576874,
+            "nll": 0.2289955522052409
+          },
+          "rescue": {
+            "samples": 1320,
+            "positive": 254,
+            "mean_prediction": 0.1886037141084671,
+            "brier": 0.14385025203227997,
+            "nll": 0.44245100064894577
+          }
+        },
+        "scope": "Marginal prediction diagnostics on held-out route groups, not a safety certificate."
+      }
+    },
+    {
+      "seed": 502,
+      "before": [
+        1.0,
+        1.0,
+        0.75
+      ],
+      "after": [
+        1.0,
+        1.0,
+        0.75
+      ],
+      "assessment": {
+        "samples": 3072,
+        "labels": {
+          "0": 1581,
+          "2": 171,
+          "3": 1066,
+          "1": 254
+        },
+        "joint_nll": 0.8339142799377441,
+        "joint_brier": 0.4301775084773581,
+        "components": {
+          "baseline": {
+            "samples": 3072,
+            "positive": 1752,
+            "mean_prediction": 0.627190351486206,
+            "brier": 0.1501522809267044,
+            "nll": 0.5136720670049352
+          },
+          "preservation": {
+            "samples": 1752,
+            "positive": 1581,
+            "mean_prediction": 0.8934471011161804,
+            "brier": 0.06635954231023788,
+            "nll": 0.23340110911052778
+          },
+          "rescue": {
+            "samples": 1320,
+            "positive": 254,
+            "mean_prediction": 0.19890418648719788,
+            "brier": 0.1412363052368164,
+            "nll": 0.43550410437888015
+          }
+        },
+        "scope": "Marginal prediction diagnostics on held-out route groups, not a safety certificate."
+      }
+    },
+    {
+      "seed": 503,
+      "before": [
+        1.0,
+        1.0,
+        0.75
+      ],
+      "after": [
+        1.0,
+        1.0,
+        0.75
+      ],
+      "assessment": {
+        "samples": 3072,
+        "labels": {
+          "0": 1581,
+          "2": 171,
+          "3": 1066,
+          "1": 254
+        },
+        "joint_nll": 0.7707110047340393,
+        "joint_brier": 0.414046462605431,
+        "components": {
+          "baseline": {
+            "samples": 3072,
+            "positive": 1752,
+            "mean_prediction": 0.6086938977241516,
+            "brier": 0.14417241513729095,
+            "nll": 0.45361757835489885
+          },
+          "preservation": {
+            "samples": 1752,
+            "positive": 1581,
+            "mean_prediction": 0.8934037089347839,
+            "brier": 0.061966508626937866,
+            "nll": 0.21625383346670032
+          },
+          "rescue": {
+            "samples": 1320,
+            "positive": 254,
+            "mean_prediction": 0.19962303340435028,
+            "brier": 0.14758121967315674,
+            "nll": 0.4509349761019235
+          }
+        },
+        "scope": "Marginal prediction diagnostics on held-out route groups, not a safety certificate."
+      }
+    },
+    {
+      "seed": 504,
+      "before": [
+        1.5,
+        1.5,
+        1.0
+      ],
+      "after": [
+        1.5,
+        1.5,
+        1.0
+      ],
+      "assessment": {
+        "samples": 3072,
+        "labels": {
+          "0": 1581,
+          "2": 171,
+          "3": 1066,
+          "1": 254
+        },
+        "joint_nll": 0.7173686027526855,
+        "joint_brier": 0.38109958928086113,
+        "components": {
+          "baseline": {
+            "samples": 3072,
+            "positive": 1752,
+            "mean_prediction": 0.5987119078636169,
+            "brier": 0.12166175991296768,
+            "nll": 0.3958350412438752
+          },
+          "preservation": {
+            "samples": 1752,
+            "positive": 1581,
+            "mean_prediction": 0.8692905902862549,
+            "brier": 0.06555566191673279,
+            "nll": 0.22614344558465937
+          },
+          "rescue": {
+            "samples": 1320,
+            "positive": 254,
+            "mean_prediction": 0.23179081082344055,
+            "brier": 0.14780810475349426,
+            "nll": 0.4481422889663725
+          }
+        },
+        "scope": "Marginal prediction diagnostics on held-out route groups, not a safety certificate."
+      }
+    },
+    {
+      "seed": 505,
+      "before": [
+        1.0,
+        1.0,
+        0.75
+      ],
+      "after": [
+        1.0,
+        1.0,
+        0.75
+      ],
+      "assessment": {
+        "samples": 3072,
+        "labels": {
+          "0": 1581,
+          "2": 171,
+          "3": 1066,
+          "1": 254
+        },
+        "joint_nll": 0.7623826861381531,
+        "joint_brier": 0.4106540021909826,
+        "components": {
+          "baseline": {
+            "samples": 3072,
+            "positive": 1752,
+            "mean_prediction": 0.6171131134033203,
+            "brier": 0.14295309782028198,
+            "nll": 0.4484495876685107
+          },
+          "preservation": {
+            "samples": 1752,
+            "positive": 1581,
+            "mean_prediction": 0.906563401222229,
+            "brier": 0.06453404575586319,
+            "nll": 0.2270198311092594
+          },
+          "rescue": {
+            "samples": 1320,
+            "positive": 254,
+            "mean_prediction": 0.19604210555553436,
+            "brier": 0.13824336230754852,
+            "nll": 0.4292905957046473
+          }
+        },
+        "scope": "Marginal prediction diagnostics on held-out route groups, not a safety certificate."
+      }
+    }
+  ]
+}

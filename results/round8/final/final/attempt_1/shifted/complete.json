@@ -1,0 +1,91 @@
+{
+  "complete": true,
+  "entries": [
+    {
+      "seed": 501,
+      "metrics": {
+        "cases": 512,
+        "success": 0.251953125,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 502,
+      "metrics": {
+        "cases": 512,
+        "success": 0.251953125,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 503,
+      "metrics": {
+        "cases": 512,
+        "success": 0.251953125,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 504,
+      "metrics": {
+        "cases": 512,
+        "success": 0.251953125,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 505,
+      "metrics": {
+        "cases": 512,
+        "success": 0.251953125,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    }
+  ],
+  "cases_per_model": 512,
+  "reference_curve": null,
+  "family_statistics": {
+    "mean": 0.0,
+    "lower95": 0.0,
+    "upper95": 0.0,
+    "replicates": 20000,
+    "model_seeds": 5,
+    "route_clusters": 64,
+    "gains": 0,
+    "losses": 0,
+    "mild_losses": 0,
+    "exact_losses": 0,
+    "protected_route_clusters": 63,
+    "harmed_route_clusters": 0,
+    "harmed_route_upper95": 0.04643845148393823,
+    "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+  },
+  "operational_statistics": {
+    "mean": 0.0,
+    "lower95": 0.0,
+    "upper95": 0.0,
+    "route_clusters": 64,
+    "replicates": 20000,
+    "scope": "Route-cluster paired bootstrap for the development-selected operational checkpoint; repeated noise and severity settings remain clustered."
+  }
+}

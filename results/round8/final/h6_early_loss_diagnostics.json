@@ -1,0 +1,474 @@
+{
+  "501": {
+    "losses": [
+      {
+        "case": [
+          760006,
+          0.296,
+          "estimated",
+          2.0,
+          4.0
+        ],
+        "outcome": "hard_landing",
+        "base_steps": 945,
+        "candidate_steps": 479,
+        "start": 1.1875,
+        "actual_steps": 8,
+        "forecast": {
+          "base_success": 0.9124431729173402,
+          "preservation": 0.9988983411515079,
+          "joint_rescue": 0.015275237007527564,
+          "joint_harm": 0.001005201095190657,
+          "conditional_harm": 0.0012840181198546796,
+          "lower_gain": 0.010028971797900573
+        },
+        "eta_error": 0.0,
+        "observed_loss_percent": 0.0,
+        "phase_onehot": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "case": [
+          812021,
+          0.296,
+          "estimated",
+          1.0,
+          null
+        ],
+        "outcome": "timeout",
+        "base_steps": 575,
+        "candidate_steps": 1440,
+        "start": 1.4791666666666667,
+        "actual_steps": 6,
+        "forecast": {
+          "base_success": 0.522678039591087,
+          "preservation": 0.9934131681230595,
+          "joint_rescue": 0.3098826337748866,
+          "joint_harm": 0.003442792372555381,
+          "conditional_harm": 0.00859965790952888,
+          "lower_gain": 0.2912207230409106
+        },
+        "eta_error": 0.19269914617928152,
+        "observed_loss_percent": 10.330085754394531,
+        "phase_onehot": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "rescues": 213,
+    "rescue_risk_quantiles": [
+      0.001164895601477034,
+      0.002905829175228525,
+      0.00823152101285407,
+      0.01307130849316862,
+      0.01989635025861658
+    ]
+  },
+  "502": {
+    "losses": [
+      {
+        "case": [
+          740039,
+          0.295,
+          "estimated",
+          1.0,
+          null
+        ],
+        "outcome": "early_contact",
+        "base_steps": 1161,
+        "candidate_steps": 297,
+        "start": 1.9166666666666667,
+        "actual_steps": 13,
+        "forecast": {
+          "base_success": 0.10093350362478676,
+          "preservation": 0.986831323392251,
+          "joint_rescue": 0.19135345814048332,
+          "joint_harm": 0.001329160668121883,
+          "conditional_harm": 0.017645031437460768,
+          "lower_gain": 0.1809614780978614
+        },
+        "eta_error": 0.005198350134728358,
+        "observed_loss_percent": 28.980165481567383,
+        "phase_onehot": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "case": [
+          760007,
+          0.296,
+          "estimated",
+          2.0,
+          4.0
+        ],
+        "outcome": "timeout",
+        "base_steps": 654,
+        "candidate_steps": 1440,
+        "start": 4.520833333333333,
+        "actual_steps": 6,
+        "forecast": {
+          "base_success": 0.6118330073180175,
+          "preservation": 0.981616147952683,
+          "joint_rescue": 0.02387894885340774,
+          "joint_harm": 0.011247847484199444,
+          "conditional_harm": 0.019574880740805378,
+          "lower_gain": 0.012375774977837772
+        },
+        "eta_error": 0.0030074986584839314,
+        "observed_loss_percent": 29.29924964904785,
+        "phase_onehot": [
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "case": [
+          810091,
+          0.296,
+          "estimated",
+          1.0,
+          null
+        ],
+        "outcome": "timeout",
+        "base_steps": 1289,
+        "candidate_steps": 1440,
+        "start": 1.8541666666666667,
+        "actual_steps": 1,
+        "forecast": {
+          "base_success": 0.07314542138112205,
+          "preservation": 0.9887712776237897,
+          "joint_rescue": 0.2323725577373966,
+          "joint_harm": 0.0008213296297795346,
+          "conditional_harm": 0.014191017316537935,
+          "lower_gain": 0.20679203070144397
+        },
+        "eta_error": 0.005377326993858844,
+        "observed_loss_percent": 29.062267303466797,
+        "phase_onehot": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "case": [
+          810163,
+          0.296,
+          "estimated",
+          2.0,
+          null
+        ],
+        "outcome": "hard_landing",
+        "base_steps": 1242,
+        "candidate_steps": 752,
+        "start": 4.020833333333333,
+        "actual_steps": 9,
+        "forecast": {
+          "base_success": 0.09435049564052288,
+          "preservation": 0.9871178113991879,
+          "joint_rescue": 0.024611239143558682,
+          "joint_harm": 0.001215440879421321,
+          "conditional_harm": 0.018426422392536446,
+          "lower_gain": 0.017075856088955614
+        },
+        "eta_error": 0.0020720763540819087,
+        "observed_loss_percent": 29.392793655395508,
+        "phase_onehot": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "case": [
+          810248,
+          0.296,
+          "estimated",
+          1.0,
+          null
+        ],
+        "outcome": "timeout",
+        "base_steps": 1223,
+        "candidate_steps": 1440,
+        "start": 9.791666666666666,
+        "actual_steps": 24,
+        "forecast": {
+          "base_success": 0.14982401958665248,
+          "preservation": 0.9904066714589447,
+          "joint_rescue": 0.014872946135550277,
+          "joint_harm": 0.001437311043236262,
+          "conditional_harm": 0.01813745456698934,
+          "lower_gain": 0.012857458784316912
+        },
+        "eta_error": 0.0019002682111528557,
+        "observed_loss_percent": 29.409971237182617,
+        "phase_onehot": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "case": [
+          812003,
+          0.296,
+          "estimated",
+          2.0,
+          null
+        ],
+        "outcome": "timeout",
+        "base_steps": 829,
+        "candidate_steps": 1440,
+        "start": 7.833333333333333,
+        "actual_steps": 6,
+        "forecast": {
+          "base_success": 0.36535626747035715,
+          "preservation": 0.9921816863064624,
+          "joint_rescue": 0.025715273368760474,
+          "joint_harm": 0.0028564699089832584,
+          "conditional_harm": 0.012695986234987688,
+          "lower_gain": 0.011524909299480935
+        },
+        "eta_error": 0.0013867613608005147,
+        "observed_loss_percent": 29.46132469177246,
+        "phase_onehot": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "case": [
+          812021,
+          0.296,
+          "estimated",
+          1.0,
+          null
+        ],
+        "outcome": "timeout",
+        "base_steps": 575,
+        "candidate_steps": 1440,
+        "start": 1.4791666666666667,
+        "actual_steps": 6,
+        "forecast": {
+          "base_success": 0.5083672069905546,
+          "preservation": 0.9979155323123386,
+          "joint_rescue": 0.34566986622909823,
+          "joint_harm": 0.0010596750164384675,
+          "conditional_harm": 0.002626568247366845,
+          "lower_gain": 0.2926342171196109
+        },
+        "eta_error": 0.19269914617928152,
+        "observed_loss_percent": 10.330085754394531,
+        "phase_onehot": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "case": [
+          812075,
+          0.296,
+          "estimated",
+          2.0,
+          null
+        ],
+        "outcome": "early_contact",
+        "base_steps": 863,
+        "candidate_steps": 282,
+        "start": 1.7916666666666667,
+        "actual_steps": 24,
+        "forecast": {
+          "base_success": 0.5164692702073936,
+          "preservation": 0.9854054279145751,
+          "joint_rescue": 0.22539441481859368,
+          "joint_harm": 0.007537647993948633,
+          "conditional_harm": 0.019024563048134158,
+          "lower_gain": 0.16685664990036914
+        },
+        "eta_error": 0.29600000000000004,
+        "observed_loss_percent": 0.0,
+        "phase_onehot": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "case": [
+          812087,
+          0.295,
+          "estimated",
+          1.0,
+          null
+        ],
+        "outcome": "early_contact",
+        "base_steps": 1260,
+        "candidate_steps": 216,
+        "start": 2.0,
+        "actual_steps": 7,
+        "forecast": {
+          "base_success": 0.24189088597759856,
+          "preservation": 0.9926502613060186,
+          "joint_rescue": 0.05458322053972394,
+          "joint_harm": 0.0017778348043909955,
+          "conditional_harm": 0.010133958193282111,
+          "lower_gain": 0.04084755904791251
+        },
+        "eta_error": 0.0864147989821692,
+        "observed_loss_percent": 20.8585205078125,
+        "phase_onehot": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "case": [
+          812087,
+          0.295,
+          "estimated",
+          2.0,
+          null
+        ],
+        "outcome": "early_contact",
+        "base_steps": 1248,
+        "candidate_steps": 215,
+        "start": 2.0,
+        "actual_steps": 7,
+        "forecast": {
+          "base_success": 0.23836545251301833,
+          "preservation": 0.9928514296858396,
+          "joint_rescue": 0.05342260125193241,
+          "joint_harm": 0.001703972197755971,
+          "conditional_harm": 0.009842714256323437,
+          "lower_gain": 0.03996794927072725
+        },
+        "eta_error": 0.08623659522725657,
+        "observed_loss_percent": 20.876340866088867,
+        "phase_onehot": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "case": [
+          812103,
+          0.296,
+          "estimated",
+          2.0,
+          null
+        ],
+        "outcome": "early_contact",
+        "base_steps": 1032,
+        "candidate_steps": 350,
+        "start": 1.9583333333333333,
+        "actual_steps": 24,
+        "forecast": {
+          "base_success": 0.5125428441616351,
+          "preservation": 0.9923920524423786,
+          "joint_rescue": 0.18302748853056902,
+          "joint_harm": 0.003899399079415857,
+          "conditional_harm": 0.01039360678713852,
+          "lower_gain": 0.15678948697177403
+        },
+        "eta_error": 0.15441376867560708,
+        "observed_loss_percent": 14.158622741699219,
+        "phase_onehot": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "case": [
+          813012,
+          0.295,
+          "estimated",
+          2.0,
+          4.0
+        ],
+        "outcome": "timeout",
+        "base_steps": 822,
+        "candidate_steps": 1440,
+        "start": 6.895833333333333,
+        "actual_steps": 18,
+        "forecast": {
+          "base_success": 0.5084284126154293,
+          "preservation": 0.9868776969753444,
+          "joint_rescue": 0.05282072823345702,
+          "joint_harm": 0.006671751696684258,
+          "conditional_harm": 0.01967213898788267,
+          "lower_gain": 0.012485853257806448
+        },
+        "eta_error": 0.0020058576449480947,
+        "observed_loss_percent": 29.299413681030273,
+        "phase_onehot": [
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "rescues": 276,
+    "rescue_risk_quantiles": [
+      0.0009198268479502225,
+      0.0031990133921555863,
+      0.005015649338438788,
+      0.009444985216603502,
+      0.0199271506551838
+    ]
+  }
+}

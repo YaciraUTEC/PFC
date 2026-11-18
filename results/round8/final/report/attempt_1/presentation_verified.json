@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "checked_epoch": 1794955715.150162,
+  "plots": {
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\report\\attempt_1\\comparacion_por_falla.png": "8b8e858580cf46755184d10e8b31ba6d31536ce808ae4031cea2423a8db79db3",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\report\\attempt_1\\comparacion_zona_critica.png": "f0de59ad41c0e7b9d06ba3873cbd62e31e295765790d5cea8b529653729e2952",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\report\\attempt_1\\rescates_y_preservacion.png": "f7f2df185369ab9528f234de3581c4c6f69e2d045de55aebce1f092850e5df33",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\report\\attempt_1\\vuelos_rescatados.png": "b274aab5fa078ad8677db011128a5e064df1adafd0703e24edf2ec5b5a48f111"
+  },
+  "method": "All four final PNGs actually opened with view_image and visually inspected.",
+  "checks": [
+    "Readable legends and axis units; no clipping or overlapping labels.",
+    "Four exact/estimated and normal/double noise panels;128 routes per curve point.",
+    "Five-fit range explicitly not a confidence interval.",
+    "Paired rescue/loss bars show Spanish phase labels and actual denominators.",
+    "Three descriptive rescue traces include height, vertical velocity and0.5second intervention shading."
+  ]
+}

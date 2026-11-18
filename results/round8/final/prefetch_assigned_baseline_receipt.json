@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "cases": 1024,
+  "workers": 2,
+  "seconds": 963.0882201194763,
+  "scope": "Only baseline episodes, independent per-process numerical controller; same frozen allocations and source, no neural-model tuning. Main study evaluates neural cases later with its registered16-worker configuration.",
+  "source_sha256": "45423866c5780fe0da0f3ec705f5adf0d7b8eecb1be46331aaf58cb9bd40612a"
+}

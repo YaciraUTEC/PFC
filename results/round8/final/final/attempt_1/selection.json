@@ -1,0 +1,194 @@
+{
+  "entries": [
+    {
+      "seed": 501,
+      "spec": {
+        "version": 4,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_501.pt",
+        "minimum_gain": 0.01,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "both",
+        "risk_aggregation": "max_member",
+        "allowed_options": [
+          5
+        ],
+        "fast_execution": true,
+        "observed_loss_min": 0.02,
+        "sigma_multiplier": 0.0,
+        "compact_options": true
+      },
+      "metrics": {
+        "cases": 8064,
+        "success": 0.7752976190476191,
+        "gains": 13,
+        "losses": 0,
+        "critical_difference": 0.004616477272727273,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 502,
+      "spec": {
+        "version": 4,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_502.pt",
+        "minimum_gain": 0.01,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "both",
+        "risk_aggregation": "max_member",
+        "allowed_options": [
+          5
+        ],
+        "fast_execution": true,
+        "observed_loss_min": 0.02,
+        "sigma_multiplier": 0.0,
+        "compact_options": true
+      },
+      "metrics": {
+        "cases": 8064,
+        "success": 0.7847222222222222,
+        "gains": 93,
+        "losses": 4,
+        "critical_difference": 0.03160511363636364,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 503,
+      "spec": {
+        "version": 4,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_503.pt",
+        "minimum_gain": 0.01,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "both",
+        "risk_aggregation": "max_member",
+        "allowed_options": [
+          5
+        ],
+        "fast_execution": true,
+        "observed_loss_min": 0.02,
+        "sigma_multiplier": 0.0,
+        "compact_options": true
+      },
+      "metrics": {
+        "cases": 8064,
+        "success": 0.7837301587301587,
+        "gains": 85,
+        "losses": 4,
+        "critical_difference": 0.028764204545454544,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 504,
+      "spec": {
+        "version": 4,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_504.pt",
+        "minimum_gain": 0.01,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "both",
+        "risk_aggregation": "max_member",
+        "allowed_options": [
+          5
+        ],
+        "fast_execution": true,
+        "observed_loss_min": 0.02,
+        "sigma_multiplier": 0.0,
+        "compact_options": true
+      },
+      "metrics": {
+        "cases": 8064,
+        "success": 0.7854662698412699,
+        "gains": 101,
+        "losses": 6,
+        "critical_difference": 0.033735795454545456,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 505,
+      "spec": {
+        "version": 4,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_505.pt",
+        "minimum_gain": 0.01,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "both",
+        "risk_aggregation": "max_member",
+        "allowed_options": [
+          5
+        ],
+        "fast_execution": true,
+        "observed_loss_min": 0.02,
+        "sigma_multiplier": 0.0,
+        "compact_options": true
+      },
+      "metrics": {
+        "cases": 8064,
+        "success": 0.7829861111111112,
+        "gains": 75,
+        "losses": 0,
+        "critical_difference": 0.026633522727272728,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    }
+  ],
+  "operational_gate": 505,
+  "selection_table": [
+    {
+      "seed": 501,
+      "new_default_gains": 1,
+      "new_shifted_gains": 0,
+      "active_cases": 778,
+      "development_losses": 0
+    },
+    {
+      "seed": 502,
+      "new_default_gains": 20,
+      "new_shifted_gains": 0,
+      "active_cases": 1303,
+      "development_losses": 4
+    },
+    {
+      "seed": 503,
+      "new_default_gains": 19,
+      "new_shifted_gains": 0,
+      "active_cases": 1276,
+      "development_losses": 4
+    },
+    {
+      "seed": 504,
+      "new_default_gains": 27,
+      "new_shifted_gains": 0,
+      "active_cases": 1258,
+      "development_losses": 6
+    },
+    {
+      "seed": 505,
+      "new_default_gains": 15,
+      "new_shifted_gains": 0,
+      "active_cases": 1324,
+      "development_losses": 0
+    }
+  ],
+  "development_losses": 0,
+  "development_family_losses": 14,
+  "development_cases_per_gate": 8064,
+  "source": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\h10_compact_execution_conclusion.json",
+  "source_sha": "57d070e76547636d74480c1958460b9c9a7722b6e38508568357ae8e9960a4a3",
+  "development_folder": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\checkpoint_selection\\with_severity_sweep\\compact_guarded_raw",
+  "scope": "Five independently fitted authorization gates, one frozen GTrXL proposer201. Checkpoint selection occurs on development only, not formal test. Gate replicas do not represent independent actor retrainings."
+}

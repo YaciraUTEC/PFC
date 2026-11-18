@@ -1,0 +1,8 @@
+{
+  "closed": true,
+  "finished_epoch": 1794935121.4254818,
+  "conclusion": "Only admissible option rows evaluated, identical pilot flight outcomes/steps; development timing only, full first-decision and physical equivalence checks still required.",
+  "before_guarded_p95_ms": 21.7719,
+  "after_guarded_p95_ms": 5.65988,
+  "meets_budget": true
+}

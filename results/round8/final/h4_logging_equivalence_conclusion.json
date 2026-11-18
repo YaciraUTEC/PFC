@@ -1,0 +1,7 @@
+{
+  "closed": true,
+  "finished_epoch": 1794904699.6027443,
+  "conclusion": "Per-flight summaries and actual decision-risk logging preserve all prior outcomes, steps and terminal positions exactly; inference source history retained.",
+  "cases": 4,
+  "maximum_position_difference": 0.0
+}

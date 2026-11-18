@@ -1,0 +1,574 @@
+{
+  "closed": true,
+  "finished_epoch": 1794904756.397894,
+  "conclusion": "Only baseline-success heads updated; preservation/rescue weights and policy continuation fixed for a causal ablation.",
+  "seeds": [
+    501,
+    502,
+    503,
+    504,
+    505
+  ],
+  "fits": [
+    {
+      "seed": 501,
+      "prior": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_501.pt",
+      "prior_sha": "751c52214a7606b0dbeebbaf0eaa49ac6b3a0e7fee9983c04b41b279c54c76c7",
+      "updates": 1600,
+      "selected_update": 1200,
+      "base_temperature": 0.75,
+      "before": {
+        "mean_nll": 0.40403203824571376,
+        "counterfactual_base": {
+          "n": 384,
+          "nll": 0.47211902601713973,
+          "brier": 0.15394789372950135
+        },
+        "additional_flights": {
+          "n": 3072,
+          "nll": 0.33594505047428785,
+          "brier": 0.09800877231954946
+        }
+      },
+      "after": {
+        "mean_nll": 0.24702950889497313,
+        "counterfactual_base": {
+          "n": 384,
+          "nll": 0.40649298916810855,
+          "brier": 0.11998778060717219
+        },
+        "additional_flights": {
+          "n": 3072,
+          "nll": 0.08756602862183772,
+          "brier": 0.027617272081943946
+        }
+      },
+      "option_weights_unchanged": true,
+      "additional_train_routes": 224,
+      "additional_calibration_routes": 96,
+      "seconds": 9.942415237426758,
+      "progress": [
+        {
+          "update": 400,
+          "loss": 0.11567553629477818,
+          "tune": {
+            "mean_nll": 0.17878712294467558,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.29080818661723695,
+              "brier": 0.09188790383517893
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.06676605927211421,
+              "brier": 0.02037573730856752
+            }
+          },
+          "seconds": 3.798426628112793
+        },
+        {
+          "update": 800,
+          "loss": 0.09874727576971054,
+          "tune": {
+            "mean_nll": 0.17262780928785768,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.2861070056052453,
+              "brier": 0.08511993775107857
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.059148612970470006,
+              "brier": 0.017624518923913906
+            }
+          },
+          "seconds": 5.72126841545105
+        },
+        {
+          "update": 1200,
+          "loss": 0.08731566121180852,
+          "tune": {
+            "mean_nll": 0.16929345421470654,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.2800699361070314,
+              "brier": 0.08057761405449754
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.058516972322381684,
+              "brier": 0.0172086692569361
+            }
+          },
+          "seconds": 7.736496686935425
+        },
+        {
+          "update": 1600,
+          "loss": 0.09091368317604065,
+          "tune": {
+            "mean_nll": 0.17040705058227187,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.2821191167900052,
+              "brier": 0.0802999617967843
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.05869498437453857,
+              "brier": 0.017041413590399988
+            }
+          },
+          "seconds": 9.899415731430054
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "prior": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_502.pt",
+      "prior_sha": "d3e2b05587da25952d0f2bda7861a083058c6f66b6c82735106db88fa07ad4e8",
+      "updates": 1600,
+      "selected_update": 1600,
+      "base_temperature": 1.0,
+      "before": {
+        "mean_nll": 0.38832339196651705,
+        "counterfactual_base": {
+          "n": 384,
+          "nll": 0.5136720839678143,
+          "brier": 0.15015227631820796
+        },
+        "additional_flights": {
+          "n": 3072,
+          "nll": 0.2629746999652198,
+          "brier": 0.08051239071670174
+        }
+      },
+      "after": {
+        "mean_nll": 0.2452827242039101,
+        "counterfactual_base": {
+          "n": 384,
+          "nll": 0.4219145142955372,
+          "brier": 0.12400934726436162
+        },
+        "additional_flights": {
+          "n": 3072,
+          "nll": 0.06865093411228294,
+          "brier": 0.022590049417713202
+        }
+      },
+      "option_weights_unchanged": true,
+      "additional_train_routes": 224,
+      "additional_calibration_routes": 96,
+      "seconds": 12.470567226409912,
+      "progress": [
+        {
+          "update": 400,
+          "loss": 0.12022390216588974,
+          "tune": {
+            "mean_nll": 0.16744184399144224,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.2723317570715504,
+              "brier": 0.08169778086340325
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.06255193091133411,
+              "brier": 0.018640493491368464
+            }
+          },
+          "seconds": 4.350151538848877
+        },
+        {
+          "update": 800,
+          "loss": 0.09208272645870845,
+          "tune": {
+            "mean_nll": 0.16004044187253966,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.2674490632407553,
+              "brier": 0.07807160520407275
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.05263182050432403,
+              "brier": 0.01590672930177563
+            }
+          },
+          "seconds": 6.957385063171387
+        },
+        {
+          "update": 1200,
+          "loss": 0.09645833820104599,
+          "tune": {
+            "mean_nll": 0.15919799252304026,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.2676036393773272,
+              "brier": 0.0754682243049675
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.050792345668753326,
+              "brier": 0.01531993185402919
+            }
+          },
+          "seconds": 9.68992304801941
+        },
+        {
+          "update": 1600,
+          "loss": 0.08050582806269328,
+          "tune": {
+            "mean_nll": 0.15896418789950087,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.2678728683344738,
+              "brier": 0.07458948926411076
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.050055507464527915,
+              "brier": 0.015049848786286938
+            }
+          },
+          "seconds": 12.410202264785767
+        }
+      ]
+    },
+    {
+      "seed": 503,
+      "prior": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_503.pt",
+      "prior_sha": "2f0d4be44693e43a65982a252d99c4bf9700688cdfd6cd8c4098be537cb58511",
+      "updates": 1600,
+      "selected_update": 1600,
+      "base_temperature": 1.0,
+      "before": {
+        "mean_nll": 0.3696096785030303,
+        "counterfactual_base": {
+          "n": 384,
+          "nll": 0.45361758234071203,
+          "brier": 0.14417240969256173
+        },
+        "additional_flights": {
+          "n": 3072,
+          "nll": 0.28560177466534853,
+          "brier": 0.08257333409959157
+        }
+      },
+      "after": {
+        "mean_nll": 0.23008655462008304,
+        "counterfactual_base": {
+          "n": 384,
+          "nll": 0.3873269849682412,
+          "brier": 0.11498102015354265
+        },
+        "additional_flights": {
+          "n": 3072,
+          "nll": 0.0728461242719249,
+          "brier": 0.02281980865475658
+        }
+      },
+      "option_weights_unchanged": true,
+      "additional_train_routes": 224,
+      "additional_calibration_routes": 96,
+      "seconds": 12.567124128341675,
+      "progress": [
+        {
+          "update": 400,
+          "loss": 0.12277674674987793,
+          "tune": {
+            "mean_nll": 0.1654713536639756,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.2697012660241961,
+              "brier": 0.08439510699065456
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.06124144130375512,
+              "brier": 0.018353644965208357
+            }
+          },
+          "seconds": 4.436556339263916
+        },
+        {
+          "update": 800,
+          "loss": 0.08775703360637029,
+          "tune": {
+            "mean_nll": 0.15481126795007344,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.2546266041729056,
+              "brier": 0.0762013072752335
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.054995931727241265,
+              "brier": 0.016555296896984577
+            }
+          },
+          "seconds": 7.01700234413147
+        },
+        {
+          "update": 1200,
+          "loss": 0.0873036856452624,
+          "tune": {
+            "mean_nll": 0.15164122072092423,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.2500587466979342,
+              "brier": 0.07281812477691135
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.053223694743914245,
+              "brier": 0.01577401925445977
+            }
+          },
+          "seconds": 9.652512788772583
+        },
+        {
+          "update": 1600,
+          "loss": 0.0911305050055186,
+          "tune": {
+            "mean_nll": 0.15138223704475115,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.2499157686145032,
+              "brier": 0.07290868517920454
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.05284870547499909,
+              "brier": 0.015606291870616193
+            }
+          },
+          "seconds": 12.515682458877563
+        }
+      ]
+    },
+    {
+      "seed": 504,
+      "prior": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_504.pt",
+      "prior_sha": "613681c64b89eb8f9d0fa5130eba99a47df39ac74d8cccb4cca7b0cba94e2850",
+      "updates": 1600,
+      "selected_update": 800,
+      "base_temperature": 1.0,
+      "before": {
+        "mean_nll": 0.36804024033903254,
+        "counterfactual_base": {
+          "n": 384,
+          "nll": 0.39583504623670746,
+          "brier": 0.1216617728822954
+        },
+        "additional_flights": {
+          "n": 3072,
+          "nll": 0.34024543444135763,
+          "brier": 0.09217346088493034
+        }
+      },
+      "after": {
+        "mean_nll": 0.226973880791773,
+        "counterfactual_base": {
+          "n": 384,
+          "nll": 0.38249271712679644,
+          "brier": 0.11388455543596553
+        },
+        "additional_flights": {
+          "n": 3072,
+          "nll": 0.07145504445674956,
+          "brier": 0.023590764041384816
+        }
+      },
+      "option_weights_unchanged": true,
+      "additional_train_routes": 224,
+      "additional_calibration_routes": 96,
+      "seconds": 12.58208441734314,
+      "progress": [
+        {
+          "update": 400,
+          "loss": 0.1028832271695137,
+          "tune": {
+            "mean_nll": 0.1430078559900354,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.2274541563570949,
+              "brier": 0.06291985147987919
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.05856155562297591,
+              "brier": 0.016819820560097686
+            }
+          },
+          "seconds": 4.287281513214111
+        },
+        {
+          "update": 800,
+          "loss": 0.09916230787833531,
+          "tune": {
+            "mean_nll": 0.1396214016568632,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.22813184261706626,
+              "brier": 0.0619415221345762
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.05111096069666015,
+              "brier": 0.01475993819486643
+            }
+          },
+          "seconds": 6.848381280899048
+        },
+        {
+          "update": 1200,
+          "loss": 0.08298380176226298,
+          "tune": {
+            "mean_nll": 0.14310773086849338,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.2370379050630598,
+              "brier": 0.06390073243233443
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.049177556673926946,
+              "brier": 0.014270784790262905
+            }
+          },
+          "seconds": 9.686939001083374
+        },
+        {
+          "update": 1600,
+          "loss": 0.07893200715382893,
+          "tune": {
+            "mean_nll": 0.14476045255510386,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.24065584370489568,
+              "brier": 0.06477308604171439
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.04886506140531207,
+              "brier": 0.01414166825169722
+            }
+          },
+          "seconds": 12.523993730545044
+        }
+      ]
+    },
+    {
+      "seed": 505,
+      "prior": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_505.pt",
+      "prior_sha": "d6539c79bd5ff52b6413b1ce64f8e7ef8ac0bf7333d516154d36840c3265ef75",
+      "updates": 1600,
+      "selected_update": 1200,
+      "base_temperature": 1.0,
+      "before": {
+        "mean_nll": 0.3694019882107641,
+        "counterfactual_base": {
+          "n": 384,
+          "nll": 0.44844960158741287,
+          "brier": 0.14295311815153364
+        },
+        "additional_flights": {
+          "n": 3072,
+          "nll": 0.29035437483411525,
+          "brier": 0.09024698794863335
+        }
+      },
+      "after": {
+        "mean_nll": 0.24573170246623138,
+        "counterfactual_base": {
+          "n": 384,
+          "nll": 0.42387502072840794,
+          "brier": 0.12351579352070945
+        },
+        "additional_flights": {
+          "n": 3072,
+          "nll": 0.06758838420405486,
+          "brier": 0.022255468199693266
+        }
+      },
+      "option_weights_unchanged": true,
+      "additional_train_routes": 224,
+      "additional_calibration_routes": 96,
+      "seconds": 12.343506813049316,
+      "progress": [
+        {
+          "update": 400,
+          "loss": 0.11899326990048091,
+          "tune": {
+            "mean_nll": 0.17564265874884233,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.29203777036526407,
+              "brier": 0.08784239085641936
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.05924754713242061,
+              "brier": 0.017204763193429905
+            }
+          },
+          "seconds": 4.34259033203125
+        },
+        {
+          "update": 800,
+          "loss": 0.10336534678936005,
+          "tune": {
+            "mean_nll": 0.16632148638017544,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.2824352209724752,
+              "brier": 0.08098958991472645
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.050207751787875676,
+              "brier": 0.01508771425939722
+            }
+          },
+          "seconds": 6.8529064655303955
+        },
+        {
+          "update": 1200,
+          "loss": 0.08525346219539642,
+          "tune": {
+            "mean_nll": 0.16268696412617079,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.277562540170093,
+              "brier": 0.07795377886680682
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.04781138808224853,
+              "brier": 0.014316579384453123
+            }
+          },
+          "seconds": 9.55278491973877
+        },
+        {
+          "update": 1600,
+          "loss": 0.07790597279866536,
+          "tune": {
+            "mean_nll": 0.1633417435662582,
+            "counterfactual_base": {
+              "n": 762,
+              "nll": 0.27947920524859776,
+              "brier": 0.07802560517919191
+            },
+            "additional_flights": {
+              "n": 6144,
+              "nll": 0.04720428188391865,
+              "brier": 0.014115142283915189
+            }
+          },
+          "seconds": 12.300762414932251
+        }
+      ]
+    }
+  ]
+}

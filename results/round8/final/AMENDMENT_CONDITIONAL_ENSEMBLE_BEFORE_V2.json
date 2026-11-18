@@ -1,0 +1,11 @@
+{
+  "scope": "Before any new201-dimensional gate is fitted or flown: correct conditional mixture semantics; existing labeled options unchanged.",
+  "change": "Mixture conditioning weights each member by its base-success probability, computed in log space. A near-zero base-success probability does not erase conditional harm. Ensemble disagreement remains heuristic, not a frequentist confidence interval.",
+  "diagnostic_controls": [
+    "weighted-conditional mean plus member standard deviation",
+    "maximum conditional harm across ensemble members"
+  ],
+  "native_raw_short_pulse_controls": "Predeclared using training-only label support; no new final-test route inspected.",
+  "proof": "Counterexample tests for unequal p_B member weights and underflow at base logit -1000.",
+  "actor_scope": "All five frozen GTrXL proposers may be compared on development; a chosen proposer or combination is fixed before final tests. Gate-fit replicas and proposer variation must be reported separately."
+}

@@ -1,0 +1,282 @@
+{
+  "closed": true,
+  "finished_epoch": 1794916522.411477,
+  "conclusion": "Shared GTrXL context and post-option neural skip preserve full physical trajectories and actions, including nominal flights, successful rescue and known bad interventions; OFF-proof identity checked.",
+  "checks": [
+    {
+      "spec": {
+        "version": 2,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_502.pt",
+        "minimum_gain": 0.01,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "native",
+        "risk_aggregation": "max_member",
+        "allowed_options": [
+          1
+        ]
+      },
+      "cases": [
+        {
+          "case": {
+            "seed": 760023,
+            "level": 0.295,
+            "condition": "estimated",
+            "noise": 2.0,
+            "clock": 4.0
+          },
+          "outcome": "stable_landing",
+          "steps": 653,
+          "maximum_difference": 0.0
+        },
+        {
+          "case": {
+            "seed": 810085,
+            "level": 0.296,
+            "condition": "estimated",
+            "noise": 1.0,
+            "clock": null
+          },
+          "outcome": "stable_landing",
+          "steps": 722,
+          "maximum_difference": 0.0
+        },
+        {
+          "case": {
+            "seed": 760006,
+            "level": 0.296,
+            "condition": "estimated",
+            "noise": 2.0,
+            "clock": 4.0
+          },
+          "outcome": "stable_landing",
+          "steps": 945,
+          "maximum_difference": 0.0
+        },
+        {
+          "case": {
+            "seed": 740000,
+            "level": 0.0,
+            "condition": "estimated",
+            "noise": 1.0,
+            "clock": null
+          },
+          "outcome": "stable_landing",
+          "steps": 622,
+          "maximum_difference": 0.0
+        },
+        {
+          "case": {
+            "seed": 810150,
+            "level": 0.296,
+            "condition": "estimated",
+            "noise": 2.0,
+            "clock": null
+          },
+          "outcome": "stable_landing",
+          "steps": 517,
+          "maximum_difference": 0.0
+        },
+        {
+          "case": {
+            "seed": 812000,
+            "level": 0.295,
+            "condition": "estimated",
+            "noise": 2.0,
+            "clock": null
+          },
+          "outcome": "stable_landing",
+          "steps": 959,
+          "maximum_difference": 0.0
+        }
+      ],
+      "whole_trajectory_observation_and_executed_action_difference": 0.0,
+      "off_proof_flags_identical": true
+    },
+    {
+      "spec": {
+        "version": 2,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_501.pt",
+        "minimum_gain": 0.01,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "native",
+        "risk_aggregation": "max_member",
+        "allowed_options": [
+          1
+        ]
+      },
+      "cases": [
+        {
+          "case": {
+            "seed": 760023,
+            "level": 0.295,
+            "condition": "estimated",
+            "noise": 2.0,
+            "clock": 4.0
+          },
+          "outcome": "stable_landing",
+          "steps": 670,
+          "maximum_difference": 0.0
+        },
+        {
+          "case": {
+            "seed": 810085,
+            "level": 0.296,
+            "condition": "estimated",
+            "noise": 1.0,
+            "clock": null
+          },
+          "outcome": "stable_landing",
+          "steps": 729,
+          "maximum_difference": 0.0
+        },
+        {
+          "case": {
+            "seed": 760006,
+            "level": 0.296,
+            "condition": "estimated",
+            "noise": 2.0,
+            "clock": 4.0
+          },
+          "outcome": "hard_landing",
+          "steps": 479,
+          "maximum_difference": 0.0
+        },
+        {
+          "case": {
+            "seed": 740000,
+            "level": 0.0,
+            "condition": "estimated",
+            "noise": 1.0,
+            "clock": null
+          },
+          "outcome": "stable_landing",
+          "steps": 622,
+          "maximum_difference": 0.0
+        },
+        {
+          "case": {
+            "seed": 810150,
+            "level": 0.296,
+            "condition": "estimated",
+            "noise": 2.0,
+            "clock": null
+          },
+          "outcome": "stable_landing",
+          "steps": 792,
+          "maximum_difference": 0.0
+        },
+        {
+          "case": {
+            "seed": 812000,
+            "level": 0.295,
+            "condition": "estimated",
+            "noise": 2.0,
+            "clock": null
+          },
+          "outcome": "stable_landing",
+          "steps": 592,
+          "maximum_difference": 0.0
+        }
+      ],
+      "whole_trajectory_observation_and_executed_action_difference": 0.0,
+      "off_proof_flags_identical": true
+    },
+    {
+      "spec": {
+        "version": 3,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\active_v1\\seed_501.pt",
+        "minimum_gain": 0.01,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "both",
+        "risk_aggregation": "max_member",
+        "allowed_options": [
+          5
+        ]
+      },
+      "cases": [
+        {
+          "case": {
+            "seed": 760023,
+            "level": 0.295,
+            "condition": "estimated",
+            "noise": 2.0,
+            "clock": 4.0
+          },
+          "outcome": "stable_landing",
+          "steps": 653,
+          "maximum_difference": 0.0
+        },
+        {
+          "case": {
+            "seed": 810085,
+            "level": 0.296,
+            "condition": "estimated",
+            "noise": 1.0,
+            "clock": null
+          },
+          "outcome": "stable_landing",
+          "steps": 729,
+          "maximum_difference": 0.0
+        },
+        {
+          "case": {
+            "seed": 760006,
+            "level": 0.296,
+            "condition": "estimated",
+            "noise": 2.0,
+            "clock": 4.0
+          },
+          "outcome": "hard_landing",
+          "steps": 459,
+          "maximum_difference": 0.0
+        },
+        {
+          "case": {
+            "seed": 740000,
+            "level": 0.0,
+            "condition": "estimated",
+            "noise": 1.0,
+            "clock": null
+          },
+          "outcome": "stable_landing",
+          "steps": 622,
+          "maximum_difference": 0.0
+        },
+        {
+          "case": {
+            "seed": 810150,
+            "level": 0.296,
+            "condition": "estimated",
+            "noise": 2.0,
+            "clock": null
+          },
+          "outcome": "stable_landing",
+          "steps": 517,
+          "maximum_difference": 0.0
+        },
+        {
+          "case": {
+            "seed": 812000,
+            "level": 0.295,
+            "condition": "estimated",
+            "noise": 2.0,
+            "clock": null
+          },
+          "outcome": "stable_landing",
+          "steps": 591,
+          "maximum_difference": 0.0
+        }
+      ],
+      "whole_trajectory_observation_and_executed_action_difference": 0.0,
+      "off_proof_flags_identical": true
+    }
+  ],
+  "passed": true,
+  "seconds": 146.62466645240784
+}

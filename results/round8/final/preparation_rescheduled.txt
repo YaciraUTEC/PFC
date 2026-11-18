@@ -1,0 +1,1 @@
+2026-11-17 05:02 Lima: preparación detenida mientras esperaba. Ninguna prueba formal abierta. Se comparará primero el conjunto completo de entrenamiento para aislar cobertura y variación entre compuertas. Se conserva conservative.log y se evita solapar dos grupos de16 simulaciones.

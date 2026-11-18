@@ -1,0 +1,148 @@
+{
+  "closed": true,
+  "finished_epoch": 1794898098.156936,
+  "conclusion": "Causal controls compare once-only continuation, conditional risk and factorized learning. These inspected routes are development, not held-out evidence.",
+  "results": [
+    {
+      "name": "flat_once_joint",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "native": true,
+        "max_options": 1,
+        "minimum_gain": 0.02,
+        "penalty": 1.0,
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback.pt",
+        "gate_kind": "flat",
+        "risk_mode": "joint",
+        "maximum_harm": 0.005
+      },
+      "metrics": {
+        "cases": 304,
+        "success": 0.944078947368421,
+        "gains": 1,
+        "losses": 1,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "name": "flat_once_conditional",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "native": true,
+        "max_options": 1,
+        "minimum_gain": 0.005,
+        "penalty": 1.0,
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round7\\runs\\gtrxl_round7_replay\\outcome_gate_feedback.pt",
+        "gate_kind": "flat",
+        "risk_mode": "conditional",
+        "maximum_harm": 0.005
+      },
+      "metrics": {
+        "cases": 304,
+        "success": 0.944078947368421,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "name": "factor_strict",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "native": true,
+        "max_options": 1,
+        "minimum_gain": 0.005,
+        "penalty": 1.0,
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\initial\\seed_501.pt",
+        "gate_kind": "factor",
+        "risk_mode": "conditional",
+        "maximum_harm": 0.005
+      },
+      "metrics": {
+        "cases": 304,
+        "success": 0.944078947368421,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "name": "factor_moderate",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "native": true,
+        "max_options": 1,
+        "minimum_gain": 0.005,
+        "penalty": 1.0,
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\initial\\seed_501.pt",
+        "gate_kind": "factor",
+        "risk_mode": "conditional",
+        "maximum_harm": 0.02
+      },
+      "metrics": {
+        "cases": 304,
+        "success": 0.944078947368421,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "name": "factor_relaxed",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "native": true,
+        "max_options": 1,
+        "minimum_gain": 0.005,
+        "penalty": 1.0,
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\initial\\seed_501.pt",
+        "gate_kind": "factor",
+        "risk_mode": "conditional",
+        "maximum_harm": 0.05
+      },
+      "metrics": {
+        "cases": 304,
+        "success": 0.9407894736842105,
+        "gains": 0,
+        "losses": 1,
+        "critical_difference": -0.013157894736842105,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "name": "factor_strict_penalty2",
+      "spec": {
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "native": true,
+        "max_options": 1,
+        "minimum_gain": 0.005,
+        "penalty": 2.0,
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\initial\\seed_501.pt",
+        "gate_kind": "factor",
+        "risk_mode": "conditional",
+        "maximum_harm": 0.005
+      },
+      "metrics": {
+        "cases": 304,
+        "success": 0.944078947368421,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    }
+  ],
+  "routes": 19,
+  "cases": 304,
+  "seconds": 139.42522835731506
+}

@@ -1,0 +1,15 @@
+{
+  "created_epoch": 1794913800.4958432,
+  "before_any_final_allocation_or_outcome": true,
+  "before_new812_813_development_outcomes": true,
+  "reason": "The user seeks one delivered fixed GTrXL controller that improves DSLPID. A statistical claim about that preselected checkpoint differs from a claim about every random training realization. Do not conflate them.",
+  "primary_estimand": "Actual operational gate selected solely on development, frozen before test and independent regime assignment.",
+  "primary_acceptance": [
+    "Zero lost baseline successes for operational checkpoint in every development/curve/stress/assigned test",
+    "Positive lower95 operational route-cluster gain in primary AND confirmation",
+    "Anytime-valid assigned benefit and conditional-harm evidence with unchanged revision alpha spending",
+    "Complete-chain guardedp95 below20.833ms"
+  ],
+  "secondary_method_robustness": "Still evaluate all five gate fits. Separately report zero-loss and crossed model/route improvement conditions for the family. Failure of an undeployed replica does not become evidence against or a guarantee for the frozen operational checkpoint.",
+  "unchanged": "All scenarios, all five evaluations, landing contract, independent assigned stream, extension/spending and actual operational preservation/gain requirements. No final result has been read. This narrows the claim to the concrete delivered artifact; no guarantee about arbitrary retraining."
+}

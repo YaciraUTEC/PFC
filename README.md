@@ -2,6 +2,15 @@
 
 Control de un cuadricóptero Crazyflie ante pérdida de efectividad en un motor.
 
+La **ronda 8 terminó el 17 de noviembre de 2026**: DSLPID + GTrXL201 con
+compuerta 505 logró 252 rescates y 0 aterrizajes base perdidos en 16.384 condiciones
+pareadas. El resultado aplica al contrato de preservacion y a los pesos elegidos.
+[Resultados de ronda8](results/round8/final/README.md) ·
+[Codigo](experiments/round8/README.txt) ·
+[Analisis critico de rescate, perjuicio y gravedad](results/round8/analysis/README.md).
+La 504 obtuvo mayor éxito medio con 12 pérdidas en confirmación; se documenta el
+intercambio y su incertidumbre, sin redefinir el ganador del protocolo original.
+
 La **ronda 7 terminó el 16 de noviembre de 2026**. Se conserva DSLPID con
 estimador estructurado y descenso coordinado, con residual neuronal apagado.
 [Resultados e informes de ronda 7](results/round7/final/README.md) ·

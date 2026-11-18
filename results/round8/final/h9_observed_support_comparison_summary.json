@@ -1,0 +1,32 @@
+{
+  "rows": [
+    {
+      "menu": "native",
+      "cases_per_fit": 1408,
+      "fits": 5,
+      "unrestricted_rescues": 354,
+      "unrestricted_losses": 23,
+      "observed_support_rescues": 330,
+      "observed_support_losses": 29
+    },
+    {
+      "menu": "raw",
+      "cases_per_fit": 1408,
+      "fits": 5,
+      "unrestricted_rescues": 175,
+      "unrestricted_losses": 10,
+      "observed_support_rescues": 82,
+      "observed_support_losses": 10
+    },
+    {
+      "menu": "both",
+      "cases_per_fit": 1408,
+      "fits": 5,
+      "unrestricted_rescues": 365,
+      "unrestricted_losses": 19,
+      "observed_support_rescues": 332,
+      "observed_support_losses": 25
+    }
+  ],
+  "scope": "Each total sums outcomes over five fits on the SAME1408development cases; not independent cases or a single controller. Learned weights/options/margins unchanged within each paired entry-support contrast. Restricting the first decision can delay it and does not imply monotone preservation."
+}

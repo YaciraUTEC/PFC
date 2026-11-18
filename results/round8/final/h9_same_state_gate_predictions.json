@@ -1,0 +1,200 @@
+{
+  "rows": [
+    {
+      "case": {
+        "seed": 812092,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "tick": 497,
+      "seconds": 10.354166666666666,
+      "observed_loss": 0.2937513589859009,
+      "predictions": {
+        "raw502": {
+          "allowed": true,
+          "base_success": 0.1728284932734968,
+          "conditional_harm": 0.019247383829686937,
+          "lower_gain": 0.01758352654678818
+        },
+        "raw503": {
+          "allowed": false,
+          "base_success": 0.24086951784556157,
+          "conditional_harm": 0.03839127762954597,
+          "lower_gain": 0.013279019606450835
+        },
+        "raw505": {
+          "allowed": false,
+          "base_success": 0.2530207584740472,
+          "conditional_harm": 0.041378576521794,
+          "lower_gain": 0.014237389246594729
+        },
+        "bootstrap_native502": {
+          "allowed": false,
+          "base_success": 0.9613309211237949,
+          "conditional_harm": 0.0640898063631038,
+          "lower_gain": -0.03535568142482235
+        }
+      },
+      "actual_forecast_reproduced": true
+    },
+    {
+      "case": {
+        "seed": 812100,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "tick": 93,
+      "seconds": 1.9375,
+      "observed_loss": 0.2160005420446396,
+      "predictions": {
+        "raw502": {
+          "allowed": true,
+          "base_success": 0.4347082728691423,
+          "conditional_harm": 0.011776285720296986,
+          "lower_gain": 0.07679335701088066
+        },
+        "raw503": {
+          "allowed": true,
+          "base_success": 0.4134094961511667,
+          "conditional_harm": 0.010958678714099168,
+          "lower_gain": 0.09050339687273146
+        },
+        "raw505": {
+          "allowed": false,
+          "base_success": 0.30631451089368716,
+          "conditional_harm": 0.024204768285244982,
+          "lower_gain": 0.20033143692824298
+        },
+        "bootstrap_native502": {
+          "allowed": false,
+          "base_success": 0.9994984021576823,
+          "conditional_harm": 0.11609838900775593,
+          "lower_gain": -0.11950075196561497
+        }
+      },
+      "actual_forecast_reproduced": true
+    },
+    {
+      "case": {
+        "seed": 812103,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "tick": 95,
+      "seconds": 1.9791666666666667,
+      "observed_loss": 0.21309854090213776,
+      "predictions": {
+        "raw502": {
+          "allowed": true,
+          "base_success": 0.3203614985659891,
+          "conditional_harm": 0.013425287430627653,
+          "lower_gain": 0.07841070831229446
+        },
+        "raw503": {
+          "allowed": false,
+          "base_success": 0.2798189096414196,
+          "conditional_harm": 0.020238019857867107,
+          "lower_gain": 0.09468898982605535
+        },
+        "raw505": {
+          "allowed": false,
+          "base_success": 0.2410367277005608,
+          "conditional_harm": 0.061264767175925994,
+          "lower_gain": 0.14443867696779855
+        },
+        "bootstrap_native502": {
+          "allowed": false,
+          "base_success": 0.9994111633183875,
+          "conditional_harm": 0.09665938150324016,
+          "lower_gain": -0.0890310946445177
+        }
+      },
+      "actual_forecast_reproduced": true
+    },
+    {
+      "case": {
+        "seed": 812100,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "tick": 93,
+      "seconds": 1.9375,
+      "observed_loss": 0.21586166322231293,
+      "predictions": {
+        "raw502": {
+          "allowed": true,
+          "base_success": 0.4105381496062395,
+          "conditional_harm": 0.012863053985443629,
+          "lower_gain": 0.08774441853721471
+        },
+        "raw503": {
+          "allowed": true,
+          "base_success": 0.38391660227877317,
+          "conditional_harm": 0.011921316894096923,
+          "lower_gain": 0.10221034536463978
+        },
+        "raw505": {
+          "allowed": false,
+          "base_success": 0.28378478441662874,
+          "conditional_harm": 0.027098971927010496,
+          "lower_gain": 0.21942089116808292
+        },
+        "bootstrap_native502": {
+          "allowed": false,
+          "base_success": 0.9995045524163734,
+          "conditional_harm": 0.11886248099653318,
+          "lower_gain": -0.12230247507595629
+        }
+      },
+      "actual_forecast_reproduced": true
+    },
+    {
+      "case": {
+        "seed": 812103,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "tick": 96,
+      "seconds": 2.0,
+      "observed_loss": 0.25151756405830383,
+      "predictions": {
+        "raw502": {
+          "allowed": true,
+          "base_success": 0.207232782585847,
+          "conditional_harm": 0.008487146838948356,
+          "lower_gain": 0.05446994813384648
+        },
+        "raw503": {
+          "allowed": true,
+          "base_success": 0.17331293491420244,
+          "conditional_harm": 0.016242493926961643,
+          "lower_gain": 0.0732706936438444
+        },
+        "raw505": {
+          "allowed": false,
+          "base_success": 0.15369918928213586,
+          "conditional_harm": 0.05404200178292873,
+          "lower_gain": 0.10792890969621238
+        },
+        "bootstrap_native502": {
+          "allowed": false,
+          "base_success": 0.998975365193421,
+          "conditional_harm": 0.13340431582812007,
+          "lower_gain": -0.11975253246379491
+        }
+      },
+      "actual_forecast_reproduced": true
+    }
+  ],
+  "scope": "Counterfactual head comparison at identical naturally visited baseline prefix and identical proposer201, with reconstructed full streaming GTrXL history. Actual failed gate forecasts reproduced within1e-7. A score at this state is not necessarily another policy first decision; actual raw505/bootstrap502 abstained over these complete flights. Risk values are learned estimates, not certified bounds."
+}

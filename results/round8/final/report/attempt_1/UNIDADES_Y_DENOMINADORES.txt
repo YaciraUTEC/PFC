@@ -1,0 +1,14 @@
+UNIDADES Y DENOMINADORES DE LAS TABLAS
+failure_percent: perdida porcentual de RPM de UN motor. level en los JSON es la fraccion equivalente (0.296=29.6%). El empuje de ese motor escala con (1-level)^2.
+success_percent/base_percent/candidate_percent: porcentaje de aterrizajes controlados y estables. difference_pp y critical_difference_pp son PUNTOS porcentuales, no cambio relativo.
+tabla_por_falla.csv:128rutas por punto. Prueba critica principal:384rutas; confirmacion:1024rutas. Cada ruta se repite en distintas condiciones; no multiplicar el numero de rutas por esas repeticiones ni por las cinco compuertas.
+noise: multiplicador de desviacion estandar de medicion. 1=0.002m/s en velocidad y0.002rad/s en giro;2=0.004 en ambas. Duplicar desviacion implica cuadruplicar varianza.
+clock: segundos desde inicio cuando se fija el instante de averia. Vacio/None significa activacion al alcanzar el punto intermedio registrado de la ruta.
+episode_steps: pasos de control a48Hz; dividir entre48para segundos. finish_seconds, stable_seconds y columnas de retraso ya estan en segundos.
+vertical_speed/horizontal_speed/vertical_contact_speed: m/s. Son valores entrantes al primer contacto, no posteriores al impacto.
+tilt: maximo de los valores absolutos de roll y pitch, en RADIANES. angular_speed: norma de velocidad angular,rad/s. radius: distancia horizontal al objetivo,m.
+exposed: averia realmente aplicada. El0% es control nominal; no se anuncia un vuelo sano como recuperacion de falla.
+active_cases y actual_motor_intervention_steps: correccion fisica de motor proyectada no nula segun umbral1e-7; distintos de solo proponer o abrir una opcion.
+active_flights_percent: porcentaje de vuelos con al menos un paso de correccion fisica; no es porcentaje de pasos.
+motor_intervention_step_percent:100*pasos de correccion fisica acumulados/pasos de control acumulados. La actuacion no equivale a computo neuronal: el encoder conserva historial mientras se espera una posible intervencion.
+Banda entre cinco compuertas: minimo-maximo observado entre ajustes de autorizacion, no intervalo de confianza. Los IC por rutas y la cota secuencial tienen sus propias poblaciones indicadas en el informe.

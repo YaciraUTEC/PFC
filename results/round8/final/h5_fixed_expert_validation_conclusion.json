@@ -1,0 +1,176 @@
+{
+  "closed": true,
+  "finished_epoch": 1794908334.7567155,
+  "conclusion": "Fixed-proposer gate replicas evaluated on the entire accumulated development union. Previous variable-proposal results are not overwritten or represented as five full independent actor retrainings.",
+  "entries": [
+    {
+      "seed": 501,
+      "spec": {
+        "version": 2,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_501.pt",
+        "minimum_gain": 0.005,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "native",
+        "risk_aggregation": "max_member",
+        "allowed_options": null
+      },
+      "metrics": {
+        "cases": 5376,
+        "success": 0.7795758928571429,
+        "gains": 10,
+        "losses": 0,
+        "critical_difference": 0.0048828125,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 502,
+      "spec": {
+        "version": 2,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_502.pt",
+        "minimum_gain": 0.005,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "native",
+        "risk_aggregation": "max_member",
+        "allowed_options": null
+      },
+      "metrics": {
+        "cases": 5376,
+        "success": 0.7806919642857143,
+        "gains": 16,
+        "losses": 0,
+        "critical_difference": 0.0078125,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 503,
+      "spec": {
+        "version": 2,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_503.pt",
+        "minimum_gain": 0.005,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "native",
+        "risk_aggregation": "max_member",
+        "allowed_options": null
+      },
+      "metrics": {
+        "cases": 5376,
+        "success": 0.7779017857142857,
+        "gains": 1,
+        "losses": 0,
+        "critical_difference": 0.00048828125,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 504,
+      "spec": {
+        "version": 2,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_504.pt",
+        "minimum_gain": 0.005,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "native",
+        "risk_aggregation": "max_member",
+        "allowed_options": null
+      },
+      "metrics": {
+        "cases": 5376,
+        "success": 0.7777157738095238,
+        "gains": 0,
+        "losses": 0,
+        "critical_difference": 0.0,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 505,
+      "spec": {
+        "version": 2,
+        "proposer": "E:\\UTEC\\Tesis\\TesisNicol\\PFC\\runs\\intervention_round6\\phase3\\flashsac\\gtrxl\\seed_201\\best.pt",
+        "gate": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\factor_gates\\base_options_calibrated\\seed_505.pt",
+        "minimum_gain": 0.005,
+        "maximum_harm": 0.02,
+        "penalty": 1.0,
+        "option_mode": "native",
+        "risk_aggregation": "max_member",
+        "allowed_options": null
+      },
+      "metrics": {
+        "cases": 5376,
+        "success": 0.7775297619047619,
+        "gains": 0,
+        "losses": 1,
+        "critical_difference": -0.00048828125,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    }
+  ],
+  "statistics": {
+    "old_primary": {
+      "mean": 0.0046875,
+      "lower95": 0.0,
+      "upper95": 0.015625,
+      "replicates": 20000,
+      "model_seeds": 5,
+      "route_clusters": 64,
+      "gains": 6,
+      "losses": 0,
+      "mild_losses": 0,
+      "exact_losses": 0,
+      "protected_route_clusters": 64,
+      "harmed_route_clusters": 0,
+      "harmed_route_upper95": 0.04572970233076245,
+      "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+    },
+    "new_default": {
+      "mean": 0.0037109375,
+      "lower95": -0.000390625,
+      "upper95": 0.011137695312499574,
+      "replicates": 20000,
+      "model_seeds": 5,
+      "route_clusters": 256,
+      "gains": 20,
+      "losses": 1,
+      "mild_losses": 0,
+      "exact_losses": 0,
+      "protected_route_clusters": 256,
+      "harmed_route_clusters": 1,
+      "harmed_route_upper95": 0.018395769886273675,
+      "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+    },
+    "new_shifted": {
+      "mean": 0.000390625,
+      "lower95": 0.0,
+      "upper95": 0.00234375,
+      "replicates": 20000,
+      "model_seeds": 5,
+      "route_clusters": 64,
+      "gains": 1,
+      "losses": 0,
+      "mild_losses": 0,
+      "exact_losses": 0,
+      "protected_route_clusters": 63,
+      "harmed_route_clusters": 0,
+      "harmed_route_upper95": 0.04643845148393823,
+      "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+    }
+  },
+  "gains": 27,
+  "losses": 1,
+  "cases_per_model": 5376,
+  "seconds": 1176.2629170417786
+}

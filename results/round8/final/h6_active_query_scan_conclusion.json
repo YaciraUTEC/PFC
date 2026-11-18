@@ -1,0 +1,13 @@
+{
+  "closed": true,
+  "finished_epoch": 1794911904.3537054,
+  "conclusion": "Prospective development query states chosen from actual first-decision distributions without using terminal labels to sample.",
+  "cases": 5334,
+  "states": 5913,
+  "routes": 416,
+  "routes_per_split": {
+    "train": 320,
+    "calibration": 96
+  },
+  "seconds": 521.3107318878174
+}

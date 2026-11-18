@@ -1,0 +1,14 @@
+{
+  "pid": 27180,
+  "args": [
+    "-m",
+    "experiments.round8.data",
+    "--split",
+    "train",
+    "--groups",
+    "120",
+    "--workers",
+    "8"
+  ],
+  "started_epoch": 1794898839.111113
+}

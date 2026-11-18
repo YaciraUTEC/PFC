@@ -1,0 +1,110 @@
+{
+  "train": {
+    "1": {
+      "routes": 112,
+      "records": 4468,
+      "classes": {
+        "0": {
+          "records": 3420,
+          "states": 872,
+          "routes": 111
+        },
+        "1": {
+          "records": 256,
+          "states": 84,
+          "routes": 43
+        },
+        "2": {
+          "records": 41,
+          "states": 19,
+          "routes": 12
+        },
+        "3": {
+          "records": 751,
+          "states": 192,
+          "routes": 54
+        }
+      }
+    },
+    "5": {
+      "routes": 112,
+      "records": 4468,
+      "classes": {
+        "0": {
+          "records": 3398,
+          "states": 866,
+          "routes": 110
+        },
+        "1": {
+          "records": 383,
+          "states": 117,
+          "routes": 44
+        },
+        "2": {
+          "records": 63,
+          "states": 23,
+          "routes": 15
+        },
+        "3": {
+          "records": 624,
+          "states": 167,
+          "routes": 53
+        }
+      }
+    }
+  },
+  "calibration": {
+    "1": {
+      "routes": 31,
+      "records": 1096,
+      "classes": {
+        "0": {
+          "records": 770,
+          "states": 200,
+          "routes": 30
+        },
+        "1": {
+          "records": 113,
+          "states": 37,
+          "routes": 15
+        },
+        "2": {
+          "records": 16,
+          "states": 7,
+          "routes": 4
+        },
+        "3": {
+          "records": 197,
+          "states": 52,
+          "routes": 13
+        }
+      }
+    },
+    "5": {
+      "routes": 31,
+      "records": 1096,
+      "classes": {
+        "0": {
+          "records": 764,
+          "states": 198,
+          "routes": 30
+        },
+        "1": {
+          "records": 201,
+          "states": 60,
+          "routes": 15
+        },
+        "2": {
+          "records": 22,
+          "states": 9,
+          "routes": 4
+        },
+        "3": {
+          "records": 109,
+          "states": 33,
+          "routes": 13
+        }
+      }
+    }
+  }
+}

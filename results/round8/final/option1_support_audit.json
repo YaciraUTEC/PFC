@@ -1,0 +1,46 @@
+{
+  "train": {
+    "0": {
+      "records": 213,
+      "states": 107,
+      "routes": 17
+    },
+    "1": {
+      "records": 7,
+      "states": 4,
+      "routes": 3
+    },
+    "2": {
+      "records": 2,
+      "states": 1,
+      "routes": 1
+    },
+    "3": {
+      "records": 86,
+      "states": 44,
+      "routes": 9
+    }
+  },
+  "calibration": {
+    "0": {
+      "records": 202,
+      "states": 103,
+      "routes": 18
+    },
+    "1": {
+      "records": 5,
+      "states": 3,
+      "routes": 3
+    },
+    "2": {
+      "records": 3,
+      "states": 2,
+      "routes": 2
+    },
+    "3": {
+      "records": 90,
+      "states": 47,
+      "routes": 11
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "closed": true,
+  "finished_epoch": 1794904685.452611,
+  "conclusion": "Preservation held across all five paired replicas and15360 development comparisons, but seven gains occur only in previous routes and new32-route subset has no gain. Improve baseline prognosis in isolation before final testing.",
+  "gains": 7,
+  "losses": 0,
+  "statistics": {
+    "old_primary": {
+      "mean": 0.00546875,
+      "lower95": 0.0,
+      "upper95": 0.015625,
+      "replicates": 20000,
+      "model_seeds": 5,
+      "route_clusters": 64,
+      "gains": 7,
+      "losses": 0,
+      "mild_losses": 0,
+      "exact_losses": 0,
+      "protected_route_clusters": 64,
+      "harmed_route_clusters": 0,
+      "harmed_route_upper95": 0.04572970233076245,
+      "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+    },
+    "old_shifted": {
+      "mean": 0.0,
+      "lower95": 0.0,
+      "upper95": 0.0,
+      "replicates": 20000,
+      "model_seeds": 5,
+      "route_clusters": 32,
+      "gains": 0,
+      "losses": 0,
+      "mild_losses": 0,
+      "exact_losses": 0,
+      "protected_route_clusters": 30,
+      "harmed_route_clusters": 0,
+      "harmed_route_upper95": 0.09503385285530411,
+      "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+    },
+    "new_routes": {
+      "mean": 0.0,
+      "lower95": 0.0,
+      "upper95": 0.0,
+      "replicates": 20000,
+      "model_seeds": 5,
+      "route_clusters": 32,
+      "gains": 0,
+      "losses": 0,
+      "mild_losses": 0,
+      "exact_losses": 0,
+      "protected_route_clusters": 32,
+      "harmed_route_clusters": 0,
+      "harmed_route_upper95": 0.08936819898626476,
+      "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+    }
+  }
+}

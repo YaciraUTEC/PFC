@@ -1,0 +1,109 @@
+﻿controller,condition,noise,failure_percent,successes,routes,success_percent,replica_min_percent,replica_max_percent
+DSLPID,exact,1.0,0.0,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,1.0,0.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,exact,1.0,0.0,128,128,100.0,100.0,100.0
+DSLPID,exact,1.0,2.0,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,1.0,2.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,exact,1.0,2.0,128,128,100.0,100.0,100.0
+DSLPID,exact,1.0,10.0,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,1.0,10.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,exact,1.0,10.0,128,128,100.0,100.0,100.0
+DSLPID,exact,1.0,25.0,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,1.0,25.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,exact,1.0,25.0,128,128,100.0,100.0,100.0
+DSLPID,exact,1.0,28.0,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,1.0,28.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,exact,1.0,28.0,128,128,100.0,100.0,100.0
+DSLPID,exact,1.0,29.0,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,1.0,29.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,exact,1.0,29.0,128,128,100.0,100.0,100.0
+DSLPID,exact,1.0,29.5,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,1.0,29.5,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,exact,1.0,29.5,128,128,100.0,100.0,100.0
+DSLPID,exact,1.0,29.6,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,1.0,29.6,126,128,98.4375,98.4375,98.4375
+GTrXL preservacion/rescate,exact,1.0,29.6,128,128,100.0,100.0,100.0
+DSLPID,exact,1.0,30.0,0,128,0.0,0.0,0.0
+GTrXL anterior,exact,1.0,30.0,0,128,0.0,0.0,0.0
+GTrXL preservacion/rescate,exact,1.0,30.0,0,128,0.0,0.0,0.0
+DSLPID,exact,2.0,0.0,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,2.0,0.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,exact,2.0,0.0,128,128,100.0,100.0,100.0
+DSLPID,exact,2.0,2.0,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,2.0,2.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,exact,2.0,2.0,128,128,100.0,100.0,100.0
+DSLPID,exact,2.0,10.0,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,2.0,10.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,exact,2.0,10.0,128,128,100.0,100.0,100.0
+DSLPID,exact,2.0,25.0,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,2.0,25.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,exact,2.0,25.0,128,128,100.0,100.0,100.0
+DSLPID,exact,2.0,28.0,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,2.0,28.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,exact,2.0,28.0,128,128,100.0,100.0,100.0
+DSLPID,exact,2.0,29.0,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,2.0,29.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,exact,2.0,29.0,128,128,100.0,100.0,100.0
+DSLPID,exact,2.0,29.5,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,2.0,29.5,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,exact,2.0,29.5,128,128,100.0,100.0,100.0
+DSLPID,exact,2.0,29.6,128,128,100.0,100.0,100.0
+GTrXL anterior,exact,2.0,29.6,126,128,98.4375,98.4375,98.4375
+GTrXL preservacion/rescate,exact,2.0,29.6,128,128,100.0,100.0,100.0
+DSLPID,exact,2.0,30.0,0,128,0.0,0.0,0.0
+GTrXL anterior,exact,2.0,30.0,0,128,0.0,0.0,0.0
+GTrXL preservacion/rescate,exact,2.0,30.0,0,128,0.0,0.0,0.0
+DSLPID,estimated,1.0,0.0,128,128,100.0,100.0,100.0
+GTrXL anterior,estimated,1.0,0.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,estimated,1.0,0.0,128,128,100.0,100.0,100.0
+DSLPID,estimated,1.0,2.0,128,128,100.0,100.0,100.0
+GTrXL anterior,estimated,1.0,2.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,estimated,1.0,2.0,128,128,100.0,100.0,100.0
+DSLPID,estimated,1.0,10.0,128,128,100.0,100.0,100.0
+GTrXL anterior,estimated,1.0,10.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,estimated,1.0,10.0,128,128,100.0,100.0,100.0
+DSLPID,estimated,1.0,25.0,128,128,100.0,100.0,100.0
+GTrXL anterior,estimated,1.0,25.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,estimated,1.0,25.0,128,128,100.0,100.0,100.0
+DSLPID,estimated,1.0,28.0,128,128,100.0,100.0,100.0
+GTrXL anterior,estimated,1.0,28.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,estimated,1.0,28.0,128,128,100.0,100.0,100.0
+DSLPID,estimated,1.0,29.0,124,128,96.875,96.875,96.875
+GTrXL anterior,estimated,1.0,29.0,125,128,97.65625,97.65625,97.65625
+GTrXL preservacion/rescate,estimated,1.0,29.0,124,128,96.875,96.875,96.875
+DSLPID,estimated,1.0,29.5,90,128,70.3125,70.3125,70.3125
+GTrXL anterior,estimated,1.0,29.5,115,128,89.84375,89.84375,89.84375
+GTrXL preservacion/rescate,estimated,1.0,29.5,98,128,76.5625,71.09375,78.125
+DSLPID,estimated,1.0,29.6,91,128,71.09375,71.09375,71.09375
+GTrXL anterior,estimated,1.0,29.6,101,128,78.90625,78.90625,78.90625
+GTrXL preservacion/rescate,estimated,1.0,29.6,100,128,78.125,72.65625,80.46875
+DSLPID,estimated,1.0,30.0,0,128,0.0,0.0,0.0
+GTrXL anterior,estimated,1.0,30.0,0,128,0.0,0.0,0.0
+GTrXL preservacion/rescate,estimated,1.0,30.0,0,128,0.0,0.0,0.0
+DSLPID,estimated,2.0,0.0,128,128,100.0,100.0,100.0
+GTrXL anterior,estimated,2.0,0.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,estimated,2.0,0.0,128,128,100.0,100.0,100.0
+DSLPID,estimated,2.0,2.0,128,128,100.0,100.0,100.0
+GTrXL anterior,estimated,2.0,2.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,estimated,2.0,2.0,128,128,100.0,100.0,100.0
+DSLPID,estimated,2.0,10.0,128,128,100.0,100.0,100.0
+GTrXL anterior,estimated,2.0,10.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,estimated,2.0,10.0,128,128,100.0,100.0,100.0
+DSLPID,estimated,2.0,25.0,128,128,100.0,100.0,100.0
+GTrXL anterior,estimated,2.0,25.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,estimated,2.0,25.0,128,128,100.0,100.0,100.0
+DSLPID,estimated,2.0,28.0,128,128,100.0,100.0,100.0
+GTrXL anterior,estimated,2.0,28.0,128,128,100.0,100.0,100.0
+GTrXL preservacion/rescate,estimated,2.0,28.0,128,128,100.0,100.0,100.0
+DSLPID,estimated,2.0,29.0,125,128,97.65625,97.65625,97.65625
+GTrXL anterior,estimated,2.0,29.0,125,128,97.65625,97.65625,97.65625
+GTrXL preservacion/rescate,estimated,2.0,29.0,125,128,97.65625,97.65625,97.65625
+DSLPID,estimated,2.0,29.5,90,128,70.3125,70.3125,70.3125
+GTrXL anterior,estimated,2.0,29.5,116,128,90.625,90.625,90.625
+GTrXL preservacion/rescate,estimated,2.0,29.5,99,128,77.34375,71.09375,78.90625
+DSLPID,estimated,2.0,29.6,92,128,71.875,71.875,71.875
+GTrXL anterior,estimated,2.0,29.6,100,128,78.125,78.125,78.125
+GTrXL preservacion/rescate,estimated,2.0,29.6,101,128,78.90625,73.4375,80.46875
+DSLPID,estimated,2.0,30.0,0,128,0.0,0.0,0.0
+GTrXL anterior,estimated,2.0,30.0,0,128,0.0,0.0,0.0
+GTrXL preservacion/rescate,estimated,2.0,30.0,0,128,0.0,0.0,0.0

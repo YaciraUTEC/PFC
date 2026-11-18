@@ -1,0 +1,210 @@
+{
+  "changed": [
+    {
+      "kind": "loss",
+      "case": {
+        "seed": 760006,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": 4.0
+      },
+      "baseline_outcome": "stable_landing",
+      "candidate_outcome": "hard_landing",
+      "baseline_steps": 945,
+      "candidate_steps": 459,
+      "baseline_contact": {
+        "vertical_speed": 0.1333276586331502,
+        "horizontal_speed": 0.0029563548329233987,
+        "tilt": 0.000842822671561207,
+        "angular_speed": 0.026899655126339864,
+        "radius": 0.020307592759136427
+      },
+      "candidate_contact": {
+        "vertical_speed": 0.15828094712663396,
+        "horizontal_speed": 0.016871035574945563,
+        "tilt": 0.004602742463127365,
+        "angular_speed": 5.437637642402838,
+        "radius": 0.11129940172804845
+      },
+      "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\checkpoint_selection\\expanded_raw\\known_seed_505\\changed_outcome_traces\\c87eb1ea7bb9.npz",
+      "option_start_tick": 57,
+      "option_start_seconds": 1.1875,
+      "option_id": 5,
+      "option_description": [
+        24,
+        0.5,
+        false
+      ],
+      "duration": 24,
+      "actual_motor_intervention_steps": 24,
+      "first_actual_motor_intervention_seconds": 1.1875,
+      "prefix_observation_difference": 0.0,
+      "initial_estimated_eta": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "initial_true_eta_for_audit_only": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "initial_physical_delta": [
+        -0.13239213824272134,
+        0.10257922035066576,
+        -0.0591707747396544,
+        -0.0066629606954983845
+      ],
+      "initial_forecasts": {
+        "base_success": 0.8912412911175277,
+        "preservation": 0.998282835171739,
+        "joint_rescue": 0.019304642723016983,
+        "joint_harm": 0.0015304081986009632,
+        "conditional_harm": 0.002240255525882362,
+        "lower_gain": 0.013146744849969492
+      },
+      "forecast_scope": "Conditional_harm is the actual decision risk under max_member",
+      "true_loss_at_start_for_diagnosis_only": 0.0,
+      "observed_loss_at_start": 0.0
+    },
+    {
+      "kind": "loss",
+      "case": {
+        "seed": 810177,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "baseline_outcome": "stable_landing",
+      "candidate_outcome": "early_contact",
+      "baseline_steps": 858,
+      "candidate_steps": 225,
+      "baseline_contact": {
+        "vertical_speed": 0.13476510589282797,
+        "horizontal_speed": 0.011405105990939551,
+        "tilt": 0.0008165246164945949,
+        "angular_speed": 0.01926870770570242,
+        "radius": 0.06333263498128776
+      },
+      "candidate_contact": null,
+      "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\checkpoint_selection\\expanded_raw\\known_seed_505\\changed_outcome_traces\\2e917d23b3cd.npz",
+      "option_start_tick": 88,
+      "option_start_seconds": 1.8333333333333333,
+      "option_id": 5,
+      "option_description": [
+        24,
+        0.5,
+        false
+      ],
+      "duration": 24,
+      "actual_motor_intervention_steps": 24,
+      "first_actual_motor_intervention_seconds": 1.8333333333333333,
+      "prefix_observation_difference": 0.0,
+      "initial_estimated_eta": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "initial_true_eta_for_audit_only": [
+        1.0,
+        1.0,
+        1.0,
+        0.704
+      ],
+      "initial_physical_delta": [
+        -0.2182909250259401,
+        -0.012970264682225077,
+        -0.048504088770495925,
+        0.014076436320146329
+      ],
+      "initial_forecasts": {
+        "base_success": 0.7869130862253985,
+        "preservation": 0.9912815129803677,
+        "joint_rescue": 0.0861047037564132,
+        "joint_harm": 0.006860691527834947,
+        "conditional_harm": 0.010737793211599733,
+        "lower_gain": 0.046785383647945517
+      },
+      "forecast_scope": "Conditional_harm is the actual decision risk under max_member",
+      "true_loss_at_start_for_diagnosis_only": 0.29600000000000004,
+      "observed_loss_at_start": 0.0
+    },
+    {
+      "kind": "loss",
+      "case": {
+        "seed": 810177,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "baseline_outcome": "stable_landing",
+      "candidate_outcome": "early_contact",
+      "baseline_steps": 762,
+      "candidate_steps": 224,
+      "baseline_contact": {
+        "vertical_speed": 0.1334696837691575,
+        "horizontal_speed": 0.002669577686632589,
+        "tilt": 0.00038990006541843824,
+        "angular_speed": 0.013038734453233206,
+        "radius": 0.0186214421699957
+      },
+      "candidate_contact": null,
+      "trace_path": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\checkpoint_selection\\expanded_raw\\known_seed_505\\changed_outcome_traces\\1f527abc29b4.npz",
+      "option_start_tick": 88,
+      "option_start_seconds": 1.8333333333333333,
+      "option_id": 5,
+      "option_description": [
+        24,
+        0.5,
+        false
+      ],
+      "duration": 24,
+      "actual_motor_intervention_steps": 24,
+      "first_actual_motor_intervention_seconds": 1.8333333333333333,
+      "prefix_observation_difference": 0.0,
+      "initial_estimated_eta": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "initial_true_eta_for_audit_only": [
+        1.0,
+        1.0,
+        1.0,
+        0.704
+      ],
+      "initial_physical_delta": [
+        -0.21655616164207472,
+        -0.012681250257602675,
+        -0.046545325368101194,
+        0.013252323137093881
+      ],
+      "initial_forecasts": {
+        "base_success": 0.7727377614116087,
+        "preservation": 0.9911888407528245,
+        "joint_rescue": 0.0896140861729376,
+        "joint_harm": 0.006808715472103532,
+        "conditional_harm": 0.010700140053500617,
+        "lower_gain": 0.049490289628795106
+      },
+      "forecast_scope": "Conditional_harm is the actual decision risk under max_member",
+      "true_loss_at_start_for_diagnosis_only": 0.29600000000000004,
+      "observed_loss_at_start": 0.0
+    }
+  ],
+  "gains": 0,
+  "losses": 3,
+  "unique_changed_routes": 2,
+  "outcomes": {
+    "hard_landing": 1,
+    "early_contact": 2
+  },
+  "scope": "Post-hoc descriptive audit, no policy selection on reserved final tests; prefix equality identifies the first divergence, not the isolated cause of the terminal outcome."
+}

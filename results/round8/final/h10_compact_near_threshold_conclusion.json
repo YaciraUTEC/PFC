@@ -1,0 +1,33 @@
+{
+  "closed": true,
+  "finished_epoch": 1794937652.4526498,
+  "conclusion": "Direct CPU physical replay of every numerically near-boundary first decision agrees with original full flights.",
+  "passed": true,
+  "checks": [
+    {
+      "seed": 501,
+      "near_threshold_physical_replays": 1,
+      "passed": true
+    },
+    {
+      "seed": 502,
+      "near_threshold_physical_replays": 0,
+      "passed": true
+    },
+    {
+      "seed": 503,
+      "near_threshold_physical_replays": 2,
+      "passed": true
+    },
+    {
+      "seed": 504,
+      "near_threshold_physical_replays": 1,
+      "passed": true
+    },
+    {
+      "seed": 505,
+      "near_threshold_physical_replays": 1,
+      "passed": true
+    }
+  ]
+}

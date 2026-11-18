@@ -1,0 +1,1 @@
+2026-11-17 ~07:00 Lima: equivalencia completa18vuelos, trayectoria/acciones/contactos diferencia0 y pruebas unitarias de reinicio parcial. Se conserva501 lento completado; se archiva502 parcial antes de recomputarlo con la misma política acelerada. Solo procesos y resultados de esta tarea.

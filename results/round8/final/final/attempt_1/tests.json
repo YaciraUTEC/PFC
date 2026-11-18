@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "seconds": 174.70894956588745,
+  "args": [
+    "E:\\UTEC\\Tesis\\TesisNicol\\conda_env\\python.exe",
+    "-B",
+    "-m",
+    "pytest",
+    "experiments/tests",
+    "-q",
+    "-p",
+    "no:cacheprovider"
+  ]
+}

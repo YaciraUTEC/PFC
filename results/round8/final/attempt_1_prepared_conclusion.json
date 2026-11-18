@@ -1,0 +1,6 @@
+{
+  "closed": true,
+  "finished_epoch": 1794938034.732053,
+  "conclusion": "Development selection, execution equivalence, CPU/GPU proof checks, complete-chain timing and regression completed before formal tests.",
+  "operational_gate": 505
+}

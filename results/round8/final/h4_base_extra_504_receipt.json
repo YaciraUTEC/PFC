@@ -1,0 +1,10 @@
+{
+  "seconds": 14.197151899337769,
+  "exit_code": 0,
+  "args": [
+    "-m",
+    "experiments.round8.base_extra",
+    "--seed",
+    "504"
+  ]
+}

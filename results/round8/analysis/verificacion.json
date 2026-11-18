@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checked_epoch": 1794958220.3781116,
+  "screenshots_counts_match_source": true,
+  "conditional_rate_identity_checked_all_rows": true,
+  "paired_routes_used_in_bootstrap": true,
+  "independent_subsample_conditions_fixed_before_outcomes": true,
+  "original_artifacts_unchanged": true,
+  "plots_actually_viewed": [
+    "rescate_perjuicio_confirmacion.png",
+    "sensibilidad_al_costo.png"
+  ],
+  "corrected_overlapping_labels": true,
+  "analysis_only_no_new_flights_or_training": true
+}

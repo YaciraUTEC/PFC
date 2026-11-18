@@ -1,0 +1,12 @@
+{
+  "closed": true,
+  "finished_epoch": 1794956106.0838099,
+  "conclusion": "Prospective gain and preservation evidence, strict landing tests, full-chain timing, complete regression, visual QA and relocated handoff all verified.",
+  "attempt": 1,
+  "operational_gate": 505,
+  "round7_integrity": {
+    "source_count": 250,
+    "artifact_count": 12,
+    "final_manifest_sha": "70a14b9cdc84436a926f1d5e6ca7e53234468ad42897b2b42ad700dba1564686"
+  }
+}

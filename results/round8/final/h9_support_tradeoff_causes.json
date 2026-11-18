@@ -1,0 +1,299 @@
+{
+  "unrestricted_rescues": 35,
+  "observed_support_rescues": 15,
+  "shared_rescues": 15,
+  "unrestricted_only": 20,
+  "observed_support_only": 0,
+  "entry_kinds": {
+    "after_physical_failure_before_estimated_threshold": 19,
+    "before_physical_failure": 1
+  },
+  "rows": [
+    {
+      "case": {
+        "seed": 812012,
+        "level": 0.295,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.5833333333333333,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29499999999999993,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812012,
+        "level": 0.295,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.5833333333333333,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29499999999999993,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812015,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.625,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29600000000000004,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812015,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.625,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29600000000000004,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812017,
+        "level": 0.295,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.8333333333333333,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29499999999999993,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812017,
+        "level": 0.295,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.8333333333333333,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29499999999999993,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812033,
+        "level": 0.295,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.6458333333333333,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29499999999999993,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812047,
+        "level": 0.295,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.5833333333333333,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29499999999999993,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812047,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.5833333333333333,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29600000000000004,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "timeout"
+    },
+    {
+      "case": {
+        "seed": 812064,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.75,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29600000000000004,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812064,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.75,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29600000000000004,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812083,
+        "level": 0.295,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.5833333333333333,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29499999999999993,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812083,
+        "level": 0.295,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.5833333333333333,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29499999999999993,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812095,
+        "level": 0.295,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.5416666666666667,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29499999999999993,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812095,
+        "level": 0.295,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.5416666666666667,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29499999999999993,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812095,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.5416666666666667,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29600000000000004,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812095,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.5416666666666667,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29600000000000004,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812114,
+        "level": 0.295,
+        "condition": "estimated",
+        "noise": 1.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.7916666666666667,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29499999999999993,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 812114,
+        "level": 0.295,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": null
+      },
+      "option_start_seconds": 1.7916666666666667,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.29499999999999993,
+      "kind": "after_physical_failure_before_estimated_threshold",
+      "guarded_outcome": "early_contact"
+    },
+    {
+      "case": {
+        "seed": 813013,
+        "level": 0.296,
+        "condition": "estimated",
+        "noise": 2.0,
+        "clock": 4.0
+      },
+      "option_start_seconds": 1.2916666666666667,
+      "observed_loss": 0.0,
+      "true_loss_for_diagnosis_only": 0.0,
+      "kind": "before_physical_failure",
+      "guarded_outcome": "timeout"
+    }
+  ],
+  "source_sha256": {
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\active_v1\\new_baseline\\baseline.json": "a6422a4fc29681ea369d7127dcb97594095fc163b74ceb9e93cf64764a8cf107",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\committed_v1\\raw_short\\new_seed_505\\results.json": "6e71e0fb855f7e26324d344a8ffcbe2c7c1d1053aaf803b2c4b5e1f294bc1e90",
+    "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\development\\observed_support_v1\\raw\\seed_505\\results.json": "6ef29bdc4fcee8da01b4d3a3bdbe016b006221cacad8162621ab615543d4034e"
+  },
+  "scope": "Descriptive same-weights development ablation. True effectiveness used only for diagnosing physical fault timing, never as a learned-policy input. The observed-support rule changes the first decision and therefore the later flight, not just a fixed action. No formal outcome read."
+}

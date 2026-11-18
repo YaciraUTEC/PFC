@@ -1,0 +1,23 @@
+{
+  "files": {
+    "ANALISIS_CRITICO.txt": "403519f107e308baa601c4a028d43091c2a9671a1280a78434062add02a03836",
+    "analisis_recalculado.json": "70e4ea9c688def763e9c6c2cd8ff0bbd70128f998cc05aaaf1dce8f196a82d63",
+    "analizar_resultados.py": "73a9470494f4b43adef084b8498ec98afd1cb9b942bc5903366f403a0f4c5477",
+    "calculos.log": "ec12749081026bc27d410fe438ca093a3ac57c78c4fc8bffefff57a88505a5ae",
+    "fuentes_locales_sha256.json": "7d333f940bb9d8dff24ff3310d9d592c27e5eb3bdd41b818e030fcbb051913a0",
+    "integridad_original.json": "959d0e4a3126c86de634731f407e7c5275b3fe21ab45f7f2bdd19a3610f55b25",
+    "presentacion.log": "fc11da5c03844cff072e393e6a02d255e701cf58a9decd92e9dfdd90c3f824cb",
+    "presentar_analisis.py": "2b18e2e0867c19aea59fb251fc0c581aabd66215644bab93c2bc68cc5f58b17a",
+    "rescate_perjuicio_confirmacion.png": "77adda663c82d2ac254b88a60d11d89b52416ae157f813bbcc18148bbffba95d",
+    "rescate_perjuicio_confirmacion.svg": "d03229ef86df42ff9738177a13d8f0cd371ebbbcfe47f57fba86624fa4ddedd3",
+    "sensibilidad_al_costo.png": "76dd0eba57ddfbdccb558aab38ad90a748fbfac7bc3e72cf88eee15060ef5b08",
+    "sensibilidad_al_costo.svg": "cc60a3a031048db9d9e1fa7e6c82902cfd7abc6456a171ed81a01775ca3b48cf",
+    "sensibilidad_coste.csv": "2bd4a38220830cdec16c95c18d5291d74e6f5348d0370c14c418dbcc45847ac3",
+    "sensibilidad_frecuencia_fallo.csv": "f24358e6ed32397e43a7bf7073e680f1c00ff39dcd45899b4468b0423e3a478d",
+    "submuestra_independiente_confirmacion.csv": "e6d3d2190837fe3db32e5e75cd22a6a5245aa1d4e28dc1525f2f0c5dc7ab95d5",
+    "tasas_condicionales.csv": "90c42e0a0973256619798130b5d240facb802a4567d361a38469daf395877417",
+    "timeout_a_contacto505.json": "30f0fd386f04bd65f6d0355b02594d6e15b25fe053e703bedb53f33189fd08c6",
+    "transiciones_entre_fallos.json": "abd3319826ebaa7e458a8f56b7c255497adac93462df7c324134296f71cbf0fb",
+    "verificacion.json": "6d8eeff39ccf2d3eea3e69feed783b22d358b9c9fc353dc9efa48166e16e5a94"
+  }
+}

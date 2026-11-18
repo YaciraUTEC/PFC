@@ -1,0 +1,99 @@
+{
+  "complete": true,
+  "entries": [
+    {
+      "seed": 501,
+      "metrics": {
+        "cases": 6656,
+        "success": 0.8563701923076923,
+        "gains": 17,
+        "losses": 0,
+        "critical_difference": 0.011067708333333334,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 502,
+      "metrics": {
+        "cases": 6656,
+        "success": 0.8680889423076923,
+        "gains": 98,
+        "losses": 3,
+        "critical_difference": 0.061848958333333336,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 503,
+      "metrics": {
+        "cases": 6656,
+        "success": 0.8667367788461539,
+        "gains": 88,
+        "losses": 2,
+        "critical_difference": 0.055989583333333336,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 504,
+      "metrics": {
+        "cases": 6656,
+        "success": 0.8683894230769231,
+        "gains": 99,
+        "losses": 2,
+        "critical_difference": 0.06315104166666667,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    },
+    {
+      "seed": 505,
+      "metrics": {
+        "cases": 6656,
+        "success": 0.8662860576923077,
+        "gains": 83,
+        "losses": 0,
+        "critical_difference": 0.054036458333333336,
+        "mild_losses": 0,
+        "exact_losses": 0
+      }
+    }
+  ],
+  "cases_per_model": 6656,
+  "reference_curve": {
+    "cases": 4608,
+    "success": 0.8693576388888888,
+    "gains": 84,
+    "losses": 18,
+    "critical_difference": 0.134765625,
+    "mild_losses": 0,
+    "exact_losses": 4
+  },
+  "family_statistics": {
+    "mean": 0.04921875,
+    "lower95": 0.026692708333333332,
+    "upper95": 0.07252929687499972,
+    "replicates": 20000,
+    "model_seeds": 5,
+    "route_clusters": 384,
+    "gains": 385,
+    "losses": 7,
+    "mild_losses": 0,
+    "exact_losses": 0,
+    "protected_route_clusters": 384,
+    "harmed_route_clusters": 4,
+    "harmed_route_upper95": 0.023677685118057866,
+    "upper_bound_scope": "Any lost baseline success among the tested model/regime combinations on a protected route; assumes independent route clusters; not per-tick or universal safety."
+  },
+  "operational_statistics": {
+    "mean": 0.054036458333333336,
+    "lower95": 0.036458333333333336,
+    "upper95": 0.07291666666666667,
+    "route_clusters": 384,
+    "replicates": 20000,
+    "scope": "Route-cluster paired bootstrap for the development-selected operational checkpoint; repeated noise and severity settings remain clustered."
+  }
+}

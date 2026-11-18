@@ -1,0 +1,10 @@
+{
+  "closed": true,
+  "finished_epoch": 1794899211.6527777,
+  "conclusion": "Additional base-only prognosis features extracted without new simulation; route split preserved and fault truth excluded from decision input.",
+  "cases": 2560,
+  "states": 40960,
+  "train_routes": 224,
+  "calibration_routes": 96,
+  "seconds": 85.92334246635437
+}

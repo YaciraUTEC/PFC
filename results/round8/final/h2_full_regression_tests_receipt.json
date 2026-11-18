@@ -1,0 +1,9 @@
+{
+  "exit_code": 0,
+  "tests": 392,
+  "warnings": 72,
+  "pytest_seconds": 334.89,
+  "log": "E:\\UTEC\\Tesis\\TesisNicol\\PFC_round8\\runs\\gtrxl_round8\\h2_full_regression_tests_verified.log",
+  "log_sha": "cf7319f8af0fe8e455cc9bb78128cb4f221e09bae68a9589d8fb591d404471e8",
+  "scope": "Whole project suite after conditional mixture correction; copied only original immutable round3 data fixtures into the isolated worktree."
+}

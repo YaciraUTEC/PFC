@@ -1,0 +1,12 @@
+{
+  "closed": true,
+  "finished_epoch": 1794913914.1786923,
+  "conclusion": "Five complete-support conditional gate fits trained/calibrated after paired active query acquisition; frozen GTrXL actor and inference rule unchanged.",
+  "seeds": [
+    501,
+    502,
+    503,
+    504,
+    505
+  ]
+}

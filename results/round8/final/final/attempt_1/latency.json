@@ -1,0 +1,368 @@
+{
+  "results": [
+    {
+      "name": "DSLPID",
+      "samples": 1876,
+      "p50_ms": 0.9668,
+      "p95_ms": 1.195875,
+      "p99_ms": 1.382625,
+      "max_ms": 2.6755,
+      "inference_p95_ms": 0.001,
+      "base_p95_ms": 1.195075,
+      "deadline_ms": 20.833333333333332,
+      "miss_fraction": 0.0,
+      "conditional_latency": {
+        "postfault_flight": {
+          "samples": 1667,
+          "p95_ms": 1.2051899999999995,
+          "p99_ms": 1.3913239999999996
+        },
+        "authorized_nonzero": {
+          "samples": 0,
+          "p95_ms": null,
+          "p99_ms": null
+        },
+        "requested_intervention": {
+          "samples": 0,
+          "p95_ms": null,
+          "p99_ms": null
+        },
+        "decision_network_evaluated": {
+          "samples": 0,
+          "p95_ms": null,
+          "p99_ms": null
+        }
+      },
+      "flights": [
+        {
+          "seed": 810085,
+          "clock": null,
+          "noise": 1.0,
+          "level": 0.296,
+          "outcome": "timeout",
+          "steps": 1440
+        },
+        {
+          "seed": 811059,
+          "clock": 4.0,
+          "noise": 2.0,
+          "level": 0.296,
+          "outcome": "hard_landing",
+          "steps": 484
+        }
+      ],
+      "scope": "Complete inference + controller/observer/supervisor/observation bookkeeping. Only plant integration and first24warmup ticks excluded; measured in one process without training or parallel flight pools. Empirical timing, not hard real-time guarantee.",
+      "guarded_p95_ms": 1.2051899999999995
+    },
+    {
+      "name": "gate_501",
+      "samples": 1750,
+      "p50_ms": 1.3188,
+      "p95_ms": 5.095295,
+      "p99_ms": 5.797232999999999,
+      "max_ms": 6.6983,
+      "inference_p95_ms": 3.962545,
+      "base_p95_ms": 1.235455,
+      "deadline_ms": 20.833333333333332,
+      "miss_fraction": 0.0,
+      "conditional_latency": {
+        "postfault_flight": {
+          "samples": 1403,
+          "p95_ms": 5.15405,
+          "p99_ms": 5.86326
+        },
+        "authorized_nonzero": {
+          "samples": 48,
+          "p95_ms": 4.999339999999999,
+          "p99_ms": 5.240851
+        },
+        "requested_intervention": {
+          "samples": 48,
+          "p95_ms": 4.999339999999999,
+          "p99_ms": 5.240851
+        },
+        "decision_network_evaluated": {
+          "samples": 337,
+          "p95_ms": 5.8262599999999996,
+          "p99_ms": 6.16086
+        }
+      },
+      "flights": [
+        {
+          "seed": 810085,
+          "clock": null,
+          "noise": 1.0,
+          "level": 0.296,
+          "outcome": "stable_landing",
+          "steps": 722
+        },
+        {
+          "seed": 811059,
+          "clock": 4.0,
+          "noise": 2.0,
+          "level": 0.296,
+          "outcome": "hard_landing",
+          "steps": 484
+        },
+        {
+          "seed": 740000,
+          "clock": null,
+          "noise": 1.0,
+          "level": 0.295,
+          "outcome": "stable_landing",
+          "steps": 616
+        }
+      ],
+      "scope": "Complete inference + controller/observer/supervisor/observation bookkeeping. Only plant integration and first24warmup ticks excluded; measured in one process without training or parallel flight pools. Empirical timing, not hard real-time guarantee.",
+      "guarded_p95_ms": 5.8262599999999996
+    },
+    {
+      "name": "gate_502",
+      "samples": 1750,
+      "p50_ms": 1.3274,
+      "p95_ms": 5.2825549999999994,
+      "p99_ms": 5.784199,
+      "max_ms": 6.7859,
+      "inference_p95_ms": 4.17771,
+      "base_p95_ms": 1.2525149999999998,
+      "deadline_ms": 20.833333333333332,
+      "miss_fraction": 0.0,
+      "conditional_latency": {
+        "postfault_flight": {
+          "samples": 1403,
+          "p95_ms": 5.406269999999999,
+          "p99_ms": 5.805197999999999
+        },
+        "authorized_nonzero": {
+          "samples": 48,
+          "p95_ms": 4.797945,
+          "p99_ms": 5.075489
+        },
+        "requested_intervention": {
+          "samples": 48,
+          "p95_ms": 4.797945,
+          "p99_ms": 5.075489
+        },
+        "decision_network_evaluated": {
+          "samples": 337,
+          "p95_ms": 5.79248,
+          "p99_ms": 6.107975999999998
+        }
+      },
+      "flights": [
+        {
+          "seed": 810085,
+          "clock": null,
+          "noise": 1.0,
+          "level": 0.296,
+          "outcome": "stable_landing",
+          "steps": 722
+        },
+        {
+          "seed": 811059,
+          "clock": 4.0,
+          "noise": 2.0,
+          "level": 0.296,
+          "outcome": "hard_landing",
+          "steps": 484
+        },
+        {
+          "seed": 740000,
+          "clock": null,
+          "noise": 1.0,
+          "level": 0.295,
+          "outcome": "stable_landing",
+          "steps": 616
+        }
+      ],
+      "scope": "Complete inference + controller/observer/supervisor/observation bookkeeping. Only plant integration and first24warmup ticks excluded; measured in one process without training or parallel flight pools. Empirical timing, not hard real-time guarantee.",
+      "guarded_p95_ms": 5.79248
+    },
+    {
+      "name": "gate_503",
+      "samples": 1750,
+      "p50_ms": 1.3249,
+      "p95_ms": 5.137205,
+      "p99_ms": 5.633004,
+      "max_ms": 6.4884,
+      "inference_p95_ms": 4.0013749999999995,
+      "base_p95_ms": 1.2293649999999998,
+      "deadline_ms": 20.833333333333332,
+      "miss_fraction": 0.0,
+      "conditional_latency": {
+        "postfault_flight": {
+          "samples": 1403,
+          "p95_ms": 5.2381899999999995,
+          "p99_ms": 5.656180000000001
+        },
+        "authorized_nonzero": {
+          "samples": 48,
+          "p95_ms": 4.788315,
+          "p99_ms": 4.927262
+        },
+        "requested_intervention": {
+          "samples": 48,
+          "p95_ms": 4.788315,
+          "p99_ms": 4.927262
+        },
+        "decision_network_evaluated": {
+          "samples": 337,
+          "p95_ms": 5.6388,
+          "p99_ms": 6.113287999999998
+        }
+      },
+      "flights": [
+        {
+          "seed": 810085,
+          "clock": null,
+          "noise": 1.0,
+          "level": 0.296,
+          "outcome": "stable_landing",
+          "steps": 722
+        },
+        {
+          "seed": 811059,
+          "clock": 4.0,
+          "noise": 2.0,
+          "level": 0.296,
+          "outcome": "hard_landing",
+          "steps": 484
+        },
+        {
+          "seed": 740000,
+          "clock": null,
+          "noise": 1.0,
+          "level": 0.295,
+          "outcome": "stable_landing",
+          "steps": 616
+        }
+      ],
+      "scope": "Complete inference + controller/observer/supervisor/observation bookkeeping. Only plant integration and first24warmup ticks excluded; measured in one process without training or parallel flight pools. Empirical timing, not hard real-time guarantee.",
+      "guarded_p95_ms": 5.6388
+    },
+    {
+      "name": "gate_504",
+      "samples": 1750,
+      "p50_ms": 1.3155000000000001,
+      "p95_ms": 5.4285499999999995,
+      "p99_ms": 5.9738109999999995,
+      "max_ms": 7.6267,
+      "inference_p95_ms": 4.235205,
+      "base_p95_ms": 1.2345599999999999,
+      "deadline_ms": 20.833333333333332,
+      "miss_fraction": 0.0,
+      "conditional_latency": {
+        "postfault_flight": {
+          "samples": 1403,
+          "p95_ms": 5.482069999999999,
+          "p99_ms": 6.016254000000001
+        },
+        "authorized_nonzero": {
+          "samples": 48,
+          "p95_ms": 4.975054999999999,
+          "p99_ms": 5.131697
+        },
+        "requested_intervention": {
+          "samples": 48,
+          "p95_ms": 4.975054999999999,
+          "p99_ms": 5.131697
+        },
+        "decision_network_evaluated": {
+          "samples": 337,
+          "p95_ms": 5.97852,
+          "p99_ms": 6.329895999999999
+        }
+      },
+      "flights": [
+        {
+          "seed": 810085,
+          "clock": null,
+          "noise": 1.0,
+          "level": 0.296,
+          "outcome": "stable_landing",
+          "steps": 722
+        },
+        {
+          "seed": 811059,
+          "clock": 4.0,
+          "noise": 2.0,
+          "level": 0.296,
+          "outcome": "hard_landing",
+          "steps": 484
+        },
+        {
+          "seed": 740000,
+          "clock": null,
+          "noise": 1.0,
+          "level": 0.295,
+          "outcome": "stable_landing",
+          "steps": 616
+        }
+      ],
+      "scope": "Complete inference + controller/observer/supervisor/observation bookkeeping. Only plant integration and first24warmup ticks excluded; measured in one process without training or parallel flight pools. Empirical timing, not hard real-time guarantee.",
+      "guarded_p95_ms": 5.97852
+    },
+    {
+      "name": "gate_505",
+      "samples": 1757,
+      "p50_ms": 1.3213,
+      "p95_ms": 5.43852,
+      "p99_ms": 6.009304000000001,
+      "max_ms": 7.983499999999999,
+      "inference_p95_ms": 4.26828,
+      "base_p95_ms": 1.2735999999999998,
+      "deadline_ms": 20.833333333333332,
+      "miss_fraction": 0.0,
+      "conditional_latency": {
+        "postfault_flight": {
+          "samples": 1410,
+          "p95_ms": 5.50078,
+          "p99_ms": 6.095817000000002
+        },
+        "authorized_nonzero": {
+          "samples": 48,
+          "p95_ms": 4.78703,
+          "p99_ms": 4.937521
+        },
+        "requested_intervention": {
+          "samples": 48,
+          "p95_ms": 4.78703,
+          "p99_ms": 4.937521
+        },
+        "decision_network_evaluated": {
+          "samples": 337,
+          "p95_ms": 6.02042,
+          "p99_ms": 6.615151999999998
+        }
+      },
+      "flights": [
+        {
+          "seed": 810085,
+          "clock": null,
+          "noise": 1.0,
+          "level": 0.296,
+          "outcome": "stable_landing",
+          "steps": 722
+        },
+        {
+          "seed": 811059,
+          "clock": 4.0,
+          "noise": 2.0,
+          "level": 0.296,
+          "outcome": "hard_landing",
+          "steps": 484
+        },
+        {
+          "seed": 740000,
+          "clock": null,
+          "noise": 1.0,
+          "level": 0.25,
+          "outcome": "stable_landing",
+          "steps": 623
+        }
+      ],
+      "scope": "Complete inference + controller/observer/supervisor/observation bookkeeping. Only plant integration and first24warmup ticks excluded; measured in one process without training or parallel flight pools. Empirical timing, not hard real-time guarantee.",
+      "guarded_p95_ms": 6.02042
+    }
+  ]
+}

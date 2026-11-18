@@ -1,0 +1,21 @@
+{
+  "closed": true,
+  "finished_epoch": 1794899587.7175653,
+  "conclusion": "Post-contact states removed from additional prognosis data; CPU runtime feature equivalence verified.",
+  "summary": {
+    "train": {
+      "before": 28672,
+      "retained": 28672,
+      "postcontact_removed": 0,
+      "routes": 224
+    },
+    "calibration": {
+      "before": 12288,
+      "retained": 12288,
+      "postcontact_removed": 0,
+      "routes": 96
+    }
+  },
+  "feature_maximum_difference": 0.0,
+  "seconds": 6.543461561203003
+}

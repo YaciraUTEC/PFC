@@ -1,0 +1,31 @@
+{
+  "results": {
+    "raw505": {
+      "active": 1324,
+      "protected_active": 1087,
+      "rescues": 75,
+      "both_fail_active": 162,
+      "mean_protected_finish_delay": -0.17187979147500768,
+      "median_protected_finish_delay": 0.0,
+      "maximum_protected_finish_delay": 6.916666666666667,
+      "latest_protected_finish_seconds": 23.395833333333332,
+      "protected_faster": 447,
+      "protected_slower": 419,
+      "protected_same_finish": 221
+    },
+    "bootstrap_native502": {
+      "active": 211,
+      "protected_active": 159,
+      "rescues": 28,
+      "both_fail_active": 24,
+      "mean_protected_finish_delay": -0.07206498951781973,
+      "median_protected_finish_delay": 0.0,
+      "maximum_protected_finish_delay": 2.7916666666666665,
+      "latest_protected_finish_seconds": 15.979166666666666,
+      "protected_faster": 38,
+      "protected_slower": 74,
+      "protected_same_finish": 47
+    }
+  },
+  "scope": "Development only, all8064conditions, two provisional safe candidates; counts are repeated conditions clustered by scenario, not independent routes. Protected means DSLPID already lands in the paired future, not that ex-ante intervention is necessarily useless under partial observation. These time metrics do not change success criteria or the predeclared ranking."
+}
